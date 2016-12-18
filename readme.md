@@ -7,7 +7,7 @@
 # Status
   - definitely in alpha
   - [You can see a working version here](https://github.com/noahehall/udacity-corporate-dashboard)
-  
+
 # Requirements
   1. Universal/Isomophoric rendering
   2. React handles all DOM node creation
@@ -21,7 +21,7 @@
 ## Pie Chart
 ```
   import { SVG } from './svg.js';
-  ...
+  import React from 'react';
 
   const exampleMarginObject = {
     bottom: 20,
@@ -46,7 +46,7 @@
     },
   ];
 
-  render () {
+  export const PieChart = () =>
     <section
       id='your-piechart-id'
       style={{
@@ -69,6 +69,5 @@
         svgWidth={chartWidth - (margin.left + margin.right)}
         value='total'
       />
-    </section>
-  }
+    </section>;
 ```

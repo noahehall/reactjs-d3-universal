@@ -8,6 +8,14 @@
   - definitely in alpha
   - [You can see a working version here](https://github.com/noahehall/udacity-corporate-dashboard)
 
+# Coming Soon
+  - Bar Chart
+  - Line Chart
+  - Radial Stacked Bar
+  - Scatter Plot
+  - any requests, open an issue ;)
+  - more examples
+
 # Requirements
   1. Universal/Isomophoric rendering
   2. React handles all DOM node creation

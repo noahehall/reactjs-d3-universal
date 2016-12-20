@@ -28,17 +28,18 @@
 # Examples
 ## Pie Chart
 ```
-  import { SVG } from './svg.js';
+  import BarChart from './charts/barchart';
+  import PieChart from './charts/piechart';
   import React from 'react';
 
-  const exampleMarginObject = {
+  const margins = {
     bottom: 20,
     left: 60,
     right: 60,
     top: 20,
   };
 
-  const exampleDataObject = [
+  const data = [
     {
       gender: 'Male',
       lastName: 'Hall',
@@ -54,28 +55,23 @@
     },
   ];
 
-  export const PieChart = () =>
-    <section
-      id='your-piechart-id'
-      style={{
-        display: 'block',
-        height: {height-of-container}
-        overflow: 'hidden',
-        position: 'relative',
-        verticalAlign: 'top',
-        width: {width-of-container},
-      }}
-    >
-      <SVG
-        chartHeight={chartHeight}
-        chartType='pie'
-        chartWidth={chartWidth}
-        data={exampleDataObject}
-        labels={[ 'lastName', 'total' ]}
-        margin={exampleMarginObject}
-        svgHeight={chartHeight - (margin.top + margin.bottom)}
-        svgWidth={chartWidth - (margin.left + margin.right)}
-        value='total'
-      />
-    </section>;
+  // create a bar chart
+  <BarChart
+    chart={data}
+    chartType='bar'
+    containerHeight={400}
+    containerWidth={400}
+    id='bar-chart'
+    margins={margins}
+  />
+
+  // create a pie chart
+  <PieChart
+    chart={data}
+    chartType='pie'
+    containerHeight={400}
+    containerWidth={400}
+    id='pie-chart'
+    margins={margins}
+  />
 ```

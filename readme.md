@@ -8,18 +8,26 @@
   - definitely in alpha
   - [You can see a working version here](https://github.com/noahehall/udacity-corporate-dashboard)
 
-# Coming Soon
+# Chart Types
   - Bar Chart
+  - Pie Chart
+  - Scatter Plot
+
+# Coming Soon
   - Line Chart
   - Radial Stacked Bar
-  - Scatter Plot
+  - updated logic for color scales
+  - axis labels
+  - animations
   - any requests, open an issue ;)
   - more examples
 
 # Requirements
   1. Universal/Isomophoric rendering
   2. React handles all DOM node creation
+    - except Axis creation
   3. D3 handles animation
+    - animation coming soon
   4. Responsive design
   5. accessible
   6. semantic

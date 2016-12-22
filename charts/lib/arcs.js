@@ -38,8 +38,8 @@ export const generateArcPath = ({
 export const generateArcs = ({
   data,
   sort = null,
-  value,
+  yValue,
 }) => d3
   .pie()
   .sort(sort)
-  .value((d) => d[value])(data);
+  .value((d) => d[yValue])(data);

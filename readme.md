@@ -28,8 +28,7 @@
 # Examples
 ## Pie Chart
 ```
-  import BarChart from './charts/barchart';
-  import PieChart from './charts/piechart';
+  import Chart from './charts';
   import React from 'react';
 
   const margins = {
@@ -56,22 +55,23 @@
   ];
 
   // create a bar chart
-  <BarChart
+  <Chart
     chart={data}
-    chartType='bar'
-    containerHeight={400}
-    containerWidth={400}
-    id='bar-chart'
+    chartType='scatterplot' // bar, pie, scatterplot
+    colorScaleScheme='schemeAccent'
+    colorScaleType='categorical'
+    containerHeight={containerHeight}
+    containerWidth={containerWidth}
+    id='scatterplot-chart' // must be unique
+    labels={[ 'gender', 'age' ]}
     margins={margins}
-  />
-
-  // create a pie chart
-  <PieChart
-    chart={data}
-    chartType='pie'
-    containerHeight={400}
-    containerWidth={400}
-    id='pie-chart'
-    margins={margins}
+    preserveAspectRatio='xMinYMin meet'
+    r={3.5} // only required for scatterplot
+    xAxis={true}
+    xScale={true}
+    xValue='hoursWorkedPerWeek'
+    yAxis={true}
+    yScale={true}
+    yValue='salary'
   />
 ```

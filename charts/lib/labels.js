@@ -21,7 +21,9 @@ export const getLabelText = ({
 
       return label;
     }
-    case 'bar': {
+    case 'scatterplot':
+    case 'bar':
+    case 'simple': {
       let thisLabel = '';
       labels.forEach((label) => thisLabel += `${d[label]} `);
 

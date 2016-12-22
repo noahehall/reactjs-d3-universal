@@ -29,9 +29,11 @@ export const Chart = ({
   margins = { bottom: 20, left: 60, right: 60, top: 20 },
   preserveAspectRatio = 'xMinYMin meet',
   xAxis = false,
+  xAxisLabel = '',
   xScale = false,
   xValue = '',
   yAxis = false,
+  yAxisLabel = '',
   yScale = false,
   yValue = 'total',
 }) => {
@@ -58,6 +60,14 @@ export const Chart = ({
       : null,
     data = chart.data,
     hasDocument = typeof document !== 'undefined',
+    thisXAxisLabel = xAxis
+      ? axes.getXAxisLabel({
+        transform: 'rotate(0)',
+        x: containerWidth / 2 - margins.left,
+        xAxisLabel: xAxisLabel || xValue,
+        y: containerHeight,
+      })
+      : null,
     thisXScale = xScale
       ? scales.getXScale({
         chartHeight,
@@ -68,6 +78,15 @@ export const Chart = ({
         margins,
         svgWidth: containerWidth,
         xValue
+      })
+      : null,
+    thisYAxisLabel = yAxis
+      ? axes.getYAxisLabel({
+        transform: 'rotate(-90)',
+        // x & y flip because of rotation
+        x: -containerHeight / 2 - margins.top,
+        y: '1em',
+        yAxisLabel: yAxisLabel || yValue,
       })
       : null,
     thisYScale = yScale
@@ -89,7 +108,7 @@ export const Chart = ({
     <SVG
       id={id}
       labels={labels}
-      margins={appFuncs._.isEmpty(chart.margins) ? margins : chart.margins}
+      margins={margins}
       preserveAspectRatio={preserveAspectRatio}
       svgHeight={containerHeight}
       svgWidth={containerWidth}
@@ -126,12 +145,14 @@ export const Chart = ({
           transform={`translate(${margins.left}, ${chartHeight + margins.top})`}
         />
       }
+      { thisXAxisLabel }
       { yAxis &&
         <g
           className='y axis'
           transform={`translate(${margins.left}, ${margins.top})`}
         />
       }
+      { thisYAxisLabel }
       <section
         id={`${id}-tooltip`}
         style={{
@@ -159,9 +180,11 @@ Chart.propTypes = {
   margins: React.PropTypes.object,
   preserveAspectRatio: React.PropTypes.string,
   xAxis: React.PropTypes.bool,
+  xAxisLabel: React.PropTypes.string,
   xScale: React.PropTypes.bool,
   xValue: React.PropTypes.string,
   yAxis: React.PropTypes.bool,
+  yAxisLabel: React.PropTypes.string,
   yScale: React.PropTypes.bool,
   yValue: React.PropTypes.string,
 };

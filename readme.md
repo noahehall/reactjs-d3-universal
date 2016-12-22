@@ -17,10 +17,7 @@
   - Line Chart
   - Radial Stacked Bar
   - updated logic for color scales
-  - axis labels
   - animations
-  - any requests, open an issue ;)
-  - more examples
 
 # Requirements
   1. Universal/Isomophoric rendering
@@ -62,23 +59,25 @@
     },
   ];
 
-  // create a bar chart
+  // create a chart
   <Chart
     chart={data}
-    chartType='scatterplot' // bar, pie, scatterplot
+    chartType='scatterplot|bar|pie'
     colorScaleScheme='schemeAccent'
     colorScaleType='categorical'
     containerHeight={containerHeight}
     containerWidth={containerWidth}
-    id='scatterplot-chart' // must be unique
+    id='scatterplot-chart'
     labels={[ 'gender', 'age' ]}
     margins={margins}
     preserveAspectRatio='xMinYMin meet'
-    r={3.5} // only required for scatterplot
+    r={3.5}
     xAxis={true}
+    xAxisLabel='hours per week'
     xScale={true}
     xValue='hoursWorkedPerWeek'
     yAxis={true}
+    yAxisLabel='salary'
     yScale={true}
     yValue='salary'
   />

@@ -26,8 +26,14 @@ Text.propTypes = {
   text: React.PropTypes.string,
   textAnchor: React.PropTypes.string,
   transform: React.PropTypes.string,
-  x: React.PropTypes.number,
-  y: React.PropTypes.number,
+  x: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string,
+  ]),
+  y: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string,
+  ]),
 };
 
 export default Text;

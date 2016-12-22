@@ -1,4 +1,7 @@
+// import * as label from './labels.js';
+import { Text } from '../svg/text.js';
 import * as d3 from 'd3';
+import React from 'react';
 
 /*
  * Create/Update Y Axis in the DOM
@@ -33,11 +36,69 @@ export const getXAxis = ({
       .select(document.getElementById(`${id}`))
       .select('.x.axis')
       .call(d3.axisBottom(thisXScale))
-      .selectAll('text')
+      .selectAll('g.tick text')
+      .classed('axes text', true)
       .attr('dx', dx)
       .attr('dy', dy)
       .attr('transform', transform)
       .style('text-anchor', textAnchor)
-      .classed('axies text', true)
     : null
 );
+
+/**
+ * Positions label on x Axis
+ * @method getXAxisLabel
+ * @param  {String}      [xAxisLabel=''}] [description]
+ * @return {Boolean}     [description]
+ */
+export const getXAxisLabel = ({
+  transform = 'rotate(0)',
+  x = 5,
+  xAxisLabel = '',
+  y = -5,
+}) =>
+  <Text
+    text={xAxisLabel}
+    transform={transform}
+    x={x}
+    y={y}
+  />;
+
+getXAxisLabel.propTypes = {
+  transform: React.PropTypes.string,
+  x: React.PropTypes.number,
+  xAxisLabel: React.PropTypes.string,
+  y: React.PropTypes.number,
+};
+
+/**
+ * Positions label on y Axis
+ * @method getXAxisLabel
+ * @param  {String}      [xAxisLabel=''}] [description]
+ * @return {Boolean}     [description]
+ */
+export const getYAxisLabel = ({
+  transform = 'rotate(-90)',
+  x = 5,
+  y = -5,
+  yAxisLabel = '',
+}) =>
+  <Text
+    text={yAxisLabel}
+    transform={transform}
+    x={x}
+    y={y}
+  />;
+
+getYAxisLabel.propTypes = {
+  transform: React.PropTypes.string,
+  x: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string,
+  ]),
+  y: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string,
+  ]),
+  yAxisLabel: React.PropTypes.string,
+};

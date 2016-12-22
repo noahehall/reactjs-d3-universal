@@ -16,6 +16,11 @@
 # Coming Soon
   - Line Chart
   - Radial Stacked Bar
+  - histogram
+  - combination chart
+  - bubble chart
+  - tooltips
+  - legends
   - updated logic for color scales
   - animations
 

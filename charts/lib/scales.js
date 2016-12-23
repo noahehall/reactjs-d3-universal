@@ -15,6 +15,7 @@ export const yScale = ({
 }) => {
   switch (chartType.toLowerCase()) {
     case 'pie': return null;
+    case 'line':
     case 'scatterplot':
     case 'bar':
     default: {
@@ -24,7 +25,7 @@ export const yScale = ({
           chartType === 'scatterplot'
             // -1 for scatterplot dots to always be above axis
             ? dataMinNumber - 1
-            : 0,
+            : dataMinNumber,
           chartType === 'scatterplot'
             // +1 for scatterplot dots to always be below axis
             ? dataMaxNumber + 1
@@ -40,6 +41,7 @@ export const yScale = ({
  */
 export const getYScale = ({
   // chartHeight = 200,
+  chartDataGroupBy,
   chartType = 'bar',
   data = {},
   // chartWidth = 200,
@@ -52,14 +54,29 @@ export const getYScale = ({
     dataMaxNumber,
     dataMinNumber;
 
+  // flatten if required
+  let thisData = [];
+  if (chartDataGroupBy)
+    data.forEach((group) => thisData.push(...group.values));
+  else thisData = data;
+
   switch (chartType.toLowerCase()) {
     case 'pie': return null;
-    case 'scatterplot': {
-      dataMinNumber = appFuncs._.minBy(data, (o) => o[yValue])[yValue];
+    case 'line': // eslintignore both min and max
+    case 'scatterplot': { // eslintignore both min and max
+      try {
+        dataMinNumber = appFuncs._.minBy(thisData, (o) => o[yValue])[yValue];
+      } catch (err) {
+        appFuncs.console('error')(err);
+      }
     }
     case 'bar': // eslint-disable-line no-fallthrough
     default: {
-      dataMaxNumber = appFuncs._.maxBy(data, (o) => o[yValue])[yValue];
+      try {
+        dataMaxNumber = appFuncs._.maxBy(thisData, (o) => o[yValue])[yValue];
+      } catch (err) {
+        appFuncs.console('error')(err);
+      }
     }
   }
 
@@ -82,8 +99,22 @@ export const xScale = ({
   dataLabelsArray,
   dataMinNumber = 1,
   dataMaxNumber = 1,
+  xScaleTime = false,
 }) => {
-  switch (chartType.toLowerCase()) {
+  const thisChartType = chartType.toLowerCase();
+
+  if (xScaleTime)
+    switch (thisChartType) {
+      case 'line': {
+        return d3
+          .scaleTime()
+          .domain([ dataMinNumber, dataMaxNumber ])
+          .range([ 0, chartWidth ]);
+      }
+      default: return null;
+    }
+
+  switch (thisChartType) {
     case 'pie': return null;
     case 'scatterplot': {
       return d3
@@ -98,14 +129,18 @@ export const xScale = ({
         ])
         .range([ 0, chartWidth ]);
     }
-    case 'bar':
-    default: {
+    case 'bar': {
       return d3
         .scaleBand()
         .domain(dataLabelsArray)
         .rangeRound([ 0, chartWidth ])
         .paddingInner(0.1)
         .paddingOuter(0.5);
+    }
+    default: {
+      appFuncs.console('error')(`chartType ${chartType} is not setup for scale creation`);
+
+      return error;
     }
   }
 };
@@ -114,45 +149,58 @@ export const xScale = ({
  * retrieve xscale
  */
 export const getXScale = ({
+  chartDataGroupBy,
   chartType = 'bar',
   data,
   labels,
   margins,
   svgWidth,
   xValue,
+  xScaleTime,
 }) => { // eslint-disable-line consistent-return
+  if (appFuncs._.isEmpty(data)) return null;
   const chartWidth = svgWidth - (margins.left + margins.right);
+
+  let
+    dataLabelsArray,
+    dataMaxNumber,
+    dataMinNumber;
+
+  // flatten if required
+  let thisData = [];
+  if (chartDataGroupBy)
+    data.forEach((group) => thisData.push(...group.values));
+  else thisData = data;
 
   switch (chartType.toLowerCase()) {
     case 'pie': return null;
-    case 'scatterplot': {
-      let dataMaxNumber, dataMinNumber;
-
+    case 'line': // eslintignore both min and max
+    case 'scatterplot': { // eslintignore both min and max
       try {
-        dataMaxNumber = appFuncs._.maxBy(data, (o) => o[xValue])[xValue];
-        dataMinNumber = appFuncs._.minBy(data, (o) => o[xValue])[xValue];
+        dataMaxNumber = appFuncs._.maxBy(thisData, (o) => o[xValue])[xValue];
+        dataMinNumber = appFuncs._.minBy(thisData, (o) => o[xValue])[xValue];
       } catch (err) {
         appFuncs.console('error')(err);
 
         return null;
       }
 
-      return xScale({
-        chartType,
-        chartWidth,
-        dataMaxNumber,
-        dataMinNumber,
-      });
+      break;
     }
-    case 'bar':
+    case 'bar': // eslint-disable-line
     default: {
-      return xScale({
-        chartType,
-        chartWidth,
-        dataLabelsArray: data.map((d) => label.getLabels({ d, labels })),
-      });
+      dataLabelsArray = thisData.map((d) => label.getLabels({ d, labels }));
     }
   }
+
+  return xScale({
+    chartType,
+    chartWidth,
+    dataLabelsArray,
+    dataMaxNumber,
+    dataMinNumber,
+    xScaleTime,
+  });
 };
 
 // Retrieve color scale

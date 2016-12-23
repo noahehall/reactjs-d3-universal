@@ -7,21 +7,23 @@
 # Status
   - definitely in alpha
   - [You can see a working version here](https://github.com/noahehall/udacity-corporate-dashboard)
+  - there is a hard dependency on [App Functions](https://github.com/noahehall/react-f-your-starterkit/tree/master/src/.globals)
 
 # Chart Types
   - Bar Chart
   - Pie Chart
   - Scatter Plot
+  - Line Chart
 
 # Coming Soon
-  - Line Chart
   - Radial Stacked Bar
   - histogram
   - combination chart
   - bubble chart
   - tooltips
   - legends
-  - updated logic for color scales
+  - update logic for color scales
+  - update logic for 'groupBy'
   - animations
 
 # Requirements
@@ -64,26 +66,30 @@
     },
   ];
 
-  // create a chart
+  // create a chart,
   <Chart
     chart={data}
-    chartType='scatterplot|bar|pie'
+    chartDataGroupBy='' // currently only used if xScaleTime = true
+    chartType='line|scatterplot|bar|pie'
     colorScaleScheme='schemeAccent'
     colorScaleType='categorical'
     containerHeight={containerHeight}
     containerWidth={containerWidth}
-    id='scatterplot-chart'
-    labels={[ 'gender', 'age' ]}
+    datumLabels={[ 'gender' ]}
+    id='line-chart'
     margins={margins}
     preserveAspectRatio='xMinYMin meet'
     r={3.5}
     xAxis={true}
-    xAxisLabel='hours per week'
+    xAxisLabel='Date'
     xScale={true}
-    xValue='hoursWorkedPerWeek'
+    xScaleTime={true}
+    xScaleTimeFormat='%Y/%m/%d'
+    xValue='lastName'
+    xValue='Rock Stars Win'
     yAxis={true}
-    yAxisLabel='salary'
+    yAxisLabel='total'
     yScale={true}
-    yValue='salary'
+    yValue='Black Friday at Walmart'
   />
 ```

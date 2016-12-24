@@ -16,6 +16,7 @@
   - Line Chart
 
 # Coming Soon
+  - default CSS styling
   - Radial Stacked Bar
   - stacked bar (currently works with regular bar chart but can be improved)
   - histogram
@@ -69,7 +70,7 @@
   // create a chart,
   <Chart
     chart={data}
-    chartDataGroupBy='gender' 
+    chartDataGroupBy='gender'
     chartType='line|scatterplot|bar|pie'
     colorScaleScheme='schemeAccent'
     colorScaleType='categorical'

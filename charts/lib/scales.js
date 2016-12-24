@@ -9,23 +9,42 @@ import * as label from './labels.js';
  */
 export const yScale = ({
   chartHeight,
-  chartType = 'bar',
+  chartType,
   dataMaxNumber,
-  dataMinNumber = 1,
+  dataMinNumber,
 }) => {
+  if (!chartType) {
+    appFuncs.logError({
+      data: [ chartHeight, chartType, dataMinNumber, dataMaxNumber ],
+      loc: __filename,
+      msg: `chart type cannot be undefined for scales.yScale(), returning null`,
+    });
+
+    return null;
+  }
   switch (chartType.toLowerCase()) {
     case 'pie': return null;
     case 'line':
     case 'scatterplot':
     case 'bar':
     default: {
+      if (chartHeight < 0 || dataMaxNumber < 0) {
+        appFuncs.logError({
+          data: [ chartHeight, chartType, dataMaxNumber, dataMinNumber ],
+          loc: __filename,
+          msg: 'all values should be defined and above 0 for scales.yScale(), returning null',
+        });
+
+        return null;
+      }
+
       return d3
         .scaleLinear()
         .domain([
           chartType === 'scatterplot'
             // -1 for scatterplot dots to always be above axis
             ? dataMinNumber - 1
-            : dataMinNumber,
+            : 0,
           chartType === 'scatterplot'
             // +1 for scatterplot dots to always be below axis
             ? dataMaxNumber + 1
@@ -41,15 +60,24 @@ export const yScale = ({
  */
 export const getYScale = ({
   // chartHeight = 200,
-  chartDataGroupBy,
-  chartType = 'bar',
-  data = {},
+  chartDataGroupBy = '',
+  chartType = '',
+  data,
   // chartWidth = 200,
   margins = {},
   svgHeight = 200,
   yValue = '',
 }) => {
-  if (!yValue || appFuncs._.isEmpty(data)) return null;
+  if (!yValue || !chartType || appFuncs._.isEmpty(data)) {
+    appFuncs.logError({
+      data: [ chartType, data, yValue ],
+
+      msg: 'yValue, chartType and data need to be valid variables for scales.getYScale(), returning null',
+    });
+
+    return null;
+  }
+
   let
     dataMaxNumber,
     dataMinNumber;
@@ -67,7 +95,15 @@ export const getYScale = ({
       try {
         dataMinNumber = appFuncs._.minBy(thisData, (o) => o[yValue])[yValue];
       } catch (err) {
-        appFuncs.console('error')(err);
+        appFuncs.logError({
+          data: [
+            thisData,
+            yValue,
+          ],
+          err,
+          loc: __filename,
+          msg: 'error creating dataMinNumber for scatterplot chart in scales.getYScale()',
+        });
       }
     }
     case 'bar': // eslint-disable-line no-fallthrough
@@ -75,7 +111,15 @@ export const getYScale = ({
       try {
         dataMaxNumber = appFuncs._.maxBy(thisData, (o) => o[yValue])[yValue];
       } catch (err) {
-        appFuncs.console('error')(err);
+        appFuncs.logError({
+          data: [
+            thisData,
+            yValue,
+          ],
+          err,
+          loc: __filename,
+          msg: 'error creating dataManNumber for bar chrt chart in scales.getYScale()',
+        });
       }
     }
   }
@@ -94,27 +138,41 @@ export const getYScale = ({
  */
 export const xScale = ({
   // chartHeight = 200,
-  chartType = 'bar',
+  chartType = '',
   chartWidth = 200,
-  dataLabelsArray,
-  dataMinNumber = 1,
-  dataMaxNumber = 1,
-  xScaleTime = false,
+  dataLabelsArray = [],
+  dataMinNumber,
+  dataMaxNumber,
+  xScaleTime,
 }) => {
-  const thisChartType = chartType.toLowerCase();
+  if (!chartType) {
+    appFuncs.logError({
+      loc: __filename,
+      msg: `chart type (${chartType}) needs to be a valid chart type for scales.xScale(), returning null`
+    });
+
+    return null;
+  }
 
   if (xScaleTime)
-    switch (thisChartType) {
+    switch (chartType.toLowerCase()) {
       case 'line': {
         return d3
           .scaleTime()
           .domain([ dataMinNumber, dataMaxNumber ])
           .range([ 0, chartWidth ]);
       }
-      default: return null;
+      default: {
+        appFuncs.logError({
+          loc: __filename,
+          msg: `chartType ${chartType} not setup for xScaleTime in scales.xScale(), returning null`
+        });
+
+        return null;
+      }
     }
 
-  switch (thisChartType) {
+  switch (chartType.toLowerCase()) {
     case 'pie': return null;
     case 'scatterplot': {
       return d3
@@ -130,6 +188,13 @@ export const xScale = ({
         .range([ 0, chartWidth ]);
     }
     case 'bar': {
+      if (!dataLabelsArray.length)
+        appFuncs.logError({
+          data: [ chartType, dataLabaelsArray ],
+          loc: __filename,
+          msg: `dataLabaelsArray cannot be empty in scales.xScale(), attempting to create and return xScale anyway`,
+        });
+
       return d3
         .scaleBand()
         .domain(dataLabelsArray)
@@ -138,9 +203,11 @@ export const xScale = ({
         .paddingOuter(0.5);
     }
     default: {
-      appFuncs.console('error')(`chartType ${chartType} is not setup for scale creation`);
+      appFuncs.logError({
+        msg:`chartType ${chartType} is not setup for scale creation in scales.xScale(), returning null`
+      });
 
-      return error;
+      return null;
     }
   }
 };
@@ -149,16 +216,27 @@ export const xScale = ({
  * retrieve xscale
  */
 export const getXScale = ({
-  chartDataGroupBy,
-  chartType = 'bar',
+  chartDataGroupBy = '',
+  chartType = '',
   data,
   labels,
-  margins,
-  svgWidth,
+  margins = {},
+  svgWidth = 200,
   xValue,
   xScaleTime,
 }) => { // eslint-disable-line consistent-return
-  if (appFuncs._.isEmpty(data)) return null;
+  if (appFuncs._.isEmpty(data)) {
+    appFuncs.logError({
+      data: [
+        chartType,
+        data,
+      ],
+      loc: __filename,
+      msg: `data must be a valid variable in scales.getXScale(), returning null`
+    });
+
+    return null;
+  }
   const chartWidth = svgWidth - (margins.left + margins.right);
 
   let
@@ -178,18 +256,37 @@ export const getXScale = ({
     case 'scatterplot': { // eslintignore both min and max
       try {
         dataMaxNumber = appFuncs._.maxBy(thisData, (o) => o[xValue])[xValue];
+      } catch (err) {
+        appFuncs.logError({
+          data: [
+            thisData,
+            xValue,
+          ],
+          err,
+          loc: __filename,
+          msg: 'error creating dataMaxNumber for scatterplot chart in scales.getXScale()',
+        });
+      }
+
+      try {
         dataMinNumber = appFuncs._.minBy(thisData, (o) => o[xValue])[xValue];
       } catch (err) {
-        appFuncs.console('error')(err);
-
-        return null;
+        appFuncs.logError({
+          data: [
+            thisData,
+            xValue,
+          ],
+          err,
+          loc: __filename,
+          msg: 'error creating dataMixNumber for scatterplot chart in scales.getXScale()',
+        });
       }
 
       break;
     }
     case 'bar': // eslint-disable-line
     default: {
-      dataLabelsArray = thisData.map((d) => label.getLabels({ d, labels }));
+      dataLabelsArray = thisData.map((d) => label.getLabels({ chartType, d, labels }));
     }
   }
 
@@ -204,19 +301,64 @@ export const getXScale = ({
 };
 
 // Retrieve color scale
-export const colorScale = ({ colorScaleScheme, colorScaleType = 'categorical' }) => {
+export const colorScale = ({
+  colorScaleScheme = 'schemeCategory20',
+  colorScaleType = 'basic'
+}) => {
   switch (colorScaleType.toLowerCase()) {
-    case 'categorical': {
-      return colorScaleScheme && d3chromatic[colorScaleScheme]
-        ? d3.scaleOrdinal(d3chromatic[colorScaleScheme])
-        : null;
+    // update this:
+    // https://github.com/d3/d3-scale/blob/master/README.md#category-scales
+    case 'basic': {
+      if (d3[colorScaleScheme])
+        return d3.scaleOrdinal(d3[colorScaleScheme]);
+
+      appFuncs.logError({
+        data: [
+          colorScaleScheme,
+          colorScaleType,
+        ],
+        loc: __filename,
+        msg: `Scheme ${colorScaleScheme} does not exist for Scale type ${colorScaleType}, returning default schemeCategory20`
+      });
+
+      return d3.scaleOrdinal(d3.schemeCategory20);
     }
+    // update this:
+    // https://github.com/d3/d3-scale-chromatic#categorical
+    // https://github.com/d3/d3-scale-chromatic#diverging
+    case 'chromatic': {
+      if (colorScaleScheme && d3chromatic[colorScaleScheme])
+        return d3.scaleOrdinal(d3chromatic[colorScaleScheme]);
+
+      appFuncs.logError({
+        data: [
+          colorScaleScheme,
+          colorScaleType,
+        ],
+        loc: __filename,
+        msg: `Scheme ${colorScaleScheme} does not exist for Scale type ${colorScaleType}, returning ${schemeAccent}`
+      });
+
+      return d3.scaleOrdinal(d3chromatic.schemeAccent);
+    }
+    // update this
+    // https://github.com/d3/d3/blob/master/API.md#sequential-scales
     case 'sequential': {
       return d3.scaleSequential(d3.interpolatePiYG);
     }
+    // update this: https://github.com/d3/d3/blob/master/API.md#sequential-scales
     case 'random':
     default: {
-      return d3.interpolateCool(Math.random());
+      appFuncs.logError({
+        data: [
+          colorScaleScheme,
+          colorScaleType,
+        ],
+        loc: __filename,
+        msg: `Scheme ${colorScaleScheme} does not exist for Scale type ${colorScaleType}, returning ${interpolateCool}`
+      });
+
+      return d3.interpolateCool;
     }
   }
 };

@@ -1,4 +1,3 @@
-// import * as d3 from 'd3';
 import { generateLine } from '../lib/lines.js';
 import { Path } from '../svg/path.js';
 import React from 'react';
@@ -7,16 +6,31 @@ export const Lines = ({
   // chartDataGroupBy = '',
   // chartHeight = 200,
   // chartWidth = 200,
-  chartType = 'line',
+  chartType = '',
   colorScale,
   data,
-  lineCurve = 'curveBasis',
+  lineCurve = '',
   xScale,
   xValue = '',
   yScale,
   yValue = '',
 }) => {
-  if (appFuncs._.isEmpty(data)) return null;
+  if (appFuncs._.isEmpty(data) || !chartType || !xScale || !yScale || !yValue || !xValue) {
+    appFuncs.logError({
+      data: [
+        chartType,
+        data,
+        xScale,
+        xValue,
+        yScale,
+        yValue,
+      ],
+      loc: __filename,
+      msg: 'chartType, data, xScale, xValue, yScale, yValue must be valid variables in lines.Lines(), returning null',
+    });
+
+    return null;
+  }
 
   switch (chartType.toLowerCase()) {
     case 'line': {
@@ -28,7 +42,6 @@ export const Lines = ({
         yValue,
       });
       const pathArray = [];
-      appFuncs.console('dir')(colorScale);
       for (const group in data)
         // generate path for each lineGroup
         pathArray.push(

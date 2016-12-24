@@ -1,5 +1,17 @@
 import * as d3 from 'd3';
 
 export const parse = ({
-  format = "%Y%m%d"
-}) => d3.timeParse(format);
+  format = '',
+}) => {
+  if (!format) {
+    appFuncs.logError({
+      data: format,
+      loc: __filename,
+      msg: 'format must be valid variables in time.parse(), returning null',
+    });
+
+    return null;
+  }
+
+  return d3.timeParse(format);
+};

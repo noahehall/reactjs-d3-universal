@@ -21,28 +21,39 @@ export const getVisualContainerTransform = ({
 
 export const Chart = ({
   chart = { data: {}, margins: {}},
-  chartDataGroupBy = '',
+  chartDataGroupBy = '', // eslintignore required for line chart
+  // bar|scatterplot|pie|line
+  // scatterplot: requires x and y values to be integers
   chartType = '',
-  colorScaleScheme = 'schemeAccent',
-  colorScaleType = 'categorical',
+  colorScaleScheme = '',
+  colorScaleType = '',
   containerHeight = 200,
   containerWidth = 200,
   datumLabels = [],
-  id = 'barchart',
-  margins = { bottom: 20, left: 60, right: 60, top: 20 },
+  id = '',
+  margins = { },
   preserveAspectRatio = 'xMinYMin meet',
   xAxis = false,
   xAxisLabel = '',
   xScale = false,
-  xScaleTime = false, // eslint-disable-line
-  xScaleTimeFormat = '',
+  xScaleTime = false, // eslintignore required for line chart
+  xScaleTimeFormat = '', // eslintignore required for line chart https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
   xValue = '',
   yAxis = false,
   yAxisLabel = '',
   yScale = false,
-  yValue = 'total',
+  yValue = '', // eslintignore used for pie chart slice arc
 }) => {
-  if (appFuncs._.isEmpty(chart.data)) return null;
+  if (appFuncs._.isEmpty(chart.data)) {
+    appFuncs.logError({
+      data: chart,
+      loc: __filename,
+      msg: 'You need data to create a chart, return null',
+    });
+
+    return null;
+  }
+
   let chartFunction;
   switch (chartType.toLowerCase()) {
     case 'pie':
@@ -57,7 +68,15 @@ export const Chart = ({
     case 'line':
       chartFunction = Lines;
       break;
-    default : return <span />;
+    default : {
+      appFuncs.logError({
+        data: [ chartType, chart ],
+        loc: __filename,
+        msg: `did not find chart type ${chartType}, returning null`,
+      });
+
+      return null;
+    }
   }
 
   const
@@ -128,8 +147,6 @@ export const Chart = ({
   return (
     <SVG
       id={id}
-      labels={datumLabels}
-      margins={margins}
       preserveAspectRatio={preserveAspectRatio}
       svgHeight={containerHeight}
       svgWidth={containerWidth}

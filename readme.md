@@ -17,25 +17,25 @@
 
 # Coming Soon
   - Radial Stacked Bar
+  - stacked bar (currently works with regular bar chart but can be improved)
   - histogram
   - combination chart
   - bubble chart
-  - tooltips
-  - legends
+  - tooltips (with filtering)
+  - legends (with filtering)
+  - filtering
+  - interactivity
   - update logic for color scales
   - update logic for 'groupBy'
   - animations
 
 # Requirements
   1. Universal/Isomophoric rendering
-  2. React handles all DOM node creation
-    - except Axis creation
-  3. D3 handles animation
-    - animation coming soon
-  4. Responsive design
-  5. accessible
-  6. semantic
-  7. configurable with sensible defaults
+  2. React handles all node creation (sans axis)
+  3. Responsive design
+  4. accessible
+  5. semantic
+  6. configurable with sensible defaults
 
 # Examples
 ## Pie Chart
@@ -69,7 +69,7 @@
   // create a chart,
   <Chart
     chart={data}
-    chartDataGroupBy='' // currently only used if xScaleTime = true
+    chartDataGroupBy='gender' 
     chartType='line|scatterplot|bar|pie'
     colorScaleScheme='schemeAccent'
     colorScaleType='categorical'

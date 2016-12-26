@@ -5,7 +5,7 @@
   - ReactJS + D3 = data viz happiness
 
 # Status
-  - definitely in alpha
+  - definitely in alpha, beta will be available when appFuncs is portable
   - [You can see a working version here](https://github.com/noahehall/udacity-corporate-dashboard)
   - there is a hard dependency on [App Functions](https://github.com/noahehall/react-f-your-starterkit/tree/master/src/.globals)
 
@@ -14,8 +14,10 @@
   - Pie Chart
   - Scatter Plot
   - Line Chart
+  - Table
 
 # Coming Soon
+  - classnames for everything
   - default CSS styling
   - Radial Stacked Bar
   - stacked bar (currently works with regular bar chart but can be improved)
@@ -71,16 +73,18 @@
   <Chart
     chart={data}
     chartDataGroupBy='gender'
-    chartType='line|scatterplot|bar|pie'
+    chartType='line|scatterplot|bar|pie|table'
     colorScaleScheme='schemeAccent'
     colorScaleType='categorical'
     containerHeight={containerHeight}
     containerWidth={containerWidth}
     datumLabels={[ 'gender' ]}
+    filterable={false} // currently only for table
     id='line-chart'
     margins={margins}
     preserveAspectRatio='xMinYMin meet'
     r={3.5}
+    sortable={false} // currently only for table
     xAxis={true}
     xAxisLabel='Date'
     xScale={true}

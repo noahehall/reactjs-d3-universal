@@ -1,6 +1,6 @@
 {
   "name": "reactjs-d3-universal",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "For all of your progressive data visualization needs",
   "keywords": [
     "reactjs",
@@ -8,7 +8,9 @@
     "PWA",
     "progressive web app",
     "isomorphic",
-    "universal"
+    "universal",
+    "charts",
+    "tables"
   ],
   "homepage": "https://github.com/noahehall/reactjs-d3-universal",
   "bugs": {

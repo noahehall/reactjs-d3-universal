@@ -7,6 +7,7 @@ import * as axes from './lib/axes.js';
 import * as dataFunctions from './lib/data.js';
 import * as scales from './lib/scales.js';
 import React from 'react';
+import { Table } from './table';
 
 export const getVisualContainerTransform = ({
   chartHeight,
@@ -30,9 +31,11 @@ export const Chart = ({
   containerHeight = 200,
   containerWidth = 200,
   datumLabels = [],
+  filterable = false,
   id = '',
   margins = { },
   preserveAspectRatio = 'xMinYMin meet',
+  sortable = false,
   xAxis = false,
   xAxisLabel = '',
   xScale = false,
@@ -67,6 +70,9 @@ export const Chart = ({
       break;
     case 'line':
       chartFunction = Lines;
+      break;
+    case 'table':
+      chartFunction = Table;
       break;
     default : {
       appFuncs.logError({
@@ -144,8 +150,30 @@ export const Chart = ({
   if (yAxis && thisYScale && hasDocument) axes.getYAxis({ id, thisYScale });
   if (xAxis && thisXScale && hasDocument) axes.getXAxis({ id, thisXScale });
 
-  return (
-    <SVG
+  const thisChart = chartFunction({
+    chartDataGroupBy,
+    chartHeight,
+    chartType,
+    chartWidth,
+    colorScale,
+    colorScaleScheme,
+    colorScaleType,
+    data,
+    filterable,
+    id,
+    labels: datumLabels,
+    sortable,
+    xScale: thisXScale,
+    xScaleTime,
+    xScaleTimeFormat,
+    xValue,
+    yScale: thisYScale,
+    yValue,
+  });
+
+  return chartType === 'table'
+    ? thisChart
+    : <SVG
       id={id}
       preserveAspectRatio={preserveAspectRatio}
       svgHeight={containerHeight}
@@ -161,23 +189,7 @@ export const Chart = ({
           className={`${chartType.toLowerCase()}-visual-container`}
           transform={getVisualContainerTransform({ chartHeight, chartType, chartWidth })}
         >
-          {chartFunction({
-            chartDataGroupBy,
-            chartHeight,
-            chartType,
-            chartWidth,
-            colorScale,
-            colorScaleScheme,
-            colorScaleType,
-            data,
-            labels: datumLabels,
-            xScale: thisXScale,
-            xScaleTime,
-            xScaleTimeFormat,
-            xValue,
-            yScale: thisYScale,
-            yValue,
-          })}
+          {thisChart}
         </g>
       </g>
       { xAxis &&
@@ -205,8 +217,7 @@ export const Chart = ({
           position: 'absolute',
         }}
       />
-    </SVG>
-  );
+    </SVG>;
 };
 
 Chart.propTypes = {
@@ -218,9 +229,11 @@ Chart.propTypes = {
   containerHeight: React.PropTypes.number,
   containerWidth: React.PropTypes.number,
   datumLabels: React.PropTypes.array,
+  filterable: React.PropTypes.bool,
   id: React.PropTypes.string,
   margins: React.PropTypes.object,
   preserveAspectRatio: React.PropTypes.string,
+  sortable: React.PropTypes.bool,
   xAxis: React.PropTypes.bool,
   xAxisLabel: React.PropTypes.string,
   xScale: React.PropTypes.bool,

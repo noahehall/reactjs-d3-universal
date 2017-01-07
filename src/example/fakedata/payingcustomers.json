@@ -1,0 +1,49 @@
+[{
+  "totalPayingCustomers": 18902,
+  "type": "paying",
+  "date": "2016/01/28"
+}, {
+  "totalPayingCustomers": 11670,
+  "type": "paying",
+  "date": "2016/02/24"
+}, {
+  "totalPayingCustomers": 52383,
+  "type": "paying",
+  "date": "2016/03/16"
+}, {
+  "totalPayingCustomers": 64626,
+  "type": "paying",
+  "date": "2016/04/13"
+}, {
+  "totalPayingCustomers": 31241,
+  "type": "paying",
+  "date": "2016/05/11"
+}, {
+  "totalPayingCustomers": 36795,
+  "type": "paying",
+  "date": "2016/06/29"
+}, {
+  "totalPayingCustomers": 39544,
+  "type": "paying",
+  "date": "2016/07/04"
+}, {
+  "totalPayingCustomers": 52873,
+  "type": "paying",
+  "date": "2016/08/27"
+}, {
+  "totalPayingCustomers": 66310,
+  "type": "paying",
+  "date": "2016/09/31"
+}, {
+  "totalPayingCustomers": 20408,
+  "type": "paying",
+  "date": "2016/10/18"
+}, {
+  "totalPayingCustomers": 72197,
+  "type": "paying",
+  "date": "2016/11/21"
+}, {
+  "totalPayingCustomers": 24523,
+  "type": "paying",
+  "date": "2016/12/09"
+}];

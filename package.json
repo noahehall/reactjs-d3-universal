@@ -24,7 +24,8 @@
     "url": "https://github.com/noahehall/reactjs-d3-universal.git"
   },
   "scripts": {
-    "start": "not ready"
+    "start": "open src/example/index.html",
+    "build": "./node_modules/.bin/browserify src/example/app.js -o src/example/runapp.js -t [ babelify --presets [ latest stage-0 react ] ]"
   },
   "engines": {
     "node": ">=6",
@@ -37,7 +38,7 @@
   "dependencies": {
     "d3": "^4.4.0",
     "d3-scale-chromatic": "^1.1.0",
-    "react": "^15.2.1"
+    "node-globals": "github:noahehall/node-globals#rollbar"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
@@ -48,53 +49,8 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babelify": "^7.3.0",
-    "browserify": "^13.0.1",
-    "browserify-postcss": "^0.3.2",
-    "chai": "^3.5.0",
-    "del": "^2.2.2",
-    "enzyme": "^2.4.1",
-    "eslint": "^3.5.0",
-    "eslint-config-ct-fletcher": "^1.0.3",
-    "eslint-find-rules": "^1.13.1",
-    "event-stream": "^3.3.4",
-    "flow-bin": "^0",
-    "glob": "^7.1.1",
-    "gulp": "^3.9.1",
-    "gulp-copy": "0.0.2",
-    "gulp-env": "^0.4.0",
-    "gulp-eslint": "^3.0.1",
-    "gulp-if": "^2.0.1",
-    "gulp-nodemon": "^2.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sequence": "^0.4.6",
-    "gulp-sourcemaps": "^2.1.1",
-    "gulp-spawn-mocha": "^3.1.0",
-    "gulp-stylelint": "^3.2.0",
-    "gulp-uglify": "^2.0.0",
-    "gulp-util": "^3.0.7",
-    "ignore-styles": "^5.0.1",
-    "istanbul": "1.1.0-alpha.1",
-    "jsdom": "^9.5.0",
-    "livereactload": "latest",
-    "loose-envify": "^1.2.0",
-    "mocha": "^3.0.2",
-    "nodemon": "^1.9.2",
-    "nsp": "^2.6.2",
-    "postcss-advanced-variables": "^1.2.2",
-    "postcss-cssnext": "^2.7.0",
-    "postcss-extend": "^1.0.5",
-    "postcss-import": "^8.1.2",
-    "postcss-reporter": "^2.0.0",
-    "react-addons-test-utils": "^15.3.1",
-    "redux-logger": "^2.7.0",
-    "sinon": "^1.17.5",
-    "sinon-chai": "^2.8.0",
-    "stringify": "^5.1.0",
-    "stylefmt": "github:morishitter/stylefmt",
-    "stylelint-csstree-validator": "^1.0.3",
-    "uglifyify": "^3.0.2",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
+    "eslint-config-ct-fletcher": "^1.0.4",
+    "react": "^15.2.1",
+    "react-dom": "^15.4.2"
   }
 }

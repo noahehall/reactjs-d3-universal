@@ -1,0 +1,14 @@
+[
+  {
+    "status": "open",
+    "total": 40
+  },
+  {
+    "status": "in progress",
+    "total": 10
+  },
+  {
+    "status": "QA",
+    "total": 30
+  }
+]

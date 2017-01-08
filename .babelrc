@@ -1,5 +1,5 @@
 {
-  "presets": ["latest", "stage-0", "react"],
+  "presets": ["latest", "stage-0", "react", "babili"],
   "plugins": [
     ["module-resolver", {
       "root": [ "./src" ],

@@ -6,8 +6,7 @@
 
 # Status
   - definitely in alpha, beta will be available when appFuncs is portable
-  - [You can see a working version here](https://github.com/noahehall/udacity-corporate-dashboard)
-  - there is a hard dependency on [App Functions](https://github.com/noahehall/react-f-your-starterkit/tree/master/src/.globals)
+  - [You can see a working version here](https://github.com/noahehall/plusfame)
 
 # Chart Types
   - Bar Chart

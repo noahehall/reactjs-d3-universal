@@ -3,7 +3,7 @@
   "plugins": [
     ["module-resolver", {
       "root": [ "./src", "./node_modules"],
-      "extensions": [".js", ".md"],
+      "extensions": [".js", ".jsx", ".es", ".es6", ".md"],
       "alias": {
         "readme": "./readme.md",
       }

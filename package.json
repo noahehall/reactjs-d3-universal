@@ -1,6 +1,6 @@
 {
   "name": "reactjs-d3-universal",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "For all of your progressive data visualization needs",
   "keywords": [
     "reactjs",
@@ -40,7 +40,7 @@
   "dependencies": {
     "d3": "^4.4.0",
     "d3-scale-chromatic": "^1.1.0",
-    "node-globals": "github:noahehall/node-globals#rollbar",
+    "node-globals": "github:noahehall/node-globals",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },

@@ -23,9 +23,11 @@
     "type": "git",
     "url": "https://github.com/noahehall/reactjs-d3-universal.git"
   },
+  "main": "./src/bundle.js",
   "scripts": {
     "start": "open src/example/index.html",
-    "build": "./node_modules/.bin/browserify src/example/app.js -o src/example/runapp.js -t [ babelify --presets [ latest stage-0 react ] ]"
+    "buildexample": "./node_modules/.bin/browserify src/example/app.js -o src/example/runapp.js -t [ babelify --presets [ latest stage-0 react ] ]",
+    "buildbundle": "./node_modules/.bin/browserify src/index.js -o src/bundle.js -t [ babelify --presets [ latest stage-0 react ] ]"
   },
   "engines": {
     "node": ">=6",

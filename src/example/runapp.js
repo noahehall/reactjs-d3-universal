@@ -62307,7 +62307,7 @@ var Table = function (_React$Component) {
     key: 'defaultProps',
     get: function get() {
       return {
-        id: 'tweets-per-day'
+        id: 'fake-table'
       };
     }
   }]);
@@ -62315,115 +62315,41 @@ var Table = function (_React$Component) {
   function Table(props) {
     _classCallCheck(this, Table);
 
-    var _this = _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
-
-    _this.setSize = function () {
-      var containerHeight = void 0,
-          containerWidth = void 0;
-
-      try {
-        containerHeight = _this.container.offsetHeight;
-      } catch (err) {
-        containerHeight = 200;
-      }
-
-      try {
-        containerWidth = _this.container.offsetWidth;
-      } catch (err) {
-        containerWidth = 200;
-      }
-
-      _this.setState({
-        containerHeight: containerHeight,
-        containerWidth: containerWidth
-      });
-
-      return true;
-    };
-
-    _this.state = {
-      containerHeight: 200,
-      containerWidth: 200
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
   }
 
   _createClass(Table, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      // filter the table
-      appFuncs.filterTable.setFilterGrid('table');
-      appFuncs.sortTable.init();
-
-      this.setSize();
-      if (typeof window !== 'undefined') window.addEventListener('resize', this.setSize, false);
-    }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      return !appFuncs._.isEqual(nextState, this.state) || !appFuncs._.isEqual(nextProps, this.props);
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      if (typeof window !== 'undefined') window.removeEventListener('resize', this.setSize);
-    }
-  }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
-      appFuncs.console('dir')(_table2.default);
-
-      return _react2.default.createElement(
-        'section',
-        {
-          className: 'chart-container',
-          ref: function ref(container) {
-            return _this2.container = container;
-          },
-          style: {
-            display: 'block',
-            fontSize: '8px',
-            maxHeight: '400px',
-            overflow: 'scroll',
-            position: 'relative',
-            verticalAlign: 'top',
-            width: '100%'
-          }
+      return _react2.default.createElement(_index2.default, {
+        chart: { data: _table2.default },
+        chartDataGroupBy: '',
+        chartType: 'table',
+        colorScaleScheme: '',
+        colorScaleType: '',
+        datumLabels: [],
+        filterable: true,
+        id: 'table',
+        margins: {
+          bottom: 10,
+          left: 10,
+          right: 10,
+          top: 10
         },
-        _react2.default.createElement(_index2.default, {
-          chart: { data: _table2.default },
-          chartDataGroupBy: '',
-          chartType: 'table',
-          colorScaleScheme: '',
-          colorScaleType: '',
-          containerHeight: this.state.containerHeight,
-          containerWidth: this.state.containerWidth,
-          datumLabels: [],
-          filterable: true,
-          id: 'table',
-          margins: {
-            bottom: 10,
-            left: 10,
-            right: 10,
-            top: 10
-          },
-          preserveAspectRatio: '',
-          r: '',
-          sortable: true,
-          xAxis: false,
-          xAxisLabel: '',
-          xScale: false,
-          xScaleTime: false,
-          xScaleTimeFormat: '',
-          xValue: '',
-          yAxis: false,
-          yAxisLabel: '',
-          yScale: false,
-          yValue: ''
-        })
-      );
+        preserveAspectRatio: '',
+        r: '',
+        sortable: true,
+        xAxis: false,
+        xAxisLabel: '',
+        xScale: false,
+        xScaleTime: false,
+        xScaleTimeFormat: '',
+        xValue: '',
+        yAxis: false,
+        yAxisLabel: '',
+        yScale: false,
+        yValue: ''
+      });
     }
   }]);
 
@@ -62942,7 +62868,8 @@ module.exports=[{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Chart = exports.getVisualContainerTransform = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _bars = require('./barchart/bars.js');
 
@@ -62976,229 +62903,310 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var getVisualContainerTransform = exports.getVisualContainerTransform = function getVisualContainerTransform(_ref) {
-  var chartHeight = _ref.chartHeight,
-      chartType = _ref.chartType,
-      chartWidth = _ref.chartWidth;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  switch (chartType.toLowerCase()) {
-    case 'pie':
-      return 'translate(' + [chartWidth / 2, chartHeight / 2] + ')';
-    default:
-      return 'translate(0, 0)';
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Chart = function (_React$Component) {
+  _inherits(Chart, _React$Component);
+
+  _createClass(Chart, null, [{
+    key: 'defaultProps',
+    get: function get() {
+      return {
+        chart: { data: {}, margins: {} },
+        chartDataGroupBy: '', // eslintignore required for line chart
+        // bar|scatterplot|pie|line
+        // scatterplot: requires x and y values to be integers
+        chartType: '',
+        colorScaleScheme: '',
+        colorScaleType: '',
+        datumLabels: [],
+        filterable: false,
+        id: 'reactjs-d3-v4-universal',
+        margins: {},
+        preserveAspectRatio: 'xMinYMin meet',
+        sortable: false,
+        xAxis: false,
+        xAxisLabel: '',
+        xScale: false,
+        xScaleTime: false, // eslintignore required for line chart
+        xScaleTimeFormat: '', // eslintignore required for line chart https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
+        xValue: '',
+        yAxis: false,
+        yAxisLabel: '',
+        yScale: false,
+        yValue: '' };
+    }
+  }]);
+
+  function Chart(props) {
+    _classCallCheck(this, Chart);
+
+    var _this = _possibleConstructorReturn(this, (Chart.__proto__ || Object.getPrototypeOf(Chart)).call(this, props));
+
+    _this.setSize = function () {
+      var containerHeight = void 0,
+          containerWidth = void 0;
+
+      try {
+        containerHeight = _this.container.offsetHeight;
+      } catch (err) {
+        containerHeight = _this.state.containerHeight;
+      }
+
+      try {
+        containerWidth = _this.container.offsetWidth;
+      } catch (err) {
+        containerWidth = _this.state.containerWidth;
+      }
+
+      _this.setState({
+        containerHeight: containerHeight,
+        containerWidth: containerWidth
+      });
+
+      return true;
+    };
+
+    _this.getVisualContainerTransform = function (_ref) {
+      var chartHeight = _ref.chartHeight,
+          chartType = _ref.chartType,
+          chartWidth = _ref.chartWidth;
+
+      switch (chartType.toLowerCase()) {
+        case 'pie':
+          return 'translate(' + [chartWidth / 2, chartHeight / 2] + ')';
+        default:
+          return 'translate(0, 0)';
+      }
+    };
+
+    _this.state = {
+      containerHeight: 200,
+      containerWidth: 200
+    };
+    return _this;
   }
-};
 
-var Chart = exports.Chart = function Chart(_ref2) {
-  var _ref2$chart = _ref2.chart,
-      chart = _ref2$chart === undefined ? { data: {}, margins: {} } : _ref2$chart,
-      _ref2$chartDataGroupB = _ref2.chartDataGroupBy,
-      chartDataGroupBy = _ref2$chartDataGroupB === undefined ? '' : _ref2$chartDataGroupB,
-      _ref2$chartType = _ref2.chartType,
-      chartType = _ref2$chartType === undefined ? '' : _ref2$chartType,
-      _ref2$colorScaleSchem = _ref2.colorScaleScheme,
-      colorScaleScheme = _ref2$colorScaleSchem === undefined ? '' : _ref2$colorScaleSchem,
-      _ref2$colorScaleType = _ref2.colorScaleType,
-      colorScaleType = _ref2$colorScaleType === undefined ? '' : _ref2$colorScaleType,
-      _ref2$containerHeight = _ref2.containerHeight,
-      containerHeight = _ref2$containerHeight === undefined ? 200 : _ref2$containerHeight,
-      _ref2$containerWidth = _ref2.containerWidth,
-      containerWidth = _ref2$containerWidth === undefined ? 200 : _ref2$containerWidth,
-      _ref2$datumLabels = _ref2.datumLabels,
-      datumLabels = _ref2$datumLabels === undefined ? [] : _ref2$datumLabels,
-      _ref2$filterable = _ref2.filterable,
-      filterable = _ref2$filterable === undefined ? false : _ref2$filterable,
-      _ref2$id = _ref2.id,
-      id = _ref2$id === undefined ? '' : _ref2$id,
-      _ref2$margins = _ref2.margins,
-      margins = _ref2$margins === undefined ? {} : _ref2$margins,
-      _ref2$preserveAspectR = _ref2.preserveAspectRatio,
-      preserveAspectRatio = _ref2$preserveAspectR === undefined ? 'xMinYMin meet' : _ref2$preserveAspectR,
-      _ref2$sortable = _ref2.sortable,
-      sortable = _ref2$sortable === undefined ? false : _ref2$sortable,
-      _ref2$xAxis = _ref2.xAxis,
-      xAxis = _ref2$xAxis === undefined ? false : _ref2$xAxis,
-      _ref2$xAxisLabel = _ref2.xAxisLabel,
-      xAxisLabel = _ref2$xAxisLabel === undefined ? '' : _ref2$xAxisLabel,
-      _ref2$xScale = _ref2.xScale,
-      xScale = _ref2$xScale === undefined ? false : _ref2$xScale,
-      _ref2$xScaleTime = _ref2.xScaleTime,
-      xScaleTime = _ref2$xScaleTime === undefined ? false : _ref2$xScaleTime,
-      _ref2$xScaleTimeForma = _ref2.xScaleTimeFormat,
-      xScaleTimeFormat = _ref2$xScaleTimeForma === undefined ? '' : _ref2$xScaleTimeForma,
-      _ref2$xValue = _ref2.xValue,
-      xValue = _ref2$xValue === undefined ? '' : _ref2$xValue,
-      _ref2$yAxis = _ref2.yAxis,
-      yAxis = _ref2$yAxis === undefined ? false : _ref2$yAxis,
-      _ref2$yAxisLabel = _ref2.yAxisLabel,
-      yAxisLabel = _ref2$yAxisLabel === undefined ? '' : _ref2$yAxisLabel,
-      _ref2$yScale = _ref2.yScale,
-      yScale = _ref2$yScale === undefined ? false : _ref2$yScale,
-      _ref2$yValue = _ref2.yValue,
-      yValue = _ref2$yValue === undefined ? '' : _ref2$yValue;
+  _createClass(Chart, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      // filter the table
+      if (this.props.chartType === 'table') {
+        appFuncs.filterTable.setFilterGrid('table');
+        appFuncs.sortTable.init();
+      }
 
-  if (appFuncs._.isEmpty(chart.data)) {
-    appFuncs.logError({
-      data: chart,
-      loc: __filename,
-      msg: 'You need data to create a chart, return null'
-    });
+      this.setSize();
+      if (typeof window !== 'undefined') window.addEventListener('resize', this.setSize, false);
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      return !appFuncs._.isEqual(nextState, this.state) || !appFuncs._.isEqual(nextProps, this.props);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      if (typeof window !== 'undefined') window.removeEventListener('resize', this.setSize);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
 
-    return null;
-  }
-
-  var chartFunction = void 0;
-  switch (chartType.toLowerCase()) {
-    case 'pie':
-      chartFunction = _slices.PieSlices;
-      break;
-    case 'bar':
-      chartFunction = _bars.Bars;
-      break;
-    case 'scatterplot':
-      chartFunction = _dots.ScatterPlotDots;
-      break;
-    case 'line':
-      chartFunction = _lines.Lines;
-      break;
-    case 'table':
-      chartFunction = _table.Table;
-      break;
-    default:
-      {
+      if (appFuncs._.isEmpty(this.props.chart.data)) {
         appFuncs.logError({
-          data: [chartType, chart],
+          data: this.props.chart,
           loc: __filename,
-          msg: 'did not find chart type ' + chartType + ', returning null'
+          msg: 'You need data to create a chart, return null'
         });
 
         return null;
       }
-  }
 
-  var chartHeight = containerHeight - (margins.top + margins.bottom),
-      chartWidth = containerWidth - (margins.left + margins.right),
-      colorScale = colorScaleScheme ? scales.colorScale({ chartDataGroupBy: chartDataGroupBy, colorScaleScheme: colorScaleScheme, colorScaleType: colorScaleType }) : null,
-      data = dataFunctions.format({
-    chartDataGroupBy: chartDataGroupBy,
-    chartType: chartType,
-    data: chart.data,
-    xScaleTime: xScaleTime,
-    xScaleTimeFormat: xScaleTimeFormat,
-    xValue: xValue
-  }),
-      hasDocument = typeof document !== 'undefined',
-      thisXAxisLabel = xAxis ? axes.getXAxisLabel({
-    chartDataGroupBy: chartDataGroupBy,
-    transform: 'rotate(0)',
-    x: containerWidth / 2 - margins.left,
-    xAxisLabel: xAxisLabel || xValue,
-    y: containerHeight
-  }) : null,
-      thisXScale = xScale ? scales.getXScale({
-    chartDataGroupBy: chartDataGroupBy,
-    chartHeight: chartHeight,
-    chartType: chartType,
-    chartWidth: chartWidth,
-    data: data,
-    labels: datumLabels,
-    margins: margins,
-    svgWidth: containerWidth,
-    xScaleTime: xScaleTime,
-    xScaleTimeFormat: xScaleTimeFormat,
-    xValue: xValue
-  }) : null,
-      thisYAxisLabel = yAxis ? axes.getYAxisLabel({
-    chartDataGroupBy: chartDataGroupBy,
-    transform: 'rotate(-90)',
-    // x & y flip because of rotation
-    x: -containerHeight / 2 - margins.top,
-    y: '1em',
-    yAxisLabel: yAxisLabel || yValue
-  }) : null,
-      thisYScale = yScale ? scales.getYScale({
-    chartDataGroupBy: chartDataGroupBy,
-    chartHeight: chartHeight,
-    chartType: chartType,
-    chartWidth: chartWidth,
-    data: data,
-    margins: margins,
-    svgHeight: containerHeight,
-    yValue: yValue
-  }) : null;
+      var chartFunction = void 0;
+      switch (this.props.chartType.toLowerCase()) {
+        case 'pie':
+          chartFunction = _slices.PieSlices;
+          break;
+        case 'bar':
+          chartFunction = _bars.Bars;
+          break;
+        case 'scatterplot':
+          chartFunction = _dots.ScatterPlotDots;
+          break;
+        case 'line':
+          chartFunction = _lines.Lines;
+          break;
+        case 'table':
+          chartFunction = _table.Table;
+          break;
+        default:
+          {
+            appFuncs.logError({
+              data: [this.props.chartType, this.props.chart],
+              loc: __filename,
+              msg: 'did not find chart type ' + this.props.chartType + ', returning null'
+            });
 
-  if (yAxis && thisYScale && hasDocument) axes.getYAxis({ id: id, thisYScale: thisYScale });
-  if (xAxis && thisXScale && hasDocument) axes.getXAxis({ id: id, thisXScale: thisXScale });
-
-  var thisChart = chartFunction({
-    chartDataGroupBy: chartDataGroupBy,
-    chartHeight: chartHeight,
-    chartType: chartType,
-    chartWidth: chartWidth,
-    colorScale: colorScale,
-    colorScaleScheme: colorScaleScheme,
-    colorScaleType: colorScaleType,
-    data: data,
-    filterable: filterable,
-    id: id,
-    labels: datumLabels,
-    sortable: sortable,
-    xScale: thisXScale,
-    xScaleTime: xScaleTime,
-    xScaleTimeFormat: xScaleTimeFormat,
-    xValue: xValue,
-    yScale: thisYScale,
-    yValue: yValue
-  });
-
-  return chartType === 'table' ? thisChart : _react2.default.createElement(
-    _svg.SVG,
-    {
-      id: id,
-      preserveAspectRatio: preserveAspectRatio,
-      svgHeight: containerHeight,
-      svgWidth: containerWidth
-    },
-    _react2.default.createElement(
-      'g',
-      {
-        className: 'chart-svg-g',
-        height: chartHeight,
-        transform: 'translate(' + margins.left + ', ' + margins.top + ')',
-        width: chartWidth
-      },
-      _react2.default.createElement(
-        'g',
-        {
-          className: chartType.toLowerCase() + '-visual-container',
-          transform: getVisualContainerTransform({ chartHeight: chartHeight, chartType: chartType, chartWidth: chartWidth })
-        },
-        thisChart
-      )
-    ),
-    xAxis && _react2.default.createElement('g', {
-      className: 'x axis',
-      transform: 'translate(' + margins.left + ', ' + (chartHeight + margins.top) + ')'
-    }),
-    thisXAxisLabel,
-    yAxis && _react2.default.createElement('g', {
-      className: 'y axis',
-      transform: 'translate(' + margins.left + ', ' + margins.top + ')'
-    }),
-    thisYAxisLabel,
-    _react2.default.createElement('section', {
-      id: id + '-tooltip',
-      style: {
-        backgroundColor: 'black',
-        border: '2px red dashed',
-        borderRadius: '4px',
-        opacity: 0,
-        padding: '10px',
-        position: 'absolute'
+            return null;
+          }
       }
-    })
-  );
-};
+
+      var chartHeight = this.state.containerHeight - (this.props.margins.top + this.props.margins.bottom),
+          chartWidth = this.state.containerWidth - (this.props.margins.left + this.props.margins.right),
+          colorScale = this.props.colorScaleScheme ? scales.colorScale({
+        chartDataGroupBy: this.props.chartDataGroupBy,
+        colorScaleScheme: this.props.colorScaleScheme,
+        colorScaleType: this.props.colorScaleType
+      }) : null,
+          data = dataFunctions.format({
+        chartDataGroupBy: this.props.chartDataGroupBy,
+        chartType: this.props.chartType,
+        data: this.props.chart.data,
+        xScaleTime: this.props.xScaleTime,
+        xScaleTimeFormat: this.props.xScaleTimeFormat,
+        xValue: this.props.xValue
+      }),
+          hasDocument = typeof document !== 'undefined',
+          thisXAxisLabel = this.props.xAxis ? axes.getXAxisLabel({
+        chartDataGroupBy: this.props.chartDataGroupBy,
+        transform: 'rotate(0)',
+        x: this.state.containerWidth / 2 - this.props.margins.left,
+        xAxisLabel: this.props.xAxisLabel || this.props.xValue,
+        y: this.state.containerHeight
+      }) : null,
+          thisXScale = this.props.xScale ? scales.getXScale({
+        chartDataGroupBy: this.props.chartDataGroupBy,
+        chartHeight: chartHeight,
+        chartType: this.props.chartType,
+        chartWidth: chartWidth,
+        data: data,
+        labels: this.props.datumLabels,
+        margins: this.props.margins,
+        svgWidth: this.state.containerWidth,
+        xScaleTime: this.props.xScaleTime,
+        xScaleTimeFormat: this.props.xScaleTimeFormat,
+        xValue: this.props.xValue
+      }) : null,
+          thisYAxisLabel = this.props.yAxis ? axes.getYAxisLabel({
+        chartDataGroupBy: this.props.chartDataGroupBy,
+        transform: 'rotate(-90)',
+        // x & y flip because of rotation
+        x: -this.state.containerHeight / 2 - this.props.margins.top,
+        y: '1em',
+        yAxisLabel: this.props.yAxisLabel || this.props.yValue
+      }) : null,
+          thisYScale = this.props.yScale ? scales.getYScale({
+        chartDataGroupBy: this.props.chartDataGroupBy,
+        chartHeight: chartHeight,
+        chartType: this.props.chartType,
+        chartWidth: chartWidth,
+        data: data,
+        margins: this.props.margins,
+        svgHeight: this.state.containerHeight,
+        yValue: this.props.yValue
+      }) : null;
+
+      if (this.props.yAxis && thisYScale && hasDocument) axes.getYAxis({ id: this.props.id, thisYScale: thisYScale });
+
+      if (this.props.xAxis && thisXScale && hasDocument) axes.getXAxis({ id: this.props.id, thisXScale: thisXScale });
+
+      var thisChart = chartFunction({
+        chartDataGroupBy: this.props.chartDataGroupBy,
+        chartHeight: chartHeight,
+        chartType: this.props.chartType,
+        chartWidth: chartWidth,
+        colorScale: colorScale,
+        colorScaleScheme: this.props.colorScaleScheme,
+        colorScaleType: this.props.colorScaleType,
+        data: data,
+        filterable: this.props.filterable,
+        id: this.props.id,
+        labels: this.props.datumLabels,
+        sortable: this.props.sortable,
+        xScale: thisXScale,
+        xScaleTime: this.props.xScaleTime,
+        xScaleTimeFormat: this.props.xScaleTimeFormat,
+        xValue: this.props.xValue,
+        yScale: thisYScale,
+        yValue: this.props.yValue
+      });
+
+      var renderedChart = this.props.chartType === 'table' ? thisChart : _react2.default.createElement(
+        _svg.SVG,
+        {
+          id: this.props.id,
+          preserveAspectRatio: this.props.preserveAspectRatio,
+          svgHeight: this.state.containerHeight,
+          svgWidth: this.state.containerWidth
+        },
+        _react2.default.createElement(
+          'g',
+          {
+            className: 'chart-svg-g',
+            height: chartHeight,
+            transform: 'translate(' + this.props.margins.left + ', ' + this.props.margins.top + ')',
+            width: chartWidth
+          },
+          _react2.default.createElement(
+            'g',
+            {
+              className: this.props.chartType.toLowerCase() + '-visual-container',
+              transform: this.getVisualContainerTransform({ chartHeight: chartHeight, chartType: this.props.chartType, chartWidth: chartWidth })
+            },
+            thisChart
+          )
+        ),
+        this.props.xAxis && _react2.default.createElement('g', {
+          className: 'x axis',
+          transform: 'translate(' + this.props.margins.left + ', ' + (chartHeight + this.props.margins.top) + ')'
+        }),
+        thisXAxisLabel,
+        this.props.yAxis && _react2.default.createElement('g', {
+          className: 'y axis',
+          transform: 'translate(' + this.props.margins.left + ', ' + this.props.margins.top + ')'
+        }),
+        thisYAxisLabel,
+        _react2.default.createElement('section', {
+          id: this.props.id + '-tooltip',
+          style: {
+            backgroundColor: 'black',
+            border: '2px red dashed',
+            borderRadius: '4px',
+            opacity: 0,
+            padding: '10px',
+            position: 'absolute'
+          }
+        })
+      );
+
+      return _react2.default.createElement(
+        'section',
+        {
+          className: 'chart-container',
+          ref: function ref(container) {
+            return _this2.container = container;
+          },
+          style: {
+            display: 'block',
+            overflow: 'scroll',
+            position: 'relative',
+            verticalAlign: 'top',
+            width: '100%'
+          }
+        },
+        renderedChart
+      );
+    }
+  }]);
+
+  return Chart;
+}(_react2.default.Component);
 
 Chart.propTypes = {
   chart: _react2.default.PropTypes.object,
@@ -63206,8 +63214,6 @@ Chart.propTypes = {
   chartType: _react2.default.PropTypes.string,
   colorScaleScheme: _react2.default.PropTypes.string,
   colorScaleType: _react2.default.PropTypes.string,
-  containerHeight: _react2.default.PropTypes.number,
-  containerWidth: _react2.default.PropTypes.number,
   datumLabels: _react2.default.PropTypes.array,
   filterable: _react2.default.PropTypes.bool,
   id: _react2.default.PropTypes.string,
@@ -63225,7 +63231,6 @@ Chart.propTypes = {
   yScale: _react2.default.PropTypes.bool,
   yValue: _react2.default.PropTypes.string
 };
-
 exports.default = Chart;
 
 }).call(this,"/src/index.js")

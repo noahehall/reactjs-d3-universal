@@ -43,7 +43,7 @@
 # Examples
 ## Pie Chart
 ```
-  import Chart from './charts';
+  import Chart from 'reactjs-d3-universal';
   import React from 'react';
 
   const margins = {

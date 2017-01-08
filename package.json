@@ -23,11 +23,11 @@
     "type": "git",
     "url": "https://github.com/noahehall/reactjs-d3-universal.git"
   },
-  "main": "./src/bundle.js",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "open src/example/index.html",
-    "buildexample": "./node_modules/.bin/browserify src/example/app.js -o src/example/runapp.js -t [ babelify --presets [ latest stage-0 react ] ]",
-    "buildbundle": "./node_modules/.bin/browserify src/index.js -o src/bundle.js -t [ babelify --presets [ latest stage-0 react ] ]"
+    "example": "./node_modules/.bin/browserify src/example/app.js -o src/example/runapp.js -t [ babelify --presets [ latest stage-0 react ] ] && npm run start",
+    "build": "./node_modules/.bin/browserify src/index.js -o src/bundle.js -t [ babelify --presets [ latest stage-0 react ] ] -t [ uglifyify --compress --mangle ]"
   },
   "engines": {
     "node": ">=6",
@@ -40,6 +40,7 @@
   "dependencies": {
     "d3": "^4.4.0",
     "d3-scale-chromatic": "^1.1.0",
+    "fbjs": "^0.8.8",
     "node-globals": "github:noahehall/node-globals#rollbar"
   },
   "devDependencies": {
@@ -53,6 +54,7 @@
     "babelify": "^7.3.0",
     "eslint-config-ct-fletcher": "^1.0.4",
     "react": "^15.2.1",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "uglifyify": "^3.0.4"
   }
 }

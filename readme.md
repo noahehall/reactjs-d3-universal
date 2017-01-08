@@ -5,7 +5,6 @@
   - ReactJS + D3 = data viz happiness
 
 # Status
-  - definitely in alpha, beta will be available when appFuncs is portable
   - [You can see a working version here](https://github.com/noahehall/plusfame)
 
 # Chart Types

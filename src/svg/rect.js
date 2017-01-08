@@ -7,7 +7,7 @@ export const Rect = ({
   width = 200,
   x = 0, // eslintignore x axis starting point of upper left corner
   y = 0, // eslintignore y axis starting point of upper left corner
-}) => (
+}) =>
   <rect
     className={className}
     fill={fill}
@@ -16,7 +16,7 @@ export const Rect = ({
     x={x}
     y={y}
   />
-);
+;
 
 Rect.propTypes = {
   className: React.PropTypes.string,

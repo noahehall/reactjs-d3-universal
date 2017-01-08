@@ -26,8 +26,8 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "open src/example/index.html",
-    "example": "./node_modules/.bin/browserify src/example/app.js -o src/example/runapp.js -t [ babelify --presets [ es2015 latest stage-0 react ] ] && npm run start",
-    "build": "./node_modules/.bin/browserify src/index.js -o src/bundle.js -t [ babelify --presets [ es2015 latest stage-0 react ] ] -t [ uglifyify --compress --mangle ]"
+    "example": "./node_modules/.bin/browserify src/example/app.js -o src/example/runapp.js -t [ babelify --presets [ latest stage-0 react ] ] -t [ uglifyify --compress --mangle ] && npm run start",
+    "build": "./node_modules/.bin/browserify src/index.js -o src/bundle.js -t [ babelify --presets [ latest stage-0 react ] ] -t [ uglifyify --compress --mangle ]"
   },
   "engines": {
     "node": ">=6",
@@ -51,7 +51,7 @@
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
-    "babelify": "^7.3.0",
+    "babelify": "^7",
     "eslint-config-ct-fletcher": "^1.0.4",
     "react": "^15.2.1",
     "react-dom": "^15.4.2",

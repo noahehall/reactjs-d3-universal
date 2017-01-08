@@ -1,5 +1,5 @@
 import React from 'react';
-import Chart from '../bundle.js';
+import Chart from '../dist/index.js';
 import table from './fakedata/table.json';
 
 export default class Table extends React.Component {

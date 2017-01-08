@@ -1,4 +1,4 @@
-import { Rect } from '../svg/rect';
+import { Rect } from '../svg/rect.js';
 import React from 'react';
 import * as label from '../lib/labels.js';
 

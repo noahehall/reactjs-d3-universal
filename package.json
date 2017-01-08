@@ -23,11 +23,11 @@
     "type": "git",
     "url": "https://github.com/noahehall/reactjs-d3-universal.git"
   },
-  "main": "./src/bundle.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "start": "open src/example/index.html",
-    "example": "./node_modules/.bin/browserify src/example/app.js -o src/example/runapp.js -t [ babelify --presets [ latest stage-0 react ] ] -t [ uglifyify --compress --mangle ] && npm run start",
-    "build": "./node_modules/.bin/browserify src/index.js -o src/bundle.js -t [ babelify --presets [ latest stage-0 react ] ] -t [ uglifyify --compress --mangle ]"
+    "start": "open example/index.html",
+    "example": "./node_modules/.bin/browserify example/app.js -o example/runapp.js -t [ babelify --presets [ latest stage-0 react ] ] -t [ uglifyify --compress --mangle ] && npm run start",
+    "build": "./node_modules/.bin/babel src --out-dir dist"
   },
   "engines": {
     "node": ">=6",
@@ -55,6 +55,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babelify": "^7",
     "eslint-config-ct-fletcher": "^1.0.4",
+    "object-assign": "^4.1.0",
     "uglifyify": "^3.0.4"
   }
 }

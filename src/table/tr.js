@@ -11,6 +11,7 @@ export const Tr = ({ fields, filterable, length, id, idx, th }) => {
             className={i === length - 1 ? 'flt_s' : 'flt'}
             id={`flt${i}_${id}`}
             onKeyUp={appFuncs.filterTable.Filter}
+            placeholder='Filter'
             type='text'
           />
         </th>

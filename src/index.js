@@ -30,11 +30,17 @@ export default class Chart extends React.Component {
       xScale: false,
       xScaleTime: false, // eslintignore required for line chart
       xScaleTimeFormat: '', // eslintignore required for line chart https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
+      // the data[propertyf] to use for the x-scale data point
       xValue: '',
+      // if this chart requires a y-axis
       yAxis: false,
+      // the value to use for y axis label, defaults to
       yAxisLabel: '',
+      // if this chart requires a scale on the y dimension
       yScale: false,
-      yValue: '', // eslintignore used for pie chart slice arc
+      // the data[property] to use for the x-scale data point
+      // eslintignore used for pie chart slice arc
+      yValue: '',
     };
   }
 
@@ -64,6 +70,8 @@ export default class Chart extends React.Component {
 
   constructor (props) {
     super(props);
+    // default dimensions for isomorphic rendering
+    // is updated client-side on mount + browser resizes
     this.state = {
       containerHeight: 200,
       containerWidth: 200,
@@ -71,25 +79,33 @@ export default class Chart extends React.Component {
   }
 
   componentDidMount () {
-    // filter the table
+    // initial filtering and sorting
+    // TODO: check sorting & filtering are enabled before initializing
     if (this.props.chartType === 'table') {
       appFuncs.filterTable.setFilterGrid('table');
       appFuncs.sortTable.init();
     }
 
+    // initially set size based on current browser width
     this.setSize();
+    // update chart size whenever browser resizes
     if (typeof window !== 'undefined') window.addEventListener(`resize`, this.setSize, false);
   }
 
   shouldComponentUpdate (nextProps, nextState) {
+    // only update if state or props have changed
     return !appFuncs._.isEqual(nextState, this.state)
       || !appFuncs._.isEqual(nextProps, this.props);
   }
 
   componentWillUnmount () {
+    // remove event listener if in browser
     if (typeof window !== 'undefined') window.removeEventListener(`resize`, this.setSize);
   }
 
+  /**
+   * retrieves container dimensions from client and updates state which triggers redraw
+   */
   setSize = () => {
     let containerHeight, containerWidth;
 
@@ -113,6 +129,9 @@ export default class Chart extends React.Component {
     return true;
   }
 
+  /**
+   * moves SVG container into its parent
+   */
   getVisualContainerTransform = ({
     chartHeight,
     chartType,
@@ -135,6 +154,10 @@ export default class Chart extends React.Component {
       return null;
     }
 
+    /**
+     * maps the chart type to required chart function
+     * TODO: move to lib directory
+     */
     let chartFunction;
     switch (this.props.chartType.toLowerCase()) {
       case 'pie':
@@ -163,6 +186,7 @@ export default class Chart extends React.Component {
       }
     }
 
+    // initialize variables required for chart
     const
       chartHeight = this.state.containerHeight - (this.props.margins.top + this.props.margins.bottom),
 
@@ -237,10 +261,11 @@ export default class Chart extends React.Component {
         })
         : null;
 
+    // only create X and Y axis on client
     if (this.props.yAxis && thisYScale && hasDocument) axes.getYAxis({ id: this.props.id, thisYScale });
-
     if (this.props.xAxis && thisXScale && hasDocument) axes.getXAxis({ id: this.props.id, thisXScale });
 
+    // creates chart based on above variable initializations
     const thisChart = chartFunction({
       chartDataGroupBy: this.props.chartDataGroupBy,
       chartHeight,
@@ -262,6 +287,7 @@ export default class Chart extends React.Component {
       yValue: this.props.yValue,
     });
 
+    // Create an SVG containing the chart
     const renderedChart = this.props.chartType === 'table'
       ? thisChart
       : <SVG
@@ -310,6 +336,7 @@ export default class Chart extends React.Component {
         />
       </SVG>;
 
+    // Return a section containing the SVG
     return (
       <section
         className='chart-container'

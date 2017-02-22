@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from '../dist/index.js';
-import table from './fakedata/table.json';
+import forced from './fakedata/forcedlayout.json';
 
 export default class Table extends React.Component {
   static get defaultProps () {
@@ -16,14 +16,14 @@ export default class Table extends React.Component {
   render () {
     return (
       <Chart
-        chart={{ data: table }}
-        chartDataGroupBy=''
-        chartType='table'
-        colorScaleScheme=''
-        colorScaleType=''
+        chart={{ data: forced }}
+        chartDataGroupBy='id'
+        chartType='forcedlayout'
+        colorScaleScheme='schemeCategory20'
+        colorScaleType='basic'
         datumLabels={[]}
         filterable={true}
-        id='table'
+        id='forcedlayout'
         margins={{
           bottom: 10,
           left: 10,
@@ -32,7 +32,7 @@ export default class Table extends React.Component {
         }}
         preserveAspectRatio=''
         r=''
-        sortable={true}
+        sortable={false}
         xAxis={false}
         xAxisLabel=''
         xScale={false}

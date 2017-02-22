@@ -1,18 +1,5 @@
 # example table
 ```
-<section
-  className='chart-container'
-  ref={(container) => this.container = container}
-  style={{
-    display: 'block',
-    fontSize: '8px',
-    maxHeight: '400px',
-    overflow: 'scroll',
-    position: 'relative',
-    verticalAlign: 'top',
-    width: '100%',
-  }}
->
   <Chart
     chart={this.props.table}
     chartDataGroupBy=''
@@ -39,23 +26,10 @@
     yScale={false}
     yValue=''
   />
-</section>
 ```
 
 # example bar
 ```
-<section
-  className='chart-container'
-  ref={(container) => this.container = container}
-  style={{
-    display: 'block',
-    maxHeight: '400px',
-    overflow: 'hidden',
-    position: 'relative',
-    verticalAlign: 'top',
-    width: '100%',
-  }}
->
   <Chart
     // https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
     chart={this.props.totalEmployees}
@@ -81,23 +55,10 @@
     yScale={true}
     yValue='totalEmployees' // eslintignore used for pie chart as well
   />
-</section>
 ```
 
 # example pie
 ```
-<section
-  className='chart-container'
-  ref={(container) => this.container = container}
-  style={{
-    display: 'block',
-    maxHeight: '400px',
-    overflow: 'hidden',
-    position: 'relative',
-    verticalAlign: 'top',
-    width: '100%',
-  }}
->
   <Chart
     // https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
     chart={this.props.openIssues}
@@ -123,22 +84,10 @@
     yScale={true}
     yValue='total' // eslintignore used for pie chart slice size as well
   />
-</section>
 ```
 
 # example line
 ```
-<section
-  className='chart-container'
-  style={{
-    display: 'block',
-    maxHeight: '400px',
-    overflow: 'hidden',
-    position: 'relative',
-    verticalAlign: 'top',
-    width: '100%',
-  }}
->
   <Chart
     chart={this.props.payingCustomers}
     chartDataGroupBy='type'
@@ -163,5 +112,4 @@
     yScale={true}
     yValue='totalPayingCustomers'
   />
-</section>
 ```

@@ -8,12 +8,13 @@ import * as dataFunctions from './lib/data.js';
 import * as scales from './lib/scales.js';
 import React from 'react';
 import { Table } from './table';
+import ForcedLayout from './forcedlayout/index.js';
 
 export default class Chart extends React.Component {
   static get defaultProps () {
     return {
-      chart: { data: {}, margins: {}},
-      chartDataGroupBy: '', // eslintignore required for line chart
+      chart: { data: [] },
+      chartDataGroupBy: 'id', // eslintignore required for line chart
       // bar|scatterplot|pie|line
       // scatterplot: requires x and y values to be integers
       chartType: '',
@@ -90,6 +91,8 @@ export default class Chart extends React.Component {
     this.setSize();
     // update chart size whenever browser resizes
     if (typeof window !== 'undefined') window.addEventListener(`resize`, this.setSize, false);
+
+    this.renderChart();
   }
 
   shouldComponentUpdate (nextProps, nextState) {
@@ -143,17 +146,7 @@ export default class Chart extends React.Component {
     }
   }
 
-  render () {
-    if (appFuncs._.isEmpty(this.props.chart.data)) {
-      appFuncs.logError({
-        data: this.props.chart,
-        loc: __filename,
-        msg: 'You need data to create a chart, return null',
-      });
-
-      return null;
-    }
-
+  renderChart = (width = this.state.containerWidth, height = this.state.containerHeight) => {
     /**
      * maps the chart type to required chart function
      * TODO: move to lib directory
@@ -175,6 +168,9 @@ export default class Chart extends React.Component {
       case 'table':
         chartFunction = Table;
         break;
+      case 'forcedlayout':
+        chartFunction = ForcedLayout;
+        break;
       default : {
         appFuncs.logError({
           data: [ this.props.chartType, this.props.chart ],
@@ -188,9 +184,9 @@ export default class Chart extends React.Component {
 
     // initialize variables required for chart
     const
-      chartHeight = this.state.containerHeight - (this.props.margins.top + this.props.margins.bottom),
+      chartHeight = height - (this.props.margins.top + this.props.margins.bottom),
 
-      chartWidth = this.state.containerWidth - (this.props.margins.left + this.props.margins.right),
+      chartWidth = width- (this.props.margins.left + this.props.margins.right),
 
       colorScale = this.props.colorScaleScheme
         ? scales.colorScale({
@@ -215,9 +211,9 @@ export default class Chart extends React.Component {
         ? axes.getXAxisLabel({
           chartDataGroupBy: this.props.chartDataGroupBy,
           transform: 'rotate(0)',
-          x: this.state.containerWidth / 2 - this.props.margins.left,
+          x: width / 2 - this.props.margins.left,
           xAxisLabel: this.props.xAxisLabel || this.props.xValue,
-          y: this.state.containerHeight,
+          y: height,
         })
         : null,
 
@@ -230,7 +226,7 @@ export default class Chart extends React.Component {
           data,
           labels: this.props.datumLabels,
           margins: this.props.margins,
-          svgWidth: this.state.containerWidth,
+          svgWidth: width,
           xScaleTime: this.props.xScaleTime,
           xScaleTimeFormat: this.props.xScaleTimeFormat,
           xValue: this.props.xValue,
@@ -242,7 +238,7 @@ export default class Chart extends React.Component {
           chartDataGroupBy: this.props.chartDataGroupBy,
           transform: 'rotate(-90)',
           // x & y flip because of rotation
-          x: -this.state.containerHeight / 2 - this.props.margins.top,
+          x: -height / 2 - this.props.margins.top,
           y: '1em',
           yAxisLabel: this.props.yAxisLabel || this.props.yValue,
         })
@@ -256,7 +252,7 @@ export default class Chart extends React.Component {
           chartWidth,
           data,
           margins: this.props.margins,
-          svgHeight: this.state.containerHeight,
+          svgHeight: height,
           yValue: this.props.yValue,
         })
         : null;
@@ -293,8 +289,8 @@ export default class Chart extends React.Component {
       : <SVG
         id={this.props.id}
         preserveAspectRatio={this.props.preserveAspectRatio}
-        svgHeight={this.state.containerHeight}
-        svgWidth={this.state.containerWidth}
+        svgHeight={height}
+        svgWidth={width}
       >
         <g
           className='chart-svg-g'
@@ -352,5 +348,18 @@ export default class Chart extends React.Component {
         {renderedChart}
       </section>
     );
+  }
+  render () {
+    if (appFuncs._.isEmpty(this.props.chart.data)) {
+      appFuncs.logError({
+        data: this.props.chart,
+        loc: __filename,
+        msg: 'You need data to create a chart, return null',
+      });
+
+      return null;
+    }
+
+    return this.renderChart();
   }
 }

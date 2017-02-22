@@ -30,11 +30,17 @@ export default class Chart extends React.Component {
       xScale: false,
       xScaleTime: false, // eslintignore required for line chart
       xScaleTimeFormat: '', // eslintignore required for line chart https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
+      // the data[propertyf] to use for the x-scale data point
       xValue: '',
+      // if this chart requires a y-axis
       yAxis: false,
+      // the value to use for y axis label, defaults to
       yAxisLabel: '',
+      // if this chart requires a scale on the y dimension
       yScale: false,
-      yValue: '', // eslintignore used for pie chart slice arc
+      // the data[property] to use for the x-scale data point
+      // eslintignore used for pie chart slice arc
+      yValue: '',
     };
   }
 

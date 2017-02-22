@@ -2,10 +2,8 @@ import React from 'react';
 import Thead from './thead.js';
 import Tbody from './tbody.js';
 
-export const Table = ({ className, data, id, filterable, sortable }) => {
-  let thisClassName = className
-    ? className
-    : '';
+export const Table = ({ className = '', data, id, filterable, sortable }) => {
+  let thisClassName = className;
   if (sortable) thisClassName += ' sortable';
 
   return (

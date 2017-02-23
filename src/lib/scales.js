@@ -246,8 +246,7 @@ export const getXScale = ({
 
   // flatten if required
   let thisData = [];
-  if (chartDataGroupBy)
-    data.forEach((group) => thisData.push(...group.values));
+  if (chartDataGroupBy) data.forEach((group) => thisData.push(...group.values));
   else thisData = data;
 
   switch (chartType.toLowerCase()) {
@@ -302,6 +301,7 @@ export const getXScale = ({
 
 // Retrieve color scale
 export const colorScale = ({
+  // one of d3 color schemes, e.g. schemeCategory10|20|20b|20c or compatible object
   colorScaleScheme = 'schemeCategory20',
   colorScaleType = 'basic'
 }) => {

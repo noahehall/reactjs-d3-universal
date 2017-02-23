@@ -4,15 +4,13 @@
 # Why are we here?
   - ReactJS + D3 = data viz happiness
 
-# Status
-  - [You can see a working version here](https://github.com/noahehall/plusfame)
-
 # Chart Types
   - Bar Chart
   - Pie Chart
   - Scatter Plot
   - Line Chart
   - Table
+  - Force-Directed Graph
 
 # Coming Soon
   - classnames for everything
@@ -26,8 +24,6 @@
   - legends (with filtering)
   - filtering
   - interactivity
-  - update logic for color scales
-  - update logic for 'groupBy'
   - animations
 
 # Requirements
@@ -39,7 +35,6 @@
   6. configurable with sensible defaults
 
 # Examples
-## Pie Chart
 ```
   import Chart from 'reactjs-d3-universal';
   import React from 'react';
@@ -66,8 +61,9 @@
       total: 134.23,
     },
   ];
-
-  // create a chart,
+```
+## Pie Chart
+```
   <Chart
     chart={data}
     chartDataGroupBy='gender'
@@ -94,5 +90,153 @@
     yAxisLabel='total'
     yScale={true}
     yValue='Black Friday at Walmart'
+  />
+```
+## example table
+```
+  <Chart
+    data={data}
+    chartDataGroupBy=''
+    chartType='table'
+    colorScaleScheme=''
+    colorScaleType=''
+    containerHeight={containerHeight}
+    containerWidth={containerWidth}
+    datumLabels={[]}
+    filterable={true}
+    id='table'
+    margins={margins}
+    preserveAspectRatio=''
+    r=''
+    sortable={true}
+    xAxis={false}
+    xAxisLabel=''
+    xScale={false}
+    xScaleTime={false}
+    xScaleTimeFormat=''
+    xValue=''
+    yAxis={false}
+    yAxisLabel=''
+    yScale={false}
+    yValue=''
+  />
+```
+
+## example bar
+```
+  <Chart
+    // https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
+    data={data}
+    chartDataGroupBy=''
+    chartType='bar'
+    colorScaleScheme='schemeCategory20'
+    colorScaleType='basic'
+    containerHeight={containerHeight}
+    containerWidth={containerWidth}
+    datumLabels={['location']}
+    id='employees-at-each-location'
+    margins={tmargins}
+    preserveAspectRatio='xMinYMin meet'
+    r={3.5}
+    xAxis={true}
+    xAxisLabel='Employees at Each Location'
+    xScale={true}
+    xScaleTime={false}
+    xScaleTimeFormat='' // eslintlignore must match the format of your dates
+    xValue='location'
+    yAxis={true}
+    yAxisLabel='Total Employees'
+    yScale={true}
+    yValue='totalEmployees'
+  />
+```
+
+## example pie
+```
+  <Chart
+    // https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
+    data={data}
+    chartDataGroupBy='' // eslintignore only used if xScaleTime = true
+    chartType='pie'
+    colorScaleScheme='schemeCategory20'
+    colorScaleType='basic'
+    containerHeight={containerHeight}
+    containerWidth={containerWidth}
+    datumLabels={[ 'status', 'total' ]}
+    id='open-issues'
+    margins={margins}
+    preserveAspectRatio='xMinYMin meet'
+    r=''
+    xAxis={false}
+    xAxisLabel=''
+    xScale={false}
+    xScaleTime={false}
+    xScaleTimeFormat='' // eslintlignore must match the format of your dates
+    xValue=''
+    yAxis={false}
+    yAxisLabel=''
+    yScale={true}
+    yValue='total'
+  />
+```
+
+## example line
+```
+  <Chart
+    data={data}
+    chartDataGroupBy='type'
+    chartType='line'
+    colorScaleScheme='schemeCategory20'
+    colorScaleType='basic'
+    containerHeight={containerHeight}
+    containerWidth={containerWidth}
+    datumLabels={['total']}
+    id='paying-customers'
+    margins={margins}
+    preserveAspectRatio='xMinYMin meet'
+    r=''
+    xAxis={true}
+    xAxisLabel='Date'
+    xScale={true}
+    xScaleTime={true}
+    xScaleTimeFormat='%Y/%m/%d'
+    xValue='date'
+    yAxis={true}
+    yAxisLabel='Total Paying Customers'
+    yScale={true}
+    yValue='totalPayingCustomers'
+  />
+```
+## example force-directed graph
+```
+  <Chart
+    chartDataGroupBy='id'
+    chartType='forceDirectedGraph'
+    colorScaleScheme='schemeCategory20'
+    colorScaleType='basic'
+    // you must structure your data like this https://bl.ocks.org/mbostock/4062045
+    data={data}
+    datumLabels={[]}
+    filterable={true}
+    id='graph'
+    margins={{
+      bottom: 10,
+      left: 10,
+      right: 10,
+      top: 10,
+    }}
+    preserveAspectRatio=''
+    r=''
+    sortable={false}
+    xAxis={false}
+    xAxisLabel=''
+    xScale={false}
+    xScaleTime={false}
+    xScaleTimeFormat=''
+    xValue=''
+    yAxis={false}
+    yAxisLabel=''
+    yScale={false}
+    yValue=''
   />
 ```

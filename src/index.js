@@ -8,29 +8,57 @@ import * as dataFunctions from './lib/data.js';
 import * as scales from './lib/scales.js';
 import React from 'react';
 import { Table } from './table';
+import ForceLayout from './forcelayout/index.js';
 
+/**
+ * Represents a Chart
+ * @constructor
+ */
 export default class Chart extends React.Component {
   static get defaultProps () {
     return {
-      chart: { data: {}, margins: {}},
-      chartDataGroupBy: '', // eslintignore required for line chart
-      // bar|scatterplot|pie|line
+      // required for line chart
+      // group data by a specific property
+      chartDataGroupBy: '',
+      // bar|scatterplot|pie|line|table
       // scatterplot: requires x and y values to be integers
       chartType: '',
+      // one of d3 color schemes, e.g. schemeCategory10|20|20b|20c or compatible object
+      // @see ./lib/scales.js
       colorScaleScheme: '',
+      // one of [basic, chromatic, sequential, random]
+      // @see ./lib/scales.js
       colorScaleType: '',
+      // data for this chart
+      data: [],
+      // used to create labels for bar charts
+      // @see ./lib/scales.js (passed in as 'labels' to getXScale())
       datumLabels: [],
+      // only applies to chartType='table'
+      // @see ./table/index.js
       filterable: false,
       id: 'reactjs-d3-v4-universal',
-      margins: { },
+      // used for chart margins to place scales
+      // @see this file and ./lib/scales.js
+      margins: {},
+      // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+      // @see ./svg/index.js
       preserveAspectRatio: 'xMinYMin meet',
+      // if chartType = 'table'
+      // @see ./table/index.js
       sortable: false,
+      // should we include an xAxis for this chart
+      // @see ./lib/aces.jjs
       xAxis: false,
+      // the text we should use for the x axis, defaults to the xValue provided in the data
+      // @see ./lib/axes.js
       xAxisLabel:'',
+      // creates an X-Scale for bar, line, and scatterplot charts
       xScale: false,
-      xScaleTime: false, // eslintignore required for line chart
-      xScaleTimeFormat: '', // eslintignore required for line chart https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
-      // the data[propertyf] to use for the x-scale data point
+      // required for line chart
+      xScaleTime: false,
+      // required for line chart https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
+      xScaleTimeFormat: '',
       xValue: '',
       // if this chart requires a y-axis
       yAxis: false,
@@ -38,18 +66,20 @@ export default class Chart extends React.Component {
       yAxisLabel: '',
       // if this chart requires a scale on the y dimension
       yScale: false,
-      // the data[property] to use for the x-scale data point
-      // eslintignore used for pie chart slice arc
+      // used for pie chart slice arc
       yValue: '',
     };
   }
 
   static propTypes = {
-    chart: React.PropTypes.object,
     chartDataGroupBy: React.PropTypes.string,
     chartType: React.PropTypes.string,
     colorScaleScheme: React.PropTypes.string,
     colorScaleType: React.PropTypes.string,
+    data: React.PropTypes.oneOfType([
+      React.PropTypes.array,
+      React.PropTypes.object,
+    ]),
     datumLabels: React.PropTypes.array,
     filterable: React.PropTypes.bool,
     id: React.PropTypes.string,
@@ -90,6 +120,8 @@ export default class Chart extends React.Component {
     this.setSize();
     // update chart size whenever browser resizes
     if (typeof window !== 'undefined') window.addEventListener(`resize`, this.setSize, false);
+
+    this.renderChart();
   }
 
   shouldComponentUpdate (nextProps, nextState) {
@@ -143,23 +175,14 @@ export default class Chart extends React.Component {
     }
   }
 
-  render () {
-    if (appFuncs._.isEmpty(this.props.chart.data)) {
-      appFuncs.logError({
-        data: this.props.chart,
-        loc: __filename,
-        msg: 'You need data to create a chart, return null',
-      });
-
-      return null;
-    }
-
+  renderChart = (width = this.state.containerWidth, height = this.state.containerHeight) => {
     /**
      * maps the chart type to required chart function
      * TODO: move to lib directory
      */
+    const { chartType } = this.props;
     let chartFunction;
-    switch (this.props.chartType.toLowerCase()) {
+    switch (chartType.toLowerCase()) {
       case 'pie':
         chartFunction = PieSlices;
         break;
@@ -175,11 +198,14 @@ export default class Chart extends React.Component {
       case 'table':
         chartFunction = Table;
         break;
+      case 'forcedirectedgraph':
+        chartFunction = ForceLayout;
+        break;
       default : {
         appFuncs.logError({
-          data: [ this.props.chartType, this.props.chart ],
+          data: [ chartType, this.props.data ],
           loc: __filename,
-          msg: `did not find chart type ${this.props.chartType}, returning null`,
+          msg: `did not find chart type ${chartType}, returning null`,
         });
 
         return null;
@@ -188,9 +214,8 @@ export default class Chart extends React.Component {
 
     // initialize variables required for chart
     const
-      chartHeight = this.state.containerHeight - (this.props.margins.top + this.props.margins.bottom),
-
-      chartWidth = this.state.containerWidth - (this.props.margins.left + this.props.margins.right),
+      chartHeight = height - (this.props.margins.top + this.props.margins.bottom),
+      chartWidth = width- (this.props.margins.left + this.props.margins.right),
 
       colorScale = this.props.colorScaleScheme
         ? scales.colorScale({
@@ -203,7 +228,7 @@ export default class Chart extends React.Component {
       data = dataFunctions.format({
         chartDataGroupBy: this.props.chartDataGroupBy,
         chartType: this.props.chartType,
-        data: this.props.chart.data,
+        data: this.props.data,
         xScaleTime: this.props.xScaleTime,
         xScaleTimeFormat: this.props.xScaleTimeFormat,
         xValue: this.props.xValue,
@@ -215,9 +240,9 @@ export default class Chart extends React.Component {
         ? axes.getXAxisLabel({
           chartDataGroupBy: this.props.chartDataGroupBy,
           transform: 'rotate(0)',
-          x: this.state.containerWidth / 2 - this.props.margins.left,
+          x: width / 2 - this.props.margins.left,
           xAxisLabel: this.props.xAxisLabel || this.props.xValue,
-          y: this.state.containerHeight,
+          y: height,
         })
         : null,
 
@@ -230,7 +255,7 @@ export default class Chart extends React.Component {
           data,
           labels: this.props.datumLabels,
           margins: this.props.margins,
-          svgWidth: this.state.containerWidth,
+          svgWidth: width,
           xScaleTime: this.props.xScaleTime,
           xScaleTimeFormat: this.props.xScaleTimeFormat,
           xValue: this.props.xValue,
@@ -242,7 +267,7 @@ export default class Chart extends React.Component {
           chartDataGroupBy: this.props.chartDataGroupBy,
           transform: 'rotate(-90)',
           // x & y flip because of rotation
-          x: -this.state.containerHeight / 2 - this.props.margins.top,
+          x: -height / 2 - this.props.margins.top,
           y: '1em',
           yAxisLabel: this.props.yAxisLabel || this.props.yValue,
         })
@@ -256,7 +281,7 @@ export default class Chart extends React.Component {
           chartWidth,
           data,
           margins: this.props.margins,
-          svgHeight: this.state.containerHeight,
+          svgHeight: height,
           yValue: this.props.yValue,
         })
         : null;
@@ -293,8 +318,8 @@ export default class Chart extends React.Component {
       : <SVG
         id={this.props.id}
         preserveAspectRatio={this.props.preserveAspectRatio}
-        svgHeight={this.state.containerHeight}
-        svgWidth={this.state.containerWidth}
+        svgHeight={height}
+        svgWidth={width}
       >
         <g
           className='chart-svg-g'
@@ -352,5 +377,18 @@ export default class Chart extends React.Component {
         {renderedChart}
       </section>
     );
+  }
+  render () {
+    if (appFuncs._.isEmpty(this.props.data)) {
+      appFuncs.logError({
+        data: this.props.data,
+        loc: __filename,
+        msg: 'You need data to create a chart, return null',
+      });
+
+      return null;
+    }
+
+    return this.renderChart();
   }
 }

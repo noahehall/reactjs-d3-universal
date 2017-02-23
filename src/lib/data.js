@@ -90,6 +90,28 @@ export const format = ({
   if (appFuncs._.isEmpty(data)) return data;
 
   switch (chartType.toLowerCase()) {
+    case 'forcedirectedgraph': {
+      /*
+      const
+        links = data.links,
+        nodeByGroup = data.nodes.map((node) => node[chartDataGroupBy]),
+        nodes = data.nodes;
+
+      links.forEach((link) => {
+        const
+          source = nodeByGroup.find((node) => { if (node) return node[link.source[chartDataGroupBy]]}),
+          target = nodeByGroup.find((node) => { if (node) return node[link.target[chartDataGroupBy]]});
+
+        links.push(
+          { source, target },
+          { source: intermediate, target },
+        );
+      });
+
+      return { links, nodeByGroup, nodes };
+      */
+      return data;
+    }
     case 'table':
     case 'line':
     case 'scatterplot':

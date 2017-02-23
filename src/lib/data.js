@@ -90,7 +90,7 @@ export const format = ({
   if (appFuncs._.isEmpty(data)) return data;
 
   switch (chartType.toLowerCase()) {
-    case 'forcedlayout': {
+    case 'forcedirectedgraph': {
       /*
       const
         links = data.links,

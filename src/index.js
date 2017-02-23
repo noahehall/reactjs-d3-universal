@@ -8,7 +8,7 @@ import * as dataFunctions from './lib/data.js';
 import * as scales from './lib/scales.js';
 import React from 'react';
 import { Table } from './table';
-import ForcedLayout from './forcedlayout/index.js';
+import ForceLayout from './forcelayout/index.js';
 
 /**
  * Represents a Chart
@@ -193,8 +193,8 @@ export default class Chart extends React.Component {
       case 'table':
         chartFunction = Table;
         break;
-      case 'forcedlayout':
-        chartFunction = ForcedLayout;
+      case 'forcedirectedgraph':
+        chartFunction = ForceLayout;
         break;
       default : {
         appFuncs.logError({

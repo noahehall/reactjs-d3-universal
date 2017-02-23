@@ -4,7 +4,7 @@ import { getSimulation } from './simulation.js';
 import React from 'react';
 // https://bl.ocks.org/mbostock/4062045
 
-export default function ForcedLayout ({
+export default function ForceLayout ({
   chartDataGroupBy,
   chartHeight,
   chartWidth,
@@ -32,7 +32,7 @@ export default function ForcedLayout ({
   thisSim.restart();
 
   console.dir([nodes, links])
-  
+
   return (
     <g>
       {links}{nodes}

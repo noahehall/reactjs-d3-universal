@@ -17,7 +17,6 @@ export default function ForcedLayout ({
     chartWidth,
   });
 
-
   const nodes = nodeGs({
     chartDataGroupBy,
     colorScale,
@@ -32,7 +31,11 @@ export default function ForcedLayout ({
   thisSim.force('link').links(data.links);
   thisSim.restart();
 
-  return <g>
-    {nodes}{links}
-  </g>;
+  console.dir([nodes, links])
+  
+  return (
+    <g>
+      {links}{nodes}
+    </g>
+  );
 }

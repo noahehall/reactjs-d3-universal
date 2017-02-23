@@ -1,26 +1,33 @@
 import React from 'react';
 
 export const nodeGs = ({
-  nodes,
+  chartDataGroupBy,
   colorScale,
+  nodes,
 }) => {
-  return nodes.map((node) =>
-    <g key={node.id}>
-      <circle
-        r={5}
-        cx={node.x}
-        cy={node.y}
-        style={{
-          "fill": colorScale(node.group),
-          "stroke":"#fff",
-          "strokeWidth":"1.5px"
-        }}/>
-      <text x={node.x} y={node.y}>
-        {node.id}
-      </text>
-    </g>
-  )
-};
+  const nodeGArray = [];
+
+  nodes.forEach((node) => node.x !== undefined && node.y !== undefined
+    && nodeGArray.push(
+      <g key={node[chartDataGroupBy]}>
+        <circle
+          r={node.r || 5}
+          cx={node.x}
+          cy={node.y}
+          style={{
+            "fill": colorScale(node.group),
+            "stroke":"#fff",
+            "strokeWidth":"1.5px"
+          }}/>
+        <text x={node.x} y={node.y}>
+          {node[chartDataGroupBy]}
+        </text>
+      </g>
+    )
+  );
+
+  return nodeGArray;
+}
 
   /*
     on each circle suppose to call

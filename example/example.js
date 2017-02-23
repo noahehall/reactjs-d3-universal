@@ -25,10 +25,10 @@ export default class Table extends React.Component {
         filterable={true}
         id='forcedlayout'
         margins={{
-          bottom: 10,
-          left: 10,
-          right: 10,
-          top: 10,
+          bottom: 50,
+          left: 50,
+          right: 50,
+          top: 50,
         }}
         preserveAspectRatio=''
         r=''

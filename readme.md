@@ -62,63 +62,17 @@
     },
   ];
 ```
-## Pie Chart
-```
-  <Chart
-    chart={data}
-    chartDataGroupBy='gender'
-    chartType='line|scatterplot|bar|pie|table'
-    colorScaleScheme='schemeAccent'
-    colorScaleType='categorical'
-    containerHeight={containerHeight}
-    containerWidth={containerWidth}
-    datumLabels={[ 'gender' ]}
-    filterable={false} // currently only for table
-    id='line-chart'
-    margins={margins}
-    preserveAspectRatio='xMinYMin meet'
-    r={3.5}
-    sortable={false} // currently only for table
-    xAxis={true}
-    xAxisLabel='Date'
-    xScale={true}
-    xScaleTime={true}
-    xScaleTimeFormat='%Y/%m/%d'
-    xValue='lastName'
-    xValue='Rock Stars Win'
-    yAxis={true}
-    yAxisLabel='total'
-    yScale={true}
-    yValue='Black Friday at Walmart'
-  />
-```
 ## example table
 ```
   <Chart
-    data={data}
-    chartDataGroupBy=''
     chartType='table'
-    colorScaleScheme=''
-    colorScaleType=''
     containerHeight={containerHeight}
     containerWidth={containerWidth}
-    datumLabels={[]}
+    data={data}
     filterable={true}
-    id='table'
+    id='table1'
     margins={margins}
-    preserveAspectRatio=''
-    r=''
     sortable={true}
-    xAxis={false}
-    xAxisLabel=''
-    xScale={false}
-    xScaleTime={false}
-    xScaleTimeFormat=''
-    xValue=''
-    yAxis={false}
-    yAxisLabel=''
-    yScale={false}
-    yValue=''
   />
 ```
 
@@ -126,28 +80,15 @@
 ```
   <Chart
     // https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
-    data={data}
-    chartDataGroupBy=''
     chartType='bar'
     colorScaleScheme='schemeCategory20'
     colorScaleType='basic'
     containerHeight={containerHeight}
     containerWidth={containerWidth}
+    data={data}
     datumLabels={['location']}
     id='employees-at-each-location'
-    margins={tmargins}
-    preserveAspectRatio='xMinYMin meet'
-    r={3.5}
-    xAxis={true}
-    xAxisLabel='Employees at Each Location'
-    xScale={true}
-    xScaleTime={false}
-    xScaleTimeFormat='' // eslintlignore must match the format of your dates
-    xValue='location'
-    yAxis={true}
-    yAxisLabel='Total Employees'
-    yScale={true}
-    yValue='totalEmployees'
+    margins={margins}
   />
 ```
 
@@ -155,46 +96,31 @@
 ```
   <Chart
     // https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
-    data={data}
-    chartDataGroupBy='' // eslintignore only used if xScaleTime = true
     chartType='pie'
     colorScaleScheme='schemeCategory20'
     colorScaleType='basic'
     containerHeight={containerHeight}
     containerWidth={containerWidth}
+    data={data}
     datumLabels={[ 'status', 'total' ]}
     id='open-issues'
     margins={margins}
-    preserveAspectRatio='xMinYMin meet'
-    r=''
-    xAxis={false}
-    xAxisLabel=''
-    xScale={false}
-    xScaleTime={false}
-    xScaleTimeFormat='' // eslintlignore must match the format of your dates
-    xValue=''
-    yAxis={false}
-    yAxisLabel=''
-    yScale={true}
-    yValue='total'
   />
 ```
 
 ## example line
 ```
   <Chart
-    data={data}
     chartDataGroupBy='type'
     chartType='line'
     colorScaleScheme='schemeCategory20'
     colorScaleType='basic'
     containerHeight={containerHeight}
     containerWidth={containerWidth}
+    data={data}
     datumLabels={['total']}
     id='paying-customers'
     margins={margins}
-    preserveAspectRatio='xMinYMin meet'
-    r=''
     xAxis={true}
     xAxisLabel='Date'
     xScale={true}
@@ -216,8 +142,6 @@
     colorScaleType='basic'
     // you must structure your data like this https://bl.ocks.org/mbostock/4062045
     data={data}
-    datumLabels={[]}
-    filterable={true}
     id='graph'
     margins={{
       bottom: 10,
@@ -225,18 +149,5 @@
       right: 10,
       top: 10,
     }}
-    preserveAspectRatio=''
-    r=''
-    sortable={false}
-    xAxis={false}
-    xAxisLabel=''
-    xScale={false}
-    xScaleTime={false}
-    xScaleTimeFormat=''
-    xValue=''
-    yAxis={false}
-    yAxisLabel=''
-    yScale={false}
-    yValue=''
   />
 ```

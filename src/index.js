@@ -17,7 +17,6 @@ import ForceLayout from './forcelayout/index.js';
 export default class Chart extends React.Component {
   static get defaultProps () {
     return {
-      chart: { data: [] },
       // required for line chart
       // group data by a specific property
       chartDataGroupBy: '',
@@ -30,6 +29,8 @@ export default class Chart extends React.Component {
       // one of [basic, chromatic, sequential, random]
       // @see ./lib/scales.js
       colorScaleType: '',
+      // data for this chart
+      data: [],
       // used to create labels for bar charts
       // @see ./lib/scales.js (passed in as 'labels' to getXScale())
       datumLabels: [],
@@ -71,11 +72,14 @@ export default class Chart extends React.Component {
   }
 
   static propTypes = {
-    chart: React.PropTypes.object,
     chartDataGroupBy: React.PropTypes.string,
     chartType: React.PropTypes.string,
     colorScaleScheme: React.PropTypes.string,
     colorScaleType: React.PropTypes.string,
+    data: React.PropTypes.oneOfType([
+      React.PropTypes.array,
+      React.PropTypes.object,
+    ]),
     datumLabels: React.PropTypes.array,
     filterable: React.PropTypes.bool,
     id: React.PropTypes.string,
@@ -176,8 +180,9 @@ export default class Chart extends React.Component {
      * maps the chart type to required chart function
      * TODO: move to lib directory
      */
+    const { chartType } = this.props;
     let chartFunction;
-    switch (this.props.chartType.toLowerCase()) {
+    switch (chartType.toLowerCase()) {
       case 'pie':
         chartFunction = PieSlices;
         break;
@@ -198,9 +203,9 @@ export default class Chart extends React.Component {
         break;
       default : {
         appFuncs.logError({
-          data: [ this.props.chartType, this.props.chart ],
+          data: [ chartType, this.props.data ],
           loc: __filename,
-          msg: `did not find chart type ${this.props.chartType}, returning null`,
+          msg: `did not find chart type ${chartType}, returning null`,
         });
 
         return null;
@@ -210,7 +215,6 @@ export default class Chart extends React.Component {
     // initialize variables required for chart
     const
       chartHeight = height - (this.props.margins.top + this.props.margins.bottom),
-
       chartWidth = width- (this.props.margins.left + this.props.margins.right),
 
       colorScale = this.props.colorScaleScheme
@@ -224,7 +228,7 @@ export default class Chart extends React.Component {
       data = dataFunctions.format({
         chartDataGroupBy: this.props.chartDataGroupBy,
         chartType: this.props.chartType,
-        data: this.props.chart.data,
+        data: this.props.data,
         xScaleTime: this.props.xScaleTime,
         xScaleTimeFormat: this.props.xScaleTimeFormat,
         xValue: this.props.xValue,
@@ -375,9 +379,9 @@ export default class Chart extends React.Component {
     );
   }
   render () {
-    if (appFuncs._.isEmpty(this.props.chart.data)) {
+    if (appFuncs._.isEmpty(this.props.data)) {
       appFuncs.logError({
-        data: this.props.chart,
+        data: this.props.data,
         loc: __filename,
         msg: 'You need data to create a chart, return null',
       });

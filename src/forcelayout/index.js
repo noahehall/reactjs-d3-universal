@@ -31,8 +31,6 @@ export default function ForceLayout ({
   thisSim.force('link').links(data.links);
   thisSim.restart();
 
-  console.dir([nodes, links])
-
   return (
     <g>
       {links}{nodes}

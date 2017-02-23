@@ -16,19 +16,19 @@ export default class Table extends React.Component {
   render () {
     return (
       <Chart
-        chart={{ data: force }}
         chartDataGroupBy='id'
         chartType='forceDirectedGraph'
         colorScaleScheme='schemeCategory20'
         colorScaleType='basic'
+        data={force}
         datumLabels={[]}
         filterable={true}
         id='graph'
         margins={{
-          bottom: 50,
-          left: 50,
-          right: 50,
-          top: 50,
+          bottom: 10,
+          left: 10,
+          right: 10,
+          top: 10,
         }}
         preserveAspectRatio=''
         r=''

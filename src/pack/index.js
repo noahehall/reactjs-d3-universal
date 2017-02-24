@@ -10,7 +10,6 @@ export default function Pack ({
   data,
   labels
 }) {
-  console.dir(data)
   const
     root = hierarchy({ data }),
     //focus = root,

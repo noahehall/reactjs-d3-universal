@@ -2,13 +2,21 @@ import React from 'react';
 // import * as d3 from 'd3';
 
 export const nodesArray = ({ colorScale, nodes }) => {
+  console.dir(nodes);
   const nodeArray = [];
   nodes.forEach((d) =>
     nodeArray.push(
       // TODO: add click handler to each circle for zoom
       <circle
+        r={d.r}
+        cx={d.x}
+        cy={d.y}
         className={d.parent ? d.children ? 'node' : 'node node--leaf' : 'node node--root' }
-        fill={d.children ? colorScale(d.depth) : null}
+        style={{
+          fill: d.children ? colorScale(d.depth) : null,
+          "stroke":"#fff",
+          "strokeWidth":"1.5px",
+        }}
       />
     )
   );

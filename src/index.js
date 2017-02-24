@@ -111,7 +111,7 @@ export default class Chart extends React.Component {
 
   componentDidMount () {
     // initial filtering and sorting
-    // TODO: check sorting & filtering are enabled before initializing
+    // TODO: separate and check sorting & filtering are enabled before initializing
     if (this.props.chartType === 'table') {
       appFuncs.filterTable.setFilterGrid('table');
       appFuncs.sortTable.init();
@@ -220,7 +220,7 @@ export default class Chart extends React.Component {
     // initialize variables required for chart
     const
       chartHeight = height - (this.props.margins.top + this.props.margins.bottom),
-      chartWidth = width- (this.props.margins.left + this.props.margins.right),
+      chartWidth = width - (this.props.margins.left + this.props.margins.right),
 
       colorScale = this.props.colorScaleScheme
         ? scales.colorScale({

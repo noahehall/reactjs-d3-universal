@@ -1,3 +1,3 @@
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0});exports.nodesArray=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}// import * as d3 from 'd3';
-var nodesArray=exports.nodesArray=function(_ref){var a=_ref.colorScale,b=_ref.nodes,c=[];return b.forEach(function(e){return c.push(// TODO: add click handler to each circle for zoom
-_react2.default.createElement('circle',{className:e.parent?e.children?'node':'node node--leaf':'node node--root',fill:e.children?a(e.depth):null}))}),c};
+var nodesArray=exports.nodesArray=function(_ref){var a=_ref.colorScale,b=_ref.nodes;console.dir(b);var c=[];return b.forEach(function(e){return c.push(// TODO: add click handler to each circle for zoom
+_react2.default.createElement('circle',{r:e.r,cx:e.x,cy:e.y,className:e.parent?e.children?'node':'node node--leaf':'node node--root',style:{fill:e.children?a(e.depth):null,stroke:'#fff',strokeWidth:'1.5px'}}))}),c};

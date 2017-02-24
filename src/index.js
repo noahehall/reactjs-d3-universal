@@ -9,6 +9,7 @@ import * as scales from './lib/scales.js';
 import React from 'react';
 import { Table } from './table';
 import ForceLayout from './forcelayout/index.js';
+import Pack from './pack/index.js';
 
 /**
  * Represents a Chart
@@ -110,7 +111,7 @@ export default class Chart extends React.Component {
 
   componentDidMount () {
     // initial filtering and sorting
-    // TODO: check sorting & filtering are enabled before initializing
+    // TODO: separate and check sorting & filtering are enabled before initializing
     if (this.props.chartType === 'table') {
       appFuncs.filterTable.setFilterGrid('table');
       appFuncs.sortTable.init();
@@ -141,6 +142,7 @@ export default class Chart extends React.Component {
   setSize = () => {
     let containerHeight, containerWidth;
 
+    // TODO: move all try blocks outside of this function
     try {
       containerHeight = this.container.offsetHeight;
     } catch (err) {
@@ -201,6 +203,9 @@ export default class Chart extends React.Component {
       case 'forcedirectedgraph':
         chartFunction = ForceLayout;
         break;
+      case 'pack':
+        chartFunction = Pack;
+        break;
       default : {
         appFuncs.logError({
           data: [ chartType, this.props.data ],
@@ -215,7 +220,7 @@ export default class Chart extends React.Component {
     // initialize variables required for chart
     const
       chartHeight = height - (this.props.margins.top + this.props.margins.bottom),
-      chartWidth = width- (this.props.margins.left + this.props.margins.right),
+      chartWidth = width - (this.props.margins.left + this.props.margins.right),
 
       colorScale = this.props.colorScaleScheme
         ? scales.colorScale({
@@ -361,9 +366,9 @@ export default class Chart extends React.Component {
         />
       </SVG>;
 
-    // Return a section containing the SVG
+    // Return a div containing the SVG
     return (
-      <section
+      <div
         className='chart-container'
         ref={(container) => this.container = container}
         style={{
@@ -375,15 +380,16 @@ export default class Chart extends React.Component {
         }}
       >
         {renderedChart}
-      </section>
+      </div>
     );
   }
+
   render () {
     if (appFuncs._.isEmpty(this.props.data)) {
       appFuncs.logError({
         data: this.props.data,
         loc: __filename,
-        msg: 'You need data to create a chart, return null',
+        msg: 'You need data to create a chart, returning null',
       });
 
       return null;

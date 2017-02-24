@@ -90,6 +90,9 @@ export const format = ({
   if (appFuncs._.isEmpty(data)) return data;
 
   switch (chartType.toLowerCase()) {
+    case 'pack': {
+      return data;
+    }
     case 'forcedirectedgraph': {
       /*
       const

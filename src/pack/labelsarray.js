@@ -10,6 +10,9 @@ export const labelsArray = ({
   nodes.forEach((d) =>
     labelArray.push(
       <text
+        x={d.x}
+        y={d.y}
+        textAnchor='middle'
         className='label'
         style={{
           display: d.parent === root ? 'inline' : 'none',

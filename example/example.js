@@ -14,7 +14,6 @@ export default class Table extends React.Component {
   }
 
   render () {
-    console.dir(data);
     return (
       <Chart
         chartType='pack'

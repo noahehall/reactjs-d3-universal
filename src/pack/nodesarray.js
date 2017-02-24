@@ -2,7 +2,6 @@ import React from 'react';
 // import * as d3 from 'd3';
 
 export const nodesArray = ({ colorScale, nodes }) => {
-  console.dir(nodes);
   const nodeArray = [];
   nodes.forEach((d) =>
     nodeArray.push(
@@ -13,7 +12,7 @@ export const nodesArray = ({ colorScale, nodes }) => {
         cy={d.y}
         className={d.parent ? d.children ? 'node' : 'node node--leaf' : 'node node--root' }
         style={{
-          fill: d.children ? colorScale(d.depth) : null,
+          fill: d.children ? colorScale(d.depth) : 'white',
           "stroke":"#fff",
           "strokeWidth":"1.5px",
         }}

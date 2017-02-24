@@ -3,10 +3,11 @@ import React from 'react';
 
 export const nodesArray = ({ colorScale, nodes }) => {
   const nodeArray = [];
-  nodes.forEach((d) =>
+  nodes.forEach((d, idx) =>
     nodeArray.push(
       // TODO: add click handler to each circle for zoom
       <circle
+        key={idx}
         r={d.r}
         cx={d.x}
         cy={d.y}

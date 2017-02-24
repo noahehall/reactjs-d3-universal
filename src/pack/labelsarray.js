@@ -7,9 +7,10 @@ export const labelsArray = ({
   root,
 }) => {
   const labelArray = [];
-  nodes.forEach((d) =>
+  nodes.forEach((d, idx) =>
     labelArray.push(
       <text
+        key={idx}
         x={d.x}
         y={d.y}
         textAnchor='middle'

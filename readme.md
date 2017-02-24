@@ -11,6 +11,7 @@
   - Line Chart
   - Table
   - Force-Directed Graph
+  - Pack Chart (sans zoom)
 
 # Coming Soon
   - classnames for everything
@@ -19,7 +20,6 @@
   - stacked bar (currently works with regular bar chart but can be improved)
   - histogram
   - combination chart
-  - bubble chart
   - tooltips (with filtering)
   - legends (with filtering)
   - filtering
@@ -143,6 +143,24 @@
     // you must structure your data like this https://bl.ocks.org/mbostock/4062045
     data={data}
     id='graph'
+    margins={{
+      bottom: 10,
+      left: 10,
+      right: 10,
+      top: 10,
+    }}
+  />
+```
+## example pack chart
+```
+  <Chart
+    chartType='pack'
+    colorScaleScheme='schemeCategory20'
+    colorScaleType='basic'
+    // you must structure your data like this https://bl.ocks.org/mbostock/7607535
+    data={data}
+    datumLabels={['name']}
+    id='pack'
     margins={{
       bottom: 10,
       left: 10,

@@ -95,7 +95,7 @@ export const nodesArray = ({
             "strokeWidth":"1.5px",
           }}
         />
-        <Text d={d} root={root} labels={labels} />
+        { !d.children && <Text d={d} root={root} labels={labels} /> }
       </g>
     )
   );

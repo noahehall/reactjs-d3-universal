@@ -308,6 +308,7 @@ export default class Chart extends React.Component {
       filterable: this.props.filterable,
       id: this.props.id,
       labels: this.props.datumLabels,
+      margins: this.props.margins,
       sortable: this.props.sortable,
       xScale: thisXScale,
       xScaleTime: this.props.xScaleTime,

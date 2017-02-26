@@ -143,7 +143,7 @@ export class PackG extends React.Component {
             "strokeWidth":"1.5px",
           }}
         />
-        { !d.children && <Text d={d} r={this.state.r} labels={labels} /> }
+        { !d.children && <Text d={d} r={this.state.r} labels={labels} idx={idx}/> }
       </g>
     );
   }

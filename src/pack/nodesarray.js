@@ -35,7 +35,7 @@ export class Text extends React.Component {
       factor =
         length > 9 ? 1 :
         length > 5 ? 2.2 : 2.9,
-      newSize = 25 * this.props.d.r * factor / window.innerWidth;
+      newSize = 25 * this.props.r * factor / window.innerWidth;
 
     if (Math.abs(parseInt(this.state.fontSize) - newSize) > 1)
       this.setState({
@@ -67,33 +67,108 @@ export class Text extends React.Component {
     )
   }
 }
-export const nodesArray = ({
-  nodes,
-  colorScale,
-  handleZoom,
-  root,
-  labels,
-}) => {
-  const nodeArray = [];
-  nodes.forEach((d, idx) =>
-    nodeArray.push(
-      // TODO: add click handler to each circle for zoom
+
+export class PackG extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      x: props.d.x,
+      y: props.d.y,
+      r: props.d.r,
+      ox: props.d.x,
+      oy: props.d.y,
+      or: props.d.r,
+      scaleX: 1,
+      scaleY: 1,
+      scaled: false,
+      vizConRect: {},
+    }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.d.x !== this.state.ox || nextProps.d.y !== this.state.oy)
+      this.setState({
+        x: nextProps.d.x,
+        ox: nextProps.d.x,
+        y: nextProps.d.y,
+        oy: nextProps.d.y,
+        r: nextProps.d.r,
+        or: nextProps.d.r,
+        vizConRect: document.getElementById(`${this.props.id}-visual-container`).getBoundingClientRect()
+      });
+  }
+
+  handleZoom = () => {
+    if(!this.state.scaled)
+      this.setState({
+        x: this.state.vizConRect.left + (this.state.vizConRect.width /2),
+        y: this.state.vizConRect.top + (this.state.vizConRect.height /2),
+        r: Math.min(this.state.vizConRect.width, this.state.vizConRect.height) / 2,
+        scaled: true,
+      });
+    else
+      this.setState({
+        x: this.state.ox,
+        y: this.state.oy,
+        r: this.state.or,
+        scaled: false,
+      });
+  }
+
+  render () {
+    const {
+      idx,
+      d,
+      colorScale,
+      labels,
+    } = this.props;
+
+    return (
       <g
         key={idx}
-        transform={`translate(${d.x}, ${d.y})`}
-        onClick={handleZoom}
+        transform={`translate(${this.state.x}, ${this.state.y})`}
+        ref={(g) => this.g = g}
+        onClick={(e) => {
+          e.stopPropagation();
+          if (!d.children) this.handleZoom();
+        }}
       >
         <circle
-          r={d.r}
+          r={this.state.r}
           className={d.parent ? d.children ? 'node' : 'node node--leaf' : 'node node--root' }
+          ref={(circle) => this.circle = circle}
           style={{
             fill: d.children ? colorScale(d.depth) : 'white',
             "stroke":"#fff",
             "strokeWidth":"1.5px",
           }}
         />
-        { !d.children && <Text d={d} labels={labels} /> }
+        { !d.children && <Text d={d} r={this.state.r} labels={labels} /> }
       </g>
+    );
+  }
+}
+export const nodesArray = ({
+  nodes,
+  colorScale,
+  labels,
+  chartHeight,
+  chartWidth,
+  id,
+}) => {
+  const nodeArray = [];
+  nodes.forEach((d, idx) =>
+    nodeArray.push(
+      // TODO: add click handler to each circle for zoom
+      <PackG
+        idx={idx}
+        d={d}
+        colorScale={colorScale}
+        labels={labels}
+        id={id}
+        chartWidth={chartWidth}
+        chartHeight={chartHeight}
+      />
     )
   );
 

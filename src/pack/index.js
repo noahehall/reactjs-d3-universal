@@ -39,8 +39,10 @@ export const zoom = ({
 
 export default function Pack ({
   chartWidth,
+  chartHeight,
   colorScale,
   data,
+  id,
   labels,
   margins,
 }) {
@@ -75,6 +77,9 @@ export default function Pack ({
       handleZoom,
       labels,
       root,
+      chartWidth,
+      chartHeight,
+      id,
     });
 
   view = [root.x, root.y, root.r];

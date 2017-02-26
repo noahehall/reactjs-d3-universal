@@ -335,6 +335,7 @@ export default class Chart extends React.Component {
           >
           <g
             className={`${this.props.chartType.toLowerCase()}-visual-container`}
+            id={`${this.props.id}-visual-container`}
             transform={this.getVisualContainerTransform({ chartHeight, chartType: this.props.chartType, chartWidth })}
           >
             {thisChart}

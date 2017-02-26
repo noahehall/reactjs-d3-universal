@@ -5,14 +5,37 @@ import { labelsArray } from './labelsarray';
 import React from 'react';
 import * as d3 from 'd3';
 
+let view;
 
+export const zoomTo = ({ chartWidth, v, g, gx, gy, cr, circle }) => {
+  view = v;
+  const
+    k = chartWidth / v[2],
+    x = (gx - v[0]) * k,
+    y = (gy - v[1]) * k;
 
-export const zoomTo = ({ v, view, chartWidth }) => {
-    return false;
-    var k = chartWidth / v[2]; view = v;
-    node.attr("transform", (d) => { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
-    circle.attr("r", (d)  => { return d.r * k; });
-  }
+  //g.setAttribute("transform", `translate(${x}, ${y}) scale(2 1.5) translate(${-x}, ${-y})`);
+  circle.setAttribute("r",  cr * k);
+}
+
+export const zoom = ({
+  chartWidth,
+  margins,
+  g,
+  gx,
+  gy,
+  cr,
+  circle,
+}) => {
+
+  return d3.transition()
+    .duration(750)
+    .tween("zoom", (d) => {
+      const i = d3.interpolateZoom(view, [ gx, gy, cr * 2 + (margins.left + margins.right) ]);
+
+      return (t) => zoomTo({ chartWidth, v: i(t), g, gx, gy, cr, circle });
+    });
+}
 
 export default function Pack ({
   chartWidth,
@@ -21,22 +44,25 @@ export default function Pack ({
   labels,
   margins,
 }) {
-  const zoom = (e) => {
+  const handleZoom = (e) => {
     e.stopPropagation();
+    let cr;
 
-    // transition between a and b
-    const transition = d3.transition()
-      .duration(750)
-        .tween("zoom", (d) => {
-          // view = a, focus = b
-          const i = d3.interpolateZoom(
-            view,
-            [ focus.x, focus.y, focus.r * 2 + (margins.left + margins.right) ]
-          );
+    const transform = e.currentTarget.getAttribute('transform').split('(')[1].split(',').map((e) => parseFloat(e));
+    const circle = e.currentTarget.firstChild;
+    if (circle.nodeName === 'circle') cr = circle.getAttribute('r');
 
-          //
-          return (v) => zoomTo(i(1));
-        });
+    return cr
+      ? zoom({
+          chartWidth,
+          g: e.currentTarget,
+          margins,
+          gx: transform[0],
+          gy: transform[1],
+          cr,
+          circle,
+        })
+      : null;
   }
 
   const
@@ -46,10 +72,12 @@ export default function Pack ({
     arrayOfNodes = nodesArray({
       nodes,
       colorScale,
-      zoom,
+      handleZoom,
       labels,
       root,
     });
+
+  view = [root.x, root.y, root.r];
 
   return (
     <g>

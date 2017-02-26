@@ -9,14 +9,14 @@ export class Text extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount () {
 
     // initially set size based on current browser width
     // this.setSize();
     // update chart size whenever browser resizes
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (!appFuncs._.isEqual(nextProps, this.props)) this.setSize();
   }
 
@@ -48,22 +48,18 @@ export class Text extends React.Component {
   render() {
     const {
       d,
-      root,
       labels,
     } = this.props;
 
     return (
       <text
         ref={(text) => this.text = text }
-        x={d.x}
-        y={d.y}
         textAnchor='middle'
-        data-diameter={d.r*2}
         className='label'
         fontSize={this.state.fontSize}
         style={{
-          display: d.parent === root ? 'inline' : 'inline', // 'none',
-          fillOpacity: d.parent === root ? 1 : 1,//0,
+          display: 'inline',
+          fillOpacity: 1,
         }}
       >
         {d.data[labels[0]]}
@@ -74,7 +70,7 @@ export class Text extends React.Component {
 export const nodesArray = ({
   nodes,
   colorScale,
-  zoom,
+  handleZoom,
   root,
   labels,
 }) => {
@@ -82,20 +78,21 @@ export const nodesArray = ({
   nodes.forEach((d, idx) =>
     nodeArray.push(
       // TODO: add click handler to each circle for zoom
-      <g key={idx}>
+      <g
+        key={idx}
+        transform={`translate(${d.x}, ${d.y})`}
+        onClick={handleZoom}
+      >
         <circle
           r={d.r}
-          cx={d.x}
-          cy={d.y}
           className={d.parent ? d.children ? 'node' : 'node node--leaf' : 'node node--root' }
-          onClick={zoom}
           style={{
             fill: d.children ? colorScale(d.depth) : 'white',
             "stroke":"#fff",
             "strokeWidth":"1.5px",
           }}
         />
-        { !d.children && <Text d={d} root={root} labels={labels} /> }
+        { !d.children && <Text d={d} labels={labels} /> }
       </g>
     )
   );

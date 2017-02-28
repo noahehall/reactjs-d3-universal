@@ -1,25 +1,36 @@
-import { pack } from './pack.js';
 import { hierarchy } from './hierarchy.js';
-import { nodesArray } from './nodesarray.js';
 import { labelsArray } from './labelsarray';
+import { nodesArray } from './nodesarray.js';
+import { pack } from './pack.js';
+import * as d3 from 'd3';
 import React from 'react';
 
 export default function Pack ({
+  chartHeight,
   chartWidth,
   colorScale,
   data,
-  labels
+  id,
+  labels,
+  margins,
 }) {
   const
     root = hierarchy({ data }),
-    //focus = root,
     nodes = pack({ chartWidth })(root).descendants(),
-    arrayOfNodes = nodesArray({ nodes, colorScale }),
-    arrayOfLabels = labelsArray({ nodes, labels, root })
+    arrayOfLabels = labelsArray({ nodes, labels, root }),
+    arrayOfNodes = nodesArray({
+      chartHeight,
+      chartWidth,
+      colorScale,
+      id,
+      labels,
+      nodes,
+      root,
+    });
 
   return (
     <g>
-      {arrayOfNodes}{arrayOfLabels}
+      {arrayOfNodes}
     </g>
   );
 }

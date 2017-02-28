@@ -2,9 +2,9 @@ import * as d3 from 'd3';
 
 // https://github.com/d3/d3-force
 export const getSimulation = ({
-  chartDataGroupBy,
-  chartHeight,
-  chartWidth,
+  chartDataGroupBy = '',
+  chartHeight = 200,
+  chartWidth = 200,
 }) => d3.forceSimulation()
   // default spacing, dont use if display text with eact circle
   //.force("link", d3.forceLink().id((d) => d[chartDataGroupBy]))

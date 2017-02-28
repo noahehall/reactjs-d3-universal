@@ -4,6 +4,9 @@
 # Why are we here?
   - ReactJS + D3 = data viz happiness
 
+# see current example
+  `$ npm run build && npm run example`
+
 # Chart Types
   - Bar Chart
   - Pie Chart
@@ -11,7 +14,7 @@
   - Line Chart
   - Table
   - Force-Directed Graph
-  - Pack Chart (sans zoom)
+  - Pack Chart
 
 # Coming Soon
   - classnames for everything

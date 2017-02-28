@@ -111,10 +111,9 @@ export default class Chart extends React.Component {
 
   componentDidMount () {
     // initial filtering and sorting
-    // TODO: separate and check sorting & filtering are enabled before initializing
     if (this.props.chartType === 'table') {
-      appFuncs.filterTable.setFilterGrid('table');
-      appFuncs.sortTable.init();
+      if (this.props.filterable) appFuncs.filterTable.setFilterGrid(this.props.id);
+      if (this.props.sortable) appFuncs.sortTable.init();
     }
 
     // initially set size based on current browser width
@@ -326,6 +325,7 @@ export default class Chart extends React.Component {
         preserveAspectRatio={this.props.preserveAspectRatio}
         svgHeight={height}
         svgWidth={width}
+        xmlns='http://www.w3.org/2000/svg'
       >
         <g
           className='chart-svg-g'

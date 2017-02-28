@@ -1,13 +1,13 @@
-import { pack } from './pack.js';
 import { hierarchy } from './hierarchy.js';
-import { nodesArray } from './nodesarray.js';
 import { labelsArray } from './labelsarray';
-import React from 'react';
+import { nodesArray } from './nodesarray.js';
+import { pack } from './pack.js';
 import * as d3 from 'd3';
+import React from 'react';
 
 export default function Pack ({
-  chartWidth,
   chartHeight,
+  chartWidth,
   colorScale,
   data,
   id,
@@ -19,13 +19,13 @@ export default function Pack ({
     nodes = pack({ chartWidth })(root).descendants(),
     arrayOfLabels = labelsArray({ nodes, labels, root }),
     arrayOfNodes = nodesArray({
-      nodes,
-      colorScale,
-      labels,
-      root,
-      chartWidth,
       chartHeight,
+      chartWidth,
+      colorScale,
       id,
+      labels,
+      nodes,
+      root,
     });
 
   return (

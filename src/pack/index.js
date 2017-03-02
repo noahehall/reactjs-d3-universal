@@ -13,20 +13,16 @@ export default function Pack ({
   labels,
   margins,
 }) {
-  const
-    root = hierarchy({ data }),
-    arrayOfNodes = nodesArray({
-      chartHeight,
-      chartWidth,
-      colorScale,
-      id,
-      labels,
-      nodes: pack({ chartWidth, chartHeight })(root).descendants(),
-    });
-
   return (
     <g>
-      {arrayOfNodes}
+      {nodesArray({
+        chartHeight,
+        chartWidth,
+        colorScale,
+        id,
+        labels,
+        nodes: pack({ chartWidth, chartHeight })(hierarchy({ data })).descendants(),
+      })}
     </g>
   );
 }

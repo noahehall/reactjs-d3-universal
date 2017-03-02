@@ -27,6 +27,7 @@ export default class PackG extends React.Component {
     this.state = {
       previous: {},
       r: 0,
+      scale: 1,
       scaled: false,
       x: 0,
       y: 0,
@@ -45,34 +46,38 @@ export default class PackG extends React.Component {
   }
 
   handleZoom = () => {
-    console.dir(document.getElementById(`${this.props.id}-visual-container`).firstElementChild.firstElementChild.getAttribute('transform'));
     const vizConRect = document.getElementById(`${this.props.id}-visual-container`).firstElementChild.firstElementChild.getBoundingClientRect();
 
     if (!this.state.scaled) {
+      const scale = vizConRect.width/2/this.state.r;
       const i = d3.interpolate(
         [
           this.state.x,
           this.state.y,
           this.state.r,
+          1
         ],
         [ vizConRect.left + (vizConRect.width /2),
           vizConRect.top + (vizConRect.height /2),
           Math.min(vizConRect.width, vizConRect.height) / 2,
+          scale
         ]
       );
       this.setState({
         previous: this.g.previousElementSibling,
         scaled: true,
+        //scale,
       });
-      document.getElementById(`${this.props.id}-visual-container`).appendChild(this.g);
+       document.getElementById(`${this.props.id}-visual-container`).appendChild(this.g);
 
       let t = 0;
       const timer = d3.interval(() => {
         t += 0.1;
         this.setState({
-          r: i(t)[2],
+          //r: i(t)[2],
           x: i(t)[0],
           y: i(t)[1],
+          scale: i(t)[3],
         });
         if (t > 0.9) timer.stop();
       }, 10);
@@ -82,26 +87,30 @@ export default class PackG extends React.Component {
           this.state.x,
           this.state.y,
           this.state.r,
+          this.state.scale,
         ],
         [
           this.props.d.x,
           this.props.d.y,
           this.props.d.r,
+          1,
         ]
       );
       let t = 0;
       const timer = d3.interval(() => {
         t += 0.1;
         this.setState({
-          r: i(t)[2],
+          //r: i(t)[2],
           x: i(t)[0],
           y: i(t)[1],
+          scale: i(t)[3]
         });
         if (t > 0.9) {
           timer.stop();
           this.state.previous.parentNode.insertBefore(this.g, this.state.previous.nextSibling);
           this.setState({
             scaled: false,
+            //scale: 1,
           });
         }
       }, 10);
@@ -126,7 +135,7 @@ export default class PackG extends React.Component {
           this.handleZoom();
         }}
         ref={(g) => this.g = g}
-        transform={`translate(${this.state.x || this.props.d.x}, ${this.state.y || this.props.d.y})`}
+        transform={`translate(${this.state.x || this.props.d.x}, ${this.state.y || this.props.d.y}) scale(${this.state.scale})`}
       >
         <circle
           className={d.parent ? d.children ? 'node' : 'node node--leaf' : 'node node--root' }

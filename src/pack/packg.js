@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as d3 from 'd3';
 import React from 'react';
 import Text from './text.js';
@@ -44,7 +45,8 @@ export default class PackG extends React.Component {
   }
 
   handleZoom = () => {
-    const vizConRect = document.getElementById(`${this.props.id}-visual-container`).getBoundingClientRect();
+    console.dir(document.getElementById(`${this.props.id}-visual-container`).firstElementChild.firstElementChild.getAttribute('transform'));
+    const vizConRect = document.getElementById(`${this.props.id}-visual-container`).firstElementChild.firstElementChild.getBoundingClientRect();
 
     if (!this.state.scaled) {
       const i = d3.interpolate(
@@ -121,7 +123,7 @@ export default class PackG extends React.Component {
         key={idx}
         onClick={(e) => {
           e.stopPropagation();
-          if (!d.children) this.handleZoom();
+          this.handleZoom();
         }}
         ref={(g) => this.g = g}
         transform={`translate(${this.state.x || this.props.d.x}, ${this.state.y || this.props.d.y})`}
@@ -144,6 +146,7 @@ export default class PackG extends React.Component {
             r={this.state.r || this.props.d.r}
           />
         }
+        {this.props.children || null}
       </g>
     );
   }

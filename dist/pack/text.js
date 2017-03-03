@@ -2,4 +2,5 @@
    * retrieves container dimensions from client and updates state which triggers redraw
    */},{key:'render',value:function render(){var _this2=this,_props=this.props,a=_props.d,b=_props.labels;return _react2.default.createElement('text',{className:'label',fontSize:this.state.fontSize,ref:function ref(c){return _this2.text=c},style:{display:'inline',fillOpacity:1},textAnchor:'middle'},a.data[b[0]])}}]),Text}(_react2.default.Component);Text.propTypes={d:_react2.default.PropTypes.object,labels:_react2.default.PropTypes.array};var _initialiseProps=function(){var _this3=this;this.setSize=function(){var a=0<arguments.length&&void 0!==arguments[0]?arguments[0]:_this3.props,// TODO: update this to get the formatted label
 b=a.d.data[a.labels[0]].length,c=// eslint-disable-line
-9<b?1:5<b?2.2:2.9,e=25*a.r*c/window.innerWidth;return!!(1<Math.abs(parseInt(_this3.state.fontSize)-e))&&_this3.setState({fontSize:e+'vw'})&&!0}};exports.default=Text;
+// TODO: convert this to automatically adjust based on width of container not length of chars
+13<b?0.7:9<b?1.3:7<b?1.8:5<b?2.2:2.9,e=25*a.r*c/window.innerWidth;return!!(1<Math.abs(parseInt(_this3.state.fontSize)-e))&&_this3.setState({fontSize:e+'vw'})&&!0}};exports.default=Text;

@@ -2,12 +2,44 @@
 import * as d3 from 'd3';
 import React from 'react';
 import Text from './text.js';
+import Chart from '../index.js';
+
+export const createTable = ({
+  metadata,
+  diameter,
+  id,
+  idx,
+  margins = {top: 2, right: 2, bottom: 2, left: 2}
+}) =>
+  <Chart
+    chartType='table'
+    containerHeight={diameter}
+    containerWidth={diameter}
+    data={metadata}
+    filterable={false}
+    id={`${id}-table-${idx}`}
+    margins={margins}
+    sortable={false}
+  />
+export const createText = ({
+  d,
+  idx,
+  labels,
+  r,
+}) =>
+  <Text
+    d={d}
+    idx={idx}
+    labels={labels}
+    r={r}
+  />
 
 export default class PackG extends React.Component {
   static get defaultProps () {
     return {
       colorScale: () => null,
       d: {},
+      foreignObject: false,
       id: '',
       idx: 0,
       labels: [],
@@ -17,6 +49,10 @@ export default class PackG extends React.Component {
   static propTypes = {
     colorScale: React.PropTypes.func,
     d: React.PropTypes.object,
+    foreignObject: React.PropTypes.oneOfType([
+      React.PropTypes.bool,
+      React.PropTypes.array,
+    ]),
     id: React.PropTypes.string,
     idx: React.PropTypes.number,
     labels: React.PropTypes.array,
@@ -31,7 +67,6 @@ export default class PackG extends React.Component {
       scaled: false,
       x: 0,
       y: 0,
-      zIndex: 0,
     };
   }
 
@@ -45,78 +80,63 @@ export default class PackG extends React.Component {
       });
   }
 
-  handleZoom = () => {
-    const vizConRect = document.getElementById(`${this.props.id}-visual-container`).firstElementChild.firstElementChild.getBoundingClientRect();
-
+  updateDimensions = (vizConRect, vizCon) => {
     if (!this.state.scaled) {
-      const scale = vizConRect.width/2/this.state.r;
+      this.setState({ previous: this.g.previousElementSibling });
+      vizCon.appendChild(this.g);
       const i = d3.interpolate(
         [
           this.state.x,
           this.state.y,
-          this.state.r,
-          1
+          1,
         ],
-        [ vizConRect.left + (vizConRect.width /2),
-          vizConRect.top + (vizConRect.height /2),
-          Math.min(vizConRect.width, vizConRect.height) / 2,
-          scale
+        [
+          0,
+          0,
+          vizConRect.width/2/this.state.r,
         ]
       );
-      this.setState({
-        previous: this.g.previousElementSibling,
-        scaled: true,
-        //scale,
-      });
-       document.getElementById(`${this.props.id}-visual-container`).appendChild(this.g);
 
       let t = 0;
       const timer = d3.interval(() => {
         t += 0.1;
         this.setState({
-          //r: i(t)[2],
           x: i(t)[0],
           y: i(t)[1],
-          scale: i(t)[3],
+          scale: i(t)[2],
         });
-        if (t > 0.9) timer.stop();
+        if (t > 0.9 || this.state.scaled) {
+          timer.stop();
+          this.setState({ scaled: true });
+        }
       }, 10);
     } else {
       const i = d3.interpolate(
-        [
-          this.state.x,
-          this.state.y,
-          this.state.r,
-          this.state.scale,
-        ],
-        [
-          this.props.d.x,
-          this.props.d.y,
-          this.props.d.r,
-          1,
-        ]
+        [ this.state.x, this.state.y, this.state.scale ],
+        [ this.props.d.x, this.props.d.y, 1 ]
       );
       let t = 0;
       const timer = d3.interval(() => {
         t += 0.1;
-        this.setState({
-          //r: i(t)[2],
-          x: i(t)[0],
-          y: i(t)[1],
-          scale: i(t)[3]
-        });
-        if (t > 0.9) {
+        this.setState({ x: i(t)[0], y: i(t)[1], scale: i(t)[2] });
+        if (t > 0.9 || !this.state.scaled) {
           timer.stop();
           this.state.previous.parentNode.insertBefore(this.g, this.state.previous.nextSibling);
-          this.setState({
-            scaled: false,
-            //scale: 1,
-          });
+          this.setState({ scaled: false })
         }
       }, 10);
     }
 
     return true;
+  }
+
+  handleZoom = () => {
+    const vizCon = document.getElementById(`${this.props.id}-visual-container`).firstElementChild.firstElementChild;
+
+    if (!Boolean(vizCon) || vizCon === this.g) return false;
+
+    return this.updateDimensions(vizCon.getBoundingClientRect(), vizCon);
+
   }
 
   render () {
@@ -148,12 +168,49 @@ export default class PackG extends React.Component {
           }}
         />
         { !d.children &&
-          <Text
-            d={d}
-            idx={idx}
-            labels={labels}
-            r={this.state.r || this.props.d.r}
-          />
+          createText({
+            d,
+            idx,
+            labels,
+            r: this.state.r || this.props.d.r,
+          })
+        }
+        {
+          this.props.foreignObject &&
+          <g transform={`translate(-${this.state.r/2}, 0)`}>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              xmlnsXlink='http://www.w3.org/1999/xlink'
+            >
+              <a xlinkHref={`${this.props.foreignObject[0].url}`} target='_blank'>
+                  <image
+                    xlinkHref={this.props.foreignObject[0].imageUrl}
+                    height={this.state.r/2}
+                    width={this.state.r/2} />
+                  <svg xmlns='http://www.w3.org/2000/svg'
+                    width={this.state.r/2}
+                    height={this.state.r/2}
+                    viewBox={`0 0 ${this.state.r/2} ${this.state.r/2}`}
+                  >
+
+                  </svg>
+              </a>
+            </svg>
+            <text
+              fontSize={10}
+              fill='black'
+              textAnchor='middle'
+              transform={`translate(${this.state.r+1}, 10)`}
+              fontFamily="'Lucida Grande', sans-serif"
+            >{this.props.foreignObject[0].tweet.substring(0,10)}</text>
+            <text
+              fontSize={10}
+              fill='black'
+              textAnchor='middle'
+              transform={`translate(${this.state.r+1}, 20)`}
+              fontFamily="'Lucida Grande', sans-serif"
+            >{this.props.foreignObject[0].tweet.substring(10,18)}</text>
+          </g>
         }
         {this.props.children || null}
       </g>

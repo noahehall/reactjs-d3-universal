@@ -9,6 +9,8 @@ export default function Pack ({
   chartWidth,
   colorScale,
   data,
+  foreignObject,
+  foreignObjectType,
   id,
   labels,
   margins,
@@ -20,6 +22,8 @@ export default function Pack ({
         chartWidth,
         colorScale,
         id,
+        foreignObject,
+        foreignObjectType,
         labels,
         nodes: pack({ chartWidth, chartHeight })(hierarchy({ data })).descendants(),
       })}

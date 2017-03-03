@@ -11,6 +11,7 @@ export const getDimensionOffsets = (node, x = 0, y = 0) => {
     : [x,y, node];
 }
 export const createNest = (parent, chartHeight, chartWidth, colorScale, idx, labels, id, rootx, rooty) => {
+  let foreignObject = false;
 
   switch (parent.depth) {
     case 0: break;
@@ -25,6 +26,11 @@ export const createNest = (parent, chartHeight, chartWidth, colorScale, idx, lab
       parent.y -= (rooty + y);
     }
   }
+  try {
+    foreignObject = parent.data.children[0].metadata;
+  } catch (err) {
+
+  }
   return <PackG
     chartHeight={chartHeight}
     chartWidth={chartWidth}
@@ -34,6 +40,7 @@ export const createNest = (parent, chartHeight, chartWidth, colorScale, idx, lab
     idx={idx}
     key={idx}
     labels={labels}
+    foreignObject={foreignObject}
   > {parent.children && parent.children.map((child, idx2) => createNest(child, chartHeight, chartWidth, colorScale, idx2, labels, id, rootx, rooty))}
   </PackG>;
 
@@ -54,6 +61,8 @@ export const nodesArray = ({
   chartHeight = 200,
   chartWidth = 200,
   colorScale = () => null,
+  foreignObject = false,
+  foreignObjectType = '',
   id = '',
   labels = [],
   nodes = [],
@@ -63,6 +72,7 @@ export const nodesArray = ({
   return createNest(nodes[0], chartHeight, chartWidth, colorScale, 1, labels, id, nodes[0].children[0].parent.x, nodes[0].children[0].parent.y)
 
 /* if you want the normal d3 nesting scheme (no nesting)
+  // TODO: add 'nested' boolean property so users can switch between the two
   nodes.forEach((d, idx) =>
     nodeArray.push(
       <PackG

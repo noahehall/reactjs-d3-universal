@@ -32,14 +32,16 @@ export default class Text extends React.Component {
       // TODO: update this to get the formatted label
       length = props.d.data[props.labels[0]].length,
       factor = // eslint-disable-line
-        length > 9 ? 1 :
+        // TODO: convert this to automatically adjust based on width of container not length of chars
+        length > 13 ? 0.7 :
+        length > 9 ? 1.3 :
+        length > 7 ? 1.8 :
         length > 5 ? 2.2 : 2.9,
       newSize = 25 * props.r * factor / window.innerWidth;
 
-    if (Math.abs(parseInt(this.state.fontSize) - newSize) > 1)
-      return this.setState({ fontSize: `${newSize}vw`}) && true;
-
-    return false;
+    return (Math.abs(parseInt(this.state.fontSize) - newSize) > 1)
+      ? (this.setState({ fontSize: `${newSize}vw`}) && true)
+      : false;
   }
 
   render () {

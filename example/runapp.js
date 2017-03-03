@@ -17,7 +17,7 @@
 
 },{"d3":39}],6:[function(require,module,exports){
 (function (__filename){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _interopRequireWildcard(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(t[r]=e[r]);return t.default=e,t}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=("undefined"==typeof t?"undefined":_typeof(t))&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+("undefined"==typeof t?"undefined":_typeof(t)));e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var r,a=0;a<t.length;a++)r=t[a],r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}return function(t,r,a){return r&&e(t.prototype,r),a&&e(t,a),t}}(),_bars=require("./barchart/bars.js"),_lines=require("./linechart/lines.js"),_slices=require("./piechart/slices.js"),_dots=require("./scatterplot/dots.js"),_svg=require("./svg"),_axes=require("./lib/axes.js"),axes=_interopRequireWildcard(_axes),_data=require("./lib/data.js"),dataFunctions=_interopRequireWildcard(_data),_scales=require("./lib/scales.js"),scales=_interopRequireWildcard(_scales),_react=require("react"),_react2=_interopRequireDefault(_react),_table=require("./table"),_index=require("./forcelayout/index.js"),_index2=_interopRequireDefault(_index),_index3=require("./pack/index.js"),_index4=_interopRequireDefault(_index3),Chart=function(e){function t(e){_classCallCheck(this,t);var r=_possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return r.state={containerHeight:200,containerWidth:200},_initialiseProps.call(r),r.state={containerHeight:200,containerWidth:200},r}return _inherits(t,e),_createClass(t,null,[{key:"defaultProps",get:function(){return{chartDataGroupBy:"",chartType:"",colorScaleScheme:"",colorScaleType:"",data:[],datumLabels:[],filterable:!1,id:"reactjs-d3-v4-universal",margins:{},preserveAspectRatio:"xMinYMin meet",sortable:!1,xAxis:!1,xAxisLabel:"",xScale:!1,xScaleTime:!1,xScaleTimeFormat:"",xValue:"",yAxis:!1,yAxisLabel:"",yScale:!1,yValue:""}}}]),_createClass(t,[{key:"componentDidMount",value:function(){"table"===this.props.chartType&&(this.props.filterable&&appFuncs.filterTable.setFilterGrid(this.props.id),this.props.sortable&&appFuncs.sortTable.init()),this.setSize(),"undefined"!=typeof window&&window.addEventListener("resize",this.setSize,!1),this.renderChart()}},{key:"shouldComponentUpdate",value:function(e,t){return!appFuncs._.isEqual(t,this.state)||!appFuncs._.isEqual(e,this.props)}},{key:"componentWillUnmount",value:function(){"undefined"!=typeof window&&window.removeEventListener("resize",this.setSize)}},{key:"render",value:function(){return appFuncs._.isEmpty(this.props.data)?(appFuncs.logError({data:this.props.data,loc:__filename,msg:"You need data to create a chart, returning null"}),null):this.renderChart()}}]),t}(_react2.default.Component);Chart.propTypes={chartDataGroupBy:_react2.default.PropTypes.string,chartType:_react2.default.PropTypes.string,colorScaleScheme:_react2.default.PropTypes.string,colorScaleType:_react2.default.PropTypes.string,data:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.array,_react2.default.PropTypes.object]),datumLabels:_react2.default.PropTypes.array,filterable:_react2.default.PropTypes.bool,id:_react2.default.PropTypes.string,margins:_react2.default.PropTypes.object,preserveAspectRatio:_react2.default.PropTypes.string,sortable:_react2.default.PropTypes.bool,xAxis:_react2.default.PropTypes.bool,xAxisLabel:_react2.default.PropTypes.string,xScale:_react2.default.PropTypes.bool,xScaleTime:_react2.default.PropTypes.bool,xScaleTimeFormat:_react2.default.PropTypes.string,xValue:_react2.default.PropTypes.string,yAxis:_react2.default.PropTypes.bool,yAxisLabel:_react2.default.PropTypes.string,yScale:_react2.default.PropTypes.bool,yValue:_react2.default.PropTypes.string};var _initialiseProps=function(){var e=this;this.setSize=function(){var t=void 0,r=void 0;try{t=e.container.offsetHeight}catch(r){t=e.state.containerHeight}try{r=e.container.offsetWidth}catch(t){r=e.state.containerWidth}return e.setState({containerHeight:t,containerWidth:r}),!0},this.getVisualContainerTransform=function(e){var t=e.chartHeight,r=e.chartType,a=e.chartWidth;switch(r.toLowerCase()){case"pie":return"translate("+[a/2,t/2]+")";default:return"translate(0, 0)"}},this.renderChart=function(){var t=0<arguments.length&&void 0!==arguments[0]?arguments[0]:e.state.containerWidth,r=1<arguments.length&&void 0!==arguments[1]?arguments[1]:e.state.containerHeight,a=e.props.chartType,o=void 0;switch(a.toLowerCase()){case"pie":o=_slices.PieSlices;break;case"bar":o=_bars.Bars;break;case"scatterplot":o=_dots.ScatterPlotDots;break;case"line":o=_lines.Lines;break;case"table":o=_table.Table;break;case"forcedirectedgraph":o=_index2.default;break;case"pack":o=_index4.default;break;default:return appFuncs.logError({data:[a,e.props.data],loc:__filename,msg:"did not find chart type "+a+", returning null"}),null}var s=r-(e.props.margins.top+e.props.margins.bottom),i=t-(e.props.margins.left+e.props.margins.right),p=e.props.colorScaleScheme?scales.colorScale({chartDataGroupBy:e.props.chartDataGroupBy,colorScaleScheme:e.props.colorScaleScheme,colorScaleType:e.props.colorScaleType}):null,l=dataFunctions.format({chartDataGroupBy:e.props.chartDataGroupBy,chartType:e.props.chartType,data:e.props.data,xScaleTime:e.props.xScaleTime,xScaleTimeFormat:e.props.xScaleTimeFormat,xValue:e.props.xValue}),n="undefined"!=typeof document,c=e.props.xAxis?axes.getXAxisLabel({chartDataGroupBy:e.props.chartDataGroupBy,transform:"rotate(0)",x:t/2-e.props.margins.left,xAxisLabel:e.props.xAxisLabel||e.props.xValue,y:r}):null,u=e.props.xScale?scales.getXScale({chartDataGroupBy:e.props.chartDataGroupBy,chartHeight:s,chartType:e.props.chartType,chartWidth:i,data:l,labels:e.props.datumLabels,margins:e.props.margins,svgWidth:t,xScaleTime:e.props.xScaleTime,xScaleTimeFormat:e.props.xScaleTimeFormat,xValue:e.props.xValue}):null,d=e.props.yAxis?axes.getYAxisLabel({chartDataGroupBy:e.props.chartDataGroupBy,transform:"rotate(-90)",x:-r/2-e.props.margins.top,y:"1em",yAxisLabel:e.props.yAxisLabel||e.props.yValue}):null,f=e.props.yScale?scales.getYScale({chartDataGroupBy:e.props.chartDataGroupBy,chartHeight:s,chartType:e.props.chartType,chartWidth:i,data:l,margins:e.props.margins,svgHeight:r,yValue:e.props.yValue}):null;e.props.yAxis&&f&&n&&axes.getYAxis({id:e.props.id,thisYScale:f}),e.props.xAxis&&u&&n&&axes.getXAxis({id:e.props.id,thisXScale:u});var h=o({chartDataGroupBy:e.props.chartDataGroupBy,chartHeight:s,chartType:e.props.chartType,chartWidth:i,colorScale:p,colorScaleScheme:e.props.colorScaleScheme,colorScaleType:e.props.colorScaleType,data:l,filterable:e.props.filterable,id:e.props.id,labels:e.props.datumLabels,margins:e.props.margins,sortable:e.props.sortable,xScale:u,xScaleTime:e.props.xScaleTime,xScaleTimeFormat:e.props.xScaleTimeFormat,xValue:e.props.xValue,yScale:f,yValue:e.props.yValue}),y="table"===e.props.chartType?h:_react2.default.createElement(_svg.SVG,{id:e.props.id,preserveAspectRatio:e.props.preserveAspectRatio,svgHeight:r,svgWidth:t,xmlns:"http://www.w3.org/2000/svg"},_react2.default.createElement("g",{className:"chart-svg-g",height:s,transform:"translate("+e.props.margins.left+", "+e.props.margins.top+")",width:i},_react2.default.createElement("g",{className:e.props.chartType.toLowerCase()+"-visual-container",id:e.props.id+"-visual-container",transform:e.getVisualContainerTransform({chartHeight:s,chartType:e.props.chartType,chartWidth:i})},h)),e.props.xAxis&&_react2.default.createElement("g",{className:"x axis",transform:"translate("+e.props.margins.left+", "+(s+e.props.margins.top)+")"}),c,e.props.yAxis&&_react2.default.createElement("g",{className:"y axis",transform:"translate("+e.props.margins.left+", "+e.props.margins.top+")"}),d,_react2.default.createElement("section",{id:e.props.id+"-tooltip",style:{backgroundColor:"black",border:"2px red dashed",borderRadius:"4px",opacity:0,padding:"10px",position:"absolute"}}));return _react2.default.createElement("div",{className:"chart-container",ref:function(t){return e.container=t},style:{display:"block",overflow:"scroll",position:"relative",verticalAlign:"top",width:"100%"}},y)}};exports.default=Chart;
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _interopRequireWildcard(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(t[r]=e[r]);return t.default=e,t}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=("undefined"==typeof t?"undefined":_typeof(t))&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+("undefined"==typeof t?"undefined":_typeof(t)));e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var r,a=0;a<t.length;a++)r=t[a],r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}return function(t,r,a){return r&&e(t.prototype,r),a&&e(t,a),t}}(),_bars=require("./barchart/bars.js"),_lines=require("./linechart/lines.js"),_slices=require("./piechart/slices.js"),_dots=require("./scatterplot/dots.js"),_svg=require("./svg"),_axes=require("./lib/axes.js"),axes=_interopRequireWildcard(_axes),_data=require("./lib/data.js"),dataFunctions=_interopRequireWildcard(_data),_scales=require("./lib/scales.js"),scales=_interopRequireWildcard(_scales),_react=require("react"),_react2=_interopRequireDefault(_react),_table=require("./table"),_index=require("./forcelayout/index.js"),_index2=_interopRequireDefault(_index),_index3=require("./pack/index.js"),_index4=_interopRequireDefault(_index3),Chart=function(e){function t(e){_classCallCheck(this,t);var r=_possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return r.state={containerHeight:200,containerWidth:200},_initialiseProps.call(r),r.state={containerHeight:200,containerWidth:200},r}return _inherits(t,e),_createClass(t,null,[{key:"defaultProps",get:function(){return{chartDataGroupBy:"",chartType:"",colorScaleScheme:"",colorScaleType:"",data:[],datumLabels:[],filterable:!1,foreignObject:!1,foreignObjectType:"table",id:"reactjs-d3-v4-universal",margins:{},preserveAspectRatio:"xMinYMin meet",sortable:!1,xAxis:!1,xAxisLabel:"",xScale:!1,xScaleTime:!1,xScaleTimeFormat:"",xValue:"",yAxis:!1,yAxisLabel:"",yScale:!1,yValue:""}}}]),_createClass(t,[{key:"componentDidMount",value:function(){"table"===this.props.chartType&&(this.props.filterable&&appFuncs.filterTable.setFilterGrid(this.props.id),this.props.sortable&&appFuncs.sortTable.init()),this.setSize(),"undefined"!=typeof window&&(window.addEventListener("resize",this.setSize,!1),window.addEventListener("orientationchange",this.setSize,!1)),this.renderChart()}},{key:"shouldComponentUpdate",value:function(e,t){return!appFuncs._.isEqual(t,this.state)||!appFuncs._.isEqual(e,this.props)}},{key:"componentWillUnmount",value:function(){"undefined"!=typeof window&&(window.removeEventListener("resize",this.setSize),window.removeEventListener("orientationchange",this.setSize,!1))}},{key:"render",value:function(){return appFuncs._.isEmpty(this.props.data)?(appFuncs.logError({data:this.props.data,loc:__filename,msg:"You need data to create a chart, returning null"}),null):this.renderChart()}}]),t}(_react2.default.Component);Chart.propTypes={chartDataGroupBy:_react2.default.PropTypes.string,chartType:_react2.default.PropTypes.string,colorScaleScheme:_react2.default.PropTypes.string,colorScaleType:_react2.default.PropTypes.string,data:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.array,_react2.default.PropTypes.object]),datumLabels:_react2.default.PropTypes.array,filterable:_react2.default.PropTypes.bool,foreignObject:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool,_react2.default.PropTypes.array]),foreignObjectType:_react2.default.PropTypes.string,id:_react2.default.PropTypes.string,margins:_react2.default.PropTypes.object,preserveAspectRatio:_react2.default.PropTypes.string,sortable:_react2.default.PropTypes.bool,xAxis:_react2.default.PropTypes.bool,xAxisLabel:_react2.default.PropTypes.string,xScale:_react2.default.PropTypes.bool,xScaleTime:_react2.default.PropTypes.bool,xScaleTimeFormat:_react2.default.PropTypes.string,xValue:_react2.default.PropTypes.string,yAxis:_react2.default.PropTypes.bool,yAxisLabel:_react2.default.PropTypes.string,yScale:_react2.default.PropTypes.bool,yValue:_react2.default.PropTypes.string};var _initialiseProps=function(){var e=this;this.setSize=function(){var t=void 0,r=void 0;try{t=Math.min(e.container.offsetHeight,window.screen.height)}catch(r){t=e.state.containerHeight}try{r=Math.min(e.container.offsetWidth,window.screen.width)}catch(t){r=e.state.containerWidth}return e.setState({containerHeight:t,containerWidth:r}),!0},this.getVisualContainerTransform=function(e){var t=e.chartHeight,r=e.chartType,a=e.chartWidth;switch(r.toLowerCase()){case"pie":return"translate("+[a/2,t/2]+")";default:return"translate(0, 0)"}},this.renderChart=function(){var t=0<arguments.length&&void 0!==arguments[0]?arguments[0]:e.state.containerWidth,r=1<arguments.length&&void 0!==arguments[1]?arguments[1]:e.state.containerHeight,a=e.props.chartType,o=void 0;switch(a.toLowerCase()){case"pie":o=_slices.PieSlices;break;case"bar":o=_bars.Bars;break;case"scatterplot":o=_dots.ScatterPlotDots;break;case"line":o=_lines.Lines;break;case"table":o=_table.Table;break;case"forcedirectedgraph":o=_index2.default;break;case"pack":o=_index4.default;break;default:return appFuncs.logError({data:[a,e.props.data],loc:__filename,msg:"did not find chart type "+a+", returning null"}),null}var s=r-(e.props.margins.top+e.props.margins.bottom),i=t-(e.props.margins.left+e.props.margins.right),p=e.props.colorScaleScheme?scales.colorScale({chartDataGroupBy:e.props.chartDataGroupBy,colorScaleScheme:e.props.colorScaleScheme,colorScaleType:e.props.colorScaleType}):null,n=dataFunctions.format({chartDataGroupBy:e.props.chartDataGroupBy,chartType:e.props.chartType,data:e.props.data,xScaleTime:e.props.xScaleTime,xScaleTimeFormat:e.props.xScaleTimeFormat,xValue:e.props.xValue}),l="undefined"!=typeof document,c=e.props.xAxis?axes.getXAxisLabel({chartDataGroupBy:e.props.chartDataGroupBy,transform:"rotate(0)",x:t/2-e.props.margins.left,xAxisLabel:e.props.xAxisLabel||e.props.xValue,y:r}):null,u=e.props.xScale?scales.getXScale({chartDataGroupBy:e.props.chartDataGroupBy,chartHeight:s,chartType:e.props.chartType,chartWidth:i,data:n,labels:e.props.datumLabels,margins:e.props.margins,svgWidth:t,xScaleTime:e.props.xScaleTime,xScaleTimeFormat:e.props.xScaleTimeFormat,xValue:e.props.xValue}):null,d=e.props.yAxis?axes.getYAxisLabel({chartDataGroupBy:e.props.chartDataGroupBy,transform:"rotate(-90)",x:-r/2-e.props.margins.top,y:"1em",yAxisLabel:e.props.yAxisLabel||e.props.yValue}):null,f=e.props.yScale?scales.getYScale({chartDataGroupBy:e.props.chartDataGroupBy,chartHeight:s,chartType:e.props.chartType,chartWidth:i,data:n,margins:e.props.margins,svgHeight:r,yValue:e.props.yValue}):null;l&&(e.props.yAxis&&f&&axes.getYAxis({id:e.props.id,thisYScale:f}),e.props.xAxis&&u&&axes.getXAxis({id:e.props.id,thisXScale:u}));var y=o({chartDataGroupBy:e.props.chartDataGroupBy,chartHeight:s,chartType:e.props.chartType,chartWidth:i,colorScale:p,colorScaleScheme:e.props.colorScaleScheme,colorScaleType:e.props.colorScaleType,data:n,filterable:e.props.filterable,foreignObject:e.props.foreignObject,foreignObjectType:e.props.foreignObjectType,id:e.props.id,labels:e.props.datumLabels,margins:e.props.margins,sortable:e.props.sortable,xScale:u,xScaleTime:e.props.xScaleTime,xScaleTimeFormat:e.props.xScaleTimeFormat,xValue:e.props.xValue,yScale:f,yValue:e.props.yValue}),h="table"===e.props.chartType?y:_react2.default.createElement(_svg.SVG,{id:e.props.id,preserveAspectRatio:e.props.preserveAspectRatio,svgHeight:r,svgWidth:t,xmlns:"http://www.w3.org/2000/svg"},_react2.default.createElement("g",{className:"chart-svg-g",height:s,transform:"translate("+e.props.margins.left+", "+e.props.margins.top+")",width:i},_react2.default.createElement("g",{className:e.props.chartType.toLowerCase()+"-visual-container",id:e.props.id+"-visual-container",transform:e.getVisualContainerTransform({chartHeight:s,chartType:e.props.chartType,chartWidth:i})},y)),e.props.xAxis&&_react2.default.createElement("g",{className:"x axis",transform:"translate("+e.props.margins.left+", "+(s+e.props.margins.top)+")"}),c,e.props.yAxis&&_react2.default.createElement("g",{className:"y axis",transform:"translate("+e.props.margins.left+", "+e.props.margins.top+")"}),d,_react2.default.createElement("section",{id:e.props.id+"-tooltip",style:{backgroundColor:"black",border:"2px red dashed",borderRadius:"4px",opacity:0,padding:"10px",position:"absolute"}}));return _react2.default.createElement("div",{className:"chart-container",ref:function(t){return e.container=t},style:{display:"block",overflow:"scroll",position:"relative",verticalAlign:"top",width:"100%"}},h)}};exports.default=Chart;
 
 }).call(this,"/dist/index.js")
 },{"./barchart/bars.js":1,"./forcelayout/index.js":2,"./lib/axes.js":8,"./lib/data.js":9,"./lib/scales.js":12,"./linechart/lines.js":14,"./pack/index.js":16,"./piechart/slices.js":21,"./scatterplot/dots.js":22,"./svg":24,"./table":28,"react":230}],7:[function(require,module,exports){
@@ -61,22 +61,22 @@
 
 }).call(this,"/dist/linechart/lines.js")
 },{"../lib/lines.js":11,"../svg/path.js":25,"react":230}],15:[function(require,module,exports){
-"use strict";function _interopRequireWildcard(r){if(r&&r.__esModule)return r;var e={};if(null!=r)for(var t in r)Object.prototype.hasOwnProperty.call(r,t)&&(e[t]=r[t]);return e.default=r,e}Object.defineProperty(exports,"__esModule",{value:!0}),exports.hierarchy=void 0;var _d=require("d3"),d3=_interopRequireWildcard(_d),hierarchy=exports.hierarchy=function(r){var e=r.data,t=void 0===e?{}:e;return d3.hierarchy(t).sum(function(r){return+r.size}).sort(function(r,e){return+e.value-+r.value})};
+"use strict";function _interopRequireWildcard(r){if(r&&r.__esModule)return r;var e={};if(null!=r)for(var t in r)Object.prototype.hasOwnProperty.call(r,t)&&(e[t]=r[t]);return e.default=r,e}Object.defineProperty(exports,"__esModule",{value:!0}),exports.hierarchy=void 0;var _d=require("d3"),d3=_interopRequireWildcard(_d),hierarchy=exports.hierarchy=function(r){var e=r.data,t=void 0===e?{}:e;return d3.hierarchy(t,function(r){return r.children&&"metadata"!==r.children[0].type?r.children:null}).sum(function(r){return+r.size}).sort(function(r,e){return+e.value-+r.value})};
 
 },{"d3":39}],16:[function(require,module,exports){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function Pack(e){var r=e.chartHeight,a=e.chartWidth,t=e.colorScale,c=e.data,i=e.id,d=e.labels;e.margins;return _react2.default.createElement("g",null,(0,_nodesarray.nodesArray)({chartHeight:r,chartWidth:a,colorScale:t,id:i,labels:d,nodes:(0,_pack.pack)({chartWidth:a,chartHeight:r})((0,_hierarchy.hierarchy)({data:c})).descendants()}))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=Pack;var _hierarchy=require("./hierarchy.js"),_nodesarray=require("./nodesarray.js"),_pack=require("./pack.js"),_react=require("react"),_react2=_interopRequireDefault(_react);
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function Pack(e){var r=e.chartHeight,a=e.chartWidth,t=e.colorScale,c=e.data,i=e.foreignObject,n=e.foreignObjectType,o=e.id,d=e.labels;e.margins;return _react2.default.createElement("g",null,(0,_nodesarray.nodesArray)({chartHeight:r,chartWidth:a,colorScale:t,id:o,foreignObject:i,foreignObjectType:n,labels:d,nodes:(0,_pack.pack)({chartWidth:a,chartHeight:r})((0,_hierarchy.hierarchy)({data:c})).descendants()}))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=Pack;var _hierarchy=require("./hierarchy.js"),_nodesarray=require("./nodesarray.js"),_pack=require("./pack.js"),_react=require("react"),_react2=_interopRequireDefault(_react);
 
 },{"./hierarchy.js":15,"./nodesarray.js":17,"./pack.js":18,"react":230}],17:[function(require,module,exports){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.nodesArray=exports.createNest=exports.getDimensionOffsets=void 0;var _slicedToArray=function(){function e(e,r){var t=[],n=!0,a=!1,i=void 0;try{for(var o,c=e[Symbol.iterator]();!((n=(o=c.next()).done)||(t.push(o.value),r&&t.length===r));n=!0);}catch(e){a=!0,i=e}finally{try{!n&&c.return&&c.return()}finally{if(a)throw i}}return t}return function(r,t){if(Array.isArray(r))return r;if(Symbol.iterator in Object(r))return e(r,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_react=require("react"),_react2=_interopRequireDefault(_react),_packg=require("./packg.js"),_packg2=_interopRequireDefault(_packg),getDimensionOffsets=exports.getDimensionOffsets=function(e){var r=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,t=2<arguments.length&&void 0!==arguments[2]?arguments[2]:0;return r+=e.x,t+=e.y,e.parent.parent?getDimensionOffsets(e.parent,r,t):[r,t,e]},createNest=exports.createNest=function(e,r,t,n,a,i,o,c,s){switch(e.depth){case 0:break;case 1:e.x-=c,e.y-=s;break;default:var u=getDimensionOffsets(e.parent),l=_slicedToArray(u,2),d=l[0],f=l[1];e.x-=c+d,e.y-=s+f}return _react2.default.createElement(_packg2.default,{chartHeight:r,chartWidth:t,colorScale:n,d:e,id:o,idx:a,key:a,labels:i}," ",e.children&&e.children.map(function(e,a){return createNest(e,r,t,n,a,i,o,c,s)}))},nodesArray=exports.nodesArray=function(e){var r=e.chartHeight,t=void 0===r?200:r,n=e.chartWidth,a=void 0===n?200:n,i=e.colorScale,o=void 0===i?function(){return null}:i,c=e.id,s=void 0===c?"":c,u=e.labels,l=void 0===u?[]:u,d=e.nodes,f=void 0===d?[]:d;return 1>f.length?null:createNest(f[0],t,a,o,1,l,s,f[0].children[0].parent.x,f[0].children[0].parent.y)};
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.nodesArray=exports.createNest=exports.getDimensionOffsets=void 0;var _slicedToArray=function(){function e(e,t){var r=[],n=!0,a=!1,i=void 0;try{for(var o,c=e[Symbol.iterator]();!((n=(o=c.next()).done)||(r.push(o.value),t&&r.length===t));n=!0);}catch(e){a=!0,i=e}finally{try{!n&&c.return&&c.return()}finally{if(a)throw i}}return r}return function(t,r){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,r);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_react=require("react"),_react2=_interopRequireDefault(_react),_packg=require("./packg.js"),_packg2=_interopRequireDefault(_packg),getDimensionOffsets=exports.getDimensionOffsets=function(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:0;return t+=e.x,r+=e.y,e.parent.parent?getDimensionOffsets(e.parent,t,r):[t,r,e]},createNest=exports.createNest=function(e,t,r,n,a,i,o,c,s){var l=!1;switch(e.depth){case 0:break;case 1:e.x-=c,e.y-=s;break;default:var u=getDimensionOffsets(e.parent),d=_slicedToArray(u,2),f=d[0],p=d[1];e.x-=c+f,e.y-=s+p}try{l=e.data.children[0].metadata}catch(e){}return _react2.default.createElement(_packg2.default,{chartHeight:t,chartWidth:r,colorScale:n,d:e,id:o,idx:a,key:a,labels:i,foreignObject:l}," ",e.children&&e.children.map(function(e,a){return createNest(e,t,r,n,a,i,o,c,s)}))},nodesArray=exports.nodesArray=function(e){var t=e.chartHeight,r=void 0===t?200:t,n=e.chartWidth,a=void 0===n?200:n,i=e.colorScale,o=void 0===i?function(){return null}:i,c=(e.foreignObject,e.foreignObjectType,e.id),s=void 0===c?"":c,l=e.labels,u=void 0===l?[]:l,d=e.nodes,f=void 0===d?[]:d;return 1>f.length?null:createNest(f[0],r,a,o,1,u,s,f[0].children[0].parent.x,f[0].children[0].parent.y)};
 
 },{"./packg.js":19,"react":230}],18:[function(require,module,exports){
 "use strict";function _interopRequireWildcard(e){if(e&&e.__esModule)return e;var r={};if(null!=e)for(var t in e)Object.prototype.hasOwnProperty.call(e,t)&&(r[t]=e[t]);return r.default=e,r}Object.defineProperty(exports,"__esModule",{value:!0}),exports.pack=void 0;var _d=require("d3"),d3=_interopRequireWildcard(_d),pack=exports.pack=function(e){var r=e.chartWidth,t=void 0===r?200:r,i=e.chartHeight,d=void 0===i?200:i;return d3.pack().size([t,d]).padding(2)};
 
 },{"d3":39}],19:[function(require,module,exports){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _interopRequireWildcard(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(t[r]=e[r]);return t.default=e,t}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=("undefined"==typeof t?"undefined":_typeof(t))&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+("undefined"==typeof t?"undefined":_typeof(t)));e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var r,n=0;n<t.length;n++)r=t[n],r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),_d=require("d3"),d3=_interopRequireWildcard(_d),_react=require("react"),_react2=_interopRequireDefault(_react),_text=require("./text.js"),_text2=_interopRequireDefault(_text),PackG=function(e){function t(e){_classCallCheck(this,t);var r=_possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return r.state={previous:{},r:0,scale:1,scaled:!1,x:0,y:0,zIndex:0},_initialiseProps.call(r),r.state={previous:{},r:0,scale:1,scaled:!1,x:0,y:0,zIndex:0},r}return _inherits(t,e),_createClass(t,null,[{key:"defaultProps",get:function(){return{colorScale:function(){return null},d:{},id:"",idx:0,labels:[]}}}]),_createClass(t,[{key:"componentWillReceiveProps",value:function(e){(e.d.x!==this.props.d.x||e.d.y!==this.props.d.y)&&this.setState({r:e.d.r,x:e.d.x,y:e.d.y})}},{key:"render",value:function(){var e=this,t=this.props,r=t.colorScale,n=t.d,o=t.idx,i=t.labels;return _react2.default.createElement("g",{key:o,onClick:function(t){t.stopPropagation(),e.handleZoom()},ref:function(t){return e.g=t},transform:"translate("+(this.state.x||this.props.d.x)+", "+(this.state.y||this.props.d.y)+") scale("+this.state.scale+")"},_react2.default.createElement("circle",{className:n.parent?n.children?"node":"node node--leaf":"node node--root",r:this.state.r||this.props.d.r,ref:function(t){return e.circle=t},style:{fill:n.children?r(n.depth):"white",stroke:"#fff",strokeWidth:"1.5px"}}),!n.children&&_react2.default.createElement(_text2.default,{d:n,idx:o,labels:i,r:this.state.r||this.props.d.r}),this.props.children||null)}}]),t}(_react2.default.Component);PackG.propTypes={colorScale:_react2.default.PropTypes.func,d:_react2.default.PropTypes.object,id:_react2.default.PropTypes.string,idx:_react2.default.PropTypes.number,labels:_react2.default.PropTypes.array};var _initialiseProps=function(){var e=this;this.handleZoom=function(){var t=document.getElementById(e.props.id+"-visual-container").firstElementChild.firstElementChild.getBoundingClientRect();if(e.state.scaled)var r=d3.interpolate([e.state.x,e.state.y,e.state.r,e.state.scale],[e.props.d.x,e.props.d.y,e.props.d.r,1]),n=0,o=d3.interval(function(){n+=.1,e.setState({x:r(n)[0],y:r(n)[1],scale:r(n)[3]}),.9<n&&(o.stop(),e.state.previous.parentNode.insertBefore(e.g,e.state.previous.nextSibling),e.setState({scaled:!1}))},10);else{var i=t.width/2/e.state.r,a=d3.interpolate([e.state.x,e.state.y,e.state.r,1],[t.left+t.width/2,t.top+t.height/2,Math.min(t.width,t.height)/2,i]);e.setState({previous:e.g.previousElementSibling,scaled:!0}),document.getElementById(e.props.id+"-visual-container").appendChild(e.g);var s=0,l=d3.interval(function(){s+=.1,e.setState({x:a(s)[0],y:a(s)[1],scale:a(s)[3]}),.9<s&&l.stop()},10)}return!0}};exports.default=PackG;
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _interopRequireWildcard(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&(t[r]=e[r]);return t.default=e,t}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=("undefined"==typeof t?"undefined":_typeof(t))&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+("undefined"==typeof t?"undefined":_typeof(t)));e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};Object.defineProperty(exports,"__esModule",{value:!0}),exports.createText=exports.createTable=void 0;var _createClass=function(){function e(e,t){for(var r,a=0;a<t.length;a++)r=t[a],r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}return function(t,r,a){return r&&e(t.prototype,r),a&&e(t,a),t}}(),_d=require("d3"),d3=_interopRequireWildcard(_d),_react=require("react"),_react2=_interopRequireDefault(_react),_text=require("./text.js"),_text2=_interopRequireDefault(_text),_index=require("../index.js"),_index2=_interopRequireDefault(_index),createTable=exports.createTable=function(e){var t=e.metadata,r=e.diameter,a=e.id,n=e.idx,i=e.margins,o=void 0===i?{top:2,right:2,bottom:2,left:2}:i;return _react2.default.createElement(_index2.default,{chartType:"table",containerHeight:r,containerWidth:r,data:t,filterable:!1,id:a+"-table-"+n,margins:o,sortable:!1})},createText=exports.createText=function(e){var t=e.d,r=e.idx,a=e.labels,n=e.r;return _react2.default.createElement(_text2.default,{d:t,idx:r,labels:a,r:n})},PackG=function(e){function t(e){_classCallCheck(this,t);var r=_possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return r.state={previous:{},r:0,scale:1,scaled:!1,x:0,y:0},_initialiseProps.call(r),r.state={previous:{},r:0,scale:1,scaled:!1,x:0,y:0},r}return _inherits(t,e),_createClass(t,null,[{key:"defaultProps",get:function(){return{colorScale:function(){return null},d:{},foreignObject:!1,id:"",idx:0,labels:[]}}}]),_createClass(t,[{key:"componentWillReceiveProps",value:function(e){(e.d.x!==this.props.d.x||e.d.y!==this.props.d.y)&&this.setState({r:e.d.r,x:e.d.x,y:e.d.y})}},{key:"render",value:function(){var e=this,t=this.props,r=t.colorScale,a=t.d,n=t.idx,i=t.labels;return _react2.default.createElement("g",{key:n,onClick:function(t){t.stopPropagation(),e.handleZoom()},ref:function(t){return e.g=t},transform:"translate("+(this.state.x||this.props.d.x)+", "+(this.state.y||this.props.d.y)+") scale("+this.state.scale+")"},_react2.default.createElement("circle",{className:a.parent?a.children?"node":"node node--leaf":"node node--root",r:this.state.r||this.props.d.r,ref:function(t){return e.circle=t},style:{fill:a.children?r(a.depth):"white",stroke:"#fff",strokeWidth:"1.5px"}}),!a.children&&createText({d:a,idx:n,labels:i,r:this.state.r||this.props.d.r}),this.props.foreignObject&&_react2.default.createElement("g",{transform:"translate(-"+this.state.r/2+", 0)"},_react2.default.createElement("svg",{xmlns:"http://www.w3.org/2000/svg",xmlnsXlink:"http://www.w3.org/1999/xlink"},_react2.default.createElement("a",{xlinkHref:""+this.props.foreignObject[0].url,target:"_blank"},_react2.default.createElement("image",{xlinkHref:this.props.foreignObject[0].imageUrl,height:this.state.r/2,width:this.state.r/2}),_react2.default.createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:this.state.r/2,height:this.state.r/2,viewBox:"0 0 "+this.state.r/2+" "+this.state.r/2}))),_react2.default.createElement("text",{fontSize:10,fill:"black",textAnchor:"middle",transform:"translate("+(this.state.r+1)+", 10)",fontFamily:"'Lucida Grande', sans-serif"},this.props.foreignObject[0].tweet.substring(0,10)),_react2.default.createElement("text",{fontSize:10,fill:"black",textAnchor:"middle",transform:"translate("+(this.state.r+1)+", 20)",fontFamily:"'Lucida Grande', sans-serif"},this.props.foreignObject[0].tweet.substring(10,18))),this.props.children||null)}}]),t}(_react2.default.Component);PackG.propTypes={colorScale:_react2.default.PropTypes.func,d:_react2.default.PropTypes.object,foreignObject:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool,_react2.default.PropTypes.array]),id:_react2.default.PropTypes.string,idx:_react2.default.PropTypes.number,labels:_react2.default.PropTypes.array};var _initialiseProps=function(){var e=this;this.updateDimensions=function(t,r){if(e.state.scaled)var a=d3.interpolate([e.state.x,e.state.y,e.state.scale],[e.props.d.x,e.props.d.y,1]),n=0,i=d3.interval(function(){n+=.1,e.setState({x:a(n)[0],y:a(n)[1],scale:a(n)[2]}),(.9<n||!e.state.scaled)&&(i.stop(),e.state.previous.parentNode.insertBefore(e.g,e.state.previous.nextSibling),e.setState({scaled:!1}))},10);else{e.setState({previous:e.g.previousElementSibling}),r.appendChild(e.g);var o=d3.interpolate([e.state.x,e.state.y,1],[0,0,t.width/2/e.state.r]),s=0,l=d3.interval(function(){s+=.1,e.setState({x:o(s)[0],y:o(s)[1],scale:o(s)[2]}),(.9<s||e.state.scaled)&&(l.stop(),e.setState({scaled:!0}))},10)}return!0},this.handleZoom=function(){var t=document.getElementById(e.props.id+"-visual-container").firstElementChild.firstElementChild;return!!t&&t!==e.g&&e.updateDimensions(t.getBoundingClientRect(),t)}};exports.default=PackG;
 
-},{"./text.js":20,"d3":39,"react":230}],20:[function(require,module,exports){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=("undefined"==typeof t?"undefined":_typeof(t))&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+("undefined"==typeof t?"undefined":_typeof(t)));e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var n,r=0;r<t.length;r++)n=t[r],n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),_react=require("react"),_react2=_interopRequireDefault(_react),Text=function(e){function t(e){_classCallCheck(this,t);var n=_possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={fontSize:"12px"},_initialiseProps.call(n),n.state={fontSize:"12px"},n}return _inherits(t,e),_createClass(t,null,[{key:"defaultProps",get:function(){return{d:{},labels:[]}}}]),_createClass(t,[{key:"componentWillReceiveProps",value:function(e){appFuncs._.isEqual(e,this.props)||this.setSize(e)}},{key:"render",value:function(){var e=this,t=this.props,n=t.d,r=t.labels;return _react2.default.createElement("text",{className:"label",fontSize:this.state.fontSize,ref:function(t){return e.text=t},style:{display:"inline",fillOpacity:1},textAnchor:"middle"},n.data[r[0]])}}]),t}(_react2.default.Component);Text.propTypes={d:_react2.default.PropTypes.object,labels:_react2.default.PropTypes.array};var _initialiseProps=function(){var e=this;this.setSize=function(){var t=0<arguments.length&&void 0!==arguments[0]?arguments[0]:e.props,n=t.d.data[t.labels[0]].length,r=9<n?1:5<n?2.2:2.9,o=25*t.r*r/window.innerWidth;return!!(1<Math.abs(parseInt(e.state.fontSize)-o))&&e.setState({fontSize:o+"vw"})&&!0}};exports.default=Text;
+},{"../index.js":6,"./text.js":20,"d3":39,"react":230}],20:[function(require,module,exports){
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=("undefined"==typeof t?"undefined":_typeof(t))&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+("undefined"==typeof t?"undefined":_typeof(t)));e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var n,r=0;r<t.length;r++)n=t[r],n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),_react=require("react"),_react2=_interopRequireDefault(_react),Text=function(e){function t(e){_classCallCheck(this,t);var n=_possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.state={fontSize:"12px"},_initialiseProps.call(n),n.state={fontSize:"12px"},n}return _inherits(t,e),_createClass(t,null,[{key:"defaultProps",get:function(){return{d:{},labels:[]}}}]),_createClass(t,[{key:"componentWillReceiveProps",value:function(e){appFuncs._.isEqual(e,this.props)||this.setSize(e)}},{key:"render",value:function(){var e=this,t=this.props,n=t.d,r=t.labels;return _react2.default.createElement("text",{className:"label",fontSize:this.state.fontSize,ref:function(t){return e.text=t},style:{display:"inline",fillOpacity:1},textAnchor:"middle"},n.data[r[0]])}}]),t}(_react2.default.Component);Text.propTypes={d:_react2.default.PropTypes.object,labels:_react2.default.PropTypes.array};var _initialiseProps=function(){var e=this;this.setSize=function(){var t=0<arguments.length&&void 0!==arguments[0]?arguments[0]:e.props,n=t.d.data[t.labels[0]].length,r=13<n?.7:9<n?1.3:7<n?1.8:5<n?2.2:2.9,o=25*t.r*r/window.innerWidth;return!!(1<Math.abs(parseInt(e.state.fontSize)-o))&&e.setState({fontSize:o+"vw"})&&!0}};exports.default=Text;
 
 },{"react":230}],21:[function(require,module,exports){
 (function (__filename){
@@ -117,388 +117,529 @@
 "use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}var _react=require("react"),_react2=_interopRequireDefault(_react),_reactDom=require("react-dom"),_reactDom2=_interopRequireDefault(_reactDom),_example=require("./example.js"),_example2=_interopRequireDefault(_example);require("node-globals").default({}),_reactDom2.default.render(_react2.default.createElement(_example2.default,null),document.querySelector("#app"));
 
 },{"./example.js":33,"node-globals":67,"react":230,"react-dom":79}],33:[function(require,module,exports){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var r,n=0;n<t.length;n++)r=t[n],r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),_react=require("react"),_react2=_interopRequireDefault(_react),_index=require("../dist/index.js"),_index2=_interopRequireDefault(_index),_pack=require("./fakedata/pack.json"),_pack2=_interopRequireDefault(_pack),Table=function(e){function t(){return _classCallCheck(this,t),_possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return _inherits(t,e),_createClass(t,[{key:"render",value:function(){return _react2.default.createElement(_index2.default,{chartType:"pack",colorScaleScheme:"schemeCategory20",colorScaleType:"basic",data:_pack2.default,datumLabels:["name"],id:"pack",margins:{bottom:10,left:10,right:10,top:10}})}}],[{key:"defaultProps",get:function(){return{id:"fake-table"}}}]),t}(_react2.default.Component);exports.default=Table;
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var r,n=0;n<t.length;n++)r=t[n],r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),_react=require("react"),_react2=_interopRequireDefault(_react),_index=require("../dist/index.js"),_index2=_interopRequireDefault(_index),_packtwitter=require("./fakedata/packtwitter.json"),_packtwitter2=_interopRequireDefault(_packtwitter),Table=function(e){function t(){return _classCallCheck(this,t),_possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return _inherits(t,e),_createClass(t,[{key:"render",value:function(){return _react2.default.createElement(_index2.default,{chartType:"pack",colorScaleScheme:"schemeCategory20",colorScaleType:"basic",data:_packtwitter2.default,datumLabels:["name"],figureObject:!0,figureObjectType:"table",id:"pack",margins:{bottom:10,left:10,right:10,top:10}})}}],[{key:"defaultProps",get:function(){return{id:"fake-table"}}}]),t}(_react2.default.Component);exports.default=Table;
 
-},{"../dist/index.js":6,"./fakedata/pack.json":34,"react":230}],34:[function(require,module,exports){
+},{"../dist/index.js":6,"./fakedata/packtwitter.json":34,"react":230}],34:[function(require,module,exports){
 module.exports={
- "name": "flare",
- "children": [
-  {
-   "name": "analytics",
-   "children": [
-    {
-     "name": "cluster",
-     "children": [
-      {"name": "AgglomerativeCluster", "size": 3938},
-      {"name": "CommunityStructure", "size": 3812},
-      {"name": "HierarchicalCluster", "size": 6714},
-      {"name": "MergeEdge", "size": 743}
-     ]
-    },
-    {
-     "name": "graph",
-     "children": [
-      {"name": "BetweennessCentrality", "size": 3534},
-      {"name": "LinkDistance", "size": 5731},
-      {"name": "MaxFlowMinCut", "size": 7840},
-      {"name": "ShortestPaths", "size": 5914},
-      {"name": "SpanningTree", "size": 3416}
-     ]
-    },
-    {
-     "name": "optimization",
-     "children": [
-      {"name": "AspectRatioBanker", "size": 7074}
-     ]
-    }
-   ]
-  },
-  {
-   "name": "animate",
-   "children": [
-    {"name": "Easing", "size": 17010},
-    {"name": "FunctionSequence", "size": 5842},
-    {
-     "name": "interpolate",
-     "children": [
-      {"name": "ArrayInterpolator", "size": 1983},
-      {"name": "ColorInterpolator", "size": 2047},
-      {"name": "DateInterpolator", "size": 1375},
-      {"name": "Interpolator", "size": 8746},
-      {"name": "MatrixInterpolator", "size": 2202},
-      {"name": "NumberInterpolator", "size": 1382},
-      {"name": "ObjectInterpolator", "size": 1629},
-      {"name": "PointInterpolator", "size": 1675},
-      {"name": "RectangleInterpolator", "size": 2042}
-     ]
-    },
-    {"name": "ISchedulable", "size": 1041},
-    {"name": "Parallel", "size": 5176},
-    {"name": "Pause", "size": 449},
-    {"name": "Scheduler", "size": 5593},
-    {"name": "Sequence", "size": 5534},
-    {"name": "Transition", "size": 9201},
-    {"name": "Transitioner", "size": 19975},
-    {"name": "TransitionEvent", "size": 1116},
-    {"name": "Tween", "size": 6006}
-   ]
-  },
-  {
-   "name": "data",
-   "children": [
-    {
-     "name": "converters",
-     "children": [
-      {"name": "Converters", "size": 721},
-      {"name": "DelimitedTextConverter", "size": 4294},
-      {"name": "GraphMLConverter", "size": 9800},
-      {"name": "IDataConverter", "size": 1314},
-      {"name": "JSONConverter", "size": 2220}
-     ]
-    },
-    {"name": "DataField", "size": 1759},
-    {"name": "DataSchema", "size": 2165},
-    {"name": "DataSet", "size": 586},
-    {"name": "DataSource", "size": 3331},
-    {"name": "DataTable", "size": 772},
-    {"name": "DataUtil", "size": 3322}
-   ]
-  },
-  {
-   "name": "display",
-   "children": [
-    {"name": "DirtySprite", "size": 8833},
-    {"name": "LineSprite", "size": 1732},
-    {"name": "RectSprite", "size": 3623},
-    {"name": "TextSprite", "size": 10066}
-   ]
-  },
-  {
-   "name": "flex",
-   "children": [
-    {"name": "FlareVis", "size": 4116}
-   ]
-  },
-  {
-   "name": "physics",
-   "children": [
-    {"name": "DragForce", "size": 1082},
-    {"name": "GravityForce", "size": 1336},
-    {"name": "IForce", "size": 319},
-    {"name": "NBodyForce", "size": 10498},
-    {"name": "Particle", "size": 2822},
-    {"name": "Simulation", "size": 9983},
-    {"name": "Spring", "size": 2213},
-    {"name": "SpringForce", "size": 1681}
-   ]
-  },
-  {
-   "name": "query",
-   "children": [
-    {"name": "AggregateExpression", "size": 1616},
-    {"name": "And", "size": 1027},
-    {"name": "Arithmetic", "size": 3891},
-    {"name": "Average", "size": 891},
-    {"name": "BinaryExpression", "size": 2893},
-    {"name": "Comparison", "size": 5103},
-    {"name": "CompositeExpression", "size": 3677},
-    {"name": "Count", "size": 781},
-    {"name": "DateUtil", "size": 4141},
-    {"name": "Distinct", "size": 933},
-    {"name": "Expression", "size": 5130},
-    {"name": "ExpressionIterator", "size": 3617},
-    {"name": "Fn", "size": 3240},
-    {"name": "If", "size": 2732},
-    {"name": "IsA", "size": 2039},
-    {"name": "Literal", "size": 1214},
-    {"name": "Match", "size": 3748},
-    {"name": "Maximum", "size": 843},
-    {
-     "name": "methods",
-     "children": [
-      {"name": "add", "size": 593},
-      {"name": "and", "size": 330},
-      {"name": "average", "size": 287},
-      {"name": "count", "size": 277},
-      {"name": "distinct", "size": 292},
-      {"name": "div", "size": 595},
-      {"name": "eq", "size": 594},
-      {"name": "fn", "size": 460},
-      {"name": "gt", "size": 603},
-      {"name": "gte", "size": 625},
-      {"name": "iff", "size": 748},
-      {"name": "isa", "size": 461},
-      {"name": "lt", "size": 597},
-      {"name": "lte", "size": 619},
-      {"name": "max", "size": 283},
-      {"name": "min", "size": 283},
-      {"name": "mod", "size": 591},
-      {"name": "mul", "size": 603},
-      {"name": "neq", "size": 599},
-      {"name": "not", "size": 386},
-      {"name": "or", "size": 323},
-      {"name": "orderby", "size": 307},
-      {"name": "range", "size": 772},
-      {"name": "select", "size": 296},
-      {"name": "stddev", "size": 363},
-      {"name": "sub", "size": 600},
-      {"name": "sum", "size": 280},
-      {"name": "update", "size": 307},
-      {"name": "variance", "size": 335},
-      {"name": "where", "size": 299},
-      {"name": "xor", "size": 354},
-      {"name": "_", "size": 264}
-     ]
-    },
-    {"name": "Minimum", "size": 843},
-    {"name": "Not", "size": 1554},
-    {"name": "Or", "size": 970},
-    {"name": "Query", "size": 13896},
-    {"name": "Range", "size": 1594},
-    {"name": "StringUtil", "size": 4130},
-    {"name": "Sum", "size": 791},
-    {"name": "Variable", "size": 1124},
-    {"name": "Variance", "size": 1876},
-    {"name": "Xor", "size": 1101}
-   ]
-  },
-  {
-   "name": "scale",
-   "children": [
-    {"name": "IScaleMap", "size": 2105},
-    {"name": "LinearScale", "size": 1316},
-    {"name": "LogScale", "size": 3151},
-    {"name": "OrdinalScale", "size": 3770},
-    {"name": "QuantileScale", "size": 2435},
-    {"name": "QuantitativeScale", "size": 4839},
-    {"name": "RootScale", "size": 1756},
-    {"name": "Scale", "size": 4268},
-    {"name": "ScaleType", "size": 1821},
-    {"name": "TimeScale", "size": 5833}
-   ]
-  },
-  {
-   "name": "util",
-   "children": [
-    {"name": "Arrays", "size": 8258},
-    {"name": "Colors", "size": 10001},
-    {"name": "Dates", "size": 8217},
-    {"name": "Displays", "size": 12555},
-    {"name": "Filter", "size": 2324},
-    {"name": "Geometry", "size": 10993},
-    {
-     "name": "heap",
-     "children": [
-      {"name": "FibonacciHeap", "size": 9354},
-      {"name": "HeapNode", "size": 1233}
-     ]
-    },
-    {"name": "IEvaluable", "size": 335},
-    {"name": "IPredicate", "size": 383},
-    {"name": "IValueProxy", "size": 874},
-    {
-     "name": "math",
-     "children": [
-      {"name": "DenseMatrix", "size": 3165},
-      {"name": "IMatrix", "size": 2815},
-      {"name": "SparseMatrix", "size": 3366}
-     ]
-    },
-    {"name": "Maths", "size": 17705},
-    {"name": "Orientation", "size": 1486},
-    {
-     "name": "palette",
-     "children": [
-      {"name": "ColorPalette", "size": 6367},
-      {"name": "Palette", "size": 1229},
-      {"name": "ShapePalette", "size": 2059},
-      {"name": "SizePalette", "size": 2291}
-     ]
-    },
-    {"name": "Property", "size": 5559},
-    {"name": "Shapes", "size": 19118},
-    {"name": "Sort", "size": 6887},
-    {"name": "Stats", "size": 6557},
-    {"name": "Strings", "size": 22026}
-   ]
-  },
-  {
-   "name": "vis",
-   "children": [
-    {
-     "name": "axis",
-     "children": [
-      {"name": "Axes", "size": 1302},
-      {"name": "Axis", "size": 24593},
-      {"name": "AxisGridLine", "size": 652},
-      {"name": "AxisLabel", "size": 636},
-      {"name": "CartesianAxes", "size": 6703}
-     ]
-    },
-    {
-     "name": "controls",
-     "children": [
-      {"name": "AnchorControl", "size": 2138},
-      {"name": "ClickControl", "size": 3824},
-      {"name": "Control", "size": 1353},
-      {"name": "ControlList", "size": 4665},
-      {"name": "DragControl", "size": 2649},
-      {"name": "ExpandControl", "size": 2832},
-      {"name": "HoverControl", "size": 4896},
-      {"name": "IControl", "size": 763},
-      {"name": "PanZoomControl", "size": 5222},
-      {"name": "SelectionControl", "size": 7862},
-      {"name": "TooltipControl", "size": 8435}
-     ]
-    },
-    {
-     "name": "data",
-     "children": [
-      {"name": "Data", "size": 20544},
-      {"name": "DataList", "size": 19788},
-      {"name": "DataSprite", "size": 10349},
-      {"name": "EdgeSprite", "size": 3301},
-      {"name": "NodeSprite", "size": 19382},
-      {
-       "name": "render",
-       "children": [
-        {"name": "ArrowType", "size": 698},
-        {"name": "EdgeRenderer", "size": 5569},
-        {"name": "IRenderer", "size": 353},
-        {"name": "ShapeRenderer", "size": 2247}
-       ]
-      },
-      {"name": "ScaleBinding", "size": 11275},
-      {"name": "Tree", "size": 7147},
-      {"name": "TreeBuilder", "size": 9930}
-     ]
-    },
-    {
-     "name": "events",
-     "children": [
-      {"name": "DataEvent", "size": 2313},
-      {"name": "SelectionEvent", "size": 1880},
-      {"name": "TooltipEvent", "size": 1701},
-      {"name": "VisualizationEvent", "size": 1117}
-     ]
-    },
-    {
-     "name": "legend",
-     "children": [
-      {"name": "Legend", "size": 20859},
-      {"name": "LegendItem", "size": 4614},
-      {"name": "LegendRange", "size": 10530}
-     ]
-    },
-    {
-     "name": "operator",
-     "children": [
-      {
-       "name": "distortion",
-       "children": [
-        {"name": "BifocalDistortion", "size": 4461},
-        {"name": "Distortion", "size": 6314},
-        {"name": "FisheyeDistortion", "size": 3444}
-       ]
-      },
-      {
-       "name": "encoder",
-       "children": [
-        {"name": "ColorEncoder", "size": 3179},
-        {"name": "Encoder", "size": 4060},
-        {"name": "PropertyEncoder", "size": 4138},
-        {"name": "ShapeEncoder", "size": 1690},
-        {"name": "SizeEncoder", "size": 1830}
-       ]
-      },
-      {
-       "name": "filter",
-       "children": [
-        {"name": "FisheyeTreeFilter", "size": 5219},
-        {"name": "GraphDistanceFilter", "size": 3165},
-        {"name": "VisibilityFilter", "size": 3509}
-       ]
-      },
-      {"name": "IOperator", "size": 1286},
-      {
-       "name": "label",
-       "children": [
-        {"name": "Labeler", "size": 9956},
-        {"name": "RadialLabeler", "size": 3899},
-        {"name": "StackedAreaLabeler", "size": 3202}
-       ]
-      },
-      {
-       "name": "layout",
-       "children": [
-        {"name": "AxisLayout", "size": 6725},
-        {"name": "BundledEdgeRouter", "size": 3727},
-        {"name": "CircleLayout", "size": 9317},
-        {"name": "CirclePackingLayout", "size": 12003},
-        {"name": "DendrogramLayout", "size": 4853},
-        {"name": "ForceDirectedLayout", "size": 8411},
-        {"name": "IcicleTreeLayout", "size": 4864},
-        {"name": "IndentedTreeLayout", "size": 3174},
-        {"name": "Layout", "size": 7881},
-        {"name": "NodeLinkTreeLayout", "size": 12870},
-        {"name": "PieLayout", "size": 2728},
-        {"name": "RadialTreeLayout", "size": 12348},
-        {"name": "RandomLayout", "size": 870},
-        {"name": "StackedAreaLayout", "size": 9121},
-        {"name": "TreeMapLayout", "size": 9191}
-       ]
-      },
-      {"name": "Operator", "size": 2490},
-      {"name": "OperatorList", "size": 5248},
-      {"name": "OperatorSequence", "size": 4190},
-      {"name": "OperatorSwitch", "size": 2581},
-      {"name": "SortOperator", "size": 2023}
-     ]
-    },
-    {"name": "Visualization", "size": 16540}
-   ]
-  }
- ]
+  "name": "Platform",
+  "type": "parent",
+  "children": [{
+    "name": "Sentiment",
+    "size": 121,
+    "type": "parent",
+    "children": [{
+      "name": "Positive",
+      "size": 104,
+      "type": "parent",
+      "children": [{
+        "size": 6,
+        "name": "join",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 22 06:05:42 +0000 2017",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/834282999822692352",
+            "tweet": "@leemartin it would be awesome if you could join Urban Music Professionals on #linkedin https://t.co/fTfMnRaeZ4"
+          }, {
+            "date": "Fri Apr 17 18:33:29 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/589134603597656064",
+            "tweet": "Join me at SugarCon 2015! https://t.co/SHzHI3fobK #SugarCon2015 | Powered by #RegOnline"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 24,
+        "name": "awesome",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 21 03:52:49 +0000 2017",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/833887173673840640",
+            "tweet": "working with the twitter api is sooo much dev friendly than the facebook api, the amount of data you have access to is awesome"
+          }, {
+            "date": "Sun Jan 29 07:42:40 +0000 2017",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/825610096495300608",
+            "tweet": "@acloudguru scheduled my exam for the 6th! your course is awesome"
+          }, {
+            "date": "Mon Dec 26 23:21:35 +0000 2016",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/813525192332820480",
+            "tweet": "you guys are awesome @StrongLoop"
+          }, {
+            "date": "Sat Nov 26 05:07:35 +0000 2016",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/802378243214970880",
+            "tweet": "lets see how awesome @logrocketjs makes my new app for @udacity"
+          }, {
+            "date": "Sat Oct 29 08:07:21 +0000 2016",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/792276622883684352",
+            "tweet": "@cagan thanks for the awesome pic https://t.co/1f7Kpaik0j"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "best",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 20 19:13:14 +0000 2017",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/833756413876801536",
+            "tweet": "ive done my best coding to this track https://t.co/Udi9xooAjw"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "enjoyed",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 19 04:33:38 +0000 2017",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/833172670174765056",
+            "tweet": "@justinfagnani really enjoyed your approach to mixins! i'm using it in my datastructures project now ;)"
+          }, {
+            "date": "Tue Jan 10 01:27:23 +0000 2017",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/818630282194452481",
+            "tweet": "@Keithamus enjoyed your post on symbols"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "saved",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Nov 08 05:03:16 +0000 2016",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/795854176173461504",
+            "tweet": "@ddprrt man your multiple vinyl streams blog just saved my night"
+          }, {
+            "date": "Fri Jan 22 20:04:33 +0000 2016",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/690626123017822208",
+            "tweet": "@DirectoryLister just saved 15% by switching to @DirectoryLister"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "better",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Oct 09 03:18:26 +0000 2016",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/784956156468789248",
+            "tweet": "RT @cwpittman: Testing out the first project in @udacity's Self-Driving Car ND! I think my NN drives better than I do https://t.co/FtyEy2Gu…"
+          }, {
+            "date": "Sat Apr 04 17:10:27 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/584402665502740481",
+            "tweet": "RT @anagoldpr: The fans deserve better!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 7,
+        "name": "reliable",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Oct 06 04:10:40 +0000 2016",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/783882140949676034",
+            "tweet": "RT @GigSky: Thrilled to partner w/ @AvionicaInc – combining their world-class hardware with our reliable, global connectivity. https://t.co…"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 5,
+        "name": "share",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Jul 30 18:27:55 +0000 2016",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/759455497678229504",
+            "tweet": "@nodebotanist enjoyed your talk at @npmcamp can you post the deck would like to share it with some friends"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "excellent",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Jun 23 03:24:36 +0000 2016",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/745819822018048002",
+            "tweet": "@ahfarmer excellent site!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "thanks",
+        "children": [{
+          "metadata": [{
+            "date": "Wed May 25 16:25:32 +0000 2016",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/735507099417858048",
+            "tweet": "@rajaraodv you are @#$@#$ dope! thanks for the tuts"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "good",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Jan 16 05:46:47 +0000 2016",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/688235929501212672",
+            "tweet": "@Mere_R_Maharaj things are good, thinking about going to grad"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "win",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Nov 28 06:48:46 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/670494524058247168",
+            "tweet": "I just entered to win tickets to @phutureprimitive at @SocialHallSF on 12/4 from @magnifi_fm! Your turn https://t.co/IgCMDoIRnz"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "winner",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Sep 08 12:57:36 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/641233926632046593",
+            "tweet": "Mayweather vs. Berto Fight Time, Expected Prize Money, Projected Winner, Odds http://t.co/mnP02EmlB3 via @bleacherreport"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 7,
+        "name": "free",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Jul 29 02:12:35 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/626213699863232512",
+            "tweet": "RT @DotheBay: .@thebandconbrio are playing a free show at @TheChapelSF tomorrow! RSVP: http://t.co/jRIZdkYav7 Local #MusicMonday http://t.c…"
+          }, {
+            "date": "Sat Jul 04 06:41:51 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/617221767715667968",
+            "tweet": "Check out Help OSTraining create free Drupal 8 Training videos by Steve Burge on @Kickstarter http://t.co/llanj0r9mL"
+          }, {
+            "date": "Thu Jul 02 04:21:06 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/616461572047683584",
+            "tweet": "RT @ruby_plus: @noahedwardhall Please share the free coupons for TDD in Ruby course: \nhttps://t.co/UQjZhckwMb with your followers."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 5,
+        "name": "like",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Jul 11 22:54:13 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/620003186183573508",
+            "tweet": "RT @jk_rowling: .@diegtristan8 \"she is built like a man\". Yeah, my husband looks just like this in a dress. You're an idiot. http://t.co/BC…"
+          }, {
+            "date": "Thu Jul 02 02:33:56 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/616434600840032256",
+            "tweet": "tomgeller came on the drupal7 advanced training like a scene out of lepracaun in the hood"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "sweet",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Jul 11 01:42:58 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/619683264937103363",
+            "tweet": "Sweet Sound Bites: MAGNIFI Presents Geographer at The Chapel 6/25/201... http://t.co/ilqoeuUUsf"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "paradise",
+        "children": [{
+          "metadata": [{
+            "date": "Sun May 17 16:22:00 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/599973150302937090",
+            "tweet": "Kickstarter campaign launched for Larry Levan and Paradise Garage movie @Mixmag http://t.co/ABEnnSQREi"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 1,
+        "name": "rises",
+        "children": [{
+          "metadata": [{
+            "date": "Sat May 02 15:57:03 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/594531052464418816",
+            "tweet": "San Francisco Minimum Wage Rises to $12.25, Other Bay Area Cities Considering Hikes | NBC Bay Area http://t.co/BJwTyZkDN7 via @nbcbayarea"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "boost",
+        "children": [{
+          "metadata": [{
+            "date": "Fri May 01 01:03:05 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/593943690218901504",
+            "tweet": "RT @Forbes: If your job is chock full of challenging thinking tasks, your brain may be getting a positive boost: http://t.co/zbP236ysO1"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "winning",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Apr 26 06:00:31 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/592206601638973440",
+            "tweet": "bebes kids on @netflix #winning"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "useful",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Apr 14 04:11:16 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/587830455329624065",
+            "tweet": "9 Useful PHP Functions and Features You Need to Know http://t.co/fNNN3vHQ9P via @tutsplus"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "success",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 24 12:45:34 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/580349737880002560",
+            "tweet": "Napping Improves Memory Five-Fold And Enhances Learning Success, Study Finds http://t.co/2xLJMgpnPL via @immortal_org"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Negative",
+      "size": 17,
+      "type": "parent",
+      "children": [{
+        "size": 2,
+        "name": "protest",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Jan 29 05:09:30 +0000 2017",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/825571551445594112",
+            "tweet": "RT @RMac18: Google cofounder Sergey Brin at SFO protest: \"I'm here because I'm a refugee.\" (Photo from Matt Kang/Forbes) https://t.co/GwhsS…"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "failed",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Jul 22 19:50:45 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/623943284486995968",
+            "tweet": "Autopsy | Lessons from Failed Startups http://t.co/teLCQJucvm via @autopsyhq"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "demands",
+        "children": [{
+          "metadata": [{
+            "date": "Sun May 17 16:18:42 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/599972320166285313",
+            "tweet": "Candidate with no votes demands recount because he ‘voted for himself’ http://t.co/HwXAhJEQ9U"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "fire",
+        "children": [{
+          "metadata": [{
+            "date": "Fri May 15 14:36:17 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/599221769677901824",
+            "tweet": "#kpfa  on fire this morning"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "unable",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Apr 28 02:49:20 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/592883265742209024",
+            "tweet": "@sugarcrmdev I am unable to create a new record on a custom module via the v10 REST api"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "illegal",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Apr 01 11:27:27 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/583229180793348096",
+            "tweet": "Starbucks that aren't 24 hours should be illegal"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "hurt",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Mar 22 01:34:28 +0000 2015",
+            "username": "noahedwardhall",
+            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
+            "url": "https://twitter.com/noahedwardhall/status/579456072844386304",
+            "tweet": "RT @songproducers: Amanda Palmer's mistake (and why it will hurt working class musicians). http://t.co/ozoPPt006p"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }]
+  }]
 }
 
 },{}],35:[function(require,module,exports){

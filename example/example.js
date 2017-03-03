@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from '../dist/index.js';
-import data from './fakedata/pack.json';
+import data from './fakedata/packtwitter.json';
 
 export default class Table extends React.Component {
   static get defaultProps () {
@@ -17,6 +17,8 @@ export default class Table extends React.Component {
         colorScaleType='basic'
         data={data}
         datumLabels={['name']}
+        figureObject={true}
+        figureObjectType='table'
         id='pack'
         margins={{
           bottom: 10,

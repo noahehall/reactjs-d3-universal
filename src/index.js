@@ -38,6 +38,10 @@ export default class Chart extends React.Component {
       // only applies to chartType='table'
       // @see ./table/index.js
       filterable: false,
+      // if this chart contains data to be embedded in a svg#foreignObject
+      foreignObject: false,
+      // the type of figure object to create, e.g. 'table' creates an html table
+      foreignObjectType: 'table',
       id: 'reactjs-d3-v4-universal',
       // used for chart margins to place scales
       // @see this file and ./lib/scales.js
@@ -83,6 +87,11 @@ export default class Chart extends React.Component {
     ]),
     datumLabels: React.PropTypes.array,
     filterable: React.PropTypes.bool,
+    foreignObject: React.PropTypes.oneOfType([
+      React.PropTypes.bool,
+      React.PropTypes.array,
+    ]),
+    foreignObjectType: React.PropTypes.string,
     id: React.PropTypes.string,
     margins: React.PropTypes.object,
     preserveAspectRatio: React.PropTypes.string,
@@ -119,8 +128,10 @@ export default class Chart extends React.Component {
     // initially set size based on current browser width
     this.setSize();
     // update chart size whenever browser resizes
-    if (typeof window !== 'undefined') window.addEventListener(`resize`, this.setSize, false);
-
+    if (typeof window !== 'undefined') {
+      window.addEventListener(`resize`, this.setSize, false);
+      window.addEventListener('orientationchange', this.setSize, false);
+    }
     this.renderChart();
   }
 
@@ -132,7 +143,10 @@ export default class Chart extends React.Component {
 
   componentWillUnmount () {
     // remove event listener if in browser
-    if (typeof window !== 'undefined') window.removeEventListener(`resize`, this.setSize);
+    if (typeof window !== 'undefined') {
+      window.removeEventListener(`resize`, this.setSize);
+      window.removeEventListener('orientationchange', this.setSize, false);
+    }
   }
 
   /**
@@ -143,13 +157,13 @@ export default class Chart extends React.Component {
 
     // TODO: move all try blocks outside of this function
     try {
-      containerHeight = this.container.offsetHeight;
+      containerHeight = Math.min(this.container.offsetHeight, window.screen.height);
     } catch (err) {
       containerHeight = this.state.containerHeight;
     }
 
     try {
-      containerWidth = this.container.offsetWidth;
+      containerWidth = Math.min(this.container.offsetWidth, window.screen.width);
     } catch (err) {
       containerWidth = this.state.containerWidth;
     }
@@ -291,8 +305,10 @@ export default class Chart extends React.Component {
         : null;
 
     // only create X and Y axis on client
-    if (this.props.yAxis && thisYScale && hasDocument) axes.getYAxis({ id: this.props.id, thisYScale });
-    if (this.props.xAxis && thisXScale && hasDocument) axes.getXAxis({ id: this.props.id, thisXScale });
+    if (hasDocument) {
+      if (this.props.yAxis && thisYScale) axes.getYAxis({ id: this.props.id, thisYScale });
+      if (this.props.xAxis && thisXScale) axes.getXAxis({ id: this.props.id, thisXScale });
+    }
 
     // creates chart based on above variable initializations
     const thisChart = chartFunction({
@@ -305,6 +321,8 @@ export default class Chart extends React.Component {
       colorScaleType: this.props.colorScaleType,
       data,
       filterable: this.props.filterable,
+      foreignObject: this.props.foreignObject,
+      foreignObjectType: this.props.foreignObjectType,
       id: this.props.id,
       labels: this.props.datumLabels,
       margins: this.props.margins,

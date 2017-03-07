@@ -1,22 +1,30 @@
 import React from 'react';
 
+export const getTextPath = (r, fontSize, text) =>
+  `m-${r}, ${r * 0.1} a${r}, ${r * 0.83} 0 1 1 ${r * 2}, 0`;
+
 export default class Text extends React.Component {
   static get defaultProps () {
     return {
+      r: 2,
       d: {},
+      idx: 0,
       labels: [],
+      scale: 1,
     };
   }
 
   static propTypes = {
+    r: React.PropTypes.number,
     d: React.PropTypes.object,
+    idx: React.PropTypes.number,
     labels: React.PropTypes.array,
   }
 
   constructor (props) {
     super(props);
     this.state = {
-      fontSize: '12px',
+      fontSize: '3',
     };
   }
 
@@ -33,36 +41,45 @@ export default class Text extends React.Component {
       length = props.d.data[props.labels[0]].length,
       factor = // eslint-disable-line
         // TODO: convert this to automatically adjust based on width of container not length of chars
-        length > 13 ? 0.7 :
-        length > 9 ? 1.3 :
-        length > 7 ? 1.8 :
-        length > 5 ? 2.2 : 2.9,
-      newSize = 25 * props.r * factor / window.innerWidth;
+        length > 13 ? 0.3 :
+        length > 9 ? 0.4 :
+        length > 7 ? 0.5 :
+        length > 5 ? 0.5 : 0.7,
+      fontSize = factor * props.r/2;
 
-    return (Math.abs(parseInt(this.state.fontSize) - newSize) > 1)
-      ? (this.setState({ fontSize: `${newSize}vw`}) && true)
-      : false;
+    if (Math.abs(parseInt(this.state.fontSize) - fontSize) > 1)
+      this.setState({ fontSize })
   }
 
   render () {
     const {
       d,
       labels,
+      r,
+      idx,
     } = this.props;
-
+    //console.log(this.props.scale);
     return (
-      <text
-        className='label'
-        fontSize={this.state.fontSize}
-        ref={(text) => this.text = text }
-        style={{
-          display: 'inline',
-          fillOpacity: 1,
-        }}
-        textAnchor='middle'
-      >
-        {d.data[labels[0]]}
-      </text>
+      <g>
+        <defs>
+          <path id={`path${idx}${d.value}${parseInt(d.r)}`} d={getTextPath(r, labels)} />
+        </defs>
+          <text
+            className={`label${idx}`}
+            ref={(text) => this.text = text }
+            style={{
+              display: 'inline',
+              fillOpacity: 1,
+              textTransform: 'uppercase',
+              fontSize: `${this.state.fontSize/this.props.scale * 1.1}px`,
+            }}
+            textAnchor='middle'
+          >
+            <textPath xlinkHref={`#path${idx}${d.value}${parseInt(d.r)}`} startOffset='50%'>
+              {d.data[labels[0]]}
+            </textPath>
+          </text>
+      </g>
     );
   }
 }

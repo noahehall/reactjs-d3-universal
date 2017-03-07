@@ -2,37 +2,6 @@
 import * as d3 from 'd3';
 import React from 'react';
 import Text from './text.js';
-import Chart from '../index.js';
-
-export const createTable = ({
-  metadata,
-  diameter,
-  id,
-  idx,
-  margins = {top: 2, right: 2, bottom: 2, left: 2}
-}) =>
-  <Chart
-    chartType='table'
-    containerHeight={diameter}
-    containerWidth={diameter}
-    data={metadata}
-    filterable={false}
-    id={`${id}-table-${idx}`}
-    margins={margins}
-    sortable={false}
-  />
-export const createText = ({
-  d,
-  idx,
-  labels,
-  r,
-}) =>
-  <Text
-    d={d}
-    idx={idx}
-    labels={labels}
-    r={r}
-  />
 
 export default class PackG extends React.Component {
   static get defaultProps () {
@@ -65,8 +34,10 @@ export default class PackG extends React.Component {
       r: 0,
       scale: 1,
       scaled: false,
+      scaling: false,
       x: 0,
       y: 0,
+      fontSize: '5px'
     };
   }
 
@@ -81,6 +52,7 @@ export default class PackG extends React.Component {
   }
 
   updateDimensions = (vizConRect, vizCon) => {
+    this.setState({ scaling: true })
     if (!this.state.scaled) {
       this.setState({ previous: this.g.previousElementSibling });
       vizCon.appendChild(this.g);
@@ -107,7 +79,8 @@ export default class PackG extends React.Component {
         });
         if (t > 0.9 || this.state.scaled) {
           timer.stop();
-          this.setState({ scaled: true });
+          this.setState({ scaled: true, scaling: false });
+          this.displayForeignObjects();
         }
       }, 10);
     } else {
@@ -122,7 +95,8 @@ export default class PackG extends React.Component {
         if (t > 0.9 || !this.state.scaled) {
           timer.stop();
           this.state.previous.parentNode.insertBefore(this.g, this.state.previous.nextSibling);
-          this.setState({ scaled: false })
+          this.setState({ scaled: false, scaling: false })
+          this.displayForeignObjects();
         }
       }, 10);
     }
@@ -139,6 +113,146 @@ export default class PackG extends React.Component {
 
   }
 
+  setTransform = ({idx, total, width, xOffset, yOffset, scaled}) => {
+    let thisI = idx/3;
+    thisI = thisI.toFixed(2);
+    const first = Number(thisI.toString().split('.')[1]);
+    const second = Number(thisI.toString().split('.')[0]);
+    let x, y;
+    switch (total) {
+      case 1: return `translate(${-width/2}, ${-width/2})`;
+      case 2: {
+        x = first === 0
+          ? -this.state.r/2
+          : 0;
+        y = -width/2;
+        break;
+      }
+      case 3: {
+        x = first === 0
+          ? xOffset
+          : first === 33
+          ? xOffset + width
+          : xOffset + (width * 2);
+        y = -width/2;
+        break;
+      }
+      default: {
+        x = first === 0
+          ? xOffset
+          : first === 33
+          ? xOffset + width
+          : xOffset + (width * 2);
+
+        y = yOffset + (second * width);
+      }
+    }
+    return `translate(${x}, ${y})`;
+  }
+
+
+  getTransform = ({idx, total, width, xOffset, yOffset, scaled}) => {
+    if (this.state.scaling) return false;
+    if (scaled === 1) {
+      while (--total > -1)
+      this[`g${total}`].setAttribute('transform', `translate(-${(this.state.r || this.props.d.r) * 0.85}, ${-1 * (this.state.r || this.props.d.r)/1.8 + (total * (this.state.r || this.props.d.r)/2)})`);
+      return true;
+    }
+    if (scaled === -1) {
+      while(idx++ < total)
+        this[`g${idx}`].setAttribute('transform', this.setTransform({idx, total, width, xOffset, yOffset, scaled}));
+
+      return true;
+    }
+    return this.setTransform({idx, total, width, xOffset, yOffset, scaled});
+  }
+
+  displayForeignObjects = () => {
+    if (this.state.scaling) return null;
+    console.log(`scaled: ${this.state.scaled}`)
+    /*
+    return this.state.scaling
+      ? false
+      : scaled !== 0
+      ? this.getTransform({
+        total: this.props.foreignObject.length,
+        width: (this.state.r || this.props.d.r)/2,
+        xOffset: -1 * (this.state.r || this.props.d.r) * 0.75,
+        yOffset:-1 * (this.state.r || this.props.d.r)/2,
+        scaled,
+      })
+      :
+    */
+    const foreignObjects = [];
+    this.props.foreignObject.forEach((foreignObject, idx, arr) => {
+      foreignObjects.push(
+        <div
+          key={idx}
+          className='foreign-object-data'
+          style={{
+            fontSize:`${(this.state.r || this.props.d.r)/16}px`,
+          }}
+        >
+          <img
+            className='foreign-object-img'
+            src={foreignObject.imageUrl}
+            height={(this.state.r || this.props.d.r) * 0.20}
+            width={(this.state.r || this.props.d.r) * 0.24}
+            style={{
+              float: 'left',
+              marginRight: '2px',
+            }}
+          />
+          <div
+            className='foreign-object-text'
+            style={{
+              display: this.state.scaled ? 'block' : 'none',
+              float: 'left',
+              clear: 'right',
+            }}
+          >
+            <a
+              href={`https://www.twitter.com/${foreignObject.username}`}
+              target='_blank'
+              style={{
+                float:'left',
+              }}
+            >
+              {foreignObject.username}
+            </a>
+            <span
+              style={{
+                margin:0,
+                marginTop: '2px',
+                border: 'none',
+                lineHeight: 1.1,
+                height: `${(this.state.r || this.props.d.r) * 0.20}px`, width:`${(this.state.r || this.props.d.r) * 1.3}px`,
+                display: 'inline-block',
+                float: 'left',
+                clear: 'left',
+              }}
+            >
+              {foreignObject.tweet.substring(0,90)}
+              <a
+                href={foreignObject.url}
+                target='_blank'
+                style={{
+                  fontStyle: 'italic',
+                }}> ...read more</a>
+            </span>
+          </div>
+          <hr style={{
+            display: this.state.scaled ? 'block' : 'none',
+            clear: 'both',
+            visibility: 'hidden',
+          }} />
+        </div>
+      );
+    });
+
+    return foreignObjects;
+  }
+
   render () {
     const {
       colorScale,
@@ -146,7 +260,7 @@ export default class PackG extends React.Component {
       idx,
       labels,
     } = this.props;
-
+    // virtual scroller: http://bl.ocks.org/billdwhite/36d15bc6126e6f6365d0
     return (
       <g
         key={idx}
@@ -168,48 +282,50 @@ export default class PackG extends React.Component {
           }}
         />
         { !d.children &&
-          createText({
-            d,
-            idx,
-            labels,
-            r: this.state.r || this.props.d.r,
-          })
+            <Text
+              d={d}
+              idx={idx}
+              labels={labels}
+              scale={this.state.scale}
+              r={this.state.r}
+            />
         }
         {
           this.props.foreignObject &&
-          <g transform={`translate(-${this.state.r/2}, 0)`}>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              xmlnsXlink='http://www.w3.org/1999/xlink'
+          <g
+            className='foreign-object-g'
+            transform={`translate(${-(this.state.r || this.props.d.r) * 1.2}, ${-(this.state.r || this.props.d.r) / 2})`}
+          >
+          <svg
+            className='foreign-object-svg'
+            height={(this.state.r ||  this.props.d.r) * 1.5}
+            version="1.1"
+            width={(this.state.r ||  this.props.d.r) * 1.5}
+            x={(this.state.r || this.props.d.r)/2 + 2}
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
             >
-              <a xlinkHref={`${this.props.foreignObject[0].url}`} target='_blank'>
-                  <image
-                    xlinkHref={this.props.foreignObject[0].imageUrl}
-                    height={this.state.r/2}
-                    width={this.state.r/2} />
-                  <svg xmlns='http://www.w3.org/2000/svg'
-                    width={this.state.r/2}
-                    height={this.state.r/2}
-                    viewBox={`0 0 ${this.state.r/2} ${this.state.r/2}`}
-                  >
-
-                  </svg>
-              </a>
+             <foreignObject
+               x='0' y="0" width='100%'
+               height='100%'
+               transform="translate(0,0)"
+               style={{
+                 visibility: !this.state.scaled ? 'visible' : 'visible',
+                 overflow: 'hidden',
+               }}
+              >
+                <div style={{
+                    height: `${(this.state.r || this.props.d.r) * 1.30}px`,
+                    width: '125%',
+                    overflowY: 'scroll',
+                    overflowX: 'hidden',
+                    paddingRight: '25%',
+                  }}
+                >
+                  {this.displayForeignObjects()}
+                </div>
+              </foreignObject>
             </svg>
-            <text
-              fontSize={10}
-              fill='black'
-              textAnchor='middle'
-              transform={`translate(${this.state.r+1}, 10)`}
-              fontFamily="'Lucida Grande', sans-serif"
-            >{this.props.foreignObject[0].tweet.substring(0,10)}</text>
-            <text
-              fontSize={10}
-              fill='black'
-              textAnchor='middle'
-              transform={`translate(${this.state.r+1}, 20)`}
-              fontFamily="'Lucida Grande', sans-serif"
-            >{this.props.foreignObject[0].tweet.substring(10,18)}</text>
           </g>
         }
         {this.props.children || null}

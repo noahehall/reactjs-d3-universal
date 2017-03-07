@@ -41,7 +41,7 @@ export const createNest = (parent, chartHeight, chartWidth, colorScale, idx, lab
     key={idx}
     labels={labels}
     foreignObject={foreignObject}
-  > {parent.children && parent.children.map((child, idx2) => createNest(child, chartHeight, chartWidth, colorScale, idx2, labels, id, rootx, rooty))}
+  > {parent.children && parent.children.map((child) => createNest(child, chartHeight, chartWidth, colorScale, ++idx, labels, id, rootx, rooty))}
   </PackG>;
 
 }

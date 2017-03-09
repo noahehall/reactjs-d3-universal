@@ -219,7 +219,7 @@ export default class PackG extends React.Component {
             style={{
               display: this.state.scaled ? 'inline-block' : 'none',
               height: (this.state.r || this.props.d.r) * 0.20,
-              width: `${(this.state.r || this.props.d.r) * 1.2}px`,
+              width: `${(this.state.r || this.props.d.r) * 1.0}px`,
               overflow: 'hidden',
             }}
           >

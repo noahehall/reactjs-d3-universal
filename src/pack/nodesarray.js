@@ -2,6 +2,9 @@
 import React from 'react';
 import PackG from './packg.js';
 
+/**
+ * calculates x and y offsets when creating nested HTML hierarchy
+ */
 export const getDimensionOffsets = (node, x = 0, y = 0) => {
   x += node.x;
   y += node.y;
@@ -10,9 +13,22 @@ export const getDimensionOffsets = (node, x = 0, y = 0) => {
     ? getDimensionOffsets(node.parent, x, y)
     : [x,y, node];
 }
-export const createNest = (parent, chartHeight, chartWidth, colorScale, idx, labels, id, rootx, rooty) => {
-  let foreignObject = false;
 
+/**
+ * retrieves foreign object if exists, else false
+ */
+export const getForeignObject = (parent) => {
+  try {
+    return parent.data.children[0].metadata;
+  } catch (err) {
+    return false;
+  }
+}
+
+/**
+ * creates nested HTML hierarchy from pack nodes
+ */
+export const createNest = (parent, chartHeight, chartWidth, colorScale, idx, labels, id, rootx, rooty) => {
   switch (parent.depth) {
     case 0: break;
     case 1: {
@@ -26,11 +42,7 @@ export const createNest = (parent, chartHeight, chartWidth, colorScale, idx, lab
       parent.y -= (rooty + y);
     }
   }
-  try {
-    foreignObject = parent.data.children[0].metadata;
-  } catch (err) {
 
-  }
   return <PackG
     chartHeight={chartHeight}
     chartWidth={chartWidth}
@@ -40,11 +52,13 @@ export const createNest = (parent, chartHeight, chartWidth, colorScale, idx, lab
     idx={idx}
     key={idx}
     labels={labels}
-    foreignObject={foreignObject}
-  > {parent.children && parent.children.map((child) => createNest(child, chartHeight, chartWidth, colorScale, ++idx, labels, id, rootx, rooty))}
+    foreignObject={getForeignObject(parent)}
+  >
+    {parent.children && parent.children.map((child) =>
+      createNest(child, chartHeight, chartWidth, colorScale, ++idx, labels, id, rootx, rooty))}
   </PackG>;
-
 }
+
 /**
   * nodesArray - Description
   *

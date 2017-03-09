@@ -393,10 +393,8 @@ export default class Chart extends React.Component {
         ref={(container) => this.container = container}
         style={{
           display: 'block',
-          overflow: 'scroll',
+          overflow: 'hidden',
           position: 'relative',
-          verticalAlign: 'top',
-          width: '100%',
         }}
       >
         {renderedChart}

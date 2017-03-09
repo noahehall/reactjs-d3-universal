@@ -3,6 +3,9 @@ import * as d3 from 'd3';
 import React from 'react';
 import Text from './text.js';
 
+/**
+ * wraps a set of pack nodes inside a <g> ELEMENT
+ */
 export default class PackG extends React.Component {
   static get defaultProps () {
     return {
@@ -51,9 +54,12 @@ export default class PackG extends React.Component {
       });
   }
 
+  /**
+   * updates x, y and r dimensions for a set of pack nodes
+   */
   updateDimensions = (vizConRect, vizCon) => {
     this.setState({ scaling: true })
-    if (!this.state.scaled) {
+    if (!this.state.scaled) { // scale it up
       this.setState({ previous: this.g.previousElementSibling });
       vizCon.appendChild(this.g);
       const i = d3.interpolate(
@@ -83,7 +89,7 @@ export default class PackG extends React.Component {
           this.displayForeignObjects();
         }
       }, 10);
-    } else {
+    } else { // scale it down
       const i = d3.interpolate(
         [ this.state.x, this.state.y, this.state.scale ],
         [ this.props.d.x, this.props.d.y, 1 ]
@@ -104,6 +110,9 @@ export default class PackG extends React.Component {
     return true;
   }
 
+  /**
+   * zooms in/out of a pack node
+   */
   handleZoom = () => {
     const vizCon = document.getElementById(`${this.props.id}-visual-container`).firstElementChild.firstElementChild;
 
@@ -169,7 +178,7 @@ export default class PackG extends React.Component {
 
   displayForeignObjects = () => {
     if (this.state.scaling) return null;
-    console.log(`scaled: ${this.state.scaled}`)
+
     /*
     return this.state.scaling
       ? false
@@ -190,6 +199,7 @@ export default class PackG extends React.Component {
           key={idx}
           className='foreign-object-data'
           style={{
+            display: this.state.scaled ? 'block' : 'inline-block',
             fontSize:`${(this.state.r || this.props.d.r)/16}px`,
           }}
         >
@@ -199,7 +209,6 @@ export default class PackG extends React.Component {
             height={(this.state.r || this.props.d.r) * 0.20}
             width={(this.state.r || this.props.d.r) * 0.24}
             style={{
-              float: 'left',
               marginRight: '2px',
             }}
           />
@@ -207,8 +216,6 @@ export default class PackG extends React.Component {
             className='foreign-object-text'
             style={{
               display: this.state.scaled ? 'block' : 'none',
-              float: 'left',
-              clear: 'right',
             }}
           >
             <a
@@ -241,11 +248,6 @@ export default class PackG extends React.Component {
                 }}> ...read more</a>
             </span>
           </div>
-          <hr style={{
-            display: this.state.scaled ? 'block' : 'none',
-            clear: 'both',
-            visibility: 'hidden',
-          }} />
         </div>
       );
     });
@@ -260,9 +262,10 @@ export default class PackG extends React.Component {
       idx,
       labels,
     } = this.props;
-    // virtual scroller: http://bl.ocks.org/billdwhite/36d15bc6126e6f6365d0
+
     return (
       <g
+        className='pack-g'
         key={idx}
         onClick={(e) => {
           e.stopPropagation();
@@ -309,19 +312,17 @@ export default class PackG extends React.Component {
                x='0' y="0" width='100%'
                height='100%'
                transform="translate(0,0)"
-               style={{
-                 visibility: !this.state.scaled ? 'visible' : 'visible',
-                 overflow: 'hidden',
-               }}
               >
                 <div style={{
-                    height: `${(this.state.r || this.props.d.r) * 1.30}px`,
-                    width: '125%',
-                    overflowY: 'scroll',
-                    overflowX: 'hidden',
-                    paddingRight: '25%',
-                  }}
-                >
+                  height: `${(this.state.r || this.props.d.r) * 1.30}px`,
+                  overflowY: 'auto',
+                  overflowX: 'hidden',
+                  display: 'flex',
+                  justifyContent: this.state.scaled ? 'flex-start' : 'space-around',
+                  alignContent: this.state.scaled ? 'flex-start' : 'center',
+                  alignItems: this.state.scaled ? 'flex-start' : 'center',
+                  flexWrap: 'wrap',
+                }}>
                   {this.displayForeignObjects()}
                 </div>
               </foreignObject>

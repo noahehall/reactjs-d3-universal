@@ -177,7 +177,7 @@ export default class PackG extends React.Component {
   }
 
   displayForeignObjects = () => {
-    if (this.state.scaling) return null;
+    if (this.state.scaling || !this.props.foreignObject.length) return null;
 
     /*
     return this.state.scaling
@@ -193,14 +193,17 @@ export default class PackG extends React.Component {
       :
     */
     const foreignObjects = [];
+
     this.props.foreignObject.forEach((foreignObject, idx, arr) => {
+      const currentFS = (this.state.r || this.props.d.r)/16 + 0.5;
+      const fontSize = currentFS > 1.5 ? currentFS : 1.5;
       foreignObjects.push(
         <div
           key={idx}
           className='foreign-object-data'
           style={{
             display: this.state.scaled ? 'block' : 'inline-block',
-            fontSize:`${(this.state.r || this.props.d.r)/16}px`,
+            fontSize:`${fontSize}px`,
             marginBottom: this.state.scaled ? '3px' : 0,
             width: this.state.scaled ? '100%' : 'auto',
           }}
@@ -220,7 +223,7 @@ export default class PackG extends React.Component {
             style={{
               display: this.state.scaled ? 'inline-block' : 'none',
               width: `${(this.state.r || this.props.d.r) * 1.0}px`,
-              overflow: 'hidden',
+              // overflow: 'hidden',
             }}
           >
             <a
@@ -266,6 +269,7 @@ export default class PackG extends React.Component {
       labels,
     } = this.props;
 
+  //  console.dir(d.data.name);
     return (
       <g
         className='pack-g'

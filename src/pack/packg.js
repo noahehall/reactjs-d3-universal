@@ -201,6 +201,8 @@ export default class PackG extends React.Component {
           style={{
             display: this.state.scaled ? 'block' : 'inline-block',
             fontSize:`${(this.state.r || this.props.d.r)/16}px`,
+            marginBottom: this.state.scaled ? '3px' : 0,
+            width: this.state.scaled ? '100%' : 'auto',
           }}
         >
           <img
@@ -215,14 +217,17 @@ export default class PackG extends React.Component {
           <div
             className='foreign-object-text'
             style={{
-              display: this.state.scaled ? 'block' : 'none',
+              display: this.state.scaled ? 'inline-block' : 'none',
+              height: (this.state.r || this.props.d.r) * 0.20,
+              width: `${(this.state.r || this.props.d.r) * 1.2}px`,
+              overflow: 'hidden',
             }}
           >
             <a
               href={`https://www.twitter.com/${foreignObject.username}`}
               target='_blank'
               style={{
-                float:'left',
+                textDecoration: 'none'
               }}
             >
               {foreignObject.username}
@@ -230,22 +235,20 @@ export default class PackG extends React.Component {
             <span
               style={{
                 margin:0,
-                marginTop: '2px',
                 border: 'none',
                 lineHeight: 1.1,
-                height: `${(this.state.r || this.props.d.r) * 0.20}px`, width:`${(this.state.r || this.props.d.r) * 1.3}px`,
-                display: 'inline-block',
-                float: 'left',
-                clear: 'left',
+                height: `${(this.state.r || this.props.d.r) * 0.20}px`,
+                display: 'block',
               }}
             >
-              {foreignObject.tweet.substring(0,90)}
+              {foreignObject.tweet.substring(0, 84)}
               <a
                 href={foreignObject.url}
                 target='_blank'
                 style={{
                   fontStyle: 'italic',
-                }}> ...read more</a>
+                  textDecoration: 'none',
+                }}> ...more</a>
             </span>
           </div>
         </div>

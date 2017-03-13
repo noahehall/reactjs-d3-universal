@@ -195,17 +195,16 @@ export default class PackG extends React.Component {
     const foreignObjects = [];
 
     this.props.foreignObject.forEach((foreignObject, idx, arr) => {
-      const currentFS = (this.state.r || this.props.d.r)/16 + 0.5;
-      const fontSize = currentFS > 1.5 ? currentFS : 1.5;
       foreignObjects.push(
         <div
           key={idx}
           className='foreign-object-data'
           style={{
             display: this.state.scaled ? 'block' : 'inline-block',
-            fontSize:`${fontSize}px`,
+            fontSize:`${7 * (this.state.r || this.props.d.r)/ 100}px`,
             marginBottom: this.state.scaled ? '3px' : 0,
             width: this.state.scaled ? '100%' : 'auto',
+            lineHeight: '100%',
           }}
         >
           <img
@@ -214,7 +213,7 @@ export default class PackG extends React.Component {
             height={(this.state.r || this.props.d.r) * 0.20}
             width={(this.state.r || this.props.d.r) * 0.24}
             style={{
-              marginRight: '2px',
+              marginRight: '1%',
               verticalAlign: 'top',
             }}
           />
@@ -320,7 +319,8 @@ export default class PackG extends React.Component {
                height='100%'
                transform="translate(0,0)"
               >
-                <div style={{
+                <div className='for-con'
+                  style={{
                   height: `${(this.state.r || this.props.d.r) * 1.30}px`,
                   overflowY: 'auto',
                   overflowX: 'hidden',

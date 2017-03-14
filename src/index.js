@@ -6,18 +6,15 @@ require('node-globals').default({});
 import App from './components/App';
 import Home from './components/Home';
 import PageNotFound from './components/PageNotFound';
-import ExampleComponent from './components/ExampleComponent';
-import ExampleTwoDeepComponent from './components/ExampleTwoDeepComponent';
-
-
+import Line from './components/line';
+import
+Bar from './components/bar';
 const routes = (
   <Route path="/reactjs-d3-universal" mapMenuTitle="Home" component={App}>
     <IndexRoute component={Home} />
 
-    <Route path="/reactjs-d3-universal/example" mapMenuTitle="Example" component={ExampleComponent}>
-      <Route path="two-deep" mapMenuTitle="Two Deep" component={ExampleTwoDeepComponent} />
-    </Route>
-
+    <Route path="/reactjs-d3-universal/bar" mapMenuTitle="bar" component={Bar} />
+    <Route path="/reactjs-d3-universal/line" mapMenuTitle="line" component={Line} />
     <Route path="*" mapMenuTitle="Page Not Found" component={PageNotFound} />
   </Route>
 );

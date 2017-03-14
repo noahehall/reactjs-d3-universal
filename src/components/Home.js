@@ -15,8 +15,7 @@ function Home() {
   return (
     <div>
       <p style={s.p}>
-        Demo of charts available
-        {typeof appFuncs}
+        Demo of available charts
       </p>
       <p style={s.p}>
         Please see the {repoReadmeLink('repo readme')} for full api documentation
@@ -25,15 +24,15 @@ function Home() {
         <Interactive
           as={Link}
           {...s.link}
-          to="/reactjs-d3-universal/example"
-        >Example page</Interactive>
+          to="/reactjs-d3-universal/bar"
+        >Bar</Interactive>
       </div>
       <div style={s.pageLinkContainer}>
         <Interactive
           as={Link}
           {...s.link}
-          to="/reactjs-d3-universal/example/two-deep?field1=foo&field2=bar#boom!"
-        >Example two deep with query and hash</Interactive>
+          to="/reactjs-d3-universal/line"
+        >Line</Interactive>
       </div>
     </div>
   );

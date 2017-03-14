@@ -1,6 +1,4 @@
-import { Link } from 'react-router';
 import Chart from 'reactjs-d3-universal';
-import Interactive from 'react-interactive';
 import React, { PropTypes } from 'react';
 import s from '../styles/exampleComponent.style';
 
@@ -73,7 +71,7 @@ const propTypes = {
   children: PropTypes.element,
 };
 
-function ExampleComponent({ children }) {
+function Bar({ children }) {
   return (
     <div style={{ maxWidth: '600px' }}>
         <Chart
@@ -98,19 +96,11 @@ function ExampleComponent({ children }) {
             top: 10,
           }}
         />
-      {children ||
-        <div style={s.pageLinkContainer}>
-          <Interactive
-            as={Link}
-            {...s.link}
-            to="/reactjs-d3-universal/example/two-deep?field1=foo&field2=bar#boom!"
-          >Example two deep with query and hash</Interactive>
-        </div>
-      }
+      {children || null}
     </div>
   );
 }
 
-ExampleComponent.propTypes = propTypes;
+Bar.propTypes = propTypes;
 
-export default ExampleComponent;
+export default Bar;

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as d3 from 'd3';
 
  /**
@@ -8,7 +9,7 @@ import * as d3 from 'd3';
   *
   * @return {type} d3 pack layout
   */
-export const pack = ({ chartWidth = 200 }) =>
+export const pack = ({ chartWidth = 200, chartHeight = 200 }) =>
   d3.pack()
-    .size([ chartWidth - 4, chartWidth -4 ])
+    .size([ chartWidth, chartHeight ])
     .padding(2);

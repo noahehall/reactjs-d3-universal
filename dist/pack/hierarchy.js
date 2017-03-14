@@ -4,4 +4,4 @@
   * @param {object} data an object representing the root node
   *
   * @returns {object} a root node
-  */var hierarchy=exports.hierarchy=function(_ref){var _ref$data=_ref.data,c=void 0===_ref$data?{}:_ref$data;return d3.hierarchy(c).sum(function(e){return+e.size}).sort(function(e,f){return+f.value-+e.value})};
+  */var hierarchy=exports.hierarchy=function(_ref){var _ref$data=_ref.data,c=void 0===_ref$data?{}:_ref$data;return d3.hierarchy(c,function(e){return e.children&&'metadata'!==e.children[0].type?e.children:null}).sum(function(e){return+e.size}).sort(function(e,f){return+f.value-+e.value})};

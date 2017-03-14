@@ -26,7 +26,8 @@
   "main": "./dist/index.js",
   "scripts": {
     "start": "open example/index.html",
-    "example": "./node_modules/.bin/browserify example/app.js -o example/runapp.js -t [ babelify --presets [ latest stage-0 react ] ] -t [ uglifyify --compress --mangle ] && npm run start",
+    "example": "./node_modules/.bin/browserify example/app.js -o example/runapp.js -t [ babelify --presets [ latest stage-0 react ] ]",
+    "exampleProd": "./node_modules/.bin/browserify example/app.js -o example/runapp.js -t [ babelify --presets [ latest stage-0 react ] ] -t [ uglifyify --compress --mangle ] && npm run start",
     "build": "./node_modules/.bin/babel src --out-dir dist"
   },
   "engines": {

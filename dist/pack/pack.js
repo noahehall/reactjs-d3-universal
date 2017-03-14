@@ -5,4 +5,4 @@
   * @param {number} [chartWidth=200] Width of SVG
   *
   * @return {type} d3 pack layout
-  */var pack=exports.pack=function(_ref){var _ref$chartWidth=_ref.chartWidth,a=void 0===_ref$chartWidth?200:_ref$chartWidth;return d3.pack().size([a-4,a-4]).padding(2)};
+  */var pack=exports.pack=function(_ref){var _ref$chartWidth=_ref.chartWidth,a=void 0===_ref$chartWidth?200:_ref$chartWidth,_ref$chartHeight=_ref.chartHeight,b=void 0===_ref$chartHeight?200:_ref$chartHeight;return d3.pack().size([a,b]).padding(2)};/* eslint-disable */

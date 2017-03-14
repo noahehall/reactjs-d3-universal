@@ -78,7 +78,7 @@
 
 	var routes = _react2.default.createElement(
 	  _reactRouter.Route,
-	  { path: '/', mapMenuTitle: 'Home', component: _App2.default },
+	  { path: '/reactjs-d3-universal', mapMenuTitle: 'Home', component: _App2.default },
 	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 	  _react2.default.createElement(
 	    _reactRouter.Route,
@@ -26608,7 +26608,7 @@
 	      path += (path.slice(-1) === '/' ? '' : '/') + (route.path === '/' ? '' : // eslint-disable-line
 	      route.path.slice(0, 1) === '/' ? route.path.slice(1) : route.path);
 
-	      return path;
+	      return route.path;
 	    }
 
 	    return routes.filter(function (route) {

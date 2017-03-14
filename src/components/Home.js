@@ -34,6 +34,13 @@ function Home() {
           to="/reactjs-d3-universal/line"
         >Line</Interactive>
       </div>
+      <div style={s.pageLinkContainer}>
+        <Interactive
+          as={Link}
+          {...s.link}
+          to="/reactjs-d3-universal/pie"
+        >Pie</Interactive>
+      </div>
     </div>
   );
 }

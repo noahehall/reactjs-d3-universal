@@ -10,7 +10,7 @@ import ExampleTwoDeepComponent from './components/ExampleTwoDeepComponent';
 
 
 const routes = (
-  <Route path="/" mapMenuTitle="Home" component={App}>
+  <Route path="/reactjs-d3-universal/" mapMenuTitle="Home" component={App}>
     <IndexRoute component={Home} />
 
     <Route path="/reactjs-d3-universal/example" mapMenuTitle="Example" component={ExampleComponent}>

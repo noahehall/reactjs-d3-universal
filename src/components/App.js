@@ -15,8 +15,10 @@ function App({ children, routes }) {
     function nextPath(route) {
       path += (
         (path.slice(-1) === '/' ? '' : '/') +
-        (route.path === '/' ? '' : route.path)
+        (route.path === '/' ? '' : // eslint-disable-line
+        route.path.slice(0, 1) === '/' ? route.path.slice(1) : route.path)
       );
+
       return path;
     }
 

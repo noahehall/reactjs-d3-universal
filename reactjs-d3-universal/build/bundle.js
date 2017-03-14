@@ -83,7 +83,7 @@
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/reactjs-d3-universal/example', mapMenuTitle: 'Example', component: _ExampleComponent2.default },
-	    _react2.default.createElement(_reactRouter.Route, { path: '/reactjs-d3-universal/example/two-deep', mapMenuTitle: 'Two Deep', component: _ExampleTwoDeepComponent2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: 'two-deep', mapMenuTitle: 'Two Deep', component: _ExampleTwoDeepComponent2.default })
 	  ),
 	  _react2.default.createElement(_reactRouter.Route, { path: '*', mapMenuTitle: 'Page Not Found', component: _PageNotFound2.default })
 	);
@@ -26605,7 +26605,9 @@
 	    var path = '';
 
 	    function nextPath(route) {
-	      path += (path.slice(-1) === '/' ? '' : '/') + (route.path === '/' ? '' : route.path);
+	      path += (path.slice(-1) === '/' ? '' : '/') + (route.path === '/' ? '' : // eslint-disable-line
+	      route.path.slice(0, 1) === '/' ? route.path.slice(1) : route.path);
+
 	      return path;
 	    }
 

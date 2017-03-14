@@ -14,7 +14,7 @@ const routes = (
     <IndexRoute component={Home} />
 
     <Route path="/reactjs-d3-universal/example" mapMenuTitle="Example" component={ExampleComponent}>
-      <Route path="/reactjs-d3-universal/example/two-deep" mapMenuTitle="Two Deep" component={ExampleTwoDeepComponent} />
+      <Route path="two-deep" mapMenuTitle="Two Deep" component={ExampleTwoDeepComponent} />
     </Route>
 
     <Route path="*" mapMenuTitle="Page Not Found" component={PageNotFound} />

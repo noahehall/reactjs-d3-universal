@@ -4,8 +4,7 @@
 # Why are we here?
   - ReactJS + D3 = data viz happiness
 
-# see current example
-  `$ npm run build && npm run example`
+# [See demo here](https://noahehall.github.io/reactjs-d3-universal/)
 
 # Chart Types
   - Bar Chart
@@ -69,12 +68,9 @@
 ```
   <Chart
     chartType='table'
-    containerHeight={containerHeight}
-    containerWidth={containerWidth}
     data={data}
     filterable={true}
-    id='table1'
-    margins={margins}
+    id='paying-customers-table'
     sortable={true}
   />
 ```
@@ -82,32 +78,47 @@
 ## example bar
 ```
   <Chart
-    // https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
     chartType='bar'
     colorScaleScheme='schemeCategory20'
     colorScaleType='basic'
-    containerHeight={containerHeight}
-    containerWidth={containerWidth}
     data={data}
-    datumLabels={['location']}
+    datumLabels={['totalEmployees']}
+    xAxis={true}
+    xAxisLabel='company locations'
+    xScale={true}
+    xValue='location'
+    yAxis={true}
+    yAxisLabel='total employees'
+    yValue='totalEmployees'
+    yScale={true}
     id='employees-at-each-location'
-    margins={margins}
+    margins={{
+      bottom: 60,
+      left: 50,
+      right: 10,
+      top: 10,
+    }}
   />
 ```
 
 ## example pie
 ```
   <Chart
-    // https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
     chartType='pie'
     colorScaleScheme='schemeCategory20'
     colorScaleType='basic'
-    containerHeight={containerHeight}
-    containerWidth={containerWidth}
     data={data}
-    datumLabels={[ 'status', 'total' ]}
+    datumLabels={['status', 'total']}
     id='open-issues'
-    margins={margins}
+    margins={{
+      bottom: 40,
+      left: 80,
+      right: 80,
+      top: 40,
+    }}
+    xAxis={true}
+    xAxisLabel='ISSUES BY TYPE'
+    yValue='total'
   />
 ```
 
@@ -116,14 +127,11 @@
   <Chart
     chartDataGroupBy='type'
     chartType='line'
-    colorScaleScheme='schemeCategory20'
+    colorScaleScheme='schemeCategory10'
     colorScaleType='basic'
-    containerHeight={containerHeight}
-    containerWidth={containerWidth}
     data={data}
     datumLabels={['total']}
     id='paying-customers'
-    margins={margins}
     xAxis={true}
     xAxisLabel='Date'
     xScale={true}
@@ -134,6 +142,12 @@
     yAxisLabel='Total Paying Customers'
     yScale={true}
     yValue='totalPayingCustomers'
+    margins={{
+      bottom: 70,
+      left: 70,
+      right: 10,
+      top: 10,
+    }}
   />
 ```
 ## example force-directed graph
@@ -143,14 +157,13 @@
     chartType='forceDirectedGraph'
     colorScaleScheme='schemeCategory20'
     colorScaleType='basic'
-    // you must structure your data like this https://bl.ocks.org/mbostock/4062045
     data={data}
-    id='graph'
+    id='force-graph'
     margins={{
-      bottom: 10,
-      left: 10,
-      right: 10,
-      top: 10,
+      bottom: 60,
+      left: 50,
+      right: 50,
+      top: 60,
     }}
   />
 ```

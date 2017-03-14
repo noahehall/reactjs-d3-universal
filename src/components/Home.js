@@ -15,16 +15,11 @@ function Home() {
   return (
     <div>
       <p style={s.p}>
-        This is an example single page app built
-        with React and React&nbsp;Router using {' '}
-        {s.code('browserHistory')}. Navigate with the links below and
-        refresh the page or copy/paste the url to test out the redirect
-        functionality deployed to overcome GitHub&nbsp;Pages incompatibility
-        with single page apps (like this one).
+        Demo of charts available
+        {typeof appFuncs}
       </p>
       <p style={s.p}>
-        Please see the {repoReadmeLink('repo readme')} for instructions on how to
-        use this boilerplate to deploy your own single page app using GitHub Pages.
+        Please see the {repoReadmeLink('repo readme')} for full api documentation
       </p>
       <div style={s.pageLinkContainer}>
         <Interactive

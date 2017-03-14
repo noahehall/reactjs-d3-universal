@@ -60,7 +60,7 @@ function App({ children, routes }) {
           touchActive={{}}
           touchActiveTapOnly
         >
-          Code and concept by <span {...s.childLink}>@noahedwardhall</span>
+          project by <span {...s.childLink}>@noahedwardhall</span>
         </Interactive>
       </div>
     </div>

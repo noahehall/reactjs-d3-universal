@@ -15,7 +15,7 @@ function App({ children, routes }) {
     function nextPath(route) {
       path += (
         (path.slice(-1) === '/' ? '' : '/') +
-        (route.path === '/' ? '' : // eslint-disable-line
+        (route.path === '/' ? '/reactjs-d3-universal' : // eslint-disable-line
         route.path.slice(0, 1) === '/' ? route.path.slice(1) : route.path)
       );
 

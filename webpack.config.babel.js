@@ -3,7 +3,7 @@ import webpack from 'webpack';
 export default {
   entry: `${__dirname}/src/index.js`,
   output: {
-    path: `${__dirname}/reactjs-d3-universal/build`,
+    path: `${__dirname}/build`,
     publicPath: '/build/',
     filename: 'bundle.js',
   },

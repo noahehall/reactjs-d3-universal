@@ -2,9 +2,9 @@
  * calculates x and y offsets when creating nested HTML hierarchy
  */var getDimensionOffsets=exports.getDimensionOffsets=function(a){var b=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,c=2<arguments.length&&void 0!==arguments[2]?arguments[2]:0;return b+=a.x,c+=a.y,!a.parent.parent?[b,c,a]:getDimensionOffsets(a.parent,b,c)};/**
  * retrieves foreign object if exists, else false
- */var getForeignObject=exports.getForeignObject=function(a){try{return a.data.children[0].metadata}catch(b){return!1}};/**
+ */var getForeignObject=exports.getForeignObject=function(a){try{return a.data.children[0].metadata}catch(b){return[]}};/**
  * creates nested HTML hierarchy from pack nodes
- */var createNest=exports.createNest=function(a,b,c,d,e,f,g,h,i){switch(a.depth){case 0:break;case 1:{a.x-=h,a.y-=i;break}default:{var _getDimensionOffsets=getDimensionOffsets(a.parent),_getDimensionOffsets2=_slicedToArray(_getDimensionOffsets,2),j=_getDimensionOffsets2[0],k=_getDimensionOffsets2[1];a.x-=h+j,a.y-=i+k}}return _react2.default.createElement(_packg2.default,{chartHeight:b,chartWidth:c,colorScale:d,d:a,id:g,idx:e,key:e,labels:f,foreignObject:getForeignObject(a)},a.children&&a.children.map(function(j){return createNest(j,b,c,d,++e,f,g,h,i)}))};/**
+ */var total=0;var createNest=exports.createNest=function(a,b,c,d,e,f,g,h,i){var j=!1;switch(a.depth){case 0:{j=!0;break}case 1:{j=!0,a.x-=h,a.y-=i;break}default:{var _getDimensionOffsets=getDimensionOffsets(a.parent),_getDimensionOffsets2=_slicedToArray(_getDimensionOffsets,2),k=_getDimensionOffsets2[0],l=_getDimensionOffsets2[1];a.x-=h+k,a.y-=i+l}}return _react2.default.createElement(_packg2.default,{nozoom:j,chartHeight:b,chartWidth:c,colorScale:d,d:a,id:g,idx:g+'-'+a.depth+'-'+e+'-'+ ++total,key:g+'-'+a.depth+'-'+e+'-'+ ++total,labels:f,foreignObject:getForeignObject(a)},a.children&&a.children.map(function(k){return createNest(k,b,c,d,++e,f,g,h,i)}))};/**
   * nodesArray - Description
   *
   * @param {number} [chartHeight=200] height of SVG
@@ -17,6 +17,7 @@
   * @return {type} Description
   */var nodesArray=exports.nodesArray=function(_ref){var _ref$chartHeight=_ref.chartHeight,a=void 0===_ref$chartHeight?200:_ref$chartHeight,_ref$chartWidth=_ref.chartWidth,b=void 0===_ref$chartWidth?200:_ref$chartWidth,_ref$colorScale=_ref.colorScale,c=void 0===_ref$colorScale?function(){return null}:_ref$colorScale,_ref$foreignObject=_ref.foreignObject,_ref$foreignObjectTyp=_ref.foreignObjectType,e=void 0===_ref$foreignObjectTyp?'':_ref$foreignObjectTyp,_ref$id=_ref.id,f=void 0===_ref$id?'':_ref$id,_ref$labels=_ref.labels,g=void 0===_ref$labels?[]:_ref$labels,_ref$nodes=_ref.nodes,h=void 0===_ref$nodes?[]:_ref$nodes;/* if you want the normal d3 nesting scheme (no nesting)
   // TODO: add 'nested' boolean property so users can switch between the two
+  const nodeArray = [];
   nodes.forEach((d, idx) =>
     nodeArray.push(
       <PackG

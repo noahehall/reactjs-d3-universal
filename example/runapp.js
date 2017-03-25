@@ -5,17 +5,17 @@ var y=label.getLabelText({chartType:'bar',d:w,labels:q});v.push(_react2.default.
 ,x:t(y),y:u(w[s])})))}),v};exports.default=Bars;
 
 }).call(this,"/dist/barchart/bars.js")
-},{"../lib/labels.js":10,"../svg/rect.js":26,"react":230}],2:[function(require,module,exports){
+},{"../lib/labels.js":10,"../svg/rect.js":27,"react":237}],2:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=ForceLayout;var _links=require('./links.js'),_nodes=require('./nodes.js'),_simulation=require('./simulation.js'),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(i){return i&&i.__esModule?i:{default:i}}// https://bl.ocks.org/mbostock/4062045
 function ForceLayout(i){var j=i.chartDataGroupBy,k=i.chartHeight,l=i.chartWidth,m=i.colorScale,n=i.data,o=(0,_simulation.getSimulation)({chartDataGroupBy:j,chartHeight:k,chartWidth:l}),p=(0,_nodes.nodeGs)({chartDataGroupBy:j,colorScale:m,nodes:n.nodes}),q=(0,_links.linkGs)({links:n.links});return o.nodes(n.nodes),o.force('link').links(n.links),o.restart(),_react2.default.createElement('g',null,q,p)}
 
-},{"./links.js":3,"./nodes.js":4,"./simulation.js":5,"react":230}],3:[function(require,module,exports){
+},{"./links.js":3,"./nodes.js":4,"./simulation.js":5,"react":237}],3:[function(require,module,exports){
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.linkGs=void 0;var _react=require("react"),_react2=_interopRequireDefault(_react);function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}var linkGs=exports.linkGs=function(e){var f=e.links;if(1>f.length)return[];var g=[];return f.map(function(h,i){return void 0!==h.source.x&&void 0!==h.source.y&&void 0!==h.target.x&&void 0!==h.target.y&&g.push(_react2.default.createElement("g",{key:i},_react2.default.createElement("line",{style:{stroke:"#999",strokeOpacity:".6",strokeWidth:Math.sqrt(h.value)},x1:h.source.x,x2:h.target.x,y1:h.source.y,y2:h.target.y})))}),g};
 
-},{"react":230}],4:[function(require,module,exports){
+},{"react":237}],4:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.nodeGs=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(f){return f&&f.__esModule?f:{default:f}}var nodeGs=exports.nodeGs=function(f){var g=f.chartDataGroupBy,h=void 0===g?'':g,i=f.colorScale,j=void 0===i?function(){return null}:i,k=f.nodes,l=void 0===k?[]:k;if(1>l.length)return[];var m=[];return l.forEach(function(n){return void 0!==n.x&&void 0!==n.y&&m.push(_react2.default.createElement('g',{key:n[h]},_react2.default.createElement('circle',{cx:n.x,cy:n.y,r:n.r||5,style:{fill:j(n.group),stroke:'#fff',strokeWidth:'1.5px'}}),_react2.default.createElement('text',{x:n.x,y:n.y},n[h])))}),m};
 
-},{"react":230}],5:[function(require,module,exports){
+},{"react":237}],5:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.getSimulation=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var f={};if(null!=d)for(var g in d)Object.prototype.hasOwnProperty.call(d,g)&&(f[g]=d[g]);return f.default=d,f}// https://github.com/d3/d3-force
 var getSimulation=exports.getSimulation=function(d){var f=d.chartDataGroupBy,g=void 0===f?'':f,h=d.chartHeight,i=void 0===h?200:h,j=d.chartWidth,k=void 0===j?200:j;return d3.forceSimulation()// default spacing, dont use if display text with eact circle
 //.force("link", d3.forceLink().id((d) => d[chartDataGroupBy]))
@@ -28,14 +28,15 @@ var getSimulation=exports.getSimulation=function(d){var f=d.chartDataGroupBy,g=v
 //.force("y", d3.forceY(0))
 //.force("x", d3.forceX(0));
 
-},{"d3":39}],6:[function(require,module,exports){
+},{"d3":40}],6:[function(require,module,exports){
 (function (__filename){
-'use strict';var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0});var _createClass=function(){function q(r,s){for(var t,u=0;u<s.length;u++)t=s[u],t.enumerable=t.enumerable||!1,t.configurable=!0,'value'in t&&(t.writable=!0),Object.defineProperty(r,t.key,t)}return function(r,s,t){return s&&q(r.prototype,s),t&&q(r,t),r}}(),_bars=require('./barchart/bars.js'),_lines=require('./linechart/lines.js'),_slices=require('./piechart/slices.js'),_dots=require('./scatterplot/dots.js'),_svg=require('./svg'),_axes=require('./lib/axes.js'),axes=_interopRequireWildcard(_axes),_data=require('./lib/data.js'),dataFunctions=_interopRequireWildcard(_data),_scales=require('./lib/scales.js'),scales=_interopRequireWildcard(_scales),_react=require('react'),_react2=_interopRequireDefault(_react),_table=require('./table'),_index=require('./forcelayout/index.js'),_index2=_interopRequireDefault(_index),_index3=require('./pack/index.js'),_index4=_interopRequireDefault(_index3);function _interopRequireDefault(q){return q&&q.__esModule?q:{default:q}}function _interopRequireWildcard(q){if(q&&q.__esModule)return q;var r={};if(null!=q)for(var s in q)Object.prototype.hasOwnProperty.call(q,s)&&(r[s]=q[s]);return r.default=q,r}function _classCallCheck(q,r){if(!(q instanceof r))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(q,r){if(!q)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return r&&('object'==('undefined'==typeof r?'undefined':_typeof(r))||'function'==typeof r)?r:q}function _inherits(q,r){if('function'!=typeof r&&null!==r)throw new TypeError('Super expression must either be null or a function, not '+('undefined'==typeof r?'undefined':_typeof(r)));q.prototype=Object.create(r&&r.prototype,{constructor:{value:q,enumerable:!1,writable:!0,configurable:!0}}),r&&(Object.setPrototypeOf?Object.setPrototypeOf(q,r):q.__proto__=r)}/**
+'use strict';var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0});var _createClass=function(){function k(l,m){for(var n,o=0;o<m.length;o++)n=m[o],n.enumerable=n.enumerable||!1,n.configurable=!0,'value'in n&&(n.writable=!0),Object.defineProperty(l,n.key,n)}return function(l,m,n){return m&&k(l.prototype,m),n&&k(l,n),l}}(),_bars=require('./barchart/bars.js'),_lines=require('./linechart/lines.js'),_slices=require('./piechart/slices.js'),_dots=require('./scatterplot/dots.js'),_svg=require('./svg'),_table=require('./table'),_axes=require('./lib/axes.js'),axes=_interopRequireWildcard(_axes),_data=require('./lib/data.js'),dataFunctions=_interopRequireWildcard(_data),_scales=require('./lib/scales.js'),scales=_interopRequireWildcard(_scales),_index=require('./forcelayout/index.js'),_index2=_interopRequireDefault(_index),_index3=require('./pack/index.js'),_index4=_interopRequireDefault(_index3),_reactPopup=require('react-popup'),_reactPopup2=_interopRequireDefault(_reactPopup),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(k){return k&&k.__esModule?k:{default:k}}function _interopRequireWildcard(k){if(k&&k.__esModule)return k;var l={};if(null!=k)for(var m in k)Object.prototype.hasOwnProperty.call(k,m)&&(l[m]=k[m]);return l.default=k,l}function _classCallCheck(k,l){if(!(k instanceof l))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(k,l){if(!k)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return l&&('object'==('undefined'==typeof l?'undefined':_typeof(l))||'function'==typeof l)?l:k}function _inherits(k,l){if('function'!=typeof l&&null!==l)throw new TypeError('Super expression must either be null or a function, not '+('undefined'==typeof l?'undefined':_typeof(l)));k.prototype=Object.create(l&&l.prototype,{constructor:{value:k,enumerable:!1,writable:!0,configurable:!0}}),l&&(Object.setPrototypeOf?Object.setPrototypeOf(k,l):k.__proto__=l)}/**
  * Represents a Chart
  * @constructor
- */var Chart=function(q){function r(s){_classCallCheck(this,r);// default dimensions for isomorphic rendering
-// is updated client-side on mount + browser resizes
-var t=_possibleConstructorReturn(this,(r.__proto__||Object.getPrototypeOf(r)).call(this,s));return t.state={containerHeight:200,containerWidth:200},_initialiseProps.call(t),t.state={containerHeight:200,containerWidth:200},t}return _inherits(r,q),_createClass(r,null,[{key:'defaultProps',get:function(){return{// required for line chart
+ */var Chart=function(k){function l(m){_classCallCheck(this,l);/**
+     * maps the chart type to required chart function
+     * TODO: move to lib directory
+     */var n=_possibleConstructorReturn(this,(l.__proto__||Object.getPrototypeOf(l)).call(this,m));_initialiseProps.call(n);var o=void 0;switch(m.chartType.toLowerCase()){case'pie':o=_slices.PieSlices;break;case'bar':o=_bars.Bars;break;case'scatterplot':o=_dots.ScatterPlotDots;break;case'line':o=_lines.Lines;break;case'table':o=_table.Table;break;case'forcedirectedgraph':o=_index2.default;break;case'pack':o=_index4.default;break;default:appFuncs.logError({data:[m.chartType,m.data],loc:__filename,msg:'did not find chart type '+m.chartType+', setting to null'}),o=null;}return n.state={chartFunction:o,colorScale:m.colorScaleScheme?scales.colorScale({chartDataGroupBy:m.chartDataGroupBy,colorScaleScheme:m.colorScaleScheme,colorScaleType:m.colorScaleType}):null,containerHeight:200,containerWidth:200,data:dataFunctions.format({chartDataGroupBy:m.chartDataGroupBy,chartType:m.chartType,data:m.data,xScaleTime:m.xScaleTime,xScaleTimeFormat:m.xScaleTimeFormat,xValue:m.xValue})},n.state={chartFunction:o,colorScale:m.colorScaleScheme?scales.colorScale({chartDataGroupBy:m.chartDataGroupBy,colorScaleScheme:m.colorScaleScheme,colorScaleType:m.colorScaleType}):null,containerHeight:200,containerWidth:200,data:dataFunctions.format({chartDataGroupBy:m.chartDataGroupBy,chartType:m.chartType,data:m.data,xScaleTime:m.xScaleTime,xScaleTimeFormat:m.xScaleTimeFormat,xValue:m.xValue})},n}return _inherits(l,k),_createClass(l,null,[{key:'defaultProps',get:function(){return{// required for line chart
 // group data by a specific property
 chartDataGroupBy:'',// bar|scatterplot|pie|line|table
 // scatterplot: requires x and y values to be integers
@@ -67,25 +68,22 @@ xScaleTimeFormat:'',xValue:'',// if this chart requires a y-axis
 yAxis:!1,// the value to use for y axis label, defaults to
 yAxisLabel:'',// if this chart requires a scale on the y dimension
 yScale:!1,// used for pie chart slice arc
-yValue:''}}}]),_createClass(r,[{key:'componentDidMount',value:function(){'table'===this.props.chartType&&(this.props.filterable&&appFuncs.filterTable.setFilterGrid(this.props.id),this.props.sortable&&appFuncs.sortTable.init()),this.setSize(),'undefined'!=typeof window&&(window.addEventListener('resize',this.setSize,!1),window.addEventListener('orientationchange',this.setSize,!1)),this.renderChart()}},{key:'shouldComponentUpdate',value:function(t,u){// only update if state or props have changed
-return!appFuncs._.isEqual(u,this.state)||!appFuncs._.isEqual(t,this.props)}},{key:'componentWillUnmount',value:function(){'undefined'!=typeof window&&(window.removeEventListener('resize',this.setSize),window.removeEventListener('orientationchange',this.setSize,!1))}/**
+yValue:''}}}]),_createClass(l,[{key:'getChildContext',value:function(){return{Popup:_reactPopup2.default}}},{key:'componentDidMount',value:function(){'table'===this.props.chartType&&(this.props.filterable&&appFuncs.filterTable.setFilterGrid(this.props.id),this.props.sortable&&appFuncs.sortTable.init()),'undefined'!=typeof window&&window.addEventListener('resize',this.setSize,!1),this.setSize(),this.renderChart()}},{key:'shouldComponentUpdate',value:function(n,o){// only update if state or props have changed
+return!appFuncs._.isEqual(o,this.state)||!appFuncs._.isEqual(n,this.props)}},{key:'componentWillUnmount',value:function(){'undefined'!=typeof window&&window.removeEventListener('resize',this.setSize)}/**
    * retrieves container dimensions from client and updates state which triggers redraw
    *//**
    * moves SVG container into its parent
-   */},{key:'render',value:function(){return appFuncs._.isEmpty(this.props.data)?(appFuncs.logError({data:this.props.data,loc:__filename,msg:'You need data to create a chart, returning null'}),null):this.renderChart()}}]),r}(_react2.default.Component);Chart.propTypes={chartDataGroupBy:_react2.default.PropTypes.string,chartType:_react2.default.PropTypes.string,colorScaleScheme:_react2.default.PropTypes.string,colorScaleType:_react2.default.PropTypes.string,data:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.array,_react2.default.PropTypes.object]),datumLabels:_react2.default.PropTypes.array,filterable:_react2.default.PropTypes.bool,foreignObject:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool,_react2.default.PropTypes.array]),foreignObjectType:_react2.default.PropTypes.string,id:_react2.default.PropTypes.string,margins:_react2.default.PropTypes.object,preserveAspectRatio:_react2.default.PropTypes.string,sortable:_react2.default.PropTypes.bool,xAxis:_react2.default.PropTypes.bool,xAxisLabel:_react2.default.PropTypes.string,xScale:_react2.default.PropTypes.bool,xScaleTime:_react2.default.PropTypes.bool,xScaleTimeFormat:_react2.default.PropTypes.string,xValue:_react2.default.PropTypes.string,yAxis:_react2.default.PropTypes.bool,yAxisLabel:_react2.default.PropTypes.string,yScale:_react2.default.PropTypes.bool,yValue:_react2.default.PropTypes.string};var _initialiseProps=function(){var q=this;this.setSize=function(){var r=void 0,s=void 0;// TODO: move all try blocks outside of this function
-try{r=Math.min(q.container.offsetHeight,window.screen.height)}catch(t){r=q.state.containerHeight}try{s=Math.min(q.container.offsetWidth,window.screen.width)}catch(t){s=q.state.containerWidth}return q.setState({containerHeight:r,containerWidth:s}),!0},this.getVisualContainerTransform=function(r){var s=r.chartHeight,t=r.chartType,u=r.chartWidth;switch(t.toLowerCase()){case'pie':return'translate('+[u/2,s/2]+')';default:return'translate(0, 0)';}},this.renderChart=function(){var r=0<arguments.length&&void 0!==arguments[0]?arguments[0]:q.state.containerWidth,s=1<arguments.length&&void 0!==arguments[1]?arguments[1]:q.state.containerHeight,t=q.props.chartType,u=void 0;/**
-     * maps the chart type to required chart function
-     * TODO: move to lib directory
-     */switch(t.toLowerCase()){case'pie':u=_slices.PieSlices;break;case'bar':u=_bars.Bars;break;case'scatterplot':u=_dots.ScatterPlotDots;break;case'line':u=_lines.Lines;break;case'table':u=_table.Table;break;case'forcedirectedgraph':u=_index2.default;break;case'pack':u=_index4.default;break;default:return appFuncs.logError({data:[t,q.props.data],loc:__filename,msg:'did not find chart type '+t+', returning null'}),null;}// initialize variables required for chart
-var v=s-(q.props.margins.top+q.props.margins.bottom),w=r-(q.props.margins.left+q.props.margins.right),x=q.props.colorScaleScheme?scales.colorScale({chartDataGroupBy:q.props.chartDataGroupBy,colorScaleScheme:q.props.colorScaleScheme,colorScaleType:q.props.colorScaleType}):null,y=dataFunctions.format({chartDataGroupBy:q.props.chartDataGroupBy,chartType:q.props.chartType,data:q.props.data,xScaleTime:q.props.xScaleTime,xScaleTimeFormat:q.props.xScaleTimeFormat,xValue:q.props.xValue}),z='undefined'!=typeof document,A=q.props.xAxis?axes.getXAxisLabel({chartDataGroupBy:q.props.chartDataGroupBy,transform:'rotate(0)',x:r/2-q.props.margins.left,xAxisLabel:q.props.xAxisLabel||q.props.xValue,y:s}):null,B=q.props.xScale?scales.getXScale({chartDataGroupBy:q.props.chartDataGroupBy,chartHeight:v,chartType:q.props.chartType,chartWidth:w,data:y,labels:q.props.datumLabels,margins:q.props.margins,svgWidth:r,xScaleTime:q.props.xScaleTime,xScaleTimeFormat:q.props.xScaleTimeFormat,xValue:q.props.xValue}):null,C=q.props.yAxis?axes.getYAxisLabel({chartDataGroupBy:q.props.chartDataGroupBy,transform:'rotate(-90)',// x & y flip because of rotation
-x:-s/2-q.props.margins.top,y:'1em',yAxisLabel:q.props.yAxisLabel||q.props.yValue}):null,D=q.props.yScale?scales.getYScale({chartDataGroupBy:q.props.chartDataGroupBy,chartHeight:v,chartType:q.props.chartType,chartWidth:w,data:y,margins:q.props.margins,svgHeight:s,yValue:q.props.yValue}):null;// only create X and Y axis on client
-z&&(q.props.yAxis&&D&&axes.getYAxis({id:q.props.id,thisYScale:D}),q.props.xAxis&&B&&axes.getXAxis({id:q.props.id,thisXScale:B}));// creates chart based on above variable initializations
-var E=u({chartDataGroupBy:q.props.chartDataGroupBy,chartHeight:v,chartType:q.props.chartType,chartWidth:w,colorScale:x,colorScaleScheme:q.props.colorScaleScheme,colorScaleType:q.props.colorScaleType,data:y,filterable:q.props.filterable,foreignObject:q.props.foreignObject,foreignObjectType:q.props.foreignObjectType,id:q.props.id,labels:q.props.datumLabels,margins:q.props.margins,sortable:q.props.sortable,xScale:B,xScaleTime:q.props.xScaleTime,xScaleTimeFormat:q.props.xScaleTimeFormat,xValue:q.props.xValue,yScale:D,yValue:q.props.yValue}),F='table'===q.props.chartType?E:_react2.default.createElement(_svg.SVG,{id:q.props.id,preserveAspectRatio:q.props.preserveAspectRatio,svgHeight:s,svgWidth:r,xmlns:'http://www.w3.org/2000/svg'},_react2.default.createElement('g',{className:'chart-svg-g',height:v,transform:'translate('+q.props.margins.left+', '+q.props.margins.top+')',width:w},_react2.default.createElement('g',{className:q.props.chartType.toLowerCase()+'-visual-container',id:q.props.id+'-visual-container',transform:q.getVisualContainerTransform({chartHeight:v,chartType:q.props.chartType,chartWidth:w})},E)),q.props.xAxis&&_react2.default.createElement('g',{className:'x axis',transform:'translate('+q.props.margins.left+', '+(v+q.props.margins.top)+')'}),A,q.props.yAxis&&_react2.default.createElement('g',{className:'y axis',transform:'translate('+q.props.margins.left+', '+q.props.margins.top+')'}),C,_react2.default.createElement('section',{id:q.props.id+'-tooltip',style:{backgroundColor:'black',border:'2px red dashed',borderRadius:'4px',opacity:0,padding:'10px',position:'absolute'}}));// Create an SVG containing the chart
+   */},{key:'render',value:function(){return appFuncs._.isEmpty(this.props.data)?(appFuncs.logError({data:this.props.data,loc:__filename,msg:'You need data to create a chart, returning null'}),null):this.renderChart()}}]),l}(_react2.default.Component);Chart.propTypes={chartDataGroupBy:_react2.default.PropTypes.string,chartType:_react2.default.PropTypes.string,colorScaleScheme:_react2.default.PropTypes.string,colorScaleType:_react2.default.PropTypes.string,data:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.array,_react2.default.PropTypes.object]),datumLabels:_react2.default.PropTypes.array,filterable:_react2.default.PropTypes.bool,foreignObject:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool,_react2.default.PropTypes.array]),foreignObjectType:_react2.default.PropTypes.string,id:_react2.default.PropTypes.string,margins:_react2.default.PropTypes.object,preserveAspectRatio:_react2.default.PropTypes.string,sortable:_react2.default.PropTypes.bool,xAxis:_react2.default.PropTypes.bool,xAxisLabel:_react2.default.PropTypes.string,xScale:_react2.default.PropTypes.bool,xScaleTime:_react2.default.PropTypes.bool,xScaleTimeFormat:_react2.default.PropTypes.string,xValue:_react2.default.PropTypes.string,yAxis:_react2.default.PropTypes.bool,yAxisLabel:_react2.default.PropTypes.string,yScale:_react2.default.PropTypes.bool,yValue:_react2.default.PropTypes.string},Chart.childContextTypes={Popup:_react2.default.PropTypes.func};var _initialiseProps=function(){var k=this;this.setSize=function(){var l=void 0,m=void 0;try{l=Math.min(k.container.offsetHeight,window.screen.height)}catch(o){l=k.state.containerHeight}try{m=Math.min(k.container.offsetWidth,window.screen.width)}catch(o){m=k.state.containerWidth}var n=function(){return k.setState({containerHeight:l,containerWidth:m}),!0};return'undefined'!=typeof window&&(window.requestAnimationFrame?window.requestAnimationFrame(n):window.setTimeout(function(){return n()},1))},this.getVisualContainerTransform=function(l){var m=l.chartHeight,n=l.chartType,o=l.chartWidth;switch(n.toLowerCase()){case'pie':return'translate('+o/2+'px, '+m/2+'px)';default:return'translate(0, 0)';}},this.renderChart=function(){// dont continue if chartFunction not valid;
+if(!k.state.chartFunction)return null;// initialize variables required for chart
+var l=k.state.containerHeight-(k.props.margins.top+k.props.margins.bottom),m=k.state.containerWidth-(k.props.margins.left+k.props.margins.right),n='undefined'!=typeof document,o=k.props.xAxis?axes.getXAxisLabel({chartDataGroupBy:k.props.chartDataGroupBy,transform:'rotate(0)',x:k.state.containerWidth/2-k.props.margins.left,xAxisLabel:k.props.xAxisLabel||k.props.xValue,y:k.state.containerHeight}):null,p=k.props.xScale?scales.getXScale({chartDataGroupBy:k.props.chartDataGroupBy,chartHeight:l,chartType:k.props.chartType,chartWidth:m,data:k.state.data,labels:k.props.datumLabels,margins:k.props.margins,svgWidth:width,xScaleTime:k.props.xScaleTime,xScaleTimeFormat:k.props.xScaleTimeFormat,xValue:k.props.xValue}):null,q=k.props.yAxis?axes.getYAxisLabel({chartDataGroupBy:k.props.chartDataGroupBy,transform:'rotate(-90)',// x & y flip because of rotation
+x:-k.state.containerHeight/2-k.props.margins.top,y:'1em',yAxisLabel:k.props.yAxisLabel||k.props.yValue}):null,r=k.props.yScale?scales.getYScale({chartDataGroupBy:k.props.chartDataGroupBy,chartHeight:l,chartType:k.props.chartType,chartWidth:m,data:k.state.data,margins:k.props.margins,svgHeight:k.state.containerHeight,yValue:k.props.yValue}):null;// only create X and Y axis on client
+n&&(k.props.yAxis&&r&&axes.getYAxis({id:k.props.id,thisYScale:r}),k.props.xAxis&&p&&axes.getXAxis({id:k.props.id,thisXScale:p}));// creates chart based on above variable initializations
+var s=k.state.chartFunction({chartDataGroupBy:k.props.chartDataGroupBy,chartHeight:l,chartType:k.props.chartType,chartWidth:m,colorScale:k.state.colorScale,colorScaleScheme:k.props.colorScaleScheme,colorScaleType:k.props.colorScaleType,data:k.state.data,filterable:k.props.filterable,foreignObject:k.props.foreignObject,foreignObjectType:k.props.foreignObjectType,id:k.props.id,labels:k.props.datumLabels,margins:k.props.margins,sortable:k.props.sortable,xScale:p,xScaleTime:k.props.xScaleTime,xScaleTimeFormat:k.props.xScaleTimeFormat,xValue:k.props.xValue,yScale:r,yValue:k.props.yValue}),t='table'===k.props.chartType?s:_react2.default.createElement(_svg.SVG,{id:k.props.id,preserveAspectRatio:k.props.preserveAspectRatio,style:{position:'relative'},svgHeight:k.state.containerHeight,svgWidth:k.state.containerWidth,xmlns:'http://www.w3.org/2000/svg'},_react2.default.createElement('g',{className:'chart-svg-g',style:{height:l,transform:'translate('+k.props.margins.left+'px, '+k.props.margins.top+'px)',transition:'transform 1s',width:m}},_react2.default.createElement('g',{className:k.props.chartType.toLowerCase()+'-visual-container',id:k.props.id+'-visual-container',style:{transform:k.getVisualContainerTransform({chartHeight:l,chartType:k.props.chartType,chartWidth:m}),transition:'transform 1s'}},s)),k.props.xAxis&&_react2.default.createElement('g',{className:'x axis',style:{transform:'translate('+k.props.margins.left+'px, '+(l+k.props.margins.top)+'px)',transition:'transform 1s'}}),o,k.props.yAxis&&_react2.default.createElement('g',{className:'y axis',style:{tansform:'translate('+k.props.margins.left+'px, '+k.props.margins.top+'px)',transition:'transform 1s'}}),q,_react2.default.createElement('section',{id:k.props.id+'-tooltip',style:{backgroundColor:'black',border:'2px red dashed',borderRadius:'4px',opacity:0,padding:'10px',position:'absolute'}}));// Create an SVG containing the chart
 // Return a div containing the SVG
-return _react2.default.createElement('div',{className:'chart-container',ref:function(H){return q.container=H},style:{display:'block',overflow:'hidden',position:'relative'}},F)}};exports.default=Chart;
+return _react2.default.createElement('div',{className:'chart-container',ref:function(v){return k.container=v},style:{display:'block',overflow:'hidden',position:'relative'}},_react2.default.createElement(_reactPopup2.default,null),t)}};exports.default=Chart;
 
 }).call(this,"/dist/index.js")
-},{"./barchart/bars.js":1,"./forcelayout/index.js":2,"./lib/axes.js":8,"./lib/data.js":9,"./lib/scales.js":12,"./linechart/lines.js":14,"./pack/index.js":16,"./piechart/slices.js":21,"./scatterplot/dots.js":22,"./svg":24,"./table":28,"react":230}],7:[function(require,module,exports){
+},{"./barchart/bars.js":1,"./forcelayout/index.js":2,"./lib/axes.js":8,"./lib/data.js":9,"./lib/scales.js":12,"./linechart/lines.js":14,"./pack/index.js":16,"./piechart/slices.js":22,"./scatterplot/dots.js":23,"./svg":25,"./table":29,"react":237,"react-popup":212}],7:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.generateArcs=exports.generateArcPath=exports.generateLabelArc=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var h={};if(null!=d)for(var i in d)Object.prototype.hasOwnProperty.call(d,i)&&(h[i]=d[i]);return h.default=d,h}var generateLabelArc=exports.generateLabelArc=function(d){var h=d.chartHeight,i=void 0===h?200:h,j=d.chartWidth,k=void 0===j?200:j,l=d.endAngle,m=d.startAngle;return(isNaN(l)||isNaN(m))&&appFuncs.logError({data:[l,m],loc:__filename,msg:'endAngle and startAngle must be valid variables in arcs.generateLabelArc(), attempting to return labelArc anyway'}),d3.arc().endAngle(l).innerRadius(Math.min(i,k))// eslintignore bigger number = smaller donut
 .outerRadius(Math.min(i,k))// eslintignore bigger number = smaller pie
@@ -100,7 +98,7 @@ return _react2.default.createElement('div',{className:'chart-container',ref:func
  */
 
 }).call(this,"/dist/lib/arcs.js")
-},{"d3":39}],8:[function(require,module,exports){
+},{"d3":40}],8:[function(require,module,exports){
 (function (__filename){
 'use strict';var _typeof2='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0}),exports.getYAxisLabel=exports.getXAxisLabel=exports.getXAxis=exports.getYAxis=void 0;var _typeof='function'==typeof Symbol&&'symbol'==_typeof2(Symbol.iterator)?function(g){return'undefined'==typeof g?'undefined':_typeof2(g)}:function(g){return g&&'function'==typeof Symbol&&g.constructor===Symbol&&g!==Symbol.prototype?'symbol':'undefined'==typeof g?'undefined':_typeof2(g)},_text=require('../svg/text.js'),_text2=_interopRequireDefault(_text),_d=require('d3'),d3=_interopRequireWildcard(_d),_react=require('react'),_react2=_interopRequireDefault(_react);// import * as label from './labels.js';
 function _interopRequireWildcard(g){if(g&&g.__esModule)return g;var h={};if(null!=g)for(var i in g)Object.prototype.hasOwnProperty.call(g,i)&&(h[i]=g[i]);return h.default=g,h}function _interopRequireDefault(g){return g&&g.__esModule?g:{default:g}}/*
@@ -124,7 +122,7 @@ function _interopRequireWildcard(g){if(g&&g.__esModule)return g;var h={};if(null
  */var getYAxisLabel=exports.getYAxisLabel=function(g){var h=g.transform,i=void 0===h?'rotate(-90)':h,j=g.x,k=void 0===j?5:j,l=g.y,m=void 0===l?-5:l,n=g.yAxisLabel,o=void 0===n?'':n;return o?_react2.default.createElement(_text2.default,{chartType:'axes',text:o,transform:i,x:k,y:m}):(appFuncs.logError({data:[i,k,m,o],loc:__filename,msg:'yAxisLabel must be a valid variable in axes.getYAxisLabel(), returning empty string'}),'')};getYAxisLabel.propTypes={transform:_react2.default.PropTypes.string,x:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number,_react2.default.PropTypes.string]),y:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number,_react2.default.PropTypes.string]),yAxisLabel:_react2.default.PropTypes.string};
 
 }).call(this,"/dist/lib/axes.js")
-},{"../svg/text.js":27,"d3":39,"react":230}],9:[function(require,module,exports){
+},{"../svg/text.js":28,"d3":40,"react":237}],9:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.format=exports.groupBy=exports.formatTime=void 0;var _extends=Object.assign||function(d){for(var k,l=1;l<arguments.length;l++)for(var m in k=arguments[l],k)Object.prototype.hasOwnProperty.call(k,m)&&(d[m]=k[m]);return d},_time=require('./time.js'),time=_interopRequireWildcard(_time);function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var k={};if(null!=d)for(var l in d)Object.prototype.hasOwnProperty.call(d,l)&&(k[l]=d[l]);return k.default=d,k}function _defineProperty(d,k,l){return k in d?Object.defineProperty(d,k,{value:l,enumerable:!0,configurable:!0,writable:!0}):d[k]=l,d}var formatTime=exports.formatTime=function(d){var k=d.data,l=d.timeProperty,m=void 0===l?'':l,n=d.xScaleTimeFormat,o=void 0===n?'':n;if(!m||!o||appFuncs._.isEmpty(k))return appFuncs.logError({data:[k,m,o],loc:__filename,msg:'timeProperty and xScaleTimeFormat must be valid variables in data.formatTime(), returning data without transformations'}),k;var p=time.parse({format:o}),q=[];return k.forEach(function(r){return q.push(_extends({},r,_defineProperty({},m,p(r[m]))))}),q},groupBy=exports.groupBy=function(d){var k=d.chartDataGroupBy,l=void 0===k?'':k,m=d.data,n=d.xScaleTime,o=d.xScaleTimeFormat,p=d.xValue,q=void 0===p?'':p;if(appFuncs._.isEmpty(m)||!l)return appFuncs.logError({data:[l,m],loc:__filename,msg:'data and chartDataGroupBy must be valid variables in data.groupBy(), returning data without transformations'}),m;// group all values by groupby
 var r=appFuncs._.groupBy(m,function(t){return t[l]});if(appFuncs._.isEmpty(r))return appFuncs.logError({data:[m,r],loc:__filename,msg:'could not create groups for data on key '+l+', returning data'}),m;// create object with values and keys for each lineValues group
@@ -159,12 +157,12 @@ return l?groupBy({chartDataGroupBy:l,data:o,xScaleTime:q,xScaleTimeFormat:s,xVal
 return B?_react2.default.createElement(_text2.default,{chartType:'pie',className:'',dx:A,dy:0,text:B,transform:'rotate(0)',x:y/2,xlinkHref:'#arc-'+s,y:z/2}):(appFuncs.logError({data:['chartType = pie',m,u],msg:'text needs to be a valid variable, check labels.getLabelText method, returning empty string'}),'')};getPieLabels.propTypes={arc:_react2.default.PropTypes.object,chartHeight:_react2.default.PropTypes.number,chartWidth:_react2.default.PropTypes.number,idx:_react2.default.PropTypes.number,labels:_react2.default.PropTypes.array};var getLabels=exports.getLabels=function(d){var l=d.arc,m=void 0===l?{}:l,n=d.chartHeight,o=void 0===n?200:n,p=d.chartType,q=void 0===p?'':p,r=d.chartWidth,s=void 0===r?200:r,t=d.d,u=d.idx,v=void 0===u?0:u,w=d.labels,x=void 0===w?[]:w;if(!q)return appFuncs.logError({data:[m,q,t,x],loc:__filename,msg:'Chart type must be defined in labels.getLabels(), returning empty string'}),'';switch(q.toLowerCase()){case'pie':return getPieLabels({arc:m,chartHeight:o,chartType:q,chartWidth:s,idx:v,labels:x});default:{var y='';return x.forEach(function(z){return y+=t[z]+' '}),y}}};
 
 }).call(this,"/dist/lib/labels.js")
-},{"../svg/text.js":27,"./arcs.js":7,"react":230}],11:[function(require,module,exports){
+},{"../svg/text.js":28,"./arcs.js":7,"react":237}],11:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.generateLine=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var i={};if(null!=d)for(var j in d)Object.prototype.hasOwnProperty.call(d,j)&&(i[j]=d[j]);return i.default=d,i}var generateLine=exports.generateLine=function(d){var i=d.lineCurve,j=void 0===i?'':i,k=d.xScale,l=d.xValue,m=void 0===l?'':l,n=d.yScale,o=d.yValue,p=void 0===o?'':o;if(!k||!m||!p||!n)return appFuncs.logError({data:[k,m,n,p],loc:__filename,msg:'xScale, xValue, yScale and yValue must be valid variables in lines.generateLine(), returning null'}),null;var q=void 0;return q=j&&d3[j]?d3[j]:d3.curveBasis,d3.line().curve(q).x(function(r){return k(r[m])}).y(function(r){return n(r[p])})};
 
 }).call(this,"/dist/lib/lines.js")
-},{"d3":39}],12:[function(require,module,exports){
+},{"d3":40}],12:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.colorScale=exports.getXScale=exports.xScale=exports.getYScale=exports.yScale=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d),_d3ScaleChromatic=require('d3-scale-chromatic'),d3chromatic=_interopRequireWildcard(_d3ScaleChromatic),_labels=require('./labels.js'),label=_interopRequireWildcard(_labels);function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var o={};if(null!=d)for(var q in d)Object.prototype.hasOwnProperty.call(d,q)&&(o[q]=d[q]);return o.default=d,o}function _toConsumableArray(d){if(Array.isArray(d)){for(var o=0,q=Array(d.length);o<d.length;o++)q[o]=d[o];return q}return Array.from(d)}// eslintignore https://github.com/d3/d3-scale-chromatic
 /**
@@ -202,17 +200,17 @@ case'random':default:return appFuncs.logError({data:[q,s],loc:__filename,msg:'Sc
  */// Retrieve color scale
 
 }).call(this,"/dist/lib/scales.js")
-},{"./labels.js":10,"d3":39,"d3-scale-chromatic":38}],13:[function(require,module,exports){
+},{"./labels.js":10,"d3":40,"d3-scale-chromatic":39}],13:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.parse=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(b){if(b&&b.__esModule)return b;var c={};if(null!=b)for(var d in b)Object.prototype.hasOwnProperty.call(b,d)&&(c[d]=b[d]);return c.default=b,c}var parse=exports.parse=function(b){var c=b.format,d=void 0===c?'':c;return d?d3.timeParse(d):(appFuncs.logError({data:d,loc:__filename,msg:'format must be valid variables in time.parse(), returning null'}),null)};
 
 }).call(this,"/dist/lib/time.js")
-},{"d3":39}],14:[function(require,module,exports){
+},{"d3":40}],14:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Lines=void 0;var _lines=require('../lib/lines.js'),_path=require('../svg/path.js'),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(l){return l&&l.__esModule?l:{default:l}}var Lines=exports.Lines=function(l){var m=l.chartType,n=void 0===m?'':m,o=l.colorScale,p=l.data,q=l.lineCurve,r=void 0===q?'':q,s=l.xScale,t=l.xValue,u=void 0===t?'':t,v=l.yScale,w=l.yValue,x=void 0===w?'':w;if(appFuncs._.isEmpty(p)||!n||!s||!v||!x||!u)return appFuncs.logError({data:[n,p,s,u,v,x],loc:__filename,msg:'chartType, data, xScale, xValue, yScale, yValue must be valid variables in lines.Lines(), returning null'}),null;switch(n.toLowerCase()){case'line':{var y=(0,_lines.generateLine)({lineCurve:r,xScale:s,xValue:u,yScale:v,yValue:x}),z=[];for(var A in p)z.push(_react2.default.createElement(_path.Path,{chartType:n,d:y(p[A].values),fill:'none',id:p[A].id,key:p[A].id,stroke:o(p[A].id)}));return z}default:return null;}};exports.default=Lines;
 
 }).call(this,"/dist/linechart/lines.js")
-},{"../lib/lines.js":11,"../svg/path.js":25,"react":230}],15:[function(require,module,exports){
+},{"../lib/lines.js":11,"../svg/path.js":26,"react":237}],15:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.hierarchy=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(a){if(a&&a.__esModule)return a;var b={};if(null!=a)for(var d in a)Object.prototype.hasOwnProperty.call(a,d)&&(b[d]=a[d]);return b.default=a,b}/**
   * hierarchy - https://github.com/d3/d3-hierarchy
   *
@@ -221,14 +219,15 @@ case'random':default:return appFuncs.logError({data:[q,s],loc:__filename,msg:'Sc
   * @returns {object} a root node
   */var hierarchy=exports.hierarchy=function(a){var b=a.data,d=void 0===b?{}:b;return d3.hierarchy(d,function(g){return g.children&&'metadata'!==g.children[0].type?g.children:null}).sum(function(g){return+g.size}).sort(function(g,h){return+h.value-+g.value})};
 
-},{"d3":39}],16:[function(require,module,exports){
-'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=Pack;var _hierarchy=require('./hierarchy.js'),_nodesarray=require('./nodesarray.js'),_pack=require('./pack.js'),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(j){return j&&j.__esModule?j:{default:j}}/* eslint-disable */function Pack(j){var k=j.chartHeight,l=j.chartWidth,m=j.colorScale,n=j.data,o=j.foreignObject,p=j.foreignObjectType,q=j.id,r=j.labels,s=j.margins;return _react2.default.createElement('g',null,(0,_nodesarray.nodesArray)({chartHeight:k,chartWidth:l,colorScale:m,id:q,foreignObject:o,foreignObjectType:p,labels:r,nodes:(0,_pack.pack)({chartWidth:l,chartHeight:k})((0,_hierarchy.hierarchy)({data:n})).descendants()}))}
+},{"d3":40}],16:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=Pack;var _hierarchy=require('./hierarchy.js'),_nodesarray=require('./nodesarray.js'),_pack=require('./pack.js'),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(j){return j&&j.__esModule?j:{default:j}}/* eslint-disable */function Pack(j){var k=j.chartHeight,l=j.chartWidth,m=j.colorScale,n=j.data,o=j.foreignObject,p=j.foreignObjectType,q=j.id,r=j.labels,s=j.margins;return _react2.default.createElement('g',{className:'nodes-array-container'},(0,_nodesarray.nodesArray)({chartHeight:k,chartWidth:l,colorScale:m,id:q,foreignObject:o,foreignObjectType:p,labels:r,nodes:(0,_pack.pack)({chartWidth:l,chartHeight:k})((0,_hierarchy.hierarchy)({data:n})).descendants()}))}
 
-},{"./hierarchy.js":15,"./nodesarray.js":17,"./pack.js":18,"react":230}],17:[function(require,module,exports){
-'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.nodesArray=exports.createNest=exports.getForeignObject=exports.getDimensionOffsets=void 0;var _slicedToArray=function(){function l(m,n){var o=[],p=!0,q=!1,r=void 0;try{for(var s,t=m[Symbol.iterator]();!(p=(s=t.next()).done)&&(o.push(s.value),!(n&&o.length===n));p=!0);}catch(u){q=!0,r=u}finally{try{!p&&t['return']&&t['return']()}finally{if(q)throw r}}return o}return function(m,n){if(Array.isArray(m))return m;if(Symbol.iterator in Object(m))return l(m,n);throw new TypeError('Invalid attempt to destructure non-iterable instance')}}(),_react=require('react'),_react2=_interopRequireDefault(_react),_packg=require('./packg.js'),_packg2=_interopRequireDefault(_packg);/* eslint-disable */function _interopRequireDefault(l){return l&&l.__esModule?l:{default:l}}/**
+},{"./hierarchy.js":15,"./nodesarray.js":17,"./pack.js":18,"react":237}],17:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.nodesArray=exports.createNest=exports.getForeignObject=exports.getDimensionOffsets=void 0;var _slicedToArray=function(){function m(n,o){var p=[],q=!0,r=!1,s=void 0;try{for(var t,u=n[Symbol.iterator]();!(q=(t=u.next()).done)&&(p.push(t.value),!(o&&p.length===o));q=!0);}catch(v){r=!0,s=v}finally{try{!q&&u['return']&&u['return']()}finally{if(r)throw s}}return p}return function(n,o){if(Array.isArray(n))return n;if(Symbol.iterator in Object(n))return m(n,o);throw new TypeError('Invalid attempt to destructure non-iterable instance')}}(),_react=require('react'),_react2=_interopRequireDefault(_react),_packg=require('./packg.js'),_packg2=_interopRequireDefault(_packg);/* eslint-disable */function _interopRequireDefault(m){return m&&m.__esModule?m:{default:m}}/**
  * calculates x and y offsets when creating nested HTML hierarchy
- */var getDimensionOffsets=exports.getDimensionOffsets=function(l){var m=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,n=2<arguments.length&&void 0!==arguments[2]?arguments[2]:0;return m+=l.x,n+=l.y,l.parent.parent?getDimensionOffsets(l.parent,m,n):[m,n,l]},getForeignObject=exports.getForeignObject=function(l){try{return l.data.children[0].metadata}catch(m){return!1}},createNest=exports.createNest=function(l,m,n,o,p,q,r,s,t){switch(l.depth){case 0:break;case 1:{l.x-=s,l.y-=t;break}default:{var u=getDimensionOffsets(l.parent),v=_slicedToArray(u,2),w=v[0],x=v[1];l.x-=s+w,l.y-=t+x}}return _react2.default.createElement(_packg2.default,{chartHeight:m,chartWidth:n,colorScale:o,d:l,id:r,idx:p,key:p,labels:q,foreignObject:getForeignObject(l)},l.children&&l.children.map(function(y){return createNest(y,m,n,o,++p,q,r,s,t)}))},nodesArray=exports.nodesArray=function(l){var m=l.chartHeight,n=void 0===m?200:m,o=l.chartWidth,p=void 0===o?200:o,q=l.colorScale,r=void 0===q?function(){return null}:q,s=l.foreignObject,t=l.foreignObjectType,u=void 0===t?'':t,v=l.id,w=void 0===v?'':v,x=l.labels,y=void 0===x?[]:x,z=l.nodes,A=void 0===z?[]:z;/* if you want the normal d3 nesting scheme (no nesting)
+ */var getDimensionOffsets=exports.getDimensionOffsets=function(m){var n=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,o=2<arguments.length&&void 0!==arguments[2]?arguments[2]:0;return n+=m.x,o+=m.y,m.parent.parent?getDimensionOffsets(m.parent,n,o):[n,o,m]},getForeignObject=exports.getForeignObject=function(m){try{return m.data.children[0].metadata}catch(n){return[]}},total=0,createNest=exports.createNest=function(m,n,o,p,q,r,s,t,u){var v=!1;switch(m.depth){case 0:{v=!0;break}case 1:{v=!0,m.x-=t,m.y-=u;break}default:{var w=getDimensionOffsets(m.parent),x=_slicedToArray(w,2),y=x[0],z=x[1];m.x-=t+y,m.y-=u+z}}return _react2.default.createElement(_packg2.default,{nozoom:v,chartHeight:n,chartWidth:o,colorScale:p,d:m,id:s,idx:s+'-'+m.depth+'-'+q+'-'+ ++total,key:s+'-'+m.depth+'-'+q+'-'+ ++total,labels:r,foreignObject:getForeignObject(m)},m.children&&m.children.map(function(A){return createNest(A,n,o,p,++q,r,s,t,u)}))},nodesArray=exports.nodesArray=function(m){var n=m.chartHeight,o=void 0===n?200:n,p=m.chartWidth,q=void 0===p?200:p,r=m.colorScale,s=void 0===r?function(){return null}:r,t=m.foreignObject,u=m.foreignObjectType,v=void 0===u?'':u,w=m.id,x=void 0===w?'':w,y=m.labels,z=void 0===y?[]:y,A=m.nodes,B=void 0===A?[]:A;/* if you want the normal d3 nesting scheme (no nesting)
   // TODO: add 'nested' boolean property so users can switch between the two
+  const nodeArray = [];
   nodes.forEach((d, idx) =>
     nodeArray.push(
       <PackG
@@ -244,7 +243,7 @@ case'random':default:return appFuncs.logError({data:[q,s],loc:__filename,msg:'Sc
     )
   );
   return nodeArray;
-//*/return 1>A.length?null:createNest(A[0],n,p,r,1,y,w,A[0].children[0].parent.x,A[0].children[0].parent.y)};/**
+//*/return 1>B.length?null:createNest(B[0],o,q,s,1,z,x,B[0].children[0].parent.x,B[0].children[0].parent.y)};/**
  * retrieves foreign object if exists, else false
  *//**
  * creates nested HTML hierarchy from pack nodes
@@ -261,7 +260,7 @@ case'random':default:return appFuncs.logError({data:[q,s],loc:__filename,msg:'Sc
   * @return {type} Description
   */
 
-},{"./packg.js":19,"react":230}],18:[function(require,module,exports){
+},{"./packg.js":19,"react":237}],18:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.pack=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(c){if(c&&c.__esModule)return c;var d={};if(null!=c)for(var e in c)Object.prototype.hasOwnProperty.call(c,e)&&(d[e]=c[e]);return d.default=c,d}/**
   * pack - https://github.com/d3/d3-hierarchy/blob/master/README.md#pack
   * Enclosure diagrams use containment (nesting) to represent a hierarchy.
@@ -271,161 +270,682 @@ case'random':default:return appFuncs.logError({data:[q,s],loc:__filename,msg:'Sc
   * @return {type} d3 pack layout
   */var pack=exports.pack=function(c){var d=c.chartWidth,e=void 0===d?200:d,f=c.chartHeight,g=void 0===f?200:f;return d3.pack().size([e,g]).padding(2)};/* eslint-disable */
 
-},{"d3":39}],19:[function(require,module,exports){
-'use strict';var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0});var _createClass=function(){function d(e,g){for(var p,q=0;q<g.length;q++)p=g[q],p.enumerable=p.enumerable||!1,p.configurable=!0,'value'in p&&(p.writable=!0),Object.defineProperty(e,p.key,p)}return function(e,g,p){return g&&d(e.prototype,g),p&&d(e,p),e}}(),_d=require('d3'),d3=_interopRequireWildcard(_d),_react=require('react'),_react2=_interopRequireDefault(_react),_text=require('./text.js'),_text2=_interopRequireDefault(_text);function _interopRequireDefault(d){return d&&d.__esModule?d:{default:d}}function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var e={};if(null!=d)for(var g in d)Object.prototype.hasOwnProperty.call(d,g)&&(e[g]=d[g]);return e.default=d,e}function _classCallCheck(d,e){if(!(d instanceof e))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(d,e){if(!d)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return e&&('object'==('undefined'==typeof e?'undefined':_typeof(e))||'function'==typeof e)?e:d}function _inherits(d,e){if('function'!=typeof e&&null!==e)throw new TypeError('Super expression must either be null or a function, not '+('undefined'==typeof e?'undefined':_typeof(e)));d.prototype=Object.create(e&&e.prototype,{constructor:{value:d,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(d,e):d.__proto__=e)}/* eslint-disable *//**
- * wraps a set of pack nodes inside a <g> ELEMENT
- */var PackG=function(d){function e(g){_classCallCheck(this,e);var p=_possibleConstructorReturn(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,g));return p.state={previous:{},r:0,scale:1,scaled:!1,scaling:!1,x:0,y:0,fontSize:'5px'},_initialiseProps.call(p),p.state={previous:{},r:0,scale:1,scaled:!1,scaling:!1,x:0,y:0,fontSize:'5px'},p}return _inherits(e,d),_createClass(e,null,[{key:'defaultProps',get:function(){return{colorScale:function(){return null},d:{},foreignObject:!1,id:'',idx:0,labels:[]}}}]),_createClass(e,[{key:'componentWillReceiveProps',value:function(p){(p.d.x!==this.props.d.x||p.d.y!==this.props.d.y)&&this.setState({r:p.d.r,x:p.d.x,y:p.d.y})}/**
+},{"d3":40}],19:[function(require,module,exports){
+'use strict';var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0});var _createClass=function(){function d(e,g){for(var j,k=0;k<g.length;k++)j=g[k],j.enumerable=j.enumerable||!1,j.configurable=!0,'value'in j&&(j.writable=!0),Object.defineProperty(e,j.key,j)}return function(e,g,j){return g&&d(e.prototype,g),j&&d(e,j),e}}(),_d=require('d3'),d3=_interopRequireWildcard(_d),_react=require('react'),_react2=_interopRequireDefault(_react),_text=require('./text.js'),_text2=_interopRequireDefault(_text),_stats=require('./stats.js'),_stats2=_interopRequireDefault(_stats);function _interopRequireDefault(d){return d&&d.__esModule?d:{default:d}}function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var e={};if(null!=d)for(var g in d)Object.prototype.hasOwnProperty.call(d,g)&&(e[g]=d[g]);return e.default=d,e}function _classCallCheck(d,e){if(!(d instanceof e))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(d,e){if(!d)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return e&&('object'==('undefined'==typeof e?'undefined':_typeof(e))||'function'==typeof e)?e:d}function _inherits(d,e){if('function'!=typeof e&&null!==e)throw new TypeError('Super expression must either be null or a function, not '+('undefined'==typeof e?'undefined':_typeof(e)));d.prototype=Object.create(e&&e.prototype,{constructor:{value:d,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(d,e):d.__proto__=e)}/* eslint-disable *//**
+ * wraps a set of pack nodes inside a <g> element
+ */var PackG=function(d){function e(g){_classCallCheck(this,e);var j=_possibleConstructorReturn(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,g));_initialiseProps.call(j);var k=[];return j.state={fontSize:'5px',opacity:1,pop:!1,previous:!1,r:0,scale:1,scaled:!1,scaling:!1,vizCon:!1,x:0,y:0,foreignObjects:k},g.foreignObject.length&&g.foreignObject.forEach(function(l,m){k.push(_react2.default.createElement('div',{key:m,className:'foreign-object-data',style:{display:'block',marginBottom:'3px',width:'100%'}},_react2.default.createElement('img',{className:'foreign-object-img',src:l.imageUrl,style:{marginRight:'1%',verticalAlign:'top'}}),_react2.default.createElement('div',{className:'foreign-object-text',style:{display:'inline-block'}},_react2.default.createElement('a',{href:'https://www.twitter.com/'+l.username,target:'_blank',style:{textDecoration:'none'}},l.username),_react2.default.createElement('span',{style:{margin:0,border:'none',display:'block'}},l.tweet.substring(0,84),_react2.default.createElement('a',{href:l.url,target:'_blank',style:{fontStyle:'italic',textDecoration:'none'}},' ...more')))))}),j.state={fontSize:'5px',opacity:1,pop:!1,previous:!1,r:0,scale:1,scaled:!1,scaling:!1,vizCon:!1,x:0,y:0,foreignObjects:k},j}return _inherits(e,d),_createClass(e,null,[{key:'defaultProps',get:function(){return{colorScale:function(){return null},d:{},foreignObject:[],id:'',idx:'0',labels:[],nozoom:!1}}}]),_createClass(e,[{key:'componentDidMount',value:function(){var j=document.getElementById(this.props.id+'-visual-container').firstElementChild.firstElementChild;this.setState({pop:this.state.foreignObjects.length&&this.context.Popup.register({className:null,content:this.state.foreignObjects,title:null}),previous:this.g.previousElementSibling,vizCon:j})}/**
+   * Queues a popup to be displayed
+   *//**
    * updates x, y and r dimensions for a set of pack nodes
    *//**
    * zooms in/out of a pack node
-   */},{key:'render',value:function(){var p=this,q=this.props,r=q.colorScale,s=q.d,t=q.idx,u=q.labels;//  console.dir(d.data.name);
-return _react2.default.createElement('g',{className:'pack-g',key:t,onClick:function(w){w.stopPropagation(),p.handleZoom()},ref:function(w){return p.g=w},transform:'translate('+(this.state.x||this.props.d.x)+', '+(this.state.y||this.props.d.y)+') scale('+this.state.scale+')'},_react2.default.createElement('circle',{className:s.parent?s.children?'node':'node node--leaf':'node node--root',r:this.state.r||this.props.d.r,ref:function(w){return p.circle=w},style:{fill:s.children?r(s.depth):'white',stroke:'#fff',strokeWidth:'1.5px'}}),!s.children&&_react2.default.createElement(_text2.default,{d:s,idx:t,labels:u,scale:this.state.scale,r:this.state.r}),this.props.foreignObject&&_react2.default.createElement('g',{className:'foreign-object-g',transform:'translate('+1.2*-(this.state.r||this.props.d.r)+', '+-(this.state.r||this.props.d.r)/2+')'},_react2.default.createElement('svg',{className:'foreign-object-svg',height:1.5*(this.state.r||this.props.d.r),version:'1.1',width:1.5*(this.state.r||this.props.d.r),x:(this.state.r||this.props.d.r)/2+2,xmlns:'http://www.w3.org/2000/svg',xmlnsXlink:'http://www.w3.org/1999/xlink'},_react2.default.createElement('foreignObject',{x:'0',y:'0',width:'100%',height:'100%',transform:'translate(0,0)'},_react2.default.createElement('div',{className:'for-con',style:{height:1.3*(this.state.r||this.props.d.r)+'px',overflowY:'auto',overflowX:'hidden',display:'flex',justifyContent:this.state.scaled?'flex-start':'space-around',alignContent:this.state.scaled?'flex-start':'center',alignItems:this.state.scaled?'flex-start':'center',flexWrap:'wrap'}},this.displayForeignObjects())))),this.props.children||null)}}]),e}(_react2.default.Component);PackG.propTypes={colorScale:_react2.default.PropTypes.func,d:_react2.default.PropTypes.object,foreignObject:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool,_react2.default.PropTypes.array]),id:_react2.default.PropTypes.string,idx:_react2.default.PropTypes.number,labels:_react2.default.PropTypes.array};var _initialiseProps=function(){var d=this;this.updateDimensions=function(e,g){if(d.setState({scaling:!0}),!d.state.scaled){d.setState({previous:d.g.previousElementSibling}),g.appendChild(d.g);var p=d3.interpolate([d.state.x,d.state.y,1],[0,0,e.width/2/d.state.r]),q=0,r=d3.interval(function(){q+=0.1,d.setState({x:p(q)[0],y:p(q)[1],scale:p(q)[2]}),(0.9<q||d.state.scaled)&&(r.stop(),d.setState({scaled:!0,scaling:!1}),d.displayForeignObjects())},10)}else// scale it down
-var s=d3.interpolate([d.state.x,d.state.y,d.state.scale],[d.props.d.x,d.props.d.y,1]),t=0,u=d3.interval(function(){t+=0.1,d.setState({x:s(t)[0],y:s(t)[1],scale:s(t)[2]}),(0.9<t||!d.state.scaled)&&(u.stop(),d.state.previous.parentNode.insertBefore(d.g,d.state.previous.nextSibling),d.setState({scaled:!1,scaling:!1}),d.displayForeignObjects())},10);return!0},this.handleZoom=function(){var e=document.getElementById(d.props.id+'-visual-container').firstElementChild.firstElementChild;return!!e&&e!==d.g&&d.updateDimensions(e.getBoundingClientRect(),e)},this.setTransform=function(e){var g=e.idx,p=e.total,q=e.width,r=e.xOffset,s=e.yOffset,t=e.scaled,u=g/3;u=u.toFixed(2);var v=+u.toString().split('.')[1],w=+u.toString().split('.')[0],x=void 0,y=void 0;switch(p){case 1:return'translate('+-q/2+', '+-q/2+')';case 2:{x=0==v?-d.state.r/2:0,y=-q/2;break}case 3:{x=0==v?r:33==v?r+q:r+2*q,y=-q/2;break}default:x=0==v?r:33==v?r+q:r+2*q,y=s+w*q;}return'translate('+x+', '+y+')'},this.getTransform=function(e){var g=e.idx,p=e.total,q=e.width,r=e.xOffset,s=e.yOffset,t=e.scaled;if(d.state.scaling)return!1;if(1===t){for(;-1<--p;)d['g'+p].setAttribute('transform','translate(-'+0.85*(d.state.r||d.props.d.r)+', '+(-1*(d.state.r||d.props.d.r)/1.8+p*(d.state.r||d.props.d.r)/2)+')');return!0}if(-1===t){for(;g++<p;)d['g'+g].setAttribute('transform',d.setTransform({idx:g,total:p,width:q,xOffset:r,yOffset:s,scaled:t}));return!0}return d.setTransform({idx:g,total:p,width:q,xOffset:r,yOffset:s,scaled:t})},this.displayForeignObjects=function(){if(d.state.scaling||!d.props.foreignObject.length)return null;/*
-    return this.state.scaling
-      ? false
-      : scaled !== 0
-      ? this.getTransform({
-        total: this.props.foreignObject.length,
-        width: (this.state.r || this.props.d.r)/2,
-        xOffset: -1 * (this.state.r || this.props.d.r) * 0.75,
-        yOffset:-1 * (this.state.r || this.props.d.r)/2,
-        scaled,
-      })
-      :
-    */var e=[];return d.props.foreignObject.forEach(function(g,p){e.push(_react2.default.createElement('div',{key:p,className:'foreign-object-data',style:{display:d.state.scaled?'block':'inline-block',fontSize:7*(d.state.r||d.props.d.r)/100+'px',marginBottom:d.state.scaled?'3px':0,width:d.state.scaled?'100%':'auto',lineHeight:'100%'}},_react2.default.createElement('img',{className:'foreign-object-img',src:g.imageUrl,height:0.2*(d.state.r||d.props.d.r),width:0.24*(d.state.r||d.props.d.r),style:{marginRight:'1%',verticalAlign:'top'}}),_react2.default.createElement('div',{className:'foreign-object-text',style:{display:d.state.scaled?'inline-block':'none',width:1*(d.state.r||d.props.d.r)+'px'}},_react2.default.createElement('a',{href:'https://www.twitter.com/'+g.username,target:'_blank',style:{textDecoration:'none'}},g.username),_react2.default.createElement('span',{style:{margin:0,border:'none',lineHeight:1.1,height:0.2*(d.state.r||d.props.d.r)+'px',display:'block'}},g.tweet.substring(0,84),_react2.default.createElement('a',{href:g.url,target:'_blank',style:{fontStyle:'italic',textDecoration:'none'}},' ...more')))))}),e}};exports.default=PackG;
+   */},{key:'render',value:function(){var j=this,k=this.props,l=k.colorScale,m=k.d,n=k.idx,o=k.labels;return _react2.default.createElement('g',{className:'pack-g',id:n,key:n,onClick:function(q){q.stopPropagation(),j.props.nozoom||j.handleZoom()},ref:function(q){return j.g=q},style:{opacity:this.state.opacity,transform:'translate('+(this.state.x||this.props.d.x)+'px, '+(this.state.y||this.props.d.y)+'px) scale('+this.state.scale+')',transition:'transform 1s'}},_react2.default.createElement('circle',{r:this.props.d.r,style:{fill:m.children?l(m.depth):'white',stroke:'#fff',strokeWidth:'1.5px'},onClick:function(){j.state.foreignObjects.length&&j.showPopup()}}),// show text for white packs
+!m.children&&_react2.default.createElement(_text2.default,{d:m,idx:n,labels:o,scale:this.state.scale,r:this.props.d.r}),// show stats for foreignObjects
+this.props.foreignObject.length&&_react2.default.createElement(_stats2.default,{r:this.props.d.r,showPopup:this.showPopup,value:this.props.d.value+''}),this.props.children||null)}}]),e}(_react2.default.Component);PackG.propTypes={colorScale:_react2.default.PropTypes.func,d:_react2.default.PropTypes.object,foreignObject:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool,_react2.default.PropTypes.array]),id:_react2.default.PropTypes.string,idx:_react2.default.PropTypes.string,labels:_react2.default.PropTypes.array,nozoom:_react2.default.PropTypes.bool},PackG.contextTypes={Popup:_react2.default.PropTypes.func};var _initialiseProps=function(){var d=this;this.closePopup=function(){return d.context.Popup.prototype.handleButtonClick(function(e){return e.close()})},this.showPopup=function(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:d.context.Popup,g=1<arguments.length&&void 0!==arguments[1]?arguments[1]:d.state.pop;return e.queue(g)},this.updateStateDimensions=function(){d.state.vizCon&&d.state.vizCon!==d.g&&(d.state.scaled?(d.setState({x:d.props.d.x,y:d.props.d.y,scale:1,scaled:!1}),setTimeout(function(){d.state.previous.parentNode.insertBefore(d.g,d.state.previous.nextSibling)},1e3)):d.setState({x:1,y:1,scale:d.props.chartWidth/2/d.props.d.r,scaled:!0}))},this.updateDimensions=function(){'undefined'==typeof window||d.props.foreignObject.length||(!d.state.scaled&&d.state.vizCon&&d.state.vizCon!==d.g&&d.state.vizCon.appendChild(d.g),window.requestAnimationFrame?window.requestAnimationFrame(d.updateStateDimensions):window.setTimeout(function(){return d.updateStateDimensions},1))},this.handleZoom=function(){d.updateDimensions()}};exports.default=PackG;
 
-},{"./text.js":20,"d3":39,"react":230}],20:[function(require,module,exports){
-'use strict';var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0}),exports.getTextPath=void 0;var _createClass=function(){function d(g,h){for(var j,k=0;k<h.length;k++)j=h[k],j.enumerable=j.enumerable||!1,j.configurable=!0,'value'in j&&(j.writable=!0),Object.defineProperty(g,j.key,j)}return function(g,h,j){return h&&d(g.prototype,h),j&&d(g,j),g}}(),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(d){return d&&d.__esModule?d:{default:d}}function _classCallCheck(d,g){if(!(d instanceof g))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(d,g){if(!d)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return g&&('object'==('undefined'==typeof g?'undefined':_typeof(g))||'function'==typeof g)?g:d}function _inherits(d,g){if('function'!=typeof g&&null!==g)throw new TypeError('Super expression must either be null or a function, not '+('undefined'==typeof g?'undefined':_typeof(g)));d.prototype=Object.create(g&&g.prototype,{constructor:{value:d,enumerable:!1,writable:!0,configurable:!0}}),g&&(Object.setPrototypeOf?Object.setPrototypeOf(d,g):d.__proto__=g)}var getTextPath=exports.getTextPath=function(d){return'm-'+d+', '+0.1*d+' a'+d+', '+0.83*d+' 0 1 1 '+2*d+', 0'},Text=function(d){function g(h){_classCallCheck(this,g);var j=_possibleConstructorReturn(this,(g.__proto__||Object.getPrototypeOf(g)).call(this,h));return j.state={fontSize:'3'},_initialiseProps.call(j),j.state={fontSize:'3'},j}return _inherits(g,d),_createClass(g,null,[{key:'defaultProps',get:function(){return{r:2,d:{},idx:0,labels:[],scale:1}}}]),_createClass(g,[{key:'componentWillReceiveProps',value:function(j){appFuncs._.isEqual(j,this.props)||this.setSize(j)}/**
+},{"./stats.js":20,"./text.js":21,"d3":40,"react":237}],20:[function(require,module,exports){
+'use strict';var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0});var _createClass=function(){function a(b,c){for(var d,e=0;e<c.length;e++)d=c[e],d.enumerable=d.enumerable||!1,d.configurable=!0,'value'in d&&(d.writable=!0),Object.defineProperty(b,d.key,d)}return function(b,c,d){return c&&a(b.prototype,c),d&&a(b,d),b}}(),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function _classCallCheck(a,b){if(!(a instanceof b))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(a,b){if(!a)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return b&&('object'==('undefined'==typeof b?'undefined':_typeof(b))||'function'==typeof b)?b:a}function _inherits(a,b){if('function'!=typeof b&&null!==b)throw new TypeError('Super expression must either be null or a function, not '+('undefined'==typeof b?'undefined':_typeof(b)));a.prototype=Object.create(b&&b.prototype,{constructor:{value:a,enumerable:!1,writable:!0,configurable:!0}}),b&&(Object.setPrototypeOf?Object.setPrototypeOf(a,b):a.__proto__=b)}var Stats=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function(){var d=this;return _react2.default.createElement('g',{className:'circle-label-container',onClick:function(){return d.props.showPopup()},style:{transform:'translate(0, '+this.props.r/2+'px)'}},_react2.default.createElement('text',{className:'circle-label',style:{display:'inline',fontSize:1.2*this.props.r+'px',textTransform:'uppercase'},textAnchor:'middle'},this.props.value))}}],[{key:'defaultProps',get:function(){return{r:2,showPopup:function(){return null},value:''}}}]),b}(_react2.default.Component);Stats.propTypes={r:_react2.default.PropTypes.number,showPopup:_react2.default.PropTypes.func,value:_react2.default.PropTypes.string},exports.default=Stats;
+
+},{"react":237}],21:[function(require,module,exports){
+'use strict';var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0}),exports.getTextPath=void 0;var _createClass=function(){function d(g,h){for(var j,k=0;k<h.length;k++)j=h[k],j.enumerable=j.enumerable||!1,j.configurable=!0,'value'in j&&(j.writable=!0),Object.defineProperty(g,j.key,j)}return function(g,h,j){return h&&d(g.prototype,h),j&&d(g,j),g}}(),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(d){return d&&d.__esModule?d:{default:d}}function _classCallCheck(d,g){if(!(d instanceof g))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(d,g){if(!d)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return g&&('object'==('undefined'==typeof g?'undefined':_typeof(g))||'function'==typeof g)?g:d}function _inherits(d,g){if('function'!=typeof g&&null!==g)throw new TypeError('Super expression must either be null or a function, not '+('undefined'==typeof g?'undefined':_typeof(g)));d.prototype=Object.create(g&&g.prototype,{constructor:{value:d,enumerable:!1,writable:!0,configurable:!0}}),g&&(Object.setPrototypeOf?Object.setPrototypeOf(d,g):d.__proto__=g)}var getTextPath=exports.getTextPath=function(d){return'm-'+d+', '+0.1*d+' a'+d+', '+0.83*d+' 0 1 1 '+2*d+', 0'},Text=function(d){function g(h){_classCallCheck(this,g);var j=_possibleConstructorReturn(this,(g.__proto__||Object.getPrototypeOf(g)).call(this,h));return j.state={fontSize:'3'},_initialiseProps.call(j),j.state={fontSize:'3'},j}return _inherits(g,d),_createClass(g,null,[{key:'defaultProps',get:function(){return{r:2,d:{},idx:'0',labels:[],scale:1}}}]),_createClass(g,[{key:'componentWillReceiveProps',value:function(j){appFuncs._.isEqual(j,this.props)||this.setSize(j)}/**
    * retrieves container dimensions from client and updates state which triggers redraw
    */},{key:'render',value:function(){var j=this,k=this.props,l=k.d,m=k.labels,n=k.r,o=k.idx;//console.log(this.props.scale);
-return _react2.default.createElement('g',null,_react2.default.createElement('defs',null,_react2.default.createElement('path',{id:'path'+o+l.value+parseInt(l.r),d:getTextPath(n,m)})),_react2.default.createElement('text',{className:'label'+o,ref:function(q){return j.text=q},style:{display:'inline',fillOpacity:1,textTransform:'uppercase',fontSize:1.1*(this.state.fontSize/this.props.scale)+'px'},textAnchor:'middle'},_react2.default.createElement('textPath',{xlinkHref:'#path'+o+l.value+parseInt(l.r),startOffset:'50%'},l.data[m[0]])))}}]),g}(_react2.default.Component);Text.propTypes={r:_react2.default.PropTypes.number,d:_react2.default.PropTypes.object,idx:_react2.default.PropTypes.number,labels:_react2.default.PropTypes.array};var _initialiseProps=function(){var d=this;this.setSize=function(){var g=0<arguments.length&&void 0!==arguments[0]?arguments[0]:d.props,// TODO: update this to get the formatted label
+return _react2.default.createElement('g',null,_react2.default.createElement('defs',null,_react2.default.createElement('path',{id:'path'+o+l.value+parseInt(l.r),d:getTextPath(n,m)})),_react2.default.createElement('text',{className:'label'+o,ref:function(q){return j.text=q},style:{display:'inline',fillOpacity:1,textTransform:'uppercase',fontSize:1.1*(this.state.fontSize/this.props.scale)+'px'},textAnchor:'middle'},_react2.default.createElement('textPath',{xlinkHref:'#path'+o+l.value+parseInt(l.r),startOffset:'50%'},l.data[m[0]])))}}]),g}(_react2.default.Component);Text.propTypes={r:_react2.default.PropTypes.number,d:_react2.default.PropTypes.object,idx:_react2.default.PropTypes.string,labels:_react2.default.PropTypes.array};var _initialiseProps=function(){var d=this;this.setSize=function(){var g=0<arguments.length&&void 0!==arguments[0]?arguments[0]:d.props,// TODO: update this to get the formatted label
 h=g.d.data[g.labels[0]].length,j=// eslint-disable-line
 // TODO: convert this to automatically adjust based on width of container not length of chars
 13<h?0.3:9<h?0.4:7<h?0.5:5<h?0.5:0.7,k=j*g.r/2;1<Math.abs(parseInt(d.state.fontSize)-k)&&d.setState({fontSize:k})}};exports.default=Text;
 
-},{"react":230}],21:[function(require,module,exports){
+},{"react":237}],22:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.PieSlices=void 0;var _path=require('../svg/path.js'),_arcs=require('../lib/arcs.js'),arcs=_interopRequireWildcard(_arcs),_labels=require('../lib/labels.js'),label=_interopRequireWildcard(_labels),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(m){return m&&m.__esModule?m:{default:m}}function _interopRequireWildcard(m){if(m&&m.__esModule)return m;var n={};if(null!=m)for(var o in m)Object.prototype.hasOwnProperty.call(m,o)&&(n[o]=m[o]);return n.default=m,n}var PieSlices=exports.PieSlices=function(m){var n=m.chartHeight,o=void 0===n?200:n,p=m.chartWidth,q=void 0===p?200:p,r=m.colorScale,s=m.data,t=m.labels,u=void 0===t?[]:t,v=m.yValue,w=void 0===v?'':v;if(appFuncs._.isEmpty(s)||!w||!u.length||!r)return appFuncs.logError({data:[r,s,u,w],loc:__filename,msg:'colorScale, labels, data and yValue must be valid variables in slices.PieSlices(), returning null'}),null;var x=arcs.generateArcs({data:s,sort:null,yValue:w}),y=[];return x.forEach(function(z,A){var B=arcs.generateArcPath({chartHeight:o,chartWidth:q,endAngle:z.endAngle,startAngle:z.startAngle}),C=label.getLabelText({chartType:'simple',d:z.data,labels:u});C.length||appFuncs.logError({data:C,loc:__filename,msg:'labelText has 0 length in slices.PieSlices()'}),y.push(_react2.default.createElement('g',{className:'pie-slice',key:''+C.replace(/\s+/g,'-').toLowerCase()+A},_react2.default.createElement(_path.Path,{d:B(),fill:r(A),id:'arc-'+A}),label.getLabels({arc:z,chartHeight:o,chartType:'pie',chartWidth:q,idx:A,labels:u})))}),y};
 
 }).call(this,"/dist/piechart/slices.js")
-},{"../lib/arcs.js":7,"../lib/labels.js":10,"../svg/path.js":25,"react":230}],22:[function(require,module,exports){
+},{"../lib/arcs.js":7,"../lib/labels.js":10,"../svg/path.js":26,"react":237}],23:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.ScatterPlotDots=void 0;var _circle=require('../svg/circle.js'),_labels=require('../lib/labels.js'),label=_interopRequireWildcard(_labels),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(d){return d&&d.__esModule?d:{default:d}}function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var i={};if(null!=d)for(var q in d)Object.prototype.hasOwnProperty.call(d,q)&&(i[q]=d[q]);return i.default=d,i}var ScatterPlotDots=exports.ScatterPlotDots=function(d){var i=d.chartType,q=void 0===i?'scatterplot':i,r=d.className,s=void 0===r?'dot':r,t=d.colorScale,u=d.data,v=void 0===u?[]:u,w=d.labels,x=void 0===w?[]:w,y=d.r,z=void 0===y?3.5:y,A=d.xValue,B=d.yValue,C=d.xScale,D=d.yScale;if(!D||!C||!A||!B)return null;var E=[];return v.forEach(function(F,G){var H=label.getLabelText({chartType:q,d:F,labels:x});E.push(_react2.default.createElement('g',{className:s,key:''+H.replace(/\s+/g,'-').toLowerCase()+G},_react2.default.createElement(_circle.Circle,{className:'circle',cx:C(F[A]),cy:D(F[B]),fill:t(G),r:z})))}),E};
 
-},{"../lib/labels.js":10,"../svg/circle.js":23,"react":230}],23:[function(require,module,exports){
+},{"../lib/labels.js":10,"../svg/circle.js":24,"react":237}],24:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Circle=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(f){return f&&f.__esModule?f:{default:f}}var Circle=exports.Circle=function(f){var g=f.className,h=void 0===g?'circle':g,i=f.cx,j=void 0===i?50:i,k=f.cy,l=void 0===k?50:k,m=f.fill,n=void 0===m?'blue':m,o=f.r,p=void 0===o?50:o;return _react2.default.createElement('circle',{className:h,cx:j,cy:l,fill:n,r:p})};Circle.propTypes={className:_react2.default.PropTypes.string,cx:_react2.default.PropTypes.number,cy:_react2.default.PropTypes.number,fill:_react2.default.PropTypes.string,r:_react2.default.PropTypes.number},exports.default=Circle;
 
-},{"react":230}],24:[function(require,module,exports){
+},{"react":237}],25:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.SVG=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(f){return f&&f.__esModule?f:{default:f}}var SVG=exports.SVG=function(f){var g=f.children,h=f.id,i=void 0===h?'chart':h,j=f.preserveAspectRatio,k=void 0===j?'xMinYMin meet':j,l=f.svgHeight,m=void 0===l?200:l,n=f.svgWidth,o=void 0===n?200:n;return _react2.default.createElement('svg',{className:'chart-svg',id:i,preserveAspectRatio:k,style:{display:'block',position:'relative'},viewBox:'0 0 '+o+' '+m,xmlns:'http://www.w3.org/2000/svg'},g)};SVG.propTypes={children:_react2.default.PropTypes.node,id:_react2.default.PropTypes.string,preserveAspectRatio:_react2.default.PropTypes.string,svgHeight:_react2.default.PropTypes.number,svgWidth:_react2.default.PropTypes.number},exports.default=SVG;
 
-},{"react":230}],25:[function(require,module,exports){
+},{"react":237}],26:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Path=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(d){return d&&d.__esModule?d:{default:d}}var Path=exports.Path=function(d){var g=d.chartType,h=void 0===g?'pie':g,i=d.d,j=d.fill,k=void 0===j?'blue':j,l=d.id,m=void 0===l?'':l,n=d.stroke,o=void 0===n?'gray':n;return _react2.default.createElement('path',{className:h+'-path',d:i,fill:k,id:m,stroke:o})};Path.propTypes={chartType:_react2.default.PropTypes.string,d:_react2.default.PropTypes.string.isRequired,fill:_react2.default.PropTypes.string,id:_react2.default.PropTypes.string,stroke:_react2.default.PropTypes.string},exports.default=Path;
 
-},{"react":230}],26:[function(require,module,exports){
+},{"react":237}],27:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Rect=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(g){return g&&g.__esModule?g:{default:g}}var Rect=exports.Rect=function(g){var h=g.className,i=void 0===h?'rect':h,j=g.fill,k=void 0===j?'blue':j,l=g.height,m=void 0===l?200:l,n=g.width,o=void 0===n?200:n,p=g.x,q=void 0===p?0:p,r=g.y,s=void 0===r?0:r;return _react2.default.createElement('rect',{className:i,fill:k,height:m,width:o,x:q,y:s})};Rect.propTypes={className:_react2.default.PropTypes.string,fill:_react2.default.PropTypes.string,height:_react2.default.PropTypes.number,width:_react2.default.PropTypes.number,x:_react2.default.PropTypes.number,y:_react2.default.PropTypes.number},exports.default=Rect;
 
-},{"react":230}],27:[function(require,module,exports){
+},{"react":237}],28:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Text=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(k){return k&&k.__esModule?k:{default:k}}var Text=exports.Text=function(k){var l=k.chartType,m=void 0===l?'':l,n=k.className,o=void 0===n?'':n,p=k.dx,q=void 0===p?0:p,r=k.dy,s=void 0===r?0:r,t=k.fill,u=void 0===t?'black':t,v=k.text,w=void 0===v?'':v,x=k.transform,y=void 0===x?'rotate(20, 30, 40)':x,z=k.x,A=void 0===z?0:z,B=k.y,C=void 0===B?20:B;if(!w.length||!m)return appFuncs.logError({data:[m,q,s,u,w,y,A,C],msg:'text must be a valid variable in svg/text.js, returning null'}),null;var D=(o+' '+m+' labels').trim();return _react2.default.createElement('text',{className:D,dx:q,dy:s,fill:u,transform:y,x:A,y:C},w)};Text.propTypes={chartType:_react2.default.PropTypes.string,className:_react2.default.PropTypes.string,dx:_react2.default.PropTypes.number,dy:_react2.default.PropTypes.number,fill:_react2.default.PropTypes.string,text:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.array,_react2.default.PropTypes.string]),transform:_react2.default.PropTypes.string,x:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number,_react2.default.PropTypes.string]),y:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number,_react2.default.PropTypes.string])},exports.default=Text;
 
-},{"react":230}],28:[function(require,module,exports){
+},{"react":237}],29:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Table=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react),_thead=require('./thead.js'),_thead2=_interopRequireDefault(_thead),_tbody=require('./tbody.js'),_tbody2=_interopRequireDefault(_tbody);function _interopRequireDefault(g){return g&&g.__esModule?g:{default:g}}var Table=exports.Table=function(g){var h=g.className,i=void 0===h?'':h,j=g.data,k=g.id,l=g.filterable,m=g.sortable,n=i;return m&&(n+=' sortable'),_react2.default.createElement('table',{className:n,id:k},_react2.default.createElement(_thead2.default,{data0:j[0],filterable:l,id:k}),_react2.default.createElement(_tbody2.default,{data:j,id:k}),_react2.default.createElement('tfoot',null,_react2.default.createElement('tr',null,_react2.default.createElement('td',null))))};Table.propTypes={className:_react2.default.PropTypes.string,data:_react2.default.PropTypes.array,filterable:_react2.default.PropTypes.bool,id:_react2.default.PropTypes.string,sortable:_react2.default.PropTypes.bool},exports.default=Table;
 
-},{"./tbody.js":29,"./thead.js":30,"react":230}],29:[function(require,module,exports){
+},{"./tbody.js":30,"./thead.js":31,"react":237}],30:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Tbody=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react),_tr=require('./tr.js'),_tr2=_interopRequireDefault(_tr);function _interopRequireDefault(f){return f&&f.__esModule?f:{default:f}}var Tbody=exports.Tbody=function(f){var g=f.data,h=f.id,i=[];return g.forEach(function(j,k){return i.push(_react2.default.createElement(_tr2.default,{fields:j,id:h,idx:k,key:'row'+h+k}))}),_react2.default.createElement('tbody',null,i)};Tbody.propTypes={data:_react2.default.PropTypes.array,id:_react2.default.PropTypes.string},exports.default=Tbody;
 
-},{"./tr.js":31,"react":230}],30:[function(require,module,exports){
+},{"./tr.js":32,"react":237}],31:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Thead=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react),_tr=require('./tr.js'),_tr2=_interopRequireDefault(_tr);function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}var Thead=exports.Thead=function(e){var f=e.data0,g=e.filterable,h=e.id,i=Object.keys(f);return _react2.default.createElement('thead',null,g&&_react2.default.createElement(_tr2.default,{filterable:g,id:h,length:i.length,th:!0}),_react2.default.createElement(_tr2.default,{fields:i,id:h,th:!0}))};Thead.propTypes={data0:_react2.default.PropTypes.object,filterable:_react2.default.PropTypes.bool,id:_react2.default.PropTypes.string},exports.default=Thead;
 
-},{"./tr.js":31,"react":230}],31:[function(require,module,exports){
+},{"./tr.js":32,"react":237}],32:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Tr=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(i){return i&&i.__esModule?i:{default:i}}var Tr=exports.Tr=function(i){var l=i.fields,m=i.filterable,n=i.length,o=i.id,p=i.idx,q=i.th,r=[],s=0;if(q&&n&&o&&m)for(;s<n;)r.push(_react2.default.createElement('th',{key:''+o+s},_react2.default.createElement('input',{className:s==n-1?'flt_s':'flt',id:'flt'+s+'_'+o,onKeyUp:appFuncs.filterTable.Filter,placeholder:'Filter',type:'text'}))),s++;else if(l.length&&q)l.forEach(function(u,v){r.push(_react2.default.createElement('th',{key:''+u+v},u))});else if(!appFuncs._.isEmpty(l))for(var t in l)r.push(_react2.default.createElement('td',{key:''+o+l[t]+p},l[t]));return _react2.default.createElement('tr',null,r)};Tr.propTypes={fields:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.array,_react2.default.PropTypes.object]),filterable:_react2.default.PropTypes.bool,id:_react2.default.PropTypes.string,idx:_react2.default.PropTypes.number,length:_react2.default.PropTypes.number,th:_react2.default.PropTypes.bool},exports.default=Tr;
 
-},{"react":230}],32:[function(require,module,exports){
+},{"react":237}],33:[function(require,module,exports){
 'use strict';var _react=require('react'),_react2=_interopRequireDefault(_react),_reactDom=require('react-dom'),_reactDom2=_interopRequireDefault(_reactDom),_example=require('./example.js'),_example2=_interopRequireDefault(_example);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}require('node-globals').default({});_reactDom2.default.render(_react2.default.createElement(_example2.default,null),document.querySelector('#app'));
 
-},{"./example.js":33,"node-globals":67,"react":230,"react-dom":79}],33:[function(require,module,exports){
-'use strict';Object.defineProperty(exports,'__esModule',{value:!0});var _createClass=function(){function defineProperties(target,props){for(var descriptor,i=0;i<props.length;i++)descriptor=props[i],descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,'value'in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();var _react=require('react'),_react2=_interopRequireDefault(_react),_index=require('../dist/index.js'),_index2=_interopRequireDefault(_index),_packtwitter=require('./fakedata/packtwitter.json'),_packtwitter2=_interopRequireDefault(_packtwitter);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(self,call){if(!self)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return call&&('object'==typeof call||'function'==typeof call)?call:self}function _inherits(subClass,superClass){if('function'!=typeof superClass&&null!==superClass)throw new TypeError('Super expression must either be null or a function, not '+typeof superClass);subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:!1,writable:!0,configurable:!0}}),superClass&&(Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass)}var Table=function(_React$Component){function Table(){return _classCallCheck(this,Table),_possibleConstructorReturn(this,(Table.__proto__||Object.getPrototypeOf(Table)).apply(this,arguments))}return _inherits(Table,_React$Component),_createClass(Table,[{key:'render',value:function render(){return _react2.default.createElement('section',{style:{maxWidth:'600px'}},_react2.default.createElement(_index2.default,{chartType:'pack',colorScaleScheme:'schemeCategory20',colorScaleType:'basic',data:_packtwitter2.default,datumLabels:['name'],figureObject:!0,figureObjectType:'table',id:'pack',margins:{bottom:10,left:10,right:10,top:10}}))}}],[{key:'defaultProps',get:function get(){return{id:'fake-table'}}}]),Table}(_react2.default.Component);exports.default=Table;
+},{"./example.js":34,"node-globals":69,"react":237,"react-dom":81}],34:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,'__esModule',{value:!0});var _createClass=function(){function defineProperties(target,props){for(var descriptor,i=0;i<props.length;i++)descriptor=props[i],descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,'value'in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();var _react=require('react'),_react2=_interopRequireDefault(_react),_index=require('../dist/index.js'),_index2=_interopRequireDefault(_index),_packtwitter=require('./fakedata/packtwitter.json'),_packtwitter2=_interopRequireDefault(_packtwitter);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(self,call){if(!self)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return call&&('object'==typeof call||'function'==typeof call)?call:self}function _inherits(subClass,superClass){if('function'!=typeof superClass&&null!==superClass)throw new TypeError('Super expression must either be null or a function, not '+typeof superClass);subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:!1,writable:!0,configurable:!0}}),superClass&&(Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass)}var Table=function(_React$Component){function Table(){return _classCallCheck(this,Table),_possibleConstructorReturn(this,(Table.__proto__||Object.getPrototypeOf(Table)).apply(this,arguments))}return _inherits(Table,_React$Component),_createClass(Table,[{key:'render',value:function render(){return _react2.default.createElement('section',{style:{maxWidth:'1000px'}},_react2.default.createElement(_index2.default,{chartType:'pack',colorScaleScheme:'schemeCategory20',colorScaleType:'basic',data:_packtwitter2.default,datumLabels:['name'],figureObject:!0,figureObjectType:'table',id:'pack',margins:{bottom:10,left:10,right:10,top:10}}))}}],[{key:'defaultProps',get:function get(){return{id:'fake-table'}}}]),Table}(_react2.default.Component);exports.default=Table;
 
-},{"../dist/index.js":6,"./fakedata/packtwitter.json":34,"react":230}],34:[function(require,module,exports){
+},{"../dist/index.js":6,"./fakedata/packtwitter.json":35,"react":237}],35:[function(require,module,exports){
 module.exports={
   "name": "Platform",
   "type": "parent",
   "children": [{
     "name": "Sentiment",
-    "size": 121,
+    "size": 582,
     "type": "parent",
     "children": [{
-      "name": "Positive",
-      "size": 104,
+      "name": "Negative -5",
+      "size": 110,
+      "type": "parent",
+      "children": [{
+        "size": 10,
+        "name": "gun",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 15 11:02:40 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841967881516679168",
+            "tweet": "Can you imagine what the outcry would be if @SnoopDogg, failing career and all, had aimed and fired the gun at President Obama? Jail time!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "terrible",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 12:04:13 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839084268991229952",
+            "tweet": "122 vicious prisoners, released by the Obama Administration from Gitmo, have returned to the battlefield. Just another terrible decision!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 15,
+        "name": "sad",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 04 13:19:29 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838016045222854656",
+            "tweet": "Arnold Schwarzenegger isn't voluntarily leaving the Apprentice, he was fired by his bad (pathetic) ratings, not by me. Sad end to great show"
+          }, {
+            "date": "Tue Feb 21 23:23:13 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834181712783560705",
+            "tweet": "The so-called angry crowds in home districts of some Republicans are actually, in numerous cases, planned out by liberal activists. Sad!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "sick",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 04 12:02:48 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837996746236182529",
+            "tweet": "How low has President Obama gone to tapp my phones during the very sacred election process. This is Nixon/Watergate. Bad (or sick) guy!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "illegal",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 26 18:16:41 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835916511944523777",
+            "tweet": "Russia talk is FAKE NEWS put out by the Dems, and played up by the media, in order to mask the big election defeat and the illegal leaks!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "mess",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 18 13:31:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832945737625387008",
+            "tweet": "Don't believe the main stream (fake news) media.The White House is running VERY WELL. I inherited a MESS and am in the process of fixing it."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "enemy",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 17 21:48:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832708293516632065",
+            "tweet": "The FAKE NEWS media (failing @nytimes, @NBCNews, @ABC, @CBS, @CNN) is not my enemy, it is the enemy of the American People!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 20,
+        "name": "fake",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 16 14:39:52 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832238070460186625",
+            "tweet": "The Democrats had to come up with a story as to why they lost the election, and so badly (306), so they made up a story - RUSSIA. Fake news!"
+          }, {
+            "date": "Sun Feb 12 12:14:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830751875578355713",
+            "tweet": "While on FAKE NEWS @CNN, Bernie Sanders was cut off for using the term fake news to describe the network. They said technical difficulties!"
+          }, {
+            "date": "Fri Feb 10 13:35:50 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830047626414477312",
+            "tweet": "The failing @nytimes does major FAKE NEWS China story saying \"Mr.Xi has not spoken to Mr. Trump since Nov.14.\" We spoke at length yesterday!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "apologize",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 16 11:58:43 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832197515248275456",
+            "tweet": "Leaking, and even illegal classified leaking, has been a big problem in Washington for years. Failing @nytimes (and others) must apologize!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 15,
+        "name": "losing",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 12:08:12 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831837514226921472",
+            "tweet": "This Russian connection non-sense is merely an attempt to cover-up the many mistakes made in Hillary Clinton's losing campaign."
+          }, {
+            "date": "Thu Feb 09 13:26:07 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829682794951475200",
+            "tweet": "Sen. McCain should not be talking about the success or failure of a mission to the media. Only emboldens the enemy! He's been losing so...."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "hatred",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 11:40:32 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831830548565852160",
+            "tweet": "The fake news media is going crazy with their conspiracy theories and blind hatred. @MSNBC &amp; @CNN are unwatchable. @foxandfriends is great!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "criminals",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 12 11:34:45 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830741932099960834",
+            "tweet": "The crackdown on illegal criminals is merely the keeping of my campaign promise. Gang members, drug dealers &amp; others are being removed!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "wrong",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 13:04:47 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829315036329963521",
+            "tweet": "I will be speaking at 9:00 A.M. today to Police Chiefs and Sheriffs and will be discussing the horrible, dangerous and wrong decision......."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "obstruction",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 01:04:00 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829133645055135750",
+            "tweet": "It is a disgrace that my full Cabinet is still not in place, the longest such delay in the history of our country. Obstruction by Democrats!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "problem",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 07 12:11:29 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828939235499638784",
+            "tweet": "I don't know Putin, have no deals in Russia, and the haters are going crazy - yet Obama can make a deal with Iran, #1 in terror, no problem!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "worse",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 07 02:33:55 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828793887275761665",
+            "tweet": "The failing @nytimes was forced to apologize to its subscribers for the poor reporting it did on my election win. Now they are worse!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "bad",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 05 20:39:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828342202174668800",
+            "tweet": "Just cannot  believe a judge would put our country in such peril. If something happens blame him and court system. People pouring in. Bad!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "disaster",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 20 12:35:14 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843803115044454402",
+            "tweet": "Just heard Fake News CNN is doing polls again despite the fact that their election polls were a WAY OFF disaster. Much higher ratings at Fox"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Negative -4",
+      "size": 28,
+      "type": "parent",
+      "children": [{
+        "size": 8,
+        "name": "refuse",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 09:35:58 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842670836905639936",
+            "tweet": "RT @DiamondandSilk: When the President says \"You're Fired\"     That means: \"Pack Yo Stuff and Go, Not Say \"You Refuse to Go!  #DrainTheSwam…"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "approved",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 12:19:12 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837638488656920576",
+            "tweet": "It is so pathetic that the Dems have still not approved my full Cabinet."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "sad",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 25 03:09:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835325771858251776",
+            "tweet": "FAKE NEWS media knowingly doesn't tell the truth. A great danger to our country. The failing @nytimes has become a joke. Likewise @CNN. Sad!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "illegally",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 13:13:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831853862281699331",
+            "tweet": "The real scandal here is that classified information is illegally given out by \"intelligence\" like candy. Very un-American!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "wrong",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 06 16:32:24 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828642511698669569",
+            "tweet": "The failing @nytimes writes total fiction concerning me. They have gotten it wrong for two years, and now are making up stories &amp; sources!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "lost",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 20 10:49:48 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843776582825267201",
+            "tweet": "The Democrats made up and pushed the Russian story as an excuse for running a terrible campaign. Big advantage in Electoral College &amp; lost!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "fake",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 20 10:35:28 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843772976151642112",
+            "tweet": "James Clapper and others stated that there is no evidence Potus colluded with Russia. This story is FAKE NEWS and everyone knows it!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Negative -3",
+      "size": 42,
       "type": "parent",
       "children": [{
         "size": 6,
-        "name": "join",
+        "name": "warn",
         "children": [{
           "metadata": [{
-            "date": "Wed Feb 22 06:05:42 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/834282999822692352",
-            "tweet": "@leemartin it would be awesome if you could join Urban Music Professionals on #linkedin https://t.co/fTfMnRaeZ4"
-          }, {
-            "date": "Fri Apr 17 18:33:29 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/589134603597656064",
-            "tweet": "Join me at SugarCon 2015! https://t.co/SHzHI3fobK #SugarCon2015 | Powered by #RegOnline"
+            "date": "Fri Mar 17 12:34:17 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842715710765830147",
+            "tweet": "RT @foxandfriends: FOX NEWS ALERT: Jihadis using religious visa to enter US, experts warn (via @FoxFriendsFirst) https://t.co/pwXeR9OMQC"
           }],
           "name": "singleTweet",
           "size": 1,
           "type": "metadata"
         }]
       }, {
-        "size": 24,
-        "name": "awesome",
+        "size": 12,
+        "name": "fake",
         "children": [{
           "metadata": [{
-            "date": "Tue Feb 21 03:52:49 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/833887173673840640",
-            "tweet": "working with the twitter api is sooo much dev friendly than the facebook api, the amount of data you have access to is awesome"
+            "date": "Wed Mar 15 10:55:30 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841966077005463553",
+            "tweet": "Does anybody really believe that a reporter, who nobody ever heard of, \"went to his mailbox\" and found my tax returns? @NBCNews  FAKE NEWS!"
           }, {
-            "date": "Sun Jan 29 07:42:40 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/825610096495300608",
-            "tweet": "@acloudguru scheduled my exam for the 6th! your course is awesome"
+            "date": "Wed Feb 08 15:54:01 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829357626798530561",
+            "tweet": "'16 Fake News Stories Reporters Have Run Since Trump Won' https://t.co/0dHld5kiVc"
           }, {
-            "date": "Mon Dec 26 23:21:35 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/813525192332820480",
-            "tweet": "you guys are awesome @StrongLoop"
-          }, {
-            "date": "Sat Nov 26 05:07:35 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/802378243214970880",
-            "tweet": "lets see how awesome @logrocketjs makes my new app for @udacity"
-          }, {
-            "date": "Sat Oct 29 08:07:21 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/792276622883684352",
-            "tweet": "@cagan thanks for the awesome pic https://t.co/1f7Kpaik0j"
+            "date": "Mon Feb 06 12:07:55 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828575949268606977",
+            "tweet": "I call my own shots, largely based on an accumulation of data, and everyone knows it. Some FAKE NEWS media, in order to marginalize, lies!"
           }],
           "name": "singleTweet",
           "size": 1,
           "type": "metadata"
         }]
       }, {
-        "size": 3,
-        "name": "best",
+        "size": 6,
+        "name": "worst",
         "children": [{
           "metadata": [{
-            "date": "Mon Feb 20 19:13:14 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/833756413876801536",
-            "tweet": "ive done my best coding to this track https://t.co/Udi9xooAjw"
+            "date": "Mon Mar 13 13:11:17 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841275470796738560",
+            "tweet": "ObamaCare is imploding. It is a disaster and 2017 will be the worst year yet, by far! Republicans will come together and save the day."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 9,
+        "name": "illegal",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 02:38:48 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837492425283219458",
+            "tweet": "...is all of the illegal leaks of classified and other information. It is a total \"witch hunt!\""
+          }, {
+            "date": "Tue Feb 14 14:28:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831510532318429184",
+            "tweet": "The real story here is why are there so many illegal leaks coming out of Washington? Will these leaks be happening as I deal on N.Korea etc?"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "losing",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 02:27:29 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837489578193846278",
+            "tweet": "...intentional. This whole narrative is a way of saving face for Democrats losing an election that everyone thought they were supposed....."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 9,
+        "name": "failing",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 26 11:42:39 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835817351178301440",
+            "tweet": "For first time the failing @nytimes will take an ad (a bad one) to help save its failing reputation. Try reporting accurately &amp; fairly!"
+          }, {
+            "date": "Wed Feb 15 12:19:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831840306161123328",
+            "tweet": "Information is being illegally given to the failing @nytimes &amp; @washingtonpost by the intelligence community (NSA and FBI?).Just like Russia"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "stop",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 24 12:31:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835104946034991106",
+            "tweet": "The FBI is totally unable to stop the national security \"leakers\" that have permeated our government for a long time. They can't even......"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "dishonest",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 17 23:15:56 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832730328108134402",
+            "tweet": "\"One of the most effective press conferences I've ever seen!\" says Rush Limbaugh. Many agree.Yet FAKE MEDIA  calls it differently! Dishonest"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "discredited",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 16 14:10:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832230758299340800",
+            "tweet": "FAKE NEWS media, which makes up stories and \"sources,\" is far more effective than the discredited Democrats - but they are fading fast!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "sorry",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 06 12:01:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828574430800539648",
+            "tweet": "Any negative polls are fake news, just like the CNN, ABC, NBC polls in the election. Sorry, people want border security and extreme vetting."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Negative -2",
+      "size": 14,
+      "type": "parent",
+      "children": [{
+        "size": 4,
+        "name": "alone",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 04 11:42:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837991759045079040",
+            "tweet": "Just out: The same Russian Ambassador that met Jeff Sessions visited the Obama White House 22 times, and 4 times last year alone."
           }],
           "name": "singleTweet",
           "size": 1,
@@ -433,20 +953,14 @@ module.exports={
         }]
       }, {
         "size": 4,
-        "name": "enjoyed",
+        "name": "lost",
         "children": [{
           "metadata": [{
-            "date": "Sun Feb 19 04:33:38 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/833172670174765056",
-            "tweet": "@justinfagnani really enjoyed your approach to mixins! i'm using it in my datastructures project now ;)"
-          }, {
-            "date": "Tue Jan 10 01:27:23 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/818630282194452481",
-            "tweet": "@Keithamus enjoyed your post on symbols"
+            "date": "Fri Mar 03 02:35:33 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837491607171629057",
+            "tweet": "...to win. The Democrats are overplaying their hand. They lost the election, and now they have lost their grip on reality. The real story..."
           }],
           "name": "singleTweet",
           "size": 1,
@@ -454,20 +968,14 @@ module.exports={
         }]
       }, {
         "size": 4,
-        "name": "saved",
+        "name": "devastating",
         "children": [{
           "metadata": [{
-            "date": "Tue Nov 08 05:03:16 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/795854176173461504",
-            "tweet": "@ddprrt man your multiple vinyl streams blog just saved my night"
-          }, {
-            "date": "Fri Jan 22 20:04:33 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/690626123017822208",
-            "tweet": "@DirectoryLister just saved 15% by switching to @DirectoryLister"
+            "date": "Fri Feb 24 12:36:34 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835106143462703104",
+            "tweet": "find the leakers within the FBI itself. Classified information is being given to media that could have a devastating effect on U.S. FIND NOW"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -475,95 +983,29 @@ module.exports={
         }]
       }, {
         "size": 4,
-        "name": "better",
+        "name": "dishonest",
         "children": [{
           "metadata": [{
-            "date": "Sun Oct 09 03:18:26 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/784956156468789248",
-            "tweet": "RT @cwpittman: Testing out the first project in @udacity's Self-Driving Car ND! I think my NN drives better than I do https://t.co/FtyEy2Gu…"
-          }, {
-            "date": "Sat Apr 04 17:10:27 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/584402665502740481",
-            "tweet": "RT @anagoldpr: The fans deserve better!"
+            "date": "Sun Feb 12 22:19:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830904083519242241",
+            "tweet": "Just leaving Florida. Big crowds of enthusiastic supporters lining the road that the FAKE NEWS media refuses to mention. Very dishonest!"
           }],
           "name": "singleTweet",
           "size": 1,
           "type": "metadata"
         }]
       }, {
-        "size": 7,
-        "name": "reliable",
+        "size": 4,
+        "name": "misrepresents",
         "children": [{
           "metadata": [{
-            "date": "Thu Oct 06 04:10:40 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/783882140949676034",
-            "tweet": "RT @GigSky: Thrilled to partner w/ @AvionicaInc – combining their world-class hardware with our reliable, global connectivity. https://t.co…"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 5,
-        "name": "share",
-        "children": [{
-          "metadata": [{
-            "date": "Sat Jul 30 18:27:55 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/759455497678229504",
-            "tweet": "@nodebotanist enjoyed your talk at @npmcamp can you post the deck would like to share it with some friends"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 3,
-        "name": "excellent",
-        "children": [{
-          "metadata": [{
-            "date": "Thu Jun 23 03:24:36 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/745819822018048002",
-            "tweet": "@ahfarmer excellent site!"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 2,
-        "name": "thanks",
-        "children": [{
-          "metadata": [{
-            "date": "Wed May 25 16:25:32 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/735507099417858048",
-            "tweet": "@rajaraodv you are @#$@#$ dope! thanks for the tuts"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 3,
-        "name": "good",
-        "children": [{
-          "metadata": [{
-            "date": "Sat Jan 16 05:46:47 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/688235929501212672",
-            "tweet": "@Mere_R_Maharaj things are good, thinking about going to grad"
+            "date": "Thu Feb 09 11:57:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829660612452036608",
+            "tweet": "Sen.Richard Blumenthal, who never fought in Vietnam when he said for years he had (major lie),now misrepresents what Judge Gorsuch told him?"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -574,89 +1016,11 @@ module.exports={
         "name": "win",
         "children": [{
           "metadata": [{
-            "date": "Sat Nov 28 06:48:46 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/670494524058247168",
-            "tweet": "I just entered to win tickets to @phutureprimitive at @SocialHallSF on 12/4 from @magnifi_fm! Your turn https://t.co/IgCMDoIRnz"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 3,
-        "name": "winner",
-        "children": [{
-          "metadata": [{
-            "date": "Tue Sep 08 12:57:36 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/641233926632046593",
-            "tweet": "Mayweather vs. Berto Fight Time, Expected Prize Money, Projected Winner, Odds http://t.co/mnP02EmlB3 via @bleacherreport"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 7,
-        "name": "free",
-        "children": [{
-          "metadata": [{
-            "date": "Wed Jul 29 02:12:35 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/626213699863232512",
-            "tweet": "RT @DotheBay: .@thebandconbrio are playing a free show at @TheChapelSF tomorrow! RSVP: http://t.co/jRIZdkYav7 Local #MusicMonday http://t.c…"
-          }, {
-            "date": "Sat Jul 04 06:41:51 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/617221767715667968",
-            "tweet": "Check out Help OSTraining create free Drupal 8 Training videos by Steve Burge on @Kickstarter http://t.co/llanj0r9mL"
-          }, {
-            "date": "Thu Jul 02 04:21:06 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/616461572047683584",
-            "tweet": "RT @ruby_plus: @noahedwardhall Please share the free coupons for TDD in Ruby course: \nhttps://t.co/UQjZhckwMb with your followers."
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 5,
-        "name": "like",
-        "children": [{
-          "metadata": [{
-            "date": "Sat Jul 11 22:54:13 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/620003186183573508",
-            "tweet": "RT @jk_rowling: .@diegtristan8 \"she is built like a man\". Yeah, my husband looks just like this in a dress. You're an idiot. http://t.co/BC…"
-          }, {
-            "date": "Thu Jul 02 02:33:56 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/616434600840032256",
-            "tweet": "tomgeller came on the drupal7 advanced training like a scene out of lepracaun in the hood"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 2,
-        "name": "sweet",
-        "children": [{
-          "metadata": [{
-            "date": "Sat Jul 11 01:42:58 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/619683264937103363",
-            "tweet": "Sweet Sound Bites: MAGNIFI Presents Geographer at The Chapel 6/25/201... http://t.co/ilqoeuUUsf"
+            "date": "Wed Feb 08 12:03:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829299566344359936",
+            "tweet": "If the U.S. does not win this case as it so obviously should, we can never have the security and safety to which we are entitled. Politics!"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -664,89 +1028,14 @@ module.exports={
         }]
       }, {
         "size": 4,
-        "name": "paradise",
+        "name": "threat",
         "children": [{
           "metadata": [{
-            "date": "Sun May 17 16:22:00 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/599973150302937090",
-            "tweet": "Kickstarter campaign launched for Larry Levan and Paradise Garage movie @Mixmag http://t.co/ABEnnSQREi"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 1,
-        "name": "rises",
-        "children": [{
-          "metadata": [{
-            "date": "Sat May 02 15:57:03 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/594531052464418816",
-            "tweet": "San Francisco Minimum Wage Rises to $12.25, Other Bay Area Cities Considering Hikes | NBC Bay Area http://t.co/BJwTyZkDN7 via @nbcbayarea"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 3,
-        "name": "boost",
-        "children": [{
-          "metadata": [{
-            "date": "Fri May 01 01:03:05 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/593943690218901504",
-            "tweet": "RT @Forbes: If your job is chock full of challenging thinking tasks, your brain may be getting a positive boost: http://t.co/zbP236ysO1"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 4,
-        "name": "winning",
-        "children": [{
-          "metadata": [{
-            "date": "Sun Apr 26 06:00:31 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/592206601638973440",
-            "tweet": "bebes kids on @netflix #winning"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 2,
-        "name": "useful",
-        "children": [{
-          "metadata": [{
-            "date": "Tue Apr 14 04:11:16 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/587830455329624065",
-            "tweet": "9 Useful PHP Functions and Features You Need to Know http://t.co/fNNN3vHQ9P via @tutsplus"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 4,
-        "name": "success",
-        "children": [{
-          "metadata": [{
-            "date": "Tue Mar 24 12:45:34 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/580349737880002560",
-            "tweet": "Napping Improves Memory Five-Fold And Enhances Learning Success, Study Finds http://t.co/2xLJMgpnPL via @immortal_org"
+            "date": "Tue Feb 07 02:49:28 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828797801630937089",
+            "tweet": "The threat from radical Islamic terrorism is very real, just look at what is happening in Europe and the Middle-East. Courts must act fast!"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -754,19 +1043,19 @@ module.exports={
         }]
       }]
     }, {
-      "name": "Negative",
-      "size": 17,
+      "name": "Negative -1",
+      "size": 10,
       "type": "parent",
       "children": [{
         "size": 2,
-        "name": "protest",
+        "name": "worst",
         "children": [{
           "metadata": [{
-            "date": "Sun Jan 29 05:09:30 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/825571551445594112",
-            "tweet": "RT @RMac18: Google cofounder Sergey Brin at SFO protest: \"I'm here because I'm a refugee.\" (Photo from Matt Kang/Forbes) https://t.co/GwhsS…"
+            "date": "Fri Mar 10 13:32:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/840193545046773760",
+            "tweet": "RT @foxandfriends: \"Never give up....that's the worst thing you could do. There's always a chance.\" -Kyle Coddington's message to those als…"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -774,14 +1063,14 @@ module.exports={
         }]
       }, {
         "size": 2,
-        "name": "failed",
+        "name": "demand",
         "children": [{
           "metadata": [{
-            "date": "Wed Jul 22 19:50:45 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/623943284486995968",
-            "tweet": "Autopsy | Lessons from Failed Startups http://t.co/teLCQJucvm via @autopsyhq"
+            "date": "Fri Mar 03 21:02:23 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837770149767827456",
+            "tweet": "I hereby demand a second investigation, after Schumer, of Pelosi for her close ties to Russia, and lying about it. https://t.co/qCDljfF3wN"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -789,14 +1078,14 @@ module.exports={
         }]
       }, {
         "size": 2,
-        "name": "demands",
+        "name": "debt",
         "children": [{
           "metadata": [{
-            "date": "Sun May 17 16:18:42 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/599972320166285313",
-            "tweet": "Candidate with no votes demands recount because he ‘voted for himself’ http://t.co/HwXAhJEQ9U"
+            "date": "Sat Feb 25 13:19:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835479283699224576",
+            "tweet": "The media has not reported that the National Debt in my first month went down by $12 billion vs a $200 billion increase in Obama first mo."
           }],
           "name": "singleTweet",
           "size": 1,
@@ -804,14 +1093,14 @@ module.exports={
         }]
       }, {
         "size": 2,
-        "name": "fire",
+        "name": "fight",
         "children": [{
           "metadata": [{
-            "date": "Fri May 15 14:36:17 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/599221769677901824",
-            "tweet": "#kpfa  on fire this morning"
+            "date": "Fri Feb 24 17:04:19 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835173525522624512",
+            "tweet": "Trump vows to fight 'epidemic' of human trafficking \nhttps://t.co/oDLZ2NdrtA"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -819,29 +1108,163 @@ module.exports={
         }]
       }, {
         "size": 2,
-        "name": "unable",
+        "name": "killed",
         "children": [{
           "metadata": [{
-            "date": "Tue Apr 28 02:49:20 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/592883265742209024",
-            "tweet": "@sugarcrmdev I am unable to create a new record on a custom module via the v10 REST api"
+            "date": "Fri Feb 24 00:01:40 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834916167177371648",
+            "tweet": "Seven people shot and killed yesterday in Chicago. What is going on there - totally out of control. Chicago needs help!"
           }],
           "name": "singleTweet",
           "size": 1,
           "type": "metadata"
         }]
       }, {
+        "size": 2,
+        "name": "prisoner",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 23:59:26 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832016501657968640",
+            "tweet": "Venezuela should allow Leopoldo Lopez, a political prisoner &amp; husband of @liliantintori (just met w/ @marcorubio) o… https://t.co/HhgE51dtSN"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "admitted",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 12 11:55:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830747067379232769",
+            "tweet": "72% of refugees admitted into U.S. (2/3 -2/11) during COURT BREAKDOWN are from 7 countries: SYRIA, IRAQ, SOMALIA, IRAN, SUDAN, LIBYA &amp; YEMEN"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "dangerous",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 11 12:12:51 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830389130311921667",
+            "tweet": "Our legal system is broken! \"77% of refugees allowed into U.S. since travel reprieve hail from seven suspect countries.\" (WT)  SO DANGEROUS!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "swearing",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 09 15:58:01 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829721019720015872",
+            "tweet": "Join us live in the Oval Office for the swearing in of our new Attorney General, @SenatorSessions!\nLIVE:… https://t.co/QeW6vjog4A"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "fake",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 09 13:19:08 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829681034564341760",
+            "tweet": "Chris Cuomo, in his interview with Sen. Blumenthal, never asked him about his long-term lie about his brave \"service\" in Vietnam. FAKE NEWS!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Neutral",
+      "size": 44,
+      "type": "parent",
+      "children": [{
         "size": 3,
-        "name": "illegal",
+        "name": "despite",
         "children": [{
           "metadata": [{
-            "date": "Wed Apr 01 11:27:27 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/583229180793348096",
-            "tweet": "Starbucks that aren't 24 hours should be illegal"
+            "date": "Sat Mar 18 13:15:41 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843088518339612673",
+            "tweet": "Despite what you have heard from the FAKE NEWS, I had a GREAT meeting with German Chancellor Angela Merkel. Nevertheless, Germany owes....."
+          }, {
+            "date": "Fri Feb 17 10:13:32 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832533430168608768",
+            "tweet": "Despite the long delays by the Democrats in finally approving Dr. Tom Price, the repeal and replacement of ObamaCare is moving fast!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 5,
+        "name": "the",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 14:07:26 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842739155230740481",
+            "tweet": "\"The President Changed. So Has Small Businesses' Confidence\"\nhttps://t.co/daTGjPmYeJ"
+          }, {
+            "date": "Sat Mar 04 11:26:47 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837987684660412416",
+            "tweet": "The first meeting Jeff Sessions had with the Russian Amb was set up by the Obama Administration under education program for 100 Ambs......"
+          }, {
+            "date": "Thu Feb 16 12:02:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832198588201594880",
+            "tweet": "The spotlight has finally been put on the low-life leakers! They will be caught!"
+          }, {
+            "date": "Mon Mar 20 11:02:57 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843779892776964097",
+            "tweet": "The real story that Congress, the FBI and all others should be looking into is the leaking of Classified information. Must find leaker now!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "north",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 13:07:15 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842724011234791424",
+            "tweet": "North Korea is behaving very badly. They have been \"playing\" the United States for years. China has done little to help!"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -849,14 +1272,1761 @@ module.exports={
         }]
       }, {
         "size": 4,
-        "name": "hurt",
+        "name": "rt",
         "children": [{
           "metadata": [{
-            "date": "Sun Mar 22 01:34:28 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/579456072844386304",
-            "tweet": "RT @songproducers: Amanda Palmer's mistake (and why it will hurt working class musicians). http://t.co/ozoPPt006p"
+            "date": "Fri Mar 17 12:20:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842712210896052225",
+            "tweet": "RT @FoxNews: Jobs created in February. https://t.co/sOaMDxxTA8"
+          }, {
+            "date": "Sun Mar 12 12:36:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/840904454836781056",
+            "tweet": "RT @AmericaFirstPol: .@POTUS Trump led a historic journey to the White House. 50 days in, that historic journey continues. Take a look 👉 ht…"
+          }, {
+            "date": "Sun Feb 12 03:23:13 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830618234726543360",
+            "tweet": "RT @Scavino45: LIVE Joint Statement by President Trump and Prime Minister Shinzo Abe: https://t.co/c3Fe5cUaaS"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "jobs",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 14 15:00:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841665325682827265",
+            "tweet": "JOBS, JOBS, JOBS! https://t.co/wAkQMKdPXA"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "meeting",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 13 22:54:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841422186573369345",
+            "tweet": "Meeting w/ Washington, D.C. @MayorBowser and Metro GM Paul Wiedefeld about incoming winter storm preparations here… https://t.co/mg0A4Hq3bD"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "healthcare",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 13 17:20:15 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841338126316511233",
+            "tweet": "Healthcare listening session w/ @VP &amp; @SecPriceMD. Watch: https://t.co/5ayQ4dr8Ip #ReadTheBill:… https://t.co/1cQI0ZBUv8"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "weekly",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 10 15:40:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/840225958854561792",
+            "tweet": "Weekly Address - 11:00 A.M. at the @WhiteHouse! #MAGA🇺🇸\n➡️https://t.co/YSaPJnSX2i https://t.co/Gb8iTGzb6j"
+          }, {
+            "date": "Fri Mar 03 16:41:55 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837704599704375296",
+            "tweet": "Weekly Address\nJoin me here: https://t.co/SEavQK5zy5 https://t.co/EnyXYeqgcp"
+          }, {
+            "date": "Sat Feb 25 18:12:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835553050530099200",
+            "tweet": "Weekly Address from @WhiteHouse: https://t.co/uaoQSHBOQB https://t.co/7eF6aC6kEC"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "i",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 13:46:28 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839110000870109184",
+            "tweet": "I am working on a new system where there will be competition in the Drug Industry. Pricing for the American people will come way down!"
+          }, {
+            "date": "Sat Feb 11 23:00:21 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830552079240409089",
+            "tweet": "I am so proud of my daughter Ivanka. To be abused and treated so badly by the media, and to still hold her head so high, is truly wonderful!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "'president",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 06 21:19:04 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838861512999649286",
+            "tweet": "'President Trump Congratulates Exxon Mobil for Job-Creating Investment Program'\nhttps://t.co/adBzWhtq8S"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "who",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Mar 05 11:40:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838353481526312961",
+            "tweet": "Who was it that secretly said to Russian President, \"Tell Vladimir that after the election I'll have more flexibility?\" @foxandfriends"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "is",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Mar 05 11:32:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838351476401520640",
+            "tweet": "Is it true the DNC would not allow the FBI access to check server or other equipment after learning it was hacked? Can that be possible?"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "terrible",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 04 11:35:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837989835818287106",
+            "tweet": "Terrible! Just found out that Obama had my \"wires tapped\" in Trump Tower just before the victory. Nothing found. This is McCarthyism!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "we",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 17:54:30 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837722869106880517",
+            "tweet": "We should start an immediate investigation into @SenSchumer and his ties to Russia and Putin. A total hypocrite! https://t.co/Ik3yqjHzsA"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "nick",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 12:00:39 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837633820417482754",
+            "tweet": "Nick Adams new book, Green Card Warrior, is a must read. The merit-based system is the way to go. Canada, Australia! @foxandfriends"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "jointsession",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 01 01:42:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836753422271582208",
+            "tweet": "#JointSession #MAGA🇺🇸\nhttps://t.co/RDO6Jt2pip"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "going",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 24 13:49:27 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835124485632180224",
+            "tweet": "Going to CPAC!"
+          }, {
+            "date": "Fri Feb 17 11:38:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832554772318322688",
+            "tweet": "Going to Charleston, South Carolina, in order to spend time with Boeing and talk jobs! Look forward to it."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "'sampp",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 23 22:53:45 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834899071982841856",
+            "tweet": "'S&amp;P 500 Edges Higher After Trump Renews Jobs Pledge' https://t.co/WtrRJVFmvU"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "'americans",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 21 20:46:42 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834142323881684993",
+            "tweet": "'Americans overwhelmingly oppose sanctuary cities' https://t.co/s5QvsJWA6u"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "just",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 20 21:00:37 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/833783438922629125",
+            "tweet": "Just named General H.R. McMaster National Security Advisor."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "give",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 20 14:15:42 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/833681539997253636",
+            "tweet": "Give the public a break - The FAKE NEWS media is trying to say that large scale immigration in Sweden is working out just beautifully. NOT!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "my",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 19 21:57:01 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/833435244451753984",
+            "tweet": "My statement as to what's happening in Sweden was in reference to a story that was broadcast on @FoxNews concerning immigrants &amp; Sweden."
+          }, {
+            "date": "Wed Feb 08 15:51:01 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829356871848951809",
+            "tweet": "My daughter Ivanka has been treated so unfairly by @Nordstrom. She is a great person -- always pushing me to do the right thing! Terrible!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "general",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 17 13:16:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832579442790772736",
+            "tweet": "General Keith Kellogg, who I have known for a long time, is very much in play for NSA - as are three others."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "'trump",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 16 23:44:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832375230274400256",
+            "tweet": "'Trump signs bill undoing Obama coal mining rule' https://t.co/yMfT5r5RGh"
+          }, {
+            "date": "Wed Feb 08 22:07:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829451566000242688",
+            "tweet": "'Trump administration seen as more truthful than news media'\nhttps://t.co/6LmsR5JOSW"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "aetna",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 21:34:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831979921555742732",
+            "tweet": "Aetna CEO: Obamacare in 'Death Spiral' #RepealAndReplace \nhttps://t.co/dmHL7xIEQv"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "crimea",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 12:42:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831846101179314177",
+            "tweet": "Crimea was TAKEN by Russia during the Obama Administration. Was Obama too soft on Russia?"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "obamacare",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 14 22:50:33 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831636777110757377",
+            "tweet": "Obamacare continues to fail. Humana to pull out in 2018. Will repeal, replace &amp; save healthcare for ALL Americans. \nhttps://t.co/glWEQ0lNR4"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "after",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 12 13:04:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830764596235485188",
+            "tweet": "After two days of very productive talks, Prime Minister Abe is heading back to Japan. L"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "icymi",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 12 05:02:01 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830643095150657536",
+            "tweet": "#ICYMI: Joint Statement with Prime Minister Shinzo Abe on North Korea. https://t.co/qEC87FKB1D"
+          }, {
+            "date": "Sun Mar 19 20:20:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843557782666317826",
+            "tweet": "#ICYMI: Weekly Address \n➡️https://t.co/ckVx2zgA1x https://t.co/dTGZLvlsGv"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "heading",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 10 23:24:51 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830195857530183684",
+            "tweet": "Heading to Joint Base Andrews on #MarineOne with Prime Minister Shinzō earlier today. https://t.co/4JFhyYdeHO"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "see",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 09 23:35:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829836231802515457",
+            "tweet": "SEE YOU IN COURT, THE SECURITY OF OUR NATION IS AT STAKE!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Positive 1",
+      "size": 12,
+      "type": "parent",
+      "children": [{
+        "size": 2,
+        "name": "great",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 14:14:03 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839116941956640768",
+            "tweet": "Don't let the FAKE NEWS tell you that there is big infighting in the Trump Admin. We are getting along great, and getting major things done!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "legal",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 04 11:49:00 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837993273679560704",
+            "tweet": "Is it legal for a sitting President to be \"wire tapping\" a race for president prior to an election? Turned down by court earlier. A NEW LOW!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "clearly",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 02:22:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837488402438176769",
+            "tweet": "Jeff Sessions is an honest man. He did not say anything wrong. He could have stated his response more accurately, but it was clearly not...."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "join",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 01 01:30:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836750538943377408",
+            "tweet": "Join me live at 9:00 P.M. \n#JointAddress https://t.co/J882zbyVkJ https://t.co/gTtK3vJmkU"
+          }, {
+            "date": "Fri Feb 17 15:34:14 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832614137586933760",
+            "tweet": "Join me at 11:00am:\nWatch here: https://t.co/veqKmsGAwf https://t.co/UzndIjIqjM"
+          }, {
+            "date": "Wed Feb 15 19:45:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831952535544070145",
+            "tweet": "Join me in Florida this Saturday at 5pm for a rally at the Orlando-Melbourne International Airport!\nTickets:… https://t.co/OigfXFECPp"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 5,
+        "name": "big",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 26 20:13:52 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835946001873657858",
+            "tweet": "Big dinner with Governors tonight at White House. Much to be discussed, including healthcare."
+          }, {
+            "date": "Fri Feb 24 00:06:44 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834917440450609152",
+            "tweet": "Big interview tonight by Henry Kravis at The Business Council of Washington. Looking forward to it!"
+          }, {
+            "date": "Sat Feb 18 13:51:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832950628750127106",
+            "tweet": "Will be having many meetings this weekend at The Southern White House. Big 5:00 P.M. speech in Melbourne, Florida. A lot to talk about!"
+          }, {
+            "date": "Sat Feb 18 00:02:58 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832742165436579840",
+            "tweet": "Looking forward to the Florida rally tomorrow. Big crowd expected!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "popular",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 19:39:51 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829414457126313986",
+            "tweet": "'Immigration Ban Is One Of Trump's Most Popular Orders So Far' https://t.co/wAelwuQ4BE"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "carefully",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 05 20:42:33 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828343072840900610",
+            "tweet": "I have instructed Homeland Security to check people coming into our country VERY CAREFULLY. The courts are making the job very difficult!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Positive 2",
+      "size": 66,
+      "type": "parent",
+      "children": [{
+        "size": 4,
+        "name": "swiftly",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 12:26:12 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842713677174358016",
+            "tweet": "RT @AmericaFirstPol: MAJOR IMPACT: @POTUS Trump is 50 Days in and moving swiftly to get America back on the right track. #MAGA \nhttps://t.c…"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 16,
+        "name": "thank",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 04:20:41 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842229104434913280",
+            "tweet": "Thank you Nashville, Tennessee! https://t.co/6snvQ0DzXN"
+          }, {
+            "date": "Wed Mar 15 23:25:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842154802058543105",
+            "tweet": "Thank you Andrew Jackson! #POTUS7 #USA🇺🇸 https://t.co/GToWsWXiNv"
+          }, {
+            "date": "Tue Mar 07 03:50:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838960097674002432",
+            "tweet": "Thank you to @exxonmobil for your $20 billion investment that is creating more than 45,000 manufacturing &amp; construction jobs in the USA!"
+          }, {
+            "date": "Tue Mar 07 03:49:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838959869772328960",
+            "tweet": "Buy American &amp; hire American are the principles at the core of my agenda, which is: JOBS, JOBS, JOBS! Thank you @exxonmobil."
+          }, {
+            "date": "Wed Mar 01 13:38:44 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836933725602656256",
+            "tweet": "THANK YOU!"
+          }, {
+            "date": "Wed Feb 15 12:28:37 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831842652085686273",
+            "tweet": "Thank you to Eli Lake of The Bloomberg View - \"The NSA &amp; FBI...should not interfere in our politics...and is\" Very serious situation for USA"
+          }, {
+            "date": "Mon Mar 20 23:03:36 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843961248811225089",
+            "tweet": "Thank you Louisville, Kentucky- on my way! #MAGA🇺🇸 https://t.co/3QsBsib6kt"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "enjoy",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 15 20:55:52 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842117164144431104",
+            "tweet": "I will be interviewed by @TuckerCarlson tonight at 9:00 P.M. on @FoxNews. Enjoy!"
+          }, {
+            "date": "Tue Feb 28 02:43:03 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836406328369242113",
+            "tweet": "I will be interviewed on @foxandfriends at 6:00 A.M. Enjoy!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "big",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 15 12:14:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841985915778142209",
+            "tweet": "CEO's most optimistic since 2009. It will only get better as we continue to slash unnecessary regulations and when we begin our big tax cut!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "progress",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 11 14:39:07 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/840572799202783233",
+            "tweet": "We are making great progress with healthcare. ObamaCare is imploding and will only get worse. Republicans coming together to get job done!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "gain",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 09 13:13:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839826581354921984",
+            "tweet": "RT @foxnation: .@realDonaldTrump's First Full Month in Office Sees Biggest Jobs Gain 'In Years': Report: https://t.co/rx4bgI1MWK"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "strongest",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 08 12:11:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839448469374894080",
+            "tweet": "LinkedIn Workforce Report: January and February were the strongest consecutive months for hiring since August and September 2015"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "respect",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 08 11:12:39 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839433678275153921",
+            "tweet": "I have tremendous respect for women and the many roles they serve that are vital to the fabric of our society and our economy."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "stronger",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 13:13:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839101660886614016",
+            "tweet": "For eight years Russia \"ran over\" President Obama, got stronger and stronger, picked-off Crimea and added missiles. Weak! @foxandfriends"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "wonderful",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 12:13:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839086723552411648",
+            "tweet": "Our wonderful new Healthcare Bill is now out for review and negotiation. ObamaCare is a complete and total disaster - is imploding fast!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "favorably",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 27 21:48:21 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836332166728527872",
+            "tweet": "GOP now viewed more favorably than Dems, in Trump era (per NBC/WSJ poll) via @HotlineJosh:\nhttps://t.co/Soebxtg2Zd"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "chance",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 26 11:33:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835814988686233601",
+            "tweet": "The race for DNC Chairman was, of course, totally \"rigged.\" Bernie's guy, like Bernie himself, never had a chance. Clinton demanded Perez!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "congratulations",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 25 22:02:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835610917568200705",
+            "tweet": "Congratulations to Thomas Perez, who has just been named Chairman of the DNC. I could not be happier for him, or for the Republican Party!"
+          }, {
+            "date": "Tue Feb 21 00:38:40 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/833838311315763200",
+            "tweet": "Congratulations to our new National Security Advisor, General H.R. McMaster. Video: https://t.co/BKn9r225Kk https://t.co/VBXcJ1b6Pv"
+          }, {
+            "date": "Tue Feb 14 02:57:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831336432073658368",
+            "tweet": "Congratulations Treasury Secretary Steven Mnuchin! #ICYMI- watch here: https://t.co/RPsmw4yD7y https://t.co/K8tWLlXiYK"
+          }, {
+            "date": "Thu Feb 09 01:05:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829496507841789952",
+            "tweet": "Congratulations to our new Attorney General, @SenatorSessions! https://t.co/e0buP1K83z"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "greatest",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 17 11:43:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832555987299082242",
+            "tweet": "Thank you for all of the nice statements on the Press Conference yesterday. Rush Limbaugh said one of greatest ever. Fake media not happy!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "resolution",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 14 21:48:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831621079747723264",
+            "tweet": "'Remarks by President Trump at Signing of H.J. Resolution 41'\nhttps://t.co/Q3MoCGAc54 https://t.co/yGDDTKm9Br"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "welcome",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 13 16:59:06 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831185943482793986",
+            "tweet": "Welcome to the @WhiteHouse Prime Minister @JustinTrudeau! https://t.co/WKgF8Zo9ri"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "leading",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 13 15:53:08 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831169341358014475",
+            "tweet": "Today I will meet with Canadian PM Trudeau and a group of leading business women to discuss women in the workforce. https://t.co/bFAHPRXHdP"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "interested",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 12 13:23:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830769247185952772",
+            "tweet": "I know Mark Cuban well. He backed me big-time but I wasn't interested in taking all of his calls.He's not smart enough to run for president!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "like",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 11 13:24:32 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830407172747988992",
+            "tweet": "...design or negotiations yet. When I do, just like with the F-35 FighterJet or the Air Force One Program, price will come WAY DOWN!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "bother",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 10 13:15:27 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830042498806460417",
+            "tweet": "LAWFARE: \"Remarkably, in the entire opinion, the panel did not bother even to cite this (the) statute.\" A disgraceful decision!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "hero",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 09 13:31:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829684271812067328",
+            "tweet": "...long he doesn't know how to win anymore, just look at the mess our country is in - bogged down in conflict all over the place. Our hero.."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "easy",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 17:41:09 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829384587482656768",
+            "tweet": "Big increase in traffic into our country from certain areas, while our people are far more vulnerable, as we wait for what should be EASY D!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "true",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 20 13:14:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843813078076719107",
+            "tweet": "What about all of the contact with the Clinton campaign and the Russians? Also, is it true that the DNC would not let the FBI in to look?"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Positive 3",
+      "size": 63,
+      "type": "parent",
+      "children": [{
+        "size": 6,
+        "name": "powerful",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 18 13:23:37 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843090516283723776",
+            "tweet": "...vast sums of money to NATO &amp; the United States must be paid more for the powerful, and very expensive, defense it provides to Germany!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 36,
+        "name": "great",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 15:39:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842762240184999936",
+            "tweet": "Great meeting with the @RepublicanStudy Committee this morning at the @WhiteHouse! https://t.co/8Y2UoHoYaY"
+          }, {
+            "date": "Thu Mar 16 00:03:23 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842164356297175040",
+            "tweet": "In Nashville, Tennessee! Lets MAKE AMERICA GREAT AGAIN! https://t.co/m5UR4vv6UH"
+          }, {
+            "date": "Fri Mar 10 13:45:02 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/840196801009451009",
+            "tweet": "RT @DRUDGE_REPORT: GREAT AGAIN:  +235,000 https://t.co/GkockGNdtC"
+          }, {
+            "date": "Wed Mar 08 23:54:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839625347524096000",
+            "tweet": "Great news. We are only just beginning. Together, we are going to #MAGA! https://t.co/BSp685Q9Qf https://t.co/K7yeBZsf6r"
+          }, {
+            "date": "Wed Mar 08 23:50:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839624377826230272",
+            "tweet": "Met with @RepCummings today at the @WhiteHouse. Great discussion!"
+          }, {
+            "date": "Fri Mar 03 22:13:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837787963027144706",
+            "tweet": "MAKE AMERICA GREAT AGAIN! https://t.co/kuQiZDz4rA"
+          }, {
+            "date": "Sat Feb 25 12:25:24 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835465719970217984",
+            "tweet": "Maybe the millions of people who voted to MAKE AMERICA GREAT AGAIN should have their own rally. It would be the biggest of them all!"
+          }, {
+            "date": "Wed Feb 15 16:34:27 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831904516316479489",
+            "tweet": "Great listening session with CEO's of the Retail Industry Leaders Association this morning! https://t.co/sy6xJcWfcF"
+          }, {
+            "date": "Tue Feb 14 20:21:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831599387906301952",
+            "tweet": "Great parent-teacher listening session this morning with @VP Pence &amp; @usedgov Secretary @BetsyDeVos. Watch:… https://t.co/nuLTs513Ot"
+          }, {
+            "date": "Sat Feb 11 23:15:34 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830555911559249926",
+            "tweet": "Played golf today with Prime Minister Abe of Japan and @TheBig_Easy, Ernie Els, and had a great time. Japan is very well represented!"
+          }, {
+            "date": "Sat Feb 11 13:18:43 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830405706255912960",
+            "tweet": "I am reading that the great border WALL will cost more than the government originally thought, but I have not gotten involved in the....."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "care",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 12:30:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842714739365105664",
+            "tweet": "RT @foxandfriends: VIDEO: Rep. Scalise — GOP agrees on over 85 percent of health care bill https://t.co/05dtfjAUbx"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "delighted",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 21:43:07 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842491443675611138",
+            "tweet": "RT @USHCC: USHCC was delighted to host @IvankaTrump for a roundtable discussion w/ Hispanic women biz owners today in Washington #USHCCLegi…"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "prosperity",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 15:52:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842403173742579714",
+            "tweet": "A budget that puts #AmericaFirst must make safety its no. 1 priority—without safety there can be no prosperity: https://t.co/9lxx1iQo7m"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "reached",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 09 22:36:27 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839968149890076672",
+            "tweet": "'U.S. Consumer Comfort Just Reached Its Highest Level in a Decade' ➡️https://t.co/S8nZgmeMMV https://t.co/xC0piRa6eP"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "honoring",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 08 11:13:44 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839433951957696513",
+            "tweet": "On International Women's Day, join me in honoring the critical role of women here in America &amp; around the world."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "optimism",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 06 23:49:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838899465390018560",
+            "tweet": "There is an incredible spirit of optimism sweeping the country right now—we're bringing back the JOBS! https://t.co/BNSLvKiEVj"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "win",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 22 12:20:40 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834377364947816448",
+            "tweet": "One thing I will say about Rep. Keith Ellison, in his fight to lead the DNC, is that he was the one who predicted early that I would win!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "united",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 19:17:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831945670324060164",
+            "tweet": "Welcome to the United States, @IsraeliPM Benjamin &amp; Sara!\n#ICYMI🇺🇸🇮🇱Joint Press Conference: \nhttps://t.co/GN6ALWUusN https://t.co/bH60nBL5FP"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "good",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 11 23:24:08 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830558065715998726",
+            "tweet": "A working dinner tonight with Prime Minister Abe of Japan, and his representatives, at the Winter White House (Mar-a-Lago). Very good talks!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Positive 4",
+      "size": 48,
+      "type": "parent",
+      "children": [{
+        "size": 8,
+        "name": "welcome",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 20:09:38 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842467917639913472",
+            "tweet": "An honor to welcome the Taoiseach of Ireland, @EndaKennyTD to the @WhiteHouse today with @VP Pence. 🇺🇸🇮🇪 https://t.co/J3iTl2iSiQ"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "big",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 15 11:13:58 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841970726341074945",
+            "tweet": "Will be going to Detroit, Michigan (love), today for a big meeting on bringing back car production to State &amp; U.S. Already happening!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "congratulations",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 09 23:11:27 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839976956703748096",
+            "tweet": "Honored to meet this years @SenateYouth delegates w/ @VP Pence in the East Room of the @WhiteHouse. Congratulations… https://t.co/oQIx7LybCV"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "care",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 08 00:14:30 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839268048313929729",
+            "tweet": "I feel sure that my friend @RandPaul will come along with the new and great health care program because he knows Obamacare is a disaster!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "promote",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 13:41:58 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839108868584124417",
+            "tweet": "Don't worry, getting rid of state lines, which will promote competition, will be in phase 2 &amp; 3 of healthcare rollout. @foxandfriends"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 12,
+        "name": "winning",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 06 21:22:15 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838862312685637640",
+            "tweet": "45,000 construction &amp; manufacturing jobs in the U.S. Gulf Coast region. $20 billion investment. We are already winning again, America!"
+          }, {
+            "date": "Thu Feb 09 13:52:31 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829689436279603206",
+            "tweet": "..Ryan died on a winning mission ( according to General Mattis), not a \"failure.\" Time for the U.S. to get smart and start winning again!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "confidence",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 02 11:00:41 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837256338203881472",
+            "tweet": "Since November 8th, Election Day, the Stock Market has posted $3.2 trillion in GAINS and consumer confidence is at a 15 year high. Jobs!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "united",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 11 18:28:31 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830483672096768001",
+            "tweet": "Having a great time hosting Prime Minister Shinzo Abe in the United States! \nhttps://t.co/Fvjsac89qS… https://t.co/hKqbMB2aQ9"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "wonderful",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 11 13:33:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830409522397184000",
+            "tweet": "Melania and I are hosting Japanese Prime Minister Shinzo Abe and Mrs. Abe at Mar-a-Lago in Palm Beach, Fla. They are a wonderful couple!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "support",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 21:46:14 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829446266111287305",
+            "tweet": "'Majority in Leading EU Nations Support Trump-Style Travel Ban' \nPoll of more than 10,000 people in 10 countries...https://t.co/KWsIWhtC9o"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "protect",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 07 16:25:13 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829003091735359488",
+            "tweet": "An honor having the National Sheriffs' Assoc. join me at the @WhiteHouse. Incredible men &amp; women who protect &amp; serv… https://t.co/1LkhbCNh8L"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Positive 5",
+      "size": 145,
+      "type": "parent",
+      "children": [{
+        "size": 65,
+        "name": "great",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 12:12:04 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842710123852320770",
+            "tweet": "Happy Lá Fheile Phadraig to all of my great Irish friends!"
+          }, {
+            "date": "Mon Mar 13 20:57:02 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841392683625172992",
+            "tweet": "Proud to welcome our great Cabinet this afternoon for our first meeting. Unfortunately 4 seats were empty because S… https://t.co/bMYph832hF"
+          }, {
+            "date": "Sun Mar 05 17:30:11 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838441522546769923",
+            "tweet": "Thank you for the great rallies all across the country. Tremendous support. Make America Great Again!"
+          }, {
+            "date": "Sat Mar 04 11:52:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837994257566863360",
+            "tweet": "I'd bet a good lawyer could make a great case out of the fact that President Obama was tapping my phones in October, just prior to Election!"
+          }, {
+            "date": "Mon Feb 27 17:06:23 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836261209540288513",
+            "tweet": "Great meeting with CEOs of leading U.S. health insurance companies who provide great healthcare to the American peo… https://t.co/60jigi6ffS"
+          }, {
+            "date": "Sat Feb 25 21:53:21 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835608648625836032",
+            "tweet": "I will not be attending the White House Correspondents' Association Dinner this year. Please wish everyone well and have a great evening!"
+          }, {
+            "date": "Mon Feb 20 14:33:33 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/833686030679207936",
+            "tweet": "HAPPY PRESIDENTS DAY - MAKE AMERICA GREAT AGAIN!"
+          }, {
+            "date": "Sun Feb 12 15:41:55 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830804130692268032",
+            "tweet": "Congratulations Stephen Miller- on representing me this morning on the various Sunday morning shows. Great job!"
+          }, {
+            "date": "Sun Feb 05 22:49:42 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828375073006444544",
+            "tweet": "Enjoy the #SuperBowl and then we continue: MAKE AMERICA GREAT AGAIN!"
+          }, {
+            "date": "Tue Mar 21 02:18:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/844010257454153729",
+            "tweet": "Thank you Louisville, Kentucky. Together, we will MAKE AMERICA SAFE AND GREAT AGAIN! https://t.co/qGgWEWUvek"
+          }, {
+            "date": "Tue Mar 21 02:18:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/844010257454153729",
+            "tweet": "Thank you Louisville, Kentucky. Together, we will MAKE AMERICA SAFE AND GREAT AGAIN! https://t.co/qGgWEWUvek"
+          }, {
+            "date": "Tue Mar 21 02:18:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/844010257454153729",
+            "tweet": "Thank you Louisville, Kentucky. Together, we will MAKE AMERICA SAFE AND GREAT AGAIN! https://t.co/qGgWEWUvek"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "growth",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 22:43:32 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842506649122279425",
+            "tweet": "My representatives had a great meeting w/ the Hispanic Chamber of Commerce at the WH today. Look forward to tremendous growth &amp; future mtgs!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "progress",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 21:54:02 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842494190990901248",
+            "tweet": "Great progress on healthcare. Improvements being made - Republicans coming together!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "fun",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 15 11:29:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841974528683192320",
+            "tweet": "Looking forward to a big rally in Nashville, Tennessee, tonight. Big crowd of great people expected. Will be fun!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 15,
+        "name": "better",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 14 16:12:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841683431398469632",
+            "tweet": "Great optimism in America – and the results will be even better! https://t.co/SYBl47CsZn"
+          }, {
+            "date": "Mon Mar 13 12:52:29 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841270741060464648",
+            "tweet": "It is amazing how rude much of the media is to my very hard working representatives. Be nice, you will do much better!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "beautiful",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 09 17:01:17 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839883804315684864",
+            "tweet": "Despite what you hear in the press, healthcare is coming along great. We are talking to many groups and it will end in a beautiful picture!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "wonderful",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 20:48:21 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837766616603586560",
+            "tweet": "We must fix our education system for our kids to Make America Great Again. Wonderful day at Saint Andrew in Orlando. https://t.co/OTJaHcvLzf"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "big",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 25 13:27:04 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835481237879926784",
+            "tweet": "Great optimism for future of U.S. business, AND JOBS, with the DOW having an 11th straight record close. Big tax &amp; regulation cuts coming!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "amazing",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 22 12:50:56 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834384982495940613",
+            "tweet": "Very much enjoyed my tour of the Smithsonian's National Museum of African American History and Culture...A great job done by amazing people!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "optimism",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 16 11:34:46 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832191485701451777",
+            "tweet": "Stock market hits new high with longest winning streak in decades. Great level of confidence and optimism - even before tax plan rollout!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "protect",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 14 03:30:45 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831344902990655489",
+            "tweet": "Congratulations to our new #VASecretary Dr. David Shulkin. Time to take care of Veterans who have fought to protect… https://t.co/FNewjbHuw4"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "leading",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 13 18:50:57 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831214091993751552",
+            "tweet": "Wonderful meeting with Canadian PM @JustinTrudeau and a group of leading CEO's &amp; business women from Canada🇨🇦and th… https://t.co/wAoCOaYeZ6"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "innovation",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 19:22:33 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829410107406614534",
+            "tweet": "Thank you Brian Krzanich, CEO of @Intel. A great investment ($7 BILLION) in American INNOVATION and JOBS!… https://t.co/oicfDsPKHQ"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "friend",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 15:23:29 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829349943613734912",
+            "tweet": "Thank you to our great Police Chiefs &amp; Sheriffs for your leadership &amp; service. You have a true friend in the… https://t.co/Lysnv8ZR1h"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "enjoy",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 06 23:33:52 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828748574255091714",
+            "tweet": "An extended interview from the Super Bowl with @oreillyfactor airs tonight at 8:00 P.M. Enjoy! https://t.co/kZdHqaNTVR"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "wow",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 06 03:36:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828447350200926212",
+            "tweet": "What an amazing comeback and win by the Patriots. Tom Brady, Bob Kraft and Coach B are total winners. Wow!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "happy",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 20 17:15:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843873596963459072",
+            "tweet": "Congratulations Eric &amp; Lara. Very proud and happy for the two of you! https://t.co/s0T3cTQc40"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -867,14 +3037,14 @@ module.exports={
   }]
 }
 
-},{}],35:[function(require,module,exports){
-
 },{}],36:[function(require,module,exports){
-// https://d3js.org/d3-color/ Version 1.0.2. Copyright 2016 Mike Bostock.
+
+},{}],37:[function(require,module,exports){
+// https://d3js.org/d3-color/ Version 1.0.3. Copyright 2017 Mike Bostock.
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.d3 = global.d3 || {})));
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global.d3 = global.d3 || {})));
 }(this, (function (exports) { 'use strict';
 
 var define = function(constructor, factory, prototype) {
@@ -1394,12 +3564,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],37:[function(require,module,exports){
-// https://d3js.org/d3-interpolate/ Version 1.1.3. Copyright 2017 Mike Bostock.
+},{}],38:[function(require,module,exports){
+// https://d3js.org/d3-interpolate/ Version 1.1.4. Copyright 2017 Mike Bostock.
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-color')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'd3-color'], factory) :
-  (factory((global.d3 = global.d3 || {}),global.d3));
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-color')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'd3-color'], factory) :
+	(factory((global.d3 = global.d3 || {}),global.d3));
 }(this, (function (exports,d3Color) { 'use strict';
 
 function basis(t1, v0, v1, v2, v3) {
@@ -1941,7 +4111,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{"d3-color":36}],38:[function(require,module,exports){
+},{"d3-color":37}],39:[function(require,module,exports){
 // https://d3js.org/d3-scale-chromatic/ Version 1.1.1. Copyright 2017 Mike Bostock.
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-interpolate')) :
@@ -2384,15 +4554,15 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{"d3-interpolate":37}],39:[function(require,module,exports){
-// https://d3js.org Version 4.6.0. Copyright 2017 Mike Bostock.
+},{"d3-interpolate":38}],40:[function(require,module,exports){
+// https://d3js.org Version 4.7.3. Copyright 2017 Mike Bostock.
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
 	(factory((global.d3 = global.d3 || {})));
 }(this, (function (exports) { 'use strict';
 
-var version = "4.6.0";
+var version = "4.7.3";
 
 var ascending = function(a, b) {
   return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
@@ -2433,6 +4603,24 @@ function ascendingComparator(f) {
 var ascendingBisect = bisector(ascending);
 var bisectRight = ascendingBisect.right;
 var bisectLeft = ascendingBisect.left;
+
+var pairs = function(array, f) {
+  if (f == null) f = pair;
+  var i = 0, n = array.length - 1, p = array[0], pairs = new Array(n < 0 ? 0 : n);
+  while (i < n) pairs[i] = f(p, p = array[++i]);
+  return pairs;
+};
+
+function pair(a, b) {
+  return [a, b];
+}
+
+var cross = function(a, b, f) {
+  var na = a.length, nb = b.length, c = new Array(na * nb), ia, ib, ic, va;
+  if (f == null) f = pair;
+  for (ia = ic = 0; ia < na; ++ia) for (va = a[ia], ib = 0; ib < nb; ++ib, ++ic) c[ic] = f(va, b[ib]);
+  return c;
+};
 
 var descending = function(a, b) {
   return b < a ? -1 : b > a ? 1 : b >= a ? 0 : NaN;
@@ -2742,12 +4930,6 @@ var min = function(array, f) {
   return a;
 };
 
-var pairs = function(array) {
-  var i = 0, n = array.length - 1, p = array[0], pairs = new Array(n < 0 ? 0 : n);
-  while (i < n) pairs[i] = [p, p = array[++i]];
-  return pairs;
-};
-
 var permute = function(array, indexes) {
   var i = indexes.length, permutes = new Array(i);
   while (i--) permutes[i] = array[indexes[i]];
@@ -2831,14 +5013,12 @@ var bottom = 3;
 var left = 4;
 var epsilon = 1e-6;
 
-function translateX(scale0, scale1, d) {
-  var x = scale0(d);
-  return "translate(" + (isFinite(x) ? x : scale1(d)) + ",0)";
+function translateX(x) {
+  return "translate(" + x + ",0)";
 }
 
-function translateY(scale0, scale1, d) {
-  var y = scale0(d);
-  return "translate(0," + (isFinite(y) ? y : scale1(d)) + ")";
+function translateY(y) {
+  return "translate(0," + y + ")";
 }
 
 function center(scale) {
@@ -2859,13 +5039,15 @@ function axis(orient, scale) {
       tickFormat = null,
       tickSizeInner = 6,
       tickSizeOuter = 6,
-      tickPadding = 3;
+      tickPadding = 3,
+      k = orient === top || orient === left ? -1 : 1,
+      x, y = orient === left || orient === right ? (x = "x", "y") : (x = "y", "x"),
+      transform = orient === top || orient === bottom ? translateX : translateY;
 
   function axis(context) {
     var values = tickValues == null ? (scale.ticks ? scale.ticks.apply(scale, tickArguments) : scale.domain()) : tickValues,
         format = tickFormat == null ? (scale.tickFormat ? scale.tickFormat.apply(scale, tickArguments) : identity$1) : tickFormat,
         spacing = Math.max(tickSizeInner, 0) + tickPadding,
-        transform = orient === top || orient === bottom ? translateX : translateY,
         range = scale.range(),
         range0 = range[0] + 0.5,
         range1 = range[range.length - 1] + 0.5,
@@ -2876,9 +5058,7 @@ function axis(orient, scale) {
         tickExit = tick.exit(),
         tickEnter = tick.enter().append("g").attr("class", "tick"),
         line = tick.select("line"),
-        text = tick.select("text"),
-        k = orient === top || orient === left ? -1 : 1,
-        x, y = orient === left || orient === right ? (x = "x", "y") : (x = "y", "x");
+        text = tick.select("text");
 
     path = path.merge(path.enter().insert("path", ".tick")
         .attr("class", "domain")
@@ -2906,11 +5086,11 @@ function axis(orient, scale) {
 
       tickExit = tickExit.transition(context)
           .attr("opacity", epsilon)
-          .attr("transform", function(d) { return transform(position, this.parentNode.__axis || position, d); });
+          .attr("transform", function(d) { return isFinite(d = position(d)) ? transform(d) : this.getAttribute("transform"); });
 
       tickEnter
           .attr("opacity", epsilon)
-          .attr("transform", function(d) { return transform(this.parentNode.__axis || position, position, d); });
+          .attr("transform", function(d) { var p = this.parentNode.__axis; return transform(p && isFinite(p = p(d)) ? p : position(d)); });
     }
 
     tickExit.remove();
@@ -2922,7 +5102,7 @@ function axis(orient, scale) {
 
     tick
         .attr("opacity", 1)
-        .attr("transform", function(d) { return transform(position, position, d); });
+        .attr("transform", function(d) { return transform(position(d)); });
 
     line
         .attr(x + "2", k * tickSizeInner);
@@ -5710,7 +7890,7 @@ var transition_attr = function(name, value) {
   return this.attrTween(name, typeof value === "function"
       ? (fullname.local ? attrFunctionNS$1 : attrFunction$1)(fullname, i, tweenValue(this, "attr." + name, value))
       : value == null ? (fullname.local ? attrRemoveNS$1 : attrRemove$1)(fullname)
-      : (fullname.local ? attrConstantNS$1 : attrConstant$1)(fullname, i, value));
+      : (fullname.local ? attrConstantNS$1 : attrConstant$1)(fullname, i, value + ""));
 };
 
 function attrTweenNS(fullname, value) {
@@ -5979,7 +8159,7 @@ var transition_style = function(name, value, priority) {
           .on("end.style." + name, styleRemoveEnd(name))
       : this.styleTween(name, typeof value === "function"
           ? styleFunction$1(name, i, tweenValue(this, "style." + name, value))
-          : styleConstant$1(name, i, value), priority);
+          : styleConstant$1(name, i, value + ""), priority);
 };
 
 function styleTween(name, value, priority) {
@@ -7153,14 +9333,16 @@ Path.prototype = path.prototype = {
     // Is this arc empty? We’re done.
     if (!r) return;
 
+    // Does the angle go the wrong way? Flip the direction.
+    if (da < 0) da = da % tau$2 + tau$2;
+
     // Is this a complete circle? Draw two arcs to complete the circle.
     if (da > tauEpsilon) {
       this._ += "A" + r + "," + r + ",0,1," + cw + "," + (x - dx) + "," + (y - dy) + "A" + r + "," + r + ",0,1," + cw + "," + (this._x1 = x0) + "," + (this._y1 = y0);
     }
 
-    // Otherwise, draw an arc!
-    else {
-      if (da < 0) da = da % tau$2 + tau$2;
+    // Is this arc non-empty? Draw an arc!
+    else if (da > epsilon$1) {
       this._ += "A" + r + "," + r + ",0," + (+(da >= pi$2)) + "," + cw + "," + (this._x1 = x + r * Math.cos(a1)) + "," + (this._y1 = y + r * Math.sin(a1));
     }
   },
@@ -7485,7 +9667,7 @@ function inferColumns(rows) {
 }
 
 var dsv = function(delimiter) {
-  var reFormat = new RegExp("[\"" + delimiter + "\n]"),
+  var reFormat = new RegExp("[\"" + delimiter + "\n\r]"),
       delimiterCode = delimiter.charCodeAt(0);
 
   function parse(text, f) {
@@ -8650,6 +10832,14 @@ var formatGroup = function(grouping, thousands) {
   };
 };
 
+var formatNumerals = function(numerals) {
+  return function(value) {
+    return value.replace(/[0-9]/g, function(i) {
+      return numerals[+i];
+    });
+  };
+};
+
 var formatDefault = function(x, p) {
   x = x.toPrecision(p);
 
@@ -8710,9 +10900,11 @@ var formatTypes = {
 // [[fill]align][sign][symbol][0][width][,][.precision][type]
 var re = /^(?:(.)?([<>=^]))?([+\-\( ])?([$#])?(0)?(\d+)?(,)?(\.\d+)?([a-z%])?$/i;
 
-var formatSpecifier = function(specifier) {
+function formatSpecifier(specifier) {
   return new FormatSpecifier(specifier);
-};
+}
+
+formatSpecifier.prototype = FormatSpecifier.prototype; // instanceof
 
 function FormatSpecifier(specifier) {
   if (!(match = re.exec(specifier))) throw new Error("invalid format: " + specifier);
@@ -8760,16 +10952,17 @@ FormatSpecifier.prototype.toString = function() {
       + this.type;
 };
 
-var prefixes = ["y","z","a","f","p","n","\xB5","m","","k","M","G","T","P","E","Z","Y"];
-
-function identity$3(x) {
+var identity$3 = function(x) {
   return x;
-}
+};
+
+var prefixes = ["y","z","a","f","p","n","\xB5","m","","k","M","G","T","P","E","Z","Y"];
 
 var formatLocale = function(locale) {
   var group = locale.grouping && locale.thousands ? formatGroup(locale.grouping, locale.thousands) : identity$3,
       currency = locale.currency,
-      decimal = locale.decimal;
+      decimal = locale.decimal,
+      numerals = locale.numerals ? formatNumerals(locale.numerals) : identity$3;
 
   function newFormat(specifier) {
     specifier = formatSpecifier(specifier);
@@ -8814,27 +11007,12 @@ var formatLocale = function(locale) {
       } else {
         value = +value;
 
-        // Convert negative to positive, and compute the prefix.
-        // Note that -0 is not less than 0, but 1 / -0 is!
-        var valueNegative = (value < 0 || 1 / value < 0) && (value *= -1, true);
-
         // Perform the initial formatting.
-        value = formatType(value, precision);
+        var valueNegative = value < 0;
+        value = formatType(Math.abs(value), precision);
 
-        // If the original value was negative, it may be rounded to zero during
-        // formatting; treat this as (positive) zero.
-        if (valueNegative) {
-          i = -1, n = value.length;
-          valueNegative = false;
-          while (++i < n) {
-            if (c = value.charCodeAt(i), (48 < c && c < 58)
-                || (type === "x" && 96 < c && c < 103)
-                || (type === "X" && 64 < c && c < 71)) {
-              valueNegative = true;
-              break;
-            }
-          }
-        }
+        // If a negative value rounds to zero during formatting, treat as positive.
+        if (valueNegative && +value === 0) valueNegative = false;
 
         // Compute the prefix and suffix.
         valuePrefix = (valueNegative ? (sign === "(" ? sign : "-") : sign === "-" || sign === "(" ? "" : sign) + valuePrefix;
@@ -8866,11 +11044,13 @@ var formatLocale = function(locale) {
 
       // Reconstruct the final output based on the desired alignment.
       switch (align) {
-        case "<": return valuePrefix + value + valueSuffix + padding;
-        case "=": return valuePrefix + padding + value + valueSuffix;
-        case "^": return padding.slice(0, length = padding.length >> 1) + valuePrefix + value + valueSuffix + padding.slice(length);
+        case "<": value = valuePrefix + value + valueSuffix + padding; break;
+        case "=": value = valuePrefix + padding + value + valueSuffix; break;
+        case "^": value = padding.slice(0, length = padding.length >> 1) + valuePrefix + value + valueSuffix + padding.slice(length); break;
+        default: value = padding + valuePrefix + value + valueSuffix; break;
       }
-      return padding + valuePrefix + value + valueSuffix;
+
+      return numerals(value);
     }
 
     format.toString = function() {
@@ -9013,8 +11193,8 @@ function streamGeometry(geometry, stream) {
 }
 
 var streamObjectType = {
-  Feature: function(feature, stream) {
-    streamGeometry(feature.geometry, stream);
+  Feature: function(object, stream) {
+    streamGeometry(object.geometry, stream);
   },
   FeatureCollection: function(object, stream) {
     var features = object.features, i = -1, n = features.length;
@@ -9463,9 +11643,8 @@ function centroidRingPoint(lambda, phi) {
       cy = z0 * x - x0 * z,
       cz = x0 * y - y0 * x,
       m = sqrt(cx * cx + cy * cy + cz * cz),
-      u = x0 * x + y0 * y + z0 * z,
-      v = m && -asin(m) / m, // area weight
-      w = atan2(m, u); // line weight
+      w = asin(m), // line weight = angle
+      v = m && -w / m; // area weight multiplier
   X2 += v * cx;
   Y2 += v * cy;
   Z2 += v * cz;
@@ -10032,6 +12211,71 @@ var extent$1 = function() {
   };
 };
 
+var sum$1 = adder();
+
+var polygonContains = function(polygon, point) {
+  var lambda = point[0],
+      phi = point[1],
+      normal = [sin$1(lambda), -cos$1(lambda), 0],
+      angle = 0,
+      winding = 0;
+
+  sum$1.reset();
+
+  for (var i = 0, n = polygon.length; i < n; ++i) {
+    if (!(m = (ring = polygon[i]).length)) continue;
+    var ring,
+        m,
+        point0 = ring[m - 1],
+        lambda0 = point0[0],
+        phi0 = point0[1] / 2 + quarterPi,
+        sinPhi0 = sin$1(phi0),
+        cosPhi0 = cos$1(phi0);
+
+    for (var j = 0; j < m; ++j, lambda0 = lambda1, sinPhi0 = sinPhi1, cosPhi0 = cosPhi1, point0 = point1) {
+      var point1 = ring[j],
+          lambda1 = point1[0],
+          phi1 = point1[1] / 2 + quarterPi,
+          sinPhi1 = sin$1(phi1),
+          cosPhi1 = cos$1(phi1),
+          delta = lambda1 - lambda0,
+          sign$$1 = delta >= 0 ? 1 : -1,
+          absDelta = sign$$1 * delta,
+          antimeridian = absDelta > pi$3,
+          k = sinPhi0 * sinPhi1;
+
+      sum$1.add(atan2(k * sign$$1 * sin$1(absDelta), cosPhi0 * cosPhi1 + k * cos$1(absDelta)));
+      angle += antimeridian ? delta + sign$$1 * tau$3 : delta;
+
+      // Are the longitudes either side of the point’s meridian (lambda),
+      // and are the latitudes smaller than the parallel (phi)?
+      if (antimeridian ^ lambda0 >= lambda ^ lambda1 >= lambda) {
+        var arc = cartesianCross(cartesian(point0), cartesian(point1));
+        cartesianNormalizeInPlace(arc);
+        var intersection = cartesianCross(normal, arc);
+        cartesianNormalizeInPlace(intersection);
+        var phiArc = (antimeridian ^ delta >= 0 ? -1 : 1) * asin(intersection[2]);
+        if (phi > phiArc || phi === phiArc && (arc[0] || arc[1])) {
+          winding += antimeridian ^ delta >= 0 ? 1 : -1;
+        }
+      }
+    }
+  }
+
+  // First, determine whether the South pole is inside or outside:
+  //
+  // It is inside if:
+  // * the polygon winds around it in a clockwise direction.
+  // * the polygon does not (cumulatively) wind around it, but has a negative
+  //   (counter-clockwise) area.
+  //
+  // Second, count the (signed) number of times a segment crosses a lambda
+  // from the point to the South pole.  If it is zero, then the point is the
+  // same side as the South pole.
+
+  return (angle < -epsilon$2 || angle < epsilon$2 && sum$1 < -epsilon$2) ^ (winding & 1);
+};
+
 var lengthSum = adder();
 var lambda0$2;
 var sinPhi0$1;
@@ -10088,6 +12332,87 @@ var distance = function(a, b) {
   coordinates[0] = a;
   coordinates[1] = b;
   return length$1(object$1);
+};
+
+var containsObjectType = {
+  Feature: function(object, point) {
+    return containsGeometry(object.geometry, point);
+  },
+  FeatureCollection: function(object, point) {
+    var features = object.features, i = -1, n = features.length;
+    while (++i < n) if (containsGeometry(features[i].geometry, point)) return true;
+    return false;
+  }
+};
+
+var containsGeometryType = {
+  Sphere: function() {
+    return true;
+  },
+  Point: function(object, point) {
+    return containsPoint(object.coordinates, point);
+  },
+  MultiPoint: function(object, point) {
+    var coordinates = object.coordinates, i = -1, n = coordinates.length;
+    while (++i < n) if (containsPoint(coordinates[i], point)) return true;
+    return false;
+  },
+  LineString: function(object, point) {
+    return containsLine(object.coordinates, point);
+  },
+  MultiLineString: function(object, point) {
+    var coordinates = object.coordinates, i = -1, n = coordinates.length;
+    while (++i < n) if (containsLine(coordinates[i], point)) return true;
+    return false;
+  },
+  Polygon: function(object, point) {
+    return containsPolygon(object.coordinates, point);
+  },
+  MultiPolygon: function(object, point) {
+    var coordinates = object.coordinates, i = -1, n = coordinates.length;
+    while (++i < n) if (containsPolygon(coordinates[i], point)) return true;
+    return false;
+  },
+  GeometryCollection: function(object, point) {
+    var geometries = object.geometries, i = -1, n = geometries.length;
+    while (++i < n) if (containsGeometry(geometries[i], point)) return true;
+    return false;
+  }
+};
+
+function containsGeometry(geometry, point) {
+  return geometry && containsGeometryType.hasOwnProperty(geometry.type)
+      ? containsGeometryType[geometry.type](geometry, point)
+      : false;
+}
+
+function containsPoint(coordinates, point) {
+  return distance(coordinates, point) === 0;
+}
+
+function containsLine(coordinates, point) {
+  var ab = distance(coordinates[0], coordinates[1]),
+      ao = distance(coordinates[0], point),
+      ob = distance(point, coordinates[1]);
+  return ao + ob <= ab + epsilon$2;
+}
+
+function containsPolygon(coordinates, point) {
+  return !!polygonContains(coordinates.map(ringRadians), pointRadians(point));
+}
+
+function ringRadians(ring) {
+  return ring = ring.map(pointRadians), ring.pop(), ring;
+}
+
+function pointRadians(point) {
+  return [point[0] * radians, point[1] * radians];
+}
+
+var contains = function(object, point) {
+  return (object && containsObjectType.hasOwnProperty(object.type)
+      ? containsObjectType[object.type]
+      : containsGeometry)(object, point);
 };
 
 function graticuleX(y0, y1, dy) {
@@ -10588,71 +12913,6 @@ var index$1 = function(projection, context) {
   };
 
   return path.projection(projection).context(context);
-};
-
-var sum$1 = adder();
-
-var polygonContains = function(polygon, point) {
-  var lambda = point[0],
-      phi = point[1],
-      normal = [sin$1(lambda), -cos$1(lambda), 0],
-      angle = 0,
-      winding = 0;
-
-  sum$1.reset();
-
-  for (var i = 0, n = polygon.length; i < n; ++i) {
-    if (!(m = (ring = polygon[i]).length)) continue;
-    var ring,
-        m,
-        point0 = ring[m - 1],
-        lambda0 = point0[0],
-        phi0 = point0[1] / 2 + quarterPi,
-        sinPhi0 = sin$1(phi0),
-        cosPhi0 = cos$1(phi0);
-
-    for (var j = 0; j < m; ++j, lambda0 = lambda1, sinPhi0 = sinPhi1, cosPhi0 = cosPhi1, point0 = point1) {
-      var point1 = ring[j],
-          lambda1 = point1[0],
-          phi1 = point1[1] / 2 + quarterPi,
-          sinPhi1 = sin$1(phi1),
-          cosPhi1 = cos$1(phi1),
-          delta = lambda1 - lambda0,
-          sign$$1 = delta >= 0 ? 1 : -1,
-          absDelta = sign$$1 * delta,
-          antimeridian = absDelta > pi$3,
-          k = sinPhi0 * sinPhi1;
-
-      sum$1.add(atan2(k * sign$$1 * sin$1(absDelta), cosPhi0 * cosPhi1 + k * cos$1(absDelta)));
-      angle += antimeridian ? delta + sign$$1 * tau$3 : delta;
-
-      // Are the longitudes either side of the point’s meridian (lambda),
-      // and are the latitudes smaller than the parallel (phi)?
-      if (antimeridian ^ lambda0 >= lambda ^ lambda1 >= lambda) {
-        var arc = cartesianCross(cartesian(point0), cartesian(point1));
-        cartesianNormalizeInPlace(arc);
-        var intersection = cartesianCross(normal, arc);
-        cartesianNormalizeInPlace(intersection);
-        var phiArc = (antimeridian ^ delta >= 0 ? -1 : 1) * asin(intersection[2]);
-        if (phi > phiArc || phi === phiArc && (arc[0] || arc[1])) {
-          winding += antimeridian ^ delta >= 0 ? 1 : -1;
-        }
-      }
-    }
-  }
-
-  // First, determine whether the South pole is inside or outside:
-  //
-  // It is inside if:
-  // * the polygon winds around it in a clockwise direction.
-  // * the polygon does not (cumulatively) wind around it, but has a negative
-  //   (counter-clockwise) area.
-  //
-  // Second, count the (signed) number of times a segment crosses a lambda
-  // from the point to the South pole.  If it is zero, then the point is the
-  // same side as the South pole.
-
-  return (angle < -epsilon$2 || angle < epsilon$2 && sum$1 < -epsilon$2) ^ (winding & 1);
 };
 
 var clip = function(pointVisible, clipLine, interpolate, start) {
@@ -11532,31 +13792,38 @@ var mercator = function() {
 
 function mercatorProjection(project) {
   var m = projection(project),
+      center = m.center,
       scale = m.scale,
       translate = m.translate,
       clipExtent = m.clipExtent,
-      clipAuto;
+      x0 = null, y0, x1, y1; // clip extent
 
   m.scale = function(_) {
-    return arguments.length ? (scale(_), clipAuto && m.clipExtent(null), m) : scale();
+    return arguments.length ? (scale(_), reclip()) : scale();
   };
 
   m.translate = function(_) {
-    return arguments.length ? (translate(_), clipAuto && m.clipExtent(null), m) : translate();
+    return arguments.length ? (translate(_), reclip()) : translate();
+  };
+
+  m.center = function(_) {
+    return arguments.length ? (center(_), reclip()) : center();
   };
 
   m.clipExtent = function(_) {
-    if (!arguments.length) return clipAuto ? null : clipExtent();
-    if (clipAuto = _ == null) {
-      var k = pi$3 * scale(),
-          t = translate();
-      _ = [[t[0] - k, t[1] - k], [t[0] + k, t[1] + k]];
-    }
-    clipExtent(_);
-    return m;
+    return arguments.length ? ((_ == null ? x0 = y0 = x1 = y1 = null : (x0 = +_[0][0], y0 = +_[0][1], x1 = +_[1][0], y1 = +_[1][1])), reclip()) : x0 == null ? null : [[x0, y0], [x1, y1]];
   };
 
-  return m.clipExtent(null);
+  function reclip() {
+    var k = pi$3 * scale(),
+        t = m(rotation(m.rotate()).invert([0, 0]));
+    return clipExtent(x0 == null
+        ? [[t[0] - k, t[1] - k], [t[0] + k, t[1] + k]] : project === mercatorRaw
+        ? [[Math.max(t[0] - k, x0), y0], [Math.min(t[0] + k, x1), y1]]
+        : [[x0, Math.max(t[1] - k, y0)], [x1, Math.min(t[1] + k, y1)]]);
+  }
+
+  return reclip();
 }
 
 function tany(y) {
@@ -12181,12 +14448,6 @@ function intersects(a, b) {
   return dr * dr - 1e-6 > dx * dx + dy * dy;
 }
 
-function distance1(a, b) {
-  var l = a._.r;
-  while (a !== b) l += 2 * (a = a.next)._.r;
-  return l - b._.r;
-}
-
 function distance2(node, x, y) {
   var a = node._,
       b = node.next._,
@@ -12244,15 +14505,13 @@ function packEnclose(circles) {
     do {
       if (sj <= sk) {
         if (intersects(j._, c._)) {
-          if (sj + a._.r + b._.r > distance1(j, b)) a = j; else b = j;
-          a.next = b, b.previous = a, --i;
+          b = j, a.next = b, b.previous = a, --i;
           continue pack;
         }
         sj += j._.r, j = j.next;
       } else {
         if (intersects(k._, c._)) {
-          if (distance1(a, k) > sk + a._.r + b._.r) a = k; else b = k;
-          a.next = b, b.previous = a, --i;
+          a = k, a.next = b, b.previous = a, --i;
           continue pack;
         }
         sk += k._.r, k = k.previous;
@@ -12960,17 +15219,19 @@ var binary = function(parent, x0, y0, x1, y1) {
       else hi = mid;
     }
 
+    if ((valueTarget - sums[k - 1]) < (sums[k] - valueTarget) && i + 1 < k) --k;
+
     var valueLeft = sums[k] - valueOffset,
         valueRight = value - valueLeft;
 
-    if ((y1 - y0) > (x1 - x0)) {
-      var yk = (y0 * valueRight + y1 * valueLeft) / value;
-      partition(i, k, valueLeft, x0, y0, x1, yk);
-      partition(k, j, valueRight, x0, yk, x1, y1);
-    } else {
+    if ((x1 - x0) > (y1 - y0)) {
       var xk = (x0 * valueRight + x1 * valueLeft) / value;
       partition(i, k, valueLeft, x0, y0, xk, y1);
       partition(k, j, valueRight, xk, y0, x1, y1);
+    } else {
+      var yk = (y0 * valueRight + y1 * valueLeft) / value;
+      partition(i, k, valueLeft, x0, y0, x1, yk);
+      partition(k, j, valueRight, x0, yk, x1, y1);
     }
   }
 };
@@ -13053,7 +15314,7 @@ var centroid$1 = function(polygon) {
 // the 3D cross product in a quadrant I Cartesian coordinate system (+x is
 // right, +y is up). Returns a positive value if ABC is counter-clockwise,
 // negative if clockwise, and zero if the points are collinear.
-var cross = function(a, b, c) {
+var cross$1 = function(a, b, c) {
   return (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]);
 };
 
@@ -13070,7 +15331,7 @@ function computeUpperHullIndexes(points) {
       size = 2;
 
   for (var i = 2; i < n; ++i) {
-    while (size > 1 && cross(points[indexes[size - 2]], points[indexes[size - 1]], points[i]) <= 0) --size;
+    while (size > 1 && cross$1(points[indexes[size - 2]], points[indexes[size - 1]], points[i]) <= 0) --size;
     indexes[size++] = i;
   }
 
@@ -13105,7 +15366,7 @@ var hull = function(points) {
   return hull;
 };
 
-var contains = function(polygon, point) {
+var contains$1 = function(polygon, point) {
   var n = polygon.length,
       p = polygon[n - 1],
       x = point[0], y = point[1],
@@ -15270,10 +17531,26 @@ var constant$10 = function(x) {
   };
 };
 
+var abs$1 = Math.abs;
+var atan2$1 = Math.atan2;
+var cos$2 = Math.cos;
+var max$2 = Math.max;
+var min$1 = Math.min;
+var sin$2 = Math.sin;
+var sqrt$2 = Math.sqrt;
+
 var epsilon$3 = 1e-12;
 var pi$4 = Math.PI;
 var halfPi$3 = pi$4 / 2;
 var tau$4 = 2 * pi$4;
+
+function acos$1(x) {
+  return x > 1 ? 0 : x < -1 ? pi$4 : Math.acos(x);
+}
+
+function asin$1(x) {
+  return x >= 1 ? halfPi$3 : x <= -1 ? -halfPi$3 : Math.asin(x);
+}
 
 function arcInnerRadius(d) {
   return d.innerRadius;
@@ -15295,10 +17572,6 @@ function arcPadAngle(d) {
   return d && d.padAngle; // Note: optional!
 }
 
-function asin$1(x) {
-  return x >= 1 ? halfPi$3 : x <= -1 ? -halfPi$3 : Math.asin(x);
-}
-
 function intersect(x0, y0, x1, y1, x2, y2, x3, y3) {
   var x10 = x1 - x0, y10 = y1 - y0,
       x32 = x3 - x2, y32 = y3 - y2,
@@ -15311,7 +17584,7 @@ function intersect(x0, y0, x1, y1, x2, y2, x3, y3) {
 function cornerTangents(x0, y0, x1, y1, r1, rc, cw) {
   var x01 = x0 - x1,
       y01 = y0 - y1,
-      lo = (cw ? rc : -rc) / Math.sqrt(x01 * x01 + y01 * y01),
+      lo = (cw ? rc : -rc) / sqrt$2(x01 * x01 + y01 * y01),
       ox = lo * y01,
       oy = -lo * x01,
       x11 = x0 + ox,
@@ -15325,7 +17598,7 @@ function cornerTangents(x0, y0, x1, y1, r1, rc, cw) {
       d2 = dx * dx + dy * dy,
       r = r1 - rc,
       D = x11 * y10 - x10 * y11,
-      d = (dy < 0 ? -1 : 1) * Math.sqrt(Math.max(0, r * r * d2 - D * D)),
+      d = (dy < 0 ? -1 : 1) * sqrt$2(max$2(0, r * r * d2 - D * D)),
       cx0 = (D * dy - dx * d) / d2,
       cy0 = (-D * dx - dy * d) / d2,
       cx1 = (D * dy + dx * d) / d2,
@@ -15366,7 +17639,7 @@ var arc = function() {
         r1 = +outerRadius.apply(this, arguments),
         a0 = startAngle.apply(this, arguments) - halfPi$3,
         a1 = endAngle.apply(this, arguments) - halfPi$3,
-        da = Math.abs(a1 - a0),
+        da = abs$1(a1 - a0),
         cw = a1 > a0;
 
     if (!context) context = buffer = path();
@@ -15379,10 +17652,10 @@ var arc = function() {
 
     // Or is it a circle or annulus?
     else if (da > tau$4 - epsilon$3) {
-      context.moveTo(r1 * Math.cos(a0), r1 * Math.sin(a0));
+      context.moveTo(r1 * cos$2(a0), r1 * sin$2(a0));
       context.arc(0, 0, r1, a0, a1, !cw);
       if (r0 > epsilon$3) {
-        context.moveTo(r0 * Math.cos(a1), r0 * Math.sin(a1));
+        context.moveTo(r0 * cos$2(a1), r0 * sin$2(a1));
         context.arc(0, 0, r0, a1, a0, cw);
       }
     }
@@ -15396,8 +17669,8 @@ var arc = function() {
           da0 = da,
           da1 = da,
           ap = padAngle.apply(this, arguments) / 2,
-          rp = (ap > epsilon$3) && (padRadius ? +padRadius.apply(this, arguments) : Math.sqrt(r0 * r0 + r1 * r1)),
-          rc = Math.min(Math.abs(r1 - r0) / 2, +cornerRadius.apply(this, arguments)),
+          rp = (ap > epsilon$3) && (padRadius ? +padRadius.apply(this, arguments) : sqrt$2(r0 * r0 + r1 * r1)),
+          rc = min$1(abs$1(r1 - r0) / 2, +cornerRadius.apply(this, arguments)),
           rc0 = rc,
           rc1 = rc,
           t0,
@@ -15405,25 +17678,25 @@ var arc = function() {
 
       // Apply padding? Note that since r1 ≥ r0, da1 ≥ da0.
       if (rp > epsilon$3) {
-        var p0 = asin$1(rp / r0 * Math.sin(ap)),
-            p1 = asin$1(rp / r1 * Math.sin(ap));
+        var p0 = asin$1(rp / r0 * sin$2(ap)),
+            p1 = asin$1(rp / r1 * sin$2(ap));
         if ((da0 -= p0 * 2) > epsilon$3) p0 *= (cw ? 1 : -1), a00 += p0, a10 -= p0;
         else da0 = 0, a00 = a10 = (a0 + a1) / 2;
         if ((da1 -= p1 * 2) > epsilon$3) p1 *= (cw ? 1 : -1), a01 += p1, a11 -= p1;
         else da1 = 0, a01 = a11 = (a0 + a1) / 2;
       }
 
-      var x01 = r1 * Math.cos(a01),
-          y01 = r1 * Math.sin(a01),
-          x10 = r0 * Math.cos(a10),
-          y10 = r0 * Math.sin(a10);
+      var x01 = r1 * cos$2(a01),
+          y01 = r1 * sin$2(a01),
+          x10 = r0 * cos$2(a10),
+          y10 = r0 * sin$2(a10);
 
       // Apply rounded corners?
       if (rc > epsilon$3) {
-        var x11 = r1 * Math.cos(a11),
-            y11 = r1 * Math.sin(a11),
-            x00 = r0 * Math.cos(a00),
-            y00 = r0 * Math.sin(a00);
+        var x11 = r1 * cos$2(a11),
+            y11 = r1 * sin$2(a11),
+            x00 = r0 * cos$2(a00),
+            y00 = r0 * sin$2(a00);
 
         // Restrict the corner radius according to the sector angle.
         if (da < pi$4) {
@@ -15432,10 +17705,10 @@ var arc = function() {
               ay = y01 - oc[1],
               bx = x11 - oc[0],
               by = y11 - oc[1],
-              kc = 1 / Math.sin(Math.acos((ax * bx + ay * by) / (Math.sqrt(ax * ax + ay * ay) * Math.sqrt(bx * bx + by * by))) / 2),
-              lc = Math.sqrt(oc[0] * oc[0] + oc[1] * oc[1]);
-          rc0 = Math.min(rc, (r0 - lc) / (kc - 1));
-          rc1 = Math.min(rc, (r1 - lc) / (kc + 1));
+              kc = 1 / sin$2(acos$1((ax * bx + ay * by) / (sqrt$2(ax * ax + ay * ay) * sqrt$2(bx * bx + by * by))) / 2),
+              lc = sqrt$2(oc[0] * oc[0] + oc[1] * oc[1]);
+          rc0 = min$1(rc, (r0 - lc) / (kc - 1));
+          rc1 = min$1(rc, (r1 - lc) / (kc + 1));
         }
       }
 
@@ -15450,13 +17723,13 @@ var arc = function() {
         context.moveTo(t0.cx + t0.x01, t0.cy + t0.y01);
 
         // Have the corners merged?
-        if (rc1 < rc) context.arc(t0.cx, t0.cy, rc1, Math.atan2(t0.y01, t0.x01), Math.atan2(t1.y01, t1.x01), !cw);
+        if (rc1 < rc) context.arc(t0.cx, t0.cy, rc1, atan2$1(t0.y01, t0.x01), atan2$1(t1.y01, t1.x01), !cw);
 
         // Otherwise, draw the two corners and the ring.
         else {
-          context.arc(t0.cx, t0.cy, rc1, Math.atan2(t0.y01, t0.x01), Math.atan2(t0.y11, t0.x11), !cw);
-          context.arc(0, 0, r1, Math.atan2(t0.cy + t0.y11, t0.cx + t0.x11), Math.atan2(t1.cy + t1.y11, t1.cx + t1.x11), !cw);
-          context.arc(t1.cx, t1.cy, rc1, Math.atan2(t1.y11, t1.x11), Math.atan2(t1.y01, t1.x01), !cw);
+          context.arc(t0.cx, t0.cy, rc1, atan2$1(t0.y01, t0.x01), atan2$1(t0.y11, t0.x11), !cw);
+          context.arc(0, 0, r1, atan2$1(t0.cy + t0.y11, t0.cx + t0.x11), atan2$1(t1.cy + t1.y11, t1.cx + t1.x11), !cw);
+          context.arc(t1.cx, t1.cy, rc1, atan2$1(t1.y11, t1.x11), atan2$1(t1.y01, t1.x01), !cw);
         }
       }
 
@@ -15475,13 +17748,13 @@ var arc = function() {
         context.lineTo(t0.cx + t0.x01, t0.cy + t0.y01);
 
         // Have the corners merged?
-        if (rc0 < rc) context.arc(t0.cx, t0.cy, rc0, Math.atan2(t0.y01, t0.x01), Math.atan2(t1.y01, t1.x01), !cw);
+        if (rc0 < rc) context.arc(t0.cx, t0.cy, rc0, atan2$1(t0.y01, t0.x01), atan2$1(t1.y01, t1.x01), !cw);
 
         // Otherwise, draw the two corners and the ring.
         else {
-          context.arc(t0.cx, t0.cy, rc0, Math.atan2(t0.y01, t0.x01), Math.atan2(t0.y11, t0.x11), !cw);
-          context.arc(0, 0, r0, Math.atan2(t0.cy + t0.y11, t0.cx + t0.x11), Math.atan2(t1.cy + t1.y11, t1.cx + t1.x11), cw);
-          context.arc(t1.cx, t1.cy, rc0, Math.atan2(t1.y11, t1.x11), Math.atan2(t1.y01, t1.x01), !cw);
+          context.arc(t0.cx, t0.cy, rc0, atan2$1(t0.y01, t0.x01), atan2$1(t0.y11, t0.x11), !cw);
+          context.arc(0, 0, r0, atan2$1(t0.cy + t0.y11, t0.cx + t0.x11), atan2$1(t1.cy + t1.y11, t1.cx + t1.x11), cw);
+          context.arc(t1.cx, t1.cy, rc0, atan2$1(t1.y11, t1.x11), atan2$1(t1.y01, t1.x01), !cw);
         }
       }
 
@@ -15497,7 +17770,7 @@ var arc = function() {
   arc.centroid = function() {
     var r = (+innerRadius.apply(this, arguments) + +outerRadius.apply(this, arguments)) / 2,
         a = (+startAngle.apply(this, arguments) + +endAngle.apply(this, arguments)) / 2 - pi$4 / 2;
-    return [Math.cos(a) * r, Math.sin(a) * r];
+    return [cos$2(a) * r, sin$2(a) * r];
   };
 
   arc.innerRadius = function(_) {
@@ -15899,7 +18172,7 @@ var circle$2 = {
   }
 };
 
-var cross$1 = {
+var cross$2 = {
   draw: function(context, size) {
     var r = Math.sqrt(size / 5) / 2;
     context.moveTo(-3 * r, -r);
@@ -16005,7 +18278,7 @@ var wye = {
 
 var symbols = [
   circle$2,
-  cross$1,
+  cross$2,
   diamond,
   square,
   star,
@@ -18465,6 +20738,7 @@ exports.bisectRight = bisectRight;
 exports.bisectLeft = bisectLeft;
 exports.ascending = ascending;
 exports.bisector = bisector;
+exports.cross = cross;
 exports.descending = descending;
 exports.deviation = deviation;
 exports.extent = extent;
@@ -18579,6 +20853,7 @@ exports.geoBounds = bounds;
 exports.geoCentroid = centroid;
 exports.geoCircle = circle;
 exports.geoClipExtent = extent$1;
+exports.geoContains = contains;
 exports.geoDistance = distance;
 exports.geoGraticule = graticule;
 exports.geoGraticule10 = graticule10;
@@ -18657,7 +20932,7 @@ exports.path = path;
 exports.polygonArea = area$1;
 exports.polygonCentroid = centroid$1;
 exports.polygonHull = hull;
-exports.polygonContains = contains;
+exports.polygonContains = contains$1;
 exports.polygonLength = length$2;
 exports.quadtree = quadtree;
 exports.queue = queue;
@@ -18725,7 +21000,7 @@ exports.radialLine = radialLine$1;
 exports.symbol = symbol;
 exports.symbols = symbols;
 exports.symbolCircle = circle$2;
-exports.symbolCross = cross$1;
+exports.symbolCross = cross$2;
 exports.symbolDiamond = diamond;
 exports.symbolSquare = square;
 exports.symbolStar = star;
@@ -18841,7 +21116,311 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+function EventEmitter() {
+  this._events = this._events || {};
+  this._maxListeners = this._maxListeners || undefined;
+}
+module.exports = EventEmitter;
+
+// Backwards-compat with node 0.10.x
+EventEmitter.EventEmitter = EventEmitter;
+
+EventEmitter.prototype._events = undefined;
+EventEmitter.prototype._maxListeners = undefined;
+
+// By default EventEmitters will print a warning if more than 10 listeners are
+// added to it. This is a useful default which helps finding memory leaks.
+EventEmitter.defaultMaxListeners = 10;
+
+// Obviously not all Emitters should be limited to 10. This function allows
+// that to be increased. Set to zero for unlimited.
+EventEmitter.prototype.setMaxListeners = function(n) {
+  if (!isNumber(n) || n < 0 || isNaN(n))
+    throw TypeError('n must be a positive number');
+  this._maxListeners = n;
+  return this;
+};
+
+EventEmitter.prototype.emit = function(type) {
+  var er, handler, len, args, i, listeners;
+
+  if (!this._events)
+    this._events = {};
+
+  // If there is no 'error' event listener then throw.
+  if (type === 'error') {
+    if (!this._events.error ||
+        (isObject(this._events.error) && !this._events.error.length)) {
+      er = arguments[1];
+      if (er instanceof Error) {
+        throw er; // Unhandled 'error' event
+      } else {
+        // At least give some kind of context to the user
+        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
+        err.context = er;
+        throw err;
+      }
+    }
+  }
+
+  handler = this._events[type];
+
+  if (isUndefined(handler))
+    return false;
+
+  if (isFunction(handler)) {
+    switch (arguments.length) {
+      // fast cases
+      case 1:
+        handler.call(this);
+        break;
+      case 2:
+        handler.call(this, arguments[1]);
+        break;
+      case 3:
+        handler.call(this, arguments[1], arguments[2]);
+        break;
+      // slower
+      default:
+        args = Array.prototype.slice.call(arguments, 1);
+        handler.apply(this, args);
+    }
+  } else if (isObject(handler)) {
+    args = Array.prototype.slice.call(arguments, 1);
+    listeners = handler.slice();
+    len = listeners.length;
+    for (i = 0; i < len; i++)
+      listeners[i].apply(this, args);
+  }
+
+  return true;
+};
+
+EventEmitter.prototype.addListener = function(type, listener) {
+  var m;
+
+  if (!isFunction(listener))
+    throw TypeError('listener must be a function');
+
+  if (!this._events)
+    this._events = {};
+
+  // To avoid recursion in the case that type === "newListener"! Before
+  // adding it to the listeners, first emit "newListener".
+  if (this._events.newListener)
+    this.emit('newListener', type,
+              isFunction(listener.listener) ?
+              listener.listener : listener);
+
+  if (!this._events[type])
+    // Optimize the case of one listener. Don't need the extra array object.
+    this._events[type] = listener;
+  else if (isObject(this._events[type]))
+    // If we've already got an array, just append.
+    this._events[type].push(listener);
+  else
+    // Adding the second element, need to change to array.
+    this._events[type] = [this._events[type], listener];
+
+  // Check for listener leak
+  if (isObject(this._events[type]) && !this._events[type].warned) {
+    if (!isUndefined(this._maxListeners)) {
+      m = this._maxListeners;
+    } else {
+      m = EventEmitter.defaultMaxListeners;
+    }
+
+    if (m && m > 0 && this._events[type].length > m) {
+      this._events[type].warned = true;
+      console.error('(node) warning: possible EventEmitter memory ' +
+                    'leak detected. %d listeners added. ' +
+                    'Use emitter.setMaxListeners() to increase limit.',
+                    this._events[type].length);
+      if (typeof console.trace === 'function') {
+        // not supported in IE 10
+        console.trace();
+      }
+    }
+  }
+
+  return this;
+};
+
+EventEmitter.prototype.on = EventEmitter.prototype.addListener;
+
+EventEmitter.prototype.once = function(type, listener) {
+  if (!isFunction(listener))
+    throw TypeError('listener must be a function');
+
+  var fired = false;
+
+  function g() {
+    this.removeListener(type, g);
+
+    if (!fired) {
+      fired = true;
+      listener.apply(this, arguments);
+    }
+  }
+
+  g.listener = listener;
+  this.on(type, g);
+
+  return this;
+};
+
+// emits a 'removeListener' event iff the listener was removed
+EventEmitter.prototype.removeListener = function(type, listener) {
+  var list, position, length, i;
+
+  if (!isFunction(listener))
+    throw TypeError('listener must be a function');
+
+  if (!this._events || !this._events[type])
+    return this;
+
+  list = this._events[type];
+  length = list.length;
+  position = -1;
+
+  if (list === listener ||
+      (isFunction(list.listener) && list.listener === listener)) {
+    delete this._events[type];
+    if (this._events.removeListener)
+      this.emit('removeListener', type, listener);
+
+  } else if (isObject(list)) {
+    for (i = length; i-- > 0;) {
+      if (list[i] === listener ||
+          (list[i].listener && list[i].listener === listener)) {
+        position = i;
+        break;
+      }
+    }
+
+    if (position < 0)
+      return this;
+
+    if (list.length === 1) {
+      list.length = 0;
+      delete this._events[type];
+    } else {
+      list.splice(position, 1);
+    }
+
+    if (this._events.removeListener)
+      this.emit('removeListener', type, listener);
+  }
+
+  return this;
+};
+
+EventEmitter.prototype.removeAllListeners = function(type) {
+  var key, listeners;
+
+  if (!this._events)
+    return this;
+
+  // not listening for removeListener, no need to emit
+  if (!this._events.removeListener) {
+    if (arguments.length === 0)
+      this._events = {};
+    else if (this._events[type])
+      delete this._events[type];
+    return this;
+  }
+
+  // emit removeListener for all listeners on all events
+  if (arguments.length === 0) {
+    for (key in this._events) {
+      if (key === 'removeListener') continue;
+      this.removeAllListeners(key);
+    }
+    this.removeAllListeners('removeListener');
+    this._events = {};
+    return this;
+  }
+
+  listeners = this._events[type];
+
+  if (isFunction(listeners)) {
+    this.removeListener(type, listeners);
+  } else if (listeners) {
+    // LIFO order
+    while (listeners.length)
+      this.removeListener(type, listeners[listeners.length - 1]);
+  }
+  delete this._events[type];
+
+  return this;
+};
+
+EventEmitter.prototype.listeners = function(type) {
+  var ret;
+  if (!this._events || !this._events[type])
+    ret = [];
+  else if (isFunction(this._events[type]))
+    ret = [this._events[type]];
+  else
+    ret = this._events[type].slice();
+  return ret;
+};
+
+EventEmitter.prototype.listenerCount = function(type) {
+  if (this._events) {
+    var evlistener = this._events[type];
+
+    if (isFunction(evlistener))
+      return 1;
+    else if (evlistener)
+      return evlistener.length;
+  }
+  return 0;
+};
+
+EventEmitter.listenerCount = function(emitter, type) {
+  return emitter.listenerCount(type);
+};
+
+function isFunction(arg) {
+  return typeof arg === 'function';
+}
+
+function isNumber(arg) {
+  return typeof arg === 'number';
+}
+
+function isObject(arg) {
+  return typeof arg === 'object' && arg !== null;
+}
+
+function isUndefined(arg) {
+  return arg === void 0;
+}
+
+},{}],42:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -18927,7 +21506,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":47,"_process":78}],41:[function(require,module,exports){
+},{"./emptyFunction":49,"_process":80}],43:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -18963,7 +21542,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],42:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 "use strict";
 
 /**
@@ -18995,7 +21574,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],43:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19035,7 +21614,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":42}],44:[function(require,module,exports){
+},{"./camelize":44}],46:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19075,7 +21654,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":57}],45:[function(require,module,exports){
+},{"./isTextNode":59}],47:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -19204,7 +21783,7 @@ function createArrayFromMixed(obj) {
 
 module.exports = createArrayFromMixed;
 }).call(this,require('_process'))
-},{"./invariant":55,"_process":78}],46:[function(require,module,exports){
+},{"./invariant":57,"_process":80}],48:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -19290,7 +21869,7 @@ function createNodesFromMarkup(markup, handleScript) {
 
 module.exports = createNodesFromMarkup;
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":41,"./createArrayFromMixed":45,"./getMarkupWrap":51,"./invariant":55,"_process":78}],47:[function(require,module,exports){
+},{"./ExecutionEnvironment":43,"./createArrayFromMixed":47,"./getMarkupWrap":53,"./invariant":57,"_process":80}],49:[function(require,module,exports){
 "use strict";
 
 /**
@@ -19329,7 +21908,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],48:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -19351,7 +21930,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 }).call(this,require('_process'))
-},{"_process":78}],49:[function(require,module,exports){
+},{"_process":80}],51:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19378,7 +21957,7 @@ function focusNode(node) {
 }
 
 module.exports = focusNode;
-},{}],50:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19413,7 +21992,7 @@ function getActiveElement() /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-},{}],51:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -19510,7 +22089,7 @@ function getMarkupWrap(nodeName) {
 
 module.exports = getMarkupWrap;
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":41,"./invariant":55,"_process":78}],52:[function(require,module,exports){
+},{"./ExecutionEnvironment":43,"./invariant":57,"_process":80}],54:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19549,7 +22128,7 @@ function getUnboundedScrollPosition(scrollable) {
 }
 
 module.exports = getUnboundedScrollPosition;
-},{}],53:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19582,7 +22161,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],54:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19621,7 +22200,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":53}],55:[function(require,module,exports){
+},{"./hyphenate":55}],57:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -19679,7 +22258,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 }).call(this,require('_process'))
-},{"_process":78}],56:[function(require,module,exports){
+},{"_process":80}],58:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19702,7 +22281,7 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-},{}],57:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19727,7 +22306,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":56}],58:[function(require,module,exports){
+},{"./isNode":58}],60:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19757,7 +22336,7 @@ function memoizeStringOnly(callback) {
 }
 
 module.exports = memoizeStringOnly;
-},{}],59:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19780,7 +22359,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = performance || {};
-},{"./ExecutionEnvironment":41}],60:[function(require,module,exports){
+},{"./ExecutionEnvironment":43}],62:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19814,7 +22393,7 @@ if (performance.now) {
 }
 
 module.exports = performanceNow;
-},{"./performance":59}],61:[function(require,module,exports){
+},{"./performance":61}],63:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19882,7 +22461,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],62:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -19951,7 +22530,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 }).call(this,require('_process'))
-},{"./emptyFunction":47,"_process":78}],63:[function(require,module,exports){
+},{"./emptyFunction":49,"_process":80}],65:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -37039,7 +39618,7 @@ module.exports = warning;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],64:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 /*! Moment Duration Format v1.3.0
  *  https://github.com/jsmreese/moment-duration-format 
  *  Date: 2014-07-15
@@ -37523,7 +40102,7 @@ module.exports = warning;
 
 })(this);
 
-},{"moment":65}],65:[function(require,module,exports){
+},{"moment":67}],67:[function(require,module,exports){
 //! moment.js
 //! version : 2.17.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -41826,7 +44405,7 @@ return hooks;
 
 })));
 
-},{}],66:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 (function (process,global){
 'use strict';
 
@@ -41862,13 +44441,19 @@ var appConsts = {
 var setAppConsts = function setAppConsts() {
   var mergedConstants = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _seamlessImmutable2.default)(appConsts);
 
-  var self = self || null; // eslint-disable-line
   // set node app consts
-  if (!self && global) global.appConsts = global.appConsts ? _seamlessImmutable2.default.merge(global.appConsts, mergedConstants) : mergedConstants;
-  // set main & worker threads
-  else if (self) self.appConsts = self.appConsts ? _seamlessImmutable2.default.merge(self.appConsts, mergedConstants) : mergedConstants;
+  if (typeof self === 'undefined' && typeof global !== 'undefined') {
+    global.appConsts = global.appConsts ? _seamlessImmutable2.default.merge(global.appConsts, mergedConstants) : mergedConstants;
 
-  return self && self.appConsts || global && global.appConsts;
+    return global.appConsts;
+  } else if (typeof self !== 'undefined') {
+    // set main & worker threads
+    self.appConsts = self.appConsts ? _seamlessImmutable2.default.merge(self.appConsts, mergedConstants) : mergedConstants;
+
+    return self.appConsts;
+  }
+
+  return {};
 };
 
 function setConstants(_ref) {
@@ -41878,7 +44463,7 @@ function setConstants(_ref) {
   return setAppConsts((0, _seamlessImmutable2.default)(_lodash2.default.merge(appConsts, constants || {})));
 }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":78,"lodash":63,"seamless-immutable":231}],67:[function(require,module,exports){
+},{"_process":80,"lodash":65,"seamless-immutable":238}],69:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -41943,13 +44528,18 @@ var appFuncs = _extends({}, _dom2.default, _errors2.default, _integrations2.defa
 var setFunctions = function setFunctions() {
   var mergedFunctions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  var self = self || null; // eslint-disable-line
   // set node app consts
-  if (!self && global) global.appFuncs = global.appFuncs ? _seamlessImmutable2.default.merge(global.appFuncs, mergedFunctions) : mergedFunctions;
-  // set main & worker threads
-  else if (self) self.appFuncs = self.appFuncs ? _seamlessImmutable2.default.merge(self.appFuncs, mergedFunctions) : mergedFunctions;
+  if (typeof self === 'undefined' && typeof global !== 'undefined') {
+    global.appFuncs = global.appFuncs ? _seamlessImmutable2.default.merge(global.appFuncs, mergedFunctions) : mergedFunctions;
 
-  return self && self.appFuncs || global && global.appFuncs;
+    return global.appFuncs;
+  } else if (typeof self !== 'undefined') {
+    // set main & worker threads
+    self.appFuncs = self.appFuncs ? _seamlessImmutable2.default.merge(self.appFuncs, mergedFunctions) : mergedFunctions;
+
+    return self.appFuncs;
+  }
+  return {};
 };
 
 function setGlobals(_ref) {
@@ -41968,7 +44558,7 @@ function setGlobals(_ref) {
   };
 }
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./constants.js":66,"./lib/dom.js":68,"./lib/errors.js":69,"./lib/integrations.js":70,"./lib/math.js":71,"./lib/serviceworkers.js":72,"./lib/time.js":75,"./lib/utility.js":76,"lodash":63,"seamless-immutable":231}],68:[function(require,module,exports){
+},{"./constants.js":68,"./lib/dom.js":70,"./lib/errors.js":71,"./lib/integrations.js":72,"./lib/math.js":73,"./lib/serviceworkers.js":74,"./lib/time.js":77,"./lib/utility.js":78,"lodash":65,"seamless-immutable":238}],70:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42129,7 +44719,7 @@ var dom = {
 };
 
 exports.default = dom;
-},{}],69:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42161,7 +44751,7 @@ var errors = {
 };
 
 exports.default = errors;
-},{"./utility.js":76}],70:[function(require,module,exports){
+},{"./utility.js":78}],72:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42189,7 +44779,7 @@ var integrations = {
 };
 
 exports.default = integrations;
-},{"./thirdparty/filtertable.js":73,"./thirdparty/sorttable.js":74,"lodash":63}],71:[function(require,module,exports){
+},{"./thirdparty/filtertable.js":75,"./thirdparty/sorttable.js":76,"lodash":65}],73:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42226,7 +44816,7 @@ var math = {
 };
 
 exports.default = math;
-},{}],72:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42247,7 +44837,7 @@ var serviceWorkers = {
 };
 
 exports.default = serviceWorkers;
-},{}],73:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42430,7 +45020,7 @@ var filterTable = {
 };
 
 exports.default = filterTable;
-},{}],74:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42461,7 +45051,7 @@ var _timer = void 0;
 var sorttable = {
   DATE_RE: false,
 
-  init: function init() {
+  init: function init(id) {
     if (typeof window === 'undefined' || document === 'undefined') return;
 
     // quit if this function has already been called
@@ -42476,9 +45066,10 @@ var sorttable = {
 
     sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
 
-    forEach(document.getElementsByTagName('table'), function (table) {
-      if (table.className.search(/\bsortable\b/) != -1) sorttable.makeSortable(table);
-    });
+    var thisTable = document.getElementById(id);
+    if (thisTable && thisTable.className.search(/\bsortable\b/) != -1) {
+      sorttable.makeSortable(table);
+    }
   },
   makeSortable: function makeSortable(table) {
     var col = void 0,
@@ -42913,7 +45504,7 @@ function forEach(object, block, context) {
 };
 
 exports.default = sorttable;
-},{}],75:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42957,7 +45548,7 @@ var time = {
 };
 
 exports.default = time;
-},{"moment":65,"moment-duration-format":64}],76:[function(require,module,exports){
+},{"moment":67,"moment-duration-format":66}],78:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43069,7 +45660,7 @@ var utility = {
 };
 
 exports.default = utility;
-},{"dns":35}],77:[function(require,module,exports){
+},{"dns":36}],79:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -43161,7 +45752,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],78:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -43343,12 +45934,12 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],79:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/ReactDOM');
 
-},{"./lib/ReactDOM":109}],80:[function(require,module,exports){
+},{"./lib/ReactDOM":111}],82:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -43422,7 +46013,7 @@ var ARIADOMPropertyConfig = {
 };
 
 module.exports = ARIADOMPropertyConfig;
-},{}],81:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -43446,7 +46037,7 @@ var AutoFocusUtils = {
 };
 
 module.exports = AutoFocusUtils;
-},{"./ReactDOMComponentTree":112,"fbjs/lib/focusNode":49}],82:[function(require,module,exports){
+},{"./ReactDOMComponentTree":114,"fbjs/lib/focusNode":51}],84:[function(require,module,exports){
 /**
  * Copyright 2013-present Facebook, Inc.
  * All rights reserved.
@@ -43831,7 +46422,7 @@ var BeforeInputEventPlugin = {
 };
 
 module.exports = BeforeInputEventPlugin;
-},{"./EventPropagators":98,"./FallbackCompositionState":99,"./SyntheticCompositionEvent":163,"./SyntheticInputEvent":167,"fbjs/lib/ExecutionEnvironment":41}],83:[function(require,module,exports){
+},{"./EventPropagators":100,"./FallbackCompositionState":101,"./SyntheticCompositionEvent":165,"./SyntheticInputEvent":169,"fbjs/lib/ExecutionEnvironment":43}],85:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -43979,7 +46570,7 @@ var CSSProperty = {
 };
 
 module.exports = CSSProperty;
-},{}],84:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -44190,7 +46781,7 @@ var CSSPropertyOperations = {
 
 module.exports = CSSPropertyOperations;
 }).call(this,require('_process'))
-},{"./CSSProperty":83,"./ReactInstrumentation":141,"./dangerousStyleValue":180,"_process":78,"fbjs/lib/ExecutionEnvironment":41,"fbjs/lib/camelizeStyleName":43,"fbjs/lib/hyphenateStyleName":54,"fbjs/lib/memoizeStringOnly":58,"fbjs/lib/warning":62}],85:[function(require,module,exports){
+},{"./CSSProperty":85,"./ReactInstrumentation":143,"./dangerousStyleValue":182,"_process":80,"fbjs/lib/ExecutionEnvironment":43,"fbjs/lib/camelizeStyleName":45,"fbjs/lib/hyphenateStyleName":56,"fbjs/lib/memoizeStringOnly":60,"fbjs/lib/warning":64}],87:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -44311,7 +46902,7 @@ var CallbackQueue = function () {
 
 module.exports = PooledClass.addPoolingTo(CallbackQueue);
 }).call(this,require('_process'))
-},{"./PooledClass":103,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],86:[function(require,module,exports){
+},{"./PooledClass":105,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],88:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -44632,7 +47223,7 @@ var ChangeEventPlugin = {
 };
 
 module.exports = ChangeEventPlugin;
-},{"./EventPluginHub":95,"./EventPropagators":98,"./ReactDOMComponentTree":112,"./ReactUpdates":156,"./SyntheticEvent":165,"./getEventTarget":188,"./isEventSupported":196,"./isTextInputElement":197,"fbjs/lib/ExecutionEnvironment":41}],87:[function(require,module,exports){
+},{"./EventPluginHub":97,"./EventPropagators":100,"./ReactDOMComponentTree":114,"./ReactUpdates":158,"./SyntheticEvent":167,"./getEventTarget":190,"./isEventSupported":198,"./isTextInputElement":199,"fbjs/lib/ExecutionEnvironment":43}],89:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -44859,7 +47450,7 @@ var DOMChildrenOperations = {
 
 module.exports = DOMChildrenOperations;
 }).call(this,require('_process'))
-},{"./DOMLazyTree":88,"./Danger":92,"./ReactDOMComponentTree":112,"./ReactInstrumentation":141,"./createMicrosoftUnsafeLocalFunction":179,"./setInnerHTML":201,"./setTextContent":202,"_process":78}],88:[function(require,module,exports){
+},{"./DOMLazyTree":90,"./Danger":94,"./ReactDOMComponentTree":114,"./ReactInstrumentation":143,"./createMicrosoftUnsafeLocalFunction":181,"./setInnerHTML":203,"./setTextContent":204,"_process":80}],90:[function(require,module,exports){
 /**
  * Copyright 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -44977,7 +47568,7 @@ DOMLazyTree.queueHTML = queueHTML;
 DOMLazyTree.queueText = queueText;
 
 module.exports = DOMLazyTree;
-},{"./DOMNamespaces":89,"./createMicrosoftUnsafeLocalFunction":179,"./setInnerHTML":201,"./setTextContent":202}],89:[function(require,module,exports){
+},{"./DOMNamespaces":91,"./createMicrosoftUnsafeLocalFunction":181,"./setInnerHTML":203,"./setTextContent":204}],91:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -44997,7 +47588,7 @@ var DOMNamespaces = {
 };
 
 module.exports = DOMNamespaces;
-},{}],90:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -45209,7 +47800,7 @@ var DOMProperty = {
 
 module.exports = DOMProperty;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],91:[function(require,module,exports){
+},{"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],93:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -45448,7 +48039,7 @@ var DOMPropertyOperations = {
 
 module.exports = DOMPropertyOperations;
 }).call(this,require('_process'))
-},{"./DOMProperty":90,"./ReactDOMComponentTree":112,"./ReactInstrumentation":141,"./quoteAttributeValueForBrowser":198,"_process":78,"fbjs/lib/warning":62}],92:[function(require,module,exports){
+},{"./DOMProperty":92,"./ReactDOMComponentTree":114,"./ReactInstrumentation":143,"./quoteAttributeValueForBrowser":200,"_process":80,"fbjs/lib/warning":64}],94:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -45498,7 +48089,7 @@ var Danger = {
 
 module.exports = Danger;
 }).call(this,require('_process'))
-},{"./DOMLazyTree":88,"./reactProdInvariant":199,"_process":78,"fbjs/lib/ExecutionEnvironment":41,"fbjs/lib/createNodesFromMarkup":46,"fbjs/lib/emptyFunction":47,"fbjs/lib/invariant":55}],93:[function(require,module,exports){
+},{"./DOMLazyTree":90,"./reactProdInvariant":201,"_process":80,"fbjs/lib/ExecutionEnvironment":43,"fbjs/lib/createNodesFromMarkup":48,"fbjs/lib/emptyFunction":49,"fbjs/lib/invariant":57}],95:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -45524,7 +48115,7 @@ module.exports = Danger;
 var DefaultEventPluginOrder = ['ResponderEventPlugin', 'SimpleEventPlugin', 'TapEventPlugin', 'EnterLeaveEventPlugin', 'ChangeEventPlugin', 'SelectEventPlugin', 'BeforeInputEventPlugin'];
 
 module.exports = DefaultEventPluginOrder;
-},{}],94:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -45624,7 +48215,7 @@ var EnterLeaveEventPlugin = {
 };
 
 module.exports = EnterLeaveEventPlugin;
-},{"./EventPropagators":98,"./ReactDOMComponentTree":112,"./SyntheticMouseEvent":169}],95:[function(require,module,exports){
+},{"./EventPropagators":100,"./ReactDOMComponentTree":114,"./SyntheticMouseEvent":171}],97:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -45904,7 +48495,7 @@ var EventPluginHub = {
 
 module.exports = EventPluginHub;
 }).call(this,require('_process'))
-},{"./EventPluginRegistry":96,"./EventPluginUtils":97,"./ReactErrorUtils":132,"./accumulateInto":176,"./forEachAccumulated":184,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],96:[function(require,module,exports){
+},{"./EventPluginRegistry":98,"./EventPluginUtils":99,"./ReactErrorUtils":134,"./accumulateInto":178,"./forEachAccumulated":186,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],98:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -46161,7 +48752,7 @@ var EventPluginRegistry = {
 
 module.exports = EventPluginRegistry;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],97:[function(require,module,exports){
+},{"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],99:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -46389,7 +48980,7 @@ var EventPluginUtils = {
 
 module.exports = EventPluginUtils;
 }).call(this,require('_process'))
-},{"./ReactErrorUtils":132,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62}],98:[function(require,module,exports){
+},{"./ReactErrorUtils":134,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64}],100:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -46525,7 +49116,7 @@ var EventPropagators = {
 
 module.exports = EventPropagators;
 }).call(this,require('_process'))
-},{"./EventPluginHub":95,"./EventPluginUtils":97,"./accumulateInto":176,"./forEachAccumulated":184,"_process":78,"fbjs/lib/warning":62}],99:[function(require,module,exports){
+},{"./EventPluginHub":97,"./EventPluginUtils":99,"./accumulateInto":178,"./forEachAccumulated":186,"_process":80,"fbjs/lib/warning":64}],101:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -46620,7 +49211,7 @@ _assign(FallbackCompositionState.prototype, {
 PooledClass.addPoolingTo(FallbackCompositionState);
 
 module.exports = FallbackCompositionState;
-},{"./PooledClass":103,"./getTextContentAccessor":193,"object-assign":77}],100:[function(require,module,exports){
+},{"./PooledClass":105,"./getTextContentAccessor":195,"object-assign":79}],102:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -46832,7 +49423,7 @@ var HTMLDOMPropertyConfig = {
 };
 
 module.exports = HTMLDOMPropertyConfig;
-},{"./DOMProperty":90}],101:[function(require,module,exports){
+},{"./DOMProperty":92}],103:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -46891,7 +49482,7 @@ var KeyEscapeUtils = {
 };
 
 module.exports = KeyEscapeUtils;
-},{}],102:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -47028,7 +49619,7 @@ var LinkedValueUtils = {
 
 module.exports = LinkedValueUtils;
 }).call(this,require('_process'))
-},{"./ReactPropTypesSecret":149,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62,"react/lib/React":208}],103:[function(require,module,exports){
+},{"./ReactPropTypesSecret":151,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64,"react/lib/React":215}],105:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -47142,7 +49733,7 @@ var PooledClass = {
 
 module.exports = PooledClass;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],104:[function(require,module,exports){
+},{"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],106:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -47470,7 +50061,7 @@ var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
 });
 
 module.exports = ReactBrowserEventEmitter;
-},{"./EventPluginRegistry":96,"./ReactEventEmitterMixin":133,"./ViewportMetrics":175,"./getVendorPrefixedEventName":194,"./isEventSupported":196,"object-assign":77}],105:[function(require,module,exports){
+},{"./EventPluginRegistry":98,"./ReactEventEmitterMixin":135,"./ViewportMetrics":177,"./getVendorPrefixedEventName":196,"./isEventSupported":198,"object-assign":79}],107:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -47626,7 +50217,7 @@ var ReactChildReconciler = {
 
 module.exports = ReactChildReconciler;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":101,"./ReactReconciler":151,"./instantiateReactComponent":195,"./shouldUpdateReactComponent":203,"./traverseAllChildren":204,"_process":78,"fbjs/lib/warning":62,"react/lib/ReactComponentTreeHook":212}],106:[function(require,module,exports){
+},{"./KeyEscapeUtils":103,"./ReactReconciler":153,"./instantiateReactComponent":197,"./shouldUpdateReactComponent":205,"./traverseAllChildren":206,"_process":80,"fbjs/lib/warning":64,"react/lib/ReactComponentTreeHook":219}],108:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -47656,7 +50247,7 @@ var ReactComponentBrowserEnvironment = {
 };
 
 module.exports = ReactComponentBrowserEnvironment;
-},{"./DOMChildrenOperations":87,"./ReactDOMIDOperations":116}],107:[function(require,module,exports){
+},{"./DOMChildrenOperations":89,"./ReactDOMIDOperations":118}],109:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -47704,7 +50295,7 @@ var ReactComponentEnvironment = {
 
 module.exports = ReactComponentEnvironment;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],108:[function(require,module,exports){
+},{"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],110:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -48608,7 +51199,7 @@ var ReactCompositeComponent = {
 
 module.exports = ReactCompositeComponent;
 }).call(this,require('_process'))
-},{"./ReactComponentEnvironment":107,"./ReactErrorUtils":132,"./ReactInstanceMap":140,"./ReactInstrumentation":141,"./ReactNodeTypes":146,"./ReactReconciler":151,"./checkReactTypeSpec":178,"./reactProdInvariant":199,"./shouldUpdateReactComponent":203,"_process":78,"fbjs/lib/emptyObject":48,"fbjs/lib/invariant":55,"fbjs/lib/shallowEqual":61,"fbjs/lib/warning":62,"object-assign":77,"react/lib/React":208,"react/lib/ReactCurrentOwner":213}],109:[function(require,module,exports){
+},{"./ReactComponentEnvironment":109,"./ReactErrorUtils":134,"./ReactInstanceMap":142,"./ReactInstrumentation":143,"./ReactNodeTypes":148,"./ReactReconciler":153,"./checkReactTypeSpec":180,"./reactProdInvariant":201,"./shouldUpdateReactComponent":205,"_process":80,"fbjs/lib/emptyObject":50,"fbjs/lib/invariant":57,"fbjs/lib/shallowEqual":63,"fbjs/lib/warning":64,"object-assign":79,"react/lib/React":215,"react/lib/ReactCurrentOwner":220}],111:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -48721,7 +51312,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactDOM;
 }).call(this,require('_process'))
-},{"./ReactDOMComponentTree":112,"./ReactDOMInvalidARIAHook":118,"./ReactDOMNullInputValuePropHook":119,"./ReactDOMUnknownPropertyHook":126,"./ReactDefaultInjection":129,"./ReactInstrumentation":141,"./ReactMount":144,"./ReactReconciler":151,"./ReactUpdates":156,"./ReactVersion":157,"./findDOMNode":182,"./getHostComponentFromComposite":189,"./renderSubtreeIntoContainer":200,"_process":78,"fbjs/lib/ExecutionEnvironment":41,"fbjs/lib/warning":62}],110:[function(require,module,exports){
+},{"./ReactDOMComponentTree":114,"./ReactDOMInvalidARIAHook":120,"./ReactDOMNullInputValuePropHook":121,"./ReactDOMUnknownPropertyHook":128,"./ReactDefaultInjection":131,"./ReactInstrumentation":143,"./ReactMount":146,"./ReactReconciler":153,"./ReactUpdates":158,"./ReactVersion":159,"./findDOMNode":184,"./getHostComponentFromComposite":191,"./renderSubtreeIntoContainer":202,"_process":80,"fbjs/lib/ExecutionEnvironment":43,"fbjs/lib/warning":64}],112:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -49724,7 +52315,7 @@ _assign(ReactDOMComponent.prototype, ReactDOMComponent.Mixin, ReactMultiChild.Mi
 
 module.exports = ReactDOMComponent;
 }).call(this,require('_process'))
-},{"./AutoFocusUtils":81,"./CSSPropertyOperations":84,"./DOMLazyTree":88,"./DOMNamespaces":89,"./DOMProperty":90,"./DOMPropertyOperations":91,"./EventPluginHub":95,"./EventPluginRegistry":96,"./ReactBrowserEventEmitter":104,"./ReactDOMComponentFlags":111,"./ReactDOMComponentTree":112,"./ReactDOMInput":117,"./ReactDOMOption":120,"./ReactDOMSelect":121,"./ReactDOMTextarea":124,"./ReactInstrumentation":141,"./ReactMultiChild":145,"./ReactServerRenderingTransaction":153,"./escapeTextContentForBrowser":181,"./isEventSupported":196,"./reactProdInvariant":199,"./validateDOMNesting":205,"_process":78,"fbjs/lib/emptyFunction":47,"fbjs/lib/invariant":55,"fbjs/lib/shallowEqual":61,"fbjs/lib/warning":62,"object-assign":77}],111:[function(require,module,exports){
+},{"./AutoFocusUtils":83,"./CSSPropertyOperations":86,"./DOMLazyTree":90,"./DOMNamespaces":91,"./DOMProperty":92,"./DOMPropertyOperations":93,"./EventPluginHub":97,"./EventPluginRegistry":98,"./ReactBrowserEventEmitter":106,"./ReactDOMComponentFlags":113,"./ReactDOMComponentTree":114,"./ReactDOMInput":119,"./ReactDOMOption":122,"./ReactDOMSelect":123,"./ReactDOMTextarea":126,"./ReactInstrumentation":143,"./ReactMultiChild":147,"./ReactServerRenderingTransaction":155,"./escapeTextContentForBrowser":183,"./isEventSupported":198,"./reactProdInvariant":201,"./validateDOMNesting":207,"_process":80,"fbjs/lib/emptyFunction":49,"fbjs/lib/invariant":57,"fbjs/lib/shallowEqual":63,"fbjs/lib/warning":64,"object-assign":79}],113:[function(require,module,exports){
 /**
  * Copyright 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -49742,7 +52333,7 @@ var ReactDOMComponentFlags = {
 };
 
 module.exports = ReactDOMComponentFlags;
-},{}],112:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -49939,7 +52530,7 @@ var ReactDOMComponentTree = {
 
 module.exports = ReactDOMComponentTree;
 }).call(this,require('_process'))
-},{"./DOMProperty":90,"./ReactDOMComponentFlags":111,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],113:[function(require,module,exports){
+},{"./DOMProperty":92,"./ReactDOMComponentFlags":113,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],115:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -49974,7 +52565,7 @@ function ReactDOMContainerInfo(topLevelWrapper, node) {
 
 module.exports = ReactDOMContainerInfo;
 }).call(this,require('_process'))
-},{"./validateDOMNesting":205,"_process":78}],114:[function(require,module,exports){
+},{"./validateDOMNesting":207,"_process":80}],116:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -50034,7 +52625,7 @@ _assign(ReactDOMEmptyComponent.prototype, {
 });
 
 module.exports = ReactDOMEmptyComponent;
-},{"./DOMLazyTree":88,"./ReactDOMComponentTree":112,"object-assign":77}],115:[function(require,module,exports){
+},{"./DOMLazyTree":90,"./ReactDOMComponentTree":114,"object-assign":79}],117:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -50053,7 +52644,7 @@ var ReactDOMFeatureFlags = {
 };
 
 module.exports = ReactDOMFeatureFlags;
-},{}],116:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -50087,7 +52678,7 @@ var ReactDOMIDOperations = {
 };
 
 module.exports = ReactDOMIDOperations;
-},{"./DOMChildrenOperations":87,"./ReactDOMComponentTree":112}],117:[function(require,module,exports){
+},{"./DOMChildrenOperations":89,"./ReactDOMComponentTree":114}],119:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50367,7 +52958,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMInput;
 }).call(this,require('_process'))
-},{"./DOMPropertyOperations":91,"./LinkedValueUtils":102,"./ReactDOMComponentTree":112,"./ReactUpdates":156,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62,"object-assign":77}],118:[function(require,module,exports){
+},{"./DOMPropertyOperations":93,"./LinkedValueUtils":104,"./ReactDOMComponentTree":114,"./ReactUpdates":158,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64,"object-assign":79}],120:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50462,7 +53053,7 @@ var ReactDOMInvalidARIAHook = {
 
 module.exports = ReactDOMInvalidARIAHook;
 }).call(this,require('_process'))
-},{"./DOMProperty":90,"_process":78,"fbjs/lib/warning":62,"react/lib/ReactComponentTreeHook":212}],119:[function(require,module,exports){
+},{"./DOMProperty":92,"_process":80,"fbjs/lib/warning":64,"react/lib/ReactComponentTreeHook":219}],121:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50507,7 +53098,7 @@ var ReactDOMNullInputValuePropHook = {
 
 module.exports = ReactDOMNullInputValuePropHook;
 }).call(this,require('_process'))
-},{"_process":78,"fbjs/lib/warning":62,"react/lib/ReactComponentTreeHook":212}],120:[function(require,module,exports){
+},{"_process":80,"fbjs/lib/warning":64,"react/lib/ReactComponentTreeHook":219}],122:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50632,7 +53223,7 @@ var ReactDOMOption = {
 
 module.exports = ReactDOMOption;
 }).call(this,require('_process'))
-},{"./ReactDOMComponentTree":112,"./ReactDOMSelect":121,"_process":78,"fbjs/lib/warning":62,"object-assign":77,"react/lib/React":208}],121:[function(require,module,exports){
+},{"./ReactDOMComponentTree":114,"./ReactDOMSelect":123,"_process":80,"fbjs/lib/warning":64,"object-assign":79,"react/lib/React":215}],123:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50834,7 +53425,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMSelect;
 }).call(this,require('_process'))
-},{"./LinkedValueUtils":102,"./ReactDOMComponentTree":112,"./ReactUpdates":156,"_process":78,"fbjs/lib/warning":62,"object-assign":77}],122:[function(require,module,exports){
+},{"./LinkedValueUtils":104,"./ReactDOMComponentTree":114,"./ReactUpdates":158,"_process":80,"fbjs/lib/warning":64,"object-assign":79}],124:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -51046,7 +53637,7 @@ var ReactDOMSelection = {
 };
 
 module.exports = ReactDOMSelection;
-},{"./getNodeForCharacterOffset":192,"./getTextContentAccessor":193,"fbjs/lib/ExecutionEnvironment":41}],123:[function(require,module,exports){
+},{"./getNodeForCharacterOffset":194,"./getTextContentAccessor":195,"fbjs/lib/ExecutionEnvironment":43}],125:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -51212,7 +53803,7 @@ _assign(ReactDOMTextComponent.prototype, {
 
 module.exports = ReactDOMTextComponent;
 }).call(this,require('_process'))
-},{"./DOMChildrenOperations":87,"./DOMLazyTree":88,"./ReactDOMComponentTree":112,"./escapeTextContentForBrowser":181,"./reactProdInvariant":199,"./validateDOMNesting":205,"_process":78,"fbjs/lib/invariant":55,"object-assign":77}],124:[function(require,module,exports){
+},{"./DOMChildrenOperations":89,"./DOMLazyTree":90,"./ReactDOMComponentTree":114,"./escapeTextContentForBrowser":183,"./reactProdInvariant":201,"./validateDOMNesting":207,"_process":80,"fbjs/lib/invariant":57,"object-assign":79}],126:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -51374,7 +53965,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMTextarea;
 }).call(this,require('_process'))
-},{"./LinkedValueUtils":102,"./ReactDOMComponentTree":112,"./ReactUpdates":156,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62,"object-assign":77}],125:[function(require,module,exports){
+},{"./LinkedValueUtils":104,"./ReactDOMComponentTree":114,"./ReactUpdates":158,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64,"object-assign":79}],127:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -51512,7 +54103,7 @@ module.exports = {
   traverseEnterLeave: traverseEnterLeave
 };
 }).call(this,require('_process'))
-},{"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],126:[function(require,module,exports){
+},{"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],128:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -51626,7 +54217,7 @@ var ReactDOMUnknownPropertyHook = {
 
 module.exports = ReactDOMUnknownPropertyHook;
 }).call(this,require('_process'))
-},{"./DOMProperty":90,"./EventPluginRegistry":96,"_process":78,"fbjs/lib/warning":62,"react/lib/ReactComponentTreeHook":212}],127:[function(require,module,exports){
+},{"./DOMProperty":92,"./EventPluginRegistry":98,"_process":80,"fbjs/lib/warning":64,"react/lib/ReactComponentTreeHook":219}],129:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -51989,7 +54580,7 @@ if (/[?&]react_perf\b/.test(url)) {
 
 module.exports = ReactDebugTool;
 }).call(this,require('_process'))
-},{"./ReactHostOperationHistoryHook":137,"./ReactInvalidSetStateWarningHook":142,"_process":78,"fbjs/lib/ExecutionEnvironment":41,"fbjs/lib/performanceNow":60,"fbjs/lib/warning":62,"react/lib/ReactComponentTreeHook":212}],128:[function(require,module,exports){
+},{"./ReactHostOperationHistoryHook":139,"./ReactInvalidSetStateWarningHook":144,"_process":80,"fbjs/lib/ExecutionEnvironment":43,"fbjs/lib/performanceNow":62,"fbjs/lib/warning":64,"react/lib/ReactComponentTreeHook":219}],130:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52057,7 +54648,7 @@ var ReactDefaultBatchingStrategy = {
 };
 
 module.exports = ReactDefaultBatchingStrategy;
-},{"./ReactUpdates":156,"./Transaction":174,"fbjs/lib/emptyFunction":47,"object-assign":77}],129:[function(require,module,exports){
+},{"./ReactUpdates":158,"./Transaction":176,"fbjs/lib/emptyFunction":49,"object-assign":79}],131:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52143,7 +54734,7 @@ function inject() {
 module.exports = {
   inject: inject
 };
-},{"./ARIADOMPropertyConfig":80,"./BeforeInputEventPlugin":82,"./ChangeEventPlugin":86,"./DefaultEventPluginOrder":93,"./EnterLeaveEventPlugin":94,"./HTMLDOMPropertyConfig":100,"./ReactComponentBrowserEnvironment":106,"./ReactDOMComponent":110,"./ReactDOMComponentTree":112,"./ReactDOMEmptyComponent":114,"./ReactDOMTextComponent":123,"./ReactDOMTreeTraversal":125,"./ReactDefaultBatchingStrategy":128,"./ReactEventListener":134,"./ReactInjection":138,"./ReactReconcileTransaction":150,"./SVGDOMPropertyConfig":158,"./SelectEventPlugin":159,"./SimpleEventPlugin":160}],130:[function(require,module,exports){
+},{"./ARIADOMPropertyConfig":82,"./BeforeInputEventPlugin":84,"./ChangeEventPlugin":88,"./DefaultEventPluginOrder":95,"./EnterLeaveEventPlugin":96,"./HTMLDOMPropertyConfig":102,"./ReactComponentBrowserEnvironment":108,"./ReactDOMComponent":112,"./ReactDOMComponentTree":114,"./ReactDOMEmptyComponent":116,"./ReactDOMTextComponent":125,"./ReactDOMTreeTraversal":127,"./ReactDefaultBatchingStrategy":130,"./ReactEventListener":136,"./ReactInjection":140,"./ReactReconcileTransaction":152,"./SVGDOMPropertyConfig":160,"./SelectEventPlugin":161,"./SimpleEventPlugin":162}],132:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -52163,7 +54754,7 @@ module.exports = {
 var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
 
 module.exports = REACT_ELEMENT_TYPE;
-},{}],131:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -52193,7 +54784,7 @@ var ReactEmptyComponent = {
 ReactEmptyComponent.injection = ReactEmptyComponentInjection;
 
 module.exports = ReactEmptyComponent;
-},{}],132:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -52272,7 +54863,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactErrorUtils;
 }).call(this,require('_process'))
-},{"_process":78}],133:[function(require,module,exports){
+},{"_process":80}],135:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52305,7 +54896,7 @@ var ReactEventEmitterMixin = {
 };
 
 module.exports = ReactEventEmitterMixin;
-},{"./EventPluginHub":95}],134:[function(require,module,exports){
+},{"./EventPluginHub":97}],136:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52460,7 +55051,7 @@ var ReactEventListener = {
 };
 
 module.exports = ReactEventListener;
-},{"./PooledClass":103,"./ReactDOMComponentTree":112,"./ReactUpdates":156,"./getEventTarget":188,"fbjs/lib/EventListener":40,"fbjs/lib/ExecutionEnvironment":41,"fbjs/lib/getUnboundedScrollPosition":52,"object-assign":77}],135:[function(require,module,exports){
+},{"./PooledClass":105,"./ReactDOMComponentTree":114,"./ReactUpdates":158,"./getEventTarget":190,"fbjs/lib/EventListener":42,"fbjs/lib/ExecutionEnvironment":43,"fbjs/lib/getUnboundedScrollPosition":54,"object-assign":79}],137:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52482,7 +55073,7 @@ var ReactFeatureFlags = {
 };
 
 module.exports = ReactFeatureFlags;
-},{}],136:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -52552,7 +55143,7 @@ var ReactHostComponent = {
 
 module.exports = ReactHostComponent;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],137:[function(require,module,exports){
+},{"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],139:[function(require,module,exports){
 /**
  * Copyright 2016-present, Facebook, Inc.
  * All rights reserved.
@@ -52586,7 +55177,7 @@ var ReactHostOperationHistoryHook = {
 };
 
 module.exports = ReactHostOperationHistoryHook;
-},{}],138:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52620,7 +55211,7 @@ var ReactInjection = {
 };
 
 module.exports = ReactInjection;
-},{"./DOMProperty":90,"./EventPluginHub":95,"./EventPluginUtils":97,"./ReactBrowserEventEmitter":104,"./ReactComponentEnvironment":107,"./ReactEmptyComponent":131,"./ReactHostComponent":136,"./ReactUpdates":156}],139:[function(require,module,exports){
+},{"./DOMProperty":92,"./EventPluginHub":97,"./EventPluginUtils":99,"./ReactBrowserEventEmitter":106,"./ReactComponentEnvironment":109,"./ReactEmptyComponent":133,"./ReactHostComponent":138,"./ReactUpdates":158}],141:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52744,7 +55335,7 @@ var ReactInputSelection = {
 };
 
 module.exports = ReactInputSelection;
-},{"./ReactDOMSelection":122,"fbjs/lib/containsNode":44,"fbjs/lib/focusNode":49,"fbjs/lib/getActiveElement":50}],140:[function(require,module,exports){
+},{"./ReactDOMSelection":124,"fbjs/lib/containsNode":46,"fbjs/lib/focusNode":51,"fbjs/lib/getActiveElement":52}],142:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52792,7 +55383,7 @@ var ReactInstanceMap = {
 };
 
 module.exports = ReactInstanceMap;
-},{}],141:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -52818,7 +55409,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = { debugTool: debugTool };
 }).call(this,require('_process'))
-},{"./ReactDebugTool":127,"_process":78}],142:[function(require,module,exports){
+},{"./ReactDebugTool":129,"_process":80}],144:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -52857,7 +55448,7 @@ var ReactInvalidSetStateWarningHook = {
 
 module.exports = ReactInvalidSetStateWarningHook;
 }).call(this,require('_process'))
-},{"_process":78,"fbjs/lib/warning":62}],143:[function(require,module,exports){
+},{"_process":80,"fbjs/lib/warning":64}],145:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52907,7 +55498,7 @@ var ReactMarkupChecksum = {
 };
 
 module.exports = ReactMarkupChecksum;
-},{"./adler32":177}],144:[function(require,module,exports){
+},{"./adler32":179}],146:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -53447,7 +56038,7 @@ var ReactMount = {
 
 module.exports = ReactMount;
 }).call(this,require('_process'))
-},{"./DOMLazyTree":88,"./DOMProperty":90,"./ReactBrowserEventEmitter":104,"./ReactDOMComponentTree":112,"./ReactDOMContainerInfo":113,"./ReactDOMFeatureFlags":115,"./ReactFeatureFlags":135,"./ReactInstanceMap":140,"./ReactInstrumentation":141,"./ReactMarkupChecksum":143,"./ReactReconciler":151,"./ReactUpdateQueue":155,"./ReactUpdates":156,"./instantiateReactComponent":195,"./reactProdInvariant":199,"./setInnerHTML":201,"./shouldUpdateReactComponent":203,"_process":78,"fbjs/lib/emptyObject":48,"fbjs/lib/invariant":55,"fbjs/lib/warning":62,"react/lib/React":208,"react/lib/ReactCurrentOwner":213}],145:[function(require,module,exports){
+},{"./DOMLazyTree":90,"./DOMProperty":92,"./ReactBrowserEventEmitter":106,"./ReactDOMComponentTree":114,"./ReactDOMContainerInfo":115,"./ReactDOMFeatureFlags":117,"./ReactFeatureFlags":137,"./ReactInstanceMap":142,"./ReactInstrumentation":143,"./ReactMarkupChecksum":145,"./ReactReconciler":153,"./ReactUpdateQueue":157,"./ReactUpdates":158,"./instantiateReactComponent":197,"./reactProdInvariant":201,"./setInnerHTML":203,"./shouldUpdateReactComponent":205,"_process":80,"fbjs/lib/emptyObject":50,"fbjs/lib/invariant":57,"fbjs/lib/warning":64,"react/lib/React":215,"react/lib/ReactCurrentOwner":220}],147:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -53899,7 +56490,7 @@ var ReactMultiChild = {
 
 module.exports = ReactMultiChild;
 }).call(this,require('_process'))
-},{"./ReactChildReconciler":105,"./ReactComponentEnvironment":107,"./ReactInstanceMap":140,"./ReactInstrumentation":141,"./ReactReconciler":151,"./flattenChildren":183,"./reactProdInvariant":199,"_process":78,"fbjs/lib/emptyFunction":47,"fbjs/lib/invariant":55,"react/lib/ReactCurrentOwner":213}],146:[function(require,module,exports){
+},{"./ReactChildReconciler":107,"./ReactComponentEnvironment":109,"./ReactInstanceMap":142,"./ReactInstrumentation":143,"./ReactReconciler":153,"./flattenChildren":185,"./reactProdInvariant":201,"_process":80,"fbjs/lib/emptyFunction":49,"fbjs/lib/invariant":57,"react/lib/ReactCurrentOwner":220}],148:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -53941,7 +56532,7 @@ var ReactNodeTypes = {
 
 module.exports = ReactNodeTypes;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55,"react/lib/React":208}],147:[function(require,module,exports){
+},{"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57,"react/lib/React":215}],149:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -54037,7 +56628,7 @@ var ReactOwner = {
 
 module.exports = ReactOwner;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],148:[function(require,module,exports){
+},{"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],150:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -54064,7 +56655,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactPropTypeLocationNames;
 }).call(this,require('_process'))
-},{"_process":78}],149:[function(require,module,exports){
+},{"_process":80}],151:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -54081,7 +56672,7 @@ module.exports = ReactPropTypeLocationNames;
 var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
-},{}],150:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -54261,7 +56852,7 @@ PooledClass.addPoolingTo(ReactReconcileTransaction);
 
 module.exports = ReactReconcileTransaction;
 }).call(this,require('_process'))
-},{"./CallbackQueue":85,"./PooledClass":103,"./ReactBrowserEventEmitter":104,"./ReactInputSelection":139,"./ReactInstrumentation":141,"./ReactUpdateQueue":155,"./Transaction":174,"_process":78,"object-assign":77}],151:[function(require,module,exports){
+},{"./CallbackQueue":87,"./PooledClass":105,"./ReactBrowserEventEmitter":106,"./ReactInputSelection":141,"./ReactInstrumentation":143,"./ReactUpdateQueue":157,"./Transaction":176,"_process":80,"object-assign":79}],153:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -54431,7 +57022,7 @@ var ReactReconciler = {
 
 module.exports = ReactReconciler;
 }).call(this,require('_process'))
-},{"./ReactInstrumentation":141,"./ReactRef":152,"_process":78,"fbjs/lib/warning":62}],152:[function(require,module,exports){
+},{"./ReactInstrumentation":143,"./ReactRef":154,"_process":80,"fbjs/lib/warning":64}],154:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -54520,7 +57111,7 @@ ReactRef.detachRefs = function (instance, element) {
 };
 
 module.exports = ReactRef;
-},{"./ReactOwner":147}],153:[function(require,module,exports){
+},{"./ReactOwner":149}],155:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -54612,7 +57203,7 @@ PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 
 module.exports = ReactServerRenderingTransaction;
 }).call(this,require('_process'))
-},{"./PooledClass":103,"./ReactInstrumentation":141,"./ReactServerUpdateQueue":154,"./Transaction":174,"_process":78,"object-assign":77}],154:[function(require,module,exports){
+},{"./PooledClass":105,"./ReactInstrumentation":143,"./ReactServerUpdateQueue":156,"./Transaction":176,"_process":80,"object-assign":79}],156:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -54753,7 +57344,7 @@ var ReactServerUpdateQueue = function () {
 
 module.exports = ReactServerUpdateQueue;
 }).call(this,require('_process'))
-},{"./ReactUpdateQueue":155,"_process":78,"fbjs/lib/warning":62}],155:[function(require,module,exports){
+},{"./ReactUpdateQueue":157,"_process":80,"fbjs/lib/warning":64}],157:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -54981,7 +57572,7 @@ var ReactUpdateQueue = {
 
 module.exports = ReactUpdateQueue;
 }).call(this,require('_process'))
-},{"./ReactInstanceMap":140,"./ReactInstrumentation":141,"./ReactUpdates":156,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62,"react/lib/ReactCurrentOwner":213}],156:[function(require,module,exports){
+},{"./ReactInstanceMap":142,"./ReactInstrumentation":143,"./ReactUpdates":158,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64,"react/lib/ReactCurrentOwner":220}],158:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -55234,7 +57825,7 @@ var ReactUpdates = {
 
 module.exports = ReactUpdates;
 }).call(this,require('_process'))
-},{"./CallbackQueue":85,"./PooledClass":103,"./ReactFeatureFlags":135,"./ReactReconciler":151,"./Transaction":174,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55,"object-assign":77}],157:[function(require,module,exports){
+},{"./CallbackQueue":87,"./PooledClass":105,"./ReactFeatureFlags":137,"./ReactReconciler":153,"./Transaction":176,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57,"object-assign":79}],159:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -55248,7 +57839,7 @@ module.exports = ReactUpdates;
 'use strict';
 
 module.exports = '15.4.2';
-},{}],158:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -55550,7 +58141,7 @@ Object.keys(ATTRS).forEach(function (key) {
 });
 
 module.exports = SVGDOMPropertyConfig;
-},{}],159:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -55741,7 +58332,7 @@ var SelectEventPlugin = {
 };
 
 module.exports = SelectEventPlugin;
-},{"./EventPropagators":98,"./ReactDOMComponentTree":112,"./ReactInputSelection":139,"./SyntheticEvent":165,"./isTextInputElement":197,"fbjs/lib/ExecutionEnvironment":41,"fbjs/lib/getActiveElement":50,"fbjs/lib/shallowEqual":61}],160:[function(require,module,exports){
+},{"./EventPropagators":100,"./ReactDOMComponentTree":114,"./ReactInputSelection":141,"./SyntheticEvent":167,"./isTextInputElement":199,"fbjs/lib/ExecutionEnvironment":43,"fbjs/lib/getActiveElement":52,"fbjs/lib/shallowEqual":63}],162:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -55971,7 +58562,7 @@ var SimpleEventPlugin = {
 
 module.exports = SimpleEventPlugin;
 }).call(this,require('_process'))
-},{"./EventPropagators":98,"./ReactDOMComponentTree":112,"./SyntheticAnimationEvent":161,"./SyntheticClipboardEvent":162,"./SyntheticDragEvent":164,"./SyntheticEvent":165,"./SyntheticFocusEvent":166,"./SyntheticKeyboardEvent":168,"./SyntheticMouseEvent":169,"./SyntheticTouchEvent":170,"./SyntheticTransitionEvent":171,"./SyntheticUIEvent":172,"./SyntheticWheelEvent":173,"./getEventCharCode":185,"./reactProdInvariant":199,"_process":78,"fbjs/lib/EventListener":40,"fbjs/lib/emptyFunction":47,"fbjs/lib/invariant":55}],161:[function(require,module,exports){
+},{"./EventPropagators":100,"./ReactDOMComponentTree":114,"./SyntheticAnimationEvent":163,"./SyntheticClipboardEvent":164,"./SyntheticDragEvent":166,"./SyntheticEvent":167,"./SyntheticFocusEvent":168,"./SyntheticKeyboardEvent":170,"./SyntheticMouseEvent":171,"./SyntheticTouchEvent":172,"./SyntheticTransitionEvent":173,"./SyntheticUIEvent":174,"./SyntheticWheelEvent":175,"./getEventCharCode":187,"./reactProdInvariant":201,"_process":80,"fbjs/lib/EventListener":42,"fbjs/lib/emptyFunction":49,"fbjs/lib/invariant":57}],163:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56010,7 +58601,7 @@ function SyntheticAnimationEvent(dispatchConfig, dispatchMarker, nativeEvent, na
 SyntheticEvent.augmentClass(SyntheticAnimationEvent, AnimationEventInterface);
 
 module.exports = SyntheticAnimationEvent;
-},{"./SyntheticEvent":165}],162:[function(require,module,exports){
+},{"./SyntheticEvent":167}],164:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56048,7 +58639,7 @@ function SyntheticClipboardEvent(dispatchConfig, dispatchMarker, nativeEvent, na
 SyntheticEvent.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 
 module.exports = SyntheticClipboardEvent;
-},{"./SyntheticEvent":165}],163:[function(require,module,exports){
+},{"./SyntheticEvent":167}],165:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56084,7 +58675,7 @@ function SyntheticCompositionEvent(dispatchConfig, dispatchMarker, nativeEvent, 
 SyntheticEvent.augmentClass(SyntheticCompositionEvent, CompositionEventInterface);
 
 module.exports = SyntheticCompositionEvent;
-},{"./SyntheticEvent":165}],164:[function(require,module,exports){
+},{"./SyntheticEvent":167}],166:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56120,7 +58711,7 @@ function SyntheticDragEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeE
 SyntheticMouseEvent.augmentClass(SyntheticDragEvent, DragEventInterface);
 
 module.exports = SyntheticDragEvent;
-},{"./SyntheticMouseEvent":169}],165:[function(require,module,exports){
+},{"./SyntheticMouseEvent":171}],167:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -56390,7 +58981,7 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
   }
 }
 }).call(this,require('_process'))
-},{"./PooledClass":103,"_process":78,"fbjs/lib/emptyFunction":47,"fbjs/lib/warning":62,"object-assign":77}],166:[function(require,module,exports){
+},{"./PooledClass":105,"_process":80,"fbjs/lib/emptyFunction":49,"fbjs/lib/warning":64,"object-assign":79}],168:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56426,7 +59017,7 @@ function SyntheticFocusEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 
 module.exports = SyntheticFocusEvent;
-},{"./SyntheticUIEvent":172}],167:[function(require,module,exports){
+},{"./SyntheticUIEvent":174}],169:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56463,7 +59054,7 @@ function SyntheticInputEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticEvent.augmentClass(SyntheticInputEvent, InputEventInterface);
 
 module.exports = SyntheticInputEvent;
-},{"./SyntheticEvent":165}],168:[function(require,module,exports){
+},{"./SyntheticEvent":167}],170:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56547,7 +59138,7 @@ function SyntheticKeyboardEvent(dispatchConfig, dispatchMarker, nativeEvent, nat
 SyntheticUIEvent.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 
 module.exports = SyntheticKeyboardEvent;
-},{"./SyntheticUIEvent":172,"./getEventCharCode":185,"./getEventKey":186,"./getEventModifierState":187}],169:[function(require,module,exports){
+},{"./SyntheticUIEvent":174,"./getEventCharCode":187,"./getEventKey":188,"./getEventModifierState":189}],171:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56619,7 +59210,7 @@ function SyntheticMouseEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 
 module.exports = SyntheticMouseEvent;
-},{"./SyntheticUIEvent":172,"./ViewportMetrics":175,"./getEventModifierState":187}],170:[function(require,module,exports){
+},{"./SyntheticUIEvent":174,"./ViewportMetrics":177,"./getEventModifierState":189}],172:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56664,7 +59255,7 @@ function SyntheticTouchEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 
 module.exports = SyntheticTouchEvent;
-},{"./SyntheticUIEvent":172,"./getEventModifierState":187}],171:[function(require,module,exports){
+},{"./SyntheticUIEvent":174,"./getEventModifierState":189}],173:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56703,7 +59294,7 @@ function SyntheticTransitionEvent(dispatchConfig, dispatchMarker, nativeEvent, n
 SyntheticEvent.augmentClass(SyntheticTransitionEvent, TransitionEventInterface);
 
 module.exports = SyntheticTransitionEvent;
-},{"./SyntheticEvent":165}],172:[function(require,module,exports){
+},{"./SyntheticEvent":167}],174:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56762,7 +59353,7 @@ function SyntheticUIEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEve
 SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 
 module.exports = SyntheticUIEvent;
-},{"./SyntheticEvent":165,"./getEventTarget":188}],173:[function(require,module,exports){
+},{"./SyntheticEvent":167,"./getEventTarget":190}],175:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56816,7 +59407,7 @@ function SyntheticWheelEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticMouseEvent.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 
 module.exports = SyntheticWheelEvent;
-},{"./SyntheticMouseEvent":169}],174:[function(require,module,exports){
+},{"./SyntheticMouseEvent":171}],176:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57043,7 +59634,7 @@ var TransactionImpl = {
 
 module.exports = TransactionImpl;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],175:[function(require,module,exports){
+},{"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],177:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57070,7 +59661,7 @@ var ViewportMetrics = {
 };
 
 module.exports = ViewportMetrics;
-},{}],176:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -57130,7 +59721,7 @@ function accumulateInto(current, next) {
 
 module.exports = accumulateInto;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55}],177:[function(require,module,exports){
+},{"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57}],179:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57174,7 +59765,7 @@ function adler32(data) {
 }
 
 module.exports = adler32;
-},{}],178:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57263,7 +59854,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
 module.exports = checkReactTypeSpec;
 }).call(this,require('_process'))
-},{"./ReactPropTypeLocationNames":148,"./ReactPropTypesSecret":149,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62,"react/lib/ReactComponentTreeHook":212}],179:[function(require,module,exports){
+},{"./ReactPropTypeLocationNames":150,"./ReactPropTypesSecret":151,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64,"react/lib/ReactComponentTreeHook":219}],181:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57295,7 +59886,7 @@ var createMicrosoftUnsafeLocalFunction = function (func) {
 };
 
 module.exports = createMicrosoftUnsafeLocalFunction;
-},{}],180:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57376,7 +59967,7 @@ function dangerousStyleValue(name, value, component) {
 
 module.exports = dangerousStyleValue;
 }).call(this,require('_process'))
-},{"./CSSProperty":83,"_process":78,"fbjs/lib/warning":62}],181:[function(require,module,exports){
+},{"./CSSProperty":85,"_process":80,"fbjs/lib/warning":64}],183:[function(require,module,exports){
 /**
  * Copyright 2016-present, Facebook, Inc.
  * All rights reserved.
@@ -57499,7 +60090,7 @@ function escapeTextContentForBrowser(text) {
 }
 
 module.exports = escapeTextContentForBrowser;
-},{}],182:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57561,7 +60152,7 @@ function findDOMNode(componentOrElement) {
 
 module.exports = findDOMNode;
 }).call(this,require('_process'))
-},{"./ReactDOMComponentTree":112,"./ReactInstanceMap":140,"./getHostComponentFromComposite":189,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62,"react/lib/ReactCurrentOwner":213}],183:[function(require,module,exports){
+},{"./ReactDOMComponentTree":114,"./ReactInstanceMap":142,"./getHostComponentFromComposite":191,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64,"react/lib/ReactCurrentOwner":220}],185:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57639,7 +60230,7 @@ function flattenChildren(children, selfDebugID) {
 
 module.exports = flattenChildren;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":101,"./traverseAllChildren":204,"_process":78,"fbjs/lib/warning":62,"react/lib/ReactComponentTreeHook":212}],184:[function(require,module,exports){
+},{"./KeyEscapeUtils":103,"./traverseAllChildren":206,"_process":80,"fbjs/lib/warning":64,"react/lib/ReactComponentTreeHook":219}],186:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57670,7 +60261,7 @@ function forEachAccumulated(arr, cb, scope) {
 }
 
 module.exports = forEachAccumulated;
-},{}],185:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57720,7 +60311,7 @@ function getEventCharCode(nativeEvent) {
 }
 
 module.exports = getEventCharCode;
-},{}],186:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57822,7 +60413,7 @@ function getEventKey(nativeEvent) {
 }
 
 module.exports = getEventKey;
-},{"./getEventCharCode":185}],187:[function(require,module,exports){
+},{"./getEventCharCode":187}],189:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57865,7 +60456,7 @@ function getEventModifierState(nativeEvent) {
 }
 
 module.exports = getEventModifierState;
-},{}],188:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57900,7 +60491,7 @@ function getEventTarget(nativeEvent) {
 }
 
 module.exports = getEventTarget;
-},{}],189:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57930,7 +60521,7 @@ function getHostComponentFromComposite(inst) {
 }
 
 module.exports = getHostComponentFromComposite;
-},{"./ReactNodeTypes":146}],190:[function(require,module,exports){
+},{"./ReactNodeTypes":148}],192:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57971,7 +60562,7 @@ function getIteratorFn(maybeIterable) {
 }
 
 module.exports = getIteratorFn;
-},{}],191:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57992,7 +60583,7 @@ function getNextDebugID() {
 }
 
 module.exports = getNextDebugID;
-},{}],192:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58066,7 +60657,7 @@ function getNodeForCharacterOffset(root, offset) {
 }
 
 module.exports = getNodeForCharacterOffset;
-},{}],193:[function(require,module,exports){
+},{}],195:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58099,7 +60690,7 @@ function getTextContentAccessor() {
 }
 
 module.exports = getTextContentAccessor;
-},{"fbjs/lib/ExecutionEnvironment":41}],194:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":43}],196:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58200,7 +60791,7 @@ function getVendorPrefixedEventName(eventName) {
 }
 
 module.exports = getVendorPrefixedEventName;
-},{"fbjs/lib/ExecutionEnvironment":41}],195:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":43}],197:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -58330,7 +60921,7 @@ function instantiateReactComponent(node, shouldHaveDebugID) {
 
 module.exports = instantiateReactComponent;
 }).call(this,require('_process'))
-},{"./ReactCompositeComponent":108,"./ReactEmptyComponent":131,"./ReactHostComponent":136,"./getNextDebugID":191,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62,"object-assign":77}],196:[function(require,module,exports){
+},{"./ReactCompositeComponent":110,"./ReactEmptyComponent":133,"./ReactHostComponent":138,"./getNextDebugID":193,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64,"object-assign":79}],198:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58390,7 +60981,7 @@ function isEventSupported(eventNameSuffix, capture) {
 }
 
 module.exports = isEventSupported;
-},{"fbjs/lib/ExecutionEnvironment":41}],197:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":43}],199:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58441,7 +61032,7 @@ function isTextInputElement(elem) {
 }
 
 module.exports = isTextInputElement;
-},{}],198:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58467,7 +61058,7 @@ function quoteAttributeValueForBrowser(value) {
 }
 
 module.exports = quoteAttributeValueForBrowser;
-},{"./escapeTextContentForBrowser":181}],199:[function(require,module,exports){
+},{"./escapeTextContentForBrowser":183}],201:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58506,7 +61097,7 @@ function reactProdInvariant(code) {
 }
 
 module.exports = reactProdInvariant;
-},{}],200:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58522,7 +61113,7 @@ module.exports = reactProdInvariant;
 var ReactMount = require('./ReactMount');
 
 module.exports = ReactMount.renderSubtreeIntoContainer;
-},{"./ReactMount":144}],201:[function(require,module,exports){
+},{"./ReactMount":146}],203:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58620,7 +61211,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setInnerHTML;
-},{"./DOMNamespaces":89,"./createMicrosoftUnsafeLocalFunction":179,"fbjs/lib/ExecutionEnvironment":41}],202:[function(require,module,exports){
+},{"./DOMNamespaces":91,"./createMicrosoftUnsafeLocalFunction":181,"fbjs/lib/ExecutionEnvironment":43}],204:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58672,7 +61263,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setTextContent;
-},{"./escapeTextContentForBrowser":181,"./setInnerHTML":201,"fbjs/lib/ExecutionEnvironment":41}],203:[function(require,module,exports){
+},{"./escapeTextContentForBrowser":183,"./setInnerHTML":203,"fbjs/lib/ExecutionEnvironment":43}],205:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58714,7 +61305,7 @@ function shouldUpdateReactComponent(prevElement, nextElement) {
 }
 
 module.exports = shouldUpdateReactComponent;
-},{}],204:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -58892,7 +61483,7 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":101,"./ReactElementSymbol":130,"./getIteratorFn":190,"./reactProdInvariant":199,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62,"react/lib/ReactCurrentOwner":213}],205:[function(require,module,exports){
+},{"./KeyEscapeUtils":103,"./ReactElementSymbol":132,"./getIteratorFn":192,"./reactProdInvariant":201,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64,"react/lib/ReactCurrentOwner":220}],207:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -59276,11 +61867,787 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = validateDOMNesting;
 }).call(this,require('_process'))
-},{"_process":78,"fbjs/lib/emptyFunction":47,"fbjs/lib/warning":62,"object-assign":77}],206:[function(require,module,exports){
-arguments[4][101][0].apply(exports,arguments)
-},{"dup":101}],207:[function(require,module,exports){
+},{"_process":80,"fbjs/lib/emptyFunction":49,"fbjs/lib/warning":64,"object-assign":79}],208:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Component = _react2.default.createClass({
+
+	displayName: 'PopupAction',
+
+	propTypes: {
+		children: _react2.default.PropTypes.node.isRequired
+	},
+
+	getInitialProps: function getInitialProps() {
+		return {
+			onClick: function onClick() {},
+			className: 'btn',
+			url: null
+		};
+	},
+
+	handleClick: function handleClick() {
+		return this.props.onClick();
+	},
+
+	render: function render() {
+		var className = this.props.className,
+		    url = false;
+
+		if (this.props.url) {
+			if (this.props.url !== '#') {
+				url = true;
+			}
+
+			if (!url) {
+				return _react2.default.createElement(
+					'a',
+					{ target: '_blank', className: className },
+					this.props.children
+				);
+			}
+
+			return _react2.default.createElement(
+				'a',
+				{ href: this.props.url, target: '_blank', className: className },
+				this.props.children
+			);
+		}
+
+		return _react2.default.createElement(
+			'button',
+			{ onClick: this.handleClick, className: className },
+			this.props.children
+		);
+	}
+
+});
+
+exports.default = Component;
+},{"react":237}],209:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ActionButton = require('./ActionButton.react');
+
+var _ActionButton2 = _interopRequireDefault(_ActionButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ButtonsSpace = void 0,
+    Component = void 0;
+
+ButtonsSpace = _react2.default.createClass({
+
+	displayName: 'PopupFooterButtons',
+
+	getInitialProps: function getInitialProps() {
+		return {
+			buttons: null,
+			className: null,
+			onOk: null,
+			onClose: null,
+			buttonClick: null,
+			btnClass: null,
+			href: null
+		};
+	},
+
+	onOk: function onOk() {
+		if (this.props.onOk) {
+			return this.props.onOk();
+		}
+	},
+
+	onClose: function onClose() {
+		if (this.props.onClose) {
+			return this.props.onClose();
+		}
+	},
+
+	buttonClick: function buttonClick(action) {
+		if (this.props.buttonClick) {
+			return this.props.buttonClick(action);
+		}
+	},
+
+	wildClass: function wildClass(className, base) {
+		if (!className) {
+			return null;
+		}
+
+		if (this.props.wildClasses) {
+			return className;
+		}
+
+		var finalClass = [],
+		    classNames = className.split(' ');
+
+		classNames.forEach(function (className) {
+			finalClass.push(base + '--' + className);
+		});
+
+		return finalClass.join(' ');
+	},
+
+	render: function render() {
+		if (!this.props.buttons) {
+			return null;
+		}
+
+		var i,
+		    btns = [],
+		    btn,
+		    className,
+		    url;
+
+		for (i = 0; i < this.props.buttons.length; i++) {
+			btn = this.props.buttons[i];
+			url = btn.url ? btn.url : null;
+
+			if (typeof btn === 'string') {
+				if (btn === 'ok') {
+					btns.push(_react2.default.createElement(
+						_ActionButton2.default,
+						{ className: this.props.btnClass + ' ' + this.props.btnClass + '--ok', key: i, onClick: this.onOk },
+						this.props.defaultOk
+					));
+				} else if (btn === 'cancel') {
+					btns.push(_react2.default.createElement(
+						_ActionButton2.default,
+						{ className: this.props.btnClass + ' ' + this.props.btnClass + '--cancel', key: i, onClick: this.onClose },
+						this.props.defaultCancel
+					));
+				}
+			} else {
+				className = this.props.btnClass + ' ' + this.wildClass(btn.className, this.props.btnClass);
+				btns.push(_react2.default.createElement(
+					_ActionButton2.default,
+					{ className: className, key: i, url: url, onClick: this.buttonClick.bind(this, btn.action) },
+					btn.text
+				));
+			}
+		}
+
+		return _react2.default.createElement(
+			'div',
+			{ className: this.props.className },
+			btns
+		);
+	}
+
+});
+
+Component = _react2.default.createClass({
+
+	displayName: 'PopupFooter',
+
+	getInitialProps: function getInitialProps() {
+		return {
+			buttons: null,
+			className: null,
+			wildClasses: false,
+			btnClass: null,
+			defaultOk: null,
+			defaultCancel: null,
+			buttonClick: null,
+			onOk: null,
+			onClose: null
+		};
+	},
+
+	render: function render() {
+		if (this.props.buttons) {
+			return _react2.default.createElement(
+				'footer',
+				{ className: this.props.className },
+				_react2.default.createElement(ButtonsSpace, {
+					buttonClick: this.props.buttonClick,
+					onOk: this.props.onOk,
+					onClose: this.props.onClose,
+					className: this.props.className + '__left-space',
+					wildClasses: this.props.wildClasses,
+					btnClass: this.props.btnClass,
+					defaultOk: this.props.defaultOk,
+					defaultCancel: this.props.defaultCancel,
+					buttons: this.props.buttons.left }),
+				_react2.default.createElement(ButtonsSpace, {
+					buttonClick: this.props.buttonClick,
+					onOk: this.props.onOk,
+					onClose: this.props.onClose,
+					className: this.props.className + '__right-space',
+					wildClasses: this.props.wildClasses,
+					btnClass: this.props.btnClass,
+					defaultOk: this.props.defaultOk,
+					defaultCancel: this.props.defaultCancel,
+					buttons: this.props.buttons.right })
+			);
+		}
+
+		return null;
+	}
+
+});
+
+exports.default = Component;
+},{"./ActionButton.react":208,"react":237}],210:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Component = _react2.default.createClass({
+
+	displayName: 'PopupHeader',
+
+	getInitialProps: function getInitialProps() {
+		return {
+			title: null,
+			className: null
+		};
+	},
+
+	render: function render() {
+		if (this.props.title) {
+			return _react2.default.createElement(
+				'header',
+				{ className: this.props.className },
+				_react2.default.createElement(
+					'h1',
+					{ className: this.props.className + '__title' },
+					this.props.title
+				)
+			);
+		}
+
+		return null;
+	}
+
+});
+
+exports.default = Component;
+},{"react":237}],211:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Component = _react2.default.createClass({
+
+	displayName: 'PopupInput',
+
+	getInitialState: function getInitialState() {
+		return {
+			value: this.props.value
+		};
+	},
+
+	getInitialProps: function getInitialProps() {
+		return {
+			className: 'input',
+			value: '',
+			placeholder: '',
+			type: 'text',
+			onChange: function onChange() {}
+		};
+	},
+
+	componentDidMount: function componentDidMount() {
+		_reactDom2.default.findDOMNode(this).focus();
+	},
+
+	handleChange: function handleChange(event) {
+		this.setState({ value: event.target.value });
+		this.props.onChange(event.target.value);
+	},
+
+	render: function render() {
+		var className = this.props.className;
+
+		return _react2.default.createElement('input', { value: this.state.value, className: className, placeholder: this.props.placeholder, type: this.props.type, onChange: this.handleChange });
+	}
+
+});
+
+exports.default = Component;
+},{"react":237,"react-dom":81}],212:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _events = require('events');
+
+var _Header = require('./Header.react');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Footer = require('./Footer.react');
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
+var _Input = require('./Input.react');
+
+var _Input2 = _interopRequireDefault(_Input);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SHOW_EVENT = 'show';
+var CLOSE_EVENT = 'close';
+var REFRESH_EVENT = 'refresh_position';
+
+var _props = {};
+var _initialState = {};
+
+var Manager = _extends({}, _events.EventEmitter.prototype, {
+
+    id: 1,
+
+    popups: {},
+
+    queue: [],
+
+    active: null,
+
+    value: null,
+
+    getId: function getId() {
+        return 'id_' + this.id++;
+    },
+
+    activePopup: function activePopup() {
+        return this.popups[this.active];
+    },
+
+    close: function close() {
+        if (!this.active) {
+            return false;
+        }
+
+        var id = this.active;
+        this.active = null;
+
+        this.emit(CLOSE_EVENT);
+        this.dispatch();
+
+        this.value = null;
+
+        return id;
+    },
+
+    dispatch: function dispatch() {
+        if (this.active || this.queue.length < 1) {
+            return false;
+        }
+
+        var id = this.queue.shift();
+
+        /** Set active */
+        this.active = id;
+
+        this.emit(SHOW_EVENT);
+    },
+
+    refreshPosition: function refreshPosition(position) {
+        this.emit(REFRESH_EVENT, position);
+    },
+
+    clearQueue: function clearQueue() {
+        this.queue = [];
+    }
+
+});
+
+var Component = _react2.default.createClass({
+
+    displayName: 'Popup',
+
+    getInitialState: function getInitialState() {
+        var state = {
+            'title': null,
+            'buttons': false,
+            'content': null,
+            'visible': false,
+            'className': null,
+            'noOverlay': false,
+            'position': false,
+            'wildClasses': false
+        };
+
+        _initialState = state;
+
+        return state;
+    },
+
+    getDefaultProps: function getDefaultProps() {
+        return {
+            'className': 'mm-popup',
+            'btnClass': 'mm-popup__btn',
+            'inputClass': 'mm-popup__input',
+            'closeBtn': true,
+            'closeHtml': null,
+            'defaultOk': 'Ok',
+            'defaultCancel': 'Cancel'
+        };
+    },
+
+    statics: {
+
+        plugins: {},
+
+        addShowListener: function addShowListener(callback) {
+            Manager.on(SHOW_EVENT, callback);
+        },
+
+        removeShowListener: function removeShowListener(callback) {
+            Manager.removeListener(SHOW_EVENT, callback);
+        },
+
+        addCloseListener: function addCloseListener(callback) {
+            Manager.on(CLOSE_EVENT, callback);
+        },
+
+        removeCloseListener: function removeCloseListener(callback) {
+            Manager.removeListener(CLOSE_EVENT, callback);
+        },
+
+        register: function register(data) {
+            var id = Manager.getId();
+
+            data = _extends({}, _initialState, data);
+
+            Manager.popups[id] = data;
+
+            return id;
+        },
+
+        queue: function queue(id) {
+            if (!Manager.popups.hasOwnProperty(id)) {
+                return false;
+            }
+
+            /** Add popup to queue */
+            Manager.queue.push(id);
+
+            /** Dispatch queue */
+            Manager.dispatch();
+
+            return id;
+        },
+
+        create: function create(data) {
+            /** Register popup */
+            var id = this.register(data);
+
+            /** Queue popup */
+            this.queue(id);
+
+            return id;
+        },
+
+        alert: function alert(text, title, noQueue) {
+            var data = {
+                title: title,
+                content: text,
+                buttons: {
+                    right: ['ok']
+                }
+            };
+
+            if (noQueue) {
+                return this.register(data);
+            }
+
+            return this.create(data);
+        },
+
+        prompt: function prompt(title, text, inputAttributes, okBtn, noQueue) {
+            if (!okBtn) {
+                okBtn = 'ok';
+            }
+
+            inputAttributes || (inputAttributes = {
+                value: '',
+                placeholder: '',
+                type: 'text'
+            });
+
+            Manager.value = inputAttributes.value;
+
+            function onChange(value) {
+                Manager.value = value;
+            }
+
+            if (text) {
+                text = _react2.default.createElement(
+                    'p',
+                    null,
+                    text
+                );
+            }
+
+            var content = _react2.default.createElement(
+                'div',
+                null,
+                text,
+                _react2.default.createElement(_Input2.default, { value: inputAttributes.value, placeholder: inputAttributes.placeholder, type: inputAttributes.type, className: _props.inputClass, onChange: onChange })
+            );
+
+            var data = {
+                title: title,
+                content: content,
+                buttons: {
+                    left: ['cancel'],
+                    right: [okBtn]
+                }
+            };
+
+            if (noQueue) {
+                return this.register(data);
+            }
+
+            return this.create(data);
+        },
+
+        close: function close() {
+            Manager.close();
+        },
+
+        getValue: function getValue() {
+            return Manager.value;
+        },
+
+        registerPlugin: function registerPlugin(name, callback) {
+            this.plugins[name] = callback.bind(this);
+        },
+
+        refreshPosition: function refreshPosition(position) {
+            return Manager.refreshPosition(position);
+        },
+
+        clearQueue: function clearQueue() {
+            return Manager.clearQueue();
+        }
+
+    },
+
+    componentDidMount: function componentDidMount() {
+        var _this = this;
+
+        Manager.on(SHOW_EVENT, function () {
+            var popup = Manager.activePopup();
+
+            _this.setState({
+                title: popup.title,
+                content: popup.content,
+                buttons: popup.buttons,
+                visible: true,
+                className: popup.className,
+                noOverlay: popup.noOverlay,
+                position: popup.position
+            });
+        });
+
+        _props = this.props;
+
+        Manager.on(CLOSE_EVENT, function () {
+            _this.setState(_this.getInitialState());
+        });
+
+        Manager.on(REFRESH_EVENT, function (position) {
+            _this.setPosition(position);
+        });
+    },
+
+    componentDidUpdate: function componentDidUpdate() {
+        this.setPosition(this.state.position);
+    },
+
+    setPosition: function setPosition(position) {
+        var box = this.refs.box;
+
+        if (!box) {
+            return;
+        }
+
+        if (!position) {
+            position = this.state.position;
+        }
+
+        if (!position) {
+            box.style.opacity = 1;
+            box.style.top = null;
+            box.style.left = null;
+            box.style.margin = null;
+
+            return false;
+        }
+
+        if (typeof position === 'function') {
+            return position.call(null, box);
+        }
+
+        box.style.top = parseInt(position.y, 10) + 'px';
+        box.style.left = parseInt(position.x, 10) + 'px';
+        box.style.margin = 0;
+        box.style.opacity = 1;
+    },
+
+    hasClass: function hasClass(element, className) {
+        if (element.classList) {
+            return !!className && element.classList.contains(className);
+        }
+
+        return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
+    },
+
+    className: function className(_className) {
+        return this.props.className + '__' + _className;
+    },
+
+    wildClass: function wildClass(className, base) {
+        if (!className) {
+            return null;
+        }
+
+        if (this.props.wildClasses) {
+            return className;
+        }
+
+        var finalClass = [];
+        var classNames = className.split(' ');
+
+        classNames.forEach(function (className) {
+            finalClass.push(base + '--' + className);
+        });
+
+        return finalClass.join(' ');
+    },
+
+    onClose: function onClose() {
+        Manager.close();
+    },
+
+    handleButtonClick: function handleButtonClick(action) {
+        if (typeof action === 'function') {
+            return action.call(this, Manager);
+        }
+    },
+
+    containerClick: function containerClick(e) {
+        if (this.hasClass(e.target, this.props.className)) {
+            this.onClose();
+        }
+    },
+
+    render: function render() {
+        var className = this.props.className;
+        var box = null;
+        var overlayStyle = {};
+
+        if (this.state.visible) {
+            var closeBtn = null;
+
+            className += ' ' + this.props.className + '--visible';
+
+            if (this.props.closeBtn) {
+                closeBtn = _react2.default.createElement(
+                    'button',
+                    { onClick: this.onClose, className: this.props.className + '__close' },
+                    this.props.closeHtml
+                );
+            }
+
+            var boxClass = this.className('box');
+
+            if (this.state.className) {
+                boxClass += ' ' + this.wildClass(this.state.className, boxClass);
+            }
+
+            box = _react2.default.createElement(
+                'article',
+                { ref: 'box', style: { opacity: 0 }, className: boxClass },
+                closeBtn,
+                _react2.default.createElement(_Header2.default, { title: this.state.title, className: this.className('box__header') }),
+                _react2.default.createElement(
+                    'div',
+                    { className: this.className('box__body') },
+                    this.state.content
+                ),
+                _react2.default.createElement(_Footer2.default, {
+                    className: this.className('box__footer'),
+                    wildClasses: this.props.wildClasses,
+                    btnClass: this.props.btnClass,
+                    buttonClick: this.handleButtonClick,
+                    onClose: this.onClose,
+                    onOk: this.onClose,
+                    defaultOk: this.props.defaultOk,
+                    defaultCancel: this.props.defaultCancel,
+                    buttons: this.state.buttons })
+            );
+        }
+
+        if (this.state.noOverlay) {
+            overlayStyle.background = 'transparent';
+        }
+
+        return _react2.default.createElement(
+            'div',
+            { onClick: this.containerClick, className: className, style: overlayStyle },
+            box
+        );
+    }
+
+});
+
+exports.default = Component;
+},{"./Footer.react":209,"./Header.react":210,"./Input.react":211,"events":41,"react":237}],213:[function(require,module,exports){
 arguments[4][103][0].apply(exports,arguments)
-},{"./reactProdInvariant":228,"_process":78,"dup":103,"fbjs/lib/invariant":55}],208:[function(require,module,exports){
+},{"dup":103}],214:[function(require,module,exports){
+arguments[4][105][0].apply(exports,arguments)
+},{"./reactProdInvariant":235,"_process":80,"dup":105,"fbjs/lib/invariant":57}],215:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -59371,7 +62738,7 @@ var React = {
 
 module.exports = React;
 }).call(this,require('_process'))
-},{"./ReactChildren":209,"./ReactClass":210,"./ReactComponent":211,"./ReactDOMFactories":214,"./ReactElement":215,"./ReactElementValidator":217,"./ReactPropTypes":220,"./ReactPureComponent":222,"./ReactVersion":223,"./onlyChild":227,"_process":78,"fbjs/lib/warning":62,"object-assign":77}],209:[function(require,module,exports){
+},{"./ReactChildren":216,"./ReactClass":217,"./ReactComponent":218,"./ReactDOMFactories":221,"./ReactElement":222,"./ReactElementValidator":224,"./ReactPropTypes":227,"./ReactPureComponent":229,"./ReactVersion":230,"./onlyChild":234,"_process":80,"fbjs/lib/warning":64,"object-assign":79}],216:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -59562,7 +62929,7 @@ var ReactChildren = {
 };
 
 module.exports = ReactChildren;
-},{"./PooledClass":207,"./ReactElement":215,"./traverseAllChildren":229,"fbjs/lib/emptyFunction":47}],210:[function(require,module,exports){
+},{"./PooledClass":214,"./ReactElement":222,"./traverseAllChildren":236,"fbjs/lib/emptyFunction":49}],217:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -60281,7 +63648,7 @@ var ReactClass = {
 
 module.exports = ReactClass;
 }).call(this,require('_process'))
-},{"./ReactComponent":211,"./ReactElement":215,"./ReactNoopUpdateQueue":218,"./ReactPropTypeLocationNames":219,"./reactProdInvariant":228,"_process":78,"fbjs/lib/emptyObject":48,"fbjs/lib/invariant":55,"fbjs/lib/warning":62,"object-assign":77}],211:[function(require,module,exports){
+},{"./ReactComponent":218,"./ReactElement":222,"./ReactNoopUpdateQueue":225,"./ReactPropTypeLocationNames":226,"./reactProdInvariant":235,"_process":80,"fbjs/lib/emptyObject":50,"fbjs/lib/invariant":57,"fbjs/lib/warning":64,"object-assign":79}],218:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -60401,7 +63768,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactComponent;
 }).call(this,require('_process'))
-},{"./ReactNoopUpdateQueue":218,"./canDefineProperty":224,"./reactProdInvariant":228,"_process":78,"fbjs/lib/emptyObject":48,"fbjs/lib/invariant":55,"fbjs/lib/warning":62}],212:[function(require,module,exports){
+},{"./ReactNoopUpdateQueue":225,"./canDefineProperty":231,"./reactProdInvariant":235,"_process":80,"fbjs/lib/emptyObject":50,"fbjs/lib/invariant":57,"fbjs/lib/warning":64}],219:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -60737,7 +64104,7 @@ var ReactComponentTreeHook = {
 
 module.exports = ReactComponentTreeHook;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":213,"./reactProdInvariant":228,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62}],213:[function(require,module,exports){
+},{"./ReactCurrentOwner":220,"./reactProdInvariant":235,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64}],220:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -60768,7 +64135,7 @@ var ReactCurrentOwner = {
 };
 
 module.exports = ReactCurrentOwner;
-},{}],214:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -60940,7 +64307,7 @@ var ReactDOMFactories = {
 
 module.exports = ReactDOMFactories;
 }).call(this,require('_process'))
-},{"./ReactElement":215,"./ReactElementValidator":217,"_process":78}],215:[function(require,module,exports){
+},{"./ReactElement":222,"./ReactElementValidator":224,"_process":80}],222:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -61283,9 +64650,9 @@ ReactElement.isValidElement = function (object) {
 
 module.exports = ReactElement;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":213,"./ReactElementSymbol":216,"./canDefineProperty":224,"_process":78,"fbjs/lib/warning":62,"object-assign":77}],216:[function(require,module,exports){
-arguments[4][130][0].apply(exports,arguments)
-},{"dup":130}],217:[function(require,module,exports){
+},{"./ReactCurrentOwner":220,"./ReactElementSymbol":223,"./canDefineProperty":231,"_process":80,"fbjs/lib/warning":64,"object-assign":79}],223:[function(require,module,exports){
+arguments[4][132][0].apply(exports,arguments)
+},{"dup":132}],224:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -61521,7 +64888,7 @@ var ReactElementValidator = {
 
 module.exports = ReactElementValidator;
 }).call(this,require('_process'))
-},{"./ReactComponentTreeHook":212,"./ReactCurrentOwner":213,"./ReactElement":215,"./canDefineProperty":224,"./checkReactTypeSpec":225,"./getIteratorFn":226,"_process":78,"fbjs/lib/warning":62}],218:[function(require,module,exports){
+},{"./ReactComponentTreeHook":219,"./ReactCurrentOwner":220,"./ReactElement":222,"./canDefineProperty":231,"./checkReactTypeSpec":232,"./getIteratorFn":233,"_process":80,"fbjs/lib/warning":64}],225:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -61619,9 +64986,9 @@ var ReactNoopUpdateQueue = {
 
 module.exports = ReactNoopUpdateQueue;
 }).call(this,require('_process'))
-},{"_process":78,"fbjs/lib/warning":62}],219:[function(require,module,exports){
-arguments[4][148][0].apply(exports,arguments)
-},{"_process":78,"dup":148}],220:[function(require,module,exports){
+},{"_process":80,"fbjs/lib/warning":64}],226:[function(require,module,exports){
+arguments[4][150][0].apply(exports,arguments)
+},{"_process":80,"dup":150}],227:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -62057,9 +65424,9 @@ function getClassName(propValue) {
 
 module.exports = ReactPropTypes;
 }).call(this,require('_process'))
-},{"./ReactElement":215,"./ReactPropTypeLocationNames":219,"./ReactPropTypesSecret":221,"./getIteratorFn":226,"_process":78,"fbjs/lib/emptyFunction":47,"fbjs/lib/warning":62}],221:[function(require,module,exports){
-arguments[4][149][0].apply(exports,arguments)
-},{"dup":149}],222:[function(require,module,exports){
+},{"./ReactElement":222,"./ReactPropTypeLocationNames":226,"./ReactPropTypesSecret":228,"./getIteratorFn":233,"_process":80,"fbjs/lib/emptyFunction":49,"fbjs/lib/warning":64}],228:[function(require,module,exports){
+arguments[4][151][0].apply(exports,arguments)
+},{"dup":151}],229:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -62101,9 +65468,9 @@ _assign(ReactPureComponent.prototype, ReactComponent.prototype);
 ReactPureComponent.prototype.isPureReactComponent = true;
 
 module.exports = ReactPureComponent;
-},{"./ReactComponent":211,"./ReactNoopUpdateQueue":218,"fbjs/lib/emptyObject":48,"object-assign":77}],223:[function(require,module,exports){
-arguments[4][157][0].apply(exports,arguments)
-},{"dup":157}],224:[function(require,module,exports){
+},{"./ReactComponent":218,"./ReactNoopUpdateQueue":225,"fbjs/lib/emptyObject":50,"object-assign":79}],230:[function(require,module,exports){
+arguments[4][159][0].apply(exports,arguments)
+},{"dup":159}],231:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -62131,7 +65498,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = canDefineProperty;
 }).call(this,require('_process'))
-},{"_process":78}],225:[function(require,module,exports){
+},{"_process":80}],232:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -62220,9 +65587,9 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
 module.exports = checkReactTypeSpec;
 }).call(this,require('_process'))
-},{"./ReactComponentTreeHook":212,"./ReactPropTypeLocationNames":219,"./ReactPropTypesSecret":221,"./reactProdInvariant":228,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62}],226:[function(require,module,exports){
-arguments[4][190][0].apply(exports,arguments)
-},{"dup":190}],227:[function(require,module,exports){
+},{"./ReactComponentTreeHook":219,"./ReactPropTypeLocationNames":226,"./ReactPropTypesSecret":228,"./reactProdInvariant":235,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64}],233:[function(require,module,exports){
+arguments[4][192][0].apply(exports,arguments)
+},{"dup":192}],234:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -62262,9 +65629,9 @@ function onlyChild(children) {
 
 module.exports = onlyChild;
 }).call(this,require('_process'))
-},{"./ReactElement":215,"./reactProdInvariant":228,"_process":78,"fbjs/lib/invariant":55}],228:[function(require,module,exports){
-arguments[4][199][0].apply(exports,arguments)
-},{"dup":199}],229:[function(require,module,exports){
+},{"./ReactElement":222,"./reactProdInvariant":235,"_process":80,"fbjs/lib/invariant":57}],235:[function(require,module,exports){
+arguments[4][201][0].apply(exports,arguments)
+},{"dup":201}],236:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -62442,12 +65809,12 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":206,"./ReactCurrentOwner":213,"./ReactElementSymbol":216,"./getIteratorFn":226,"./reactProdInvariant":228,"_process":78,"fbjs/lib/invariant":55,"fbjs/lib/warning":62}],230:[function(require,module,exports){
+},{"./KeyEscapeUtils":213,"./ReactCurrentOwner":220,"./ReactElementSymbol":223,"./getIteratorFn":233,"./reactProdInvariant":235,"_process":80,"fbjs/lib/invariant":57,"fbjs/lib/warning":64}],237:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/React');
 
-},{"./lib/React":208}],231:[function(require,module,exports){
+},{"./lib/React":215}],238:[function(require,module,exports){
 (function (process,global){
 (function() {
   "use strict";
@@ -63118,4 +66485,4 @@ module.exports = require('./lib/React');
 })();
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":78}]},{},[32]);
+},{"_process":80}]},{},[33]);

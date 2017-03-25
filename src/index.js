@@ -3,13 +3,14 @@ import { Lines } from './linechart/lines.js';
 import { PieSlices } from './piechart/slices.js';
 import { ScatterPlotDots } from './scatterplot/dots.js';
 import { SVG } from './svg';
+import { Table } from './table';
 import * as axes from './lib/axes.js';
 import * as dataFunctions from './lib/data.js';
 import * as scales from './lib/scales.js';
-import React from 'react';
-import { Table } from './table';
 import ForceLayout from './forcelayout/index.js';
 import Pack from './pack/index.js';
+import Popup from 'react-popup';
+import React from 'react';
 
 /**
  * Represents a Chart
@@ -108,96 +109,19 @@ export default class Chart extends React.Component {
     yValue: React.PropTypes.string,
   }
 
+  static childContextTypes = {
+    Popup: React.PropTypes.func,
+  }
+
   constructor (props) {
     super(props);
-    // default dimensions for isomorphic rendering
-    // is updated client-side on mount + browser resizes
-    this.state = {
-      containerHeight: 200,
-      containerWidth: 200,
-    };
-  }
 
-  componentDidMount () {
-    // initial filtering and sorting
-    if (this.props.chartType === 'table') {
-      if (this.props.filterable) appFuncs.filterTable.setFilterGrid(this.props.id);
-      if (this.props.sortable) appFuncs.sortTable.init();
-    }
-
-    // initially set size based on current browser width
-    this.setSize();
-    // update chart size whenever browser resizes
-    if (typeof window !== 'undefined') {
-      window.addEventListener(`resize`, this.setSize, false);
-      window.addEventListener('orientationchange', this.setSize, false);
-    }
-    this.renderChart();
-  }
-
-  shouldComponentUpdate (nextProps, nextState) {
-    // only update if state or props have changed
-    return !appFuncs._.isEqual(nextState, this.state)
-      || !appFuncs._.isEqual(nextProps, this.props);
-  }
-
-  componentWillUnmount () {
-    // remove event listener if in browser
-    if (typeof window !== 'undefined') {
-      window.removeEventListener(`resize`, this.setSize);
-      window.removeEventListener('orientationchange', this.setSize, false);
-    }
-  }
-
-  /**
-   * retrieves container dimensions from client and updates state which triggers redraw
-   */
-  setSize = () => {
-    let containerHeight, containerWidth;
-
-    // TODO: move all try blocks outside of this function
-    try {
-      containerHeight = Math.min(this.container.offsetHeight, window.screen.height);
-    } catch (err) {
-      containerHeight = this.state.containerHeight;
-    }
-
-    try {
-      containerWidth = Math.min(this.container.offsetWidth, window.screen.width);
-    } catch (err) {
-      containerWidth = this.state.containerWidth;
-    }
-
-    this.setState({
-      containerHeight,
-      containerWidth,
-    });
-
-    return true;
-  }
-
-  /**
-   * moves SVG container into its parent
-   */
-  getVisualContainerTransform = ({
-    chartHeight,
-    chartType,
-    chartWidth,
-  }) => {
-    switch(chartType.toLowerCase()) {
-      case 'pie': return `translate(${[ chartWidth/2, chartHeight/2 ]})`;
-      default : return 'translate(0, 0)';
-    }
-  }
-
-  renderChart = (width = this.state.containerWidth, height = this.state.containerHeight) => {
     /**
      * maps the chart type to required chart function
      * TODO: move to lib directory
      */
-    const { chartType } = this.props;
     let chartFunction;
-    switch (chartType.toLowerCase()) {
+    switch (props.chartType.toLowerCase()) {
       case 'pie':
         chartFunction = PieSlices;
         break;
@@ -221,36 +145,132 @@ export default class Chart extends React.Component {
         break;
       default : {
         appFuncs.logError({
-          data: [ chartType, this.props.data ],
+          data: [ props.chartType, props.data ],
           loc: __filename,
-          msg: `did not find chart type ${chartType}, returning null`,
+          msg: `did not find chart type ${props.chartType}, setting to null`,
         });
 
-        return null;
+        chartFunction = null;
       }
     }
 
+    this.state = {
+      chartFunction,
+      colorScale: props.colorScaleScheme
+      ? scales.colorScale({
+        chartDataGroupBy: props.chartDataGroupBy,
+        colorScaleScheme: props.colorScaleScheme,
+        colorScaleType: props.colorScaleType,
+      })
+      : null,
+      containerHeight: 200,
+      containerWidth: 200,
+      data: dataFunctions.format({
+        chartDataGroupBy: props.chartDataGroupBy,
+        chartType: props.chartType,
+        data: props.data,
+        xScaleTime: props.xScaleTime,
+        xScaleTimeFormat: props.xScaleTimeFormat,
+        xValue: props.xValue,
+      }),
+    };
+  }
+
+  getChildContext () {
+    return {
+      Popup,
+    };
+  }
+
+  componentDidMount () {
+    // initial filtering and sorting
+    if (this.props.chartType === 'table') {
+      if (this.props.filterable)
+        appFuncs.filterTable.setFilterGrid(this.props.id);
+      if (this.props.sortable)
+        appFuncs.sortTable.init();
+    }
+
+    // update chart size whenever browser resizes
+    if (typeof window !== 'undefined')
+      window.addEventListener(`resize`, this.setSize, false);
+
+    // initially set size based on current browser width
+    this.setSize();
+    this.renderChart();
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    // only update if state or props have changed
+    return !appFuncs._.isEqual(nextState, this.state)
+      || !appFuncs._.isEqual(nextProps, this.props);
+  }
+
+  componentWillUnmount () {
+    // remove event listener if in browser
+    if (typeof window !== 'undefined')
+      window.removeEventListener(`resize`, this.setSize);
+  }
+
+  /**
+   * retrieves container dimensions from client and updates state which triggers redraw
+   */
+  setSize = () => {
+    let containerHeight, containerWidth;
+
+    try {
+      containerHeight = Math.min(this.container.offsetHeight, window.screen.height);
+    } catch (err) {
+      containerHeight = this.state.containerHeight;
+    }
+
+    try {
+      containerWidth = Math.min(this.container.offsetWidth, window.screen.width);
+    } catch (err) {
+      containerWidth = this.state.containerWidth;
+    }
+
+    const updateStateDimenions = () => {
+      this.setState({
+        containerHeight,
+        containerWidth,
+      });
+
+      return true;
+    };
+
+    if (typeof window !== 'undefined') {
+      if (window.requestAnimationFrame)
+        return window.requestAnimationFrame(updateStateDimenions);
+
+      return window.setTimeout(() => updateStateDimenions(), 1);
+    }
+
+    return false;
+  }
+
+  /**
+   * moves SVG container into its parent
+   */
+  getVisualContainerTransform = ({
+    chartHeight,
+    chartType,
+    chartWidth,
+  }) => {
+    switch(chartType.toLowerCase()) {
+      case 'pie': return `translate(${chartWidth/2}px, ${chartHeight/2}px)`;
+      default : return 'translate(0, 0)';
+    }
+  }
+
+  renderChart = () => {
+    // dont continue if chartFunction not valid;
+    if (!this.state.chartFunction) return null;
+
     // initialize variables required for chart
     const
-      chartHeight = height - (this.props.margins.top + this.props.margins.bottom),
-      chartWidth = width - (this.props.margins.left + this.props.margins.right),
-
-      colorScale = this.props.colorScaleScheme
-        ? scales.colorScale({
-          chartDataGroupBy: this.props.chartDataGroupBy,
-          colorScaleScheme: this.props.colorScaleScheme,
-          colorScaleType: this.props.colorScaleType,
-        })
-        : null,
-
-      data = dataFunctions.format({
-        chartDataGroupBy: this.props.chartDataGroupBy,
-        chartType: this.props.chartType,
-        data: this.props.data,
-        xScaleTime: this.props.xScaleTime,
-        xScaleTimeFormat: this.props.xScaleTimeFormat,
-        xValue: this.props.xValue,
-      }),
+      chartHeight = this.state.containerHeight - (this.props.margins.top + this.props.margins.bottom),
+      chartWidth = this.state.containerWidth - (this.props.margins.left + this.props.margins.right),
 
       hasDocument = typeof document !== 'undefined',
 
@@ -258,9 +278,9 @@ export default class Chart extends React.Component {
         ? axes.getXAxisLabel({
           chartDataGroupBy: this.props.chartDataGroupBy,
           transform: 'rotate(0)',
-          x: width / 2 - this.props.margins.left,
+          x: this.state.containerWidth / 2 - this.props.margins.left,
           xAxisLabel: this.props.xAxisLabel || this.props.xValue,
-          y: height,
+          y: this.state.containerHeight,
         })
         : null,
 
@@ -270,7 +290,7 @@ export default class Chart extends React.Component {
           chartHeight,
           chartType: this.props.chartType,
           chartWidth,
-          data,
+          data: this.state.data,
           labels: this.props.datumLabels,
           margins: this.props.margins,
           svgWidth: width,
@@ -285,7 +305,7 @@ export default class Chart extends React.Component {
           chartDataGroupBy: this.props.chartDataGroupBy,
           transform: 'rotate(-90)',
           // x & y flip because of rotation
-          x: -height / 2 - this.props.margins.top,
+          x: -this.state.containerHeight / 2 - this.props.margins.top,
           y: '1em',
           yAxisLabel: this.props.yAxisLabel || this.props.yValue,
         })
@@ -297,9 +317,9 @@ export default class Chart extends React.Component {
           chartHeight,
           chartType: this.props.chartType,
           chartWidth,
-          data,
+          data: this.state.data,
           margins: this.props.margins,
-          svgHeight: height,
+          svgHeight: this.state.containerHeight,
           yValue: this.props.yValue,
         })
         : null;
@@ -311,15 +331,15 @@ export default class Chart extends React.Component {
     }
 
     // creates chart based on above variable initializations
-    const thisChart = chartFunction({
+    const thisChart = this.state.chartFunction({
       chartDataGroupBy: this.props.chartDataGroupBy,
       chartHeight,
       chartType: this.props.chartType,
       chartWidth,
-      colorScale,
+      colorScale: this.state.colorScale,
       colorScaleScheme: this.props.colorScaleScheme,
       colorScaleType: this.props.colorScaleType,
-      data,
+      data: this.state.data,
       filterable: this.props.filterable,
       foreignObject: this.props.foreignObject,
       foreignObjectType: this.props.foreignObjectType,
@@ -341,20 +361,29 @@ export default class Chart extends React.Component {
       : <SVG
         id={this.props.id}
         preserveAspectRatio={this.props.preserveAspectRatio}
-        svgHeight={height}
-        svgWidth={width}
+        style={{
+          position: 'relative'
+        }}
+        svgHeight={this.state.containerHeight}
+        svgWidth={this.state.containerWidth}
         xmlns='http://www.w3.org/2000/svg'
       >
         <g
           className='chart-svg-g'
-          height={chartHeight}
-          transform={`translate(${this.props.margins.left}, ${this.props.margins.top})`}
-          width={chartWidth}
+          style={{
+            height: chartHeight,
+            transform: `translate(${this.props.margins.left}px, ${this.props.margins.top}px)`,
+            transition: 'transform 1s',
+            width: chartWidth,
+          }}
           >
           <g
             className={`${this.props.chartType.toLowerCase()}-visual-container`}
             id={`${this.props.id}-visual-container`}
-            transform={this.getVisualContainerTransform({ chartHeight, chartType: this.props.chartType, chartWidth })}
+            style={{
+              transform: this.getVisualContainerTransform({ chartHeight, chartType: this.props.chartType, chartWidth }),
+              transition: 'transform 1s',
+            }}
           >
             {thisChart}
           </g>
@@ -362,14 +391,20 @@ export default class Chart extends React.Component {
         { this.props.xAxis &&
           <g
             className='x axis'
-            transform={`translate(${this.props.margins.left}, ${chartHeight + this.props.margins.top})`}
+            style={{
+              transform: `translate(${this.props.margins.left}px, ${chartHeight + this.props.margins.top}px)`,
+              transition: 'transform 1s',
+            }}
           />
         }
         { thisXAxisLabel }
         { this.props.yAxis &&
           <g
             className='y axis'
-            transform={`translate(${this.props.margins.left}, ${this.props.margins.top})`}
+            style={{
+              tansform: `translate(${this.props.margins.left}px, ${this.props.margins.top}px)`,
+              transition: 'transform 1s',
+            }}
           />
         }
         { thisYAxisLabel }
@@ -397,6 +432,7 @@ export default class Chart extends React.Component {
           position: 'relative',
         }}
       >
+        <Popup />
         {renderedChart}
       </div>
     );

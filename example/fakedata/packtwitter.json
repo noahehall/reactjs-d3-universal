@@ -3,82 +3,610 @@
   "type": "parent",
   "children": [{
     "name": "Sentiment",
-    "size": 121,
+    "size": 582,
     "type": "parent",
     "children": [{
-      "name": "Positive",
-      "size": 104,
+      "name": "Negative -5",
+      "size": 110,
+      "type": "parent",
+      "children": [{
+        "size": 10,
+        "name": "gun",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 15 11:02:40 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841967881516679168",
+            "tweet": "Can you imagine what the outcry would be if @SnoopDogg, failing career and all, had aimed and fired the gun at President Obama? Jail time!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "terrible",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 12:04:13 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839084268991229952",
+            "tweet": "122 vicious prisoners, released by the Obama Administration from Gitmo, have returned to the battlefield. Just another terrible decision!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 15,
+        "name": "sad",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 04 13:19:29 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838016045222854656",
+            "tweet": "Arnold Schwarzenegger isn't voluntarily leaving the Apprentice, he was fired by his bad (pathetic) ratings, not by me. Sad end to great show"
+          }, {
+            "date": "Tue Feb 21 23:23:13 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834181712783560705",
+            "tweet": "The so-called angry crowds in home districts of some Republicans are actually, in numerous cases, planned out by liberal activists. Sad!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "sick",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 04 12:02:48 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837996746236182529",
+            "tweet": "How low has President Obama gone to tapp my phones during the very sacred election process. This is Nixon/Watergate. Bad (or sick) guy!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "illegal",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 26 18:16:41 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835916511944523777",
+            "tweet": "Russia talk is FAKE NEWS put out by the Dems, and played up by the media, in order to mask the big election defeat and the illegal leaks!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "mess",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 18 13:31:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832945737625387008",
+            "tweet": "Don't believe the main stream (fake news) media.The White House is running VERY WELL. I inherited a MESS and am in the process of fixing it."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "enemy",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 17 21:48:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832708293516632065",
+            "tweet": "The FAKE NEWS media (failing @nytimes, @NBCNews, @ABC, @CBS, @CNN) is not my enemy, it is the enemy of the American People!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 20,
+        "name": "fake",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 16 14:39:52 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832238070460186625",
+            "tweet": "The Democrats had to come up with a story as to why they lost the election, and so badly (306), so they made up a story - RUSSIA. Fake news!"
+          }, {
+            "date": "Sun Feb 12 12:14:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830751875578355713",
+            "tweet": "While on FAKE NEWS @CNN, Bernie Sanders was cut off for using the term fake news to describe the network. They said technical difficulties!"
+          }, {
+            "date": "Fri Feb 10 13:35:50 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830047626414477312",
+            "tweet": "The failing @nytimes does major FAKE NEWS China story saying \"Mr.Xi has not spoken to Mr. Trump since Nov.14.\" We spoke at length yesterday!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "apologize",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 16 11:58:43 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832197515248275456",
+            "tweet": "Leaking, and even illegal classified leaking, has been a big problem in Washington for years. Failing @nytimes (and others) must apologize!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 15,
+        "name": "losing",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 12:08:12 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831837514226921472",
+            "tweet": "This Russian connection non-sense is merely an attempt to cover-up the many mistakes made in Hillary Clinton's losing campaign."
+          }, {
+            "date": "Thu Feb 09 13:26:07 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829682794951475200",
+            "tweet": "Sen. McCain should not be talking about the success or failure of a mission to the media. Only emboldens the enemy! He's been losing so...."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "hatred",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 11:40:32 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831830548565852160",
+            "tweet": "The fake news media is going crazy with their conspiracy theories and blind hatred. @MSNBC &amp; @CNN are unwatchable. @foxandfriends is great!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "criminals",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 12 11:34:45 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830741932099960834",
+            "tweet": "The crackdown on illegal criminals is merely the keeping of my campaign promise. Gang members, drug dealers &amp; others are being removed!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "wrong",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 13:04:47 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829315036329963521",
+            "tweet": "I will be speaking at 9:00 A.M. today to Police Chiefs and Sheriffs and will be discussing the horrible, dangerous and wrong decision......."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "obstruction",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 01:04:00 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829133645055135750",
+            "tweet": "It is a disgrace that my full Cabinet is still not in place, the longest such delay in the history of our country. Obstruction by Democrats!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "problem",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 07 12:11:29 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828939235499638784",
+            "tweet": "I don't know Putin, have no deals in Russia, and the haters are going crazy - yet Obama can make a deal with Iran, #1 in terror, no problem!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "worse",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 07 02:33:55 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828793887275761665",
+            "tweet": "The failing @nytimes was forced to apologize to its subscribers for the poor reporting it did on my election win. Now they are worse!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "bad",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 05 20:39:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828342202174668800",
+            "tweet": "Just cannot  believe a judge would put our country in such peril. If something happens blame him and court system. People pouring in. Bad!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "disaster",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 20 12:35:14 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843803115044454402",
+            "tweet": "Just heard Fake News CNN is doing polls again despite the fact that their election polls were a WAY OFF disaster. Much higher ratings at Fox"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Negative -4",
+      "size": 28,
+      "type": "parent",
+      "children": [{
+        "size": 8,
+        "name": "refuse",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 09:35:58 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842670836905639936",
+            "tweet": "RT @DiamondandSilk: When the President says \"You're Fired\"     That means: \"Pack Yo Stuff and Go, Not Say \"You Refuse to Go!  #DrainTheSwam…"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "approved",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 12:19:12 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837638488656920576",
+            "tweet": "It is so pathetic that the Dems have still not approved my full Cabinet."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "sad",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 25 03:09:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835325771858251776",
+            "tweet": "FAKE NEWS media knowingly doesn't tell the truth. A great danger to our country. The failing @nytimes has become a joke. Likewise @CNN. Sad!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "illegally",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 13:13:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831853862281699331",
+            "tweet": "The real scandal here is that classified information is illegally given out by \"intelligence\" like candy. Very un-American!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "wrong",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 06 16:32:24 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828642511698669569",
+            "tweet": "The failing @nytimes writes total fiction concerning me. They have gotten it wrong for two years, and now are making up stories &amp; sources!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "lost",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 20 10:49:48 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843776582825267201",
+            "tweet": "The Democrats made up and pushed the Russian story as an excuse for running a terrible campaign. Big advantage in Electoral College &amp; lost!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "fake",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 20 10:35:28 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843772976151642112",
+            "tweet": "James Clapper and others stated that there is no evidence Potus colluded with Russia. This story is FAKE NEWS and everyone knows it!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Negative -3",
+      "size": 42,
       "type": "parent",
       "children": [{
         "size": 6,
-        "name": "join",
+        "name": "warn",
         "children": [{
           "metadata": [{
-            "date": "Wed Feb 22 06:05:42 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/834282999822692352",
-            "tweet": "@leemartin it would be awesome if you could join Urban Music Professionals on #linkedin https://t.co/fTfMnRaeZ4"
-          }, {
-            "date": "Fri Apr 17 18:33:29 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/589134603597656064",
-            "tweet": "Join me at SugarCon 2015! https://t.co/SHzHI3fobK #SugarCon2015 | Powered by #RegOnline"
+            "date": "Fri Mar 17 12:34:17 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842715710765830147",
+            "tweet": "RT @foxandfriends: FOX NEWS ALERT: Jihadis using religious visa to enter US, experts warn (via @FoxFriendsFirst) https://t.co/pwXeR9OMQC"
           }],
           "name": "singleTweet",
           "size": 1,
           "type": "metadata"
         }]
       }, {
-        "size": 24,
-        "name": "awesome",
+        "size": 12,
+        "name": "fake",
         "children": [{
           "metadata": [{
-            "date": "Tue Feb 21 03:52:49 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/833887173673840640",
-            "tweet": "working with the twitter api is sooo much dev friendly than the facebook api, the amount of data you have access to is awesome"
+            "date": "Wed Mar 15 10:55:30 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841966077005463553",
+            "tweet": "Does anybody really believe that a reporter, who nobody ever heard of, \"went to his mailbox\" and found my tax returns? @NBCNews  FAKE NEWS!"
           }, {
-            "date": "Sun Jan 29 07:42:40 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/825610096495300608",
-            "tweet": "@acloudguru scheduled my exam for the 6th! your course is awesome"
+            "date": "Wed Feb 08 15:54:01 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829357626798530561",
+            "tweet": "'16 Fake News Stories Reporters Have Run Since Trump Won' https://t.co/0dHld5kiVc"
           }, {
-            "date": "Mon Dec 26 23:21:35 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/813525192332820480",
-            "tweet": "you guys are awesome @StrongLoop"
-          }, {
-            "date": "Sat Nov 26 05:07:35 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/802378243214970880",
-            "tweet": "lets see how awesome @logrocketjs makes my new app for @udacity"
-          }, {
-            "date": "Sat Oct 29 08:07:21 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/792276622883684352",
-            "tweet": "@cagan thanks for the awesome pic https://t.co/1f7Kpaik0j"
+            "date": "Mon Feb 06 12:07:55 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828575949268606977",
+            "tweet": "I call my own shots, largely based on an accumulation of data, and everyone knows it. Some FAKE NEWS media, in order to marginalize, lies!"
           }],
           "name": "singleTweet",
           "size": 1,
           "type": "metadata"
         }]
       }, {
-        "size": 3,
-        "name": "best",
+        "size": 6,
+        "name": "worst",
         "children": [{
           "metadata": [{
-            "date": "Mon Feb 20 19:13:14 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/833756413876801536",
-            "tweet": "ive done my best coding to this track https://t.co/Udi9xooAjw"
+            "date": "Mon Mar 13 13:11:17 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841275470796738560",
+            "tweet": "ObamaCare is imploding. It is a disaster and 2017 will be the worst year yet, by far! Republicans will come together and save the day."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 9,
+        "name": "illegal",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 02:38:48 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837492425283219458",
+            "tweet": "...is all of the illegal leaks of classified and other information. It is a total \"witch hunt!\""
+          }, {
+            "date": "Tue Feb 14 14:28:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831510532318429184",
+            "tweet": "The real story here is why are there so many illegal leaks coming out of Washington? Will these leaks be happening as I deal on N.Korea etc?"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "losing",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 02:27:29 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837489578193846278",
+            "tweet": "...intentional. This whole narrative is a way of saving face for Democrats losing an election that everyone thought they were supposed....."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 9,
+        "name": "failing",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 26 11:42:39 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835817351178301440",
+            "tweet": "For first time the failing @nytimes will take an ad (a bad one) to help save its failing reputation. Try reporting accurately &amp; fairly!"
+          }, {
+            "date": "Wed Feb 15 12:19:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831840306161123328",
+            "tweet": "Information is being illegally given to the failing @nytimes &amp; @washingtonpost by the intelligence community (NSA and FBI?).Just like Russia"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "stop",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 24 12:31:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835104946034991106",
+            "tweet": "The FBI is totally unable to stop the national security \"leakers\" that have permeated our government for a long time. They can't even......"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "dishonest",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 17 23:15:56 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832730328108134402",
+            "tweet": "\"One of the most effective press conferences I've ever seen!\" says Rush Limbaugh. Many agree.Yet FAKE MEDIA  calls it differently! Dishonest"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "discredited",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 16 14:10:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832230758299340800",
+            "tweet": "FAKE NEWS media, which makes up stories and \"sources,\" is far more effective than the discredited Democrats - but they are fading fast!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "sorry",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 06 12:01:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828574430800539648",
+            "tweet": "Any negative polls are fake news, just like the CNN, ABC, NBC polls in the election. Sorry, people want border security and extreme vetting."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Negative -2",
+      "size": 14,
+      "type": "parent",
+      "children": [{
+        "size": 4,
+        "name": "alone",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 04 11:42:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837991759045079040",
+            "tweet": "Just out: The same Russian Ambassador that met Jeff Sessions visited the Obama White House 22 times, and 4 times last year alone."
           }],
           "name": "singleTweet",
           "size": 1,
@@ -86,20 +614,14 @@
         }]
       }, {
         "size": 4,
-        "name": "enjoyed",
+        "name": "lost",
         "children": [{
           "metadata": [{
-            "date": "Sun Feb 19 04:33:38 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/833172670174765056",
-            "tweet": "@justinfagnani really enjoyed your approach to mixins! i'm using it in my datastructures project now ;)"
-          }, {
-            "date": "Tue Jan 10 01:27:23 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/818630282194452481",
-            "tweet": "@Keithamus enjoyed your post on symbols"
+            "date": "Fri Mar 03 02:35:33 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837491607171629057",
+            "tweet": "...to win. The Democrats are overplaying their hand. They lost the election, and now they have lost their grip on reality. The real story..."
           }],
           "name": "singleTweet",
           "size": 1,
@@ -107,20 +629,14 @@
         }]
       }, {
         "size": 4,
-        "name": "saved",
+        "name": "devastating",
         "children": [{
           "metadata": [{
-            "date": "Tue Nov 08 05:03:16 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/795854176173461504",
-            "tweet": "@ddprrt man your multiple vinyl streams blog just saved my night"
-          }, {
-            "date": "Fri Jan 22 20:04:33 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/690626123017822208",
-            "tweet": "@DirectoryLister just saved 15% by switching to @DirectoryLister"
+            "date": "Fri Feb 24 12:36:34 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835106143462703104",
+            "tweet": "find the leakers within the FBI itself. Classified information is being given to media that could have a devastating effect on U.S. FIND NOW"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -128,95 +644,29 @@
         }]
       }, {
         "size": 4,
-        "name": "better",
+        "name": "dishonest",
         "children": [{
           "metadata": [{
-            "date": "Sun Oct 09 03:18:26 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/784956156468789248",
-            "tweet": "RT @cwpittman: Testing out the first project in @udacity's Self-Driving Car ND! I think my NN drives better than I do https://t.co/FtyEy2Gu…"
-          }, {
-            "date": "Sat Apr 04 17:10:27 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/584402665502740481",
-            "tweet": "RT @anagoldpr: The fans deserve better!"
+            "date": "Sun Feb 12 22:19:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830904083519242241",
+            "tweet": "Just leaving Florida. Big crowds of enthusiastic supporters lining the road that the FAKE NEWS media refuses to mention. Very dishonest!"
           }],
           "name": "singleTweet",
           "size": 1,
           "type": "metadata"
         }]
       }, {
-        "size": 7,
-        "name": "reliable",
+        "size": 4,
+        "name": "misrepresents",
         "children": [{
           "metadata": [{
-            "date": "Thu Oct 06 04:10:40 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/783882140949676034",
-            "tweet": "RT @GigSky: Thrilled to partner w/ @AvionicaInc – combining their world-class hardware with our reliable, global connectivity. https://t.co…"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 5,
-        "name": "share",
-        "children": [{
-          "metadata": [{
-            "date": "Sat Jul 30 18:27:55 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/759455497678229504",
-            "tweet": "@nodebotanist enjoyed your talk at @npmcamp can you post the deck would like to share it with some friends"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 3,
-        "name": "excellent",
-        "children": [{
-          "metadata": [{
-            "date": "Thu Jun 23 03:24:36 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/745819822018048002",
-            "tweet": "@ahfarmer excellent site!"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 2,
-        "name": "thanks",
-        "children": [{
-          "metadata": [{
-            "date": "Wed May 25 16:25:32 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/735507099417858048",
-            "tweet": "@rajaraodv you are @#$@#$ dope! thanks for the tuts"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 3,
-        "name": "good",
-        "children": [{
-          "metadata": [{
-            "date": "Sat Jan 16 05:46:47 +0000 2016",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/688235929501212672",
-            "tweet": "@Mere_R_Maharaj things are good, thinking about going to grad"
+            "date": "Thu Feb 09 11:57:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829660612452036608",
+            "tweet": "Sen.Richard Blumenthal, who never fought in Vietnam when he said for years he had (major lie),now misrepresents what Judge Gorsuch told him?"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -227,89 +677,11 @@
         "name": "win",
         "children": [{
           "metadata": [{
-            "date": "Sat Nov 28 06:48:46 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/670494524058247168",
-            "tweet": "I just entered to win tickets to @phutureprimitive at @SocialHallSF on 12/4 from @magnifi_fm! Your turn https://t.co/IgCMDoIRnz"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 3,
-        "name": "winner",
-        "children": [{
-          "metadata": [{
-            "date": "Tue Sep 08 12:57:36 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/641233926632046593",
-            "tweet": "Mayweather vs. Berto Fight Time, Expected Prize Money, Projected Winner, Odds http://t.co/mnP02EmlB3 via @bleacherreport"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 7,
-        "name": "free",
-        "children": [{
-          "metadata": [{
-            "date": "Wed Jul 29 02:12:35 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/626213699863232512",
-            "tweet": "RT @DotheBay: .@thebandconbrio are playing a free show at @TheChapelSF tomorrow! RSVP: http://t.co/jRIZdkYav7 Local #MusicMonday http://t.c…"
-          }, {
-            "date": "Sat Jul 04 06:41:51 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/617221767715667968",
-            "tweet": "Check out Help OSTraining create free Drupal 8 Training videos by Steve Burge on @Kickstarter http://t.co/llanj0r9mL"
-          }, {
-            "date": "Thu Jul 02 04:21:06 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/616461572047683584",
-            "tweet": "RT @ruby_plus: @noahedwardhall Please share the free coupons for TDD in Ruby course: \nhttps://t.co/UQjZhckwMb with your followers."
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 5,
-        "name": "like",
-        "children": [{
-          "metadata": [{
-            "date": "Sat Jul 11 22:54:13 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/620003186183573508",
-            "tweet": "RT @jk_rowling: .@diegtristan8 \"she is built like a man\". Yeah, my husband looks just like this in a dress. You're an idiot. http://t.co/BC…"
-          }, {
-            "date": "Thu Jul 02 02:33:56 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/616434600840032256",
-            "tweet": "tomgeller came on the drupal7 advanced training like a scene out of lepracaun in the hood"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 2,
-        "name": "sweet",
-        "children": [{
-          "metadata": [{
-            "date": "Sat Jul 11 01:42:58 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/619683264937103363",
-            "tweet": "Sweet Sound Bites: MAGNIFI Presents Geographer at The Chapel 6/25/201... http://t.co/ilqoeuUUsf"
+            "date": "Wed Feb 08 12:03:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829299566344359936",
+            "tweet": "If the U.S. does not win this case as it so obviously should, we can never have the security and safety to which we are entitled. Politics!"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -317,89 +689,14 @@
         }]
       }, {
         "size": 4,
-        "name": "paradise",
+        "name": "threat",
         "children": [{
           "metadata": [{
-            "date": "Sun May 17 16:22:00 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/599973150302937090",
-            "tweet": "Kickstarter campaign launched for Larry Levan and Paradise Garage movie @Mixmag http://t.co/ABEnnSQREi"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 1,
-        "name": "rises",
-        "children": [{
-          "metadata": [{
-            "date": "Sat May 02 15:57:03 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/594531052464418816",
-            "tweet": "San Francisco Minimum Wage Rises to $12.25, Other Bay Area Cities Considering Hikes | NBC Bay Area http://t.co/BJwTyZkDN7 via @nbcbayarea"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 3,
-        "name": "boost",
-        "children": [{
-          "metadata": [{
-            "date": "Fri May 01 01:03:05 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/593943690218901504",
-            "tweet": "RT @Forbes: If your job is chock full of challenging thinking tasks, your brain may be getting a positive boost: http://t.co/zbP236ysO1"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 4,
-        "name": "winning",
-        "children": [{
-          "metadata": [{
-            "date": "Sun Apr 26 06:00:31 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/592206601638973440",
-            "tweet": "bebes kids on @netflix #winning"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 2,
-        "name": "useful",
-        "children": [{
-          "metadata": [{
-            "date": "Tue Apr 14 04:11:16 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/587830455329624065",
-            "tweet": "9 Useful PHP Functions and Features You Need to Know http://t.co/fNNN3vHQ9P via @tutsplus"
-          }],
-          "name": "singleTweet",
-          "size": 1,
-          "type": "metadata"
-        }]
-      }, {
-        "size": 4,
-        "name": "success",
-        "children": [{
-          "metadata": [{
-            "date": "Tue Mar 24 12:45:34 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/580349737880002560",
-            "tweet": "Napping Improves Memory Five-Fold And Enhances Learning Success, Study Finds http://t.co/2xLJMgpnPL via @immortal_org"
+            "date": "Tue Feb 07 02:49:28 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828797801630937089",
+            "tweet": "The threat from radical Islamic terrorism is very real, just look at what is happening in Europe and the Middle-East. Courts must act fast!"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -407,19 +704,19 @@
         }]
       }]
     }, {
-      "name": "Negative",
-      "size": 17,
+      "name": "Negative -1",
+      "size": 10,
       "type": "parent",
       "children": [{
         "size": 2,
-        "name": "protest",
+        "name": "worst",
         "children": [{
           "metadata": [{
-            "date": "Sun Jan 29 05:09:30 +0000 2017",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/825571551445594112",
-            "tweet": "RT @RMac18: Google cofounder Sergey Brin at SFO protest: \"I'm here because I'm a refugee.\" (Photo from Matt Kang/Forbes) https://t.co/GwhsS…"
+            "date": "Fri Mar 10 13:32:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/840193545046773760",
+            "tweet": "RT @foxandfriends: \"Never give up....that's the worst thing you could do. There's always a chance.\" -Kyle Coddington's message to those als…"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -427,14 +724,14 @@
         }]
       }, {
         "size": 2,
-        "name": "failed",
+        "name": "demand",
         "children": [{
           "metadata": [{
-            "date": "Wed Jul 22 19:50:45 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/623943284486995968",
-            "tweet": "Autopsy | Lessons from Failed Startups http://t.co/teLCQJucvm via @autopsyhq"
+            "date": "Fri Mar 03 21:02:23 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837770149767827456",
+            "tweet": "I hereby demand a second investigation, after Schumer, of Pelosi for her close ties to Russia, and lying about it. https://t.co/qCDljfF3wN"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -442,14 +739,14 @@
         }]
       }, {
         "size": 2,
-        "name": "demands",
+        "name": "debt",
         "children": [{
           "metadata": [{
-            "date": "Sun May 17 16:18:42 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/599972320166285313",
-            "tweet": "Candidate with no votes demands recount because he ‘voted for himself’ http://t.co/HwXAhJEQ9U"
+            "date": "Sat Feb 25 13:19:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835479283699224576",
+            "tweet": "The media has not reported that the National Debt in my first month went down by $12 billion vs a $200 billion increase in Obama first mo."
           }],
           "name": "singleTweet",
           "size": 1,
@@ -457,14 +754,14 @@
         }]
       }, {
         "size": 2,
-        "name": "fire",
+        "name": "fight",
         "children": [{
           "metadata": [{
-            "date": "Fri May 15 14:36:17 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/599221769677901824",
-            "tweet": "#kpfa  on fire this morning"
+            "date": "Fri Feb 24 17:04:19 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835173525522624512",
+            "tweet": "Trump vows to fight 'epidemic' of human trafficking \nhttps://t.co/oDLZ2NdrtA"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -472,29 +769,163 @@
         }]
       }, {
         "size": 2,
-        "name": "unable",
+        "name": "killed",
         "children": [{
           "metadata": [{
-            "date": "Tue Apr 28 02:49:20 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/592883265742209024",
-            "tweet": "@sugarcrmdev I am unable to create a new record on a custom module via the v10 REST api"
+            "date": "Fri Feb 24 00:01:40 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834916167177371648",
+            "tweet": "Seven people shot and killed yesterday in Chicago. What is going on there - totally out of control. Chicago needs help!"
           }],
           "name": "singleTweet",
           "size": 1,
           "type": "metadata"
         }]
       }, {
+        "size": 2,
+        "name": "prisoner",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 23:59:26 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832016501657968640",
+            "tweet": "Venezuela should allow Leopoldo Lopez, a political prisoner &amp; husband of @liliantintori (just met w/ @marcorubio) o… https://t.co/HhgE51dtSN"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "admitted",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 12 11:55:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830747067379232769",
+            "tweet": "72% of refugees admitted into U.S. (2/3 -2/11) during COURT BREAKDOWN are from 7 countries: SYRIA, IRAQ, SOMALIA, IRAN, SUDAN, LIBYA &amp; YEMEN"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "dangerous",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 11 12:12:51 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830389130311921667",
+            "tweet": "Our legal system is broken! \"77% of refugees allowed into U.S. since travel reprieve hail from seven suspect countries.\" (WT)  SO DANGEROUS!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "swearing",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 09 15:58:01 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829721019720015872",
+            "tweet": "Join us live in the Oval Office for the swearing in of our new Attorney General, @SenatorSessions!\nLIVE:… https://t.co/QeW6vjog4A"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "fake",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 09 13:19:08 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829681034564341760",
+            "tweet": "Chris Cuomo, in his interview with Sen. Blumenthal, never asked him about his long-term lie about his brave \"service\" in Vietnam. FAKE NEWS!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Neutral",
+      "size": 44,
+      "type": "parent",
+      "children": [{
         "size": 3,
-        "name": "illegal",
+        "name": "despite",
         "children": [{
           "metadata": [{
-            "date": "Wed Apr 01 11:27:27 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/583229180793348096",
-            "tweet": "Starbucks that aren't 24 hours should be illegal"
+            "date": "Sat Mar 18 13:15:41 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843088518339612673",
+            "tweet": "Despite what you have heard from the FAKE NEWS, I had a GREAT meeting with German Chancellor Angela Merkel. Nevertheless, Germany owes....."
+          }, {
+            "date": "Fri Feb 17 10:13:32 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832533430168608768",
+            "tweet": "Despite the long delays by the Democrats in finally approving Dr. Tom Price, the repeal and replacement of ObamaCare is moving fast!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 5,
+        "name": "the",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 14:07:26 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842739155230740481",
+            "tweet": "\"The President Changed. So Has Small Businesses' Confidence\"\nhttps://t.co/daTGjPmYeJ"
+          }, {
+            "date": "Sat Mar 04 11:26:47 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837987684660412416",
+            "tweet": "The first meeting Jeff Sessions had with the Russian Amb was set up by the Obama Administration under education program for 100 Ambs......"
+          }, {
+            "date": "Thu Feb 16 12:02:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832198588201594880",
+            "tweet": "The spotlight has finally been put on the low-life leakers! They will be caught!"
+          }, {
+            "date": "Mon Mar 20 11:02:57 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843779892776964097",
+            "tweet": "The real story that Congress, the FBI and all others should be looking into is the leaking of Classified information. Must find leaker now!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "north",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 13:07:15 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842724011234791424",
+            "tweet": "North Korea is behaving very badly. They have been \"playing\" the United States for years. China has done little to help!"
           }],
           "name": "singleTweet",
           "size": 1,
@@ -502,14 +933,1761 @@
         }]
       }, {
         "size": 4,
-        "name": "hurt",
+        "name": "rt",
         "children": [{
           "metadata": [{
-            "date": "Sun Mar 22 01:34:28 +0000 2015",
-            "username": "noahedwardhall",
-            "imageUrl": "https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg",
-            "url": "https://twitter.com/noahedwardhall/status/579456072844386304",
-            "tweet": "RT @songproducers: Amanda Palmer's mistake (and why it will hurt working class musicians). http://t.co/ozoPPt006p"
+            "date": "Fri Mar 17 12:20:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842712210896052225",
+            "tweet": "RT @FoxNews: Jobs created in February. https://t.co/sOaMDxxTA8"
+          }, {
+            "date": "Sun Mar 12 12:36:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/840904454836781056",
+            "tweet": "RT @AmericaFirstPol: .@POTUS Trump led a historic journey to the White House. 50 days in, that historic journey continues. Take a look 👉 ht…"
+          }, {
+            "date": "Sun Feb 12 03:23:13 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830618234726543360",
+            "tweet": "RT @Scavino45: LIVE Joint Statement by President Trump and Prime Minister Shinzo Abe: https://t.co/c3Fe5cUaaS"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "jobs",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 14 15:00:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841665325682827265",
+            "tweet": "JOBS, JOBS, JOBS! https://t.co/wAkQMKdPXA"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "meeting",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 13 22:54:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841422186573369345",
+            "tweet": "Meeting w/ Washington, D.C. @MayorBowser and Metro GM Paul Wiedefeld about incoming winter storm preparations here… https://t.co/mg0A4Hq3bD"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "healthcare",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 13 17:20:15 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841338126316511233",
+            "tweet": "Healthcare listening session w/ @VP &amp; @SecPriceMD. Watch: https://t.co/5ayQ4dr8Ip #ReadTheBill:… https://t.co/1cQI0ZBUv8"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "weekly",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 10 15:40:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/840225958854561792",
+            "tweet": "Weekly Address - 11:00 A.M. at the @WhiteHouse! #MAGA🇺🇸\n➡️https://t.co/YSaPJnSX2i https://t.co/Gb8iTGzb6j"
+          }, {
+            "date": "Fri Mar 03 16:41:55 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837704599704375296",
+            "tweet": "Weekly Address\nJoin me here: https://t.co/SEavQK5zy5 https://t.co/EnyXYeqgcp"
+          }, {
+            "date": "Sat Feb 25 18:12:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835553050530099200",
+            "tweet": "Weekly Address from @WhiteHouse: https://t.co/uaoQSHBOQB https://t.co/7eF6aC6kEC"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "i",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 13:46:28 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839110000870109184",
+            "tweet": "I am working on a new system where there will be competition in the Drug Industry. Pricing for the American people will come way down!"
+          }, {
+            "date": "Sat Feb 11 23:00:21 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830552079240409089",
+            "tweet": "I am so proud of my daughter Ivanka. To be abused and treated so badly by the media, and to still hold her head so high, is truly wonderful!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "'president",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 06 21:19:04 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838861512999649286",
+            "tweet": "'President Trump Congratulates Exxon Mobil for Job-Creating Investment Program'\nhttps://t.co/adBzWhtq8S"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "who",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Mar 05 11:40:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838353481526312961",
+            "tweet": "Who was it that secretly said to Russian President, \"Tell Vladimir that after the election I'll have more flexibility?\" @foxandfriends"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "is",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Mar 05 11:32:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838351476401520640",
+            "tweet": "Is it true the DNC would not allow the FBI access to check server or other equipment after learning it was hacked? Can that be possible?"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "terrible",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 04 11:35:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837989835818287106",
+            "tweet": "Terrible! Just found out that Obama had my \"wires tapped\" in Trump Tower just before the victory. Nothing found. This is McCarthyism!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "we",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 17:54:30 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837722869106880517",
+            "tweet": "We should start an immediate investigation into @SenSchumer and his ties to Russia and Putin. A total hypocrite! https://t.co/Ik3yqjHzsA"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "nick",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 12:00:39 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837633820417482754",
+            "tweet": "Nick Adams new book, Green Card Warrior, is a must read. The merit-based system is the way to go. Canada, Australia! @foxandfriends"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "jointsession",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 01 01:42:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836753422271582208",
+            "tweet": "#JointSession #MAGA🇺🇸\nhttps://t.co/RDO6Jt2pip"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "going",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 24 13:49:27 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835124485632180224",
+            "tweet": "Going to CPAC!"
+          }, {
+            "date": "Fri Feb 17 11:38:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832554772318322688",
+            "tweet": "Going to Charleston, South Carolina, in order to spend time with Boeing and talk jobs! Look forward to it."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "'sampp",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 23 22:53:45 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834899071982841856",
+            "tweet": "'S&amp;P 500 Edges Higher After Trump Renews Jobs Pledge' https://t.co/WtrRJVFmvU"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "'americans",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 21 20:46:42 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834142323881684993",
+            "tweet": "'Americans overwhelmingly oppose sanctuary cities' https://t.co/s5QvsJWA6u"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "just",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 20 21:00:37 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/833783438922629125",
+            "tweet": "Just named General H.R. McMaster National Security Advisor."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "give",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 20 14:15:42 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/833681539997253636",
+            "tweet": "Give the public a break - The FAKE NEWS media is trying to say that large scale immigration in Sweden is working out just beautifully. NOT!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "my",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 19 21:57:01 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/833435244451753984",
+            "tweet": "My statement as to what's happening in Sweden was in reference to a story that was broadcast on @FoxNews concerning immigrants &amp; Sweden."
+          }, {
+            "date": "Wed Feb 08 15:51:01 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829356871848951809",
+            "tweet": "My daughter Ivanka has been treated so unfairly by @Nordstrom. She is a great person -- always pushing me to do the right thing! Terrible!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "general",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 17 13:16:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832579442790772736",
+            "tweet": "General Keith Kellogg, who I have known for a long time, is very much in play for NSA - as are three others."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "'trump",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 16 23:44:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832375230274400256",
+            "tweet": "'Trump signs bill undoing Obama coal mining rule' https://t.co/yMfT5r5RGh"
+          }, {
+            "date": "Wed Feb 08 22:07:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829451566000242688",
+            "tweet": "'Trump administration seen as more truthful than news media'\nhttps://t.co/6LmsR5JOSW"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "aetna",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 21:34:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831979921555742732",
+            "tweet": "Aetna CEO: Obamacare in 'Death Spiral' #RepealAndReplace \nhttps://t.co/dmHL7xIEQv"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "crimea",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 12:42:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831846101179314177",
+            "tweet": "Crimea was TAKEN by Russia during the Obama Administration. Was Obama too soft on Russia?"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "obamacare",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 14 22:50:33 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831636777110757377",
+            "tweet": "Obamacare continues to fail. Humana to pull out in 2018. Will repeal, replace &amp; save healthcare for ALL Americans. \nhttps://t.co/glWEQ0lNR4"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "after",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 12 13:04:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830764596235485188",
+            "tweet": "After two days of very productive talks, Prime Minister Abe is heading back to Japan. L"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 3,
+        "name": "icymi",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 12 05:02:01 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830643095150657536",
+            "tweet": "#ICYMI: Joint Statement with Prime Minister Shinzo Abe on North Korea. https://t.co/qEC87FKB1D"
+          }, {
+            "date": "Sun Mar 19 20:20:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843557782666317826",
+            "tweet": "#ICYMI: Weekly Address \n➡️https://t.co/ckVx2zgA1x https://t.co/dTGZLvlsGv"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "heading",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 10 23:24:51 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830195857530183684",
+            "tweet": "Heading to Joint Base Andrews on #MarineOne with Prime Minister Shinzō earlier today. https://t.co/4JFhyYdeHO"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "see",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 09 23:35:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829836231802515457",
+            "tweet": "SEE YOU IN COURT, THE SECURITY OF OUR NATION IS AT STAKE!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Positive 1",
+      "size": 12,
+      "type": "parent",
+      "children": [{
+        "size": 2,
+        "name": "great",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 14:14:03 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839116941956640768",
+            "tweet": "Don't let the FAKE NEWS tell you that there is big infighting in the Trump Admin. We are getting along great, and getting major things done!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "legal",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 04 11:49:00 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837993273679560704",
+            "tweet": "Is it legal for a sitting President to be \"wire tapping\" a race for president prior to an election? Turned down by court earlier. A NEW LOW!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "clearly",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 02:22:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837488402438176769",
+            "tweet": "Jeff Sessions is an honest man. He did not say anything wrong. He could have stated his response more accurately, but it was clearly not...."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "join",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 01 01:30:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836750538943377408",
+            "tweet": "Join me live at 9:00 P.M. \n#JointAddress https://t.co/J882zbyVkJ https://t.co/gTtK3vJmkU"
+          }, {
+            "date": "Fri Feb 17 15:34:14 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832614137586933760",
+            "tweet": "Join me at 11:00am:\nWatch here: https://t.co/veqKmsGAwf https://t.co/UzndIjIqjM"
+          }, {
+            "date": "Wed Feb 15 19:45:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831952535544070145",
+            "tweet": "Join me in Florida this Saturday at 5pm for a rally at the Orlando-Melbourne International Airport!\nTickets:… https://t.co/OigfXFECPp"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 5,
+        "name": "big",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 26 20:13:52 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835946001873657858",
+            "tweet": "Big dinner with Governors tonight at White House. Much to be discussed, including healthcare."
+          }, {
+            "date": "Fri Feb 24 00:06:44 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834917440450609152",
+            "tweet": "Big interview tonight by Henry Kravis at The Business Council of Washington. Looking forward to it!"
+          }, {
+            "date": "Sat Feb 18 13:51:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832950628750127106",
+            "tweet": "Will be having many meetings this weekend at The Southern White House. Big 5:00 P.M. speech in Melbourne, Florida. A lot to talk about!"
+          }, {
+            "date": "Sat Feb 18 00:02:58 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832742165436579840",
+            "tweet": "Looking forward to the Florida rally tomorrow. Big crowd expected!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "popular",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 19:39:51 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829414457126313986",
+            "tweet": "'Immigration Ban Is One Of Trump's Most Popular Orders So Far' https://t.co/wAelwuQ4BE"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 2,
+        "name": "carefully",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 05 20:42:33 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828343072840900610",
+            "tweet": "I have instructed Homeland Security to check people coming into our country VERY CAREFULLY. The courts are making the job very difficult!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Positive 2",
+      "size": 66,
+      "type": "parent",
+      "children": [{
+        "size": 4,
+        "name": "swiftly",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 12:26:12 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842713677174358016",
+            "tweet": "RT @AmericaFirstPol: MAJOR IMPACT: @POTUS Trump is 50 Days in and moving swiftly to get America back on the right track. #MAGA \nhttps://t.c…"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 16,
+        "name": "thank",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 04:20:41 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842229104434913280",
+            "tweet": "Thank you Nashville, Tennessee! https://t.co/6snvQ0DzXN"
+          }, {
+            "date": "Wed Mar 15 23:25:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842154802058543105",
+            "tweet": "Thank you Andrew Jackson! #POTUS7 #USA🇺🇸 https://t.co/GToWsWXiNv"
+          }, {
+            "date": "Tue Mar 07 03:50:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838960097674002432",
+            "tweet": "Thank you to @exxonmobil for your $20 billion investment that is creating more than 45,000 manufacturing &amp; construction jobs in the USA!"
+          }, {
+            "date": "Tue Mar 07 03:49:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838959869772328960",
+            "tweet": "Buy American &amp; hire American are the principles at the core of my agenda, which is: JOBS, JOBS, JOBS! Thank you @exxonmobil."
+          }, {
+            "date": "Wed Mar 01 13:38:44 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836933725602656256",
+            "tweet": "THANK YOU!"
+          }, {
+            "date": "Wed Feb 15 12:28:37 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831842652085686273",
+            "tweet": "Thank you to Eli Lake of The Bloomberg View - \"The NSA &amp; FBI...should not interfere in our politics...and is\" Very serious situation for USA"
+          }, {
+            "date": "Mon Mar 20 23:03:36 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843961248811225089",
+            "tweet": "Thank you Louisville, Kentucky- on my way! #MAGA🇺🇸 https://t.co/3QsBsib6kt"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "enjoy",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 15 20:55:52 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842117164144431104",
+            "tweet": "I will be interviewed by @TuckerCarlson tonight at 9:00 P.M. on @FoxNews. Enjoy!"
+          }, {
+            "date": "Tue Feb 28 02:43:03 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836406328369242113",
+            "tweet": "I will be interviewed on @foxandfriends at 6:00 A.M. Enjoy!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "big",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 15 12:14:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841985915778142209",
+            "tweet": "CEO's most optimistic since 2009. It will only get better as we continue to slash unnecessary regulations and when we begin our big tax cut!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "progress",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 11 14:39:07 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/840572799202783233",
+            "tweet": "We are making great progress with healthcare. ObamaCare is imploding and will only get worse. Republicans coming together to get job done!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "gain",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 09 13:13:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839826581354921984",
+            "tweet": "RT @foxnation: .@realDonaldTrump's First Full Month in Office Sees Biggest Jobs Gain 'In Years': Report: https://t.co/rx4bgI1MWK"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "strongest",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 08 12:11:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839448469374894080",
+            "tweet": "LinkedIn Workforce Report: January and February were the strongest consecutive months for hiring since August and September 2015"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "respect",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 08 11:12:39 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839433678275153921",
+            "tweet": "I have tremendous respect for women and the many roles they serve that are vital to the fabric of our society and our economy."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "stronger",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 13:13:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839101660886614016",
+            "tweet": "For eight years Russia \"ran over\" President Obama, got stronger and stronger, picked-off Crimea and added missiles. Weak! @foxandfriends"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "wonderful",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 12:13:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839086723552411648",
+            "tweet": "Our wonderful new Healthcare Bill is now out for review and negotiation. ObamaCare is a complete and total disaster - is imploding fast!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "favorably",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 27 21:48:21 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836332166728527872",
+            "tweet": "GOP now viewed more favorably than Dems, in Trump era (per NBC/WSJ poll) via @HotlineJosh:\nhttps://t.co/Soebxtg2Zd"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "chance",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 26 11:33:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835814988686233601",
+            "tweet": "The race for DNC Chairman was, of course, totally \"rigged.\" Bernie's guy, like Bernie himself, never had a chance. Clinton demanded Perez!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "congratulations",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 25 22:02:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835610917568200705",
+            "tweet": "Congratulations to Thomas Perez, who has just been named Chairman of the DNC. I could not be happier for him, or for the Republican Party!"
+          }, {
+            "date": "Tue Feb 21 00:38:40 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/833838311315763200",
+            "tweet": "Congratulations to our new National Security Advisor, General H.R. McMaster. Video: https://t.co/BKn9r225Kk https://t.co/VBXcJ1b6Pv"
+          }, {
+            "date": "Tue Feb 14 02:57:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831336432073658368",
+            "tweet": "Congratulations Treasury Secretary Steven Mnuchin! #ICYMI- watch here: https://t.co/RPsmw4yD7y https://t.co/K8tWLlXiYK"
+          }, {
+            "date": "Thu Feb 09 01:05:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829496507841789952",
+            "tweet": "Congratulations to our new Attorney General, @SenatorSessions! https://t.co/e0buP1K83z"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "greatest",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 17 11:43:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832555987299082242",
+            "tweet": "Thank you for all of the nice statements on the Press Conference yesterday. Rush Limbaugh said one of greatest ever. Fake media not happy!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "resolution",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 14 21:48:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831621079747723264",
+            "tweet": "'Remarks by President Trump at Signing of H.J. Resolution 41'\nhttps://t.co/Q3MoCGAc54 https://t.co/yGDDTKm9Br"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "welcome",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 13 16:59:06 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831185943482793986",
+            "tweet": "Welcome to the @WhiteHouse Prime Minister @JustinTrudeau! https://t.co/WKgF8Zo9ri"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "leading",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 13 15:53:08 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831169341358014475",
+            "tweet": "Today I will meet with Canadian PM Trudeau and a group of leading business women to discuss women in the workforce. https://t.co/bFAHPRXHdP"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "interested",
+        "children": [{
+          "metadata": [{
+            "date": "Sun Feb 12 13:23:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830769247185952772",
+            "tweet": "I know Mark Cuban well. He backed me big-time but I wasn't interested in taking all of his calls.He's not smart enough to run for president!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "like",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 11 13:24:32 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830407172747988992",
+            "tweet": "...design or negotiations yet. When I do, just like with the F-35 FighterJet or the Air Force One Program, price will come WAY DOWN!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "bother",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Feb 10 13:15:27 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830042498806460417",
+            "tweet": "LAWFARE: \"Remarkably, in the entire opinion, the panel did not bother even to cite this (the) statute.\" A disgraceful decision!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "hero",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 09 13:31:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829684271812067328",
+            "tweet": "...long he doesn't know how to win anymore, just look at the mess our country is in - bogged down in conflict all over the place. Our hero.."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "easy",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 17:41:09 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829384587482656768",
+            "tweet": "Big increase in traffic into our country from certain areas, while our people are far more vulnerable, as we wait for what should be EASY D!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 4,
+        "name": "true",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 20 13:14:49 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843813078076719107",
+            "tweet": "What about all of the contact with the Clinton campaign and the Russians? Also, is it true that the DNC would not let the FBI in to look?"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Positive 3",
+      "size": 63,
+      "type": "parent",
+      "children": [{
+        "size": 6,
+        "name": "powerful",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Mar 18 13:23:37 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843090516283723776",
+            "tweet": "...vast sums of money to NATO &amp; the United States must be paid more for the powerful, and very expensive, defense it provides to Germany!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 36,
+        "name": "great",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 15:39:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842762240184999936",
+            "tweet": "Great meeting with the @RepublicanStudy Committee this morning at the @WhiteHouse! https://t.co/8Y2UoHoYaY"
+          }, {
+            "date": "Thu Mar 16 00:03:23 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842164356297175040",
+            "tweet": "In Nashville, Tennessee! Lets MAKE AMERICA GREAT AGAIN! https://t.co/m5UR4vv6UH"
+          }, {
+            "date": "Fri Mar 10 13:45:02 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/840196801009451009",
+            "tweet": "RT @DRUDGE_REPORT: GREAT AGAIN:  +235,000 https://t.co/GkockGNdtC"
+          }, {
+            "date": "Wed Mar 08 23:54:16 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839625347524096000",
+            "tweet": "Great news. We are only just beginning. Together, we are going to #MAGA! https://t.co/BSp685Q9Qf https://t.co/K7yeBZsf6r"
+          }, {
+            "date": "Wed Mar 08 23:50:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839624377826230272",
+            "tweet": "Met with @RepCummings today at the @WhiteHouse. Great discussion!"
+          }, {
+            "date": "Fri Mar 03 22:13:10 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837787963027144706",
+            "tweet": "MAKE AMERICA GREAT AGAIN! https://t.co/kuQiZDz4rA"
+          }, {
+            "date": "Sat Feb 25 12:25:24 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835465719970217984",
+            "tweet": "Maybe the millions of people who voted to MAKE AMERICA GREAT AGAIN should have their own rally. It would be the biggest of them all!"
+          }, {
+            "date": "Wed Feb 15 16:34:27 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831904516316479489",
+            "tweet": "Great listening session with CEO's of the Retail Industry Leaders Association this morning! https://t.co/sy6xJcWfcF"
+          }, {
+            "date": "Tue Feb 14 20:21:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831599387906301952",
+            "tweet": "Great parent-teacher listening session this morning with @VP Pence &amp; @usedgov Secretary @BetsyDeVos. Watch:… https://t.co/nuLTs513Ot"
+          }, {
+            "date": "Sat Feb 11 23:15:34 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830555911559249926",
+            "tweet": "Played golf today with Prime Minister Abe of Japan and @TheBig_Easy, Ernie Els, and had a great time. Japan is very well represented!"
+          }, {
+            "date": "Sat Feb 11 13:18:43 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830405706255912960",
+            "tweet": "I am reading that the great border WALL will cost more than the government originally thought, but I have not gotten involved in the....."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "care",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 12:30:25 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842714739365105664",
+            "tweet": "RT @foxandfriends: VIDEO: Rep. Scalise — GOP agrees on over 85 percent of health care bill https://t.co/05dtfjAUbx"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "delighted",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 21:43:07 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842491443675611138",
+            "tweet": "RT @USHCC: USHCC was delighted to host @IvankaTrump for a roundtable discussion w/ Hispanic women biz owners today in Washington #USHCCLegi…"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "prosperity",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 15:52:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842403173742579714",
+            "tweet": "A budget that puts #AmericaFirst must make safety its no. 1 priority—without safety there can be no prosperity: https://t.co/9lxx1iQo7m"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "reached",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 09 22:36:27 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839968149890076672",
+            "tweet": "'U.S. Consumer Comfort Just Reached Its Highest Level in a Decade' ➡️https://t.co/S8nZgmeMMV https://t.co/xC0piRa6eP"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "honoring",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 08 11:13:44 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839433951957696513",
+            "tweet": "On International Women's Day, join me in honoring the critical role of women here in America &amp; around the world."
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "optimism",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 06 23:49:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838899465390018560",
+            "tweet": "There is an incredible spirit of optimism sweeping the country right now—we're bringing back the JOBS! https://t.co/BNSLvKiEVj"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "win",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 22 12:20:40 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834377364947816448",
+            "tweet": "One thing I will say about Rep. Keith Ellison, in his fight to lead the DNC, is that he was the one who predicted early that I would win!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "united",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 15 19:17:59 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831945670324060164",
+            "tweet": "Welcome to the United States, @IsraeliPM Benjamin &amp; Sara!\n#ICYMI🇺🇸🇮🇱Joint Press Conference: \nhttps://t.co/GN6ALWUusN https://t.co/bH60nBL5FP"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 6,
+        "name": "good",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 11 23:24:08 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830558065715998726",
+            "tweet": "A working dinner tonight with Prime Minister Abe of Japan, and his representatives, at the Winter White House (Mar-a-Lago). Very good talks!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Positive 4",
+      "size": 48,
+      "type": "parent",
+      "children": [{
+        "size": 8,
+        "name": "welcome",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 20:09:38 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842467917639913472",
+            "tweet": "An honor to welcome the Taoiseach of Ireland, @EndaKennyTD to the @WhiteHouse today with @VP Pence. 🇺🇸🇮🇪 https://t.co/J3iTl2iSiQ"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "big",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 15 11:13:58 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841970726341074945",
+            "tweet": "Will be going to Detroit, Michigan (love), today for a big meeting on bringing back car production to State &amp; U.S. Already happening!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "congratulations",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 09 23:11:27 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839976956703748096",
+            "tweet": "Honored to meet this years @SenateYouth delegates w/ @VP Pence in the East Room of the @WhiteHouse. Congratulations… https://t.co/oQIx7LybCV"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "care",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 08 00:14:30 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839268048313929729",
+            "tweet": "I feel sure that my friend @RandPaul will come along with the new and great health care program because he knows Obamacare is a disaster!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "promote",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 07 13:41:58 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839108868584124417",
+            "tweet": "Don't worry, getting rid of state lines, which will promote competition, will be in phase 2 &amp; 3 of healthcare rollout. @foxandfriends"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 12,
+        "name": "winning",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 06 21:22:15 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838862312685637640",
+            "tweet": "45,000 construction &amp; manufacturing jobs in the U.S. Gulf Coast region. $20 billion investment. We are already winning again, America!"
+          }, {
+            "date": "Thu Feb 09 13:52:31 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829689436279603206",
+            "tweet": "..Ryan died on a winning mission ( according to General Mattis), not a \"failure.\" Time for the U.S. to get smart and start winning again!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "confidence",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 02 11:00:41 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837256338203881472",
+            "tweet": "Since November 8th, Election Day, the Stock Market has posted $3.2 trillion in GAINS and consumer confidence is at a 15 year high. Jobs!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "united",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 11 18:28:31 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830483672096768001",
+            "tweet": "Having a great time hosting Prime Minister Shinzo Abe in the United States! \nhttps://t.co/Fvjsac89qS… https://t.co/hKqbMB2aQ9"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "wonderful",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 11 13:33:53 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830409522397184000",
+            "tweet": "Melania and I are hosting Japanese Prime Minister Shinzo Abe and Mrs. Abe at Mar-a-Lago in Palm Beach, Fla. They are a wonderful couple!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "support",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 21:46:14 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829446266111287305",
+            "tweet": "'Majority in Leading EU Nations Support Trump-Style Travel Ban' \nPoll of more than 10,000 people in 10 countries...https://t.co/KWsIWhtC9o"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 8,
+        "name": "protect",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 07 16:25:13 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829003091735359488",
+            "tweet": "An honor having the National Sheriffs' Assoc. join me at the @WhiteHouse. Incredible men &amp; women who protect &amp; serv… https://t.co/1LkhbCNh8L"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }]
+    }, {
+      "name": "Positive 5",
+      "size": 145,
+      "type": "parent",
+      "children": [{
+        "size": 65,
+        "name": "great",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 17 12:12:04 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842710123852320770",
+            "tweet": "Happy Lá Fheile Phadraig to all of my great Irish friends!"
+          }, {
+            "date": "Mon Mar 13 20:57:02 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841392683625172992",
+            "tweet": "Proud to welcome our great Cabinet this afternoon for our first meeting. Unfortunately 4 seats were empty because S… https://t.co/bMYph832hF"
+          }, {
+            "date": "Sun Mar 05 17:30:11 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/838441522546769923",
+            "tweet": "Thank you for the great rallies all across the country. Tremendous support. Make America Great Again!"
+          }, {
+            "date": "Sat Mar 04 11:52:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837994257566863360",
+            "tweet": "I'd bet a good lawyer could make a great case out of the fact that President Obama was tapping my phones in October, just prior to Election!"
+          }, {
+            "date": "Mon Feb 27 17:06:23 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/836261209540288513",
+            "tweet": "Great meeting with CEOs of leading U.S. health insurance companies who provide great healthcare to the American peo… https://t.co/60jigi6ffS"
+          }, {
+            "date": "Sat Feb 25 21:53:21 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835608648625836032",
+            "tweet": "I will not be attending the White House Correspondents' Association Dinner this year. Please wish everyone well and have a great evening!"
+          }, {
+            "date": "Mon Feb 20 14:33:33 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/833686030679207936",
+            "tweet": "HAPPY PRESIDENTS DAY - MAKE AMERICA GREAT AGAIN!"
+          }, {
+            "date": "Sun Feb 12 15:41:55 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/830804130692268032",
+            "tweet": "Congratulations Stephen Miller- on representing me this morning on the various Sunday morning shows. Great job!"
+          }, {
+            "date": "Sun Feb 05 22:49:42 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828375073006444544",
+            "tweet": "Enjoy the #SuperBowl and then we continue: MAKE AMERICA GREAT AGAIN!"
+          }, {
+            "date": "Tue Mar 21 02:18:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/844010257454153729",
+            "tweet": "Thank you Louisville, Kentucky. Together, we will MAKE AMERICA SAFE AND GREAT AGAIN! https://t.co/qGgWEWUvek"
+          }, {
+            "date": "Tue Mar 21 02:18:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/844010257454153729",
+            "tweet": "Thank you Louisville, Kentucky. Together, we will MAKE AMERICA SAFE AND GREAT AGAIN! https://t.co/qGgWEWUvek"
+          }, {
+            "date": "Tue Mar 21 02:18:20 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/844010257454153729",
+            "tweet": "Thank you Louisville, Kentucky. Together, we will MAKE AMERICA SAFE AND GREAT AGAIN! https://t.co/qGgWEWUvek"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "growth",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 22:43:32 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842506649122279425",
+            "tweet": "My representatives had a great meeting w/ the Hispanic Chamber of Commerce at the WH today. Look forward to tremendous growth &amp; future mtgs!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "progress",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 16 21:54:02 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/842494190990901248",
+            "tweet": "Great progress on healthcare. Improvements being made - Republicans coming together!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "fun",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Mar 15 11:29:05 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841974528683192320",
+            "tweet": "Looking forward to a big rally in Nashville, Tennessee, tonight. Big crowd of great people expected. Will be fun!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 15,
+        "name": "better",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Mar 14 16:12:22 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841683431398469632",
+            "tweet": "Great optimism in America – and the results will be even better! https://t.co/SYBl47CsZn"
+          }, {
+            "date": "Mon Mar 13 12:52:29 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/841270741060464648",
+            "tweet": "It is amazing how rude much of the media is to my very hard working representatives. Be nice, you will do much better!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "beautiful",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Mar 09 17:01:17 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/839883804315684864",
+            "tweet": "Despite what you hear in the press, healthcare is coming along great. We are talking to many groups and it will end in a beautiful picture!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "wonderful",
+        "children": [{
+          "metadata": [{
+            "date": "Fri Mar 03 20:48:21 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/837766616603586560",
+            "tweet": "We must fix our education system for our kids to Make America Great Again. Wonderful day at Saint Andrew in Orlando. https://t.co/OTJaHcvLzf"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "big",
+        "children": [{
+          "metadata": [{
+            "date": "Sat Feb 25 13:27:04 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/835481237879926784",
+            "tweet": "Great optimism for future of U.S. business, AND JOBS, with the DOW having an 11th straight record close. Big tax &amp; regulation cuts coming!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "amazing",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 22 12:50:56 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/834384982495940613",
+            "tweet": "Very much enjoyed my tour of the Smithsonian's National Museum of African American History and Culture...A great job done by amazing people!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "optimism",
+        "children": [{
+          "metadata": [{
+            "date": "Thu Feb 16 11:34:46 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/832191485701451777",
+            "tweet": "Stock market hits new high with longest winning streak in decades. Great level of confidence and optimism - even before tax plan rollout!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "protect",
+        "children": [{
+          "metadata": [{
+            "date": "Tue Feb 14 03:30:45 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831344902990655489",
+            "tweet": "Congratulations to our new #VASecretary Dr. David Shulkin. Time to take care of Veterans who have fought to protect… https://t.co/FNewjbHuw4"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "leading",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 13 18:50:57 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/831214091993751552",
+            "tweet": "Wonderful meeting with Canadian PM @JustinTrudeau and a group of leading CEO's &amp; business women from Canada🇨🇦and th… https://t.co/wAoCOaYeZ6"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "innovation",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 19:22:33 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829410107406614534",
+            "tweet": "Thank you Brian Krzanich, CEO of @Intel. A great investment ($7 BILLION) in American INNOVATION and JOBS!… https://t.co/oicfDsPKHQ"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "friend",
+        "children": [{
+          "metadata": [{
+            "date": "Wed Feb 08 15:23:29 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/829349943613734912",
+            "tweet": "Thank you to our great Police Chiefs &amp; Sheriffs for your leadership &amp; service. You have a true friend in the… https://t.co/Lysnv8ZR1h"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "enjoy",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 06 23:33:52 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828748574255091714",
+            "tweet": "An extended interview from the Super Bowl with @oreillyfactor airs tonight at 8:00 P.M. Enjoy! https://t.co/kZdHqaNTVR"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "wow",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Feb 06 03:36:54 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/828447350200926212",
+            "tweet": "What an amazing comeback and win by the Patriots. Tom Brady, Bob Kraft and Coach B are total winners. Wow!"
+          }],
+          "name": "singleTweet",
+          "size": 1,
+          "type": "metadata"
+        }]
+      }, {
+        "size": 10,
+        "name": "happy",
+        "children": [{
+          "metadata": [{
+            "date": "Mon Mar 20 17:15:18 +0000 2017",
+            "username": "realDonaldTrump",
+            "imageUrl": "https://pbs.twimg.com/profile_images/1980294624/DJT_Headshot_V2_normal.jpg",
+            "url": "https://twitter.com/realDonaldTrump/status/843873596963459072",
+            "tweet": "Congratulations Eric &amp; Lara. Very proud and happy for the two of you! https://t.co/s0T3cTQc40"
           }],
           "name": "singleTweet",
           "size": 1,

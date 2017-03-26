@@ -1,13 +1,25 @@
 import React from 'react';
 
-export default class Text extends React.Component {
+export const getFontSize = (props) => {
+  const
+    // TODO: update this to get the formatted label
+    length = props.d.data[props.labels[0]].length,
+    factor = // eslint-disable-line
+      // TODO: convert this to automatically adjust based on width of container not length of chars
+      length > 13 ? 0.3 :
+      length > 9 ? 0.4 :
+      length > 7 ? 0.5 :
+      length > 5 ? 0.6 : 0.7;
+
+  return factor * props.d.r/2;
+};
+
+export default class Label extends React.Component {
   static get defaultProps () {
     return {
       d: {},
       idx: '0',
       labels: [],
-      r: 2,
-      scale: 1,
     };
   }
 
@@ -15,14 +27,12 @@ export default class Text extends React.Component {
     d: React.PropTypes.object,
     idx: React.PropTypes.string,
     labels: React.PropTypes.array,
-    r: React.PropTypes.number,
-    scale: React.PropTypes.number,
   }
 
   constructor (props) {
     super(props);
     this.state = {
-      fontSize: '3',
+      fontSize: getFontSize(props),
     };
   }
 
@@ -32,27 +42,20 @@ export default class Text extends React.Component {
 
   /**
    * gets the path of text
+   * $1 = pos right, neg left
+   * $2 = pos down, neg up
    */
-  getTextPath = (r = this.props.r) =>
-    `m-${r}, ${r * 0.1} a${r}, ${r * 0.83} 0 1 1 ${r * 2}, 0`;
+  getTextPath = (r = this.props.d.r) =>
+    `m-${r}, ${r * 0.2} a${r}, ${r * 0.83} 0 1 1 ${r * 2}, 0`;
 
   /**
    * retrieves container dimensions from client and updates state which triggers redraw
    */
   setSize = (props = this.props) => {
     function setStateSize () {
-      const
-        // TODO: update this to get the formatted label
-        length = props.d.data[props.labels[0]].length,
-        factor = // eslint-disable-line
-          // TODO: convert this to automatically adjust based on width of container not length of chars
-          length > 13 ? 0.3 :
-          length > 9 ? 0.4 :
-          length > 7 ? 0.5 :
-          length > 5 ? 0.5 : 0.7,
-        fontSize = factor * props.r/2;
+      const fontSize = getFontSize(props);
 
-      if (Math.abs(parseInt(this.state.fontSize) - fontSize) > 1)
+      if (Math.abs(parseInt(this.state.fontSize) - fontSize) >= 0.5)
         this.setState({ fontSize });
     }
 
@@ -82,8 +85,7 @@ export default class Text extends React.Component {
           ref={(text) => this.text = text }
           style={{
             display: 'inline',
-            fillOpacity: 1,
-            fontSize: `${this.state.fontSize/this.props.scale * 1.1}px`,
+            fontSize: `${this.state.fontSize}px`,
             textTransform: 'uppercase',
           }}
           textAnchor='middle'

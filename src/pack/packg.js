@@ -1,8 +1,9 @@
 /* eslint-disable */
 import * as d3 from 'd3';
+import Datalist from './datalist.js';
 import React from 'react';
-import Text from './text.js';
 import Stats from './stats.js';
+import Label from './label.js';
 
 /**
  * wraps a set of pack nodes inside a <g> element
@@ -41,60 +42,11 @@ export default class PackG extends React.Component {
     super(props);
     const foreignObjects = [];
     if (props.foreignObject.length)
-      props.foreignObject.forEach((foreignObject, idx, arr) => {
+      props.foreignObject.forEach((foreignObject, idx) =>
         foreignObjects.push(
-          <div
-            key={idx}
-            className='foreign-object-data'
-            style={{
-              display: 'block',
-              marginBottom: '3px',
-              width: '100%',
-            }}
-          >
-            <img
-              className='foreign-object-img'
-              src={foreignObject.imageUrl}
-              style={{
-                marginRight: '1%',
-                verticalAlign: 'top',
-              }}
-            />
-            <div
-              className='foreign-object-text'
-              style={{
-                display: 'inline-block',
-              }}
-            >
-              <a
-                href={`https://www.twitter.com/${foreignObject.username}`}
-                target='_blank'
-                style={{
-                  textDecoration: 'none'
-                }}
-              >
-                {foreignObject.username}
-              </a>
-              <span
-                style={{
-                  margin: 0,
-                  border: 'none',
-                  display: 'block',
-                }}
-              >
-                {foreignObject.tweet.substring(0, 84)}
-                <a
-                  href={foreignObject.url}
-                  target='_blank'
-                  style={{
-                    fontStyle: 'italic',
-                    textDecoration: 'none',
-                  }}> ...more</a>
-              </span>
-            </div>
-          </div>
-        );
-      });
+          <Datalist foreignObject={foreignObject} idx={idx} key={idx} />
+        )
+      );
 
     this.state = {
       fontSize: '5px',
@@ -205,7 +157,6 @@ export default class PackG extends React.Component {
           transition: 'transform 1s',
         }}
       >
-        {/* attach onclick handler to show popup of foreignObjects */}
         <circle
           r={this.props.d.r}
           style={{
@@ -221,7 +172,7 @@ export default class PackG extends React.Component {
         />
         { // show text for white packs
          !d.children &&
-            <Text
+            <Label
               d={d}
               idx={idx}
               labels={labels}

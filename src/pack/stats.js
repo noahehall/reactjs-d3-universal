@@ -28,7 +28,7 @@ export default class Stats extends React.Component {
           className='circle-label'
           style={{
             display: 'inline',
-            fontSize: `${this.props.r * 1.2}px`,
+            fontSize: this.props.value.length < 3 ? `${this.props.r * 1.2}px`: `${this.props.r * 0.9}px`,
             textTransform: 'uppercase',
           }}
           textAnchor='middle'

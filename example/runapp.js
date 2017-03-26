@@ -68,8 +68,8 @@ xScaleTimeFormat:'',xValue:'',// if this chart requires a y-axis
 yAxis:!1,// the value to use for y axis label, defaults to
 yAxisLabel:'',// if this chart requires a scale on the y dimension
 yScale:!1,// used for pie chart slice arc
-yValue:''}}}]),_createClass(l,[{key:'getChildContext',value:function(){return{Popup:_reactPopup2.default}}},{key:'componentDidMount',value:function(){'table'===this.props.chartType&&(this.props.filterable&&appFuncs.filterTable.setFilterGrid(this.props.id),this.props.sortable&&appFuncs.sortTable.init()),'undefined'!=typeof window&&window.addEventListener('resize',this.setSize,!1),this.setSize(),this.renderChart()}},{key:'shouldComponentUpdate',value:function(n,o){// only update if state or props have changed
-return!appFuncs._.isEqual(o,this.state)||!appFuncs._.isEqual(n,this.props)}},{key:'componentWillUnmount',value:function(){'undefined'!=typeof window&&window.removeEventListener('resize',this.setSize)}/**
+yValue:''}}}]),_createClass(l,[{key:'getChildContext',value:function(){return{Popup:_reactPopup2.default}}},{key:'componentDidMount',value:function(){'table'===this.props.chartType&&(this.props.filterable&&appFuncs.filterTable.setFilterGrid(this.props.id),this.props.sortable&&appFuncs.sortTable.init()),'undefined'!=typeof window&&(window.addEventListener('resize',this.setSize,!1),window.addEventListener('orientationchange',this.setSize,!1)),this.setSize(),this.renderChart()}},{key:'shouldComponentUpdate',value:function(n,o){// only update if state or props have changed
+return!appFuncs._.isEqual(o,this.state)||!appFuncs._.isEqual(n,this.props)}},{key:'componentWillUnmount',value:function(){'undefined'!=typeof window&&(window.removeEventListener('resize',this.setSize),window.removeEventListener('orientationchange',this.setSize))}/**
    * retrieves container dimensions from client and updates state which triggers redraw
    *//**
    * moves SVG container into its parent

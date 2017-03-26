@@ -192,8 +192,10 @@ export default class Chart extends React.Component {
     }
 
     // update chart size whenever browser resizes
-    if (typeof window !== 'undefined')
+    if (typeof window !== 'undefined') {
       window.addEventListener(`resize`, this.setSize, false);
+      window.addEventListener(`orientationchange`, this.setSize, false);
+    }
 
     // initially set size based on current browser width
     this.setSize();
@@ -208,8 +210,10 @@ export default class Chart extends React.Component {
 
   componentWillUnmount () {
     // remove event listener if in browser
-    if (typeof window !== 'undefined')
+    if (typeof window !== 'undefined') {
       window.removeEventListener(`resize`, this.setSize);
+      window.removeEventListener('orientationchange', this.setSize);
+    }
   }
 
   /**

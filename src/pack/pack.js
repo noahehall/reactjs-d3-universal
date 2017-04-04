@@ -12,4 +12,4 @@ import * as d3 from 'd3';
 export const pack = ({ chartWidth = 200, chartHeight = 200 }) =>
   d3.pack()
     .size([ chartWidth, chartHeight ])
-    .padding(2);
+    .padding((d) => typeof d.data.padding !== 'undefined' ? d.data.padding : 5);

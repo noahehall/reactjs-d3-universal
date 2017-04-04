@@ -143,7 +143,7 @@ export default class PackG extends React.Component {
 
     return (
       <g
-        className='pack-g'
+        className={`pack-g depth-${d.depth}`}
         id={idx}
         key={idx}
         onClick={(e) => {
@@ -157,7 +157,21 @@ export default class PackG extends React.Component {
           transition: 'transform 1s',
         }}
       >
+        { // show + icon
+         d.depth === 2 &&
+            <text
+              className={`pack-g-handle depth-${d.depth}`}
+              textLength='20'
+              lengthAdjust='spacing'
+              style={{ // TODO: add transform handle margin to modifiable props
+                transform: `translate(-${d.r + 10}px) scale(1)`,
+                transition: 'transform 1s',
+                cursor: 'pointer',
+              }}
+              >{this.state.scale > 1 ? '-' : '+'}</text>
+        }
         <circle
+          className={`pack-g-circle depth-${d.depth}`}
           r={this.props.d.r}
           style={{
             fill: d.children ? colorScale(d.depth) : 'white',
@@ -173,17 +187,19 @@ export default class PackG extends React.Component {
         { // show text for white packs
          !d.children &&
             <Label
+              className={`pack-g-circle-labeldepth-${d.depth}`}
               d={d}
               idx={idx}
               labels={labels}
               scale={this.state.scale}
-              r={this.props.d.r}
+              r={d.r}
             />
         }
         { // show stats for foreignObjects
           this.props.foreignObject.length &&
           <Stats
-            r={this.props.d.r}
+            className={`pack-g-circle-stats depth-${d.depth}`}
+            r={d.r}
             showPopup={this.showPopup}
             value={String(this.props.d.value)}
           />

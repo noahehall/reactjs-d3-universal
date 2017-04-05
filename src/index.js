@@ -202,6 +202,20 @@ export default class Chart extends React.Component {
     this.renderChart();
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (!appFuncs._.isEqual(nextProps.data, this.props.data))
+      this.setState({
+        data: dataFunctions.format({
+          chartDataGroupBy: nextProps.chartDataGroupBy,
+          chartType: nextProps.chartType,
+          data: nextProps.data,
+          xScaleTime: nextProps.xScaleTime,
+          xScaleTimeFormat: nextProps.xScaleTimeFormat,
+          xValue: nextProps.xValue,
+        })
+      });
+  }
+
   shouldComponentUpdate (nextProps, nextState) {
     // only update if state or props have changed
     return !appFuncs._.isEqual(nextState, this.state)
@@ -215,6 +229,7 @@ export default class Chart extends React.Component {
       window.removeEventListener('orientationchange', this.setSize);
     }
   }
+
 
   /**
    * retrieves container dimensions from client and updates state which triggers redraw

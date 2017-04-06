@@ -1,15 +1,18 @@
 import React from 'react';
 
 export const getFontSize = (props) => {
-  const
-    // TODO: update this to get the formatted label
-    length = props.d.data[props.labels[0]].length,
-    factor = // eslint-disable-line
+  if (props.d.depth === 2) return '10';
+  // TODO: update this to get the formatted label
+  const length = props.d.data[props.labels[0]].length;
+
+  let factor = // eslint-disable-line
       // TODO: convert this to automatically adjust based on width of container not length of chars
       length > 13 ? 0.3 :
       length > 9 ? 0.4 :
       length > 7 ? 0.5 :
       length > 5 ? 0.6 : 0.7;
+
+  // if (props.d.depth === 2) factor *= 0.5;
 
   return factor * props.d.r/2;
 };
@@ -32,12 +35,12 @@ export default class Label extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      fontSize: getFontSize(props),
+      fontSize: props.d.depth === 2 ? '10' : getFontSize(props),
     };
   }
 
   componentWillReceiveProps (nextProps) {
-    if (!appFuncs._.isEqual(nextProps, this.props)) this.setSize(nextProps);
+    if (nextProps.d.depth !== 2 && !appFuncs._.isEqual(nextProps, this.props)) this.setSize(nextProps);
   }
 
   /**
@@ -45,8 +48,8 @@ export default class Label extends React.Component {
    * $1 = pos right, neg left
    * $2 = pos down, neg up
    */
-  getTextPath = (r = this.props.d.r) =>
-    `m-${r}, ${r * 0.2} a${r}, ${r * 0.83} 0 1 1 ${r * 2}, 0`;
+  getTextPath = (r = this.props.d.r, depth = this.props.d.depth === 2) =>
+    `m-${r}, ${!depth ? r * 0.2 : -r * 0.2} a${r}, ${r * 0.83} 0 1 1 ${r * 2}, 0`;
 
   /**
    * retrieves container dimensions from client and updates state which triggers redraw
@@ -73,7 +76,7 @@ export default class Label extends React.Component {
     } = this.props;
 
     return (
-      <g>
+      <g style={{ cursor: 'pointer' }}>
         <defs>
           <path
             d={this.getTextPath()}

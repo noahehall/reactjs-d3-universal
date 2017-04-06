@@ -152,11 +152,23 @@ export default class PackG extends React.Component {
         }}
         ref={(g) => this.g = g}
         style={{
+          cursor: !this.props.nozoom ? 'pointer' : 'auto',
           opacity: this.state.opacity,
           transform: `translate(${this.state.x || this.props.d.x}px, ${this.state.y || this.props.d.y}px) scale(${this.state.scale})`,
           transition: 'transform 1s',
         }}
       >
+        { // show label for white packs
+         d.depth === 2 &&
+            <Label
+              className={`pack-g-labeldepth-${d.depth}`}
+              d={d}
+              idx={idx}
+              labels={['name']}
+              scale={this.state.scale}
+              r={d.r}
+            />
+        }
         { // show + icon
          d.depth === 2 &&
             <text

@@ -1,7 +1,13 @@
 import React from 'react';
 
 export const getFontSize = (props) => {
-  if (props.d.depth === 2) return '10';
+  if (props.d.depth === 2)
+    return props.d.r > 23
+      ? 10
+      : props.d.r > 15
+      ? 6
+      : 5;
+
   // TODO: update this to get the formatted label
   const length = props.d.data[props.labels[0]].length;
 
@@ -35,7 +41,7 @@ export default class Label extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      fontSize: props.d.depth === 2 ? '10' : getFontSize(props),
+      fontSize: getFontSize(props),
     };
   }
 

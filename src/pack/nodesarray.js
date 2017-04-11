@@ -21,17 +21,23 @@ export const getForeignObject = (parent) => {
   try {
     return parent.data.children[0].metadata;
   } catch (err) {
-    return false;
+    return [];
   }
 }
 
 /**
  * creates nested HTML hierarchy from pack nodes
  */
+let total = 0;
 export const createNest = (parent, chartHeight, chartWidth, colorScale, idx, labels, id, rootx, rooty) => {
+  let nozoom = false;
   switch (parent.depth) {
-    case 0: break;
+    case 0: {
+      nozoom = true;
+      break;
+    }
     case 1: {
+      nozoom = true;
       parent.x -= rootx;
       parent.y -= rooty;
       break;
@@ -44,13 +50,14 @@ export const createNest = (parent, chartHeight, chartWidth, colorScale, idx, lab
   }
 
   return <PackG
+    nozoom={nozoom}
     chartHeight={chartHeight}
     chartWidth={chartWidth}
     colorScale={colorScale}
     d={parent}
     id={id}
-    idx={idx}
-    key={idx}
+    idx={`${id}-${parent.depth}-${idx}-${++total}`}
+    key={`${id}-${parent.depth}-${idx}-${++total}`}
     labels={labels}
     foreignObject={getForeignObject(parent)}
   >
@@ -81,12 +88,12 @@ export const nodesArray = ({
   labels = [],
   nodes = [],
 }) => {
-  const nodeArray = [];
   if (nodes.length < 1) return null;
   return createNest(nodes[0], chartHeight, chartWidth, colorScale, 1, labels, id, nodes[0].children[0].parent.x, nodes[0].children[0].parent.y)
 
 /* if you want the normal d3 nesting scheme (no nesting)
   // TODO: add 'nested' boolean property so users can switch between the two
+  const nodeArray = [];
   nodes.forEach((d, idx) =>
     nodeArray.push(
       <PackG

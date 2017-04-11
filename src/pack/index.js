@@ -16,7 +16,7 @@ export default function Pack ({
   margins,
 }) {
   return (
-    <g>
+    <g className='nodes-array-container'>
       {nodesArray({
         chartHeight,
         chartWidth,

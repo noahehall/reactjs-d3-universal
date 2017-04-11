@@ -11,7 +11,7 @@ export default class Table extends React.Component {
 
   render () {
     return (
-      <section style={{ maxWidth: '600px' }}>
+      <section style={{ maxWidth: '1000px' }}>
         <Chart
           chartType='pack'
           colorScaleScheme='schemeCategory20'
@@ -23,7 +23,7 @@ export default class Table extends React.Component {
           id='pack'
           margins={{
             bottom: 10,
-            left: 10,
+            left: 80,
             right: 10,
             top: 10,
           }}

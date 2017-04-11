@@ -1,12 +1,14 @@
 import React from 'react';
 
 export const getFontSize = (props) => {
-  if (props.d.depth === 2)
+  if (props.placement === 'top')
     return props.d.r > 23
       ? 10
       : props.d.r > 15
       ? 6
       : 5;
+
+  if (props.placement === 'bottom') return 10;
 
   // TODO: update this to get the formatted label
   const length = props.d.data[props.labels[0]].length;
@@ -29,6 +31,7 @@ export default class Label extends React.Component {
       d: {},
       idx: '0',
       labels: [],
+      placement: '',
     };
   }
 
@@ -36,6 +39,7 @@ export default class Label extends React.Component {
     d: React.PropTypes.object,
     idx: React.PropTypes.string,
     labels: React.PropTypes.array,
+    placement: React.PropTypes.string,
   }
 
   constructor (props) {
@@ -46,16 +50,48 @@ export default class Label extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.d.depth !== 2 && !appFuncs._.isEqual(nextProps, this.props)) this.setSize(nextProps);
+    if (
+      nextProps.placement === ''
+      && !appFuncs._.isEqual(nextProps, this.props)) this.setSize(nextProps);
   }
 
   /**
-   * gets the path of text
-   * $1 = pos right, neg left
-   * $2 = pos down, neg up
+   * gets the path of text: http://bl.ocks.org/jebeck/196406a3486985d2b92e
+   * mX, y
+     *  m = moveto
+     * $1 = pos right, neg left
+     * $2 = pos down, neg up
+   * aRX, RY  xAxisRotation BooleanPath BooleanSweep X, Y
+     * rx & ry = the raddi of the ellipse
+     * $3 = pos right, neg left
+     * $4 = pos up, neg down
    */
-  getTextPath = (r = this.props.d.r, depth = this.props.d.depth === 2) =>
-    `m-${r}, ${!depth ? r * 0.2 : -r * 0.2} a${r}, ${r * 0.83} 0 1 1 ${r * 2}, 0`;
+  getTextPath = () => {
+    const
+      placement = this.props.placement,
+      r = this.props.d.r;
+
+    const
+      mX = -r,
+      mY = placement === 'bottom'
+        ? r
+        : placement === 'top'
+        ? -r * 0.2
+        : r * 0.2,
+      aRX = r,
+      aRY = placement === 'bottom'
+        ? 10
+        : r * 0.83,
+      xAxisRotation =  0,
+      booleanPath = 1,
+      booleanSweep = placement === 'bottom'
+        ? 0
+        : 1,
+      aX = r * 2,
+      aY = 0;
+
+    return `m${mX}, ${mY} a${aRX}, ${aRY} ${xAxisRotation} ${booleanPath} ${booleanSweep} ${aX}, ${aY}`;
+  }
 
   /**
    * retrieves container dimensions from client and updates state which triggers redraw
@@ -90,7 +126,7 @@ export default class Label extends React.Component {
           />
         </defs>
         <text
-          className={`label${idx}`}
+          className='pack-g-label-text'
           ref={(text) => this.text = text }
           style={{
             display: 'inline',

@@ -159,24 +159,52 @@ export default class PackG extends React.Component {
         }}
       >
         { // show label for white packs
-         d.depth === 2 &&
+         d.data.labelTop &&
             <Label
-              className={`pack-g-labeldepth-${d.depth}`}
+              className={`pack-g-label depth-${d.depth}`}
               d={d}
               idx={idx}
               labels={['name']}
               scale={this.state.scale}
               r={d.r}
+              placement='top'
             />
         }
-        { // show + icon
-         d.depth === 2 &&
+        { // show +icon
+         d.data.labelLeft &&
             <text
               className={`pack-g-handle depth-${d.depth}`}
               textLength='20'
               lengthAdjust='spacing'
+              placement='left'
               style={{ // TODO: add transform handle margin to modifiable props
                 transform: `translate(-${d.r + 10}px) scale(1)`,
+                transition: 'transform 1s',
+                cursor: 'pointer',
+              }}
+              >{this.state.scale > 1 ? '-' : '+'}</text>
+        }
+        { // show label for white packs
+         d.data.labelBottom &&
+            <Label
+              className={`pack-g-label depth-${d.depth}`}
+              d={d}
+              idx={idx}
+              labels={['name']}
+              placement='bottom'
+              scale={this.state.scale}
+              r={d.r}
+            />
+        }
+        { // show + icon
+         d.data.labelRight &&
+            <text
+              className={`pack-g-handle depth-${d.depth}`}
+              textLength='20'
+              lengthAdjust='spacing'
+              placement='right'
+              style={{ // TODO: add transform handle margin to modifiable props
+                transform: `translate(${d.r}px, 5px) scale(1)`,
                 transition: 'transform 1s',
                 cursor: 'pointer',
               }}

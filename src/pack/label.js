@@ -8,7 +8,9 @@ export const getFontSize = (props) => {
       ? 6
       : 5;
 
-  if (props.placement === 'bottom') return 10;
+  if (props.placement === 'bottom') return props.scale > 1
+    ? 20
+    : 10;
 
   // TODO: update this to get the formatted label
   const length = props.d.data[props.labels[0]].length;
@@ -32,6 +34,7 @@ export default class Label extends React.Component {
       idx: '0',
       labels: [],
       placement: '',
+      scale: 1,
     };
   }
 
@@ -40,6 +43,7 @@ export default class Label extends React.Component {
     idx: React.PropTypes.string,
     labels: React.PropTypes.array,
     placement: React.PropTypes.string,
+    scale: React.PropTypes.number,
   }
 
   constructor (props) {
@@ -51,7 +55,7 @@ export default class Label extends React.Component {
 
   componentWillReceiveProps (nextProps) {
     if (
-      nextProps.placement === ''
+      (nextProps.placement === '' || nextProps.placement === 'bottom')
       && !appFuncs._.isEqual(nextProps, this.props)) this.setSize(nextProps);
   }
 
@@ -72,23 +76,23 @@ export default class Label extends React.Component {
       r = this.props.d.r;
 
     const
-      mX = -r,
-      mY = placement === 'bottom'
-        ? r
-        : placement === 'top'
-        ? -r * 0.2
-        : r * 0.2,
       aRX = r,
       aRY = placement === 'bottom'
-        ? 10
+        ? this.state.fontSize
         : r * 0.83,
-      xAxisRotation =  0,
+      aX = r * 2,
+      aY = 0,
       booleanPath = 1,
       booleanSweep = placement === 'bottom'
         ? 0
         : 1,
-      aX = r * 2,
-      aY = 0;
+      mX = -r,
+      mY = placement === 'bottom'
+        ? this.props.scale * r
+        : placement === 'top'
+        ? -r * 0.2
+        : r * 0.2,
+      xAxisRotation = 0;
 
     return `m${mX}, ${mY} a${aRX}, ${aRY} ${xAxisRotation} ${booleanPath} ${booleanSweep} ${aX}, ${aY}`;
   }
@@ -97,12 +101,12 @@ export default class Label extends React.Component {
    * retrieves container dimensions from client and updates state which triggers redraw
    */
   setSize = (props = this.props) => {
-    function setStateSize () {
+    const setStateSize = () => {
       const fontSize = getFontSize(props);
 
       if (Math.abs(parseInt(this.state.fontSize) - fontSize) >= 0.5)
         this.setState({ fontSize });
-    }
+    };
 
     if (typeof window !== 'undefined')
       if (window.requestAnimationFrame)
@@ -118,7 +122,10 @@ export default class Label extends React.Component {
     } = this.props;
 
     return (
-      <g style={{ cursor: 'pointer' }}>
+      <g
+        className={`pack-g-label ${this.props.placement}`}
+        style={{ cursor: 'pointer', transform: `scale(${this.props.placement === 'bottom' && this.props.scale > 1 ? 1/this.props.scale : 1})`}}
+      >
         <defs>
           <path
             d={this.getTextPath()}

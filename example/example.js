@@ -24,7 +24,7 @@ export default class Table extends React.Component {
           margins={{
             bottom: 10,
             left: 80,
-            right: 10,
+            right: 50,
             top: 10,
           }}
         />

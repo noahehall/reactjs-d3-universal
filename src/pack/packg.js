@@ -210,17 +210,20 @@ export default class PackG extends React.Component {
             />
         }
         { // show + icon, TODO: use Label component
-         d.data.labelRight &&
-            <text
-              className={`pack-g-handle depth-${d.depth}`}
-              textLength='20'
-              lengthAdjust='spacing'
+          d.data.labelRight &&
+            <g
               style={{ // TODO: add transform handle margin to modifiable props
-                transform: `translate(${d.r}px, ${this.state.scale > 5 ? 2.5: 5}px) scale(${this.state.scale > 5 ? 0.5: 1})`,
+                transform: `translate(${d.r}px, -5px) scale(${this.state.scale > 10 ? 0.1 : this.state.scale > 5 ? 0.2 : 0.3})`,
                 transition: 'transform 1s',
                 cursor: 'pointer',
               }}
-              >{this.state.scale > 1 ? '-' : '+'}</text>
+            >
+            <path d={`${this.state.scale > 1 ? 'M16 31l15-15h-9v-16h-12v16h-9z' : 'M16 1l-15 15h9v16h12v-16h9z'}`} />
+
+            </g>
+
+
+
         }
         { // show text for white packs
          !d.children &&

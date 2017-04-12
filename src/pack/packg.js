@@ -158,6 +158,20 @@ export default class PackG extends React.Component {
           transition: 'transform 1s',
         }}
       >
+        <circle
+          className={`pack-g-circle depth-${d.depth}`}
+          r={this.props.d.r}
+          style={{
+            fill: d.children ? colorScale(d.depth) : 'white',
+            "stroke":"#fff",
+            "strokeWidth":"1.5px",
+          }}
+          onClick={(e) => {
+            if (this.state.foreignObjects.length) {
+              this.showPopup();
+            }
+          }}
+        />
         { // show label for white packs
          d.data.labelTop &&
             <Label
@@ -170,13 +184,12 @@ export default class PackG extends React.Component {
               placement='top'
             />
         }
-        { // show +icon
+        { // show +icon, TODO: use Label component
          d.data.labelLeft &&
             <text
               className={`pack-g-handle depth-${d.depth}`}
               textLength='20'
               lengthAdjust='spacing'
-              placement='left'
               style={{ // TODO: add transform handle margin to modifiable props
                 transform: `translate(-${d.r + 10}px) scale(1)`,
                 transition: 'transform 1s',
@@ -196,38 +209,23 @@ export default class PackG extends React.Component {
               r={d.r}
             />
         }
-        { // show + icon
+        { // show + icon, TODO: use Label component
          d.data.labelRight &&
             <text
               className={`pack-g-handle depth-${d.depth}`}
               textLength='20'
               lengthAdjust='spacing'
-              placement='right'
               style={{ // TODO: add transform handle margin to modifiable props
-                transform: `translate(${d.r}px, 5px) scale(1)`,
+                transform: `translate(${d.r}px, ${this.state.scale > 5 ? 2.5: 5}px) scale(${this.state.scale > 5 ? 0.5: 1})`,
                 transition: 'transform 1s',
                 cursor: 'pointer',
               }}
               >{this.state.scale > 1 ? '-' : '+'}</text>
         }
-        <circle
-          className={`pack-g-circle depth-${d.depth}`}
-          r={this.props.d.r}
-          style={{
-            fill: d.children ? colorScale(d.depth) : 'white',
-            "stroke":"#fff",
-            "strokeWidth":"1.5px",
-          }}
-          onClick={(e) => {
-            if (this.state.foreignObjects.length) {
-              this.showPopup();
-            }
-          }}
-        />
         { // show text for white packs
          !d.children &&
             <Label
-              className={`pack-g-circle-labeldepth-${d.depth}`}
+              className={`pack-g-circle-label depth-${d.depth}`}
               d={d}
               idx={idx}
               labels={labels}

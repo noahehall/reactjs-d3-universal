@@ -1,5 +1,22 @@
 import * as time from './time.js';
 
+export const checkTimeFormat = ({
+  data,
+  parseTime,
+  timeProperty,
+  xScaleTimeFormat,
+}) => {
+  try {
+
+    if (parseTime(data[0][timeProperty])) return false;
+
+    // return parseTime(time.format({ format: xScaleTimeFormat })(new Date("Fri Mar 17 16:50:48 +0000 2017")))
+    return time.format({ format: xScaleTimeFormat });
+  } catch (e) {
+    return new Error(`something went wrong accessing data[0][${timeProperty}] inside lib/data.js.checkTimeFormat(), or creating a time formatter with format ${xScaleTimeFormat}, heres the message ${e.message}`);
+  }
+};
+
 export const formatTime = ({
   data,
   timeProperty = '',
@@ -17,17 +34,39 @@ export const formatTime = ({
   const parseTime = time.parse({ format: xScaleTimeFormat });
   const transformed = [];
 
-  data.forEach((group) =>
-    transformed.push({
-      ...group,
-      [timeProperty]: parseTime(group[timeProperty]),
-    })
-  );
+  const timeFormatter = checkTimeFormat({ data, parseTime, timeProperty, xScaleTimeFormat });
+
+  // parse time as is
+  if (!timeFormatter)
+    data.forEach((group) =>
+      transformed.push({
+        ...group,
+        [timeProperty]: parseTime(group[timeProperty]),
+      })
+    );
+
+  if (timeFormatter instanceof Error) {
+    appFuncs.logError({
+      data: [ data, timeProperty, xScaleTimeFormat, timeFormatter ],
+      loc: __filename,
+      msg: `${timeFormatter.message}, returning data without processing time, your chart is likely fucked up`,
+    });
+
+    return data;
+  } else if (timeFormatter)
+    // timeFormatter must be ready to use
+    data.forEach((group) =>
+      transformed.push({
+        ...group,
+        [timeProperty]: parseTime(timeFormatter(new Date(group[timeProperty]))),
+      })
+    );
 
   return transformed;
 };
 
 // creates dataValues for groupBy()
+// in separate function for VM compiler optimization
 export const createDataValues = (data, chartDataGroupBy) => {
   let dataValues;
   try {
@@ -60,7 +99,7 @@ export const groupBy = ({
 
     return data;
   }
-  // group all values by groupby
+  // group all values by chartDataGroupBy
   const dataValues = createDataValues(data, chartDataGroupBy);
 
   if (appFuncs._.isEmpty(dataValues) || dataValues instanceof Error) {
@@ -94,10 +133,10 @@ export const groupBy = ({
   });
 
   console.dir([
-    'data values',
-    dataValues,
-    dataGroups
-  ]);
+    'data groups',
+    dataGroups,
+    data
+  ])
 
   return dataGroups;
 };

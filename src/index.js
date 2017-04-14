@@ -12,6 +12,8 @@ import Pack from './pack/index.js';
 import Popup from 'react-popup';
 import React from 'react';
 
+// TODO: search this file for all try catch blocks and move to separate function
+
 /**
  * Represents a Chart
  * @constructor
@@ -64,7 +66,8 @@ export default class Chart extends React.Component {
       // required for line chart
       xScaleTime: false,
       // required for line chart https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
-      xScaleTimeFormat: '',
+      // the specified format must match the format of your date string, else extra procesing will be used to convert it to the supplied/default format
+      xScaleTimeFormat: '%m/%d/%Y',
       xValue: '',
       // if this chart requires a y-axis
       yAxis: false,
@@ -154,7 +157,7 @@ export default class Chart extends React.Component {
       }
     }
 
-    this.state = {
+    const state = {
       chartFunction,
       colorScale: props.colorScaleScheme
       ? scales.colorScale({
@@ -174,6 +177,13 @@ export default class Chart extends React.Component {
         xValue: props.xValue,
       }),
     };
+    this.state = state;
+
+    console.dir([
+      'constructor',
+      props.data,
+      state.data
+    ])
   }
 
   getChildContext () {
@@ -283,6 +293,10 @@ export default class Chart extends React.Component {
   }
 
   renderChart = () => {
+    console.dir([
+      'renderChart',
+      this.state.data
+    ])
     // dont continue if chartFunction not valid;
     if (!this.state.chartFunction) return null;
 

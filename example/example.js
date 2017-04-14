@@ -43,6 +43,7 @@ export default class Table extends React.Component {
     // could do: token
     const formattedData = timelineData.map((tweet) => ({
       ...tweet,
+      // date: new Date(tweet.date).toLocaleDateString(),
       score: JSON.parse(tweet.afinn).score
     }));
 
@@ -67,7 +68,7 @@ export default class Table extends React.Component {
         xAxisLabel='Date'
         xScale={true}
         xScaleTime={true}
-        xScaleTimeFormat='%Y-%m-%dT%H:%M:%S.%LZ'
+        xScaleTimeFormat='%m/%d/%Y'
         xValue='date'
         yAxis={true}
         yAxisLabel='Sentiment Score'

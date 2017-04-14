@@ -213,6 +213,12 @@ export const xScale = ({
   }
 };
 
+// get gets max number for getXScale() and getYScale()
+// in separate function for VM compiler optimization
+export const getDataMaxNumber = () => {
+
+};
+
 /**
  * retrieve xscale
  */
@@ -250,7 +256,7 @@ export const getXScale = ({
   if (chartDataGroupBy) data.forEach((group) => thisData.push(...group.values));
   else thisData = data;
 
-  console.dir([data, thisData]);
+  console.dir(['get xscale', data]);
   switch (chartType.toLowerCase()) {
     case 'pie': return null;
     case 'line': // eslintignore both min and max

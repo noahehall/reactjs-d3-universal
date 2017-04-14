@@ -50,7 +50,7 @@ export default class Table extends React.Component {
 
     return (
       <Chart
-        chartDataGroupBy='type'
+        chartDataGroupBy='score'
         chartType='line'
         colorScaleScheme='schemeCategory10'
         colorScaleType='basic'

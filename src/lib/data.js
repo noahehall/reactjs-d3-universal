@@ -32,9 +32,10 @@ export const createDataValues = (data, chartDataGroupBy) => {
   let dataValues;
   try {
     dataValues = appFuncs._.groupBy(data, (d) => {
-      if (d[chartDataGroupBy]) return d[chartDataGroupBy];
-      // TODO: ${d} shows up as [object object], toString() doesnt fix it, resolve later
-      throw new Error(`${d} does not contain ${chartDataGroupBy}. exiting lib/data.groupBy`);
+      if (typeof d[chartDataGroupBy] === 'undefined')
+        throw new Error(`key ${chartDataGroupBy} does not exist in ${JSON.stringify(Object.keys(d))}. exiting lib/data.groupBy. here is the entire object ${d}`);
+
+      return d[chartDataGroupBy];
     });
   } catch (e) {
     dataValues = e;
@@ -60,7 +61,7 @@ export const groupBy = ({
     return data;
   }
   // group all values by groupby
-  const dataValues = createDataValues(data);
+  const dataValues = createDataValues(data, chartDataGroupBy);
 
   if (appFuncs._.isEmpty(dataValues) || dataValues instanceof Error) {
     appFuncs.logError({

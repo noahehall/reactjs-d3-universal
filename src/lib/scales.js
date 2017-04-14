@@ -102,7 +102,7 @@ export const getYScale = ({
           ],
           err,
           loc: __filename,
-          msg: 'error creating dataMinNumber for scatterplot chart in scales.getYScale()',
+          msg: `error creating dataMinNumber for ${chartType} chart in scales.getYScale()`,
         });
       }
     }
@@ -118,7 +118,7 @@ export const getYScale = ({
           ],
           err,
           loc: __filename,
-          msg: 'error creating dataManNumber for bar chrt chart in scales.getYScale()',
+          msg: `error creating dataMaxNumber for ${chartType} chart in scales.getYScale()`,
         });
       }
     }
@@ -204,7 +204,8 @@ export const xScale = ({
     }
     default: {
       appFuncs.logError({
-        msg:`chartType ${chartType} is not setup for scale creation in scales.xScale(), returning null`
+        loc: __filename,
+        msg:`chartType ${chartType} is not setup for scale creation in scales.xScale(), returning null`,
       });
 
       return null;
@@ -249,6 +250,7 @@ export const getXScale = ({
   if (chartDataGroupBy) data.forEach((group) => thisData.push(...group.values));
   else thisData = data;
 
+  console.dir([data, thisData]);
   switch (chartType.toLowerCase()) {
     case 'pie': return null;
     case 'line': // eslintignore both min and max
@@ -260,10 +262,10 @@ export const getXScale = ({
           data: [
             thisData,
             xValue,
+            err,
           ],
-          err,
           loc: __filename,
-          msg: 'error creating dataMaxNumber for scatterplot chart in scales.getXScale()',
+          msg: `error creating dataMaxNumber for ${chartType} chart in scales.getXScale()`,
         });
       }
 
@@ -274,10 +276,10 @@ export const getXScale = ({
           data: [
             thisData,
             xValue,
+            err,
           ],
-          err,
           loc: __filename,
-          msg: 'error creating dataMixNumber for scatterplot chart in scales.getXScale()',
+          msg: `error creating dataMinNumber for ${chartType} chart in scales.getXScale()`,
         });
       }
 

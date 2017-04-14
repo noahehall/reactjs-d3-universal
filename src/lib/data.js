@@ -27,6 +27,22 @@ export const formatTime = ({
   return transformed;
 };
 
+// creates dataValues for groupBy()
+export const createDataValues = (data, chartDataGroupBy) => {
+  let dataValues;
+  try {
+    dataValues = appFuncs._.groupBy(data, (d) => {
+      if (d[chartDataGroupBy]) return d[chartDataGroupBy];
+      // TODO: ${d} shows up as [object object], toString() doesnt fix it, resolve later
+      throw new Error(`${d} does not contain ${chartDataGroupBy}. exiting lib/data.groupBy`);
+    });
+  } catch (e) {
+    dataValues = e;
+  }
+
+  return dataValues;
+};
+
 export const groupBy = ({
   chartDataGroupBy = '',
   data,
@@ -44,9 +60,9 @@ export const groupBy = ({
     return data;
   }
   // group all values by groupby
-  const dataValues = appFuncs._.groupBy(data, (d) => d[chartDataGroupBy]);
+  const dataValues = createDataValues(data);
 
-  if (appFuncs._.isEmpty(dataValues)) {
+  if (appFuncs._.isEmpty(dataValues) || dataValues instanceof Error) {
     appFuncs.logError({
       data: [ data, dataValues ],
       loc: __filename,
@@ -75,6 +91,12 @@ export const groupBy = ({
         : dataValues[key],
     };
   });
+
+  console.dir([
+    'data values',
+    dataValues,
+    dataGroups
+  ]);
 
   return dataGroups;
 };

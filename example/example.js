@@ -35,20 +35,27 @@ export default class Table extends React.Component {
   }
   //*/
 
-  //* timeline
-   // y = sum aggregate sentiment for day
-   // x = dates
-   // groupBy = username ? possibly best option
-    // could do: token
   render () {
+    //* timeline
+    // y = sum aggregate sentiment for day
+    // x = dates
+    // groupBy = username ? possibly best option
+    // could do: token
+    const formattedData = timelineData.map((tweet) => ({
+      ...tweet,
+      score: JSON.parse(tweet.afinn).score
+    }));
+
+    // console.dir(formattedData);
+
     return (
       <Chart
         chartDataGroupBy='type'
         chartType='line'
         colorScaleScheme='schemeCategory10'
         colorScaleType='basic'
-        data={timelineData}
-        datumLabels={['total']}
+        data={formattedData}
+        datumLabels={['score']}
         id='fake-chart'
         margins={{
           bottom: 70,
@@ -60,12 +67,12 @@ export default class Table extends React.Component {
         xAxisLabel='Date'
         xScale={true}
         xScaleTime={true}
-        xScaleTimeFormat='%Y/%m/%d'
+        xScaleTimeFormat='%Y-%m-%dT%H:%M:%S.%LZ'
         xValue='date'
         yAxis={true}
-        yAxisLabel='Total Paying Customers'
+        yAxisLabel='Sentiment Score'
         yScale={true}
-        yValue='totalPayingCustomers'
+        yValue='score'
       />
     );
   }

@@ -312,7 +312,7 @@ export default class Chart extends React.Component {
           data: this.state.data,
           labels: this.props.datumLabels,
           margins: this.props.margins,
-          svgWidth: width,
+          svgWidth: chartWidth,
           xScaleTime: this.props.xScaleTime,
           xScaleTimeFormat: this.props.xScaleTimeFormat,
           xValue: this.props.xValue,

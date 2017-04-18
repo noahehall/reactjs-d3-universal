@@ -79,12 +79,15 @@ export const getXAxis = ({
       ? '%b %Y'
       : totalDays > 27
       // 12/12/85
-      ? '%m/%d/%y'
+      ? '%-m/%-d/%y'
       : totalDays > 6
-      // Friday, Dec 12
-      ? '%a, %b %d'
-      // 12:30AM Saturday
-      : '%I:%M%p %a';
+      // Fri, Dec 12
+      ? '%a, %b %-d'
+      : totalDays > 3
+      // 12AM 06/31/85
+      ? '%-I%p %-m/%-d/%y'
+      // 12:56PM 6/31
+      : '%-I:%M%p %-m/%-d';
 
   const
     tickValuesArray = [ ...d3.range(startMS, stopMS, diff/8).map((el) => new Date(el)), stop ];

@@ -74,19 +74,18 @@ export const sumGroupedData = ({
   data.forEach((el) => {
     if (tempObj[el[xValue]]) {
       tempObj[el[xValue]][yValue] += el[yValue];
-      tempObj[el[xValue]].originalDataList.push(el)
+      tempObj[el[xValue]].originalDataList.push(el);
     } else
       tempObj[el[xValue]] = {
         [chartDataGroupBy]: el[chartDataGroupBy],
+        originalDataList: [el],
         [xValue]: el[xValue],
         [yValue]: el[yValue],
-        originalDataList: [el],
       };
   });
 
-  return Object.values(tempObj);
-
-}
+  return Object.values(tempObj).sort((a, b) => a.date - b.date);
+};
 // groups an array of objects by some property value
 // returns an object where each property is an array of objects with a matching property  value
 // in separate function for VM compiler optimization
@@ -114,7 +113,6 @@ export const groupBy = ({
   chartDataSumGroupBy = false,
   data,
   xScaleTime,
-  xScaleTimeFormat,
   xValue = '',
   yValue = '',
 }) => {
@@ -147,16 +145,40 @@ export const groupBy = ({
     return data;
   }
 
+  const
+    minDate = appFuncs._.minBy(data, 'date')['date'],
+    maxDate = appFuncs._.maxBy(data, 'date')['date'],
+    diff = Math.abs(maxDate - minDate),
+    totalDays = diff / (1000*60*60*24);
+
+  const format = totalDays > 3600
+    // 1985
+    ? '%Y'
+    : totalDays > 360
+    // Dec 1985
+    ? '%b%Y'
+    : totalDays > 27
+    // 12/12/85
+    ? '%m%d%y'
+    : totalDays > 6
+    // Fri, Dec 12
+    ? '%a%b%d'
+    : totalDays > 3
+    // 23 06/31/85
+    ? '%H%m%d%y'
+    // 2356 06/31/85
+    : '%H%M%m%d%y';
+
   // create object with values and keys for each lineValues group
   const dataGroups = Object.keys(dataValues).map((key) => {
     let transformed = [];
 
     // transform time if required
-    if (xScaleTime && xScaleTimeFormat)
+    if (xScaleTime && format)
       transformed = formatTime({
         data: dataValues[key],
         timeProperty: xValue,
-        xScaleTimeFormat,
+        xScaleTimeFormat: format,
       });
 
     if (transformed.length && chartDataSumGroupBy && yValue && xValue)

@@ -316,7 +316,7 @@ export default class Chart extends React.Component {
         ? axes.getXAxisLabel({
           chartDataGroupBy: this.props.chartDataGroupBy,
           transform: 'rotate(0)',
-          x: this.props.margins.left,
+          x: 0,
           xAxisLabel: this.props.xAxisLabel || this.props.xValue,
           y: this.state.containerHeight,
         })

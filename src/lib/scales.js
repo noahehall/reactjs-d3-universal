@@ -59,13 +59,10 @@ export const yScale = ({
  * retrieve xscale
  */
 export const getYScale = ({
-  // chartHeight = 200,
+  chartHeight = 200,
   chartDataGroupBy = '',
   chartType = '',
   data,
-  // chartWidth = 200,
-  margins = {},
-  svgHeight = 200,
   yValue = '',
 }) => {
   if (!yValue || !chartType || appFuncs._.isEmpty(data)) {
@@ -125,7 +122,7 @@ export const getYScale = ({
   }
 
   return yScale({
-    chartHeight: svgHeight - (margins.top + margins.bottom),
+    chartHeight,
     chartType,
     dataMaxNumber,
     dataMinNumber,
@@ -224,11 +221,11 @@ export const getDataMaxNumber = () => {
  */
 export const getXScale = ({
   chartDataGroupBy = '',
+  chartHeight = 200,
   chartType = '',
+  chartWidth = 200,
   data,
   labels,
-  margins = {},
-  svgWidth = 200,
   xValue,
   xScaleTime,
 }) => { // eslint-disable-line consistent-return
@@ -244,7 +241,6 @@ export const getXScale = ({
 
     return null;
   }
-  const chartWidth = svgWidth - (margins.left + margins.right);
 
   let
     dataLabelsArray,

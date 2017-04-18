@@ -222,22 +222,15 @@ export default class Chart extends React.Component {
   componentWillReceiveProps (nextProps) {
     if (!appFuncs._.isEqual(nextProps.data, this.props.data))
       this.setState({
-        colorScale: nextProps.colorScaleScheme
-        ? scales.colorScale({
-          chartDataGroupBy: nextProps.chartDataGroupBy,
-          colorScaleScheme: nextProps.colorScaleScheme,
-          colorScaleType: nextProps.colorScaleType,
-        })
-        : null,
         data: dataFunctions.format({
           chartDataGroupBy: nextProps.chartDataGroupBy,
           chartDataSumGroupBy: nextProps.chartDataSumGroupBy,
           chartType: nextProps.chartType,
           data: nextProps.data,
-          lineCurve: nextProps.lineCurve,
           xScaleTime: nextProps.xScaleTime,
           xScaleTimeFormat: nextProps.xScaleTimeFormat,
           xValue: nextProps.xValue,
+          yValue: nextProps.yValue,
         })
       });
   }
@@ -323,7 +316,7 @@ export default class Chart extends React.Component {
         ? axes.getXAxisLabel({
           chartDataGroupBy: this.props.chartDataGroupBy,
           transform: 'rotate(0)',
-          x: this.state.containerWidth / 2 - this.props.margins.left,
+          x: this.props.margins.left,
           xAxisLabel: this.props.xAxisLabel || this.props.xValue,
           y: this.state.containerHeight,
         })
@@ -337,10 +330,7 @@ export default class Chart extends React.Component {
           chartWidth,
           data: this.state.data,
           labels: this.props.datumLabels,
-          margins: this.props.margins,
-          svgWidth: this.state.containerWidth,
           xScaleTime: this.props.xScaleTime,
-          xScaleTimeFormat: this.props.xScaleTimeFormat,
           xValue: this.props.xValue,
         })
         : null,
@@ -350,7 +340,7 @@ export default class Chart extends React.Component {
           chartDataGroupBy: this.props.chartDataGroupBy,
           transform: 'rotate(-90)',
           // x & y flip because of rotation
-          x: -this.state.containerHeight / 2 - this.props.margins.top,
+          x: -chartHeight,
           y: '1em',
           yAxisLabel: this.props.yAxisLabel || this.props.yValue,
         })
@@ -363,8 +353,6 @@ export default class Chart extends React.Component {
           chartType: this.props.chartType,
           chartWidth,
           data: this.state.data,
-          margins: this.props.margins,
-          svgHeight: this.state.containerHeight,
           yValue: this.props.yValue,
         })
         : null;
@@ -372,7 +360,12 @@ export default class Chart extends React.Component {
     // only create X and Y axis on client
     if (hasDocument) {
       if (this.props.yAxis && thisYScale) axes.getYAxis({ id: this.props.id, thisYScale });
-      if (this.props.xAxis && thisXScale) axes.getXAxis({ id: this.props.id, thisXScale, xScaleTimeFormat: this.props.xScaleTimeFormat, xScaleTime: this.props.xScaleTime });
+      if (this.props.xAxis && thisXScale) axes.getXAxis({
+        id: this.props.id,
+        thisXScale,
+        xScaleTime: this.props.xScaleTime,
+        xScaleTimeFormat: this.props.xScaleTimeFormat,
+      });
     }
 
     // creates chart based on above variable initializations
@@ -448,7 +441,7 @@ export default class Chart extends React.Component {
           <g
             className='y axis'
             style={{
-              tansform: `translate(${this.props.margins.left}px, ${this.props.margins.top}px)`,
+              transform: `translate(${this.props.margins.left}px, ${this.props.margins.top}px)`,
               transition: 'transform 1s',
             }}
           />

@@ -118,11 +118,11 @@ export const groupBy = ({
   xValue = '',
   yValue = '',
 }) => {
-  if (appFuncs._.isEmpty(data) || !chartDataGroupBy) {
+  if (appFuncs._.isEmpty(data) || !chartDataGroupBy || !yValue) {
     appFuncs.logError({
-      data: [ chartDataGroupBy, data ],
+      data: [ chartDataGroupBy, yValue, data ],
       loc: __filename,
-      msg: 'data and chartDataGroupBy must be valid variables in data.groupBy(), returning data without transformations',
+      msg: 'data and chartDataGroupBy and yValue must be valid variables in data.groupBy(), returning data without transformations',
     });
 
     return data;

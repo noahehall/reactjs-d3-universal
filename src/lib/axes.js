@@ -46,7 +46,6 @@ export const getXAxis = ({
   textAnchor = 'end',
   thisXScale = null,
   transform = 'rotate(-65)',
-  xScaleTimeFormat = '',
   xScaleTime = false,
 }) => {
   if (!id || !thisXScale) {

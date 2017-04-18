@@ -5,15 +5,15 @@ var _text=require('../svg/text.js'),_text2=_interopRequireDefault(_text),_d2=req
 .select(document.getElementById(''+a)).select('.y.axis').call(d3.axisLeft(b)).selectAll('text').classed('axies text',!0):(appFuncs.logError({data:[a,b,'undefined'==typeof document?'undefined':_typeof(document)],loc:__filename,msg:'id and thisYScale must be valid variables in axes.getYAxis(), returning null'}),null);// dont create axis when rendering on server
 };/*
  * Create/Update X Axis and insert it in DOM
- */var getXAxis=exports.getXAxis=function(_ref2){var _ref2$dx=_ref2.dx,a=void 0===_ref2$dx?'-.8em':_ref2$dx,_ref2$dy=_ref2.dy,b=void 0===_ref2$dy?'.15em':_ref2$dy,_ref2$id=_ref2.id,c=void 0===_ref2$id?'':_ref2$id,_ref2$textAnchor=_ref2.textAnchor,d=void 0===_ref2$textAnchor?'end':_ref2$textAnchor,_ref2$thisXScale=_ref2.thisXScale,e=void 0===_ref2$thisXScale?null:_ref2$thisXScale,_ref2$transform=_ref2.transform,f=void 0===_ref2$transform?'rotate(-65)':_ref2$transform,_ref2$xScaleTimeForma=_ref2.xScaleTimeFormat,g=void 0===_ref2$xScaleTimeForma?'':_ref2$xScaleTimeForma,_ref2$xScaleTime=_ref2.xScaleTime;if(!c||!e)return appFuncs.logError({data:[c,e,'undefined'==typeof document?'undefined':_typeof(document)],loc:__filename,msg:'id and thisXScale must be valid variables in axes.getXAxis(), returning null'}),null;// dont create axis when rendering on server
-if('undefined'==typeof document)return null;var _e$domain=e.domain(),_e$domain2=_slicedToArray(_e$domain,2),i=_e$domain2[0],j=_e$domain2[1],k=i.getTime(),l=j.getTime(),m=Math.abs(l-k),n=m/86400000,o=3600<n// 1985
-?'%Y':360<n// Dec 1985
-?'%b %Y':27<n// 12/12/85
-?'%m/%d/%y':6<n// Friday, Dec 12
+ */var getXAxis=exports.getXAxis=function(_ref2){var _ref2$dx=_ref2.dx,a=void 0===_ref2$dx?'-.8em':_ref2$dx,_ref2$dy=_ref2.dy,b=void 0===_ref2$dy?'.15em':_ref2$dy,_ref2$id=_ref2.id,c=void 0===_ref2$id?'':_ref2$id,_ref2$textAnchor=_ref2.textAnchor,d=void 0===_ref2$textAnchor?'end':_ref2$textAnchor,_ref2$thisXScale=_ref2.thisXScale,e=void 0===_ref2$thisXScale?null:_ref2$thisXScale,_ref2$transform=_ref2.transform,f=void 0===_ref2$transform?'rotate(-65)':_ref2$transform,_ref2$xScaleTime=_ref2.xScaleTime;if(!c||!e)return appFuncs.logError({data:[c,e,'undefined'==typeof document?'undefined':_typeof(document)],loc:__filename,msg:'id and thisXScale must be valid variables in axes.getXAxis(), returning null'}),null;// dont create axis when rendering on server
+if('undefined'==typeof document)return null;var _e$domain=e.domain(),_e$domain2=_slicedToArray(_e$domain,2),h=_e$domain2[0],i=_e$domain2[1],j=h.getTime(),k=i.getTime(),l=Math.abs(k-j),m=l/86400000,n=3600<m// 1985
+?'%Y':360<m// Dec 1985
+?'%b %Y':27<m// 12/12/85
+?'%m/%d/%y':6<m// Friday, Dec 12
 ?'%a, %b %d'// 12:30AM Saturday
-:'%I:%M%p %a',p=[].concat(_toConsumableArray(d3.range(k,l,m/8).map(function(r){return new Date(r)})),[j]),q=void 0!==_ref2$xScaleTime&&_ref2$xScaleTime?d3.axisBottom(e).tickValues(p).tickFormat(time.format({format:o})):d3.axisBottom(e);// create axis generate for xScale
+:'%I:%M%p %a',o=[].concat(_toConsumableArray(d3.range(j,k,l/8).map(function(q){return new Date(q)})),[i]),p=void 0!==_ref2$xScaleTime&&_ref2$xScaleTime?d3.axisBottom(e).tickValues(o).tickFormat(time.format({format:n})):d3.axisBottom(e);// create axis generate for xScale
 return d3// eslintignore let d3 handle the axis instead of building ourselves
-.select(document.getElementById(''+c)).select('.x.axis').call(q).selectAll('g.tick text').classed('axes text',!0).attr('dx',a).attr('dy',b).attr('transform',f).style('text-anchor',d)};/**
+.select(document.getElementById(''+c)).select('.x.axis').call(p).selectAll('g.tick text').classed('axes text',!0).attr('dx',a).attr('dy',b).attr('transform',f).style('text-anchor',d)};/**
  * Positions label on x Axis
  * @method getXAxisLabel
  * @param  {String}      [xAxisLabel=''}] [description]

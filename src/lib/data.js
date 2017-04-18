@@ -7,7 +7,6 @@ export const checkTimeFormat = ({
   xScaleTimeFormat,
 }) => {
   try {
-
     if (parseTime(data[0][timeProperty])) return false;
 
     // return parseTime(time.format({ format: xScaleTimeFormat })(new Date("Fri Mar 17 16:50:48 +0000 2017")))
@@ -65,9 +64,36 @@ export const formatTime = ({
   return transformed;
 };
 
-// creates dataValues for groupBy()
+export const sumGroupedData = ({
+  chartDataGroupBy,
+  data,
+  xValue,
+  yValue,
+}) => {
+  const tempObj = {};
+  data.forEach((el) => {
+    if (tempObj[el[xValue]]) {
+      tempObj[el[xValue]][yValue] += el[yValue];
+      tempObj[el[xValue]].originalDataList.push(el)
+    } else
+      tempObj[el[xValue]] = {
+        [chartDataGroupBy]: el[chartDataGroupBy],
+        [xValue]: el[xValue],
+        [yValue]: el[yValue],
+        originalDataList: [el],
+      };
+  });
+
+  return Object.values(tempObj);
+
+}
+// groups an array of objects by some property value
+// returns an object where each property is an array of objects with a matching property  value
 // in separate function for VM compiler optimization
-export const createDataValues = (data, chartDataGroupBy) => {
+export const createDataValues = ({
+  chartDataGroupBy,
+  data,
+}) => {
   let dataValues;
   try {
     dataValues = appFuncs._.groupBy(data, (d) => {
@@ -85,10 +111,12 @@ export const createDataValues = (data, chartDataGroupBy) => {
 
 export const groupBy = ({
   chartDataGroupBy = '',
+  chartDataSumGroupBy = false,
   data,
   xScaleTime,
   xScaleTimeFormat,
   xValue = '',
+  yValue = '',
 }) => {
   if (appFuncs._.isEmpty(data) || !chartDataGroupBy) {
     appFuncs.logError({
@@ -99,8 +127,15 @@ export const groupBy = ({
 
     return data;
   }
-  // group all values by chartDataGroupBy
-  const dataValues = createDataValues(data, chartDataGroupBy);
+
+  // group all values by chartDataGroupBy, each group is a line on a chart
+  const dataValues = createDataValues({
+    chartDataGroupBy,
+    chartDataSumGroupBy,
+    data,
+    xValue,
+    yValue,
+  });
 
   if (appFuncs._.isEmpty(dataValues) || dataValues instanceof Error) {
     appFuncs.logError({
@@ -124,6 +159,9 @@ export const groupBy = ({
         xScaleTimeFormat,
       });
 
+    if (transformed.length && chartDataSumGroupBy && yValue && xValue)
+      transformed = sumGroupedData({ chartDataGroupBy, data: transformed, xValue, yValue });
+
     return {
       id: key,
       values: transformed.length
@@ -132,22 +170,18 @@ export const groupBy = ({
     };
   });
 
-  console.dir([
-    'data groups',
-    dataGroups,
-    data
-  ])
-
   return dataGroups;
 };
 
 export const format = ({
   chartDataGroupBy = '',
+  chartDataSumGroupBy = false,
   chartType = '',
   data,
   xScaleTime = false,
   xScaleTimeFormat = '',
   xValue = '',
+  yValue = '',
 }) => {
   if (appFuncs._.isEmpty(data)) return data;
 
@@ -187,10 +221,12 @@ export const format = ({
       if (chartDataGroupBy)
         return groupBy({
           chartDataGroupBy,
+          chartDataSumGroupBy,
           data,
           xScaleTime,
           xScaleTimeFormat,
           xValue,
+          yValue,
         });
 
       // transform time and return

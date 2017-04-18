@@ -6,13 +6,15 @@ export const Path = ({ // eslintignore https://developer.mozilla.org/en-US/docs/
   fill = 'blue',
   id = '',
   stroke = 'gray',
-}) => <path
-  className={`${chartType}-path`}
-  d={d}
-  fill={fill}
-  id={id}
-  stroke={stroke}
-/>;
+}) => (
+  <path
+    className={`${chartType}-path`}
+    d={d}
+    fill={fill}
+    id={id}
+    stroke={stroke}
+  />
+);
 
 Path.propTypes = {
   chartType: React.PropTypes.string,

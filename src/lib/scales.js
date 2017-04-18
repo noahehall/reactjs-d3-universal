@@ -190,9 +190,9 @@ export const xScale = ({
     case 'bar': {
       if (!dataLabelsArray.length)
         appFuncs.logError({
-          data: [ chartType, dataLabaelsArray ],
+          data: [ chartType, dataLabelsArray ],
           loc: __filename,
-          msg: `dataLabaelsArray cannot be empty in scales.xScale(), attempting to create and return xScale anyway`,
+          msg: `dataLabelsArray cannot be empty in scales.xScale(), attempting to create and return xScale anyway`,
         });
 
       return d3
@@ -256,7 +256,6 @@ export const getXScale = ({
   if (chartDataGroupBy) data.forEach((group) => thisData.push(...group.values));
   else thisData = data;
 
-  console.dir(['get xscale', data]);
   switch (chartType.toLowerCase()) {
     case 'pie': return null;
     case 'line': // eslintignore both min and max
@@ -355,6 +354,9 @@ export const colorScale = ({
       return d3.scaleSequential(d3.interpolatePiYG);
     }
     // update this: https://github.com/d3/d3/blob/master/API.md#sequential-scales
+    case 'custom': {
+      return (key) => d3.color(colorScaleScheme[key]).toString();
+    }
     case 'random':
     default: {
       appFuncs.logError({

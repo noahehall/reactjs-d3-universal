@@ -11,6 +11,7 @@ import ForceLayout from './forcelayout/index.js';
 import Pack from './pack/index.js';
 import Popup from 'react-popup';
 import React from 'react';
+import { Circle } from './svg/circle.js';
 
 // TODO: search this file for all try catch blocks and move to separate function
 
@@ -60,6 +61,7 @@ export default class Chart extends React.Component {
       // if chartType = 'table'
       // @see ./table/index.js
       sortable: false,
+      withDots: false,
       // should we include an xAxis for this chart
       // @see ./lib/aces.jjs
       xAxis: false,
@@ -110,6 +112,7 @@ export default class Chart extends React.Component {
     margins: React.PropTypes.object,
     preserveAspectRatio: React.PropTypes.string,
     sortable: React.PropTypes.bool,
+    withDots: React.PropTypes.bool,
     xAxis: React.PropTypes.bool,
     xAxisLabel: React.PropTypes.string,
     xScale: React.PropTypes.bool,
@@ -368,6 +371,25 @@ export default class Chart extends React.Component {
       });
     }
 
+    const circles = [];
+    if (this.props.withDots && thisXScale && thisYScale) {
+      if (this.props.chartDataGroupBy) {
+        this.state.data.forEach((group) => {
+          group.values.forEach((tweet) => {
+            circles.push(
+              <Circle
+                cx={thisXScale(tweet[this.props.xValue])}
+                cy={thisYScale(tweet[this.props.yValue])}
+                fill={this.state.colorScale(tweet[this.props.chartDataGroupBy])}
+                key={`${tweet[this.props.xValue].getTime()}${tweet[this.props.yValue]}${tweet[this.props.chartDataGroupBy]}`}
+                r={4}
+              />
+            )
+          })
+        })
+      }
+    }
+
     // creates chart based on above variable initializations
     const thisChart = this.state.chartFunction({
       chartDataGroupBy: this.props.chartDataGroupBy,
@@ -425,6 +447,7 @@ export default class Chart extends React.Component {
             }}
           >
             {thisChart}
+            {circles}
           </g>
         </g>
         { this.props.xAxis &&

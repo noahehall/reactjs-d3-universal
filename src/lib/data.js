@@ -161,8 +161,8 @@ export const groupBy = ({
     // 12/12/85
     ? '%m%d%y'
     : totalDays > 6
-    // Fri, Dec 12
-    ? '%a%b%d'
+    // 12/12/85
+    ? '%m%d%y'
     : totalDays > 3
     // 23 06/31/85
     ? '%H%m%d%y'

@@ -142,8 +142,8 @@ return(x||b.forEach(function(y){return w.push(_extends({},y,_defineProperty({},e
 var A=createDataValues({chartDataGroupBy:d,chartDataSumGroupBy:t,data:u,xValue:x,yValue:z});if(appFuncs._.isEmpty(A)||A instanceof Error)return appFuncs.logError({data:[u,A],loc:__filename,msg:'could not create groups for data on key '+d+', returning data'}),u;var B=appFuncs._.minBy(u,'date').date,C=appFuncs._.maxBy(u,'date').date,D=Math.abs(C-B),E=D/8.64e7,F=3600<E// 1985
 ?'%Y':360<E// Dec 1985
 ?'%b%Y':27<E// 12/12/85
-?'%m%d%y':6<E// Fri, Dec 12
-?'%a%b%d':3<E// 23 06/31/85
+?'%m%d%y':6<E// 12/12/85
+?'%m%d%y':3<E// 23 06/31/85
 ?'%H%m%d%y'// 2356 06/31/85
 :'%H%M%m%d%y',G=Object.keys(A).map(function(H){var I=[];// transform time if required
 return v&&F&&(I=formatTime({data:A[H],timeProperty:x,xScaleTimeFormat:F})),I.length&&t&&z&&x&&(I=sumGroupedData({chartDataGroupBy:d,data:I,xValue:x,yValue:z})),{id:H,values:I.length?I:A[H]}});// create object with values and keys for each lineValues group

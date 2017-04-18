@@ -7,8 +7,8 @@ var createDataValues=exports.createDataValues=function(_ref4){var c=_ref4.chartD
 var k=createDataValues({chartDataGroupBy:g,chartDataSumGroupBy:h,data:c,xValue:i,yValue:j});if(appFuncs._.isEmpty(k)||k instanceof Error)return appFuncs.logError({data:[c,k],loc:__filename,msg:'could not create groups for data on key '+g+', returning data'}),c;var l=appFuncs._.minBy(c,'date').date,m=appFuncs._.maxBy(c,'date').date,n=Math.abs(m-l),o=n/86400000,p=3600<o// 1985
 ?'%Y':360<o// Dec 1985
 ?'%b%Y':27<o// 12/12/85
-?'%m%d%y':6<o// Fri, Dec 12
-?'%a%b%d':3<o// 23 06/31/85
+?'%m%d%y':6<o// 12/12/85
+?'%m%d%y':3<o// 23 06/31/85
 ?'%H%m%d%y'// 2356 06/31/85
 :'%H%M%m%d%y',q=Object.keys(k).map(function(r){var s=[];// transform time if required
 return f&&p&&(s=formatTime({data:k[r],timeProperty:i,xScaleTimeFormat:p})),s.length&&h&&j&&i&&(s=sumGroupedData({chartDataGroupBy:g,data:s,xValue:i,yValue:j})),{id:r,values:s.length?s:k[r]}});// create object with values and keys for each lineValues group

@@ -9,10 +9,10 @@ var _text=require('../svg/text.js'),_text2=_interopRequireDefault(_text),_d2=req
 if('undefined'==typeof document)return null;var _e$domain=e.domain(),_e$domain2=_slicedToArray(_e$domain,2),h=_e$domain2[0],i=_e$domain2[1],j=h.getTime(),k=i.getTime(),l=Math.abs(k-j),m=l/86400000,n=3600<m// 1985
 ?'%Y':360<m// Dec 1985
 ?'%b %Y':27<m// 12/12/85
-?'%-m/%-d/%y':6<m// Fri, Dec 12
-?'%a, %b %-d':3<m// 12AM 06/31/85
+?'%-m/%-d/%y':6<m// Fri, D12
+?'%-m/%-d/%y':3<m// 12AM 06/31/85
 ?'%-I%p %-m/%-d/%y'// 12:56PM 6/31
-:'%-I:%M%p %-m/%-d',o=[].concat(_toConsumableArray(d3.range(j,k,l/8).map(function(q){return new Date(q)})),[i]),p=void 0!==_ref2$xScaleTime&&_ref2$xScaleTime?d3.axisBottom(e).tickValues(o).tickFormat(time.format({format:n})):d3.axisBottom(e);// create axis generate for xScale
+:'%-I:%M%p %-m/%-d/%y',o=[].concat(_toConsumableArray(d3.range(j,k,l/8).map(function(q){return new Date(q)})),[i]),p=void 0!==_ref2$xScaleTime&&_ref2$xScaleTime?d3.axisBottom(e).tickValues(o).tickFormat(time.format({format:n})):d3.axisBottom(e);// create axis generate for xScale
 return d3// eslintignore let d3 handle the axis instead of building ourselves
 .select(document.getElementById(''+c)).select('.x.axis').call(p).selectAll('g.tick text').classed('axes text',!0).attr('dx',a).attr('dy',b).attr('transform',f).style('text-anchor',d)};/**
  * Positions label on x Axis

@@ -114,10 +114,10 @@ function _interopRequireWildcard(g){if(g&&g.__esModule)return g;var r={};if(null
 if('undefined'==typeof document)return null;var E=A.domain(),F=_slicedToArray(E,2),G=F[0],H=F[1],I=G.getTime(),J=H.getTime(),K=Math.abs(J-I),L=K/8.64e7,M=3600<L// 1985
 ?'%Y':360<L// Dec 1985
 ?'%b %Y':27<L// 12/12/85
-?'%-m/%-d/%y':6<L// Fri, Dec 12
-?'%a, %b %-d':3<L// 12AM 06/31/85
+?'%-m/%-d/%y':6<L// Fri, D12
+?'%-m/%-d/%y':3<L// 12AM 06/31/85
 ?'%-I%p %-m/%-d/%y'// 12:56PM 6/31
-:'%-I:%M%p %-m/%-d',N=[].concat(_toConsumableArray(d3.range(I,J,K/8).map(function(P){return new Date(P)})),[H]),O=void 0!==D&&D?d3.axisBottom(A).tickValues(N).tickFormat(time.format({format:M})):d3.axisBottom(A);// create axis generate for xScale
+:'%-I:%M%p %-m/%-d/%y',N=[].concat(_toConsumableArray(d3.range(I,J,K/8).map(function(P){return new Date(P)})),[H]),O=void 0!==D&&D?d3.axisBottom(A).tickValues(N).tickFormat(time.format({format:M})):d3.axisBottom(A);// create axis generate for xScale
 return d3// eslintignore let d3 handle the axis instead of building ourselves
 .select(document.getElementById(''+w)).select('.x.axis').call(O).selectAll('g.tick text').classed('axes text',!0).attr('dx',s).attr('dy',u).attr('transform',C).style('text-anchor',y)},getXAxisLabel=exports.getXAxisLabel=function(g){var r=g.transform,s=void 0===r?'rotate(0)':r,t=g.x,u=void 0===t?5:t,v=g.xAxisLabel,w=void 0===v?'':v,x=g.y,y=void 0===x?-5:x;return w?_react2.default.createElement(_text2.default,{chartType:'axes',text:w,transform:s,x:u,y:y}):(appFuncs.logError({data:w,loc:__filename,msg:'id and thisYScale must be valid variables in axes.getYAxis(), returning null'}),null)};/*
  * Create/Update X Axis and insert it in DOM

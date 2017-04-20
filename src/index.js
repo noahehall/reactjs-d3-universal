@@ -449,8 +449,8 @@ export default class Chart extends React.Component {
               transition: 'transform 1s',
             }}
           >
-            {thisChart}
             {circles}
+            {thisChart}
           </g>
         </g>
         { this.props.xAxis &&

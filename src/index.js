@@ -483,6 +483,8 @@ export default class Chart extends React.Component {
             opacity: 0,
             padding: '10px',
             position: 'absolute',
+            transformOrigin: '0 0',
+            transition: 'transform 1s, opacity 1s',
           }}
           textAnchor='start'
         />
@@ -497,7 +499,6 @@ export default class Chart extends React.Component {
           display: 'block',
           overflow: 'hidden',
           position: 'relative',
-          transformOrigin: '0 0',
         }}
       >
         <Popup />

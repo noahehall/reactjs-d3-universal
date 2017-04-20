@@ -61,21 +61,24 @@ export const Lines = ({
                 const tooltip = document.getElementById(`${id}-tooltip`);
                 if (tooltip) {
                   const box = e.target.parentNode.getBoundingClientRect();
+                  const
+                    left = e.nativeEvent.clientX - box.left,
+                    top = e.nativeEvent.clientY - box.top;
                   Object.assign(
                     tooltip.style,
                     {
                       opacity: 1,
-                      transform: `translate(${30 + e.nativeEvent.pageX - box.left}px, ${e.nativeEvent.pageY - box.top}px)`,
+                      transform: `translate(${30 + left}px, ${top}px)`,
                     }
                   );
 
                   const
-                    date = xScale.invert(e.nativeEvent.pageX - box.left),
-                    total = yScale.invert(e.nativeEvent.pageY - box.top);
+                    date = xScale.invert(left),
+                    total = yScale.invert(top);
 
                   tooltip.textContent = `${date.toUTCString()}, ${total.toPrecision(2)}`;
 
-                  //setTimeout(() => tooltip.style.opacity = 0, 3000)
+                  setTimeout(() => Object.assign(tooltip.style, {opacity: 0}), 2500);
                 }
               }
             }}

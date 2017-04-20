@@ -32,6 +32,7 @@ export const generateLine = ({
 
   return d3
     .line()
+    //.defined((d) => d[xValue]) //remove dates without values
     .curve(thisCurve)
     .x((d) => xScale(d[xValue]))
     .y((d) => yScale(d[yValue]));

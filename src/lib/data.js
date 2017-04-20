@@ -1,5 +1,21 @@
 import * as time from './time.js';
 
+export const checkTimeFormat = ({
+  data,
+  parseTime,
+  timeProperty,
+  xScaleTimeFormat,
+}) => {
+  try {
+    if (parseTime(data[0][timeProperty])) return false;
+
+    // return parseTime(time.format({ format: xScaleTimeFormat })(new Date("Fri Mar 17 16:50:48 +0000 2017")))
+    return time.format({ format: xScaleTimeFormat });
+  } catch (e) {
+    return new Error(`something went wrong accessing data[0][${timeProperty}] inside lib/data.js.checkTimeFormat(), or creating a time formatter with format ${xScaleTimeFormat}, heres the message ${e.message}`);
+  }
+};
+
 export const formatTime = ({
   data,
   timeProperty = '',
@@ -17,36 +33,109 @@ export const formatTime = ({
   const parseTime = time.parse({ format: xScaleTimeFormat });
   const transformed = [];
 
-  data.forEach((group) =>
-    transformed.push({
-      ...group,
-      [timeProperty]: parseTime(group[timeProperty]),
-    })
-  );
+  const timeFormatter = checkTimeFormat({ data, parseTime, timeProperty, xScaleTimeFormat });
+
+  // parse time as is
+  if (!timeFormatter)
+    data.forEach((group) =>
+      transformed.push({
+        ...group,
+        [timeProperty]: parseTime(group[timeProperty]),
+      })
+    );
+
+  if (timeFormatter instanceof Error) {
+    appFuncs.logError({
+      data: [ data, timeProperty, xScaleTimeFormat, timeFormatter ],
+      loc: __filename,
+      msg: `${timeFormatter.message}, returning data without processing time, your chart is likely fucked up`,
+    });
+
+    return data;
+  } else if (timeFormatter)
+    // timeFormatter must be ready to use
+    data.forEach((group) =>
+      transformed.push({
+        ...group,
+        [timeProperty]: parseTime(timeFormatter(new Date(group[timeProperty]))),
+      })
+    );
 
   return transformed;
 };
 
+export const sumGroupedData = ({
+  chartDataGroupBy,
+  data,
+  xValue,
+  yValue,
+}) => {
+  const tempObj = {};
+  data.forEach((el) => {
+    if (tempObj[el[xValue]]) {
+      tempObj[el[xValue]][yValue] += el[yValue];
+      tempObj[el[xValue]].originalDataList.push(el);
+    } else
+      tempObj[el[xValue]] = {
+        [chartDataGroupBy]: el[chartDataGroupBy],
+        originalDataList: [el],
+        [xValue]: el[xValue],
+        [yValue]: el[yValue],
+      };
+  });
+
+  return Object.values(tempObj).sort((a, b) => a.date - b.date);
+};
+// groups an array of objects by some property value
+// returns an object where each property is an array of objects with a matching property  value
+// in separate function for VM compiler optimization
+export const createDataValues = ({
+  chartDataGroupBy,
+  data,
+}) => {
+  let dataValues;
+  try {
+    dataValues = appFuncs._.groupBy(data, (d) => {
+      if (typeof d[chartDataGroupBy] === 'undefined')
+        throw new Error(`key ${chartDataGroupBy} does not exist in ${JSON.stringify(Object.keys(d))}. exiting lib/data.groupBy. here is the entire object ${d}`);
+
+      return d[chartDataGroupBy];
+    });
+  } catch (e) {
+    dataValues = e;
+  }
+
+  return dataValues;
+};
+
 export const groupBy = ({
   chartDataGroupBy = '',
+  chartDataSumGroupBy = false,
   data,
   xScaleTime,
-  xScaleTimeFormat,
   xValue = '',
+  yValue = '',
 }) => {
-  if (appFuncs._.isEmpty(data) || !chartDataGroupBy) {
+  if (appFuncs._.isEmpty(data) || !chartDataGroupBy || !yValue) {
     appFuncs.logError({
-      data: [ chartDataGroupBy, data ],
+      data: [ chartDataGroupBy, yValue, data ],
       loc: __filename,
-      msg: 'data and chartDataGroupBy must be valid variables in data.groupBy(), returning data without transformations',
+      msg: 'data and chartDataGroupBy and yValue must be valid variables in data.groupBy(), returning data without transformations',
     });
 
     return data;
   }
-  // group all values by groupby
-  const dataValues = appFuncs._.groupBy(data, (d) => d[chartDataGroupBy]);
 
-  if (appFuncs._.isEmpty(dataValues)) {
+  // group all values by chartDataGroupBy, each group is a line on a chart
+  const dataValues = createDataValues({
+    chartDataGroupBy,
+    chartDataSumGroupBy,
+    data,
+    xValue,
+    yValue,
+  });
+
+  if (appFuncs._.isEmpty(dataValues) || dataValues instanceof Error) {
     appFuncs.logError({
       data: [ data, dataValues ],
       loc: __filename,
@@ -56,17 +145,44 @@ export const groupBy = ({
     return data;
   }
 
+  const
+    minDate = appFuncs._.minBy(data, xValue)[xValue],
+    maxDate = appFuncs._.maxBy(data, xValue)[xValue],
+    diff = Math.abs(maxDate - minDate),
+    totalDays = diff / (1000*60*60*24);
+
+  const format = totalDays > 3600
+    // 1985
+    ? '%Y'
+    : totalDays > 360
+    // Dec 1985
+    ? '%b%Y'
+    : totalDays > 27
+    // 12/12/85
+    ? '%m%d%y'
+    : totalDays > 6
+    // 12/12/85
+    ? '%m%d%y'
+    : totalDays > 3
+    // 23 06/31/85
+    ? '%H%m%d%y'
+    // 2356 06/31/85
+    : '%H%M%m%d%y';
+
   // create object with values and keys for each lineValues group
   const dataGroups = Object.keys(dataValues).map((key) => {
     let transformed = [];
 
     // transform time if required
-    if (xScaleTime && xScaleTimeFormat)
+    if (xScaleTime && format)
       transformed = formatTime({
         data: dataValues[key],
         timeProperty: xValue,
-        xScaleTimeFormat,
+        xScaleTimeFormat: format,
       });
+
+    if (transformed.length && chartDataSumGroupBy && yValue && xValue)
+      transformed = sumGroupedData({ chartDataGroupBy, data: transformed, xValue, yValue });
 
     return {
       id: key,
@@ -81,11 +197,13 @@ export const groupBy = ({
 
 export const format = ({
   chartDataGroupBy = '',
+  chartDataSumGroupBy = false,
   chartType = '',
   data,
   xScaleTime = false,
   xScaleTimeFormat = '',
   xValue = '',
+  yValue = '',
 }) => {
   if (appFuncs._.isEmpty(data)) return data;
 
@@ -125,10 +243,12 @@ export const format = ({
       if (chartDataGroupBy)
         return groupBy({
           chartDataGroupBy,
+          chartDataSumGroupBy,
           data,
           xScaleTime,
           xScaleTimeFormat,
           xValue,
+          yValue,
         });
 
       // transform time and return

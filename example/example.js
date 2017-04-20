@@ -2,7 +2,7 @@ import React from 'react';
 import Chart from '../dist/index.js';
 //import packData from './fakedata/packtwitter.json';
 import timelineData from './fakedata/rawtwitter.json';
-
+//import formattedData from './fakedata/payingcustomers.json';
 export default class Table extends React.Component {
   static get defaultProps () {
     return {
@@ -35,37 +35,70 @@ export default class Table extends React.Component {
   }
   //*/
 
-  //* timeline
-   // y = sum aggregate sentiment for day
-   // x = dates
-   // groupBy = username ? possibly best option
-    // could do: token
   render () {
+    //* timeline
+    // y = sum aggregate sentiment for day
+    // x = dates
+    // groupBy = username ? possibly best option
+    // could do: token
+    const formattedData = timelineData.map((tweet) => {
+      const afinn = JSON.parse(tweet.afinn);
+      afinn.score =
+        afinn.score > 0 ? 1
+          : afinn.score < 0 ? -1
+            : afinn.score;
+
+      // date to start of month
+      // new Date(new Date(tweet.date).setDate(1)).toLocaleDateString()
+      return {
+        ...tweet,
+        afinn,
+        date: new Date(tweet.date).getTime(),
+        score: afinn.score,
+        total: 1,
+      };
+    });
+
     return (
       <Chart
-        chartDataGroupBy='type'
+        chartDataGroupBy='score'
+        chartDataSumGroupBy={true}
         chartType='line'
-        colorScaleScheme='schemeCategory10'
-        colorScaleType='basic'
-        data={timelineData}
-        datumLabels={['total']}
+        colorScaleScheme={{
+          '-1': 'red',
+          '-2': 'Tomato',
+          '-3': 'OrangeRed',
+          '-4': 'Crimson',
+          '-5': 'DarkRed',
+          '0': 'black',
+          '1': 'DarkSeaGreen',
+          '2': 'GreenYellow',
+          '3': 'LawnGreen',
+          '4': 'Lime',
+          '5': 'ForestGreen',
+        }}
+        colorScaleType='custom'
+        data={formattedData}
+        datumLabels={['score']}
         id='fake-chart'
+        lineCurve='curveLinear'
         margins={{
           bottom: 70,
           left: 70,
           right: 10,
           top: 10,
         }}
+        withDots={true}
         xAxis={true}
         xAxisLabel='Date'
         xScale={true}
         xScaleTime={true}
-        xScaleTimeFormat='%Y/%m/%d'
+        xScaleTimeFormat='%I%M%p%a%d%y'
         xValue='date'
         yAxis={true}
-        yAxisLabel='Total Paying Customers'
+        yAxisLabel='Total Tweets by Sentiment Score'
         yScale={true}
-        yValue='totalPayingCustomers'
+        yValue='total'
       />
     );
   }

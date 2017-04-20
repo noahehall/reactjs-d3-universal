@@ -1,5 +1,6 @@
 import * as d3 from 'd3';
 
+// convert string to date
 export const parse = ({
   format = '',
 }) => {
@@ -15,3 +16,8 @@ export const parse = ({
 
   return d3.timeParse(format);
 };
+
+// convert date to string
+export const format = ({
+  format, // eslint-disable-line
+}) => d3.timeFormat(format);

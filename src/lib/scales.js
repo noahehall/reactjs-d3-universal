@@ -59,13 +59,10 @@ export const yScale = ({
  * retrieve xscale
  */
 export const getYScale = ({
-  // chartHeight = 200,
+  chartHeight = 200,
   chartDataGroupBy = '',
   chartType = '',
   data,
-  // chartWidth = 200,
-  margins = {},
-  svgHeight = 200,
   yValue = '',
 }) => {
   if (!yValue || !chartType || appFuncs._.isEmpty(data)) {
@@ -102,7 +99,7 @@ export const getYScale = ({
           ],
           err,
           loc: __filename,
-          msg: 'error creating dataMinNumber for scatterplot chart in scales.getYScale()',
+          msg: `error creating dataMinNumber for ${chartType} chart in scales.getYScale()`,
         });
       }
     }
@@ -118,14 +115,14 @@ export const getYScale = ({
           ],
           err,
           loc: __filename,
-          msg: 'error creating dataManNumber for bar chrt chart in scales.getYScale()',
+          msg: `error creating dataMaxNumber for ${chartType} chart in scales.getYScale()`,
         });
       }
     }
   }
 
   return yScale({
-    chartHeight: svgHeight - (margins.top + margins.bottom),
+    chartHeight,
     chartType,
     dataMaxNumber,
     dataMinNumber,
@@ -190,9 +187,9 @@ export const xScale = ({
     case 'bar': {
       if (!dataLabelsArray.length)
         appFuncs.logError({
-          data: [ chartType, dataLabaelsArray ],
+          data: [ chartType, dataLabelsArray ],
           loc: __filename,
-          msg: `dataLabaelsArray cannot be empty in scales.xScale(), attempting to create and return xScale anyway`,
+          msg: `dataLabelsArray cannot be empty in scales.xScale(), attempting to create and return xScale anyway`,
         });
 
       return d3
@@ -204,7 +201,8 @@ export const xScale = ({
     }
     default: {
       appFuncs.logError({
-        msg:`chartType ${chartType} is not setup for scale creation in scales.xScale(), returning null`
+        loc: __filename,
+        msg:`chartType ${chartType} is not setup for scale creation in scales.xScale(), returning null`,
       });
 
       return null;
@@ -212,16 +210,22 @@ export const xScale = ({
   }
 };
 
+// get gets max number for getXScale() and getYScale()
+// in separate function for VM compiler optimization
+export const getDataMaxNumber = () => {
+
+};
+
 /**
  * retrieve xscale
  */
 export const getXScale = ({
   chartDataGroupBy = '',
+  chartHeight = 200,
   chartType = '',
+  chartWidth = 200,
   data,
   labels,
-  margins = {},
-  svgWidth = 200,
   xValue,
   xScaleTime,
 }) => { // eslint-disable-line consistent-return
@@ -237,7 +241,6 @@ export const getXScale = ({
 
     return null;
   }
-  const chartWidth = svgWidth - (margins.left + margins.right);
 
   let
     dataLabelsArray,
@@ -260,10 +263,10 @@ export const getXScale = ({
           data: [
             thisData,
             xValue,
+            err,
           ],
-          err,
           loc: __filename,
-          msg: 'error creating dataMaxNumber for scatterplot chart in scales.getXScale()',
+          msg: `error creating dataMaxNumber for ${chartType} chart in scales.getXScale()`,
         });
       }
 
@@ -274,10 +277,10 @@ export const getXScale = ({
           data: [
             thisData,
             xValue,
+            err,
           ],
-          err,
           loc: __filename,
-          msg: 'error creating dataMixNumber for scatterplot chart in scales.getXScale()',
+          msg: `error creating dataMinNumber for ${chartType} chart in scales.getXScale()`,
         });
       }
 
@@ -347,6 +350,9 @@ export const colorScale = ({
       return d3.scaleSequential(d3.interpolatePiYG);
     }
     // update this: https://github.com/d3/d3/blob/master/API.md#sequential-scales
+    case 'custom': {
+      return (key) => d3.color(colorScaleScheme[key]).toString();
+    }
     case 'random':
     default: {
       appFuncs.logError({

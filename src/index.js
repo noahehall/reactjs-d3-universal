@@ -11,6 +11,9 @@ import ForceLayout from './forcelayout/index.js';
 import Pack from './pack/index.js';
 import Popup from 'react-popup';
 import React from 'react';
+import { Circle } from './svg/circle.js';
+
+// TODO: search this file for all try catch blocks and move to separate function
 
 /**
  * Represents a Chart
@@ -22,6 +25,10 @@ export default class Chart extends React.Component {
       // required for line chart
       // group data by a specific property
       chartDataGroupBy: '',
+      // if you need sum your grouped data,
+      // only used in line chart when chartDataGroupBy is set, i use this for displaying twitter API responses on a timeline
+      // the library will automatically sum your 'yValue' (e.g. total) for any grouped data with duplicate 'xValue' (e.g. date) fields and store the original values in array property 'originalDataList' field in case you're using them for something else (e.g. hover)
+      chartDataSumGroupBy: false,
       // bar|scatterplot|pie|line|table
       // scatterplot: requires x and y values to be integers
       chartType: '',
@@ -44,6 +51,7 @@ export default class Chart extends React.Component {
       // the type of figure object to create, e.g. 'table' creates an html table
       foreignObjectType: 'table',
       id: 'reactjs-d3-v4-universal',
+      lineCurve: '',
       // used for chart margins to place scales
       // @see this file and ./lib/scales.js
       margins: {},
@@ -53,6 +61,7 @@ export default class Chart extends React.Component {
       // if chartType = 'table'
       // @see ./table/index.js
       sortable: false,
+      withDots: false,
       // should we include an xAxis for this chart
       // @see ./lib/aces.jjs
       xAxis: false,
@@ -64,7 +73,8 @@ export default class Chart extends React.Component {
       // required for line chart
       xScaleTime: false,
       // required for line chart https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
-      xScaleTimeFormat: '',
+      // the specified format must match the format of your date string, else extra procesing will be used to convert it to the supplied/default format
+      xScaleTimeFormat: '%m/%d/%Y',
       xValue: '',
       // if this chart requires a y-axis
       yAxis: false,
@@ -79,8 +89,12 @@ export default class Chart extends React.Component {
 
   static propTypes = {
     chartDataGroupBy: React.PropTypes.string,
+    chartDataSumGroupBy: React.PropTypes.bool,
     chartType: React.PropTypes.string,
-    colorScaleScheme: React.PropTypes.string,
+    colorScaleScheme: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.object,
+    ]),
     colorScaleType: React.PropTypes.string,
     data: React.PropTypes.oneOfType([
       React.PropTypes.array,
@@ -94,9 +108,11 @@ export default class Chart extends React.Component {
     ]),
     foreignObjectType: React.PropTypes.string,
     id: React.PropTypes.string,
+    lineCurve: React.PropTypes.string,
     margins: React.PropTypes.object,
     preserveAspectRatio: React.PropTypes.string,
     sortable: React.PropTypes.bool,
+    withDots: React.PropTypes.bool,
     xAxis: React.PropTypes.bool,
     xAxisLabel: React.PropTypes.string,
     xScale: React.PropTypes.bool,
@@ -154,7 +170,7 @@ export default class Chart extends React.Component {
       }
     }
 
-    this.state = {
+    const state = {
       chartFunction,
       colorScale: props.colorScaleScheme
       ? scales.colorScale({
@@ -167,13 +183,17 @@ export default class Chart extends React.Component {
       containerWidth: 200,
       data: dataFunctions.format({
         chartDataGroupBy: props.chartDataGroupBy,
+        chartDataSumGroupBy: props.chartDataSumGroupBy,
         chartType: props.chartType,
         data: props.data,
         xScaleTime: props.xScaleTime,
         xScaleTimeFormat: props.xScaleTimeFormat,
         xValue: props.xValue,
+        yValue: props.yValue,
       }),
     };
+
+    this.state = state;
   }
 
   getChildContext () {
@@ -207,11 +227,13 @@ export default class Chart extends React.Component {
       this.setState({
         data: dataFunctions.format({
           chartDataGroupBy: nextProps.chartDataGroupBy,
+          chartDataSumGroupBy: nextProps.chartDataSumGroupBy,
           chartType: nextProps.chartType,
           data: nextProps.data,
           xScaleTime: nextProps.xScaleTime,
           xScaleTimeFormat: nextProps.xScaleTimeFormat,
           xValue: nextProps.xValue,
+          yValue: nextProps.yValue,
         })
       });
   }
@@ -289,19 +311,28 @@ export default class Chart extends React.Component {
     // initialize variables required for chart
     const
       chartHeight = this.state.containerHeight - (this.props.margins.top + this.props.margins.bottom),
-      chartWidth = this.state.containerWidth - (this.props.margins.left + this.props.margins.right),
+      chartWidth = this.state.containerWidth - (this.props.margins.left + this.props.margins.right);
 
-      hasDocument = typeof document !== 'undefined',
+    const hasDocument = typeof document !== 'undefined';
+    // intialize vars dependent on client
+    let
+      circles = [], // eslint-disable-line
+      thisXAxisLabel,
+      thisXScale,
+      thisYAxisLabel,
+      thisYScale;
 
+    // only create X and Y axis on client
+    if (hasDocument) {
       thisXAxisLabel = this.props.xAxis
         ? axes.getXAxisLabel({
           chartDataGroupBy: this.props.chartDataGroupBy,
           transform: 'rotate(0)',
-          x: this.state.containerWidth / 2 - this.props.margins.left,
+          x: 0,
           xAxisLabel: this.props.xAxisLabel || this.props.xValue,
           y: this.state.containerHeight,
         })
-        : null,
+        : null;
 
       thisXScale = this.props.xScale
         ? scales.getXScale({
@@ -311,24 +342,21 @@ export default class Chart extends React.Component {
           chartWidth,
           data: this.state.data,
           labels: this.props.datumLabels,
-          margins: this.props.margins,
-          svgWidth: width,
           xScaleTime: this.props.xScaleTime,
-          xScaleTimeFormat: this.props.xScaleTimeFormat,
           xValue: this.props.xValue,
         })
-        : null,
+        : null;
 
       thisYAxisLabel = this.props.yAxis
         ? axes.getYAxisLabel({
           chartDataGroupBy: this.props.chartDataGroupBy,
           transform: 'rotate(-90)',
           // x & y flip because of rotation
-          x: -this.state.containerHeight / 2 - this.props.margins.top,
+          x: -chartHeight,
           y: '1em',
           yAxisLabel: this.props.yAxisLabel || this.props.yValue,
         })
-        : null,
+        : null;
 
       thisYScale = this.props.yScale
         ? scales.getYScale({
@@ -337,18 +365,34 @@ export default class Chart extends React.Component {
           chartType: this.props.chartType,
           chartWidth,
           data: this.state.data,
-          margins: this.props.margins,
-          svgHeight: this.state.containerHeight,
           yValue: this.props.yValue,
         })
         : null;
 
-    // only create X and Y axis on client
-    if (hasDocument) {
       if (this.props.yAxis && thisYScale) axes.getYAxis({ id: this.props.id, thisYScale });
-      if (this.props.xAxis && thisXScale) axes.getXAxis({ id: this.props.id, thisXScale });
-    }
+      if (this.props.xAxis && thisXScale) axes.getXAxis({
+        id: this.props.id,
+        thisXScale,
+        xScaleTime: this.props.xScaleTime,
+        xScaleTimeFormat: this.props.xScaleTimeFormat,
+      });
 
+      // only works with multiline charts and twitter data
+      if (this.props.withDots && this.props.chartDataGroupBy && thisXScale && thisYScale)
+        this.state.data.forEach((group) => {
+          group.values.forEach((tweet) => {
+            circles.push(
+              <Circle
+                cx={thisXScale(tweet[this.props.xValue])}
+                cy={thisYScale(tweet[this.props.yValue])}
+                fill={this.state.colorScale(tweet[this.props.chartDataGroupBy])}
+                key={`${tweet[this.props.xValue].getTime()}${tweet[this.props.yValue]}${tweet[this.props.chartDataGroupBy]}`}
+                r={4}
+              />
+            );
+          });
+        });
+    }
     // creates chart based on above variable initializations
     const thisChart = this.state.chartFunction({
       chartDataGroupBy: this.props.chartDataGroupBy,
@@ -364,6 +408,7 @@ export default class Chart extends React.Component {
       foreignObjectType: this.props.foreignObjectType,
       id: this.props.id,
       labels: this.props.datumLabels,
+      lineCurve: this.props.lineCurve,
       margins: this.props.margins,
       sortable: this.props.sortable,
       xScale: thisXScale,
@@ -404,6 +449,7 @@ export default class Chart extends React.Component {
               transition: 'transform 1s',
             }}
           >
+            {circles}
             {thisChart}
           </g>
         </g>
@@ -421,22 +467,26 @@ export default class Chart extends React.Component {
           <g
             className='y axis'
             style={{
-              tansform: `translate(${this.props.margins.left}px, ${this.props.margins.top}px)`,
+              transform: `translate(${this.props.margins.left}px, ${this.props.margins.top}px)`,
               transition: 'transform 1s',
             }}
           />
         }
         { thisYAxisLabel }
-        <section
+        <text
           id={`${this.props.id}-tooltip`}
           style={{
             backgroundColor: 'black',
             border: '2px red dashed',
             borderRadius: '4px',
+            color: 'black',
             opacity: 0,
             padding: '10px',
             position: 'absolute',
+            transformOrigin: '0 0',
+            transition: 'transform 1s, opacity 1s',
           }}
+          textAnchor='start'
         />
       </SVG>;
 

@@ -9,6 +9,7 @@ export const Lines = ({
   chartType = '',
   colorScale,
   data,
+  id,
   lineCurve = '',
   xScale,
   xValue = '',
@@ -49,8 +50,37 @@ export const Lines = ({
             chartType={chartType}
             d={lineGenerator(data[group].values)}
             fill='none'
-            id={data[group].id}
+            id={`${id}-path-${data[group].id}`}
             key={data[group].id}
+            onMouseMove={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+
+              if (typeof document !== 'undefined') {
+                const tooltip = document.getElementById(`${id}-tooltip`);
+                if (tooltip) {
+                  const box = e.target.parentNode.getBoundingClientRect();
+                  const
+                    left = e.nativeEvent.clientX - box.left,
+                    top = e.nativeEvent.clientY - box.top;
+                  Object.assign(
+                    tooltip.style,
+                    {
+                      opacity: 1,
+                      transform: `translate(${30 + left}px, ${top}px)`,
+                    }
+                  );
+
+                  const
+                    date = xScale.invert(left),
+                    total = yScale.invert(top);
+
+                  tooltip.textContent = `${date.toUTCString()}, ${total.toPrecision(2)}`;
+
+                  setTimeout(() => Object.assign(tooltip.style, {opacity: 0}), 3500);
+                }
+              }
+            }}
             stroke={colorScale(data[group].id)}
           />
         );

@@ -311,10 +311,19 @@ export default class Chart extends React.Component {
     // initialize variables required for chart
     const
       chartHeight = this.state.containerHeight - (this.props.margins.top + this.props.margins.bottom),
-      chartWidth = this.state.containerWidth - (this.props.margins.left + this.props.margins.right),
+      chartWidth = this.state.containerWidth - (this.props.margins.left + this.props.margins.right);
 
-      hasDocument = typeof document !== 'undefined',
+    const hasDocument = typeof document !== 'undefined';
+    // intialize vars dependent on client
+    let
+      circles = [], // eslint-disable-line
+      thisXAxisLabel,
+      thisXScale,
+      thisYAxisLabel,
+      thisYScale;
 
+    // only create X and Y axis on client
+    if (hasDocument) {
       thisXAxisLabel = this.props.xAxis
         ? axes.getXAxisLabel({
           chartDataGroupBy: this.props.chartDataGroupBy,
@@ -323,7 +332,7 @@ export default class Chart extends React.Component {
           xAxisLabel: this.props.xAxisLabel || this.props.xValue,
           y: this.state.containerHeight,
         })
-        : null,
+        : null;
 
       thisXScale = this.props.xScale
         ? scales.getXScale({
@@ -336,7 +345,7 @@ export default class Chart extends React.Component {
           xScaleTime: this.props.xScaleTime,
           xValue: this.props.xValue,
         })
-        : null,
+        : null;
 
       thisYAxisLabel = this.props.yAxis
         ? axes.getYAxisLabel({
@@ -347,7 +356,7 @@ export default class Chart extends React.Component {
           y: '1em',
           yAxisLabel: this.props.yAxisLabel || this.props.yValue,
         })
-        : null,
+        : null;
 
       thisYScale = this.props.yScale
         ? scales.getYScale({
@@ -360,8 +369,6 @@ export default class Chart extends React.Component {
         })
         : null;
 
-    // only create X and Y axis on client
-    if (hasDocument) {
       if (this.props.yAxis && thisYScale) axes.getYAxis({ id: this.props.id, thisYScale });
       if (this.props.xAxis && thisXScale) axes.getXAxis({
         id: this.props.id,
@@ -369,11 +376,9 @@ export default class Chart extends React.Component {
         xScaleTime: this.props.xScaleTime,
         xScaleTimeFormat: this.props.xScaleTimeFormat,
       });
-    }
 
-    const circles = [];
-    if (this.props.withDots && thisXScale && thisYScale) {
-      if (this.props.chartDataGroupBy) {
+      // only works with multiline charts and twitter data
+      if (this.props.withDots && this.props.chartDataGroupBy && thisXScale && thisYScale)
         this.state.data.forEach((group) => {
           group.values.forEach((tweet) => {
             circles.push(
@@ -384,12 +389,10 @@ export default class Chart extends React.Component {
                 key={`${tweet[this.props.xValue].getTime()}${tweet[this.props.yValue]}${tweet[this.props.chartDataGroupBy]}`}
                 r={4}
               />
-            )
-          })
-        })
-      }
+            );
+          });
+        });
     }
-
     // creates chart based on above variable initializations
     const thisChart = this.state.chartFunction({
       chartDataGroupBy: this.props.chartDataGroupBy,
@@ -470,16 +473,18 @@ export default class Chart extends React.Component {
           />
         }
         { thisYAxisLabel }
-        <section
+        <text
           id={`${this.props.id}-tooltip`}
           style={{
             backgroundColor: 'black',
             border: '2px red dashed',
             borderRadius: '4px',
+            color: 'black',
             opacity: 0,
             padding: '10px',
             position: 'absolute',
           }}
+          textAnchor='start'
         />
       </SVG>;
 
@@ -492,6 +497,7 @@ export default class Chart extends React.Component {
           display: 'block',
           overflow: 'hidden',
           position: 'relative',
+          transformOrigin: '0 0',
         }}
       >
         <Popup />

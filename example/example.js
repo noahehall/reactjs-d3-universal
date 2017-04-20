@@ -44,8 +44,8 @@ export default class Table extends React.Component {
     const formattedData = timelineData.map((tweet) => {
       const afinn = JSON.parse(tweet.afinn);
       afinn.score =
-        afinn.score > 5 ? 5
-          : afinn.score < -5 ? -5
+        afinn.score > 0 ? 1
+          : afinn.score < 0 ? -1
             : afinn.score;
 
       // date to start of month
@@ -53,7 +53,7 @@ export default class Table extends React.Component {
       return {
         ...tweet,
         afinn,
-        date: new Date(tweet.date).toLocaleDateString(),
+        date: new Date(tweet.date).getTime(),
         score: afinn.score,
         total: 1,
       };
@@ -81,18 +81,19 @@ export default class Table extends React.Component {
         data={formattedData}
         datumLabels={['score']}
         id='fake-chart'
-        lineCurve='curveNatural'
+        lineCurve='curveLinear'
         margins={{
           bottom: 70,
           left: 70,
           right: 10,
           top: 10,
         }}
+        withDots={true}
         xAxis={true}
         xAxisLabel='Date'
         xScale={true}
         xScaleTime={true}
-        xScaleTimeFormat='%b %Y'
+        xScaleTimeFormat='%I%M%p%a%d%y'
         xValue='date'
         yAxis={true}
         yAxisLabel='Total Tweets by Sentiment Score'

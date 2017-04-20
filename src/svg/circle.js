@@ -5,7 +5,6 @@ export const Circle = ({
   cx = 50, // eslintignore x axis center of circle relative to upper left
   cy = 50, // eslintignore y axis center of circle relative to upper left
   fill = 'blue',
-  key = 'none',
   r = 50, // eslintignore radius of circle
 }) => <circle
   className={className}

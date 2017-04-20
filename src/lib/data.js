@@ -146,8 +146,8 @@ export const groupBy = ({
   }
 
   const
-    minDate = appFuncs._.minBy(data, 'date')['date'],
-    maxDate = appFuncs._.maxBy(data, 'date')['date'],
+    minDate = appFuncs._.minBy(data, xValue)[xValue],
+    maxDate = appFuncs._.maxBy(data, xValue)[xValue],
     diff = Math.abs(maxDate - minDate),
     totalDays = diff / (1000*60*60*24);
 

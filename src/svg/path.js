@@ -5,6 +5,8 @@ export const Path = ({ // eslintignore https://developer.mozilla.org/en-US/docs/
   d,
   fill = 'blue',
   id = '',
+  onClick = () => null,
+  onMouseMove = () => null,
   stroke = 'gray',
 }) => (
   <path
@@ -12,6 +14,8 @@ export const Path = ({ // eslintignore https://developer.mozilla.org/en-US/docs/
     d={d}
     fill={fill}
     id={id}
+    onClick={onClick}
+    onMouseMove={onMouseMove}
     stroke={stroke}
   />
 );
@@ -21,6 +25,8 @@ Path.propTypes = {
   d: React.PropTypes.string.isRequired,
   fill: React.PropTypes.string,
   id: React.PropTypes.string,
+  onClick: React.PropTypes.func,
+  onMouseMove: React.PropTypes.func,
   stroke: React.PropTypes.string,
 };
 

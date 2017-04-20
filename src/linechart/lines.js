@@ -52,7 +52,6 @@ export const Lines = ({
             fill='none'
             id={`${id}-path-${data[group].id}`}
             key={data[group].id}
-            stroke={colorScale(data[group].id)}
             onMouseMove={(e) => {
               e.stopPropagation();
               e.preventDefault();
@@ -78,10 +77,11 @@ export const Lines = ({
 
                   tooltip.textContent = `${date.toUTCString()}, ${total.toPrecision(2)}`;
 
-                  setTimeout(() => Object.assign(tooltip.style, {opacity: 0}), 2500);
+                  setTimeout(() => Object.assign(tooltip.style, {opacity: 0}), 3500);
                 }
               }
             }}
+            stroke={colorScale(data[group].id)}
           />
         );
 

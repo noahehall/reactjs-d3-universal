@@ -37,7 +37,7 @@ xAxisLabel:'',// creates an X-Scale for bar, line, and scatterplot charts
 xScale:!1,// required for line chart
 xScaleTime:!1,// required for line chart https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
 // the specified format must match the format of your date string, else extra procesing will be used to convert it to the supplied/default format
-xScaleTimeFormat:'%m/%d/%Y',xValue:'',// if this chart requires a y-axis
+xScaleTimeFormat:'%m/%d/%Y',xScaleTimeStartDate:!1,xValue:'',// if this chart requires a y-axis
 yAxis:!1,// the value to use for y axis label, defaults to
 yAxisLabel:'',// if this chart requires a scale on the y dimension
 yScale:!1,// used for pie chart slice arc

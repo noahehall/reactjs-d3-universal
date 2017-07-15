@@ -1,8 +1,9 @@
 import React from 'react';
 import Chart from '../dist/index.js';
+import m from 'moment';
 //import packData from './fakedata/packtwitter.json';
-import timelineData from './fakedata/rawtwitter.json';
-//import formattedData from './fakedata/payingcustomers.json';
+//import timelineData from './fakedata/sites.js';
+import formattedData from './fakedata/payingcustomers.json';
 export default class Table extends React.Component {
   static get defaultProps () {
     return {
@@ -41,6 +42,7 @@ export default class Table extends React.Component {
     // x = dates
     // groupBy = username ? possibly best option
     // could do: token
+    /*
     const formattedData = timelineData.map((tweet) => {
       const afinn = JSON.parse(tweet.afinn);
       afinn.score =
@@ -58,28 +60,29 @@ export default class Table extends React.Component {
         total: 1,
       };
     });
+    */
+
+    const newData = [];
+    timelineData.forEach((site) => site.y.forEach((point, i) =>
+      newData.push({
+        site: site.site,
+        date: site.x[i] // eslint-disable-line
+          ? m(site.startdate).add(site.x[i], 'days').toDate().getTime()
+          : m(site.startdate).subtract(site.x[i], 'days').toDate().getTime(),
+        xlab: site.xlab,
+        y: site.y[i],
+      })
+    ));
 
     return (
       <Chart
-        chartDataGroupBy='score'
+        chartDataGroupBy='y'
         chartDataSumGroupBy={true}
         chartType='line'
-        colorScaleScheme={{
-          '-1': 'red',
-          '-2': 'Tomato',
-          '-3': 'OrangeRed',
-          '-4': 'Crimson',
-          '-5': 'DarkRed',
-          '0': 'black',
-          '1': 'DarkSeaGreen',
-          '2': 'GreenYellow',
-          '3': 'LawnGreen',
-          '4': 'Lime',
-          '5': 'ForestGreen',
-        }}
-        colorScaleType='custom'
-        data={formattedData}
-        datumLabels={['score']}
+        colorScaleScheme='schemeCategory20'
+        colorScaleType='random'
+        data={newData}
+        datumLabels={['xlab']}
         id='fake-chart'
         lineCurve='curveLinear'
         margins={{
@@ -96,9 +99,9 @@ export default class Table extends React.Component {
         xScaleTimeFormat='%I%M%p%a%d%y'
         xValue='date'
         yAxis={true}
-        yAxisLabel='Total Tweets by Sentiment Score'
+        yAxisLabel='Number of Days'
         yScale={true}
-        yValue='total'
+        yValue='y'
       />
     );
   }

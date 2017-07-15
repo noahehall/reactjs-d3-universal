@@ -75,6 +75,7 @@ export default class Chart extends React.Component {
       // required for line chart https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
       // the specified format must match the format of your date string, else extra procesing will be used to convert it to the supplied/default format
       xScaleTimeFormat: '%m/%d/%Y',
+      xScaleTimeStartDate: false,
       xValue: '',
       // if this chart requires a y-axis
       yAxis: false,

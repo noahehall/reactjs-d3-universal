@@ -5,17 +5,17 @@ var y=label.getLabelText({chartType:'bar',d:w,labels:q});v.push(_react2.default.
 ,x:t(y),y:u(w[s])})))}),v};exports.default=Bars;
 
 }).call(this,"/dist/barchart/bars.js")
-},{"../lib/labels.js":10,"../svg/rect.js":28,"react":238}],2:[function(require,module,exports){
+},{"../lib/labels.js":10,"../svg/rect.js":28,"react":244}],2:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=ForceLayout;var _links=require('./links.js'),_nodes=require('./nodes.js'),_simulation=require('./simulation.js'),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(i){return i&&i.__esModule?i:{default:i}}// https://bl.ocks.org/mbostock/4062045
 function ForceLayout(i){var j=i.chartDataGroupBy,k=i.chartHeight,l=i.chartWidth,m=i.colorScale,n=i.data,o=(0,_simulation.getSimulation)({chartDataGroupBy:j,chartHeight:k,chartWidth:l}),p=(0,_nodes.nodeGs)({chartDataGroupBy:j,colorScale:m,nodes:n.nodes}),q=(0,_links.linkGs)({links:n.links});return o.nodes(n.nodes),o.force('link').links(n.links),o.restart(),_react2.default.createElement('g',null,q,p)}
 
-},{"./links.js":3,"./nodes.js":4,"./simulation.js":5,"react":238}],3:[function(require,module,exports){
+},{"./links.js":3,"./nodes.js":4,"./simulation.js":5,"react":244}],3:[function(require,module,exports){
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.linkGs=void 0;var _react=require("react"),_react2=_interopRequireDefault(_react);function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}var linkGs=exports.linkGs=function(e){var f=e.links;if(1>f.length)return[];var g=[];return f.map(function(h,i){return void 0!==h.source.x&&void 0!==h.source.y&&void 0!==h.target.x&&void 0!==h.target.y&&g.push(_react2.default.createElement("g",{key:i},_react2.default.createElement("line",{style:{stroke:"#999",strokeOpacity:".6",strokeWidth:Math.sqrt(h.value)},x1:h.source.x,x2:h.target.x,y1:h.source.y,y2:h.target.y})))}),g};
 
-},{"react":238}],4:[function(require,module,exports){
+},{"react":244}],4:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.nodeGs=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(f){return f&&f.__esModule?f:{default:f}}var nodeGs=exports.nodeGs=function(f){var g=f.chartDataGroupBy,h=void 0===g?'':g,i=f.colorScale,j=void 0===i?function(){return null}:i,k=f.nodes,l=void 0===k?[]:k;if(1>l.length)return[];var m=[];return l.forEach(function(n){return void 0!==n.x&&void 0!==n.y&&m.push(_react2.default.createElement('g',{key:n[h]},_react2.default.createElement('circle',{cx:n.x,cy:n.y,r:n.r||5,style:{fill:j(n.group),stroke:'#fff',strokeWidth:'1.5px'}}),_react2.default.createElement('text',{x:n.x,y:n.y},n[h])))}),m};
 
-},{"react":238}],5:[function(require,module,exports){
+},{"react":244}],5:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.getSimulation=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var f={};if(null!=d)for(var g in d)Object.prototype.hasOwnProperty.call(d,g)&&(f[g]=d[g]);return f.default=d,f}// https://github.com/d3/d3-force
 var getSimulation=exports.getSimulation=function(d){var f=d.chartDataGroupBy,g=void 0===f?'':f,h=d.chartHeight,i=void 0===h?200:h,j=d.chartWidth,k=void 0===j?200:j;return d3.forceSimulation()// default spacing, dont use if display text with eact circle
 //.force("link", d3.forceLink().id((d) => d[chartDataGroupBy]))
@@ -28,7 +28,7 @@ var getSimulation=exports.getSimulation=function(d){var f=d.chartDataGroupBy,g=v
 //.force("y", d3.forceY(0))
 //.force("x", d3.forceX(0));
 
-},{"d3":41}],6:[function(require,module,exports){
+},{"d3":42}],6:[function(require,module,exports){
 (function (__filename){
 'use strict';var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0});var _createClass=function(){function m(n,o){for(var p,q=0;q<o.length;q++)p=o[q],p.enumerable=p.enumerable||!1,p.configurable=!0,'value'in p&&(p.writable=!0),Object.defineProperty(n,p.key,p)}return function(n,o,p){return o&&m(n.prototype,o),p&&m(n,p),n}}(),_bars=require('./barchart/bars.js'),_lines=require('./linechart/lines.js'),_slices=require('./piechart/slices.js'),_dots=require('./scatterplot/dots.js'),_svg=require('./svg'),_table=require('./table'),_axes=require('./lib/axes.js'),axes=_interopRequireWildcard(_axes),_data=require('./lib/data.js'),dataFunctions=_interopRequireWildcard(_data),_scales=require('./lib/scales.js'),scales=_interopRequireWildcard(_scales),_index=require('./forcelayout/index.js'),_index2=_interopRequireDefault(_index),_index3=require('./pack/index.js'),_index4=_interopRequireDefault(_index3),_reactPopup=require('react-popup'),_reactPopup2=_interopRequireDefault(_reactPopup),_react=require('react'),_react2=_interopRequireDefault(_react),_circle=require('./svg/circle.js');function _interopRequireDefault(m){return m&&m.__esModule?m:{default:m}}function _interopRequireWildcard(m){if(m&&m.__esModule)return m;var n={};if(null!=m)for(var o in m)Object.prototype.hasOwnProperty.call(m,o)&&(n[o]=m[o]);return n.default=m,n}function _classCallCheck(m,n){if(!(m instanceof n))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(m,n){if(!m)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return n&&('object'==('undefined'==typeof n?'undefined':_typeof(n))||'function'==typeof n)?n:m}function _inherits(m,n){if('function'!=typeof n&&null!==n)throw new TypeError('Super expression must either be null or a function, not '+('undefined'==typeof n?'undefined':_typeof(n)));m.prototype=Object.create(n&&n.prototype,{constructor:{value:m,enumerable:!1,writable:!0,configurable:!0}}),n&&(Object.setPrototypeOf?Object.setPrototypeOf(m,n):m.__proto__=n)}// TODO: search this file for all try catch blocks and move to separate function
 /**
@@ -69,7 +69,7 @@ xAxisLabel:'',// creates an X-Scale for bar, line, and scatterplot charts
 xScale:!1,// required for line chart
 xScaleTime:!1,// required for line chart https://github.com/d3/d3-time-format/blob/master/README.md#locale_format
 // the specified format must match the format of your date string, else extra procesing will be used to convert it to the supplied/default format
-xScaleTimeFormat:'%m/%d/%Y',xValue:'',// if this chart requires a y-axis
+xScaleTimeFormat:'%m/%d/%Y',xScaleTimeStartDate:!1,xValue:'',// if this chart requires a y-axis
 yAxis:!1,// the value to use for y axis label, defaults to
 yAxisLabel:'',// if this chart requires a scale on the y dimension
 yScale:!1,// used for pie chart slice arc
@@ -90,7 +90,7 @@ var v=m.state.chartFunction({chartDataGroupBy:m.props.chartDataGroupBy,chartHeig
 return _react2.default.createElement('div',{className:'chart-container',ref:function(y){return m.container=y},style:{display:'block',overflow:'hidden',position:'relative'}},_react2.default.createElement(_reactPopup2.default,null),w)}};exports.default=Chart;
 
 }).call(this,"/dist/index.js")
-},{"./barchart/bars.js":1,"./forcelayout/index.js":2,"./lib/axes.js":8,"./lib/data.js":9,"./lib/scales.js":12,"./linechart/lines.js":14,"./pack/index.js":17,"./piechart/slices.js":23,"./scatterplot/dots.js":24,"./svg":26,"./svg/circle.js":25,"./table":30,"react":238,"react-popup":213}],7:[function(require,module,exports){
+},{"./barchart/bars.js":1,"./forcelayout/index.js":2,"./lib/axes.js":8,"./lib/data.js":9,"./lib/scales.js":12,"./linechart/lines.js":14,"./pack/index.js":17,"./piechart/slices.js":23,"./scatterplot/dots.js":24,"./svg":26,"./svg/circle.js":25,"./table":30,"react":244,"react-popup":218}],7:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.generateArcs=exports.generateArcPath=exports.generateLabelArc=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var h={};if(null!=d)for(var i in d)Object.prototype.hasOwnProperty.call(d,i)&&(h[i]=d[i]);return h.default=d,h}var generateLabelArc=exports.generateLabelArc=function(d){var h=d.chartHeight,i=void 0===h?200:h,j=d.chartWidth,k=void 0===j?200:j,l=d.endAngle,m=d.startAngle;return(isNaN(l)||isNaN(m))&&appFuncs.logError({data:[l,m],loc:__filename,msg:'endAngle and startAngle must be valid variables in arcs.generateLabelArc(), attempting to return labelArc anyway'}),d3.arc().endAngle(l).innerRadius(Math.min(i,k))// eslintignore bigger number = smaller donut
 .outerRadius(Math.min(i,k))// eslintignore bigger number = smaller pie
@@ -105,7 +105,7 @@ return _react2.default.createElement('div',{className:'chart-container',ref:func
  */
 
 }).call(this,"/dist/lib/arcs.js")
-},{"d3":41}],8:[function(require,module,exports){
+},{"d3":42}],8:[function(require,module,exports){
 (function (__filename){
 'use strict';var _typeof2='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0}),exports.getYAxisLabel=exports.getXAxisLabel=exports.getXAxis=exports.getYAxis=void 0;var _slicedToArray=function(){function g(r,s){var t=[],u=!0,v=!1,w=void 0;try{for(var x,y=r[Symbol.iterator]();!(u=(x=y.next()).done)&&(t.push(x.value),!(s&&t.length===s));u=!0);}catch(z){v=!0,w=z}finally{try{!u&&y['return']&&y['return']()}finally{if(v)throw w}}return t}return function(r,s){if(Array.isArray(r))return r;if(Symbol.iterator in Object(r))return g(r,s);throw new TypeError('Invalid attempt to destructure non-iterable instance')}}(),_typeof='function'==typeof Symbol&&'symbol'==_typeof2(Symbol.iterator)?function(g){return'undefined'==typeof g?'undefined':_typeof2(g)}:function(g){return g&&'function'==typeof Symbol&&g.constructor===Symbol&&g!==Symbol.prototype?'symbol':'undefined'==typeof g?'undefined':_typeof2(g)},_text=require('../svg/text.js'),_text2=_interopRequireDefault(_text),_d2=require('d3'),d3=_interopRequireWildcard(_d2),_react=require('react'),_react2=_interopRequireDefault(_react),_time=require('./time.js'),time=_interopRequireWildcard(_time);// import * as label from './labels.js';
 function _interopRequireWildcard(g){if(g&&g.__esModule)return g;var r={};if(null!=g)for(var s in g)Object.prototype.hasOwnProperty.call(g,s)&&(r[s]=g[s]);return r.default=g,r}function _interopRequireDefault(g){return g&&g.__esModule?g:{default:g}}function _toConsumableArray(g){if(Array.isArray(g)){for(var r=0,s=Array(g.length);r<g.length;r++)s[r]=g[r];return s}return Array.from(g)}/*
@@ -136,7 +136,7 @@ return d3// eslintignore let d3 handle the axis instead of building ourselves
  */var getYAxisLabel=exports.getYAxisLabel=function(g){var r=g.transform,s=void 0===r?'rotate(-90)':r,t=g.x,u=void 0===t?5:t,v=g.y,w=void 0===v?-5:v,x=g.yAxisLabel,y=void 0===x?'':x;return y?_react2.default.createElement(_text2.default,{chartType:'axes',text:y,transform:s,x:u,y:w}):(appFuncs.logError({data:[s,u,w,y],loc:__filename,msg:'yAxisLabel must be a valid variable in axes.getYAxisLabel(), returning empty string'}),'')};getYAxisLabel.propTypes={transform:_react2.default.PropTypes.string,x:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number,_react2.default.PropTypes.string]),y:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number,_react2.default.PropTypes.string]),yAxisLabel:_react2.default.PropTypes.string};
 
 }).call(this,"/dist/lib/axes.js")
-},{"../svg/text.js":29,"./time.js":13,"d3":41,"react":238}],9:[function(require,module,exports){
+},{"../svg/text.js":29,"./time.js":13,"d3":42,"react":244}],9:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.format=exports.groupBy=exports.createDataValues=exports.sumGroupedData=exports.formatTime=exports.checkTimeFormat=void 0;var _extends=Object.assign||function(a){for(var b,d=1;d<arguments.length;d++)for(var e in b=arguments[d],b)Object.prototype.hasOwnProperty.call(b,e)&&(a[e]=b[e]);return a},_time=require('./time.js'),time=_interopRequireWildcard(_time);function _interopRequireWildcard(a){if(a&&a.__esModule)return a;var b={};if(null!=a)for(var d in a)Object.prototype.hasOwnProperty.call(a,d)&&(b[d]=a[d]);return b.default=a,b}function _defineProperty(a,b,d){return b in a?Object.defineProperty(a,b,{value:d,enumerable:!0,configurable:!0,writable:!0}):a[b]=d,a}var checkTimeFormat=exports.checkTimeFormat=function(a){var b=a.data,d=a.parseTime,e=a.timeProperty,t=a.xScaleTimeFormat;try{return!d(b[0][e])&&time.format({format:t});// return parseTime(time.format({ format: xScaleTimeFormat })(new Date("Fri Mar 17 16:50:48 +0000 2017")))
 }catch(u){return new Error('something went wrong accessing data[0]['+e+'] inside lib/data.js.checkTimeFormat(), or creating a time formatter with format '+t+', heres the message '+u.message)}},formatTime=exports.formatTime=function(a){var b=a.data,d=a.timeProperty,e=void 0===d?'':d,t=a.xScaleTimeFormat,u=void 0===t?'':t;if(!e||!u||appFuncs._.isEmpty(b))return appFuncs.logError({data:[b,e,u],loc:__filename,msg:'timeProperty and xScaleTimeFormat must be valid variables in data.formatTime(), returning data without transformations'}),b;var v=time.parse({format:u}),w=[],x=checkTimeFormat({data:b,parseTime:v,timeProperty:e,xScaleTimeFormat:u});// parse time as is
@@ -181,13 +181,13 @@ return d?groupBy({chartDataGroupBy:d,chartDataSumGroupBy:void 0!==e&&e,data:v,xS
 return B?_react2.default.createElement(_text2.default,{chartType:'pie',className:'',dx:A,dy:0,text:B,transform:'rotate(0)',x:y/2,xlinkHref:'#arc-'+s,y:z/2}):(appFuncs.logError({data:['chartType = pie',m,u],msg:'text needs to be a valid variable, check labels.getLabelText method, returning empty string'}),'')};getPieLabels.propTypes={arc:_react2.default.PropTypes.object,chartHeight:_react2.default.PropTypes.number,chartWidth:_react2.default.PropTypes.number,idx:_react2.default.PropTypes.number,labels:_react2.default.PropTypes.array};var getLabels=exports.getLabels=function(d){var l=d.arc,m=void 0===l?{}:l,n=d.chartHeight,o=void 0===n?200:n,p=d.chartType,q=void 0===p?'':p,r=d.chartWidth,s=void 0===r?200:r,t=d.d,u=d.idx,v=void 0===u?0:u,w=d.labels,x=void 0===w?[]:w;if(!q)return appFuncs.logError({data:[m,q,t,x],loc:__filename,msg:'Chart type must be defined in labels.getLabels(), returning empty string'}),'';switch(q.toLowerCase()){case'pie':return getPieLabels({arc:m,chartHeight:o,chartType:q,chartWidth:s,idx:v,labels:x});default:{var y='';return x.forEach(function(z){return y+=t[z]+' '}),y}}};
 
 }).call(this,"/dist/lib/labels.js")
-},{"../svg/text.js":29,"./arcs.js":7,"react":238}],11:[function(require,module,exports){
+},{"../svg/text.js":29,"./arcs.js":7,"react":244}],11:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.generateLine=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var i={};if(null!=d)for(var j in d)Object.prototype.hasOwnProperty.call(d,j)&&(i[j]=d[j]);return i.default=d,i}var generateLine=exports.generateLine=function(d){var i=d.lineCurve,j=void 0===i?'':i,k=d.xScale,l=d.xValue,m=void 0===l?'':l,n=d.yScale,o=d.yValue,p=void 0===o?'':o;if(!k||!m||!p||!n)return appFuncs.logError({data:[k,m,n,p],loc:__filename,msg:'xScale, xValue, yScale and yValue must be valid variables in lines.generateLine(), returning null'}),null;var q=void 0;return q=j&&d3[j]?d3[j]:d3.curveBasis,d3.line()//.defined((d) => d[xValue]) //remove dates without values
 .curve(q).x(function(r){return k(r[m])}).y(function(r){return n(r[p])})};
 
 }).call(this,"/dist/lib/lines.js")
-},{"d3":41}],12:[function(require,module,exports){
+},{"d3":42}],12:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.colorScale=exports.getXScale=exports.getDataMaxNumber=exports.xScale=exports.getYScale=exports.yScale=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d),_d3ScaleChromatic=require('d3-scale-chromatic'),d3chromatic=_interopRequireWildcard(_d3ScaleChromatic),_labels=require('./labels.js'),label=_interopRequireWildcard(_labels);function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var o={};if(null!=d)for(var p in d)Object.prototype.hasOwnProperty.call(d,p)&&(o[p]=d[p]);return o.default=d,o}function _toConsumableArray(d){if(Array.isArray(d)){for(var o=0,p=Array(d.length);o<d.length;o++)p[o]=d[o];return p}return Array.from(d)}// eslintignore https://github.com/d3/d3-scale-chromatic
 /**
@@ -227,21 +227,21 @@ case'custom':return function(s){return d3.color(p[s]).toString()};case'random':d
  */// Retrieve color scale
 
 }).call(this,"/dist/lib/scales.js")
-},{"./labels.js":10,"d3":41,"d3-scale-chromatic":40}],13:[function(require,module,exports){
+},{"./labels.js":10,"d3":42,"d3-scale-chromatic":41}],13:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.format=exports.parse=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(b){if(b&&b.__esModule)return b;var c={};if(null!=b)for(var d in b)Object.prototype.hasOwnProperty.call(b,d)&&(c[d]=b[d]);return c.default=b,c}// convert string to date
 var parse=exports.parse=function(b){var c=b.format,d=void 0===c?'':c;return d?d3.timeParse(d):(appFuncs.logError({data:d,loc:__filename,msg:'format must be valid variables in time.parse(), returning null'}),null)},format=exports.format=function(b){var c=b.format;return d3.timeFormat(c)};// convert date to string
 
 }).call(this,"/dist/lib/time.js")
-},{"d3":41}],14:[function(require,module,exports){
+},{"d3":42}],14:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Lines=void 0;var _lines=require('../lib/lines.js'),_path=require('../svg/path.js'),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}var Lines=exports.Lines=function(e){var u=e.chartType,v=void 0===u?'':u,w=e.colorScale,x=e.data,y=e.id,z=e.lineCurve,A=void 0===z?'':z,B=e.xScale,C=e.xValue,D=void 0===C?'':C,E=e.yScale,F=e.yValue,G=void 0===F?'':F;if(appFuncs._.isEmpty(x)||!v||!B||!E||!G||!D)return appFuncs.logError({data:[v,x,B,D,E,G],loc:__filename,msg:'chartType, data, xScale, xValue, yScale, yValue must be valid variables in lines.Lines(), returning null'}),null;switch(v.toLowerCase()){case'line':{var H=(0,_lines.generateLine)({lineCurve:A,xScale:B,xValue:D,yScale:E,yValue:G}),I=[];for(var J in x)I.push(_react2.default.createElement(_path.Path,{chartType:v,d:H(x[J].values),fill:'none',id:y+'-path-'+x[J].id,key:x[J].id,onMouseMove:function(L){if(L.stopPropagation(),L.preventDefault(),'undefined'!=typeof document){var M=document.getElementById(y+'-tooltip');if(M){var N=L.target.parentNode.getBoundingClientRect(),O=L.nativeEvent.clientX-N.left,P=L.nativeEvent.clientY-N.top;Object.assign(M.style,{opacity:1,transform:'translate('+(30+O)+'px, '+P+'px)'});var Q=B.invert(O),R=E.invert(P);M.textContent=Q.toUTCString()+', '+R.toPrecision(2),setTimeout(function(){return Object.assign(M.style,{opacity:0})},3500)}}},stroke:w(x[J].id)}));return I}default:return null;}};exports.default=Lines;
 
 }).call(this,"/dist/linechart/lines.js")
-},{"../lib/lines.js":11,"../svg/path.js":27,"react":238}],15:[function(require,module,exports){
+},{"../lib/lines.js":11,"../svg/path.js":27,"react":244}],15:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Datalist=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(c){return c&&c.__esModule?c:{default:c}}var Datalist=exports.Datalist=function(c){var d=c.foreignObject,e=c.idx;return _react2.default.createElement('div',{className:'datalist-item',key:''+e+d.username},_react2.default.createElement('img',{alt:d.username+' Profile Avatar',className:'datalist-img',src:d.imageUrl}),_react2.default.createElement('div',{className:'datalist-text'},_react2.default.createElement('a',{href:'https://www.twitter.com/'+d.username,target:'_blank'},d.username),_react2.default.createElement('span',null,d.tweet,_react2.default.createElement('a',{href:d.url,target:'_blank'},' ...more'))))};Datalist.propTypes={foreignObject:_react2.default.PropTypes.object,idx:_react2.default.PropTypes.number},exports.default=Datalist;
 
-},{"react":238}],16:[function(require,module,exports){
+},{"react":244}],16:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.hierarchy=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(a){if(a&&a.__esModule)return a;var b={};if(null!=a)for(var d in a)Object.prototype.hasOwnProperty.call(a,d)&&(b[d]=a[d]);return b.default=a,b}/**
   * hierarchy - https://github.com/d3/d3-hierarchy
   *
@@ -250,10 +250,10 @@ var parse=exports.parse=function(b){var c=b.format,d=void 0===c?'':c;return d?d3
   * @returns {object} a root node
   */var hierarchy=exports.hierarchy=function(a){var b=a.data,d=void 0===b?{}:b;return d3.hierarchy(d,function(g){return g.children&&g.children[0]&&'metadata'!==g.children[0].type?g.children:null}).sum(function(g){return+g.size}).sort(function(g,h){return+h.value-+g.value})};
 
-},{"d3":41}],17:[function(require,module,exports){
+},{"d3":42}],17:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.default=Pack;var _hierarchy=require('./hierarchy.js'),_nodesarray=require('./nodesarray.js'),_pack=require('./pack.js'),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(j){return j&&j.__esModule?j:{default:j}}/* eslint-disable */function Pack(j){var k=j.chartHeight,l=j.chartWidth,m=j.colorScale,n=j.data,o=j.foreignObject,p=j.foreignObjectType,q=j.id,r=j.labels,s=j.margins;return _react2.default.createElement('g',{className:'nodes-array-container'},(0,_nodesarray.nodesArray)({chartHeight:k,chartWidth:l,colorScale:m,id:q,foreignObject:o,foreignObjectType:p,labels:r,nodes:(0,_pack.pack)({chartWidth:l,chartHeight:k})((0,_hierarchy.hierarchy)({data:n})).descendants()}))}
 
-},{"./hierarchy.js":16,"./nodesarray.js":19,"./pack.js":20,"react":238}],18:[function(require,module,exports){
+},{"./hierarchy.js":16,"./nodesarray.js":19,"./pack.js":20,"react":244}],18:[function(require,module,exports){
 'use strict';var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0}),exports.getFontSize=void 0;var _createClass=function(){function d(f,g){for(var h,j=0;j<g.length;j++)h=g[j],h.enumerable=h.enumerable||!1,h.configurable=!0,'value'in h&&(h.writable=!0),Object.defineProperty(f,h.key,h)}return function(f,g,h){return g&&d(f.prototype,g),h&&d(f,h),f}}(),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(d){return d&&d.__esModule?d:{default:d}}function _classCallCheck(d,f){if(!(d instanceof f))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(d,f){if(!d)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return f&&('object'==('undefined'==typeof f?'undefined':_typeof(f))||'function'==typeof f)?f:d}function _inherits(d,f){if('function'!=typeof f&&null!==f)throw new TypeError('Super expression must either be null or a function, not '+('undefined'==typeof f?'undefined':_typeof(f)));d.prototype=Object.create(f&&f.prototype,{constructor:{value:d,enumerable:!1,writable:!0,configurable:!0}}),f&&(Object.setPrototypeOf?Object.setPrototypeOf(d,f):d.__proto__=f)}var getFontSize=exports.getFontSize=function(d){if('top'===d.placement)return 23<d.d.r?10:15<d.d.r?6:5;if('bottom'===d.placement)return 1<d.scale?20:10;// TODO: update this to get the formatted label
 var f=d.d.data[d.labels[0]].length,g=// eslint-disable-line
 // TODO: convert this to automatically adjust based on width of container not length of chars
@@ -272,7 +272,7 @@ return g*d.d.r/2},Label=function(d){function f(g){_classCallCheck(this,f);var h=
    * retrieves container dimensions from client and updates state which triggers redraw
    */},{key:'render',value:function(){var h=this,j=this.props,l=j.d,m=j.labels,n=j.idx;return _react2.default.createElement('g',{className:'pack-g-label '+this.props.placement,style:{cursor:'pointer',transform:'scale('+('bottom'===this.props.placement&&1<this.props.scale?1/this.props.scale:1)+')'}},_react2.default.createElement('defs',null,_react2.default.createElement('path',{d:this.getTextPath(),id:'path'+n+l.value+parseInt(l.r)})),_react2.default.createElement('text',{className:'pack-g-label-text',ref:function(p){return h.text=p},style:{display:'inline',fontSize:this.state.fontSize+'px',textTransform:'uppercase'},textAnchor:'middle'},_react2.default.createElement('textPath',{startOffset:'50%',xlinkHref:'#path'+n+l.value+parseInt(l.r)},l.data[m[0]])))}}]),f}(_react2.default.Component);Label.propTypes={d:_react2.default.PropTypes.object,idx:_react2.default.PropTypes.string,labels:_react2.default.PropTypes.array,placement:_react2.default.PropTypes.string,scale:_react2.default.PropTypes.number};var _initialiseProps=function(){var d=this;this.getTextPath=function(){var f=d.props.placement,g=d.props.d.r,h='bottom'===f?d.state.fontSize:0.83*g,j='bottom'===f?0:1,l='bottom'===f?d.props.scale*g:'top'===f?0.2*-g:0.2*g;return'm'+-g+', '+l+' a'+g+', '+h+' '+0+' '+1+' '+j+' '+2*g+', '+0},this.setSize=function(){var f=0<arguments.length&&void 0!==arguments[0]?arguments[0]:d.props,g=function(){var h=getFontSize(f);0.5<=Math.abs(parseInt(d.state.fontSize)-h)&&d.setState({fontSize:h})};'undefined'!=typeof window&&(window.requestAnimationFrame?window.requestAnimationFrame(g):window.setTimeout(function(){return g},1))}};exports.default=Label;
 
-},{"react":238}],19:[function(require,module,exports){
+},{"react":244}],19:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.nodesArray=exports.createNest=exports.getForeignObject=exports.getDimensionOffsets=void 0;var _slicedToArray=function(){function m(n,o){var p=[],q=!0,r=!1,s=void 0;try{for(var t,u=n[Symbol.iterator]();!(q=(t=u.next()).done)&&(p.push(t.value),!(o&&p.length===o));q=!0);}catch(v){r=!0,s=v}finally{try{!q&&u['return']&&u['return']()}finally{if(r)throw s}}return p}return function(n,o){if(Array.isArray(n))return n;if(Symbol.iterator in Object(n))return m(n,o);throw new TypeError('Invalid attempt to destructure non-iterable instance')}}(),_react=require('react'),_react2=_interopRequireDefault(_react),_packg=require('./packg.js'),_packg2=_interopRequireDefault(_packg);/* eslint-disable */function _interopRequireDefault(m){return m&&m.__esModule?m:{default:m}}/**
  * calculates x and y offsets when creating nested HTML hierarchy
  */var getDimensionOffsets=exports.getDimensionOffsets=function(m){var n=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,o=2<arguments.length&&void 0!==arguments[2]?arguments[2]:0;return n+=m.x,o+=m.y,m.parent.parent?getDimensionOffsets(m.parent,n,o):[n,o,m]},getForeignObject=exports.getForeignObject=function(m){try{return m.data.children[0].metadata}catch(n){return[]}},total=0,createNest=exports.createNest=function(m,n,o,p,q,r,s,t,u){var v=!1;switch(m.depth){case 0:{v=!0;break}case 1:{v=!0,m.x-=t,m.y-=u;break}default:{var w=getDimensionOffsets(m.parent),x=_slicedToArray(w,2),y=x[0],z=x[1];m.x-=t+y,m.y-=u+z}}return _react2.default.createElement(_packg2.default,{nozoom:v,chartHeight:n,chartWidth:o,colorScale:p,d:m,id:s,idx:s+'-'+m.depth+'-'+q+'-'+ ++total,key:s+'-'+m.depth+'-'+q+'-'+ ++total,labels:r,foreignObject:getForeignObject(m)},m.children&&m.children.map(function(A){return createNest(A,n,o,p,++q,r,s,t,u)}))},nodesArray=exports.nodesArray=function(m){var n=m.chartHeight,o=void 0===n?200:n,p=m.chartWidth,q=void 0===p?200:p,r=m.colorScale,s=void 0===r?function(){return null}:r,t=m.foreignObject,u=m.foreignObjectType,v=void 0===u?'':u,w=m.id,x=void 0===w?'':w,y=m.labels,z=void 0===y?[]:y,A=m.nodes,B=void 0===A?[]:A;/* if you want the normal d3 nesting scheme (no nesting)
@@ -310,7 +310,7 @@ return g*d.d.r/2},Label=function(d){function f(g){_classCallCheck(this,f);var h=
   * @return {type} Description
   */
 
-},{"./packg.js":21,"react":238}],20:[function(require,module,exports){
+},{"./packg.js":21,"react":244}],20:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.pack=void 0;var _d=require('d3'),d3=_interopRequireWildcard(_d);function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var e={};if(null!=d)for(var f in d)Object.prototype.hasOwnProperty.call(d,f)&&(e[f]=d[f]);return e.default=d,e}/**
   * pack - https://github.com/d3/d3-hierarchy/blob/master/README.md#pack
   * Enclosure diagrams use containment (nesting) to represent a hierarchy.
@@ -320,7 +320,7 @@ return g*d.d.r/2},Label=function(d){function f(g){_classCallCheck(this,f);var h=
   * @return {type} d3 pack layout
   */var pack=exports.pack=function(d){var e=d.chartWidth,f=void 0===e?200:e,g=d.chartHeight,h=void 0===g?200:g;return d3.pack().size([f,h]).padding(function(i){return'undefined'==typeof i.data.padding?5:i.data.padding})};/* eslint-disable */
 
-},{"d3":41}],21:[function(require,module,exports){
+},{"d3":42}],21:[function(require,module,exports){
 'use strict';var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0});var _createClass=function(){function d(e,g){for(var j,k=0;k<g.length;k++)j=g[k],j.enumerable=j.enumerable||!1,j.configurable=!0,'value'in j&&(j.writable=!0),Object.defineProperty(e,j.key,j)}return function(e,g,j){return g&&d(e.prototype,g),j&&d(e,j),e}}(),_d=require('d3'),d3=_interopRequireWildcard(_d),_datalist=require('./datalist.js'),_datalist2=_interopRequireDefault(_datalist),_react=require('react'),_react2=_interopRequireDefault(_react),_stats=require('./stats.js'),_stats2=_interopRequireDefault(_stats),_label=require('./label.js'),_label2=_interopRequireDefault(_label);function _interopRequireDefault(d){return d&&d.__esModule?d:{default:d}}function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var e={};if(null!=d)for(var g in d)Object.prototype.hasOwnProperty.call(d,g)&&(e[g]=d[g]);return e.default=d,e}function _classCallCheck(d,e){if(!(d instanceof e))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(d,e){if(!d)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return e&&('object'==('undefined'==typeof e?'undefined':_typeof(e))||'function'==typeof e)?e:d}function _inherits(d,e){if('function'!=typeof e&&null!==e)throw new TypeError('Super expression must either be null or a function, not '+('undefined'==typeof e?'undefined':_typeof(e)));d.prototype=Object.create(e&&e.prototype,{constructor:{value:d,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(d,e):d.__proto__=e)}/* eslint-disable *//**
  * wraps a set of pack nodes inside a <g> element
  */var PackG=function(d){function e(g){_classCallCheck(this,e);var j=_possibleConstructorReturn(this,(e.__proto__||Object.getPrototypeOf(e)).call(this,g));_initialiseProps.call(j);var k=[];return j.state={fontSize:'5px',opacity:1,pop:!1,previous:!1,r:0,scale:1,scaled:!1,scaling:!1,vizCon:!1,x:0,y:0,foreignObjects:k},g.foreignObject.length&&g.foreignObject.forEach(function(l,m){return k.push(_react2.default.createElement(_datalist2.default,{foreignObject:l,idx:m,key:m}))}),j.state={fontSize:'5px',opacity:1,pop:!1,previous:!1,r:0,scale:1,scaled:!1,scaling:!1,vizCon:!1,x:0,y:0,foreignObjects:k},j}return _inherits(e,d),_createClass(e,null,[{key:'defaultProps',get:function(){return{colorScale:function(){return null},d:{},foreignObject:[],id:'',idx:'0',labels:[],nozoom:!1}}}]),_createClass(e,[{key:'componentDidMount',value:function(){var j=document.getElementById(this.props.id+'-visual-container').firstElementChild.firstElementChild;this.setState({pop:this.state.foreignObjects.length&&this.context.Popup.register({className:null,content:this.state.foreignObjects,title:null}),previous:this.g.previousElementSibling,vizCon:j})}/**
@@ -339,50 +339,50 @@ transform:'translate('+m.r+'px, -5px) scale('+(10<this.state.scale?0.1:5<this.st
 !m.children&&_react2.default.createElement(_label2.default,{className:'pack-g-circle-label depth-'+m.depth,d:m,idx:n,labels:o,scale:this.state.scale,r:m.r}),// show stats for foreignObjects
 this.props.foreignObject.length&&_react2.default.createElement(_stats2.default,{className:'pack-g-circle-stats depth-'+m.depth,r:m.r,showPopup:this.showPopup,value:this.props.d.value+''}),this.props.children||null)}}]),e}(_react2.default.Component);PackG.propTypes={colorScale:_react2.default.PropTypes.func,d:_react2.default.PropTypes.object,foreignObject:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool,_react2.default.PropTypes.array]),id:_react2.default.PropTypes.string,idx:_react2.default.PropTypes.string,labels:_react2.default.PropTypes.array,nozoom:_react2.default.PropTypes.bool},PackG.contextTypes={Popup:_react2.default.PropTypes.func};var _initialiseProps=function(){var d=this;this.closePopup=function(){return d.context.Popup.prototype.handleButtonClick(function(e){return e.close()})},this.showPopup=function(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:d.context.Popup,g=1<arguments.length&&void 0!==arguments[1]?arguments[1]:d.state.pop;return e.queue(g)},this.updateStateDimensions=function(){d.state.vizCon&&d.state.vizCon!==d.g&&(d.state.scaled?(d.setState({x:d.props.d.x,y:d.props.d.y,scale:1,scaled:!1}),setTimeout(function(){d.state.previous.parentNode.insertBefore(d.g,d.state.previous.nextSibling)},1e3)):d.setState({x:1,y:1,scale:d.props.chartWidth/2/d.props.d.r,scaled:!0}))},this.updateDimensions=function(){'undefined'==typeof window||d.props.foreignObject.length||(!d.state.scaled&&d.state.vizCon&&d.state.vizCon!==d.g&&d.state.vizCon.appendChild(d.g),window.requestAnimationFrame?window.requestAnimationFrame(d.updateStateDimensions):window.setTimeout(function(){return d.updateStateDimensions},1))},this.handleZoom=function(){d.updateDimensions()}};exports.default=PackG;
 
-},{"./datalist.js":15,"./label.js":18,"./stats.js":22,"d3":41,"react":238}],22:[function(require,module,exports){
+},{"./datalist.js":15,"./label.js":18,"./stats.js":22,"d3":42,"react":244}],22:[function(require,module,exports){
 'use strict';var _typeof='function'==typeof Symbol&&'symbol'==typeof Symbol.iterator?function(obj){return typeof obj}:function(obj){return obj&&'function'==typeof Symbol&&obj.constructor===Symbol&&obj!==Symbol.prototype?'symbol':typeof obj};Object.defineProperty(exports,'__esModule',{value:!0});var _createClass=function(){function a(b,c){for(var d,e=0;e<c.length;e++)d=c[e],d.enumerable=d.enumerable||!1,d.configurable=!0,'value'in d&&(d.writable=!0),Object.defineProperty(b,d.key,d)}return function(b,c,d){return c&&a(b.prototype,c),d&&a(b,d),b}}(),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function _classCallCheck(a,b){if(!(a instanceof b))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(a,b){if(!a)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return b&&('object'==('undefined'==typeof b?'undefined':_typeof(b))||'function'==typeof b)?b:a}function _inherits(a,b){if('function'!=typeof b&&null!==b)throw new TypeError('Super expression must either be null or a function, not '+('undefined'==typeof b?'undefined':_typeof(b)));a.prototype=Object.create(b&&b.prototype,{constructor:{value:a,enumerable:!1,writable:!0,configurable:!0}}),b&&(Object.setPrototypeOf?Object.setPrototypeOf(a,b):a.__proto__=b)}var Stats=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function(){var d=this;return _react2.default.createElement('g',{className:'circle-label-container',onClick:function(){return d.props.showPopup()},style:{transform:'translate(0, '+this.props.r/2+'px)'}},_react2.default.createElement('text',{className:'circle-label',style:{display:'inline',fontSize:3>this.props.value.length?1.2*this.props.r+'px':0.9*this.props.r+'px',textTransform:'uppercase'},textAnchor:'middle'},this.props.value))}}],[{key:'defaultProps',get:function(){return{r:2,showPopup:function(){return null},value:''}}}]),b}(_react2.default.Component);Stats.propTypes={r:_react2.default.PropTypes.number,showPopup:_react2.default.PropTypes.func,value:_react2.default.PropTypes.string},exports.default=Stats;
 
-},{"react":238}],23:[function(require,module,exports){
+},{"react":244}],23:[function(require,module,exports){
 (function (__filename){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.PieSlices=void 0;var _path=require('../svg/path.js'),_arcs=require('../lib/arcs.js'),arcs=_interopRequireWildcard(_arcs),_labels=require('../lib/labels.js'),label=_interopRequireWildcard(_labels),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(m){return m&&m.__esModule?m:{default:m}}function _interopRequireWildcard(m){if(m&&m.__esModule)return m;var n={};if(null!=m)for(var o in m)Object.prototype.hasOwnProperty.call(m,o)&&(n[o]=m[o]);return n.default=m,n}var PieSlices=exports.PieSlices=function(m){var n=m.chartHeight,o=void 0===n?200:n,p=m.chartWidth,q=void 0===p?200:p,r=m.colorScale,s=m.data,t=m.labels,u=void 0===t?[]:t,v=m.yValue,w=void 0===v?'':v;if(appFuncs._.isEmpty(s)||!w||!u.length||!r)return appFuncs.logError({data:[r,s,u,w],loc:__filename,msg:'colorScale, labels, data and yValue must be valid variables in slices.PieSlices(), returning null'}),null;var x=arcs.generateArcs({data:s,sort:null,yValue:w}),y=[];return x.forEach(function(z,A){var B=arcs.generateArcPath({chartHeight:o,chartWidth:q,endAngle:z.endAngle,startAngle:z.startAngle}),C=label.getLabelText({chartType:'simple',d:z.data,labels:u});C.length||appFuncs.logError({data:C,loc:__filename,msg:'labelText has 0 length in slices.PieSlices()'}),y.push(_react2.default.createElement('g',{className:'pie-slice',key:''+C.replace(/\s+/g,'-').toLowerCase()+A},_react2.default.createElement(_path.Path,{d:B(),fill:r(A),id:'arc-'+A}),label.getLabels({arc:z,chartHeight:o,chartType:'pie',chartWidth:q,idx:A,labels:u})))}),y};
 
 }).call(this,"/dist/piechart/slices.js")
-},{"../lib/arcs.js":7,"../lib/labels.js":10,"../svg/path.js":27,"react":238}],24:[function(require,module,exports){
+},{"../lib/arcs.js":7,"../lib/labels.js":10,"../svg/path.js":27,"react":244}],24:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.ScatterPlotDots=void 0;var _circle=require('../svg/circle.js'),_labels=require('../lib/labels.js'),label=_interopRequireWildcard(_labels),_react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(d){return d&&d.__esModule?d:{default:d}}function _interopRequireWildcard(d){if(d&&d.__esModule)return d;var i={};if(null!=d)for(var q in d)Object.prototype.hasOwnProperty.call(d,q)&&(i[q]=d[q]);return i.default=d,i}var ScatterPlotDots=exports.ScatterPlotDots=function(d){var i=d.chartType,q=void 0===i?'scatterplot':i,r=d.className,s=void 0===r?'dot':r,t=d.colorScale,u=d.data,v=void 0===u?[]:u,w=d.labels,x=void 0===w?[]:w,y=d.r,z=void 0===y?3.5:y,A=d.xValue,B=d.yValue,C=d.xScale,D=d.yScale;if(!D||!C||!A||!B)return null;var E=[];return v.forEach(function(F,G){var H=label.getLabelText({chartType:q,d:F,labels:x});E.push(_react2.default.createElement('g',{className:s,key:''+H.replace(/\s+/g,'-').toLowerCase()+G},_react2.default.createElement(_circle.Circle,{className:'circle',cx:C(F[A]),cy:D(F[B]),fill:t(G),r:z})))}),E};
 
-},{"../lib/labels.js":10,"../svg/circle.js":25,"react":238}],25:[function(require,module,exports){
+},{"../lib/labels.js":10,"../svg/circle.js":25,"react":244}],25:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Circle=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(f){return f&&f.__esModule?f:{default:f}}var Circle=exports.Circle=function(f){var g=f.className,h=void 0===g?'circle':g,i=f.cx,j=void 0===i?50:i,k=f.cy,l=void 0===k?50:k,m=f.fill,n=void 0===m?'blue':m,o=f.r,p=void 0===o?50:o;return _react2.default.createElement('circle',{className:h,cx:j,cy:l,fill:n,r:p})};Circle.propTypes={className:_react2.default.PropTypes.string,cx:_react2.default.PropTypes.number,cy:_react2.default.PropTypes.number,fill:_react2.default.PropTypes.string,r:_react2.default.PropTypes.number},exports.default=Circle;
 
-},{"react":238}],26:[function(require,module,exports){
+},{"react":244}],26:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.SVG=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(f){return f&&f.__esModule?f:{default:f}}var SVG=exports.SVG=function(f){var g=f.children,h=f.id,i=void 0===h?'chart':h,j=f.preserveAspectRatio,k=void 0===j?'xMinYMin meet':j,l=f.svgHeight,m=void 0===l?200:l,n=f.svgWidth,o=void 0===n?200:n;return _react2.default.createElement('svg',{className:'chart-svg',id:i,preserveAspectRatio:k,style:{display:'block',position:'relative'},viewBox:'0 0 '+o+' '+m,xmlns:'http://www.w3.org/2000/svg'},g)};SVG.propTypes={children:_react2.default.PropTypes.node,id:_react2.default.PropTypes.string,preserveAspectRatio:_react2.default.PropTypes.string,svgHeight:_react2.default.PropTypes.number,svgWidth:_react2.default.PropTypes.number},exports.default=SVG;
 
-},{"react":238}],27:[function(require,module,exports){
+},{"react":244}],27:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Path=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(d){return d&&d.__esModule?d:{default:d}}var Path=exports.Path=function(d){var i=d.chartType,j=void 0===i?'pie':i,k=d.d,l=d.fill,m=void 0===l?'blue':l,n=d.id,o=void 0===n?'':n,p=d.onClick,q=void 0===p?function(){return null}:p,r=d.onMouseMove,s=void 0===r?function(){return null}:r,t=d.stroke,u=void 0===t?'gray':t;return _react2.default.createElement('path',{className:j+'-path',d:k,fill:m,id:o,onClick:q,onMouseMove:s,stroke:u})};Path.propTypes={chartType:_react2.default.PropTypes.string,d:_react2.default.PropTypes.string.isRequired,fill:_react2.default.PropTypes.string,id:_react2.default.PropTypes.string,onClick:_react2.default.PropTypes.func,onMouseMove:_react2.default.PropTypes.func,stroke:_react2.default.PropTypes.string},exports.default=Path;
 
-},{"react":238}],28:[function(require,module,exports){
+},{"react":244}],28:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Rect=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(g){return g&&g.__esModule?g:{default:g}}var Rect=exports.Rect=function(g){var h=g.className,i=void 0===h?'rect':h,j=g.fill,k=void 0===j?'blue':j,l=g.height,m=void 0===l?200:l,n=g.width,o=void 0===n?200:n,p=g.x,q=void 0===p?0:p,r=g.y,s=void 0===r?0:r;return _react2.default.createElement('rect',{className:i,fill:k,height:m,width:o,x:q,y:s})};Rect.propTypes={className:_react2.default.PropTypes.string,fill:_react2.default.PropTypes.string,height:_react2.default.PropTypes.number,width:_react2.default.PropTypes.number,x:_react2.default.PropTypes.number,y:_react2.default.PropTypes.number},exports.default=Rect;
 
-},{"react":238}],29:[function(require,module,exports){
+},{"react":244}],29:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Text=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(k){return k&&k.__esModule?k:{default:k}}var Text=exports.Text=function(k){var l=k.chartType,m=void 0===l?'':l,n=k.className,o=void 0===n?'':n,p=k.dx,q=void 0===p?0:p,r=k.dy,s=void 0===r?0:r,t=k.fill,u=void 0===t?'black':t,v=k.text,w=void 0===v?'':v,x=k.transform,y=void 0===x?'rotate(20, 30, 40)':x,z=k.x,A=void 0===z?0:z,B=k.y,C=void 0===B?20:B;if(!w.length||!m)return appFuncs.logError({data:[m,q,s,u,w,y,A,C],msg:'text must be a valid variable in svg/text.js, returning null'}),null;var D=(o+' '+m+' labels').trim();return _react2.default.createElement('text',{className:D,dx:q,dy:s,fill:u,transform:y,x:A,y:C},w)};Text.propTypes={chartType:_react2.default.PropTypes.string,className:_react2.default.PropTypes.string,dx:_react2.default.PropTypes.number,dy:_react2.default.PropTypes.number,fill:_react2.default.PropTypes.string,text:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.array,_react2.default.PropTypes.string]),transform:_react2.default.PropTypes.string,x:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number,_react2.default.PropTypes.string]),y:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number,_react2.default.PropTypes.string])},exports.default=Text;
 
-},{"react":238}],30:[function(require,module,exports){
+},{"react":244}],30:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Table=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react),_thead=require('./thead.js'),_thead2=_interopRequireDefault(_thead),_tbody=require('./tbody.js'),_tbody2=_interopRequireDefault(_tbody);function _interopRequireDefault(g){return g&&g.__esModule?g:{default:g}}var Table=exports.Table=function(g){var h=g.className,i=void 0===h?'':h,j=g.data,k=g.id,l=g.filterable,m=g.sortable,n=i;return m&&(n+=' sortable'),_react2.default.createElement('table',{className:n,id:k},_react2.default.createElement(_thead2.default,{data0:j[0],filterable:l,id:k}),_react2.default.createElement(_tbody2.default,{data:j,id:k}),_react2.default.createElement('tfoot',null,_react2.default.createElement('tr',null,_react2.default.createElement('td',null))))};Table.propTypes={className:_react2.default.PropTypes.string,data:_react2.default.PropTypes.array,filterable:_react2.default.PropTypes.bool,id:_react2.default.PropTypes.string,sortable:_react2.default.PropTypes.bool},exports.default=Table;
 
-},{"./tbody.js":31,"./thead.js":32,"react":238}],31:[function(require,module,exports){
+},{"./tbody.js":31,"./thead.js":32,"react":244}],31:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Tbody=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react),_tr=require('./tr.js'),_tr2=_interopRequireDefault(_tr);function _interopRequireDefault(f){return f&&f.__esModule?f:{default:f}}var Tbody=exports.Tbody=function(f){var g=f.data,h=f.id,i=[];return g.forEach(function(j,k){return i.push(_react2.default.createElement(_tr2.default,{fields:j,id:h,idx:k,key:'row'+h+k}))}),_react2.default.createElement('tbody',null,i)};Tbody.propTypes={data:_react2.default.PropTypes.array,id:_react2.default.PropTypes.string},exports.default=Tbody;
 
-},{"./tr.js":33,"react":238}],32:[function(require,module,exports){
+},{"./tr.js":33,"react":244}],32:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Thead=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react),_tr=require('./tr.js'),_tr2=_interopRequireDefault(_tr);function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}var Thead=exports.Thead=function(e){var f=e.data0,g=e.filterable,h=e.id,i=Object.keys(f);return _react2.default.createElement('thead',null,g&&_react2.default.createElement(_tr2.default,{filterable:g,id:h,length:i.length,th:!0}),_react2.default.createElement(_tr2.default,{fields:i,id:h,th:!0}))};Thead.propTypes={data0:_react2.default.PropTypes.object,filterable:_react2.default.PropTypes.bool,id:_react2.default.PropTypes.string},exports.default=Thead;
 
-},{"./tr.js":33,"react":238}],33:[function(require,module,exports){
+},{"./tr.js":33,"react":244}],33:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,'__esModule',{value:!0}),exports.Tr=void 0;var _react=require('react'),_react2=_interopRequireDefault(_react);function _interopRequireDefault(i){return i&&i.__esModule?i:{default:i}}var Tr=exports.Tr=function(i){var l=i.fields,m=i.filterable,n=i.length,o=i.id,p=i.idx,q=i.th,r=[],s=0;if(q&&n&&o&&m)for(;s<n;)r.push(_react2.default.createElement('th',{key:''+o+s},_react2.default.createElement('input',{className:s==n-1?'flt_s':'flt',id:'flt'+s+'_'+o,onKeyUp:appFuncs.filterTable.Filter,placeholder:'Filter',type:'text'}))),s++;else if(l.length&&q)l.forEach(function(u,v){r.push(_react2.default.createElement('th',{key:''+u+v},u))});else if(!appFuncs._.isEmpty(l))for(var t in l)r.push(_react2.default.createElement('td',{key:''+o+l[t]+p},l[t]));return _react2.default.createElement('tr',null,r)};Tr.propTypes={fields:_react2.default.PropTypes.oneOfType([_react2.default.PropTypes.array,_react2.default.PropTypes.object]),filterable:_react2.default.PropTypes.bool,id:_react2.default.PropTypes.string,idx:_react2.default.PropTypes.number,length:_react2.default.PropTypes.number,th:_react2.default.PropTypes.bool},exports.default=Tr;
 
-},{"react":238}],34:[function(require,module,exports){
+},{"react":244}],34:[function(require,module,exports){
 'use strict';var _react=require('react'),_react2=_interopRequireDefault(_react),_reactDom=require('react-dom'),_reactDom2=_interopRequireDefault(_reactDom),_example=require('./example.js'),_example2=_interopRequireDefault(_example);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}require('node-globals').default({});_reactDom2.default.render(_react2.default.createElement(_example2.default,null),document.querySelector('#app'));
 
-},{"./example.js":35,"node-globals":70,"react":238,"react-dom":82}],35:[function(require,module,exports){
-'use strict';Object.defineProperty(exports,'__esModule',{value:!0});var _extends=Object.assign||function(target){for(var source,i=1;i<arguments.length;i++)for(var key in source=arguments[i],source)Object.prototype.hasOwnProperty.call(source,key)&&(target[key]=source[key]);return target};var _createClass=function(){function defineProperties(target,props){for(var descriptor,i=0;i<props.length;i++)descriptor=props[i],descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,'value'in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();var _react=require('react'),_react2=_interopRequireDefault(_react),_index=require('../dist/index.js'),_index2=_interopRequireDefault(_index),_rawtwitter=require('./fakedata/rawtwitter.json'),_rawtwitter2=_interopRequireDefault(_rawtwitter);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(self,call){if(!self)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return call&&('object'==typeof call||'function'==typeof call)?call:self}function _inherits(subClass,superClass){if('function'!=typeof superClass&&null!==superClass)throw new TypeError('Super expression must either be null or a function, not '+typeof superClass);subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:!1,writable:!0,configurable:!0}}),superClass&&(Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass)}//import packData from './fakedata/packtwitter.json';
-//import formattedData from './fakedata/payingcustomers.json';
+},{"./example.js":35,"node-globals":71,"react":244,"react-dom":87}],35:[function(require,module,exports){
+'use strict';Object.defineProperty(exports,'__esModule',{value:!0});var _createClass=function(){function defineProperties(target,props){for(var descriptor,i=0;i<props.length;i++)descriptor=props[i],descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,'value'in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();var _react=require('react'),_react2=_interopRequireDefault(_react),_index=require('../dist/index.js'),_index2=_interopRequireDefault(_index),_moment=require('moment'),_moment2=_interopRequireDefault(_moment),_payingcustomers=require('./fakedata/payingcustomers.json'),_payingcustomers2=_interopRequireDefault(_payingcustomers);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(self,call){if(!self)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return call&&('object'==typeof call||'function'==typeof call)?call:self}function _inherits(subClass,superClass){if('function'!=typeof superClass&&null!==superClass)throw new TypeError('Super expression must either be null or a function, not '+typeof superClass);subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:!1,writable:!0,configurable:!0}}),superClass&&(Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass)}//import packData from './fakedata/packtwitter.json';
+//import timelineData from './fakedata/sites.js';
 var Table=function(_React$Component){function Table(){return _classCallCheck(this,Table),_possibleConstructorReturn(this,(Table.__proto__||Object.getPrototypeOf(Table)).apply(this,arguments))}return _inherits(Table,_React$Component),_createClass(Table,[{key:'render',/* pack
   render () {
     return (
@@ -411,17 +411,958 @@ var Table=function(_React$Component){function Table(){return _classCallCheck(thi
 // x = dates
 // groupBy = username ? possibly best option
 // could do: token
-var a=_rawtwitter2.default.map(function(b){var c=JSON.parse(b.afinn);// date to start of month
-// new Date(new Date(tweet.date).setDate(1)).toLocaleDateString()
-return c.score=0<c.score?1:0>c.score?-1:c.score,_extends({},b,{afinn:c,date:new Date(b.date).getTime(),score:c.score,total:1})});return _react2.default.createElement(_index2.default,{chartDataGroupBy:'score',chartDataSumGroupBy:!0,chartType:'line',colorScaleScheme:{0:'black',1:'DarkSeaGreen',2:'GreenYellow',3:'LawnGreen',4:'Lime',5:'ForestGreen','-1':'red','-2':'Tomato','-3':'OrangeRed','-4':'Crimson','-5':'DarkRed'},colorScaleType:'custom',data:a,datumLabels:['score'],id:'fake-chart',lineCurve:'curveLinear',margins:{bottom:70,left:70,right:10,top:10},withDots:!0,xAxis:!0,xAxisLabel:'Date',xScale:!0,xScaleTime:!0,xScaleTimeFormat:'%I%M%p%a%d%y',xValue:'date',yAxis:!0,yAxisLabel:'Total Tweets by Sentiment Score',yScale:!0,yValue:'total'})}//*/
+/*
+    const formattedData = timelineData.map((tweet) => {
+      const afinn = JSON.parse(tweet.afinn);
+      afinn.score =
+        afinn.score > 0 ? 1
+          : afinn.score < 0 ? -1
+            : afinn.score;
+
+      // date to start of month
+      // new Date(new Date(tweet.date).setDate(1)).toLocaleDateString()
+      return {
+        ...tweet,
+        afinn,
+        date: new Date(tweet.date).getTime(),
+        score: afinn.score,
+        total: 1,
+      };
+    });
+    */var a=[];return timelineData.forEach(function(b){return b.y.forEach(function(c,d){return a.push({site:b.site,date:b.x[d]// eslint-disable-line
+?(0,_moment2.default)(b.startdate).add(b.x[d],'days').toDate().getTime():(0,_moment2.default)(b.startdate).subtract(b.x[d],'days').toDate().getTime(),xlab:b.xlab,y:b.y[d]})})}),_react2.default.createElement(_index2.default,{chartDataGroupBy:'y',chartDataSumGroupBy:!0,chartType:'line',colorScaleScheme:'schemeCategory20',colorScaleType:'random',data:a,datumLabels:['xlab'],id:'fake-chart',lineCurve:'curveLinear',margins:{bottom:70,left:70,right:10,top:10},withDots:!0,xAxis:!0,xAxisLabel:'Date',xScale:!0,xScaleTime:!0,xScaleTimeFormat:'%I%M%p%a%d%y',xValue:'date',yAxis:!0,yAxisLabel:'Number of Days',yScale:!0,yValue:'y'})}//*/
 }],[{key:'defaultProps',get:function get(){return{id:'fake-chart'}}}]),Table}(_react2.default.Component);exports.default=Table;
 
-},{"../dist/index.js":6,"./fakedata/rawtwitter.json":36,"react":238}],36:[function(require,module,exports){
-module.exports=[{"date":1489769974000,"afinn":"{\"score\":2,\"comparative\":0.5,\"tokens\":[\"loving\",\"me\",\"some\",\"jsperf\"],\"words\":[\"loving\"],\"positive\":[\"loving\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"loving me some @jsperf","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/842782473058635776","username":"noahedwardhall"},{"date":1489753359000,"afinn":"{\"score\":-3,\"comparative\":-0.2,\"tokens\":[\"there\",\"are\",\"2\",\"hard\",\"problems\",\"in\",\"computer\",\"science\",\"cache\",\"invalidation\",\"naming\",\"things\",\"and\",\"off-by-1\",\"errorssecretgeek\"],\"words\":[\"problems\",\"hard\"],\"negative\":[\"problems\",\"hard\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"There are 2 hard problems in computer science: \ncache invalidation, naming things, and off-by-1 errors.\n@secretGeek","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/842712783657492480","username":"noahedwardhall"},{"date":1487649169000,"afinn":"{\"score\":6,\"comparative\":0.25,\"tokens\":[\"working\",\"with\",\"the\",\"twitter\",\"api\",\"is\",\"sooo\",\"much\",\"dev\",\"friendly\",\"than\",\"the\",\"facebook\",\"api\",\"the\",\"amount\",\"of\",\"data\",\"you\",\"have\",\"access\",\"to\",\"is\",\"awesome\"],\"words\":[\"awesome\",\"friendly\"],\"positive\":[\"awesome\",\"friendly\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"working with the twitter api is sooo much dev friendly than the facebook api, the amount of data you have access to is awesome","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/833887173673840640","username":"noahedwardhall"},{"date":1487617994000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"ive\",\"done\",\"my\",\"best\",\"coding\",\"to\",\"this\",\"track\",\"httpstcoudi9xooajw\"],\"words\":[\"best\"],\"positive\":[\"best\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"ive done my best coding to this track https://t.co/Udi9xooAjw","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/833756413876801536","username":"noahedwardhall"},{"date":1482794495000,"afinn":"{\"score\":4,\"comparative\":0.8,\"tokens\":[\"you\",\"guys\",\"are\",\"awesome\",\"strongloop\"],\"words\":[\"awesome\"],\"positive\":[\"awesome\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"you guys are awesome @StrongLoop","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/813525192332820480","username":"noahedwardhall"},{"date":1480136855000,"afinn":"{\"score\":4,\"comparative\":0.36363636363636365,\"tokens\":[\"lets\",\"see\",\"how\",\"awesome\",\"logrocketjs\",\"makes\",\"my\",\"new\",\"app\",\"for\",\"udacity\"],\"words\":[\"awesome\"],\"positive\":[\"awesome\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"lets see how awesome @logrocketjs makes my new app for @udacity","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/802378243214970880","username":"noahedwardhall"},{"date":1448693326000,"afinn":"{\"score\":4,\"comparative\":0.23529411764705882,\"tokens\":[\"i\",\"just\",\"entered\",\"to\",\"win\",\"tickets\",\"to\",\"phutureprimitive\",\"at\",\"socialhallsf\",\"on\",\"124\",\"from\",\"magnififm\",\"your\",\"turn\",\"httpstcoigcmdoirnz\"],\"words\":[\"win\"],\"positive\":[\"win\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I just entered to win tickets to @phutureprimitive at @SocialHallSF on 12/4 from @magnifi_fm! Your turn https://t.co/IgCMDoIRnz","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/670494524058247168","username":"noahedwardhall"},{"date":1441717056000,"afinn":"{\"score\":3,\"comparative\":0.21428571428571427,\"tokens\":[\"mayweather\",\"vs\",\"berto\",\"fight\",\"time\",\"expected\",\"prize\",\"money\",\"projected\",\"winner\",\"odds\",\"httptcomnp02emlb3\",\"via\",\"bleacherreport\"],\"words\":[\"winner\",\"fight\"],\"positive\":[\"winner\"],\"negative\":[\"fight\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Mayweather vs. Berto Fight Time, Expected Prize Money, Projected Winner, Odds http://t.co/mnP02EmlB3 via @bleacherreport","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/641233926632046593","username":"noahedwardhall"},{"date":1437594645000,"afinn":"{\"score\":-2,\"comparative\":-0.2222222222222222,\"tokens\":[\"autopsy\",\"\",\"lessons\",\"from\",\"failed\",\"startups\",\"httptcotelcqjucvm\",\"via\",\"autopsyhq\"],\"words\":[\"failed\",\"\"],\"negative\":[\"failed\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Autopsy | Lessons from Failed Startups http://t.co/teLCQJucvm via @autopsyhq","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/623943284486995968","username":"noahedwardhall"},{"date":1436578978000,"afinn":"{\"score\":2,\"comparative\":0.18181818181818182,\"tokens\":[\"sweet\",\"sound\",\"bites\",\"magnifi\",\"presents\",\"geographer\",\"at\",\"the\",\"chapel\",\"625201\",\"httptcoilqoeuuusf\"],\"words\":[\"sweet\"],\"positive\":[\"sweet\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Sweet Sound Bites: MAGNIFI Presents Geographer at The Chapel 6/25/201... http://t.co/ilqoeuUUsf","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/619683264937103363","username":"noahedwardhall"},{"date":1435992111000,"afinn":"{\"score\":3,\"comparative\":0.1875,\"tokens\":[\"check\",\"out\",\"help\",\"ostraining\",\"create\",\"free\",\"drupal\",\"8\",\"training\",\"videos\",\"by\",\"steve\",\"burge\",\"on\",\"kickstarter\",\"httptcollanj0r9ml\"],\"words\":[\"free\",\"help\"],\"positive\":[\"free\",\"help\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Check out Help OSTraining create free Drupal 8 Training videos by Steve Burge on @Kickstarter http://t.co/llanj0r9mL","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/617221767715667968","username":"noahedwardhall"},{"date":1435804436000,"afinn":"{\"score\":3,\"comparative\":0.1875,\"tokens\":[\"tomgeller\",\"came\",\"on\",\"the\",\"drupal7\",\"advanced\",\"training\",\"like\",\"a\",\"scene\",\"out\",\"of\",\"lepracaun\",\"in\",\"the\",\"hood\"],\"words\":[\"like\",\"advanced\"],\"positive\":[\"like\",\"advanced\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"tomgeller came on the drupal7 advanced training like a scene out of lepracaun in the hood","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/616434600840032256","username":"noahedwardhall"},{"date":1431879720000,"afinn":"{\"score\":4,\"comparative\":0.3333333333333333,\"tokens\":[\"kickstarter\",\"campaign\",\"launched\",\"for\",\"larry\",\"levan\",\"and\",\"paradise\",\"garage\",\"movie\",\"mixmag\",\"httptcoabennsqrei\"],\"words\":[\"paradise\",\"launched\"],\"positive\":[\"paradise\",\"launched\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Kickstarter campaign launched for Larry Levan and Paradise Garage movie @Mixmag http://t.co/ABEnnSQREi","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/599973150302937090","username":"noahedwardhall"},{"date":1431879522000,"afinn":"{\"score\":-2,\"comparative\":-0.16666666666666666,\"tokens\":[\"candidate\",\"with\",\"no\",\"votes\",\"demands\",\"recount\",\"because\",\"he\",\"voted\",\"for\",\"himself\",\"httptcohwxahjeq9u\"],\"words\":[\"demands\",\"no\"],\"negative\":[\"demands\",\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Candidate with no votes demands recount because he ‘voted for himself’ http://t.co/HwXAhJEQ9U","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/599972320166285313","username":"noahedwardhall"},{"date":1431700577000,"afinn":"{\"score\":-2,\"comparative\":-0.3333333333333333,\"tokens\":[\"kpfa\",\"\",\"on\",\"fire\",\"this\",\"morning\"],\"words\":[\"fire\",\"\"],\"negative\":[\"fire\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"#kpfa  on fire this morning","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/599221769677901824","username":"noahedwardhall"},{"date":1430582223000,"afinn":"{\"score\":1,\"comparative\":0.05,\"tokens\":[\"san\",\"francisco\",\"minimum\",\"wage\",\"rises\",\"to\",\"1225\",\"other\",\"bay\",\"area\",\"cities\",\"considering\",\"hikes\",\"\",\"nbc\",\"bay\",\"area\",\"httptcobjwtyzkdn7\",\"via\",\"nbcbayarea\"],\"words\":[\"\",\"rises\"],\"positive\":[\"rises\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"San Francisco Minimum Wage Rises to $12.25, Other Bay Area Cities Considering Hikes | NBC Bay Area http://t.co/BJwTyZkDN7 via @nbcbayarea","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/594531052464418816","username":"noahedwardhall"},{"date":1430028031000,"afinn":"{\"score\":4,\"comparative\":0.8,\"tokens\":[\"bebes\",\"kids\",\"on\",\"netflix\",\"winning\"],\"words\":[\"winning\"],\"positive\":[\"winning\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"bebes kids on @netflix #winning","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/592206601638973440","username":"noahedwardhall"},{"date":1429295609000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"join\",\"me\",\"at\",\"sugarcon\",\"2015\",\"httpstcoshzhi3fobk\",\"sugarcon2015\",\"\",\"powered\",\"by\",\"regonline\"],\"words\":[\"\",\"join\"],\"positive\":[\"join\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Join me at SugarCon 2015! https://t.co/SHzHI3fobK #SugarCon2015 | Powered by #RegOnline","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/589134603597656064","username":"noahedwardhall"},{"date":1428984676000,"afinn":"{\"score\":2,\"comparative\":0.15384615384615385,\"tokens\":[\"9\",\"useful\",\"php\",\"functions\",\"and\",\"features\",\"you\",\"need\",\"to\",\"know\",\"httptcofnnn3vhq9p\",\"via\",\"tutsplus\"],\"words\":[\"useful\"],\"positive\":[\"useful\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"9 Useful PHP Functions and Features You Need to Know http://t.co/fNNN3vHQ9P via @tutsplus","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/587830455329624065","username":"noahedwardhall"},{"date":1427887647000,"afinn":"{\"score\":-3,\"comparative\":-0.375,\"tokens\":[\"starbucks\",\"that\",\"aren't\",\"24\",\"hours\",\"should\",\"be\",\"illegal\"],\"words\":[\"illegal\"],\"negative\":[\"illegal\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Starbucks that aren't 24 hours should be illegal","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/583229180793348096","username":"noahedwardhall"},{"date":1427201134000,"afinn":"{\"score\":4,\"comparative\":0.3076923076923077,\"tokens\":[\"napping\",\"improves\",\"memory\",\"five-fold\",\"and\",\"enhances\",\"learning\",\"success\",\"study\",\"finds\",\"httptco2xljmgpnpl\",\"via\",\"immortalorg\"],\"words\":[\"success\",\"improves\"],\"positive\":[\"success\",\"improves\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Napping Improves Memory Five-Fold And Enhances Learning Success, Study Finds http://t.co/2xLJMgpnPL via @immortal_org","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/580349737880002560","username":"noahedwardhall"},{"date":1426375792000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"i\",\"solved\",\"the\",\"enumerable\",\"magic\",\"2\",\"-\",\"true\",\"for\",\"any\",\"codewars\"],\"words\":[\"true\",\"solved\"],\"positive\":[\"true\",\"solved\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I solved the \"Enumerable Magic #2 - True for Any?\" #codewars","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/576888004406435840","username":"noahedwardhall"},{"date":1426136414000,"afinn":"{\"score\":1,\"comparative\":0.05555555555555555,\"tokens\":[\"i\",\"solved\",\"the\",\"by\",\"the\",\"power\",\"set\",\"of\",\"castle\",\"grayskull\",\"kata\",\"take\",\"the\",\"code\",\"initiation\",\"\",\"httptcotaw6sw0egc\",\"codewars\"],\"words\":[\"\",\"solved\"],\"positive\":[\"solved\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I solved the \"By the Power Set of Castle Grayskull\" kata! Take the code initiation @ http://t.co/tAw6sW0egc #codewars","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/575883979737329664","username":"noahedwardhall"},{"date":1426034289000,"afinn":"{\"score\":-2,\"comparative\":-0.16666666666666666,\"tokens\":[\"robin\",\"thicke\",\"pharrell\",\"lose\",\"multi-million\",\"dollar\",\"'blurred\",\"lines'\",\"lawsuit\",\"httptcoz9phydd5zt\",\"via\",\"rollingstone\"],\"words\":[\"lawsuit\"],\"negative\":[\"lawsuit\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Robin Thicke, Pharrell Lose Multi-Million Dollar 'Blurred Lines' Lawsuit http://t.co/z9PhYdd5zT via @rollingstone","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/575455636818821122","username":"noahedwardhall"},{"date":1425876353000,"afinn":"{\"score\":2,\"comparative\":0.18181818181818182,\"tokens\":[\"my\",\"solution\",\"is\",\"at\",\"least\",\"50\",\"less-efficient\",\"than\",\"the\",\"leader's\",\"solution\"],\"words\":[\"solution\",\"solution\"],\"positive\":[\"solution\",\"solution\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"my solution is at least 50% less-efficient than the leader's solution","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/574793202122682370","username":"noahedwardhall"},{"date":1425872997000,"afinn":"{\"score\":-3,\"comparative\":-0.5,\"tokens\":[\"woa\",\"this\",\"is\",\"killing\",\"my\",\"sundayhttptconek7nqctj8\"],\"words\":[\"killing\"],\"negative\":[\"killing\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"woa this is killing my sunday\n\nhttp://t.co/NEk7NqCTJ8","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/574779125866475521","username":"noahedwardhall"},{"date":1425863320000,"afinn":"{\"score\":3,\"comparative\":0.14285714285714285,\"tokens\":[\"wouldn't\",\"it\",\"be\",\"great\",\"if\",\"you\",\"can\",\"plug\",\"your\",\"brain\",\"into\",\"the\",\"usb\",\"port\",\"and\",\"download\",\"everything\",\"you\",\"needed\",\"to\",\"know\"],\"words\":[\"great\"],\"positive\":[\"great\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Wouldn't it be great if you can plug your brain into the usb port and download everything you needed to know","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/574738538224218112","username":"noahedwardhall"},{"date":1425861270000,"afinn":"{\"score\":3,\"comparative\":0.375,\"tokens\":[\"best\",\"ruby\",\"book\",\"i've\",\"found\",\"so\",\"far\",\"httptcogmkks9eqkv\"],\"words\":[\"best\"],\"positive\":[\"best\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Best ruby book I've found so far http://t.co/gmKks9Eqkv","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/574729938923712512","username":"noahedwardhall"},{"date":1425795422000,"afinn":"{\"score\":-3,\"comparative\":-1.5,\"tokens\":[\"regex\",\"sucks\"],\"words\":[\"sucks\"],\"negative\":[\"sucks\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"regex sucks","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/574453754365284352","username":"noahedwardhall"},{"date":1425787214000,"afinn":"{\"score\":-4,\"comparative\":-0.5714285714285714,\"tokens\":[\"steve\",\"jobs\",\"pissed\",\"off\",\"moments\",\"1997-2010\",\"httptcovnguw6piqv\"],\"words\":[\"pissed\"],\"negative\":[\"pissed\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Steve Jobs PISSED OFF moments (1997-2010): http://t.co/vNgUW6piqv","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/574419326041636864","username":"noahedwardhall"},{"date":1425777411000,"afinn":"{\"score\":-2,\"comparative\":-0.10526315789473684,\"tokens\":[\"i\",\"solved\",\"the\",\"weird\",\"string\",\"case\",\"kata\",\"take\",\"the\",\"code\",\"initiation\",\"\",\"httptcotaw6sw0egc\",\"to\",\"enlist\",\"and\",\"challenge\",\"yourself\",\"codewars\"],\"words\":[\"challenge\",\"\",\"weird\",\"solved\"],\"positive\":[\"solved\"],\"negative\":[\"challenge\",\"weird\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I solved the \"WeIrD StRiNg CaSe\" kata! Take the code initiation @ http://t.co/tAw6sW0egc to enlist and challenge yourself. #codewars","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/574378212089724928","username":"noahedwardhall"},{"date":1425754619000,"afinn":"{\"score\":-2,\"comparative\":-0.10526315789473684,\"tokens\":[\"i\",\"solved\",\"the\",\"ping-pong\",\"service\",\"problem\",\"kata\",\"take\",\"the\",\"code\",\"initiation\",\"\",\"httptcotaw6sw0egc\",\"to\",\"enlist\",\"and\",\"challenge\",\"yourself\",\"codewars\"],\"words\":[\"challenge\",\"\",\"problem\",\"solved\"],\"positive\":[\"solved\"],\"negative\":[\"challenge\",\"problem\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I solved the \"Ping-Pong service problem\" kata! Take the code initiation @ http://t.co/tAw6sW0egc to enlist and challenge yourself. #codewars","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/574282613411553280","username":"noahedwardhall"},{"date":1425752051000,"afinn":"{\"score\":2,\"comparative\":0.10526315789473684,\"tokens\":[\"i\",\"solved\",\"the\",\"does\",\"my\",\"number\",\"look\",\"big\",\"in\",\"this\",\"kata\",\"take\",\"the\",\"code\",\"initiation\",\"\",\"httptcotaw6sw0egc\",\"\",\"codewars\"],\"words\":[\"\",\"\",\"big\",\"solved\"],\"positive\":[\"big\",\"solved\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I solved the \"Does my number look big in this?\" kata! Take the code initiation @ http://t.co/tAw6sW0egc  #codewars","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/574271842472480769","username":"noahedwardhall"},{"date":1425371747000,"afinn":"{\"score\":-1,\"comparative\":-0.14285714285714285,\"tokens\":[\"greg\",\"gasson\",\"-\",\"no\",\"parachute\",\"jump\",\"httptcoyurou2soil\"],\"words\":[\"no\"],\"negative\":[\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Greg Gasson - No parachute jump: http://t.co/YurOU2SoIL","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/572676730466410496","username":"noahedwardhall"},{"date":1425370961000,"afinn":"{\"score\":-2,\"comparative\":-0.4,\"tokens\":[\"childish\",\"gambino\",\"-\",\"heartbeat\",\"httptcoff6wdrivs2\"],\"words\":[\"childish\"],\"negative\":[\"childish\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Childish Gambino - Heartbeat: http://t.co/FF6wDriVs2","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/572673437040164864","username":"noahedwardhall"},{"date":1425370833000,"afinn":"{\"score\":-4,\"comparative\":-0.5714285714285714,\"tokens\":[\"childish\",\"gambino\",\"-\",\"sweatpants\",\"ft\",\"problem\",\"httptcoqr219wc73x\"],\"words\":[\"problem\",\"childish\"],\"negative\":[\"problem\",\"childish\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Childish Gambino - Sweatpants ft. Problem: http://t.co/QR219Wc73x","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/572672899577872384","username":"noahedwardhall"},{"date":1425193592000,"afinn":"{\"score\":-1,\"comparative\":-0.07142857142857142,\"tokens\":[\"i\",\"just\",\"unlocked\",\"the\",\"blocks\",\"procs\",\"and\",\"lambdas\",\"badge\",\"on\",\"codecademy\",\"httptcoh3jrdvfdri\",\"via\",\"codecademy\"],\"words\":[\"blocks\"],\"negative\":[\"blocks\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I just unlocked the Blocks, Procs, and Lambdas badge on @codecademy! http://t.co/h3jRDvfDrI via @codecademy","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/571929497517207552","username":"noahedwardhall"},{"date":1424853784000,"afinn":"{\"score\":-2,\"comparative\":-0.2,\"tokens\":[\"i\",\"miss\",\"my\",\"dawgs\",\"-\",\"lil\",\"wayne\",\"httptcouah4kx2hdh\",\"via\",\"youtube\"],\"words\":[\"miss\"],\"negative\":[\"miss\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I Miss My Dawgs - Lil Wayne: http://t.co/uAh4kX2hdh via @YouTube","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/570504236804354048","username":"noahedwardhall"},{"date":1424752337000,"afinn":"{\"score\":-2,\"comparative\":-0.18181818181818182,\"tokens\":[\"comcast\",\"al\",\"sharpton\",\"hit\",\"with\",\"20\",\"billion\",\"racial\",\"discrimination\",\"lawsuit\",\"httpstcoeok1algmqt\"],\"words\":[\"lawsuit\"],\"negative\":[\"lawsuit\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Comcast, Al Sharpton Hit With $20 Billion Racial Discrimination Lawsuit https://t.co/eok1AlGMQT","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/570078737611362304","username":"noahedwardhall"},{"date":1424746622000,"afinn":"{\"score\":-1,\"comparative\":-0.08333333333333333,\"tokens\":[\"officially\",\"postponed\",\"graduation\",\"for\",\"another\",\"year\",\"to\",\"pick\",\"up\",\"a\",\"2nd\",\"degree\"],\"words\":[\"postponed\"],\"negative\":[\"postponed\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Officially postponed graduation for another year to pick up a 2nd degree","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/570054767730253825","username":"noahedwardhall"},{"date":1424664011000,"afinn":"{\"score\":2,\"comparative\":0.2857142857142857,\"tokens\":[\"looks\",\"like\",\"320\",\"is\",\"the\",\"magic\",\"numberhttptcozpv6xhzek2\"],\"words\":[\"like\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"looks like 320 is the magic number\n\nhttp://t.co/ZPV6XhzeK2","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/569708271440826368","username":"noahedwardhall"},{"date":1424638889000,"afinn":"{\"score\":-2,\"comparative\":-0.18181818181818182,\"tokens\":[\"printing\",\"errors\",\"simple\",\"ish\",\"you\",\"dont\",\"need\",\"until\",\"you\",\"need\",\"ithttptcozcpu77hgh2\"],\"words\":[\"errors\"],\"negative\":[\"errors\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"printing errors, simple ish you dont need until you need it\n\nhttp://t.co/zcPU77hGh2","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/569602902420910080","username":"noahedwardhall"},{"date":1419884558000,"afinn":"{\"score\":1,\"comparative\":0.1,\"tokens\":[\"finishing\",\"up\",\"the\",\"django\",\"tut\",\"then\",\"moving\",\"straight\",\"into\",\"splunkdev\"],\"words\":[\"straight\"],\"positive\":[\"straight\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"finishing up the django tut, then moving straight into @splunkdev","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/549661793987985408","username":"noahedwardhall"},{"date":1418284738000,"afinn":"{\"score\":2,\"comparative\":0.5,\"tokens\":[\"zeus'\",\"remarkable\",\"journey\",\"httptcooo5b6o0w62\"],\"words\":[\"remarkable\"],\"positive\":[\"remarkable\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Zeus' Remarkable Journey: http://t.co/oO5b6o0W62","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/542951663879733249","username":"noahedwardhall"},{"date":1417848956000,"afinn":"{\"score\":1,\"comparative\":0.05555555555555555,\"tokens\":[\"nigerian\",\"billionaire\",\"tony\",\"elumelu\",\"commits\",\"100\",\"million\",\"to\",\"create\",\"10000\",\"african\",\"entrepreneurs\",\"in\",\"10\",\"years\",\"httptcocwhql0h6hp\",\"via\",\"forbes\"],\"words\":[\"commits\"],\"positive\":[\"commits\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Nigerian Billionaire Tony Elumelu Commits $100 Million To Create 10,000 African Entrepreneurs In 10 Years http://t.co/CwHql0H6HP via @forbes","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/541123858191765505","username":"noahedwardhall"},{"date":1417663287000,"afinn":"{\"score\":1,\"comparative\":0.07692307692307693,\"tokens\":[\"engineers\",\"take\",\"big\",\"step\",\"toward\",\"using\",\"light\",\"instead\",\"of\",\"wires\",\"inside\",\"computers\",\"httptcok0tcskxwb7\"],\"words\":[\"big\"],\"positive\":[\"big\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Engineers take big step toward using light instead of wires inside computers http://t.co/k0TcsKxwB7","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/540345107908546560","username":"noahedwardhall"},{"date":1413768000000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"beats\",\"celebrates\",\"lebron's\",\"homecoming\",\"with\",\"another\",\"epic\",\"commercial\",\"httptcohgtyuzjk7q\",\"via\",\"verge\"],\"words\":[\"celebrates\"],\"positive\":[\"celebrates\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Beats celebrates LeBron's homecoming with another epic commercial http://t.co/hGtyUzjk7q via @verge","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/524007088192634880","username":"noahedwardhall"},{"date":1413522185000,"afinn":"{\"score\":-1,\"comparative\":-0.125,\"tokens\":[\"super-strong\",\"neodymium\",\"magnets\",\"crushing\",\"a\",\"man's\",\"h\",\"httptcoybdz0wbnpm\"],\"words\":[\"crushing\"],\"negative\":[\"crushing\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Super-strong neodymium magnets crushing a man's h…: http://t.co/YBDZ0WbNpm","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/522976068831936513","username":"noahedwardhall"},{"date":1413520907000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"prince\",\"rupert's\",\"drops\",\"are\",\"stronger\",\"than\",\"steel\",\"httptcoufzu6brfaw\"],\"words\":[\"stronger\"],\"positive\":[\"stronger\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Prince Rupert's Drops Are Stronger Than Steel: http://t.co/ufzU6BrFaw","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/522970708104585217","username":"noahedwardhall"},{"date":1411851869000,"afinn":"{\"score\":-1,\"comparative\":-0.07142857142857142,\"tokens\":[\"cloaking\",\"device\",\"uses\",\"ordinary\",\"lenses\",\"to\",\"hide\",\"objects\",\"across\",\"range\",\"of\",\"angles\",\"\",\"httptcoaqdgepjjyz\"],\"words\":[\"\",\"hide\"],\"negative\":[\"hide\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"‘Cloaking’ device uses ordinary lenses to hide objects across range of angles  http://t.co/AqDgepJJyz","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/515970253549887489","username":"noahedwardhall"},{"date":1411825588000,"afinn":"{\"score\":-1,\"comparative\":-0.1111111111111111,\"tokens\":[\"space\",\"news\",\"\",\"electricity\",\"hiding\",\"behind\",\"'dark\",\"matt\",\"httptcoe393mexviq\"],\"words\":[\"hiding\",\"\"],\"negative\":[\"hiding\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Space News | Electricity Hiding Behind 'Dark Matt…: http://t.co/e393meXVIq","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/515860025172959232","username":"noahedwardhall"},{"date":1411736929000,"afinn":"{\"score\":-2,\"comparative\":-0.2,\"tokens\":[\"bbc\",\"news\",\"-\",\"shellshock\",\"'deadly\",\"serious'\",\"new\",\"vulnerability\",\"found\",\"httptcozyuscqjk3k\"],\"words\":[\"vulnerability\"],\"negative\":[\"vulnerability\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"BBC News - Shellshock: 'Deadly serious' new vulnerability found http://t.co/zyuscQjk3k","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/515488162554970116","username":"noahedwardhall"},{"date":1411621504000,"afinn":"{\"score\":2,\"comparative\":0.3333333333333333,\"tokens\":[\"what\",\"does\",\"earth\",\"look\",\"like\",\"httptcoy4xneocwme\"],\"words\":[\"like\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"What Does Earth Look Like?: http://t.co/y4XneoCWME","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/515004031601614848","username":"noahedwardhall"},{"date":1411620109000,"afinn":"{\"score\":1,\"comparative\":0.2,\"tokens\":[\"can\",\"you\",\"solve\",\"this\",\"httptcohmgtid8opj\"],\"words\":[\"solve\"],\"positive\":[\"solve\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Can You Solve This?: http://t.co/HmgTiD8Opj","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/514998182866980865","username":"noahedwardhall"},{"date":1411615830000,"afinn":"{\"score\":-2,\"comparative\":-0.18181818181818182,\"tokens\":[\"billevans\",\"\",\"\",\"young\",\"and\",\"foolish\",\"\",\"bill\",\"evans\",\"httptcol9ajc15ahx\",\"nowplaying\"],\"words\":[\"\",\"foolish\",\"\",\"\"],\"negative\":[\"foolish\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"#billEvans  ♫ Young and Foolish – Bill Evans http://t.co/L9aJC15ahx #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/514980236275253248","username":"noahedwardhall"},{"date":1411615109000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"darn\",\"that\",\"dream\",\"\",\"dexter\",\"gordon\",\"httptcowmqtrf5nvg\",\"nowplaying\"],\"words\":[\"\",\"dream\",\"\"],\"positive\":[\"dream\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Darn That Dream – Dexter Gordon http://t.co/WMQtRf5NvG #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/514977210177183745","username":"noahedwardhall"},{"date":1411614545000,"afinn":"{\"score\":-1,\"comparative\":-0.058823529411764705,\"tokens\":[\"\",\"on\",\"the\",\"sunny\",\"side\",\"of\",\"the\",\"street\",\"\",\"dizzy\",\"gillespie\",\"sonny\",\"stitt\",\"sonny\",\"rollins\",\"httptco7tpttsotvt\",\"nowplaying\"],\"words\":[\"dizzy\",\"\",\"\"],\"negative\":[\"dizzy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ On The Sunny Side Of The Street – Dizzy Gillespie, Sonny Stitt, Sonny Rollins http://t.co/7TPTTsoTVT #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/514974844526424064","username":"noahedwardhall"},{"date":1411521565000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"the\",\"strongest\",\"most\",\"expensive\",\"material\",\"on\",\"earth\",\"httpstcoyva7pz2wip\"],\"words\":[\"strongest\"],\"positive\":[\"strongest\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"The Strongest, Most Expensive Material On Earth https://t.co/yvA7pZ2wiP","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/514584858710925312","username":"noahedwardhall"},{"date":1411444611000,"afinn":"{\"score\":2,\"comparative\":0.15384615384615385,\"tokens\":[\"rockefellers\",\"heirs\",\"to\",\"an\",\"oil\",\"fortune\",\"will\",\"divest\",\"charity\",\"of\",\"fossil\",\"fuels\",\"httptcorcokqnluuh\"],\"words\":[\"fortune\"],\"positive\":[\"fortune\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Rockefellers, Heirs to an Oil Fortune, Will Divest Charity of Fossil Fuels http://t.co/rcoKQnLUUH","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/514262089112641536","username":"noahedwardhall"},{"date":1411333299000,"afinn":"{\"score\":5,\"comparative\":0.38461538461538464,\"tokens\":[\"florida\",\"citrus\",\"industry\",\"calls\",\"on\",\"new\",\"marvel\",\"superhero\",\"for\",\"help\",\"httptcokkxndebber\",\"via\",\"tbtimes\"],\"words\":[\"help\",\"marvel\"],\"positive\":[\"help\",\"marvel\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Florida citrus industry calls on new Marvel superhero for help http://t.co/KkXndebbER via @TB_Times","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/513795212301176832","username":"noahedwardhall"},{"date":1411019617000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"\",\"still\",\"not\",\"a\",\"player\",\"\",\"big\",\"pun\",\"joe\",\"httptcolq3lrdmopr\",\"nowplaying\"],\"words\":[\"big\",\"\",\"\"],\"positive\":[\"big\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Still Not a Player – Big Pun, Joe http://t.co/lq3LrdMOPR #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/512479537486368768","username":"noahedwardhall"},{"date":1411018126000,"afinn":"{\"score\":-2,\"comparative\":-0.3333333333333333,\"tokens\":[\"\",\"fear\",\"\",\"drake\",\"httptcorcmns4tchn\",\"nowplaying\"],\"words\":[\"\",\"fear\",\"\"],\"negative\":[\"fear\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ Fear – Drake http://t.co/rCmns4tChn #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/512473283393253376","username":"noahedwardhall"},{"date":1411017886000,"afinn":"{\"score\":-6,\"comparative\":-0.6666666666666666,\"tokens\":[\"\",\"fast\",\"lane\",\"\",\"bad\",\"meets\",\"evil\",\"httptcok7uwyfygu7\",\"nowplaying\"],\"words\":[\"evil\",\"bad\",\"\",\"\"],\"negative\":[\"evil\",\"bad\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Fast Lane – Bad Meets Evil http://t.co/K7UWyfyGu7 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/512472277708185600","username":"noahedwardhall"},{"date":1410845606000,"afinn":"{\"score\":-2,\"comparative\":-0.2857142857142857,\"tokens\":[\"eminem\",\"sues\",\"national\",\"party\",\"httptcoo4yel2fbpw\",\"via\",\"nzherald\"],\"words\":[\"sues\"],\"negative\":[\"sues\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Eminem sues National Party http://t.co/O4YeL2fbpW via @nzherald","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/511749683195039744","username":"noahedwardhall"},{"date":1410756494000,"afinn":"{\"score\":-1,\"comparative\":-0.25,\"tokens\":[\"funniest\",\"fight\",\"ever\",\"httptcoyo7ewjf2kw\"],\"words\":[\"fight\"],\"negative\":[\"fight\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Funniest Fight ever: http://t.co/yO7eWJF2Kw","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/511375920410943488","username":"noahedwardhall"},{"date":1410740124000,"afinn":"{\"score\":1,\"comparative\":0.5,\"tokens\":[\"dream\",\"bigger\"],\"words\":[\"dream\"],\"positive\":[\"dream\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Dream bigger","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/511307258136121344","username":"noahedwardhall"},{"date":1410735950000,"afinn":"{\"score\":1,\"comparative\":0.08333333333333333,\"tokens\":[\"\",\"the\",\"feeling\",\"of\",\"jazz\",\"\",\"duke\",\"ellington\",\"john\",\"coltrane\",\"httptcogpz0riia60\",\"nowplaying\"],\"words\":[\"\",\"feeling\",\"\"],\"positive\":[\"feeling\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ The Feeling Of Jazz – Duke Ellington, John Coltrane http://t.co/gPz0RIIA60 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/511289750242607104","username":"noahedwardhall"},{"date":1410733957000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"\",\"funky\",\"blues\",\"\",\"charlie\",\"parker\",\"httptcospzq7d9yh8\",\"nowplaying\"],\"words\":[\"\",\"funky\",\"\"],\"positive\":[\"funky\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Funky Blues – Charlie Parker http://t.co/sPzQ7d9YH8 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/511281392953872385","username":"noahedwardhall"},{"date":1410727410000,"afinn":"{\"score\":-1,\"comparative\":-0.07692307692307693,\"tokens\":[\"\",\"naima\",\"-\",\"alternate\",\"version\",\"take\",\"1\",\"incomplete\",\"\",\"john\",\"coltrane\",\"httptcoej9qdscn4h\",\"nowplaying\"],\"words\":[\"\",\"incomplete\",\"\"],\"negative\":[\"incomplete\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Naima - Alternate Version, Take 1, Incomplete – John Coltrane http://t.co/ej9QDscN4h #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/511253932388401152","username":"noahedwardhall"},{"date":1410676641000,"afinn":"{\"score\":-6,\"comparative\":-0.42857142857142855,\"tokens\":[\"tribes\",\"battle\",\"illegal\",\"loggers\",\"in\",\"the\",\"amazon\",\"in\",\"these\",\"shocking\",\"photographs\",\"httptcoua9ppl8oe2\",\"via\",\"washingtonpost\"],\"words\":[\"shocking\",\"illegal\",\"battle\"],\"negative\":[\"shocking\",\"illegal\",\"battle\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Tribes battle illegal loggers in the Amazon in these shocking photographs http://t.co/Ua9PPl8Oe2 via @washingtonpost","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/511040990602219520","username":"noahedwardhall"},{"date":1410612315000,"afinn":"{\"score\":-2,\"comparative\":-0.13333333333333333,\"tokens\":[\"a\",\"very\",\"sad\",\"day\",\"gm\",\"halts\",\"corvette\",\"delivery\",\"for\",\"brakes\",\"air\",\"bags\",\"httptco3zjkwwtqhn\",\"via\",\"usatoday\"],\"words\":[\"sad\"],\"negative\":[\"sad\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"A very sad day. GM halts Corvette delivery for brakes, air bags http://t.co/3ZjkWWtQhn via @USATODAY","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/510771186834628608","username":"noahedwardhall"},{"date":1410525261000,"afinn":"{\"score\":4,\"comparative\":0.4444444444444444,\"tokens\":[\"amazing\",\"researchers\",\"capture\",\"the\",\"sound\",\"of\",\"an\",\"atom\",\"httptcoxe1eb3xemd\"],\"words\":[\"amazing\"],\"positive\":[\"amazing\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Amazing: Researchers capture the sound of an atom http://t.co/xE1EB3XEmd","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/510406056775016448","username":"noahedwardhall"},{"date":1410319399000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"boost\",\"alertness\",\"by\",\"10\",\"\",\"super\",\"charged\",\"human\",\"httptcojcrnrlffqi\",\"via\",\"thinkdevgrow\"],\"words\":[\"charged\",\"super\",\"\",\"boost\"],\"positive\":[\"super\",\"boost\"],\"negative\":[\"charged\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Boost Alertness by 10% | Super Charged Human http://t.co/JCrNRlffQi via @ThinkDevGrow","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/509542610990415872","username":"noahedwardhall"},{"date":1410152545000,"afinn":"{\"score\":-4,\"comparative\":-0.4444444444444444,\"tokens\":[\"\",\"speak\",\"no\",\"evil\",\"\",\"wayne\",\"shorter\",\"httptcojlymqpunvy\",\"nowplaying\"],\"words\":[\"\",\"evil\",\"no\",\"\"],\"negative\":[\"evil\",\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Speak No Evil – Wayne Shorter http://t.co/jLyMQpUNvY #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/508842772397559808","username":"noahedwardhall"},{"date":1410150767000,"afinn":"{\"score\":1,\"comparative\":0.125,\"tokens\":[\"\",\"cool\",\"struttin'\",\"\",\"sonny\",\"clark\",\"httptco9psjrdonbq\",\"nowplaying\"],\"words\":[\"\",\"cool\",\"\"],\"positive\":[\"cool\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Cool Struttin' – Sonny Clark http://t.co/9psJRdonBQ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/508835314824388608","username":"noahedwardhall"},{"date":1409632424000,"afinn":"{\"score\":-1,\"comparative\":-0.1111111111111111,\"tokens\":[\"new\",\"temporal\",\"cloaking\",\"method\",\"hides\",\"communication\",\"signals\",\"-\",\"httptco6jyhqvbkpy\"],\"words\":[\"hides\"],\"negative\":[\"hides\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"New Temporal Cloaking Method Hides Communication Signals - http://t.co/6JyHqvbKpy","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/506661225636175872","username":"noahedwardhall"},{"date":1409554111000,"afinn":"{\"score\":-2,\"comparative\":-0.16666666666666666,\"tokens\":[\"women\",\"bosses\",\"are\",\"fighting\",\"sexism\",\"in\",\"techby\",\"posing\",\"in\",\"their\",\"undies\",\"httpstcoiobwfmv9ni\"],\"words\":[\"fighting\"],\"negative\":[\"fighting\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"Women Bosses Are Fighting Sexism in Tech—by Posing in Their Undies https://t.co/IoBWFMV9nI","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/506332759640403968","username":"noahedwardhall"},{"date":1409533079000,"afinn":"{\"score\":-3,\"comparative\":-0.42857142857142855,\"tokens\":[\"15\",\"most\",\"violent\",\"prisons\",\"on\",\"earth\",\"httptco9xkp30ivau\"],\"words\":[\"violent\"],\"negative\":[\"violent\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"15 Most Violent Prisons on Earth: http://t.co/9Xkp30ivaU","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/506244542081679360","username":"noahedwardhall"},{"date":1409527648000,"afinn":"{\"score\":1,\"comparative\":0.125,\"tokens\":[\"how\",\"big\",\"is\",\"infinity\",\"-\",\"dennis\",\"wildfogel\",\"httptcos557xlwr5m\"],\"words\":[\"big\"],\"positive\":[\"big\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"How big is infinity? - Dennis Wildfogel: http://t.co/S557XLwr5M","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/506221764608020480","username":"noahedwardhall"},{"date":1408333423000,"afinn":"{\"score\":1,\"comparative\":1,\"tokens\":[\"responsibility\"],\"words\":[\"responsibility\"],\"positive\":[\"responsibility\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"#Responsibility","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/501212821745434624","username":"noahedwardhall"},{"date":1408159414000,"afinn":"{\"score\":-3,\"comparative\":-0.3333333333333333,\"tokens\":[\"\",\"everyday\",\"struggle\",\"\",\"the\",\"notorious\",\"big\",\"httptcouuehspuups\",\"nowplaying\"],\"words\":[\"big\",\"notorious\",\"\",\"struggle\",\"\"],\"positive\":[\"big\"],\"negative\":[\"notorious\",\"struggle\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Everyday Struggle – The Notorious B.I.G. http://t.co/uUeHSPuupS #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/500482974438424576","username":"noahedwardhall"},{"date":1407817063000,"afinn":"{\"score\":-3,\"comparative\":-0.2,\"tokens\":[\"is\",\"this\",\"oldschool\",\"\",\"yo\",\"excuse\",\"me\",\"miss\",\"-\",\"main\",\"\",\"chris\",\"brown\",\"httptcojlvrbnreaa\",\"nowplaying\"],\"words\":[\"\",\"miss\",\"excuse\",\"\"],\"negative\":[\"miss\",\"excuse\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"is this oldschool? ♫ Yo (Excuse Me Miss) - Main – Chris Brown http://t.co/JLVrbnReaA #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/499047052329119744","username":"noahedwardhall"},{"date":1407815745000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"soul\",\"survivor\",\"\",\"young\",\"jeezy\",\"akon\",\"httptcosoypq2fi9j\",\"nowplaying\"],\"words\":[\"\",\"survivor\",\"\"],\"positive\":[\"survivor\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Soul Survivor – Young Jeezy, Akon http://t.co/SOYpQ2fi9j #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/499041525075296256","username":"noahedwardhall"},{"date":1407815522000,"afinn":"{\"score\":-1,\"comparative\":-0.09090909090909091,\"tokens\":[\"\",\"lotus\",\"flower\",\"bomb\",\"-\",\"feat\",\"miguel\",\"\",\"wale\",\"httptcossjsipkiix\",\"nowplaying\"],\"words\":[\"\",\"bomb\",\"\"],\"negative\":[\"bomb\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Lotus Flower Bomb - feat. Miguel – Wale http://t.co/sSJSiPKIIx #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/499040585953849344","username":"noahedwardhall"},{"date":1407637701000,"afinn":"{\"score\":1,\"comparative\":0.2,\"tokens\":[\"school\",\"is\",\"cool\",\"smarthustle\",\"httptcohxbygsr6dz\"],\"words\":[\"cool\"],\"positive\":[\"cool\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"School is cool #smartHustle http://t.co/hxbYgSR6dz","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/498294753696698368","username":"noahedwardhall"},{"date":1407629974000,"afinn":"{\"score\":4,\"comparative\":0.3076923076923077,\"tokens\":[\"left\",\"my\",\"key\",\"at\",\"the\",\"park\",\"five\",\"hours\",\"ago\",\"and\",\"found\",\"it\",\"winning\"],\"words\":[\"winning\"],\"positive\":[\"winning\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Left my key at the park five hours ago, and found it #winning","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/498262342837493760","username":"noahedwardhall"},{"date":1407548319000,"afinn":"{\"score\":2,\"comparative\":0.4,\"tokens\":[\"do\",\"something\",\"worth\",\"something\",\"httpstcov5urhq81d0\"],\"words\":[\"worth\"],\"positive\":[\"worth\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Do something worth something https://t.co/v5uRhq81d0","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/497919858613293056","username":"noahedwardhall"},{"date":1407547418000,"afinn":"{\"score\":3,\"comparative\":0.42857142857142855,\"tokens\":[\"haha\",\"this\",\"was\",\"the\",\"real\",\"link\",\"httptcoefqtgagcho\"],\"words\":[\"haha\"],\"positive\":[\"haha\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Haha this was the real link, http://t.co/EFqtGAGCHo","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/497916077196595200","username":"noahedwardhall"},{"date":1407233904000,"afinn":"{\"score\":2,\"comparative\":0.4,\"tokens\":[\"don't\",\"mess\",\"with\",\"texas\",\"httpstcojs2xmswg4j\"],\"words\":[\"mess\"],\"positive\":[\"mess\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Don't mess with Texas https://t.co/Js2XMSWg4J","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/496601103689977856","username":"noahedwardhall"},{"date":1407152940000,"afinn":"{\"score\":1,\"comparative\":0.3333333333333333,\"tokens\":[\"morning\",\"motivation\",\"httptcou33zxsssjx\"],\"words\":[\"motivation\"],\"positive\":[\"motivation\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Morning motivation http://t.co/U33ZxsSsjX","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/496261518107758593","username":"noahedwardhall"},{"date":1407120185000,"afinn":"{\"score\":-2,\"comparative\":-0.6666666666666666,\"tokens\":[\"blame\",\"evolution\",\"httptcof0sqltk8ul\"],\"words\":[\"blame\"],\"negative\":[\"blame\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Blame evolution http://t.co/F0SQLtk8uL","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/496124134426832897","username":"noahedwardhall"},{"date":1407119814000,"afinn":"{\"score\":4,\"comparative\":2,\"tokens\":[\"wow\",\"httptco2wwfebhhjy\"],\"words\":[\"wow\"],\"positive\":[\"wow\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Wow http://t.co/2WwfEbhHjy","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/496122576536485888","username":"noahedwardhall"},{"date":1406946521000,"afinn":"{\"score\":3,\"comparative\":0.6,\"tokens\":[\"good\",\"day\",\"for\",\"berk\",\"httptcodldpdyqlfa\"],\"words\":[\"good\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Good day for berk http://t.co/dLDPdYqLFA","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/495395731407400960","username":"noahedwardhall"},{"date":1406793538000,"afinn":"{\"score\":-2,\"comparative\":-0.5,\"tokens\":[\"stay\",\"hungry\",\"stay\",\"foolish\"],\"words\":[\"foolish\"],\"negative\":[\"foolish\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Stay hungry, stay foolish","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/494754076651835392","username":"noahedwardhall"},{"date":1406793329000,"afinn":"{\"score\":-1,\"comparative\":-0.08333333333333333,\"tokens\":[\"if\",\"you\",\"never\",\"doubt\",\"yo\",\"self\",\"and\",\"learned\",\"from\",\"everything\",\"you've\",\"seen\"],\"words\":[\"doubt\"],\"negative\":[\"doubt\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"If you never doubt yo self and learned from everything you've seen","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/494753197693480960","username":"noahedwardhall"},{"date":1406693639000,"afinn":"{\"score\":-1,\"comparative\":-0.1,\"tokens\":[\"i\",\"would\",\"pay\",\"extra\",\"for\",\"some\",\"chinese\",\"food\",\"right\",\"now\"],\"words\":[\"pay\"],\"negative\":[\"pay\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I would pay extra for some Chinese food right now","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/494335068974768128","username":"noahedwardhall"},{"date":1406630429000,"afinn":"{\"score\":-1,\"comparative\":-0.09090909090909091,\"tokens\":[\"empty\",\"starbucks\",\"and\",\"this\",\"weirdo\",\"wants\",\"to\",\"sit\",\"directly\",\"behind\",\"me\"],\"words\":[\"empty\"],\"negative\":[\"empty\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Empty Starbucks and this weirdo wants to sit directly behind me","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/494069946343636992","username":"noahedwardhall"},{"date":1406627358000,"afinn":"{\"score\":-1,\"comparative\":-0.1111111111111111,\"tokens\":[\"\",\"no\",\"mediocre\",\"\",\"ti\",\"iggy\",\"azalea\",\"httptcojbfgi8cezj\",\"nowplaying\"],\"words\":[\"\",\"no\",\"\"],\"negative\":[\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ No Mediocre – T.I., Iggy Azalea http://t.co/JbfGI8CezJ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/494057066974023681","username":"noahedwardhall"},{"date":1406386231000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"starbucks\",\"sounding\",\"like\",\"a\",\"dance\",\"club\",\"this\",\"morning\"],\"words\":[\"like\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Starbucks sounding like a dance club this morning","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/493045706764988416","username":"noahedwardhall"},{"date":1406284929000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"changes\",\"-\",\"explicit\",\"\",\"2pac\",\"talent\",\"httptcoskoejz5ut4\",\"nowplaying\"],\"words\":[\"talent\",\"\",\"\"],\"positive\":[\"talent\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Changes - (Explicit) – 2Pac, Talent http://t.co/SKOeJz5uT4 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/492620814424895488","username":"noahedwardhall"},{"date":1406185988000,"afinn":"{\"score\":3,\"comparative\":0.75,\"tokens\":[\"super\",\"cooled\",\"helium\",\"httptcock2x3mudgq\"],\"words\":[\"super\"],\"positive\":[\"super\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Super cooled helium http://t.co/CK2x3MUDGQ","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/492205826971402240","username":"noahedwardhall"},{"date":1406036184000,"afinn":"{\"score\":-6,\"comparative\":-0.3333333333333333,\"tokens\":[\"everything\",\"i\",\"do\",\"call\",\"it\",\"hater\",\"food\",\"i\",\"keep\",\"a\",\"hater\",\"mouth\",\"full\",\"with\",\"the\",\"way\",\"i\",\"move\"],\"words\":[\"hater\",\"hater\"],\"negative\":[\"hater\",\"hater\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Everything I do call it hater food, I keep a hater mouth full with the way I move","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/491577503916359680","username":"noahedwardhall"},{"date":1406034187000,"afinn":"{\"score\":3,\"comparative\":0.75,\"tokens\":[\"gotta\",\"love\",\"it\",\"httpstcoesunlerv5d\"],\"words\":[\"love\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Gotta love it! https://t.co/eSUnLeRv5d","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/491569129283788801","username":"noahedwardhall"},{"date":1405948826000,"afinn":"{\"score\":1,\"comparative\":0.07692307692307693,\"tokens\":[\"cant\",\"get\",\"dressed\",\"in\",\"the\",\"morning\",\"without\",\"the\",\"right\",\"tunes\",\"motivation\",\"httptcoywem6rj7qb\",\"nowplaying\"],\"words\":[\"motivation\"],\"positive\":[\"motivation\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"cant get dressed in the morning without the right tunes #motivation http://t.co/YWem6Rj7qB #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/491211098817716224","username":"noahedwardhall"},{"date":1405913627000,"afinn":"{\"score\":2,\"comparative\":0.5,\"tokens\":[\"zinn\",\"to\",\"the\",\"rescue\"],\"words\":[\"rescue\"],\"positive\":[\"rescue\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"#Zinn to the rescue","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/491063461225304066","username":"noahedwardhall"},{"date":1405906477000,"afinn":"{\"score\":2,\"comparative\":0.18181818181818182,\"tokens\":[\"ide\",\"like\",\"to\",\"see\",\"a\",\"nascar\",\"race\",\"wit\",\"self\",\"driving\",\"cars\"],\"words\":[\"like\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Ide like to see a nascar race wit self driving cars","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/491033470710202368","username":"noahedwardhall"},{"date":1405904551000,"afinn":"{\"score\":-1,\"comparative\":-0.07692307692307693,\"tokens\":[\"\",\"blind\",\"to\",\"you\",\"-\",\"explicit\",\"album\",\"version\",\"\",\"collie\",\"buddz\",\"httptcowxutlrcrcj\",\"nowplaying\"],\"words\":[\"\",\"blind\",\"\"],\"negative\":[\"blind\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Blind To You - Explicit Album Version – Collie Buddz http://t.co/wXUTlRCrcj #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/491025394829500416","username":"noahedwardhall"},{"date":1405903413000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"\",\"pimpa's\",\"paradise\",\"\",\"damian\",\"marley\",\"stephen\",\"marley\",\"black\",\"thought\",\"httptcoz2vq83nbjh\",\"nowplaying\"],\"words\":[\"\",\"paradise\",\"\"],\"positive\":[\"paradise\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Pimpa's Paradise – Damian Marley, Stephen Marley, Black Thought http://t.co/z2vQ83Nbjh #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/491020622487506944","username":"noahedwardhall"},{"date":1405849173000,"afinn":"{\"score\":7,\"comparative\":0.4117647058823529,\"tokens\":[\"i'll\",\"be\",\"good\",\"following\",\"some\",\"good\",\"musicians\",\"a\",\"comic\",\"some\",\"radical\",\"folks\",\"and\",\"some\",\"newsy\",\"type\",\"accounts\"],\"words\":[\"comic\",\"good\",\"good\"],\"positive\":[\"comic\",\"good\",\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I'll be good following some good musicians, a comic, some radical folks and some newsy type accounts","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/490793123547594752","username":"noahedwardhall"},{"date":1405738548000,"afinn":"{\"score\":1,\"comparative\":0.125,\"tokens\":[\"\",\"ghetto\",\"\",\"the-dream\",\"big\",\"sean\",\"httptcomvaudby1tf\",\"nowplaying\"],\"words\":[\"big\",\"\",\"\"],\"positive\":[\"big\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ Ghetto – The-Dream, Big Sean http://t.co/MVAudby1Tf #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/490329129359646720","username":"noahedwardhall"},{"date":1405738114000,"afinn":"{\"score\":-1,\"comparative\":-0.09090909090909091,\"tokens\":[\"\",\"don't\",\"leave\",\"me\",\"alone\",\"\",\"ashanti\",\"7\",\"aurelius\",\"httptco34r4bh9yy3\",\"nowplaying\"],\"words\":[\"\",\"alone\",\"leave\",\"\"],\"positive\":[\"leave\"],\"negative\":[\"alone\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Don't Leave Me Alone – Ashanti, 7 Aurelius http://t.co/34r4bh9YY3 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/490327305680470017","username":"noahedwardhall"},{"date":1405664494000,"afinn":"{\"score\":2,\"comparative\":0.16666666666666666,\"tokens\":[\"im\",\"outa\",\"here\",\"\",\"you\",\"deserve\",\"better\",\"\",\"r\",\"kelly\",\"httptcovyk4gd1nju\",\"nowplaying\"],\"words\":[\"\",\"better\",\"\"],\"positive\":[\"better\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"im outa here ♫ You Deserve Better – R. Kelly http://t.co/VYK4GD1nju #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/490018523830173696","username":"noahedwardhall"},{"date":1405663553000,"afinn":"{\"score\":2,\"comparative\":0.15384615384615385,\"tokens\":[\"its\",\"your\",\"world\",\"goodmusic\",\"\",\"tribute\",\"to\",\"a\",\"woman\",\"\",\"ginuwine\",\"httptcoypsbuacrlt\",\"nowplaying\"],\"words\":[\"\",\"tribute\",\"\"],\"positive\":[\"tribute\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"Its your world #goodMusic ♫ Tribute To A Woman – Ginuwine http://t.co/yPSbuAcrlt #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/490014577602478080","username":"noahedwardhall"},{"date":1405662190000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"\",\"shoulda\",\"known\",\"better\",\"\",\"case\",\"httptconzypwg12zj\",\"nowplaying\"],\"words\":[\"\",\"better\",\"\"],\"positive\":[\"better\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Shoulda Known Better – Case http://t.co/nzYpwg12zj #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/490008859059040257","username":"noahedwardhall"},{"date":1405660370000,"afinn":"{\"score\":3,\"comparative\":0.375,\"tokens\":[\"what\",\"happened\",\"to\",\"all\",\"the\",\"good\",\"music\",\"turnofftheradio\"],\"words\":[\"good\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"What happened to all the good music #turnOffTheRadio","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/490001225442545664","username":"noahedwardhall"},{"date":1404444378000,"afinn":"{\"score\":-2,\"comparative\":-0.3333333333333333,\"tokens\":[\"everyone\",\"needs\",\"alien\",\"abduction\",\"insurance\",\"httptco6gtub1turs\"],\"words\":[\"abduction\"],\"negative\":[\"abduction\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Everyone needs alien abduction insurance http://t.co/6gTuB1TUrs","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/484900983286145026","username":"noahedwardhall"},{"date":1403591160000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"tupac\",\"-\",\"never\",\"had\",\"a\",\"friend\",\"like\",\"me\",\"hq\",\"httptcotv4ekkgssq\"],\"words\":[\"like\",\"friend\"],\"positive\":[\"like\",\"friend\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"Tupac - Never Had A Friend Like Me (HQ): http://t.co/tv4eKKGsSQ","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/481322330161815555","username":"noahedwardhall"},{"date":1403485956000,"afinn":"{\"score\":4,\"comparative\":0.26666666666666666,\"tokens\":[\"\",\"hope\",\"you\",\"feel\",\"better\",\"parts\",\"1\",\"amp\",\"2\",\"\",\"the\",\"isley\",\"brothers\",\"httptcoktbh6nngpc\",\"nowplaying\"],\"words\":[\"\",\"better\",\"hope\",\"\"],\"positive\":[\"better\",\"hope\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Hope You Feel Better (Parts 1 &amp; 2) – The Isley Brothers http://t.co/ktbH6NNGpc #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/480881073060999168","username":"noahedwardhall"},{"date":1403319950000,"afinn":"{\"score\":1,\"comparative\":0.08333333333333333,\"tokens\":[\"shoutout\",\"to\",\"nigeria\",\"\",\"love\",\"and\",\"death\",\"\",\"ebo\",\"taylor\",\"httptco1gdxnotf2p\",\"nowplaying\"],\"words\":[\"\",\"death\",\"love\",\"\"],\"positive\":[\"love\"],\"negative\":[\"death\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"shoutout to #NIgeria ♫ Love and Death – Ebo Taylor http://t.co/1gDxNotf2p #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/480184792785235969","username":"noahedwardhall"},{"date":1403318449000,"afinn":"{\"score\":1,\"comparative\":0.07142857142857142,\"tokens\":[\"its\",\"officially\",\"rampb\",\"weekend\",\"yolo\",\"\",\"cool\",\"\",\"anthony\",\"hamilton\",\"david\",\"banner\",\"httptcojreklhfphb\",\"nowplaying\"],\"words\":[\"\",\"cool\",\"\"],\"positive\":[\"cool\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"its officially R&amp;B weekend #yolo ♫ Cool – Anthony Hamilton, David Banner http://t.co/jRekLHFphB #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/480178494656114688","username":"noahedwardhall"},{"date":1400303852000,"afinn":"{\"score\":1,\"comparative\":0.1,\"tokens\":[\"faith\",\"in\",\"action\",\"by\",\"orrin\",\"evans\",\"peeano88\",\"httptcojhyw4aagvw\",\"via\",\"earbits\"],\"words\":[\"faith\"],\"positive\":[\"faith\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Faith In Action by Orrin Evans @Peeano88 http://t.co/JhYW4AAgVw via @earbits","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/467534360371941376","username":"noahedwardhall"},{"date":1397659717000,"afinn":"{\"score\":1,\"comparative\":0.0625,\"tokens\":[\"advertising\",\"assurance\",\"a\",\"global\",\"multi-lateral\",\"approach\",\"to\",\"protecting\",\"brand\",\"safety\",\"in\",\"video\",\"advertising\",\"httptcow66epkyase\",\"via\",\"adaptv\"],\"words\":[\"safety\"],\"positive\":[\"safety\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Advertising Assurance: A Global, Multi-Lateral Approach to Protecting Brand Safety in Video Advertising http://t.co/W66EpKYaSE via @adaptv","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/456444053601542144","username":"noahedwardhall"},{"date":1397140860000,"afinn":"{\"score\":1,\"comparative\":0.0625,\"tokens\":[\"advertising\",\"assurance\",\"a\",\"global\",\"multi-lateral\",\"approach\",\"to\",\"protecting\",\"brand\",\"safety\",\"in\",\"video\",\"advertising\",\"httptcow66epkyase\",\"via\",\"adaptv\"],\"words\":[\"safety\"],\"positive\":[\"safety\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Advertising Assurance: A Global, Multi-Lateral Approach to Protecting Brand Safety in Video Advertising http://t.co/W66EpKYaSE via @adaptv","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/454267811171274752","username":"noahedwardhall"},{"date":1396841633000,"afinn":"{\"score\":-3,\"comparative\":-0.3,\"tokens\":[\"\",\"water\",\"no\",\"get\",\"enemy\",\"\",\"fela\",\"kuti\",\"httptco8uyrmhzblg\",\"nowplaying\"],\"words\":[\"\",\"enemy\",\"no\",\"\"],\"negative\":[\"enemy\",\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Water No Get Enemy – Fela Kuti http://t.co/8uyRmHzbLG #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/453012760234708993","username":"noahedwardhall"},{"date":1396074513000,"afinn":"{\"score\":-2,\"comparative\":-0.2,\"tokens\":[\"\",\"war\",\"in\",\"the\",\"mind\",\"\",\"lauryn\",\"hill\",\"httptcoyd5cwcqlka\",\"nowplaying\"],\"words\":[\"\",\"war\",\"\"],\"negative\":[\"war\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ War In The Mind – Lauryn Hill http://t.co/YD5CWcqlKa #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/449795226345816064","username":"noahedwardhall"},{"date":1395640356000,"afinn":"{\"score\":2,\"comparative\":0.16666666666666666,\"tokens\":[\"\",\"give\",\"it\",\"up\",\"\",\"kc\",\"and\",\"the\",\"sunshine\",\"band\",\"httptcoaat5dxefb0\",\"nowplaying\"],\"words\":[\"sunshine\",\"\",\"\"],\"positive\":[\"sunshine\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ Give It Up – KC And The Sunshine Band http://t.co/aAT5dxEFb0 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/447974242244517888","username":"noahedwardhall"},{"date":1395640060000,"afinn":"{\"score\":5,\"comparative\":0.7142857142857143,\"tokens\":[\"\",\"good\",\"times\",\"\",\"chic\",\"httptcojuci5ivjft\",\"nowplaying\"],\"words\":[\"chic\",\"\",\"good\",\"\"],\"positive\":[\"chic\",\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Good Times – Chic http://t.co/Juci5ivjFt #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/447972997974867968","username":"noahedwardhall"},{"date":1395638634000,"afinn":"{\"score\":-2,\"comparative\":-0.125,\"tokens\":[\"\",\"burn\",\"rubber\",\"on\",\"me\",\"why\",\"you\",\"wanna\",\"hurt\",\"me\",\"\",\"the\",\"gap\",\"band\",\"httptco4fvfnl5t7h\",\"nowplaying\"],\"words\":[\"\",\"hurt\",\"\"],\"negative\":[\"hurt\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Burn Rubber On Me (Why You Wanna Hurt Me) – The Gap Band http://t.co/4FVfNL5T7H #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/447967016423399424","username":"noahedwardhall"},{"date":1395637114000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"i'm\",\"going\",\"down\",\"\",\"rose\",\"royce\",\"httptcoghcxqehv4h\",\"nowplaying\"],\"words\":[\"rose\",\"\",\"\"],\"positive\":[\"rose\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I'm Going Down – Rose Royce http://t.co/GhcxQeHv4h #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/447960642872303618","username":"noahedwardhall"},{"date":1395636643000,"afinn":"{\"score\":1,\"comparative\":0.07142857142857142,\"tokens\":[\"\",\"super\",\"freak\",\"part\",\"1\",\"-\",\"1981\",\"single\",\"version\",\"\",\"rick\",\"james\",\"httptcojaosxc8wze\",\"nowplaying\"],\"words\":[\"\",\"freak\",\"super\",\"\"],\"positive\":[\"super\"],\"negative\":[\"freak\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Super Freak (Part 1) - 1981 Single Version – Rick James http://t.co/jaOSXc8WZe #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/447958666331705345","username":"noahedwardhall"},{"date":1395464570000,"afinn":"{\"score\":-1,\"comparative\":-0.07692307692307693,\"tokens\":[\"1stverse\",\"\",\"never\",\"doubt\",\"yourself\",\"and\",\"learn\",\"from\",\"everything\",\"you've\",\"seen\",\"httptco7tt35bzadw\",\"nowplaying\"],\"words\":[\"doubt\",\"\"],\"negative\":[\"doubt\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"#1stVerse  Never doubt yourself and learn from everything you've seen http://t.co/7TT35BzAdw #NowPlaying","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/447236939221983232","username":"noahedwardhall"},{"date":1394296724000,"afinn":"{\"score\":-1,\"comparative\":-0.08333333333333333,\"tokens\":[\"\",\"i\",\"forgot\",\"to\",\"be\",\"your\",\"lover\",\"\",\"william\",\"bell\",\"httptcommxmz8b1vn\",\"nowplaying\"],\"words\":[\"\",\"forgot\",\"\"],\"negative\":[\"forgot\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Forgot To Be Your Lover – William Bell http://t.co/Mmxmz8B1VN #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/442338640266805248","username":"noahedwardhall"},{"date":1394296076000,"afinn":"{\"score\":-2,\"comparative\":-0.13333333333333333,\"tokens\":[\"\",\"its\",\"real\",\"-\",\"lack\",\"of\",\"afro\",\"remix\",\"\",\"hot\",\"8\",\"brass\",\"band\",\"httptco1g79yxvs2y\",\"nowplaying\"],\"words\":[\"\",\"lack\",\"\"],\"negative\":[\"lack\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Its Real - Lack Of Afro Remix – Hot 8 Brass Band http://t.co/1G79YxVS2y #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/442335920113856512","username":"noahedwardhall"},{"date":1394267314000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"love\",\"has\",\"come\",\"around\",\"\",\"donald\",\"byrd\",\"httptcod6mbriq6nj\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love Has Come Around – Donald Byrd http://t.co/d6mBRIQ6Nj #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/442215283059466240","username":"noahedwardhall"},{"date":1394266203000,"afinn":"{\"score\":2,\"comparative\":0.15384615384615385,\"tokens\":[\"\",\"little\",\"denise\",\"-\",\"check\",\"me\",\"out\",\"\",\"little\",\"deniseyvonne\",\"fair\",\"httptco5yklcmzx3t\",\"nowplaying\"],\"words\":[\"fair\",\"\",\"\"],\"positive\":[\"fair\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Little Denise - Check Me Out – Little Denise,Yvonne Fair http://t.co/5yKLCMzx3t #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/442210626396368897","username":"noahedwardhall"},{"date":1394218627000,"afinn":"{\"score\":-3,\"comparative\":-0.2727272727272727,\"tokens\":[\"\",\"loose\",\"booty\",\"\",\"sly\",\"amp\",\"the\",\"family\",\"stone\",\"httptco4oq1sw8uqr\",\"nowplaying\"],\"words\":[\"\",\"loose\",\"\"],\"negative\":[\"loose\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Loose Booty – Sly &amp; The Family Stone http://t.co/4Oq1sw8Uqr #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/442011077136510976","username":"noahedwardhall"},{"date":1393651280000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"last\",\"one\",\"\",\"happy\",\"home\",\"ii\",\"\",\"2pacyusef\",\"sharid\",\"httptco1xl4m8gqsn\",\"nowplaying\"],\"words\":[\"\",\"happy\",\"\"],\"positive\":[\"happy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"last one ♫ Happy Home II – 2Pac,Yusef Sharid http://t.co/1Xl4M8gQSN #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/439631452288741376","username":"noahedwardhall"},{"date":1393104459000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"the\",\"first\",\"cup\",\"of\",\"coffee\",\"is\",\"always\",\"the\",\"best\"],\"words\":[\"best\"],\"positive\":[\"best\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"The first cup of coffee is always the best","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/437337918290415617","username":"noahedwardhall"},{"date":1392669024000,"afinn":"{\"score\":-2,\"comparative\":-0.2857142857142857,\"tokens\":[\"\",\"fever\",\"\",\"patti\",\"drew\",\"httptcovjf7seyhdh\",\"nowplaying\"],\"words\":[\"\",\"fever\",\"\"],\"negative\":[\"fever\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Fever – Patti Drew http://t.co/vJf7SEyHdH #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/435511570559299584","username":"noahedwardhall"},{"date":1392667772000,"afinn":"{\"score\":1,\"comparative\":0.1,\"tokens\":[\"\",\"sookie\",\"sookie\",\"-\",\"live\",\"\",\"grant\",\"green\",\"httptco6gwjpkfvls\",\"nowplaying\"],\"words\":[\"grant\",\"\",\"\"],\"positive\":[\"grant\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Sookie Sookie - Live – Grant Green http://t.co/6GWjpKfVls #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/435506318044954624","username":"noahedwardhall"},{"date":1392665172000,"afinn":"{\"score\":-1,\"comparative\":-0.07692307692307693,\"tokens\":[\"\",\"no\",\"time\",\"to\",\"play\",\"\",\"ronny\",\"jordanguru's\",\"jazzmatazzgurudee\",\"c\",\"lee\",\"httptco7spj24eiiq\",\"nowplaying\"],\"words\":[\"\",\"no\",\"\"],\"negative\":[\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ No Time To Play – Ronny Jordan,Guru's Jazzmatazz,Guru,Dee C. Lee http://t.co/7sPj24EiiQ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/435495413374648320","username":"noahedwardhall"},{"date":1392663544000,"afinn":"{\"score\":2,\"comparative\":0.16666666666666666,\"tokens\":[\"\",\"respect\",\"yourself\",\"-\",\"single\",\"version\",\"\",\"the\",\"staple\",\"singers\",\"httptcoexjb1famk8\",\"nowplaying\"],\"words\":[\"\",\"respect\",\"\"],\"positive\":[\"respect\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Respect Yourself - Single Version – The Staple Singers http://t.co/EXJb1Famk8 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/435488584984842240","username":"noahedwardhall"},{"date":1392251675000,"afinn":"{\"score\":2,\"comparative\":0.15384615384615385,\"tokens\":[\"\",\"peace\",\"on\",\"earth\",\"-\",\"concert\",\"in\",\"japan\",\"\",\"john\",\"coltrane\",\"httptco4kvlv5dsj2\",\"nowplaying\"],\"words\":[\"\",\"peace\",\"\"],\"positive\":[\"peace\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Peace On Earth - Concert In Japan – John Coltrane http://t.co/4kvlV5dSJ2 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/433761082566397952","username":"noahedwardhall"},{"date":1392002042000,"afinn":"{\"score\":3,\"comparative\":0.16666666666666666,\"tokens\":[\"\",\"that\",\"lady\",\"part\",\"1\",\"amp\",\"2\",\"-\",\"ahmir\",\"uest\",\"love\",\"thompson\",\"\",\"the\",\"isley\",\"brothers\",\"httptcoxmnlrpppsu\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ That Lady (Part 1 &amp; 2) - Ahmir \"?uest Love\" Thompson – The Isley Brothers http://t.co/xMnlRpPpSu #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/432714047188762625","username":"noahedwardhall"},{"date":1392000745000,"afinn":"{\"score\":-2,\"comparative\":-0.2857142857142857,\"tokens\":[\"\",\"so\",\"anxious\",\"\",\"ginuwine\",\"httptco8pc4c4x2hq\",\"nowplaying\"],\"words\":[\"\",\"anxious\",\"\"],\"negative\":[\"anxious\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ So Anxious – Ginuwine http://t.co/8pc4C4x2HQ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/432708603200282624","username":"noahedwardhall"},{"date":1391996677000,"afinn":"{\"score\":5,\"comparative\":0.25,\"tokens\":[\"\",\"dearly\",\"beloved\",\"-\",\"takes\",\"1\",\"amp\",\"2\",\"\",\"false\",\"start\",\"and\",\"alternate\",\"version\",\"\",\"john\",\"coltrane\",\"quartet\",\"httptco0iavdutyqe\",\"nowplaying\"],\"words\":[\"\",\"false\",\"\",\"beloved\",\"dearly\",\"\"],\"positive\":[\"beloved\",\"dearly\"],\"negative\":[\"false\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Dearly Beloved - Takes 1 &amp; 2 / False Start And Alternate Version – John Coltrane Quartet http://t.co/0IAvDUTYqE #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/432691541690175488","username":"noahedwardhall"},{"date":1391996071000,"afinn":"{\"score\":-1,\"comparative\":-0.0625,\"tokens\":[\"\",\"ascent\",\"-\",\"takes\",\"4-6\",\"\",\"inserts\",\"\",\"false\",\"starts\",\"\",\"john\",\"coltrane\",\"quartet\",\"httptcodzmquhq2no\",\"nowplaying\"],\"words\":[\"\",\"false\",\"\",\"\",\"\"],\"negative\":[\"false\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Ascent - Takes 4-6 / Inserts / False Starts – John Coltrane Quartet http://t.co/DzMQUHQ2no #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/432689001518997504","username":"noahedwardhall"},{"date":1391830688000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"real\",\"love\",\"\",\"mary\",\"j\",\"blige\",\"httptco5kknwtoukf\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Real Love – Mary J. Blige http://t.co/5KKnWtouKf #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/431995335657795584","username":"noahedwardhall"},{"date":1391744735000,"afinn":"{\"score\":3,\"comparative\":0.42857142857142855,\"tokens\":[\"\",\"gotta\",\"love\",\"\",\"jodeci\",\"httptcoazako5nekl\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ Gotta Love – Jodeci http://t.co/AZaKo5nEkl #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/431634821823995904","username":"noahedwardhall"},{"date":1391581806000,"afinn":"{\"score\":3,\"comparative\":0.23076923076923078,\"tokens\":[\"\",\"i\",\"used\",\"to\",\"love\",\"him\",\"\",\"lauryn\",\"hillmary\",\"j\",\"blige\",\"httptcoszmabv5ke8\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Used To Love Him – Lauryn Hill,Mary J. Blige http://t.co/szMABv5kE8 #NowPlaying","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/430951446746386432","username":"noahedwardhall"},{"date":1391379474000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"\",\"django\",\"-\",\"1999\",\"digital\",\"remaster\",\"\",\"grant\",\"green\",\"httptcocrmedrfboc\",\"nowplaying\"],\"words\":[\"grant\",\"\",\"\"],\"positive\":[\"grant\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Django - 1999 Digital Remaster – Grant Green http://t.co/crmEdRfBOc #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/430102805534093312","username":"noahedwardhall"},{"date":1391269024000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"let's\",\"make\",\"love\",\"tonight\",\"\",\"the\",\"isley\",\"brothers\",\"httptcogbjvfbqz6o\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Let's Make Love Tonight – The Isley Brothers http://t.co/gBJvfbqZ6o #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/429639544393048064","username":"noahedwardhall"},{"date":1391267974000,"afinn":"{\"score\":-1,\"comparative\":-0.1111111111111111,\"tokens\":[\"\",\"no\",\"clothes\",\"on\",\"\",\"trey\",\"songz\",\"httptcobw5uy0dzxn\",\"nowplaying\"],\"words\":[\"\",\"no\",\"\"],\"negative\":[\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ No Clothes On – Trey Songz http://t.co/bw5uy0dZXN #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/429635142156423168","username":"noahedwardhall"},{"date":1391233208000,"afinn":"{\"score\":3,\"comparative\":0.42857142857142855,\"tokens\":[\"\",\"good\",\"luv\",\"\",\"jodeci\",\"httptcodmlib7adrc\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Good Luv – Jodeci http://t.co/DmLib7ADrC #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/429489320718647297","username":"noahedwardhall"},{"date":1391232512000,"afinn":"{\"score\":2,\"comparative\":0.2857142857142857,\"tokens\":[\"\",\"smile\",\"\",\"lyfe\",\"jennings\",\"httptcosb1uuu13wl\",\"nowplaying\"],\"words\":[\"\",\"smile\",\"\"],\"positive\":[\"smile\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Smile – Lyfe Jennings http://t.co/SB1Uuu13Wl #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/429486404553277440","username":"noahedwardhall"},{"date":1391232024000,"afinn":"{\"score\":-3,\"comparative\":-0.42857142857142855,\"tokens\":[\"\",\"fatal\",\"\",\"j\",\"holiday\",\"httptcosav4q8syt0\",\"nowplaying\"],\"words\":[\"\",\"fatal\",\"\"],\"negative\":[\"fatal\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Fatal – J. Holiday http://t.co/Sav4q8Syt0 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/429484356269133826","username":"noahedwardhall"},{"date":1391229115000,"afinn":"{\"score\":-1,\"comparative\":-0.07692307692307693,\"tokens\":[\"\",\"fight\",\"the\",\"power\",\"-\",\"part\",\"1\",\"\",\"the\",\"isley\",\"brothers\",\"httptcouk5spp4zs2\",\"nowplaying\"],\"words\":[\"\",\"fight\",\"\"],\"negative\":[\"fight\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Fight The Power - Part 1 – The Isley Brothers http://t.co/uK5sPp4ZS2 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/429472155839909888","username":"noahedwardhall"},{"date":1391228248000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"real\",\"love\",\"\",\"mary\",\"j\",\"blige\",\"httptcons6sjdoz2z\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Real Love – Mary J. Blige http://t.co/Ns6sjdOz2Z #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/429468519130886144","username":"noahedwardhall"},{"date":1391225147000,"afinn":"{\"score\":-3,\"comparative\":-0.42857142857142855,\"tokens\":[\"\",\"sounds\",\"bad\",\"\",\"t-pain\",\"httptcoztsofqgopc\",\"nowplaying\"],\"words\":[\"\",\"bad\",\"\"],\"negative\":[\"bad\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Sounds Bad – T-Pain http://t.co/zTSofQGOpC #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/429455510455074816","username":"noahedwardhall"},{"date":1390920215000,"afinn":"{\"score\":-3,\"comparative\":-0.3,\"tokens\":[\"\",\"don't\",\"let\",\"me\",\"die\",\"\",\"bobby\",\"brown\",\"httptcodjtygbe4mj\",\"nowplaying\"],\"words\":[\"\",\"die\",\"\"],\"negative\":[\"die\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Don't Let Me Die – Bobby Brown http://t.co/dJTYGBE4Mj #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/428176533149069313","username":"noahedwardhall"},{"date":1390919939000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"nothing\",\"even\",\"matters\",\"\",\"lauryn\",\"hilld'angelo\",\"httptcoc9xhoadlgw\",\"nowplaying\"],\"words\":[\"\",\"matters\",\"\"],\"positive\":[\"matters\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Nothing Even Matters – Lauryn Hill,D'Angelo http://t.co/C9XHOAdlGw #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/428175375642816512","username":"noahedwardhall"},{"date":1390794126000,"afinn":"{\"score\":1,\"comparative\":0.1,\"tokens\":[\"\",\"just\",\"want\",\"you\",\"around\",\"\",\"lauryn\",\"hill\",\"httptcozqalz8svxb\",\"nowplaying\"],\"words\":[\"\",\"want\",\"\"],\"positive\":[\"want\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Just Want You Around – Lauryn Hill http://t.co/zqalZ8sVXb #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/427647679984726016","username":"noahedwardhall"},{"date":1390792736000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"just\",\"like\",\"me\",\"\",\"jamie\",\"foxxti\",\"httptcoyrokxxlzw5\",\"nowplaying\"],\"words\":[\"\",\"like\",\"\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Just Like Me – Jamie Foxx,T.I. http://t.co/YRoKXxLzW5 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/427641848123768832","username":"noahedwardhall"},{"date":1390789889000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"rock\",\"you\",\"good\",\"\",\"the\",\"isley\",\"brothers\",\"httptcou9adlotw4e\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Rock You Good – The Isley Brothers http://t.co/u9AdLOTW4E #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/427629906449539072","username":"noahedwardhall"},{"date":1390787442000,"afinn":"{\"score\":-2,\"comparative\":-0.3333333333333333,\"tokens\":[\"\",\"weak\",\"\",\"swv\",\"httptconcbfjedtih\",\"nowplaying\"],\"words\":[\"\",\"weak\",\"\"],\"negative\":[\"weak\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Weak – SWV http://t.co/NcbfJedTIh #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/427619645453910016","username":"noahedwardhall"},{"date":1390785704000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"i\",\"like\",\"them\",\"girls\",\"\",\"tyrese\",\"httptcoas6qje71cd\",\"nowplaying\"],\"words\":[\"\",\"like\",\"\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Like Them Girls – Tyrese http://t.co/as6Qje71cD #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/427612353966768129","username":"noahedwardhall"},{"date":1390462381000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"holdin'\",\"out\",\"for\",\"love\",\"\",\"angela\",\"bofill\",\"httptcowtv1lgoudp\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Holdin' Out For Love – Angela Bofill http://t.co/wTv1lgOUdp #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/426256236942614528","username":"noahedwardhall"},{"date":1390461229000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"\",\"in\",\"all\",\"my\",\"wildest\",\"dreams\",\"\",\"joe\",\"sample\",\"httptcownw3cv7jmc\",\"nowplaying\"],\"words\":[\"\",\"dreams\",\"\"],\"positive\":[\"dreams\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ In All My Wildest Dreams – Joe Sample http://t.co/wnw3CV7JMc #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/426251406052311040","username":"noahedwardhall"},{"date":1390460865000,"afinn":"{\"score\":1,\"comparative\":0.125,\"tokens\":[\"\",\"my\",\"old\",\"friend\",\"\",\"najee\",\"httptcoiztzojl5ah\",\"nowplaying\"],\"words\":[\"\",\"friend\",\"\"],\"positive\":[\"friend\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ My Old Friend – Najee http://t.co/izTZojL5ah #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/426249880168710144","username":"noahedwardhall"},{"date":1390379588000,"afinn":"{\"score\":1,\"comparative\":0.08333333333333333,\"tokens\":[\"facebook\",\"and\",\"google\",\"won't\",\"sell\",\"ads\",\"for\",\"legal\",\"weed\",\"httptcog69bjeruco\",\"via\",\"verge\"],\"words\":[\"legal\"],\"positive\":[\"legal\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Facebook and Google won't sell ads for legal weed http://t.co/G69bJeruCO via @verge","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/425908977986072576","username":"noahedwardhall"},{"date":1390372161000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"while\",\"it's\",\"good\",\"\",\"joe\",\"sample\",\"httptconoxhebalsm\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ While It's Good – Joe Sample http://t.co/NOXhEbalsm #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/425877830614790144","username":"noahedwardhall"},{"date":1390365635000,"afinn":"{\"score\":-1,\"comparative\":-0.1111111111111111,\"tokens\":[\"\",\"dr\",\"no\",\"beat\",\"\",\"paul\",\"taylor\",\"httptcoxvh3bcgfrm\",\"nowplaying\"],\"words\":[\"\",\"no\",\"\"],\"negative\":[\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Dr No Beat – Paul Taylor http://t.co/XVh3bCGfRm #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/425850456695271424","username":"noahedwardhall"},{"date":1390362444000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"\",\"clifton's\",\"gold\",\"\",\"joe\",\"sample\",\"httptcojtqwa4pqlb\",\"nowplaying\"],\"words\":[\"\",\"gold\",\"\"],\"positive\":[\"gold\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Clifton's Gold – Joe Sample http://t.co/JtQwa4Pqlb #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/425837072390184960","username":"noahedwardhall"},{"date":1390361858000,"afinn":"{\"score\":1,\"comparative\":0.06666666666666667,\"tokens\":[\"\",\"e\",\"preciso\",\"perdoar\",\"one\",\"must\",\"forgive\",\"-\",\"instrumental\",\"\",\"grover\",\"washington\",\"jr\",\"httptcoo8kwd12our\",\"nowplaying\"],\"words\":[\"\",\"forgive\",\"\"],\"positive\":[\"forgive\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ E Preciso Perdoar (One Must Forgive) - Instrumental – Grover Washington, Jr. http://t.co/o8kwd12OUr #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/425834613978578944","username":"noahedwardhall"},{"date":1390293320000,"afinn":"{\"score\":1,\"comparative\":0.05555555555555555,\"tokens\":[\"out\",\"in\",\"the\",\"open\",\"these\",\"hackers\",\"want\",\"to\",\"give\",\"you\",\"coding\",\"superpowers\",\"\",\"wired\",\"enterprise\",\"\",\"httptcogrudp4xtxb\",\"httptcot5ltgn6h49\"],\"words\":[\"\",\"\",\"want\"],\"positive\":[\"want\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Out in the Open: These Hackers Want to Give You Coding Superpowers | Wired Enterprise | http://t.co/gruDp4xtXB http://t.co/t5ltgN6h49","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/425547145224015872","username":"noahedwardhall"},{"date":1390212201000,"afinn":"{\"score\":1,\"comparative\":0.045454545454545456,\"tokens\":[\"as\",\"microsoft\",\"ceo\",\"rumors\",\"continue\",\"to\",\"churn\",\"one\",\"thing\",\"is\",\"clear\",\"--\",\"gates\",\"will\",\"be\",\"more\",\"visible\",\"at\",\"mi\",\"httptcoxkt8idkfbx\",\"via\",\"karaswisher\"],\"words\":[\"clear\"],\"positive\":[\"clear\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"As Microsoft CEO rumors continue to churn, one thing is clear -- Gates will be more visible at Mi… http://t.co/xKT8IDkFBX via @karaswisher","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/425206909247827968","username":"noahedwardhall"},{"date":1390211965000,"afinn":"{\"score\":-2,\"comparative\":-0.11764705882352941,\"tokens\":[\"cyber\",\"attack\",\"that\",\"sent\",\"750k\",\"malicious\",\"emails\",\"traced\",\"to\",\"hacked\",\"refrigerator\",\"tvs\",\"and\",\"home\",\"routers\",\"httptco03l4cpdf6l\",\"via\"],\"words\":[\"hacked\",\"attack\"],\"negative\":[\"hacked\",\"attack\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Cyber attack that sent 750k malicious emails traced to hacked refrigerator, TVs and home routers http://t.co/03L4Cpdf6l via","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/425205918066679808","username":"noahedwardhall"},{"date":1390171862000,"afinn":"{\"score\":1,\"comparative\":0.125,\"tokens\":[\"\",\"passion\",\"dance\",\"\",\"mccoy\",\"tyner\",\"httptcocakrkdxewg\",\"nowplaying\"],\"words\":[\"\",\"passion\",\"\"],\"positive\":[\"passion\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Passion Dance – McCoy Tyner http://t.co/CAKRkdXEWg #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/425037713872388096","username":"noahedwardhall"},{"date":1390164132000,"afinn":"{\"score\":2,\"comparative\":0.11764705882352941,\"tokens\":[\"the\",\"future\",\"of\",\"superbowl\",\"commercials\",\"and\",\"how\",\"to\",\"capitalize\",\"on\",\"the\",\"big\",\"game\",\"without\",\"spending\",\"big\",\"httptcohaihdbzktm\"],\"words\":[\"big\",\"big\"],\"positive\":[\"big\",\"big\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"The Future of Superbowl Commercials and How To Capitalize on The Big Game Without Spending Big http://t.co/HaIHDbzKtm","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/425005290027634688","username":"noahedwardhall"},{"date":1389941011000,"afinn":"{\"score\":-2,\"comparative\":-0.4,\"tokens\":[\"how\",\"the\",\"french\",\"protest\",\"httptcogms28zzkof\"],\"words\":[\"protest\"],\"negative\":[\"protest\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"How the French protest http://t.co/gms28ZzKof","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/424069453504983040","username":"noahedwardhall"},{"date":1389939903000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"sista\",\"big\",\"bones\",\"\",\"anthony\",\"hamilton\",\"httptcoysvtvsfuoy\",\"nowplaying\"],\"words\":[\"\",\"big\",\"\"],\"positive\":[\"big\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Sista Big Bones – Anthony Hamilton http://t.co/YsvtvSfUoy #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/424064807302483968","username":"noahedwardhall"},{"date":1389937496000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"in\",\"love\",\"with\",\"you\",\"\",\"erykah\",\"badu\",\"httptcohtbnthhayn\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ In Love With You – Erykah Badu http://t.co/hTbNThhayn #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/424054713265319936","username":"noahedwardhall"},{"date":1389856137000,"afinn":"{\"score\":2,\"comparative\":0.16666666666666666,\"tokens\":[\"advertorial\",\"worth\",\"reading\",\"the\",\"world's\",\"first\",\"mooc\",\"masters\",\"in\",\"computer\",\"science\",\"httptcoggyayeyuoy\"],\"words\":[\"worth\"],\"positive\":[\"worth\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Advertorial worth reading: the world's first MOOC masters in computer science http://t.co/ggyAyEyuoY","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/423713466495406080","username":"noahedwardhall"},{"date":1389766790000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"most\",\"successful\",\"phrases\",\"to\",\"use\",\"for\",\"your\",\"kickstarter\",\"project\",\"\",\"httptcon6zh4hpfmh\"],\"words\":[\"\",\"successful\"],\"positive\":[\"successful\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Most successful phrases to use for your kickstarter project  http://t.co/n6zh4HPfmH","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/423338718758334464","username":"noahedwardhall"},{"date":1389674986000,"afinn":"{\"score\":2,\"comparative\":0.14285714285714285,\"tokens\":[\"\",\"peace\",\"rudy\",\"van\",\"gelder\",\"edition\",\"1999\",\"-\",\"remastered\",\"\",\"horace\",\"silver\",\"httptcovn3xwzqct4\",\"nowplaying\"],\"words\":[\"\",\"peace\",\"\"],\"positive\":[\"peace\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Peace (Rudy Van Gelder Edition) [1999 - Remastered] – Horace Silver http://t.co/Vn3xwZqct4 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/422953664949411841","username":"noahedwardhall"},{"date":1389673563000,"afinn":"{\"score\":1,\"comparative\":0.125,\"tokens\":[\"\",\"straight\",\"life\",\"\",\"art\",\"pepper\",\"httptcovx5eg7zr0n\",\"nowplaying\"],\"words\":[\"\",\"straight\",\"\"],\"positive\":[\"straight\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Straight Life – Art Pepper http://t.co/vx5eg7ZR0N #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/422947694953238528","username":"noahedwardhall"},{"date":1389594503000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"47\",\"ronin\",\"was\",\"the\",\"best\",\"movie\",\"\",\"i've\",\"seen\",\"in\",\"30\",\"moons\"],\"words\":[\"\",\"best\"],\"positive\":[\"best\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"47 ronin was the best movie  I've seen in 30 moons","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/422616096718331904","username":"noahedwardhall"},{"date":1389563681000,"afinn":"{\"score\":4,\"comparative\":0.5,\"tokens\":[\"\",\"fun\",\"2\",\"nite\",\"\",\"jodeci\",\"httptcopkpuqetkbg\",\"nowplaying\"],\"words\":[\"\",\"fun\",\"\"],\"positive\":[\"fun\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Fun 2 Nite – Jodeci http://t.co/pkpuQetkBG #NowPlaying","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/422486817313529857","username":"noahedwardhall"},{"date":1389563085000,"afinn":"{\"score\":3,\"comparative\":0.16666666666666666,\"tokens\":[\"\",\"ain't\",\"i\",\"been\",\"good\",\"to\",\"you\",\"-\",\"part\",\"1\",\"amp\",\"2\",\"\",\"the\",\"isley\",\"brothers\",\"httptcomgdkd8rii3\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Ain't I Been Good To You - Part 1 &amp; 2 – The Isley Brothers http://t.co/MgDKd8rII3 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/422484316854046720","username":"noahedwardhall"},{"date":1389485641000,"afinn":"{\"score\":2,\"comparative\":0.18181818181818182,\"tokens\":[\"\",\"in\",\"your\",\"own\",\"sweet\",\"way\",\"\",\"dave\",\"brubeck\",\"httptcoh6trqgahkw\",\"nowplaying\"],\"words\":[\"\",\"sweet\",\"\"],\"positive\":[\"sweet\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ In Your Own Sweet Way – Dave Brubeck http://t.co/h6TRQgahkW #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/422159493938434049","username":"noahedwardhall"},{"date":1389485025000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"big\",\"nick\",\"\",\"duke\",\"ellingtonjohn\",\"coltrane\",\"httptcok8nshxqgvj\",\"nowplaying\"],\"words\":[\"\",\"big\",\"\"],\"positive\":[\"big\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Big Nick – Duke Ellington,John Coltrane http://t.co/K8nSHxqGvJ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/422156911220248576","username":"noahedwardhall"},{"date":1389078983000,"afinn":"{\"score\":2,\"comparative\":0.2,\"tokens\":[\"just\",\"downloaded\",\"aptana\",\"hope\",\"there's\",\"a\",\"lynda\",\"video\",\"for\",\"it\"],\"words\":[\"hope\"],\"positive\":[\"hope\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Just downloaded aptana, hope there's a Lynda video for it","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/420453845911621632","username":"noahedwardhall"},{"date":1389019135000,"afinn":"{\"score\":-1,\"comparative\":-0.08333333333333333,\"tokens\":[\"\",\"if\",\"you\",\"leave\",\"me\",\"now\",\"\",\"the\",\"isley\",\"brothers\",\"httptcoplizo9mdic\",\"nowplaying\"],\"words\":[\"\",\"leave\",\"\"],\"negative\":[\"leave\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ If You Leave Me Now – The Isley Brothers http://t.co/pLIZO9MDIC #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/420202827437203456","username":"noahedwardhall"},{"date":1388984509000,"afinn":"{\"score\":3,\"comparative\":0.1875,\"tokens\":[\"\",\"it\",\"takes\",\"a\",\"good\",\"woman\",\"-\",\"remastered\",\"single\",\"version\",\"\",\"the\",\"isley\",\"brothers\",\"httptcoj9guf20bxi\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ It Takes A Good Woman - Remastered Single Version – The Isley Brothers http://t.co/j9guF20BXi #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/420057595760492544","username":"noahedwardhall"},{"date":1388983482000,"afinn":"{\"score\":2,\"comparative\":0.18181818181818182,\"tokens\":[\"\",\"kiss\",\"me\",\"on\",\"my\",\"neck\",\"\",\"erykah\",\"badu\",\"httptco9khabikbtk\",\"nowplaying\"],\"words\":[\"\",\"kiss\",\"\"],\"positive\":[\"kiss\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Kiss Me On My Neck – Erykah Badu http://t.co/9KHABIKBTK #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/420053285706276864","username":"noahedwardhall"},{"date":1388983063000,"afinn":"{\"score\":3,\"comparative\":0.42857142857142855,\"tokens\":[\"\",\"love\",\"school\",\"\",\"avant\",\"httptcoe4t5qlmitm\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love School – Avant http://t.co/E4T5qlMiTm #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/420051529832214528","username":"noahedwardhall"},{"date":1388982564000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"\",\"best\",\"night\",\"of\",\"my\",\"life\",\"\",\"jamie\",\"foxxwiz\",\"khalifa\",\"httptcociiv2z6nuh\",\"nowplaying\"],\"words\":[\"\",\"best\",\"\"],\"positive\":[\"best\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Best Night Of My Life – Jamie Foxx,Wiz Khalifa http://t.co/CIiV2Z6nuH #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/420049437012946945","username":"noahedwardhall"},{"date":1388982231000,"afinn":"{\"score\":-2,\"comparative\":-0.2857142857142857,\"tokens\":[\"\",\"danger\",\"\",\"erykah\",\"badu\",\"httptcoyvpnqswslr\",\"nowplaying\"],\"words\":[\"\",\"danger\",\"\"],\"negative\":[\"danger\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Danger – Erykah Badu http://t.co/YvPNQswsLr #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/420048039059795968","username":"noahedwardhall"},{"date":1388854922000,"afinn":"{\"score\":5,\"comparative\":0.8333333333333334,\"tokens\":[\"comedy\",\"show\",\"last\",\"night\",\"was\",\"fun\"],\"words\":[\"fun\",\"comedy\"],\"positive\":[\"fun\",\"comedy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Comedy show last night was fun","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/419514067754041344","username":"noahedwardhall"},{"date":1388805161000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"tribute\",\"to\",\"a\",\"woman\",\"\",\"ginuwine\",\"httptcoypsbuatunt\",\"nowplaying\"],\"words\":[\"\",\"tribute\",\"\"],\"positive\":[\"tribute\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Tribute To A Woman – Ginuwine http://t.co/yPSbuAtunt #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/419305352908120064","username":"noahedwardhall"},{"date":1388804859000,"afinn":"{\"score\":-2,\"comparative\":-0.18181818181818182,\"tokens\":[\"\",\"where\",\"did\",\"it\",\"go\",\"wrong\",\"\",\"anthony\",\"hamilton\",\"httptcotq26n3ugxq\",\"nowplaying\"],\"words\":[\"\",\"wrong\",\"\"],\"negative\":[\"wrong\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Where Did It Go Wrong? – Anthony Hamilton http://t.co/TQ26N3uGXq #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/419304087411126272","username":"noahedwardhall"},{"date":1388725204000,"afinn":"{\"score\":-3,\"comparative\":-0.21428571428571427,\"tokens\":[\"moving\",\"the\",\"industry\",\"forward\",\"to\",\"combat\",\"fraud\",\"and\",\"protect\",\"brand\",\"safety\",\"httptcogqcgqiajt1\",\"via\",\"adaptv\"],\"words\":[\"safety\",\"protect\",\"fraud\",\"combat\"],\"positive\":[\"safety\",\"protect\"],\"negative\":[\"fraud\",\"combat\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Moving the Industry Forward to Combat Fraud and Protect Brand Safety http://t.co/GqcgqIajT1 via @adaptv","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/418969991031947264","username":"noahedwardhall"},{"date":1388468785000,"afinn":"{\"score\":4,\"comparative\":0.6666666666666666,\"tokens\":[\"san\",\"francisco\",\"for\",\"new\",\"years\",\"winning\"],\"words\":[\"winning\"],\"positive\":[\"winning\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"San Francisco for new years #winning","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/417894491958173696","username":"noahedwardhall"},{"date":1388370762000,"afinn":"{\"score\":-1,\"comparative\":-0.125,\"tokens\":[\"\",\"contagious\",\"\",\"the\",\"isley\",\"brothers\",\"httptcoxsd7b9kigg\",\"nowplaying\"],\"words\":[\"\",\"contagious\",\"\"],\"negative\":[\"contagious\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Contagious – The Isley Brothers http://t.co/xsD7B9KigG #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/417483354225655808","username":"noahedwardhall"},{"date":1388370547000,"afinn":"{\"score\":-2,\"comparative\":-0.2222222222222222,\"tokens\":[\"\",\"regret\",\"-\",\"feat\",\"ludacris\",\"\",\"letoyaludacris\",\"httptco2zkrwmuomi\",\"nowplaying\"],\"words\":[\"\",\"regret\",\"\"],\"negative\":[\"regret\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ Regret - feat. Ludacris – LeToya,Ludacris http://t.co/2ZkrWMUOMi #NowPlaying","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/417482450248286208","username":"noahedwardhall"},{"date":1388369278000,"afinn":"{\"score\":-2,\"comparative\":-0.2857142857142857,\"tokens\":[\"\",\"so\",\"anxious\",\"\",\"ginuwine\",\"httptco8pc4c4x2hq\",\"nowplaying\"],\"words\":[\"\",\"anxious\",\"\"],\"negative\":[\"anxious\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ So Anxious – Ginuwine http://t.co/8pc4C4x2HQ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/417477128494407680","username":"noahedwardhall"},{"date":1388366977000,"afinn":"{\"score\":3,\"comparative\":0.42857142857142855,\"tokens\":[\"\",\"good\",\"girls\",\"\",\"joe\",\"httptcolcxocubf8k\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Good Girls – Joe http://t.co/lCxOcUBf8k #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/417467477321187330","username":"noahedwardhall"},{"date":1388366385000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"how\",\"deep\",\"is\",\"your\",\"love\",\"\",\"dru\",\"hill\",\"httptcomnigivek73\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ How Deep Is Your Love – Dru Hill http://t.co/MnigiVek73 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/417464993513091072","username":"noahedwardhall"},{"date":1388362945000,"afinn":"{\"score\":1,\"comparative\":0.125,\"tokens\":[\"\",\"cool\",\"\",\"anthony\",\"hamiltondavid\",\"banner\",\"httptcob4xdxumwh4\",\"nowplaying\"],\"words\":[\"\",\"cool\",\"\"],\"positive\":[\"cool\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Cool – Anthony Hamilton,David Banner http://t.co/B4xDxumwh4 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/417450567493881857","username":"noahedwardhall"},{"date":1388361769000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"what\",\"it\",\"feels\",\"like\",\"\",\"day26\",\"httptco0obvn2yxfv\",\"nowplaying\"],\"words\":[\"\",\"like\",\"\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ What It Feels Like – DAY26 http://t.co/0oBvn2YXfv #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/417445632144470016","username":"noahedwardhall"},{"date":1388361504000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"when\",\"it's\",\"good\",\"\",\"lyfe\",\"jennings\",\"httptco3ejvhgoaw9\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ When It's Good – Lyfe Jennings http://t.co/3eJVHgoAw9 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/417444523271151616","username":"noahedwardhall"},{"date":1388289766000,"afinn":"{\"score\":3,\"comparative\":0.17647058823529413,\"tokens\":[\"\",\"still\",\"feels\",\"so\",\"good\",\"-\",\"feat\",\"jazze\",\"pha\",\"explicit\",\"\",\"twista\",\"featuring\",\"jazze\",\"pha\",\"httptcoye3fmrn1yr\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ Still Feels So Good - feat. Jazze Pha Explicit – Twista Featuring Jazze Pha http://t.co/ye3FmRN1Yr #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/417143629958766592","username":"noahedwardhall"},{"date":1388125136000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"the\",\"best\",\"man\",\"i\",\"can\",\"be\",\"\",\"ginuwinerltyresecase\",\"httptcoe2vftaqc8l\",\"nowplaying\"],\"words\":[\"\",\"best\",\"\"],\"positive\":[\"best\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ The Best Man I Can Be – Ginuwine,R.L.,Tyrese,Case http://t.co/E2vFTAQC8l #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/416453121225670656","username":"noahedwardhall"},{"date":1387206101000,"afinn":"{\"score\":-2,\"comparative\":-0.10526315789473684,\"tokens\":[\"\",\"i\",\"guess\",\"i'll\",\"hang\",\"my\",\"tears\",\"out\",\"to\",\"dry\",\"-\",\"1999\",\"digital\",\"remaster\",\"\",\"dexter\",\"gordon\",\"httptcollbqhlxyuj\",\"nowplaying\"],\"words\":[\"\",\"tears\",\"\"],\"negative\":[\"tears\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Guess I'll Hang My Tears Out To Dry - 1999 Digital Remaster – Dexter Gordon http://t.co/LLBQhLXyUj #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/412598411162959872","username":"noahedwardhall"},{"date":1387205346000,"afinn":"{\"score\":-4,\"comparative\":-0.3076923076923077,\"tokens\":[\"\",\"speak\",\"no\",\"evil\",\"-\",\"1998\",\"-\",\"remaster\",\"\",\"wayne\",\"shorter\",\"httptcoklbrfocftn\",\"nowplaying\"],\"words\":[\"\",\"evil\",\"no\",\"\"],\"negative\":[\"evil\",\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Speak No Evil - 1998 - Remaster – Wayne Shorter http://t.co/klBrFOCfTN #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/412595244392120321","username":"noahedwardhall"},{"date":1387179817000,"afinn":"{\"score\":-1,\"comparative\":-0.09090909090909091,\"tokens\":[\"richard\",\"dawkins\",\"why\",\"the\",\"universe\",\"seems\",\"so\",\"strange\",\"httptcoowkqwdz7cg\",\"via\",\"youtube\"],\"words\":[\"strange\"],\"negative\":[\"strange\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Richard Dawkins: Why the universe seems so strange http://t.co/oWKqwDz7Cg via @youtube","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/412488167875297280","username":"noahedwardhall"},{"date":1387151961000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"beatbox\",\"brilliance\",\"tom\",\"thum\",\"at\",\"tedxsydney\",\"httptco4n3o5qvdo1\",\"via\",\"youtube\"],\"words\":[\"brilliance\"],\"positive\":[\"brilliance\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Beatbox Brilliance: Tom Thum at TEDxSydney http://t.co/4n3O5QvDO1 via @youtube","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/412371329145241600","username":"noahedwardhall"},{"date":1386987927000,"afinn":"{\"score\":3,\"comparative\":0.125,\"tokens\":[\"page\",\"53\",\"of\",\"my\",\"res\",\"paper\",\"perfect\",\"song\",\"to\",\"describe\",\"my\",\"feelings\",\"at\",\"this\",\"point\",\"\",\"song\",\"of\",\"the\",\"wind\",\"\",\"chick\",\"corea\",\"httptcovwu9hykksa\"],\"words\":[\"\",\"\",\"perfect\"],\"positive\":[\"perfect\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"page 53 of my res. paper, perfect song to describe my feelings at this point ♫ Song Of The Wind – Chick Corea http://t.co/VwU9hyKkSa","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/411683323845419008","username":"noahedwardhall"},{"date":1386985308000,"afinn":"{\"score\":1,\"comparative\":0.058823529411764705,\"tokens\":[\"lol\",\"this\",\"is\",\"either\",\"break-up\",\"music\",\"or\",\"meditation-music\",\"\",\"don't\",\"be\",\"sad\",\"\",\"brad\",\"mehldau\",\"httptcowzpeoy93cr\",\"nowplaying\"],\"words\":[\"\",\"sad\",\"\",\"lol\"],\"positive\":[\"lol\"],\"negative\":[\"sad\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"lol this is either break-up music, or meditation-music ♫ Don't Be Sad – Brad Mehldau http://t.co/wZPEOy93Cr #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/411672336165634050","username":"noahedwardhall"},{"date":1386985083000,"afinn":"{\"score\":2,\"comparative\":0.14285714285714285,\"tokens\":[\"success\",\"in\",\"online\",\"business\",\"depends\",\"on\",\"cross-cultural\",\"intelligence\",\"upgrade\",\"your\",\"business\",\"knowledge\",\"at\",\"httptcojctastdttf\"],\"words\":[\"success\"],\"positive\":[\"success\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"success in online business depends on cross-cultural intelligence: upgrade your business knowledge at http://t.co/JcTAstDtTf","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/411671392858279937","username":"noahedwardhall"},{"date":1386918230000,"afinn":"{\"score\":5,\"comparative\":0.35714285714285715,\"tokens\":[\"if\",\"you\",\"could\",\"hear\",\"beauty\",\"this\",\"is\",\"what\",\"it\",\"would\",\"sound\",\"like\",\"httptcoy1ywmcabvq\",\"nowplaying\"],\"words\":[\"like\",\"beauty\"],\"positive\":[\"like\",\"beauty\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"if you could hear Beauty, this is what it would sound like. http://t.co/Y1yWmcAbVq #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/411390994270007296","username":"noahedwardhall"},{"date":1386917529000,"afinn":"{\"score\":-2,\"comparative\":-0.11764705882352941,\"tokens\":[\"this\",\"is\",\"a\",\"crazy\",\"tune\",\"\",\"money\",\"jungle\",\"-\",\"2002\",\"digital\",\"remaster\",\"\",\"duke\",\"ellington\",\"httptcoxrehsvmnsa\",\"nowplaying\"],\"words\":[\"\",\"\",\"crazy\"],\"negative\":[\"crazy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"this is a crazy tune ♫ Money Jungle - 2002 Digital Remaster – Duke Ellington http://t.co/xrehsVMNsa #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/411388050636165120","username":"noahedwardhall"},{"date":1386828134000,"afinn":"{\"score\":-3,\"comparative\":-0.21428571428571427,\"tokens\":[\"gotta\",\"pick\",\"my\",\"classes\",\"for\",\"next\",\"semester\",\"too\",\"bad\",\"the\",\"internet\",\"isnt\",\"an\",\"option\"],\"words\":[\"bad\"],\"negative\":[\"bad\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"gotta pick my classes for next semester, too bad The Internet isnt an option","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/411013102042243072","username":"noahedwardhall"},{"date":1386720980000,"afinn":"{\"score\":-1,\"comparative\":-0.1111111111111111,\"tokens\":[\"barry\",\"schwartz\",\"the\",\"paradox\",\"of\",\"choice\",\"httptcokm7tzdyfkt\",\"via\",\"youtube\"],\"words\":[\"paradox\"],\"negative\":[\"paradox\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Barry Schwartz: The paradox of choice http://t.co/km7tZdyfkT via @youtube","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/410563666518372352","username":"noahedwardhall"},{"date":1386697958000,"afinn":"{\"score\":-5,\"comparative\":-0.625,\"tokens\":[\"ben\",\"goldacre\",\"battling\",\"bad\",\"science\",\"httptcojqp42iyp0o\",\"via\",\"youtube\"],\"words\":[\"bad\",\"battling\"],\"negative\":[\"bad\",\"battling\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Ben Goldacre: Battling Bad Science http://t.co/JqP42IYp0O via @youtube","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/410467103762702336","username":"noahedwardhall"},{"date":1386529601000,"afinn":"{\"score\":-2,\"comparative\":-0.13333333333333333,\"tokens\":[\"\",\"the\",\"natives\",\"are\",\"restless\",\"tonight\",\"-\",\"1999\",\"digital\",\"remaster\",\"\",\"horace\",\"silver\",\"httptcobexnhy8dkg\",\"nowplaying\"],\"words\":[\"\",\"restless\",\"\"],\"negative\":[\"restless\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ The Natives Are Restless Tonight - 1999 Digital Remaster – Horace Silver http://t.co/BexnHY8dkG #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/409760963542269952","username":"noahedwardhall"},{"date":1386525428000,"afinn":"{\"score\":-1,\"comparative\":-0.09090909090909091,\"tokens\":[\"jon\",\"ronson\",\"strange\",\"answers\",\"to\",\"the\",\"psychopath\",\"test\",\"httptco5hkql2mn3m\",\"via\",\"youtube\"],\"words\":[\"strange\"],\"negative\":[\"strange\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Jon Ronson: Strange answers to the psychopath test http://t.co/5hKqL2MN3m via @youtube","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/409743462469087232","username":"noahedwardhall"},{"date":1386458477000,"afinn":"{\"score\":4,\"comparative\":0.2857142857142857,\"tokens\":[\"\",\"something\",\"sweet\",\"something\",\"tender\",\"-\",\"1999\",\"-\",\"remaster\",\"\",\"eric\",\"dolphy\",\"httptco3zwlh0m8zd\",\"nowplaying\"],\"words\":[\"\",\"tender\",\"sweet\",\"\"],\"positive\":[\"tender\",\"sweet\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Something Sweet, Something Tender - 1999 - Remaster – Eric Dolphy http://t.co/3zwlh0M8zD #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/409462646644027392","username":"noahedwardhall"},{"date":1386398069000,"afinn":"{\"score\":-2,\"comparative\":-0.3333333333333333,\"tokens\":[\"bookmark\",\"damn\",\"you\",\"phpmyadmin\",\"\",\"httptcog9ollpw3nl\"],\"words\":[\"\",\"damn\"],\"negative\":[\"damn\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"#bookmark damn you phpmyadmin ! http://t.co/G9oLlPw3nl","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/409209280345038849","username":"noahedwardhall"},{"date":1386264040000,"afinn":"{\"score\":-2,\"comparative\":-0.2,\"tokens\":[\"\",\"willow\",\"weep\",\"for\",\"me\",\"\",\"dexter\",\"gordon\",\"httptco4isbk3zbbd\",\"nowplaying\"],\"words\":[\"\",\"weep\",\"\"],\"negative\":[\"weep\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Willow Weep For Me – Dexter Gordon http://t.co/4isbK3ZBBD #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/408647121626091520","username":"noahedwardhall"},{"date":1386207463000,"afinn":"{\"score\":-1,\"comparative\":-0.07142857142857142,\"tokens\":[\"ted\",\"talks\",\"what\",\"facebook\",\"and\",\"google\",\"are\",\"hiding\",\"from\",\"the\",\"world\",\"httptcoy44hzu0igs\",\"via\",\"youtube\"],\"words\":[\"hiding\"],\"negative\":[\"hiding\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"TED Talks: What FACEBOOK And GOOGLE Are Hiding From The World http://t.co/y44hzu0IGS via @youtube","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/408409821038145536","username":"noahedwardhall"},{"date":1386193425000,"afinn":"{\"score\":2,\"comparative\":0.14285714285714285,\"tokens\":[\"\",\"i'll\",\"take\",\"care\",\"of\",\"you\",\"-\",\"single\",\"version\",\"\",\"bobby\",\"bland\",\"httptcox3uqbs66aw\",\"nowplaying\"],\"words\":[\"\",\"care\",\"\"],\"positive\":[\"care\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I'll Take Care Of You - Single Version – Bobby Bland http://t.co/X3uQBS66AW #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/408350941260156930","username":"noahedwardhall"},{"date":1386184671000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"love\",\"and\",\"death\",\"\",\"ebo\",\"taylor\",\"httptco0vumllfmgd\",\"nowplaying\"],\"words\":[\"\",\"death\",\"love\",\"\"],\"positive\":[\"love\"],\"negative\":[\"death\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love and Death – Ebo Taylor http://t.co/0VuMLlfMGd #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/408314223237009408","username":"noahedwardhall"},{"date":1386181181000,"afinn":"{\"score\":-3,\"comparative\":-0.3,\"tokens\":[\"\",\"water\",\"no\",\"get\",\"enemy\",\"\",\"fela\",\"kuti\",\"httptco8uyrmhh2xy\",\"nowplaying\"],\"words\":[\"\",\"enemy\",\"no\",\"\"],\"negative\":[\"enemy\",\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Water No Get Enemy – Fela Kuti http://t.co/8uyRmHh2xy #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/408299585803542528","username":"noahedwardhall"},{"date":1386110941000,"afinn":"{\"score\":-2,\"comparative\":-0.16666666666666666,\"tokens\":[\"\",\"lonely\",\"woman\",\"-\",\"1999\",\"digital\",\"remaster\",\"\",\"horace\",\"silver\",\"httptconwzdaa8nqg\",\"nowplaying\"],\"words\":[\"\",\"lonely\",\"\"],\"negative\":[\"lonely\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Lonely Woman - 1999 Digital Remaster – Horace Silver http://t.co/NWZdaA8NqG #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/408004976087035904","username":"noahedwardhall"},{"date":1386109840000,"afinn":"{\"score\":2,\"comparative\":0.2857142857142857,\"tokens\":[\"improve\",\"your\",\"memory\",\"for\",\"3\",\"usd\",\"httptcowwcim6mi8i\"],\"words\":[\"improve\"],\"positive\":[\"improve\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"improve your memory for 3 USD http://t.co/wWciM6mI8i","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/408000358519033856","username":"noahedwardhall"},{"date":1386061187000,"afinn":"{\"score\":-2,\"comparative\":-0.11764705882352941,\"tokens\":[\"\",\"so\",\"appalled\",\"-\",\"album\",\"version\",\"edited\",\"\",\"kanye\",\"westjay\",\"zpusha\",\"tprynce\",\"cy\",\"hiswizz\",\"beatzrza\",\"httptcorpqysr6r1z\",\"nowplaying\"],\"words\":[\"\",\"appalled\",\"\"],\"negative\":[\"appalled\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ So Appalled - Album Version (Edited) – Kanye West,JAY Z,Pusha T,Prynce Cy Hi,Swizz Beatz,RZA http://t.co/rpQYSr6r1z #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/407796291968589824","username":"noahedwardhall"},{"date":1386059860000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"strength\",\"\",\"movin\",\"on\",\"\",\"2pac\",\"httptcodrysodgjbn\",\"nowplaying\"],\"words\":[\"\",\"\",\"strength\"],\"positive\":[\"strength\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"strength ♫ Movin On – 2Pac http://t.co/drysodgjBn #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/407790726525632513","username":"noahedwardhall"},{"date":1386032990000,"afinn":"{\"score\":-5,\"comparative\":-0.3333333333333333,\"tokens\":[\"dan\",\"ariely\",\"why\",\"we\",\"think\",\"it's\",\"ok\",\"to\",\"cheat\",\"and\",\"steal\",\"sometimes\",\"httptco5k4cnblug6\",\"via\",\"youtube\"],\"words\":[\"steal\",\"cheat\"],\"negative\":[\"steal\",\"cheat\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Dan Ariely: Why we think it's OK to cheat and steal (sometimes) http://t.co/5k4cNBLuG6 via @youtube","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/407678026554437632","username":"noahedwardhall"},{"date":1386030848000,"afinn":"{\"score\":1,\"comparative\":0.1,\"tokens\":[\"ray\",\"anderson\",\"the\",\"business\",\"logic\",\"of\",\"sustainability\",\"httptco6bw3yii9mf\",\"via\",\"youtube\"],\"words\":[\"sustainability\"],\"positive\":[\"sustainability\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Ray Anderson: The business logic of sustainability http://t.co/6BW3yII9mf via @youtube","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/407669042036482049","username":"noahedwardhall"},{"date":1386016939000,"afinn":"{\"score\":3,\"comparative\":0.23076923076923078,\"tokens\":[\"\",\"love\",\"for\",\"sale\",\"-\",\"1999\",\"digital\",\"remaster\",\"\",\"dexter\",\"gordon\",\"httptcox6lrlzrqbs\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love For Sale - 1999 Digital Remaster – Dexter Gordon http://t.co/X6LrlZrQBs #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/407610702568755200","username":"noahedwardhall"},{"date":1386012275000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"\",\"django\",\"-\",\"1999\",\"digital\",\"remaster\",\"\",\"grant\",\"green\",\"httptcocrmedrfboc\",\"nowplaying\"],\"words\":[\"grant\",\"\",\"\"],\"positive\":[\"grant\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Django - 1999 Digital Remaster – Grant Green http://t.co/crmEdRfBOc #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/407591143061204992","username":"noahedwardhall"},{"date":1385969312000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"logic\",\"--the\",\"structure\",\"of\",\"reason\",\"great\",\"ideas\",\"of\",\"philosophy\",\"httptco8lkepqk7li\",\"via\",\"youtube\"],\"words\":[\"great\"],\"positive\":[\"great\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Logic --The Structure of Reason (Great Ideas of Philosophy) http://t.co/8lkePqK7LI via @youtube","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/407410940099825664","username":"noahedwardhall"},{"date":1385959101000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"\",\"funky\",\"blues\",\"\",\"charlie\",\"parker\",\"httptco8ozsezbic2\",\"nowplaying\"],\"words\":[\"\",\"funky\",\"\"],\"positive\":[\"funky\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Funky Blues – Charlie Parker http://t.co/8OZSezbic2 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/407368115664601089","username":"noahedwardhall"},{"date":1385956139000,"afinn":"{\"score\":-1,\"comparative\":-0.06666666666666667,\"tokens\":[\"\",\"on\",\"the\",\"sunny\",\"side\",\"of\",\"the\",\"street\",\"\",\"dizzy\",\"gillespiesonny\",\"stittsonny\",\"rollins\",\"httptco188tlg8eae\",\"nowplaying\"],\"words\":[\"dizzy\",\"\",\"\"],\"negative\":[\"dizzy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ On The Sunny Side Of The Street – Dizzy Gillespie,Sonny Stitt,Sonny Rollins http://t.co/188TLG8eAE #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/407355689078509568","username":"noahedwardhall"},{"date":1385946125000,"afinn":"{\"score\":-4,\"comparative\":-0.4444444444444444,\"tokens\":[\"\",\"speak\",\"no\",\"evil\",\"\",\"wayne\",\"shorter\",\"httptcotbzsus6ojo\",\"nowplaying\"],\"words\":[\"\",\"evil\",\"no\",\"\"],\"negative\":[\"evil\",\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Speak No Evil – Wayne Shorter http://t.co/tBzSuS6oJo #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/407313686445842434","username":"noahedwardhall"},{"date":1385773807000,"afinn":"{\"score\":5,\"comparative\":0.20833333333333334,\"tokens\":[\"two\",\"slides\",\"left\",\"in\",\"my\",\"pp\",\"deck\",\"and\",\"the\",\"best\",\"song\",\"ever\",\"starts\",\"to\",\"play\",\"happyholidays\",\"\",\"search\",\"for\",\"peace\",\"\",\"mccoy\",\"tyner\",\"httptcogcm71eu2uf\"],\"words\":[\"\",\"peace\",\"\",\"best\"],\"positive\":[\"peace\",\"best\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"two slides left in my pp deck and the best song ever starts to play #happyHolidays ♫ Search For Peace – McCoy Tyner http://t.co/GCM71eU2Uf","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/406590933501607937","username":"noahedwardhall"},{"date":1385770284000,"afinn":"{\"score\":1,\"comparative\":0.125,\"tokens\":[\"\",\"cool\",\"struttin'\",\"\",\"sonny\",\"clark\",\"httptcoyn6x8amcl1\",\"nowplaying\"],\"words\":[\"\",\"cool\",\"\"],\"positive\":[\"cool\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Cool Struttin' – Sonny Clark http://t.co/yn6X8Amcl1 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/406576155886501889","username":"noahedwardhall"},{"date":1385702739000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"pulp\",\"fiction\",\"is\",\"still\",\"in\",\"the\",\"top\",\"5\"],\"words\":[\"top\"],\"positive\":[\"top\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Pulp fiction is still in the top 5","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/406292852679794689","username":"noahedwardhall"},{"date":1385597198000,"afinn":"{\"score\":-2,\"comparative\":-0.25,\"tokens\":[\"its\",\"depressing\",\"that\",\"httptcoxet5a2hqqc\",\"was\",\"not\",\"my\",\"idea\"],\"words\":[\"depressing\"],\"negative\":[\"depressing\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"its depressing that http://t.co/xET5A2hQQc was not my idea","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/405850184405377024","username":"noahedwardhall"},{"date":1385455386000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"late-night\",\"msql\",\"and\",\"php\",\"is\",\"the\",\"perfect\",\"syllogism\",\"for\",\"my\",\"coffee\",\"addiction\"],\"words\":[\"perfect\"],\"positive\":[\"perfect\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Late-night msql and php is the perfect syllogism for my coffee addiction","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/405255381149945856","username":"noahedwardhall"},{"date":1385424386000,"afinn":"{\"score\":-2,\"comparative\":-0.3333333333333333,\"tokens\":[\"\",\"stingy\",\"\",\"ginuwine\",\"httptcos4shrthbrc\",\"nowplaying\"],\"words\":[\"\",\"stingy\",\"\"],\"negative\":[\"stingy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Stingy – Ginuwine http://t.co/s4sHRTHbRC #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/405125358317355008","username":"noahedwardhall"},{"date":1385424040000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"luv\",\"u\",\"better\",\"\",\"ll\",\"cool\",\"j\",\"httptcommiotv2vws\",\"nowplaying\"],\"words\":[\"cool\",\"\",\"better\",\"\"],\"positive\":[\"cool\",\"better\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Luv U Better – LL Cool J http://t.co/mmIOTv2VWS #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/405123903833399297","username":"noahedwardhall"},{"date":1385423558000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"i\",\"like\",\"them\",\"girls\",\"\",\"tyrese\",\"httptcoas6qje71cd\",\"nowplaying\"],\"words\":[\"\",\"like\",\"\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Like Them Girls – Tyrese http://t.co/as6Qje71cD #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/405121882183061504","username":"noahedwardhall"},{"date":1385344843000,"afinn":"{\"score\":-1,\"comparative\":-0.14285714285714285,\"tokens\":[\"\",\"desafinado\",\"\",\"dizzy\",\"gillespie\",\"httptcoqerxhgzmvf\",\"nowplaying\"],\"words\":[\"dizzy\",\"\",\"\"],\"negative\":[\"dizzy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Desafinado – Dizzy Gillespie http://t.co/qerXHGzMVF #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/404791730437750784","username":"noahedwardhall"},{"date":1385343190000,"afinn":"{\"score\":-1,\"comparative\":-0.07692307692307693,\"tokens\":[\"\",\"naima\",\"-\",\"alternate\",\"version\",\"take\",\"1\",\"incomplete\",\"\",\"john\",\"coltrane\",\"httptconaa6k9ghts\",\"nowplaying\"],\"words\":[\"\",\"incomplete\",\"\"],\"negative\":[\"incomplete\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Naima - Alternate Version, Take 1, Incomplete – John Coltrane http://t.co/NAA6K9ghtS #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/404784793662943232","username":"noahedwardhall"},{"date":1385342489000,"afinn":"{\"score\":1,\"comparative\":0.125,\"tokens\":[\"\",\"passion\",\"dance\",\"\",\"mccoy\",\"tyner\",\"httptcocakrkdxewg\",\"nowplaying\"],\"words\":[\"\",\"passion\",\"\"],\"positive\":[\"passion\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ Passion Dance – McCoy Tyner http://t.co/CAKRkdXEWg #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/404781855469088768","username":"noahedwardhall"},{"date":1385341491000,"afinn":"{\"score\":-1,\"comparative\":-0.07692307692307693,\"tokens\":[\"woa\",\"did\",\"harvardhbs\",\"stop\",\"allowing\",\"the\",\"public\",\"access\",\"to\",\"their\",\"elevator\",\"pitch\",\"app\"],\"words\":[\"stop\"],\"negative\":[\"stop\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"woa! did @HarvardHBS stop allowing the public access to their elevator pitch app?","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/404777671160119296","username":"noahedwardhall"},{"date":1385340148000,"afinn":"{\"score\":2,\"comparative\":0.13333333333333333,\"tokens\":[\"she\",\"is\",\"like\",\"the\",\"heart\",\"of\",\"my\",\"heart\",\"\",\"saturday\",\"\",\"will\",\"downing\",\"httptcoebetswakwl\",\"nowplaying\"],\"words\":[\"\",\"\",\"like\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"she is like the heart of my heart... ♫ Saturday – Will Downing http://t.co/ebEtSWAKWL #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/404772035361927168","username":"noahedwardhall"},{"date":1385253620000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"sweet\",\"home\",\"chicago\",\"\",\"urban\",\"knights\",\"httptcoppswao6cit\",\"nowplaying\"],\"words\":[\"\",\"sweet\",\"\"],\"positive\":[\"sweet\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Sweet Home Chicago – Urban Knights http://t.co/pPsWaO6CIT #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/404409110755418113","username":"noahedwardhall"},{"date":1384728660000,"afinn":"{\"score\":1,\"comparative\":0.14285714285714285,\"tokens\":[\"\",\"yes\",\"\",\"euge\",\"groove\",\"httptcolg5fso0ypx\",\"nowplaying\"],\"words\":[\"\",\"yes\",\"\"],\"positive\":[\"yes\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Yes – Euge Groove http://t.co/lG5fso0Ypx #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/402207269275721728","username":"noahedwardhall"},{"date":1384723518000,"afinn":"{\"score\":3,\"comparative\":0.21428571428571427,\"tokens\":[\"\",\"love\",\"will\",\"never\",\"let\",\"you\",\"down\",\"\",\"brian\",\"culbertsonpatti\",\"austinkirk\",\"whalum\",\"httptcou4rkloyyqr\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love Will Never Let You Down – Brian Culbertson,Patti Austin,Kirk Whalum http://t.co/U4rKlOYYqr #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/402185703942914049","username":"noahedwardhall"},{"date":1384720852000,"afinn":"{\"score\":-1,\"comparative\":-0.09090909090909091,\"tokens\":[\"\",\"ain't\",\"no\",\"stoppin'\",\"us\",\"now\",\"\",\"wayman\",\"tisdale\",\"httptcoctypwiek5m\",\"nowplaying\"],\"words\":[\"\",\"no\",\"\"],\"negative\":[\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Ain't No Stoppin' Us Now – Wayman Tisdale http://t.co/CtYpwIEK5m #NowPlaying","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/402174521865555969","username":"noahedwardhall"},{"date":1384719076000,"afinn":"{\"score\":3,\"comparative\":0.375,\"tokens\":[\"\",\"honey\",\"love\",\"\",\"rohn\",\"lawrence\",\"httptcohlzthlhnzq\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Honey Love – Rohn Lawrence http://t.co/hlZTHlhNZQ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/402167071728861184","username":"noahedwardhall"},{"date":1384660306000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"\",\"don't\",\"rush\",\"take\",\"love\",\"slowly\",\"\",\"k-ci\",\"amp\",\"jojo\",\"httptcotirqnzz5in\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Don't Rush (Take Love Slowly) – K-Ci &amp; JoJo http://t.co/tirqnZZ5iN #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/401920571572645888","username":"noahedwardhall"},{"date":1384659659000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"i\",\"like\",\"them\",\"girls\",\"\",\"tyrese\",\"httptcoas6qje71cd\",\"nowplaying\"],\"words\":[\"\",\"like\",\"\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Like Them Girls – Tyrese http://t.co/as6Qje71cD #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/401917858302525441","username":"noahedwardhall"},{"date":1384557930000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"\",\"you\",\"don't\",\"know\",\"what\",\"love\",\"is\",\"\",\"wynton\",\"marsalis\",\"httptcoqwvb591uqs\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ You Don't Know What Love Is – Wynton Marsalis http://t.co/qwvb591UQs #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/401491177288904704","username":"noahedwardhall"},{"date":1384544873000,"afinn":"{\"score\":2,\"comparative\":0.15384615384615385,\"tokens\":[\"\",\"dear\",\"old\",\"stockholm\",\"-\",\"2007\",\"digital\",\"remaster\",\"\",\"paul\",\"chambers\",\"httptcoah3pbwzok5\",\"nowplaying\"],\"words\":[\"\",\"dear\",\"\"],\"positive\":[\"dear\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Dear Old Stockholm - 2007 Digital Remaster – Paul Chambers http://t.co/ah3pBwZOk5 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/401436413389832192","username":"noahedwardhall"},{"date":1384542512000,"afinn":"{\"score\":-1,\"comparative\":-0.125,\"tokens\":[\"\",\"no\",\"moe\",\"\",\"sonny\",\"rollins\",\"httptcoduoqsndhyt\",\"nowplaying\"],\"words\":[\"\",\"no\",\"\"],\"negative\":[\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ No Moe – Sonny Rollins http://t.co/DuOQSnDhyT #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/401426508620636161","username":"noahedwardhall"},{"date":1384541537000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"must\",\"be\",\"nice\",\"\",\"lyfe\",\"jennings\",\"httptco2l2zjv69ap\",\"nowplaying\"],\"words\":[\"\",\"nice\",\"\"],\"positive\":[\"nice\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Must Be Nice – Lyfe Jennings http://t.co/2L2ZJv69Ap #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/401422417270018048","username":"noahedwardhall"},{"date":1384541243000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"can\",\"u\",\"help\",\"me\",\"\",\"usher\",\"httptcoboulid848c\",\"nowplaying\"],\"words\":[\"\",\"help\",\"\"],\"positive\":[\"help\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ Can U Help Me – Usher http://t.co/bOUliD848c #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/401421184773795840","username":"noahedwardhall"},{"date":1384476776000,"afinn":"{\"score\":3,\"comparative\":0.42857142857142855,\"tokens\":[\"the\",\"ontogeny\",\"of\",\"love\",\"by\",\"noahedwardhall\",\"httpstcon28y41ae0y\"],\"words\":[\"love\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"The Ontogeny of Love, by @NoahEdwardHall \nhttps://t.co/n28Y41AE0y","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/401150791328604160","username":"noahedwardhall"},{"date":1384216470000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"rock\",\"the\",\"boat\",\"\",\"aaliyah\",\"tribute\",\"httptcodxnrw5dkqp\",\"nowplaying\"],\"words\":[\"tribute\",\"\",\"\"],\"positive\":[\"tribute\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Rock The Boat – Aaliyah Tribute http://t.co/dXnrw5DKQP #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/400058988261154817","username":"noahedwardhall"},{"date":1384216181000,"afinn":"{\"score\":3,\"comparative\":0.23076923076923078,\"tokens\":[\"\",\"dj\",\"play\",\"a\",\"love\",\"song\",\"\",\"jamie\",\"foxx\",\"featuring\",\"twista\",\"httptcozfqdo5v8ry\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ DJ Play A Love Song – Jamie Foxx featuring Twista http://t.co/Zfqdo5v8rY #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/400057777583685632","username":"noahedwardhall"},{"date":1384213626000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"sweet\",\"thing\",\"\",\"mary\",\"j\",\"blige\",\"httptcocnwoi8ozk5\",\"nowplaying\"],\"words\":[\"\",\"sweet\",\"\"],\"positive\":[\"sweet\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Sweet Thing – Mary J. Blige http://t.co/cNWoI8oZK5 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/400047061606752258","username":"noahedwardhall"},{"date":1384213220000,"afinn":"{\"score\":-2,\"comparative\":-0.3333333333333333,\"tokens\":[\"\",\"stingy\",\"\",\"ginuwine\",\"httptcos4shrthbrc\",\"nowplaying\"],\"words\":[\"\",\"stingy\",\"\"],\"negative\":[\"stingy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ Stingy – Ginuwine http://t.co/s4sHRTHbRC #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/400045360132796417","username":"noahedwardhall"},{"date":1384205598000,"afinn":"{\"score\":-3,\"comparative\":-0.3,\"tokens\":[\"\",\"he\",\"can't\",\"love\",\"u\",\"\",\"jagged\",\"edge\",\"httptcogrf3sex9ib\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"negative\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ He Can't Love U – Jagged Edge http://t.co/GRF3Sex9ib #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/400013387171889152","username":"noahedwardhall"},{"date":1384203589000,"afinn":"{\"score\":1,\"comparative\":0.045454545454545456,\"tokens\":[\"\",\"this\",\"is\",\"for\",\"the\",\"lover\",\"in\",\"you\",\"\",\"babyface\",\"featuring\",\"ll\",\"cool\",\"j\",\"howard\",\"hewett\",\"jody\",\"watley\",\"amp\",\"jeffrey\",\"daniels\",\"httptcokfodgcftzf\"],\"words\":[\"cool\",\"\",\"\"],\"positive\":[\"cool\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ This Is For The Lover In You – Babyface featuring LL Cool J, Howard Hewett, Jody Watley &amp; Jeffrey Daniels http://t.co/KfOdGcFtZf","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/400004963273023488","username":"noahedwardhall"},{"date":1384203260000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"someone\",\"to\",\"love\",\"\",\"jon\",\"bbabyface\",\"httptcozhz2fgxcvg\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Someone To Love – Jon B.,Babyface http://t.co/ZHZ2FGXCVg #NowPlaying","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/400003584261357568","username":"noahedwardhall"},{"date":1384202437000,"afinn":"{\"score\":2,\"comparative\":0.14285714285714285,\"tokens\":[\"\",\"when\",\"will\",\"i\",\"see\",\"you\",\"smile\",\"again\",\"\",\"bell\",\"biv\",\"devoe\",\"httptcokcguephsoq\",\"nowplaying\"],\"words\":[\"\",\"smile\",\"\"],\"positive\":[\"smile\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ When Will I See You Smile Again? – Bell Biv DeVoe http://t.co/kCGuephsoQ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/400000130696609792","username":"noahedwardhall"},{"date":1384202039000,"afinn":"{\"score\":3,\"comparative\":0.21428571428571427,\"tokens\":[\"\",\"you\",\"know\",\"that\",\"i\",\"love\",\"you\",\"-\",\"main\",\"\",\"donell\",\"jones\",\"httptcoczazgimwhi\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ You Know That I Love You - Main – Donell Jones http://t.co/cZAzGImwHI #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399998460138881024","username":"noahedwardhall"},{"date":1384199241000,"afinn":"{\"score\":2,\"comparative\":0.16666666666666666,\"tokens\":[\"\",\"i\",\"like\",\"the\",\"way\",\"the\",\"kissing\",\"game\",\"\",\"hi-five\",\"httptco76rzdqehbl\",\"nowplaying\"],\"words\":[\"\",\"like\",\"\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Like the Way (The Kissing Game) – Hi-Five http://t.co/76RzdqeHbl #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399986724564377600","username":"noahedwardhall"},{"date":1384193835000,"afinn":"{\"score\":2,\"comparative\":0.125,\"tokens\":[\"\",\"how\",\"could\",\"you\",\"do\",\"a\",\"thing\",\"like\",\"that\",\"to\",\"me\",\"\",\"erroll\",\"garner\",\"httptco6jdopirqx0\",\"nowplaying\"],\"words\":[\"\",\"like\",\"\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ How Could You Do A Thing Like That To Me – Erroll Garner http://t.co/6jdoPiRQX0 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399964051482353664","username":"noahedwardhall"},{"date":1384193262000,"afinn":"{\"score\":1,\"comparative\":0.07692307692307693,\"tokens\":[\"\",\"weaver\",\"of\",\"dreams\",\"-\",\"1961\",\"digital\",\"remaster\",\"\",\"freddie\",\"hubbard\",\"httptco6vxb9shppt\",\"nowplaying\"],\"words\":[\"\",\"dreams\",\"\"],\"positive\":[\"dreams\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Weaver Of Dreams - 1961 Digital Remaster – Freddie Hubbard http://t.co/6vxB9shPPt #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399961647340859393","username":"noahedwardhall"},{"date":1384190769000,"afinn":"{\"score\":2,\"comparative\":0.18181818181818182,\"tokens\":[\"\",\"things\",\"are\",\"getting\",\"better\",\"\",\"cannonball\",\"adderleymilt\",\"jackson\",\"httptcoew0bp0gqls\",\"nowplaying\"],\"words\":[\"\",\"better\",\"\"],\"positive\":[\"better\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Things Are Getting Better – Cannonball Adderley,Milt Jackson http://t.co/EW0BP0gqLS #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399951192567984128","username":"noahedwardhall"},{"date":1384186002000,"afinn":"{\"score\":2,\"comparative\":0.14285714285714285,\"tokens\":[\"\",\"peace\",\"rudy\",\"van\",\"gelder\",\"edition\",\"1999\",\"-\",\"remastered\",\"\",\"horace\",\"silver\",\"httptcovn3xwzqct4\",\"nowplaying\"],\"words\":[\"\",\"peace\",\"\"],\"positive\":[\"peace\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Peace (Rudy Van Gelder Edition) [1999 - Remastered] – Horace Silver http://t.co/Vn3xwZqct4 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399931196555005952","username":"noahedwardhall"},{"date":1384139467000,"afinn":"{\"score\":5,\"comparative\":0.5555555555555556,\"tokens\":[\"\",\"everybody\",\"loves\",\"the\",\"sunshine\",\"\",\"incognito\",\"httptcocjiregyqzc\",\"nowplaying\"],\"words\":[\"\",\"sunshine\",\"loves\",\"\"],\"positive\":[\"sunshine\",\"loves\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Everybody Loves The Sunshine – Incognito http://t.co/CjIREGYQzc #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399736016530993152","username":"noahedwardhall"},{"date":1384135198000,"afinn":"{\"score\":-1,\"comparative\":-0.1,\"tokens\":[\"\",\"she's\",\"playing\",\"hard\",\"to\",\"get\",\"\",\"hi-five\",\"httptcodqmgphu0iw\",\"nowplaying\"],\"words\":[\"\",\"hard\",\"\"],\"negative\":[\"hard\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ She's Playing Hard To Get – Hi-Five http://t.co/dQMgphU0iw #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399718108769697793","username":"noahedwardhall"},{"date":1384067931000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"\",\"your\",\"body\",\"-\",\"amended\",\"version\",\"\",\"pretty\",\"ricky\",\"httptcoow3rvoxvwd\",\"nowplaying\"],\"words\":[\"pretty\",\"\",\"\"],\"positive\":[\"pretty\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Your Body - Amended Version – Pretty Ricky http://t.co/OW3RvOXvWd #NowPlaying","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/399435973676646400","username":"noahedwardhall"},{"date":1384067345000,"afinn":"{\"score\":-2,\"comparative\":-0.2857142857142857,\"tokens\":[\"\",\"freak\",\"me\",\"\",\"silk\",\"httptcodmc8sphlzl\",\"nowplaying\"],\"words\":[\"\",\"freak\",\"\"],\"negative\":[\"freak\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Freak Me – Silk http://t.co/dMC8SpHlzl #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399433512236769281","username":"noahedwardhall"},{"date":1384066746000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"if\",\"you\",\"love\",\"me\",\"\",\"brownstone\",\"httptcoe86qurr51v\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ If You Love Me – Brownstone http://t.co/e86qUrR51v #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399431000314224640","username":"noahedwardhall"},{"date":1384063613000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"luv\",\"u\",\"better\",\"\",\"ll\",\"cool\",\"j\",\"httptcoamsvs38oi1\",\"nowplaying\"],\"words\":[\"cool\",\"\",\"better\",\"\"],\"positive\":[\"cool\",\"better\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Luv U Better – LL Cool J http://t.co/aMsVS38oi1 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399417862009270272","username":"noahedwardhall"},{"date":1384041963000,"afinn":"{\"score\":1,\"comparative\":0.14285714285714285,\"tokens\":[\"\",\"promise\",\"\",\"jagged\",\"edge\",\"httptcoda2yn3nkot\",\"nowplaying\"],\"words\":[\"\",\"promise\",\"\"],\"positive\":[\"promise\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Promise – Jagged Edge http://t.co/DA2yn3nkOt #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399327052458778626","username":"noahedwardhall"},{"date":1384041424000,"afinn":"{\"score\":6,\"comparative\":0.75,\"tokens\":[\"\",\"makin'\",\"good\",\"love\",\"\",\"avant\",\"httptcolcrrk6zq65\",\"nowplaying\"],\"words\":[\"\",\"love\",\"good\",\"\"],\"positive\":[\"love\",\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Makin' Good Love – Avant http://t.co/lcRRk6zq65 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399324794732023809","username":"noahedwardhall"},{"date":1384039895000,"afinn":"{\"score\":-2,\"comparative\":-0.3333333333333333,\"tokens\":[\"\",\"weak\",\"\",\"swv\",\"httptcorvnxkyhfss\",\"nowplaying\"],\"words\":[\"\",\"weak\",\"\"],\"negative\":[\"weak\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Weak – SWV http://t.co/rvnxKYhFSs #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399318379338551296","username":"noahedwardhall"},{"date":1384038862000,"afinn":"{\"score\":-2,\"comparative\":-0.2857142857142857,\"tokens\":[\"\",\"missing\",\"you\",\"\",\"case\",\"httptcoohoiavqhs5\",\"nowplaying\"],\"words\":[\"\",\"missing\",\"\"],\"negative\":[\"missing\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Missing You – Case http://t.co/OHOIAVqhs5 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399314047998259200","username":"noahedwardhall"},{"date":1384033323000,"afinn":"{\"score\":6,\"comparative\":0.5454545454545454,\"tokens\":[\"\",\"at\",\"your\",\"best\",\"you\",\"are\",\"love\",\"\",\"aaliyah\",\"httptcomt0xlycqp2\",\"nowplaying\"],\"words\":[\"\",\"love\",\"best\",\"\"],\"positive\":[\"love\",\"best\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ At Your Best (You Are Love) – Aaliyah http://t.co/Mt0xLycQP2 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/399290817136701440","username":"noahedwardhall"},{"date":1383956705000,"afinn":"{\"score\":3,\"comparative\":0.375,\"tokens\":[\"\",\"the\",\"love\",\"scene\",\"\",\"joe\",\"httptcopf9jw3f7mr\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ The Love Scene – Joe http://t.co/Pf9jW3f7MR #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398969454551248896","username":"noahedwardhall"},{"date":1383955942000,"afinn":"{\"score\":2,\"comparative\":0.2857142857142857,\"tokens\":[\"\",\"sunshine\",\"\",\"lil'\",\"flip\",\"httptcoxowywzl7lj\",\"nowplaying\"],\"words\":[\"\",\"sunshine\",\"\"],\"positive\":[\"sunshine\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Sunshine – Lil' Flip http://t.co/XoWyWZL7Lj #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398966255828213760","username":"noahedwardhall"},{"date":1383955125000,"afinn":"{\"score\":1,\"comparative\":0.07692307692307693,\"tokens\":[\"\",\"i\",\"want\",\"to\",\"be\",\"your\",\"man\",\"\",\"zapp\",\"amp\",\"roger\",\"httptcovdrxhexdpo\",\"nowplaying\"],\"words\":[\"\",\"want\",\"\"],\"positive\":[\"want\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ I Want To Be Your Man – Zapp &amp; Roger http://t.co/vDrXHEXdpO #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398962829975240704","username":"noahedwardhall"},{"date":1383954730000,"afinn":"{\"score\":1,\"comparative\":0.14285714285714285,\"tokens\":[\"\",\"trust\",\"\",\"keyshia\",\"colemonica\",\"httptcocwwytqsmyd\",\"nowplaying\"],\"words\":[\"\",\"trust\",\"\"],\"positive\":[\"trust\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Trust – Keyshia Cole,Monica http://t.co/cWWYtQsmYD #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398961171987836929","username":"noahedwardhall"},{"date":1383954360000,"afinn":"{\"score\":1,\"comparative\":0.1,\"tokens\":[\"\",\"what\",\"you\",\"want\",\"feat\",\"total\",\"\",\"mase\",\"httptcoyrcjv86r96\",\"nowplaying\"],\"words\":[\"\",\"want\",\"\"],\"positive\":[\"want\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ What You Want [feat. Total] – Mase http://t.co/yrcjV86R96 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398959619713691648","username":"noahedwardhall"},{"date":1383954060000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"real\",\"love\",\"\",\"mary\",\"j\",\"blige\",\"httptcons6sjdoz2z\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Real Love – Mary J. Blige http://t.co/Ns6sjdOz2Z #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398958363658035200","username":"noahedwardhall"},{"date":1383953484000,"afinn":"{\"score\":-3,\"comparative\":-0.42857142857142855,\"tokens\":[\"\",\"bad\",\"girl\",\"\",\"usher\",\"httptcokk3svdzjva\",\"nowplaying\"],\"words\":[\"\",\"bad\",\"\"],\"negative\":[\"bad\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Bad Girl – Usher http://t.co/Kk3svdzjva #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398955946732302336","username":"noahedwardhall"},{"date":1383952724000,"afinn":"{\"score\":4,\"comparative\":0.19047619047619047,\"tokens\":[\"please\",\"send\",\"in\",\"your\",\"requests\",\"for\",\"broadcast\",\"to\",\"over\",\"100k\",\"users\",\"across\",\"three\",\"twitter\",\"accounts\",\"but\",\"they\",\"must\",\"be\",\"about\",\"love\"],\"words\":[\"love\",\"please\"],\"positive\":[\"love\",\"please\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"please send in your requests for broadcast to over 100K users across three twitter accounts, but they must be about #love","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398952758037843968","username":"noahedwardhall"},{"date":1383952674000,"afinn":"{\"score\":3,\"comparative\":0.16666666666666666,\"tokens\":[\"lol\",\"i\",\"guess\",\"all\",\"my\",\"songs\",\"are\",\"always\",\"about\",\"baby-making\",\"but\",\"what\",\"else\",\"is\",\"there\",\"to\",\"sing\",\"about\"],\"words\":[\"lol\"],\"positive\":[\"lol\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"lol I guess all my songs are always about baby-making, but what else is there to sing about?","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398952548150677504","username":"noahedwardhall"},{"date":1383952640000,"afinn":"{\"score\":2,\"comparative\":0.125,\"tokens\":[\"my\",\"dad's\",\"getting\",\"married\",\"this\",\"weekend\",\"so\",\"all\",\"my\",\"songs\",\"will\",\"be\",\"about\",\"baby\",\"making\",\"enjoy\"],\"words\":[\"enjoy\"],\"positive\":[\"enjoy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"My dad's getting married this weekend. So all my songs will be about baby making. #Enjoy","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398952405997322241","username":"noahedwardhall"},{"date":1383952221000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"how\",\"deep\",\"is\",\"your\",\"love\",\"\",\"dru\",\"hill\",\"httptcomnigivek73\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ How Deep Is Your Love – Dru Hill http://t.co/MnigiVek73 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398950647933829120","username":"noahedwardhall"},{"date":1383951934000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"\",\"hey\",\"lover\",\"\",\"ll\",\"cool\",\"jboyz\",\"ii\",\"men\",\"httptcohys5l4anwq\",\"nowplaying\"],\"words\":[\"cool\",\"\",\"\"],\"positive\":[\"cool\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Hey Lover – LL Cool J,Boyz II Men http://t.co/hYS5l4ANwQ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398949445335023616","username":"noahedwardhall"},{"date":1383951653000,"afinn":"{\"score\":-2,\"comparative\":-0.25,\"tokens\":[\"\",\"officially\",\"missing\",\"you\",\"\",\"tamia\",\"httptcoilsdm61sjz\",\"nowplaying\"],\"words\":[\"\",\"missing\",\"\"],\"negative\":[\"missing\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Officially Missing You – Tamia http://t.co/ILSDM61Sjz #NowPlaying","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/398948266567401473","username":"noahedwardhall"},{"date":1383951412000,"afinn":"{\"score\":1,\"comparative\":0.08333333333333333,\"tokens\":[\"\",\"grind\",\"with\",\"me\",\"-\",\"amended\",\"version\",\"\",\"pretty\",\"ricky\",\"httptcoiak76ay68b\",\"nowplaying\"],\"words\":[\"pretty\",\"\",\"\"],\"positive\":[\"pretty\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Grind With Me - Amended Version – Pretty Ricky http://t.co/iAk76Ay68b #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398947256520306688","username":"noahedwardhall"},{"date":1383946898000,"afinn":"{\"score\":2,\"comparative\":0.18181818181818182,\"tokens\":[\"\",\"better\",\"with\",\"time\",\"\",\"boney\",\"james\",\"featuring\",\"bilal\",\"httptcos2a2xgtgnv\",\"nowplaying\"],\"words\":[\"\",\"better\",\"\"],\"positive\":[\"better\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ Better With Time – Boney James (Featuring Bilal) http://t.co/S2A2XGTgNV #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398928321204846592","username":"noahedwardhall"},{"date":1383934048000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"for\",\"the\",\"love\",\"of\",\"you\",\"\",\"norman\",\"brown\",\"httptcoush0eylpvj\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ For The Love Of You – Norman Brown http://t.co/uSh0eyLpVJ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/398874426399129600","username":"noahedwardhall"},{"date":1383722225000,"afinn":"{\"score\":-1,\"comparative\":-0.08333333333333333,\"tokens\":[\"\",\"can\",\"you\",\"stop\",\"the\",\"rain\",\"\",\"grover\",\"washington\",\"jr\",\"httptcolxwazw2pqi\",\"nowplaying\"],\"words\":[\"\",\"stop\",\"\"],\"negative\":[\"stop\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Can You Stop the Rain – Grover Washington Jr. http://t.co/lXWazW2PQi #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/397985976015802369","username":"noahedwardhall"},{"date":1383579295000,"afinn":"{\"score\":3,\"comparative\":0.21428571428571427,\"tokens\":[\"\",\"i\",\"love\",\"you\",\"more\",\"than\",\"you'll\",\"ever\",\"know\",\"\",\"euge\",\"groove\",\"httptcoplewqenib9\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Love You More Than You'll Ever Know – Euge Groove http://t.co/pLEwqEniB9 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/397386484145078272","username":"noahedwardhall"},{"date":1383448792000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"after\",\"the\",\"love\",\"is\",\"gone\",\"\",\"norman\",\"brown\",\"httptcogh7vlopwb5\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ After The Love Is Gone – Norman Brown http://t.co/Gh7vLOPWb5 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/396839114336518145","username":"noahedwardhall"},{"date":1383439672000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"\",\"someday\",\"we'll\",\"all\",\"be\",\"free\",\"\",\"kirk\",\"whalum\",\"httptcov2lqkxg9rp\",\"nowplaying\"],\"words\":[\"\",\"free\",\"\"],\"positive\":[\"free\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Someday We'll All Be Free – Kirk Whalum http://t.co/v2lQKxG9RP #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/396800860585328640","username":"noahedwardhall"},{"date":1383433990000,"afinn":"{\"score\":1,\"comparative\":0.1,\"tokens\":[\"\",\"the\",\"feeling\",\"i\",\"get\",\"\",\"norman\",\"brown\",\"httptcoblph8tzf8m\",\"nowplaying\"],\"words\":[\"\",\"feeling\",\"\"],\"positive\":[\"feeling\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ The Feeling I Get – Norman Brown http://t.co/bLph8TZF8M #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/396777032438120448","username":"noahedwardhall"},{"date":1383432023000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"out\",\"of\",\"a\",\"dream\",\"\",\"najee\",\"httptcovgtqojxj4a\",\"nowplaying\"],\"words\":[\"\",\"dream\",\"\"],\"positive\":[\"dream\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Out Of A Dream – Najee http://t.co/VgtqOJxj4a #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/396768780312776704","username":"noahedwardhall"},{"date":1383429280000,"afinn":"{\"score\":3,\"comparative\":0.21428571428571427,\"tokens\":[\"\",\"what\",\"is\",\"this\",\"thing\",\"called\",\"love\",\"\",\"paul\",\"chambersred\",\"garlandarthur\",\"taylor\",\"httptcornnxzcnxed\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ What Is This Thing Called Love – Paul Chambers,Red Garland,Arthur Taylor http://t.co/RNnxZCNXEd #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/396757277052379136","username":"noahedwardhall"},{"date":1383427749000,"afinn":"{\"score\":4,\"comparative\":0.4444444444444444,\"tokens\":[\"\",\"my\",\"funny\",\"valentine\",\"\",\"paul\",\"desmond\",\"httptcogsoupaur3u\",\"nowplaying\"],\"words\":[\"\",\"funny\",\"\"],\"positive\":[\"funny\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ My Funny Valentine – Paul Desmond http://t.co/GSoupaUr3U #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/396750852204920833","username":"noahedwardhall"},{"date":1383427391000,"afinn":"{\"score\":3,\"comparative\":0.1875,\"tokens\":[\"\",\"the\",\"most\",\"beautiful\",\"girl\",\"in\",\"the\",\"world\",\"-\",\"instrumental\",\"\",\"sonny\",\"rollins\",\"quartet\",\"httptcobcraxm7ze8\",\"nowplaying\"],\"words\":[\"\",\"beautiful\",\"\"],\"positive\":[\"beautiful\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ The Most Beautiful Girl In The World - Instrumental – Sonny Rollins Quartet http://t.co/bCrAXm7ZE8 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/396749350287597569","username":"noahedwardhall"},{"date":1383425813000,"afinn":"{\"score\":-1,\"comparative\":-0.09090909090909091,\"tokens\":[\"\",\"yet\",\"ne'er\",\"broken\",\"3rd\",\"set\",\"\",\"bill\",\"evans\",\"httptco0pu8ultmfh\",\"nowplaying\"],\"words\":[\"\",\"broken\",\"\"],\"negative\":[\"broken\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Yet Ne'er Broken {3rd Set} – Bill Evans http://t.co/0pU8ULTmFH #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/396742735807270912","username":"noahedwardhall"},{"date":1383372946000,"afinn":"{\"score\":-2,\"comparative\":-0.18181818181818182,\"tokens\":[\"\",\"have\",\"you\",\"met\",\"miss\",\"jones\",\"\",\"art\",\"tatum\",\"httptco007uy5tk2g\",\"nowplaying\"],\"words\":[\"\",\"miss\",\"\"],\"negative\":[\"miss\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Have You Met Miss Jones? – Art Tatum http://t.co/007uY5TK2G #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/396520992744275968","username":"noahedwardhall"},{"date":1383181660000,"afinn":"{\"score\":3,\"comparative\":0.21428571428571427,\"tokens\":[\"\",\"love\",\"will\",\"never\",\"let\",\"you\",\"down\",\"\",\"brian\",\"culbertsonpatti\",\"austinkirk\",\"whalum\",\"httptcou4rkloyyqr\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love Will Never Let You Down – Brian Culbertson,Patti Austin,Kirk Whalum http://t.co/U4rKlOYYqr #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/395718680006242304","username":"noahedwardhall"},{"date":1383143903000,"afinn":"{\"score\":4,\"comparative\":0.26666666666666666,\"tokens\":[\"\",\"why\",\"won't\",\"you\",\"let\",\"me\",\"love\",\"you\",\"\",\"pieces\",\"of\",\"a\",\"dream\",\"httptcov5fjcuryfb\",\"nowplaying\"],\"words\":[\"dream\",\"\",\"love\",\"\"],\"positive\":[\"dream\",\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Why Won't You Let Me Love You – Pieces Of A Dream http://t.co/V5fjCURYFB #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/395560319021371392","username":"noahedwardhall"},{"date":1383143620000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"love\",\"song\",\"\",\"boney\",\"jamesphilip\",\"bailey\",\"httptco16wwgg4t66\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love Song – Boney James,Philip Bailey http://t.co/16WwGg4t66 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/395559130179448833","username":"noahedwardhall"},{"date":1383142721000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"for\",\"the\",\"love\",\"of\",\"you\",\"\",\"najee\",\"httptcoqos9u2etf1\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ For The Love Of You – Najee http://t.co/QOs9U2ETf1 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/395555361660219393","username":"noahedwardhall"},{"date":1382908467000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"\",\"makes\",\"me\",\"feel\",\"so\",\"good\",\"\",\"paul\",\"brownal\",\"jarreau\",\"httptco8sappazlnw\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Makes Me Feel So Good – Paul Brown,Al Jarreau http://t.co/8saPpAZLnW #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/394572825698119680","username":"noahedwardhall"},{"date":1382904562000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"\",\"someday\",\"well\",\"all\",\"be\",\"free\",\"\",\"george\",\"benson\",\"httptcobxlcvwnkvl\",\"nowplaying\"],\"words\":[\"\",\"free\",\"\"],\"positive\":[\"free\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Someday We’ll All Be Free – George Benson http://t.co/bXLCvWnkvL #NowPlaying","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/394556448157339648","username":"noahedwardhall"},{"date":1382904133000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"mm\",\"mm\",\"good\",\"\",\"joyce\",\"cooling\",\"httptcoqwpfalxyy2\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Mm Mm Good – Joyce Cooling http://t.co/QwPFalXYY2 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/394554649975341056","username":"noahedwardhall"},{"date":1382851436000,"afinn":"{\"score\":-2,\"comparative\":-0.18181818181818182,\"tokens\":[\"\",\"if\",\"there\",\"be\",\"pain\",\"\",\"providencerasdaveed\",\"el\",\"harar\",\"httptcolny0znsdf6\",\"nowplaying\"],\"words\":[\"\",\"pain\",\"\"],\"negative\":[\"pain\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ If There Be Pain – Providence,RasDaveed El Harar http://t.co/lny0ZnsDf6 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/394333620627705856","username":"noahedwardhall"},{"date":1382839637000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"\",\"blue\",\"kiss\",\"\",\"chuck\",\"loeb\",\"httptcotupek80jqb\",\"nowplaying\"],\"words\":[\"\",\"kiss\",\"\"],\"positive\":[\"kiss\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Blue Kiss – Chuck Loeb http://t.co/TuPEk80jqb #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/394284133049851905","username":"noahedwardhall"},{"date":1382743258000,"afinn":"{\"score\":1,\"comparative\":0.08333333333333333,\"tokens\":[\"\",\"i\",\"want\",\"to\",\"hold\",\"your\",\"hand\",\"\",\"george\",\"benson\",\"httptcosphe9reav4\",\"nowplaying\"],\"words\":[\"\",\"want\",\"\"],\"positive\":[\"want\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Want To Hold Your Hand – George Benson http://t.co/SphE9ReAv4 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393879892187553793","username":"noahedwardhall"},{"date":1382739502000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"isn't\",\"she\",\"lovely\",\"\",\"david\",\"sanborn\",\"httptcoabpbei22nu\",\"nowplaying\"],\"words\":[\"\",\"lovely\",\"\"],\"positive\":[\"lovely\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Isn't She Lovely – David Sanborn http://t.co/ABpBeI22Nu #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393864136523653120","username":"noahedwardhall"},{"date":1382738562000,"afinn":"{\"score\":-2,\"comparative\":-0.2222222222222222,\"tokens\":[\"\",\"missing\",\"in\",\"venice\",\"\",\"rick\",\"braun\",\"httptcosqwhg63my3\",\"nowplaying\"],\"words\":[\"\",\"missing\",\"\"],\"negative\":[\"missing\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Missing In Venice – Rick Braun http://t.co/Sqwhg63My3 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393860195966648320","username":"noahedwardhall"},{"date":1382725382000,"afinn":"{\"score\":6,\"comparative\":0.6,\"tokens\":[\"\",\"mercy\",\"mercy\",\"mercy\",\"\",\"paul\",\"brownbobby\",\"caldwell\",\"httptco6ummfh5tsx\",\"nowplaying\"],\"words\":[\"\",\"mercy\",\"mercy\",\"mercy\",\"\"],\"positive\":[\"mercy\",\"mercy\",\"mercy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Mercy, Mercy, Mercy – Paul Brown,Bobby Caldwell http://t.co/6uMMFh5TSx #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393804913282531328","username":"noahedwardhall"},{"date":1382722621000,"afinn":"{\"score\":3,\"comparative\":0.42857142857142855,\"tokens\":[\"\",\"love\",\"tko\",\"\",\"fourplay\",\"httptcottp0ygxqiy\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love TKO – Fourplay http://t.co/TtP0YgxqIY #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393793334482710529","username":"noahedwardhall"},{"date":1382640066000,"afinn":"{\"score\":-1,\"comparative\":-0.06666666666666667,\"tokens\":[\"if\",\"you\",\"never\",\"get\",\"the\",\"chance\",\"to\",\"use\",\"oligopolistic\",\"in\",\"a\",\"sentence\",\"i\",\"envy\",\"you\"],\"words\":[\"envy\",\"sentence\",\"chance\"],\"positive\":[\"chance\"],\"negative\":[\"envy\",\"sentence\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"if you never get the chance to use oligopolistic in a sentence; I envy you.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393447073544024064","username":"noahedwardhall"},{"date":1382639611000,"afinn":"{\"score\":-2,\"comparative\":-0.15384615384615385,\"tokens\":[\"wordweb\",\"isnt\",\"popping\",\"up\",\"when\",\"i\",\"right-click\",\"and\",\"its\",\"starting\",\"to\",\"annoy\",\"me\"],\"words\":[\"annoy\"],\"negative\":[\"annoy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"wordweb isnt popping up when I right-click and its starting to annoy me","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393445162270994432","username":"noahedwardhall"},{"date":1382638844000,"afinn":"{\"score\":-2,\"comparative\":-0.2857142857142857,\"tokens\":[\"\",\"double\",\"trouble\",\"\",\"fourplay\",\"httptcomlmfu7wmvx\",\"nowplaying\"],\"words\":[\"\",\"trouble\",\"\"],\"negative\":[\"trouble\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Double Trouble – Fourplay http://t.co/mlmfu7WMvx #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393441945009139712","username":"noahedwardhall"},{"date":1382638203000,"afinn":"{\"score\":-2,\"comparative\":-0.2222222222222222,\"tokens\":[\"\",\"wasting\",\"your\",\"time\",\"\",\"frank\",\"mccomb\",\"httptcotyasay0ris\",\"nowplaying\"],\"words\":[\"\",\"wasting\",\"\"],\"negative\":[\"wasting\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Wasting Your Time – Frank Mccomb http://t.co/tYAsaY0riS #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393439259006230528","username":"noahedwardhall"},{"date":1382635955000,"afinn":"{\"score\":4,\"comparative\":0.25,\"tokens\":[\"\",\"i\",\"just\",\"want\",\"to\",\"love\",\"you\",\"\",\"george\",\"dukestanley\",\"clarke\",\"amp\",\"george\",\"duke\",\"httptcojzdakptrbb\",\"nowplaying\"],\"words\":[\"\",\"love\",\"want\",\"\"],\"positive\":[\"love\",\"want\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Just Want to Love You – George Duke,Stanley Clarke &amp; George Duke http://t.co/jZDakPtrBb #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393429828432457728","username":"noahedwardhall"},{"date":1382575012000,"afinn":"{\"score\":5,\"comparative\":0.45454545454545453,\"tokens\":[\"\",\"sacred\",\"kind\",\"of\",\"love\",\"\",\"grover\",\"washington\",\"jr\",\"httptcoyp47h6sy5s\",\"nowplaying\"],\"words\":[\"\",\"love\",\"kind\",\"\"],\"positive\":[\"love\",\"kind\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Sacred Kind of Love – Grover Washington Jr. http://t.co/yp47H6Sy5s #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393174216796680192","username":"noahedwardhall"},{"date":1382566384000,"afinn":"{\"score\":2,\"comparative\":0.16666666666666666,\"tokens\":[\"the\",\"avg\",\"\",\"of\",\"a\",\"research\",\"paper\",\"at\",\"httptco7egeao8mkw\",\"is\",\"like\",\"4000usd\"],\"words\":[\"like\",\"\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"the avg $ of a research paper at http://t.co/7Egeao8Mkw is like 4,000USD.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393138028979290113","username":"noahedwardhall"},{"date":1382566077000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"i'll\",\"be\",\"good\",\"to\",\"you\",\"\",\"boney\",\"james\",\"httptco79umh77pni\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I'll Be Good To You – Boney James http://t.co/79uMh77pNI #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393136741332156416","username":"noahedwardhall"},{"date":1382565157000,"afinn":"{\"score\":2,\"comparative\":0.13333333333333333,\"tokens\":[\"\",\"tell\",\"it\",\"like\",\"it\",\"tis\",\"-\",\"feat\",\"george\",\"duke\",\"\",\"wayman\",\"tisdale\",\"httptco4gexgydk4m\",\"nowplaying\"],\"words\":[\"\",\"like\",\"\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Tell It Like It TIS - feat. George Duke – Wayman Tisdale http://t.co/4GExgYdK4M #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393132882694119424","username":"noahedwardhall"},{"date":1382564947000,"afinn":"{\"score\":1,\"comparative\":0.14285714285714285,\"tokens\":[\"\",\"i\",\"wish\",\"\",\"najee\",\"httptcolcrtfggg5b\",\"nowplaying\"],\"words\":[\"\",\"wish\",\"\"],\"positive\":[\"wish\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Wish – Najee http://t.co/LcRtFGgG5b #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/393131998534832128","username":"noahedwardhall"},{"date":1382505830000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"send\",\"one\",\"your\",\"love\",\"\",\"boney\",\"james\",\"httptcokz5kguiks6\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Send One Your Love – Boney James http://t.co/Kz5KgUIKS6 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392884043924008960","username":"noahedwardhall"},{"date":1382483932000,"afinn":"{\"score\":3,\"comparative\":0.21428571428571427,\"tokens\":[\"\",\"i\",\"love\",\"you\",\"more\",\"than\",\"you'll\",\"ever\",\"know\",\"\",\"euge\",\"groove\",\"httptcoplewqenib9\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Love You More Than You'll Ever Know – Euge Groove http://t.co/pLEwqEniB9 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392792196421648384","username":"noahedwardhall"},{"date":1382463203000,"afinn":"{\"score\":4,\"comparative\":0.26666666666666666,\"tokens\":[\"\",\"why\",\"won't\",\"you\",\"let\",\"me\",\"love\",\"you\",\"\",\"pieces\",\"of\",\"a\",\"dream\",\"httptcov5fjcuryfb\",\"nowplaying\"],\"words\":[\"dream\",\"\",\"love\",\"\"],\"positive\":[\"dream\",\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Why Won't You Let Me Love You – Pieces Of A Dream http://t.co/V5fjCURYFB #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392705253860061184","username":"noahedwardhall"},{"date":1382462852000,"afinn":"{\"score\":3,\"comparative\":0.23076923076923078,\"tokens\":[\"\",\"caught\",\"a\",\"touch\",\"of\",\"your\",\"love\",\"\",\"grover\",\"washington\",\"jr\",\"httptco7wupgkpkyz\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Caught A Touch Of Your Love – Grover Washington Jr. http://t.co/7WUPgKpKyz #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392703781575458816","username":"noahedwardhall"},{"date":1382462574000,"afinn":"{\"score\":5,\"comparative\":0.5,\"tokens\":[\"\",\"love\",\"like\",\"this\",\"\",\"grover\",\"washington\",\"jr\",\"httptcolwvedkg5wp\",\"nowplaying\"],\"words\":[\"\",\"like\",\"love\",\"\"],\"positive\":[\"like\",\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love Like This – Grover Washington Jr. http://t.co/lWvedkg5wp #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392702616150372352","username":"noahedwardhall"},{"date":1382424681000,"afinn":"{\"score\":-2,\"comparative\":-0.2,\"tokens\":[\"\",\"statue\",\"of\",\"a\",\"fool\",\"\",\"will\",\"downing\",\"httptco5nlgcqkgo3\",\"nowplaying\"],\"words\":[\"\",\"fool\",\"\"],\"negative\":[\"fool\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Statue of a Fool – Will Downing http://t.co/5nlGCQkgO3 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392543680239648768","username":"noahedwardhall"},{"date":1382423366000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"i\",\"still\",\"dream\",\"\",\"boney\",\"james\",\"httptco9euqm3y0z5\",\"nowplaying\"],\"words\":[\"\",\"dream\",\"\"],\"positive\":[\"dream\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Still Dream – Boney James http://t.co/9EuqM3Y0z5 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392538167011598336","username":"noahedwardhall"},{"date":1382417305000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"same\",\"ole'\",\"love\",\"\",\"kirk\",\"whalum\",\"httptcobtp34jgv8c\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Same Ole' Love – Kirk Whalum http://t.co/btP34jgv8C #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392512743791534080","username":"noahedwardhall"},{"date":1382416848000,"afinn":"{\"score\":2,\"comparative\":0.2857142857142857,\"tokens\":[\"\",\"dedication\",\"\",\"boney\",\"james\",\"httptconrkwrmk4cf\",\"nowplaying\"],\"words\":[\"\",\"dedication\",\"\"],\"positive\":[\"dedication\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Dedication – Boney James http://t.co/NRKWRmk4cF #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392510828974321664","username":"noahedwardhall"},{"date":1382395133000,"afinn":"{\"score\":-2,\"comparative\":-0.2222222222222222,\"tokens\":[\"\",\"i\",\"can't\",\"help\",\"it\",\"\",\"maysa\",\"httptcoeyfk6zgnro\",\"nowplaying\"],\"words\":[\"\",\"help\",\"\"],\"negative\":[\"help\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Can't Help It – Maysa http://t.co/Eyfk6zGnRo #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392419746672435200","username":"noahedwardhall"},{"date":1382392795000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"that's\",\"the\",\"way\",\"love\",\"goes\",\"\",\"kirk\",\"whalum\",\"httptcommkmktfpij\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ That's The Way Love Goes – Kirk Whalum http://t.co/mMKMktFPIj #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392409940653912064","username":"noahedwardhall"},{"date":1382391509000,"afinn":"{\"score\":2,\"comparative\":0.13333333333333333,\"tokens\":[\"\",\"on\",\"your\",\"way\",\"to\",\"the\",\"top\",\"\",\"eric\",\"dariusledisinatalie\",\"the\",\"floacist\",\"stewart\",\"httptcoztnvztmo6x\",\"nowplaying\"],\"words\":[\"\",\"top\",\"\"],\"positive\":[\"top\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ On Your Way To The Top – Eric Darius,Ledisi,Natalie \"The Floacist\" Stewart http://t.co/ZtNVztmO6X #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392404547617824768","username":"noahedwardhall"},{"date":1382391274000,"afinn":"{\"score\":2,\"comparative\":0.14285714285714285,\"tokens\":[\"\",\"heaven\",\"-\",\"feat\",\"trina\",\"broussard\",\"\",\"boney\",\"james\",\"featuring\",\"trina\",\"broussard\",\"httptcoffq39yjoly\",\"nowplaying\"],\"words\":[\"\",\"heaven\",\"\"],\"positive\":[\"heaven\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Heaven - feat. Trina Broussard – Boney James (Featuring Trina Broussard) http://t.co/Ffq39YjOlY #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392403561964789760","username":"noahedwardhall"},{"date":1382389720000,"afinn":"{\"score\":3,\"comparative\":0.375,\"tokens\":[\"\",\"love\",\"suggestions\",\"\",\"will\",\"downing\",\"httptcoiq7qbt9hhx\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love Suggestions – Will Downing http://t.co/IQ7qBt9HHx #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392397044611940352","username":"noahedwardhall"},{"date":1382337148000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"feels\",\"so\",\"good\",\"\",\"jonathan\",\"butler\",\"httptcocvblt3pbkj\",\"nowplaying\"],\"words\":[\"\",\"good\",\"\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Feels So Good – Jonathan Butler http://t.co/cvBlt3pBKj #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392176539749466114","username":"noahedwardhall"},{"date":1382336529000,"afinn":"{\"score\":2,\"comparative\":0.14285714285714285,\"tokens\":[\"\",\"when\",\"i\",\"had\",\"the\",\"chance\",\"\",\"boney\",\"james\",\"letoya\",\"luckettletoya\",\"luckett\",\"httptcocvttjvw3bn\",\"nowplaying\"],\"words\":[\"\",\"chance\",\"\"],\"positive\":[\"chance\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ When I Had The Chance – Boney James, LeToya Luckett,LeToya Luckett http://t.co/CvTTJVW3bN #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392173944456769536","username":"noahedwardhall"},{"date":1382335183000,"afinn":"{\"score\":-2,\"comparative\":-0.2222222222222222,\"tokens\":[\"\",\"king\",\"of\",\"fools\",\"\",\"will\",\"downing\",\"httptcoemt46wcpz9\",\"nowplaying\"],\"words\":[\"\",\"fools\",\"\"],\"negative\":[\"fools\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ King of Fools – Will Downing http://t.co/eMt46wcpz9 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392168299745640448","username":"noahedwardhall"},{"date":1382331520000,"afinn":"{\"score\":3,\"comparative\":0.23076923076923078,\"tokens\":[\"this\",\"is\",\"my\",\"new\",\"joint\",\"\",\"love\",\"suggestions\",\"\",\"will\",\"downing\",\"httptcoiq7qbt9hhx\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"this is my new joint! ♫ Love Suggestions – Will Downing http://t.co/IQ7qBt9HHx #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392152937423577088","username":"noahedwardhall"},{"date":1382331167000,"afinn":"{\"score\":4,\"comparative\":0.4444444444444444,\"tokens\":[\"\",\"nice\",\"and\",\"easy\",\"\",\"walter\",\"beasley\",\"httptcocvhrvh3qyz\",\"nowplaying\"],\"words\":[\"\",\"easy\",\"nice\",\"\"],\"positive\":[\"easy\",\"nice\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Nice And Easy – Walter Beasley http://t.co/cvHRVh3Qyz #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392151454103764992","username":"noahedwardhall"},{"date":1382328392000,"afinn":"{\"score\":4,\"comparative\":0.5714285714285714,\"tokens\":[\"\",\"happy\",\"feeling\",\"\",\"maysa\",\"httptcodfioqno4fd\",\"nowplaying\"],\"words\":[\"\",\"feeling\",\"happy\",\"\"],\"positive\":[\"feeling\",\"happy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Happy Feeling – Maysa http://t.co/dFiOqnO4FD #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392139815447052288","username":"noahedwardhall"},{"date":1382328274000,"afinn":"{\"score\":2,\"comparative\":0.08695652173913043,\"tokens\":[\"have\",\"to\",\"do\",\"some\",\"filming\",\"next\",\"week\",\"for\",\"my\",\"job\",\"but\",\"havent\",\"touched\",\"my\",\"cam\",\"in\",\"over\",\"6\",\"months\",\"this\",\"should\",\"be\",\"interesting\"],\"words\":[\"interesting\"],\"positive\":[\"interesting\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"have to do some filming next week for my job but havent touched my cam in over 6 months. this should be interesting.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392139322398236672","username":"noahedwardhall"},{"date":1382322374000,"afinn":"{\"score\":2,\"comparative\":0.16666666666666666,\"tokens\":[\"\",\"don't\",\"talk\",\"to\",\"me\",\"like\",\"that\",\"\",\"will\",\"downing\",\"httptcoddvdubnnbl\",\"nowplaying\"],\"words\":[\"\",\"like\",\"\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Don't Talk to Me Like That – Will Downing http://t.co/DdvdubNNBL #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392114576788946945","username":"noahedwardhall"},{"date":1382311548000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"like\",\"last\",\"night\",\"\",\"will\",\"downing\",\"httptcowxbqa8oii0\",\"nowplaying\"],\"words\":[\"\",\"like\",\"\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Like Last Night – Will Downing http://t.co/WXbqA8Oii0 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392069167756492800","username":"noahedwardhall"},{"date":1382310666000,"afinn":"{\"score\":-2,\"comparative\":-0.16666666666666666,\"tokens\":[\"\",\"don't\",\"let\",\"me\",\"be\",\"lonely\",\"tonight\",\"\",\"boney\",\"james\",\"httptcoo00irwxrw8\",\"nowplaying\"],\"words\":[\"\",\"lonely\",\"\"],\"negative\":[\"lonely\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Don't Let Me Be Lonely Tonight – Boney James http://t.co/O00irWxrW8 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392065466539048962","username":"noahedwardhall"},{"date":1382310076000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"you\",\"are\",\"too\",\"beautiful\",\"\",\"kirk\",\"whalum\",\"httptcofn13xrytej\",\"nowplaying\"],\"words\":[\"\",\"beautiful\",\"\"],\"positive\":[\"beautiful\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ You Are Too Beautiful – Kirk Whalum http://t.co/FN13XrYTEJ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392062994688917505","username":"noahedwardhall"},{"date":1382308543000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"pieces\",\"\",\"pieces\",\"of\",\"a\",\"dream\",\"httptcodwybut3a6o\",\"nowplaying\"],\"words\":[\"dream\",\"\",\"\"],\"positive\":[\"dream\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Pieces – Pieces Of A Dream http://t.co/DWybUT3a6o #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392056561993932800","username":"noahedwardhall"},{"date":1382306309000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"glad\",\"i\",\"met\",\"you\",\"tonight\",\"\",\"will\",\"downing\",\"httptcokhwqkqpffw\",\"nowplaying\"],\"words\":[\"\",\"glad\",\"\"],\"positive\":[\"glad\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Glad I Met You Tonight – Will Downing http://t.co/KhwqkqPFFw #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392047195572035584","username":"noahedwardhall"},{"date":1382305970000,"afinn":"{\"score\":-1,\"comparative\":-0.045454545454545456,\"tokens\":[\"boney\",\"james\",\"is\",\"on\",\"point\",\"this\",\"afternoon\",\"cant\",\"even\",\"focus\",\"on\",\"my\",\"work\",\"i\",\"keep\",\"stopping\",\"to\",\"take\",\"in\",\"the\",\"smooth\",\"melodies\"],\"words\":[\"stopping\"],\"negative\":[\"stopping\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Boney James is on point this afternoon, cant even focus on my work I keep stopping to take in the smooth melodies.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392045773489061888","username":"noahedwardhall"},{"date":1382305126000,"afinn":"{\"score\":3,\"comparative\":0.375,\"tokens\":[\"\",\"any\",\"love\",\"\",\"norman\",\"brown\",\"httptco9zkahcknvm\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Any Love – Norman Brown http://t.co/9ZKahCKnVm #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392042233001549824","username":"noahedwardhall"},{"date":1382304657000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"love\",\"song\",\"\",\"boney\",\"jamesphilip\",\"bailey\",\"httptco16wwgg4t66\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love Song – Boney James,Philip Bailey http://t.co/16WwGg4t66 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392040263649992704","username":"noahedwardhall"},{"date":1382303226000,"afinn":"{\"score\":2,\"comparative\":0.13333333333333333,\"tokens\":[\"hopefully\",\"i\",\"can\",\"finish\",\"mktg\",\"goals\",\"section\",\"and\",\"play\",\"around\",\"with\",\"premier\",\"pro\",\"by\",\"8\"],\"words\":[\"hopefully\"],\"positive\":[\"hopefully\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"hopefully I can finish mktg goals section and play around with premier pro by 8","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392034261902979073","username":"noahedwardhall"},{"date":1382303063000,"afinn":"{\"score\":2,\"comparative\":0.07142857142857142,\"tokens\":[\"an\",\"old\",\"friend\",\"called\",\"and\",\"wanted\",\"me\",\"to\",\"help\",\"him\",\"write\",\"some\",\"songs\",\"for\",\"a\",\"well\",\"known\",\"artist\",\"but\",\"im\",\"unsure\",\"if\",\"my\",\"message\",\"aligns\",\"with\",\"the\",\"culture\"],\"words\":[\"unsure\",\"help\",\"friend\"],\"positive\":[\"help\",\"friend\"],\"negative\":[\"unsure\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"an old friend called and wanted me to help him write some songs for a well known artist; but im unsure if my message aligns with the culture","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/392033577153466368","username":"noahedwardhall"},{"date":1382222592000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"i\",\"wont\",\"stop\",\"\",\"will\",\"downing\",\"httptco9sefcao8w9\",\"nowplaying\"],\"words\":[\"\",\"stop\",\"\"],\"positive\":[\"stop\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Won’t Stop – Will Downing http://t.co/9SEFcAo8w9 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391696057039478784","username":"noahedwardhall"},{"date":1382222006000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"love's\",\"in\",\"need\",\"of\",\"love\",\"today\",\"\",\"najee\",\"httptcoqdjlsa4kmv\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love's In Need Of Love Today – Najee http://t.co/QDjLsa4kMV #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391693599185719296","username":"noahedwardhall"},{"date":1382221617000,"afinn":"{\"score\":3,\"comparative\":0.375,\"tokens\":[\"\",\"the\",\"blessing\",\"\",\"will\",\"downing\",\"httptcoz2xub6lp51\",\"nowplaying\"],\"words\":[\"\",\"blessing\",\"\"],\"positive\":[\"blessing\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ The Blessing – Will Downing http://t.co/Z2XUB6LP51 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391691968356433920","username":"noahedwardhall"},{"date":1382220838000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"better\",\"days\",\"ahead\",\"\",\"norman\",\"brown\",\"httptcoalvhbv976r\",\"nowplaying\"],\"words\":[\"\",\"better\",\"\"],\"positive\":[\"better\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Better Days Ahead – Norman Brown http://t.co/alVhbv976R #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391688703388561408","username":"noahedwardhall"},{"date":1382219740000,"afinn":"{\"score\":-2,\"comparative\":-0.11764705882352941,\"tokens\":[\"\",\"one\",\"day\",\"ill\",\"fly\",\"away\",\"feat\",\"lalah\",\"hathaway\",\"\",\"joe\",\"sample\",\"featuring\",\"lalah\",\"hathaway\",\"httptco1hlyx7jsnq\",\"nowplaying\"],\"words\":[\"\",\"ill\",\"\"],\"negative\":[\"ill\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"♫ One Day I’ll Fly Away (feat. Lalah Hathaway) – Joe Sample featuring Lalah Hathaway http://t.co/1HlyX7JSnq #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391684098512543744","username":"noahedwardhall"},{"date":1382218075000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"wishing\",\"on\",\"a\",\"star\",\"\",\"maysa\",\"httptcoqpezejtvlc\",\"nowplaying\"],\"words\":[\"\",\"wishing\",\"\"],\"positive\":[\"wishing\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Wishing On A Star – Maysa http://t.co/QPeZejTvLC #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391677114920869888","username":"noahedwardhall"},{"date":1382214723000,"afinn":"{\"score\":-1,\"comparative\":-0.1111111111111111,\"tokens\":[\"\",\"ain't\",\"no\",\"lovin'\",\"\",\"wayman\",\"tisdale\",\"httptco1zcu20qefa\",\"nowplaying\"],\"words\":[\"\",\"no\",\"\"],\"negative\":[\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Ain't No Lovin' – Wayman Tisdale http://t.co/1zCu20QeFa #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391663055139917824","username":"noahedwardhall"},{"date":1382209112000,"afinn":"{\"score\":-1,\"comparative\":-0.07692307692307693,\"tokens\":[\"\",\"stop\",\"look\",\"listen\",\"to\",\"your\",\"heart\",\"\",\"will\",\"downinggerald\",\"albright\",\"httptcop4metqcksh\",\"nowplaying\"],\"words\":[\"\",\"stop\",\"\"],\"negative\":[\"stop\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Stop, Look, Listen To Your Heart – Will Downing,Gerald Albright http://t.co/P4meTQCksh #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391639520845647872","username":"noahedwardhall"},{"date":1382207848000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"love\",\"will\",\"follow\",\"\",\"george\",\"howard\",\"httptcouxsbejpojh\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love Will Follow – George Howard http://t.co/UXSBejPoJH #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391634216661696512","username":"noahedwardhall"},{"date":1382205858000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"love\",\"you\",\"a\",\"life\",\"time\",\"\",\"najee\",\"httptcozkagjr1vkf\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love You A Life Time – Najee http://t.co/zKAgJr1vkF #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391625872081305600","username":"noahedwardhall"},{"date":1382156142000,"afinn":"{\"score\":2,\"comparative\":0.2,\"tokens\":[\"\",\"appreciate\",\"\",\"boney\",\"james\",\"featuring\",\"debi\",\"nova\",\"httptcocazfqexnb2\",\"nowplaying\"],\"words\":[\"\",\"appreciate\",\"\"],\"positive\":[\"appreciate\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Appreciate – Boney James (Featuring Debi Nova) http://t.co/CazfqExNb2 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391417348868943872","username":"noahedwardhall"},{"date":1382138137000,"afinn":"{\"score\":1,\"comparative\":0.1111111111111111,\"tokens\":[\"\",\"i\",\"wont\",\"stop\",\"\",\"will\",\"downing\",\"httptco9sefcao8w9\",\"nowplaying\"],\"words\":[\"\",\"stop\",\"\"],\"positive\":[\"stop\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Won’t Stop – Will Downing http://t.co/9SEFcAo8w9 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391341829284589569","username":"noahedwardhall"},{"date":1382133641000,"afinn":"{\"score\":1,\"comparative\":0.1,\"tokens\":[\"\",\"wishing\",\"on\",\"a\",\"star\",\"\",\"marion\",\"meadows\",\"httptcommnjpfvwzc\",\"nowplaying\"],\"words\":[\"\",\"wishing\",\"\"],\"positive\":[\"wishing\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Wishing On A Star – Marion Meadows http://t.co/mMnjpFvWZc #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391322973220524033","username":"noahedwardhall"},{"date":1382133183000,"afinn":"{\"score\":3,\"comparative\":0.21428571428571427,\"tokens\":[\"\",\"living\",\"inside\",\"your\",\"love\",\"-\",\"2004\",\"digital\",\"remaster\",\"\",\"earl\",\"klugh\",\"httptcojcayd7aygu\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Living Inside Your Love - 2004 Digital Remaster – Earl Klugh http://t.co/JCAYD7AYGU #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391321051449135104","username":"noahedwardhall"},{"date":1382125413000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"\",\"turning\",\"it\",\"up\",\"\",\"pieces\",\"of\",\"a\",\"dream\",\"httptcodkhe1yw5pn\",\"nowplaying\"],\"words\":[\"dream\",\"\",\"\"],\"positive\":[\"dream\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Turning It Up – Pieces Of A Dream http://t.co/DKHE1yw5pN #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391288459836391424","username":"noahedwardhall"},{"date":1382123114000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"\",\"love\",\"in\",\"its\",\"proper\",\"place\",\"\",\"grover\",\"washington\",\"jr\",\"httptcoifgwjyf5pe\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love In Its Proper Place – Grover Washington Jr. http://t.co/IFGWjYf5PE #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/391278816431063040","username":"noahedwardhall"},{"date":1382050565000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"where\",\"is\",\"the\",\"love\",\"\",\"grover\",\"washington\",\"jr\",\"httptcofrm9uodnrs\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Where Is The Love – Grover Washington, Jr. http://t.co/frm9uOdnrS #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/390974526273490944","username":"noahedwardhall"},{"date":1381986637000,"afinn":"{\"score\":1,\"comparative\":0.08333333333333333,\"tokens\":[\"\",\"i\",\"want\",\"to\",\"hold\",\"your\",\"hand\",\"\",\"george\",\"benson\",\"httptcosphe9reav4\",\"nowplaying\"],\"words\":[\"\",\"want\",\"\"],\"positive\":[\"want\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ I Want To Hold Your Hand – George Benson http://t.co/SphE9ReAv4 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/390706393709166592","username":"noahedwardhall"},{"date":1381947319000,"afinn":"{\"score\":3,\"comparative\":0.375,\"tokens\":[\"\",\"lovely\",\"day\",\"\",\"walter\",\"beasley\",\"httptcoaruz6ykae2\",\"nowplaying\"],\"words\":[\"\",\"lovely\",\"\"],\"positive\":[\"lovely\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Lovely Day – Walter Beasley http://t.co/aRUz6YkaE2 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/390541480059617280","username":"noahedwardhall"},{"date":1381946821000,"afinn":"{\"score\":-2,\"comparative\":-0.18181818181818182,\"tokens\":[\"\",\"ain't\",\"no\",\"stopping\",\"us\",\"now\",\"\",\"wayman\",\"tisdale\",\"httptconplb4tql58\",\"nowplaying\"],\"words\":[\"\",\"stopping\",\"no\",\"\"],\"negative\":[\"stopping\",\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Ain't No Stopping Us Now – Wayman Tisdale http://t.co/nPLb4TqL58 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/390539393305280512","username":"noahedwardhall"},{"date":1381913365000,"afinn":"{\"score\":3,\"comparative\":0.375,\"tokens\":[\"\",\"someone\",\"to\",\"love\",\"\",\"fourplay\",\"httptcop9qftzlh2d\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Someone To Love – Fourplay http://t.co/P9qftzlh2d #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/390399068351909888","username":"noahedwardhall"},{"date":1381904344000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"\",\"love\",\"will\",\"follow\",\"\",\"george\",\"howard\",\"httptcoazsj6hp2qo\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love Will Follow – George Howard http://t.co/Azsj6hP2Qo #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/390361231024193536","username":"noahedwardhall"},{"date":1381902654000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"just\",\"to\",\"be\",\"loved\",\"\",\"al\",\"jarreau\",\"httptcoi2ubaqmiqi\",\"nowplaying\"],\"words\":[\"\",\"loved\",\"\"],\"positive\":[\"loved\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Just To Be Loved – Al Jarreau http://t.co/i2ubaqMIqi #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/390354143077867521","username":"noahedwardhall"},{"date":1381901231000,"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"\",\"got\",\"to\",\"be\",\"strong\",\"\",\"maysa\",\"httptcozz6smjr1xw\",\"nowplaying\"],\"words\":[\"\",\"strong\",\"\"],\"positive\":[\"strong\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Got To Be Strong – Maysa http://t.co/ZZ6Smjr1xW #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/390348174113529856","username":"noahedwardhall"},{"date":1381798592000,"afinn":"{\"score\":-1,\"comparative\":-0.1111111111111111,\"tokens\":[\"\",\"ain't\",\"no\",\"lovin'\",\"\",\"wayman\",\"tisdale\",\"httptco1zcu20qefa\",\"nowplaying\"],\"words\":[\"\",\"no\",\"\"],\"negative\":[\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Ain't No Lovin' – Wayman Tisdale http://t.co/1zCu20QeFa #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389917675184353280","username":"noahedwardhall"},{"date":1381726565000,"afinn":"{\"score\":5,\"comparative\":0.5,\"tokens\":[\"\",\"love\",\"like\",\"this\",\"\",\"grover\",\"washington\",\"jr\",\"httptcolwvedkg5wp\",\"nowplaying\"],\"words\":[\"\",\"like\",\"love\",\"\"],\"positive\":[\"like\",\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love Like This – Grover Washington Jr. http://t.co/lWvedkg5wp #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389615570322075650","username":"noahedwardhall"},{"date":1381715164000,"afinn":"{\"score\":3,\"comparative\":0.375,\"tokens\":[\"\",\"paradise\",\"\",\"grover\",\"washington\",\"jr\",\"httptcoteovt8xl61\",\"nowplaying\"],\"words\":[\"\",\"paradise\",\"\"],\"positive\":[\"paradise\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Paradise – Grover Washington Jr. http://t.co/TeOvT8xl61 #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389567750240083968","username":"noahedwardhall"},{"date":1381712548000,"afinn":"{\"score\":2,\"comparative\":0.16666666666666666,\"tokens\":[\"i'm\",\"unsure\",\"which\",\"genre\",\"has\",\"the\",\"best\",\"song\",\"titles\",\"rock\",\"or\",\"jazz\"],\"words\":[\"best\",\"unsure\"],\"positive\":[\"best\"],\"negative\":[\"unsure\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I'm unsure which genre has the best song titles: Rock or Jazz?","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389556780990091264","username":"noahedwardhall"},{"date":1381711395000,"afinn":"{\"score\":3,\"comparative\":0.42857142857142855,\"tokens\":[\"\",\"love\",\"tko\",\"\",\"fourplay\",\"httptcottp0ygxqiy\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Love TKO – Fourplay http://t.co/TtP0YgxqIY #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389551942189326336","username":"noahedwardhall"},{"date":1381706911000,"afinn":"{\"score\":5,\"comparative\":0.45454545454545453,\"tokens\":[\"\",\"sacred\",\"kind\",\"of\",\"love\",\"\",\"grover\",\"washington\",\"jr\",\"httptcoyp47h6sy5s\",\"nowplaying\"],\"words\":[\"\",\"love\",\"kind\",\"\"],\"positive\":[\"love\",\"kind\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Sacred Kind of Love – Grover Washington Jr. http://t.co/yp47H6Sy5s #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389533136788287488","username":"noahedwardhall"},{"date":1381702657000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"\",\"for\",\"the\",\"love\",\"of\",\"you\",\"\",\"norman\",\"brown\",\"httptcoush0eylpvj\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ For The Love Of You – Norman Brown http://t.co/uSh0eyLpVJ #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389515295619944448","username":"noahedwardhall"},{"date":1381700064000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"\",\"so\",\"this\",\"is\",\"love\",\"\",\"george\",\"benson\",\"httptcoiss7tgtxhb\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ So This Is Love? – George Benson http://t.co/IsS7tGTXhB #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389504416019005440","username":"noahedwardhall"},{"date":1381698549000,"afinn":"{\"score\":-1,\"comparative\":-0.09090909090909091,\"tokens\":[\"\",\"a\",\"rainy\",\"day\",\"in\",\"monterey\",\"\",\"joe\",\"sample\",\"httptcoo9q3xbbdpj\",\"nowplaying\"],\"words\":[\"\",\"rainy\",\"\"],\"negative\":[\"rainy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ A Rainy Day In Monterey – Joe Sample http://t.co/o9Q3XBBDPj #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389498063661699072","username":"noahedwardhall"},{"date":1381698132000,"afinn":"{\"score\":3,\"comparative\":0.23076923076923078,\"tokens\":[\"\",\"caught\",\"a\",\"touch\",\"of\",\"your\",\"love\",\"\",\"grover\",\"washington\",\"jr\",\"httptco7wupgkpkyz\",\"nowplaying\"],\"words\":[\"\",\"love\",\"\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Caught A Touch Of Your Love – Grover Washington Jr. http://t.co/7WUPgKpKyz #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389496314951499777","username":"noahedwardhall"},{"date":1381696388000,"afinn":"{\"score\":2,\"comparative\":0.13333333333333333,\"tokens\":[\"\",\"breath\",\"of\",\"heaven\",\"mary's\",\"song\",\"\",\"grover\",\"washington\",\"jr\",\"featuring\",\"lisa\",\"fischer\",\"httptcoe1pmlqbnll\",\"nowplaying\"],\"words\":[\"\",\"heaven\",\"\"],\"positive\":[\"heaven\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Breath Of Heaven (Mary's Song) – Grover Washington, Jr. featuring Lisa Fischer http://t.co/E1PMLqbnlL #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389489000437657600","username":"noahedwardhall"},{"date":1381631396000,"afinn":"{\"score\":4,\"comparative\":0.5,\"tokens\":[\"\",\"overjoyed\",\"\",\"grover\",\"washington\",\"jr\",\"httptcoiuflxp8peh\",\"nowplaying\"],\"words\":[\"\",\"overjoyed\",\"\"],\"positive\":[\"overjoyed\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Overjoyed – Grover Washington Jr. http://t.co/iufLxp8peH #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389216404508930048","username":"noahedwardhall"},{"date":1381621384000,"afinn":"{\"score\":4,\"comparative\":0.5,\"tokens\":[\"\",\"masterpiece\",\"\",\"grover\",\"washington\",\"jr\",\"httptcowzkrzmefma\",\"nowplaying\"],\"words\":[\"\",\"masterpiece\",\"\"],\"positive\":[\"masterpiece\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Masterpiece – Grover Washington Jr. http://t.co/wzkRZmeFma #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389174411556687873","username":"noahedwardhall"},{"date":1381616261000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"\",\"elegant\",\"flower\",\"\",\"cyrus\",\"chestnut\",\"httptco4vrerg8n8a\",\"nowplaying\"],\"words\":[\"\",\"elegant\",\"\"],\"positive\":[\"elegant\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"♫ Elegant Flower – Cyrus Chestnut http://t.co/4vRErg8n8A #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/389152921222270976","username":"noahedwardhall"},{"date":1381539035000,"afinn":"{\"score\":4,\"comparative\":0.2222222222222222,\"tokens\":[\"once\",\"again\",\"grover\",\"washing\",\"to\",\"the\",\"rescue\",\"\",\"things\",\"are\",\"getting\",\"better\",\"\",\"grover\",\"washington\",\"jr\",\"httptco0h911cdw7n\",\"nowplaying\"],\"words\":[\"\",\"better\",\"\",\"rescue\"],\"positive\":[\"better\",\"rescue\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Once again, Grover Washing to the rescue ♫ Things Are Getting Better – Grover Washington Jr. http://t.co/0H911CDw7n #NowPlaying","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/388829012186783744","username":"noahedwardhall"},{"date":1381538787000,"afinn":"{\"score\":3,\"comparative\":0.375,\"tokens\":[\"what\",\"i\",\"value\",\"most\",\"is\",\"an\",\"honest\",\"friend\"],\"words\":[\"friend\",\"honest\"],\"positive\":[\"friend\",\"honest\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"What I value most is an honest friend","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/388827973563842560","username":"noahedwardhall"},{"date":1381534568000,"afinn":"{\"score\":1,\"comparative\":0.125,\"tokens\":[\"met\",\"biaritzroldan\",\"yesterday\",\"star\",\"reporter\",\"on\",\"the\",\"rise\"],\"words\":[\"rise\"],\"positive\":[\"rise\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"met @BiaritzRoldan yesterday; star reporter on the rise","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/388810278214705152","username":"noahedwardhall"},{"date":1381376810000,"afinn":"{\"score\":-2,\"comparative\":-0.2857142857142857,\"tokens\":[\"grover\",\"washington\",\"is\",\"on\",\"fire\",\"tonight\",\"spotify\"],\"words\":[\"fire\"],\"negative\":[\"fire\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Grover Washington is on fire tonight #spotify","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/388148592508030977","username":"noahedwardhall"},{"date":1381375501000,"afinn":"{\"score\":-2,\"comparative\":-0.5,\"tokens\":[\"groverwashington\",\"i\",\"miss\",\"home\"],\"words\":[\"miss\"],\"negative\":[\"miss\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"#GroverWashington I miss home","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/388143101123895296","username":"noahedwardhall"},{"date":1381375146000,"afinn":"{\"score\":2,\"comparative\":0.5,\"tokens\":[\"my\",\"favorite\",\"things\",\"cyruschestnutt\"],\"words\":[\"favorite\"],\"positive\":[\"favorite\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"My favorite things #CyrusChestnutt","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/388141611579736064","username":"noahedwardhall"},{"date":1381373898000,"afinn":"{\"score\":3,\"comparative\":0.42857142857142855,\"tokens\":[\"the\",\"best\",\"songs\",\"are\",\"always\",\"too\",\"short\"],\"words\":[\"best\"],\"positive\":[\"best\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"The best songs are always too short","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/388136376622788608","username":"noahedwardhall"},{"date":1381277723000,"afinn":"{\"score\":4,\"comparative\":0.18181818181818182,\"tokens\":[\"finally\",\"got\",\"a\",\"chance\",\"to\",\"work\",\"on\",\"this\",\"marketing\",\"plan\",\"for\",\"my\",\"group\",\"project\",\"all\",\"the\",\"information\",\"is\",\"falling\",\"perfectly\",\"in\",\"place\"],\"words\":[\"perfectly\",\"falling\",\"chance\"],\"positive\":[\"perfectly\",\"chance\"],\"negative\":[\"falling\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Finally got a chance to work on this marketing plan for my group project; all the information is falling perfectly in place","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/387732990295433216","username":"noahedwardhall"},{"date":1381173301000,"afinn":"{\"score\":3,\"comparative\":0.6,\"tokens\":[\"you\",\"are\",\"too\",\"beautiful\",\"sonnyrollins\"],\"words\":[\"beautiful\"],\"positive\":[\"beautiful\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"You are too beautiful #SonnyRollins","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/387295015052914688","username":"noahedwardhall"},{"date":1381163242000,"afinn":"{\"score\":5,\"comparative\":0.3333333333333333,\"tokens\":[\"anyone\",\"interested\",\"in\",\"poetry\",\"historical\",\"speeches\",\"etc\",\"here\",\"are\",\"two\",\"good\",\"playlists\",\"on\",\"spotify\",\"httptcobxqznfcvsc\"],\"words\":[\"good\",\"interested\"],\"positive\":[\"good\",\"interested\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"anyone interested in poetry, historical speeches, etc, here are two good playlists on spotify http://t.co/bxQzNfcVsc","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/387252824452517888","username":"noahedwardhall"},{"date":1380914556000,"afinn":"{\"score\":3,\"comparative\":0.21428571428571427,\"tokens\":[\"love\",\"is\",\"a\",\"two-way\",\"street\",\"make\",\"sure\",\"your\",\"both\",\"headed\",\"in\",\"the\",\"same\",\"direction\"],\"words\":[\"love\"],\"positive\":[\"love\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"love is a two-way street; make sure your both headed in the same direction","retweet_count":6,"url":"https://twitter.com/noahedwardhall/status/386209757498839040","username":"noahedwardhall"},{"date":1380876431000,"afinn":"{\"score\":3,\"comparative\":0.1875,\"tokens\":[\"i\",\"can\",\"always\",\"tell\",\"when\",\"you're\",\"lieing\",\"because\",\"you\",\"were\",\"never\",\"any\",\"good\",\"at\",\"it\",\"gladiator\"],\"words\":[\"good\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"I can always tell when you're lieing because you were never any good at it #Gladiator","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/386049849344290816","username":"noahedwardhall"},{"date":1380875965000,"afinn":"{\"score\":-1,\"comparative\":-0.0625,\"tokens\":[\"it\",\"doesn't\",\"matter\",\"what\",\"your\",\"major\",\"is\",\"in\",\"college\",\"but\",\"what\",\"you\",\"do\",\"with\",\"the\",\"knowledge\"],\"words\":[\"matter\"],\"negative\":[\"matter\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"It doesn't matter what your major is in college, but what you do with the knowledge","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/386047897336164353","username":"noahedwardhall"},{"date":1380779241000,"afinn":"{\"score\":-4,\"comparative\":-0.18181818181818182,\"tokens\":[\"if\",\"i\",\"can't\",\"find\",\"a\",\"way\",\"to\",\"pay\",\"for\",\"grad\",\"school\",\"i'll\",\"have\",\"to\",\"find\",\"a\",\"way\",\"to\",\"hide\",\"from\",\"debt\",\"collectors\"],\"words\":[\"debt\",\"hide\",\"pay\"],\"negative\":[\"debt\",\"hide\",\"pay\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"If I can't find a way to pay for grad school, I'll have to find a way to hide from debt collectors","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/385642205211148288","username":"noahedwardhall"},{"date":1380778901000,"afinn":"{\"score\":4,\"comparative\":0.4,\"tokens\":[\"low\",\"quality\",\"products\",\"require\",\"low\",\"quality\",\"users\",\"upgrade\",\"your\",\"intellect\"],\"words\":[\"quality\",\"quality\"],\"positive\":[\"quality\",\"quality\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Low quality products require low quality users: upgrade your intellect","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/385640781144264705","username":"noahedwardhall"},{"date":1380776858000,"afinn":"{\"score\":2,\"comparative\":0.1,\"tokens\":[\"everything\",\"we\",\"do\",\"is\",\"based\",\"on\",\"the\",\"expected\",\"value\",\"of\",\"our\",\"actions\",\"plusminus\",\"the\",\"times\",\"we\",\"chance\",\"on\",\"the\",\"unexpected\"],\"words\":[\"chance\"],\"positive\":[\"chance\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"Everything we do is based on the expected value of our actions; plus/minus the times we chance on the unexpected","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/385632211304595456","username":"noahedwardhall"},{"date":1380774528000,"afinn":"{\"score\":2,\"comparative\":0.15384615384615385,\"tokens\":[\"there's\",\"a\",\"difference\",\"between\",\"living\",\"in\",\"the\",\"ghetto\",\"and\",\"living\",\"like\",\"you're\",\"ghetto\"],\"words\":[\"like\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"There's a difference between living in the ghetto, and living like you're ghetto","retweet_count":2,"url":"https://twitter.com/noahedwardhall/status/385622440027504640","username":"noahedwardhall"},{"date":1380499404000,"afinn":"{\"score\":2,\"comparative\":0.4,\"tokens\":[\"qfd\",\"thank\",\"the\",\"japanese\",\"httptcoa7p6htifiw\"],\"words\":[\"thank\"],\"positive\":[\"thank\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"#qfd thank the Japanese http://t.co/a7P6HTIFiw","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/384468484253417473","username":"noahedwardhall"},{"date":1380408058000,"afinn":"{\"score\":-2,\"comparative\":-0.4,\"tokens\":[\"rationing\",\"and\",\"shortage\",\"gaming\",\"study\"],\"words\":[\"shortage\"],\"negative\":[\"shortage\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Rationing and shortage gaming #study","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/384085351091814400","username":"noahedwardhall"},{"date":1380404152000,"afinn":"{\"score\":-1,\"comparative\":-0.2,\"tokens\":[\"dropped\",\"my\",\"internet\",\"mktg\",\"class\"],\"words\":[\"dropped\"],\"negative\":[\"dropped\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"dropped my internet mktg class","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/384068968882778112","username":"noahedwardhall"},{"date":1380403666000,"afinn":"{\"score\":2,\"comparative\":0.16666666666666666,\"tokens\":[\"modern\",\"day\",\"courage\",\"not\",\"googling\",\"the\",\"answers\",\"for\",\"your\",\"take\",\"home\",\"exam\"],\"words\":[\"courage\"],\"positive\":[\"courage\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Modern Day Courage: not googling the answers for your take home exam","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/384066931633819648","username":"noahedwardhall"},{"date":1380149079000,"afinn":"{\"score\":-4,\"comparative\":-0.26666666666666666,\"tokens\":[\"using\",\"a\",\"ti83\",\"i\",\"downloaded\",\"for\",\"op\",\"mgmt\",\"homework\",\"wtf\",\"didnt\",\"i\",\"just\",\"use\",\"excel\"],\"words\":[\"wtf\"],\"negative\":[\"wtf\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"using a TI83 I downloaded for op mgmt homework, wtf didnt I just use excel","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/382999116931792897","username":"noahedwardhall"},{"date":1379974235000,"afinn":"{\"score\":2,\"comparative\":0.4,\"tokens\":[\"this\",\"is\",\"a\",\"surreal\",\"opportunity\"],\"words\":[\"opportunity\"],\"positive\":[\"opportunity\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"This is a surreal opportunity.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/382265767741235200","username":"noahedwardhall"},{"date":1379891907000,"afinn":"{\"score\":2,\"comparative\":0.14285714285714285,\"tokens\":[\"this\",\"new\",\"product\",\"dev\",\"class\",\"is\",\"turning\",\"out\",\"to\",\"be\",\"a\",\"real\",\"motivating\",\"force\"],\"words\":[\"motivating\"],\"positive\":[\"motivating\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"This new product dev class is turning out to be a real motivating force","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/381920457831628801","username":"noahedwardhall"},{"date":1379372439000,"afinn":"{\"score\":3,\"comparative\":0.42857142857142855,\"tokens\":[\"best\",\"advice\",\"i've\",\"received\",\"all\",\"week\",\"httptco6hutgqenqn\"],\"words\":[\"best\"],\"positive\":[\"best\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"best advice i've received all week http://t.co/6hUtgQenqn","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/379741652908130305","username":"noahedwardhall"},{"date":1379028850000,"afinn":"{\"score\":3,\"comparative\":0.15789473684210525,\"tokens\":[\"i\",\"need\",\"twitter\",\"to\",\"rise\",\"above\",\"the\",\"stereotype\",\"unite\",\"around\",\"common\",\"goals\",\"and\",\"help\",\"us\",\"save\",\"the\",\"blobfish\",\"httptco31xnqcnvug\"],\"words\":[\"save\",\"help\",\"stereotype\",\"rise\"],\"positive\":[\"save\",\"help\",\"rise\"],\"negative\":[\"stereotype\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I need twitter to rise above the stereotype, unite around common goals, and help us save the blobfish http://t.co/31xnQcNvUg","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/378300536157532160","username":"noahedwardhall"},{"date":1378941529000,"afinn":"{\"score\":-2,\"comparative\":-0.2,\"tokens\":[\"an\",\"extra\",\"blank\",\"space\",\"stole\",\"2\",\"hours\",\"of\",\"my\",\"afternoon\"],\"words\":[\"stole\"],\"negative\":[\"stole\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"an extra blank space stole 2 hours of my afternoon","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/377934281395302400","username":"noahedwardhall"},{"date":1378863501000,"afinn":"{\"score\":-2,\"comparative\":-0.2,\"tokens\":[\"got\",\"everything\",\"working\",\"down\",\"to\",\"ie8\",\"ie7\",\"doesnt\",\"support\",\"queryselectorall\"],\"words\":[\"support\"],\"negative\":[\"support\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"got everything working down to IE8, IE7 doesnt support querySelectorAll","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/377607009123594240","username":"noahedwardhall"},{"date":1378616787000,"afinn":"{\"score\":-2,\"comparative\":-0.4,\"tokens\":[\"george\",\"carlin\",\"7\",\"dirty\",\"words\"],\"words\":[\"dirty\"],\"negative\":[\"dirty\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"George Carlin 7 #dirty words","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/376572218538328064","username":"noahedwardhall"},{"date":1378584722000,"afinn":"{\"score\":2,\"comparative\":0.18181818181818182,\"tokens\":[\"but\",\"then\",\"again\",\"i\",\"enjoy\",\"complexity\",\"not\",\"surprising\",\"most\",\"people\",\"don't\"],\"words\":[\"enjoy\"],\"positive\":[\"enjoy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"but then again, I enjoy complexity; not surprising most people don't.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/376437725915664384","username":"noahedwardhall"},{"date":1378584649000,"afinn":"{\"score\":-2,\"comparative\":-0.2222222222222222,\"tokens\":[\"mobile\",\"designs\",\"on\",\"desktops\",\"feel\",\"overly-simplistic\",\"elementary\",\"and\",\"unsophisticated\"],\"words\":[\"unsophisticated\"],\"negative\":[\"unsophisticated\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"mobile designs on desktops feel overly-simplistic, elementary, and unsophisticated.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/376437418238291968","username":"noahedwardhall"},{"date":1378583252000,"afinn":"{\"score\":1,\"comparative\":0.041666666666666664,\"tokens\":[\"i\",\"want\",\"to\",\"code\",\"by\",\"day\",\"and\",\"record\",\"musicians\",\"by\",\"night\",\"i\",\"think\",\"i\",\"can\",\"make\",\"due\",\"with\",\"sleeping\",\"amp\",\"eating\",\"on\",\"lunch\",\"breaks\"],\"words\":[\"want\"],\"positive\":[\"want\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I want to code by day, and record musicians by night. I think I can make due with sleeping &amp; eating on lunch breaks","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/376431560070664192","username":"noahedwardhall"},{"date":1378582039000,"afinn":"{\"score\":2,\"comparative\":0.2857142857142857,\"tokens\":[\"what\",\"are\",\"some\",\"of\",\"your\",\"favorite\",\"books\"],\"words\":[\"favorite\"],\"positive\":[\"favorite\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"what are some of your favorite books","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/376426473285877760","username":"noahedwardhall"},{"date":1378401258000,"afinn":"{\"score\":-2,\"comparative\":-0.2857142857142857,\"tokens\":[\"never\",\"confuse\",\"the\",\"means\",\"with\",\"the\",\"ends\"],\"words\":[\"confuse\"],\"negative\":[\"confuse\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"never confuse the means with the ends","retweet_count":1,"url":"https://twitter.com/noahedwardhall/status/375668222147584000","username":"noahedwardhall"},{"date":1378233760000,"afinn":"{\"score\":6,\"comparative\":0.4,\"tokens\":[\"hopefully\",\"google\",\"does\",\"better\",\"on\",\"kitkat\",\"my\",\"last\",\"android\",\"phone\",\"tasted\",\"like\",\"a\",\"saltine\",\"cracker\"],\"words\":[\"like\",\"better\",\"hopefully\"],\"positive\":[\"like\",\"better\",\"hopefully\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"Hopefully google does better on #KitKat, my last android phone tasted like a saltine cracker","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/374965686537158656","username":"noahedwardhall"},{"date":1378232677000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"free\",\"webinar\",\"email\",\"amp\",\"mobile\",\"perfecting\",\"the\",\"digital\",\"marketing\",\"mix\",\"httptcohgvv3qbubq\"],\"words\":[\"free\"],\"positive\":[\"free\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"free Webinar: email &amp; mobile: perfecting the digital marketing mix: http://t.co/hGVV3QbUBQ","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/374961141576765441","username":"noahedwardhall"},{"date":1378228759000,"afinn":"{\"score\":-1,\"comparative\":-0.05263157894736842,\"tokens\":[\"word\",\"requires\",\"you\",\"to\",\"be\",\"signed\",\"in\",\"to\",\"use\",\"the\",\"dictionary\",\"complete\",\"lameness\",\"so\",\"i\",\"downloaded\",\"wordweb\",\"offline\",\"dictionary\"],\"words\":[\"offline\"],\"negative\":[\"offline\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"#Word requires you to be signed in to use the dictionary, complete #lameness so I downloaded #WordWeb offline dictionary","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/374944711049363456","username":"noahedwardhall"},{"date":1378171147000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"verizon\",\"and\",\"vodafone\",\"displayed\",\"classy\",\"strategy\",\"with\",\"their\",\"gym\",\"meeting\"],\"words\":[\"classy\"],\"positive\":[\"classy\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Verizon and Vodafone displayed classy strategy with their gym meeting.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/374703068983463937","username":"noahedwardhall"},{"date":1378143229000,"afinn":"{\"score\":2,\"comparative\":0.16666666666666666,\"tokens\":[\"duke\",\"ellington\",\"tonight\",\"i\",\"shall\",\"sleep\",\"with\",\"a\",\"smile\",\"on\",\"my\",\"face\"],\"words\":[\"smile\"],\"positive\":[\"smile\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"duke ellington #Tonight I shall sleep with a smile on my face","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/374585972396003330","username":"noahedwardhall"},{"date":1377800261000,"afinn":"{\"score\":3,\"comparative\":0.10344827586206896,\"tokens\":[\"after\",\"a\",\"workout\",\"i\",\"have\",\"to\",\"rest\",\"for\",\"a\",\"few\",\"days\",\"but\",\"after\",\"reading\",\"the\",\"mind\",\"only\",\"requires\",\"a\",\"gaze\",\"at\",\"the\",\"sunset\",\"and\",\"a\",\"good\",\"cup\",\"of\",\"coffee\"],\"words\":[\"good\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"After a workout, I have to rest for a few days. But after reading, the mind only requires a gaze at the sunset and a good cup of coffee.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/373147460064919552","username":"noahedwardhall"},{"date":1377484351000,"afinn":"{\"score\":-4,\"comparative\":-0.2857142857142857,\"tokens\":[\"first\",\"class\",\"starts\",\"at\",\"8am\",\"last\",\"class\",\"ends\",\"at\",\"11pm\",\"wtf\",\"was\",\"i\",\"thinking\"],\"words\":[\"wtf\"],\"negative\":[\"wtf\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"First class starts at 8am, last class ends at 11pm: wtf was I thinking","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/371822436456493056","username":"noahedwardhall"},{"date":1377473171000,"afinn":"{\"score\":4,\"comparative\":0.3333333333333333,\"tokens\":[\"when\",\"learning\",\"became\",\"fun\",\"i\",\"was\",\"able\",\"to\",\"do\",\"it\",\"all\",\"day\"],\"words\":[\"fun\"],\"positive\":[\"fun\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"when learning became fun, I was able to do it all day","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/371775541746991104","username":"noahedwardhall"},{"date":1377471169000,"afinn":"{\"score\":1,\"comparative\":0.125,\"tokens\":[\"i\",\"wish\",\"my\",\"headphones\",\"were\",\"about\",\"50\",\"louder\"],\"words\":[\"wish\"],\"positive\":[\"wish\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I wish my headphones were about 50% louder","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/371767145182416897","username":"noahedwardhall"},{"date":1377463873000,"afinn":"{\"score\":3,\"comparative\":0.21428571428571427,\"tokens\":[\"framework\",\"of\",\"marketing\",\"mgmt\",\"was\",\"the\",\"perfect\",\"book\",\"to\",\"read\",\"before\",\"this\",\"sem\",\"starts\"],\"words\":[\"perfect\"],\"positive\":[\"perfect\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"framework of marketing mgmt was the perfect book to read before this sem starts","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/371736545520128000","username":"noahedwardhall"},{"date":1377463759000,"afinn":"{\"score\":1,\"comparative\":0.07692307692307693,\"tokens\":[\"the\",\"path\",\"to\",\"my\",\"goals\",\"is\",\"a\",\"wide\",\"curve\",\"vs\",\"a\",\"straight\",\"shot\"],\"words\":[\"straight\"],\"positive\":[\"straight\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"the path to my goals is a wide curve vs a straight shot","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/371736068162215936","username":"noahedwardhall"},{"date":1377450840000,"afinn":"{\"score\":2,\"comparative\":0.3333333333333333,\"tokens\":[\"john\",\"coltrane\",\"can\",\"save\",\"the\",\"world\"],\"words\":[\"save\"],\"positive\":[\"save\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"john coltrane can save the world","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/371681880019435520","username":"noahedwardhall"},{"date":1377382286000,"afinn":"{\"score\":2,\"comparative\":0.4,\"tokens\":[\"always\",\"a\",\"motivating\",\"read\",\"httptcornlwxoadsz\"],\"words\":[\"motivating\"],\"positive\":[\"motivating\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"always a motivating read: http://t.co/RnLWxOAdSz","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/371394342427979777","username":"noahedwardhall"},{"date":1377377317000,"afinn":"{\"score\":-1,\"comparative\":-0.0625,\"tokens\":[\"leadership\",\"is\",\"a\",\"cloudy\",\"relationship\",\"with\",\"the\",\"'head'\",\"blocking\",\"the\",\"sunlight\",\"from\",\"falling\",\"on\",\"the\",\"'shoulders'\"],\"words\":[\"falling\",\"blocking\",\"leadership\"],\"positive\":[\"leadership\"],\"negative\":[\"falling\",\"blocking\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"leadership is a cloudy relationship with the 'head' blocking the sunlight from falling on the 'shoulders'","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/371373503234076672","username":"noahedwardhall"},{"date":1377375070000,"afinn":"{\"score\":1,\"comparative\":0.5,\"tokens\":[\"motivation\",\"httptcojoeugs1b4g\"],\"words\":[\"motivation\"],\"positive\":[\"motivation\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"#motivation http://t.co/jOeUgs1B4G","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/371364079085973504","username":"noahedwardhall"},{"date":1377322640000,"afinn":"{\"score\":5,\"comparative\":1,\"tokens\":[\"chance\",\"favors\",\"the\",\"prepared\",\"mind\"],\"words\":[\"prepared\",\"favors\",\"chance\"],\"positive\":[\"prepared\",\"favors\",\"chance\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Chance favors the prepared mind","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/371144171253268482","username":"noahedwardhall"},{"date":1377234669000,"afinn":"{\"score\":2,\"comparative\":0.5,\"tokens\":[\"i\",\"definitely\",\"recommend\",\"1408\"],\"words\":[\"recommend\"],\"positive\":[\"recommend\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I definitely recommend 1408","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370775194215776256","username":"noahedwardhall"},{"date":1377232900000,"afinn":"{\"score\":2,\"comparative\":0.2857142857142857,\"tokens\":[\"this\",\"phenomenon\",\"has\",\"always\",\"interested\",\"me\",\"httptcobglvjyaupa\"],\"words\":[\"interested\"],\"positive\":[\"interested\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"This phenomenon has always interested me http://t.co/bglvJyAupA","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370767773342760961","username":"noahedwardhall"},{"date":1377227456000,"afinn":"{\"score\":-2,\"comparative\":-0.5,\"tokens\":[\"running\",\"scared\",\"trailer\",\"httptcozklkgc4rgj\"],\"words\":[\"scared\"],\"negative\":[\"scared\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Running scared trailer http://t.co/zKlKgc4rGJ","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370744941804126208","username":"noahedwardhall"},{"date":1377225154000,"afinn":"{\"score\":-1,\"comparative\":-0.1,\"tokens\":[\"wonder\",\"whats\",\"the\",\"difference\",\"between\",\"onload\",\"amp\",\"defer\",\"amp\",\"async\"],\"words\":[\"defer\"],\"negative\":[\"defer\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"wonder whats the difference between onload &amp; defer &amp; async","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370735285803302913","username":"noahedwardhall"},{"date":1377222690000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"really\",\"enjoyed\",\"my\",\"mktg\",\"mgmt\",\"book\",\"very\",\"concise\",\"and\",\"comprehensive\",\"no\",\"crudd\"],\"words\":[\"no\",\"comprehensive\",\"enjoyed\"],\"positive\":[\"comprehensive\",\"enjoyed\"],\"negative\":[\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Really enjoyed my mktg mgmt book. Very concise and comprehensive. No crudd.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370724949335371776","username":"noahedwardhall"},{"date":1377206581000,"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"a\",\"bookish\",\"demeanor\",\"is\",\"a\",\"good\",\"one\",\"to\",\"have\"],\"words\":[\"good\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"A bookish demeanor is a good one to have","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370657383082508288","username":"noahedwardhall"},{"date":1377206219000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"any\",\"book\",\"by\",\"malcolm\",\"gladwell\",\"should\",\"be\",\"a\",\"good\",\"read\"],\"words\":[\"good\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Any book by Malcolm Gladwell should be a good read","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370655867663704064","username":"noahedwardhall"},{"date":1377194947000,"afinn":"{\"score\":3,\"comparative\":0.23076923076923078,\"tokens\":[\"hopefully\",\"i'll\",\"have\",\"enough\",\"motivation\",\"to\",\"continue\",\"my\",\"dom\",\"scripting\",\"book\",\"from\",\"murach\"],\"words\":[\"motivation\",\"hopefully\"],\"positive\":[\"motivation\",\"hopefully\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Hopefully I'll have enough motivation to continue my dom scripting book from murach","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370608587476705280","username":"noahedwardhall"},{"date":1377140301000,"afinn":"{\"score\":-1,\"comparative\":-0.1,\"tokens\":[\"crush\",\"the\",\"soldiers\",\"of\",\"giants\",\"on\",\"whom\",\"we\",\"stand\",\"gatech\"],\"words\":[\"crush\"],\"negative\":[\"crush\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Crush the soldiers of giants on whom we stand #gaTech","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370379386546950144","username":"noahedwardhall"},{"date":1377066191000,"afinn":"{\"score\":-3,\"comparative\":-0.6,\"tokens\":[\"no\",\"place\",\"for\",\"weakness\",\"300\"],\"words\":[\"weakness\",\"no\"],\"negative\":[\"weakness\",\"no\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"No place for weakness #300","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370068547361206272","username":"noahedwardhall"},{"date":1377053564000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"lol\",\"checked\",\"if\",\"httptcok2k7tewkac\",\"was\",\"taken\",\"and\",\"was\",\"surprised\",\"by\",\"the\",\"results\"],\"words\":[\"lol\"],\"positive\":[\"lol\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Lol checked if http://t.co/k2k7TewKAc was taken and was surprised by the results","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370015582449438720","username":"noahedwardhall"},{"date":1377051464000,"afinn":"{\"score\":3,\"comparative\":0.6,\"tokens\":[\"lol\",\"why\",\"is\",\"httptcoye4fnsanut\",\"taken\"],\"words\":[\"lol\"],\"positive\":[\"lol\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"lol why is http://t.co/yE4fnSANUt taken?","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/370006775467999232","username":"noahedwardhall"},{"date":1377049047000,"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"perhaps\",\"some\",\"advanced\",\"topics\",\"will\",\"reinvigorate\",\"my\",\"motivation\"],\"words\":[\"motivation\",\"advanced\"],\"positive\":[\"motivation\",\"advanced\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Perhaps some advanced topics will reinvigorate my motivation","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369996638367907841","username":"noahedwardhall"},{"date":1377049021000,"afinn":"{\"score\":4,\"comparative\":0.26666666666666666,\"tokens\":[\"building\",\"a\",\"webpage\",\"\",\"isn't\",\"as\",\"fun\",\"a\",\"\",\"learning\",\"how\",\"to\",\"build\",\"a\",\"webpage\"],\"words\":[\"\",\"fun\",\"\"],\"positive\":[\"fun\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Building a webpage  isn't as fun a  learning how to build a webpage","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369996527562788864","username":"noahedwardhall"},{"date":1377023834000,"afinn":"{\"score\":5,\"comparative\":0.45454545454545453,\"tokens\":[\"lol\",\"nvm\",\"looks\",\"like\",\"he\",\"manages\",\"a\",\"bunch\",\"of\",\"ihe\",\"accounts\"],\"words\":[\"like\",\"lol\"],\"positive\":[\"like\",\"lol\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"lol nvm, looks like he manages a bunch of IHE accounts","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369890889646100480","username":"noahedwardhall"},{"date":1377016505000,"afinn":"{\"score\":3,\"comparative\":0.2,\"tokens\":[\"i\",\"want\",\"some\",\"google\",\"glasses\",\"my\",\"current\",\"frames\",\"make\",\"me\",\"look\",\"like\",\"the\",\"boy\",\"genius\"],\"words\":[\"like\",\"want\"],\"positive\":[\"like\",\"want\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I want some @Google glasses, my current frames make me look like the boy genius","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369860146257592321","username":"noahedwardhall"},{"date":1377015970000,"afinn":"{\"score\":4,\"comparative\":0.21052631578947367,\"tokens\":[\"my\",\"mktg\",\"mgmt\",\"textbook\",\"is\",\"the\",\"most\",\"comprehensive\",\"concise\",\"and\",\"enjoyable\",\"mktg\",\"book\",\"thus\",\"far\",\"despite\",\"its\",\"glossy\",\"pages\"],\"words\":[\"enjoyable\",\"comprehensive\"],\"positive\":[\"enjoyable\",\"comprehensive\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"My mktg mgmt textbook is the most comprehensive, concise, and enjoyable mktg book thus far; despite its glossy pages.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369857902158163968","username":"noahedwardhall"},{"date":1376977846000,"afinn":"{\"score\":-4,\"comparative\":-0.26666666666666666,\"tokens\":[\"grover\",\"washington\",\"bemine\",\"tonight\",\"is\",\"not\",\"available\",\"for\",\"viewing\",\"on\",\"mobile\",\"devices\",\"wtf\",\"youtube\",\"sux\"],\"words\":[\"wtf\"],\"negative\":[\"wtf\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Grover Washington #beMine tonight is not available for viewing on mobile devices #wtf #YouTube #sux","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369698001154875392","username":"noahedwardhall"},{"date":1376975093000,"afinn":"{\"score\":1,\"comparative\":0.0625,\"tokens\":[\"the\",\"student\",\"who\",\"doesn't\",\"aim\",\"to\",\"be\",\"greater\",\"\",\"than\",\"the\",\"teacher\",\"has\",\"already\",\"failed\",\"neh\"],\"words\":[\"failed\",\"\",\"greater\"],\"positive\":[\"greater\"],\"negative\":[\"failed\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":2,"tweet":"The student who doesn't aim to be greater  than the teacher has already failed #neh","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369686453946572800","username":"noahedwardhall"},{"date":1376967109000,"afinn":"{\"score\":1,\"comparative\":0.041666666666666664,\"tokens\":[\"my\",\"textbook\",\"has\",\"glossy\",\"page\",\"\",\"that\",\"reflect\",\"light\",\"and\",\"discourages\",\"long\",\"reading\",\"sessions\",\"who\",\"tf\",\"thought\",\"this\",\"was\",\"\",\"a\",\"good\",\"idea\",\"fail\"],\"words\":[\"fail\",\"good\",\"\",\"\"],\"positive\":[\"good\"],\"negative\":[\"fail\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"My textbook has glossy page  that reflect light and discourages long reading sessions. Who tf thought this was  a good idea? #fail","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369652964601765889","username":"noahedwardhall"},{"date":1376965045000,"afinn":"{\"score\":-2,\"comparative\":-0.125,\"tokens\":[\"in\",\"today's\",\"marketplace\",\"\",\"of\",\"mass\",\"customization\",\"a\",\"change\",\"in\",\"color\",\"shouldn't\",\"make\",\"the\",\"headlines\",\"fail\"],\"words\":[\"fail\",\"\"],\"negative\":[\"fail\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"In today's marketplace  of mass customization, a Change in color shouldn't make the headlines #fail","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369644306790744064","username":"noahedwardhall"},{"date":1376959554000,"afinn":"{\"score\":-2,\"comparative\":-0.10526315789473684,\"tokens\":[\"13\",\"of\",\"all\",\"services\",\"\",\"problems\",\"originate\",\"w\",\"the\",\"customer\",\"but\",\"how\",\"many\",\"firms\",\"\",\"have\",\"customer-training\",\"programs\",\"thoughtleadership\"],\"words\":[\"\",\"problems\",\"\"],\"negative\":[\"problems\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"1/3 of all services  problems originate w/ the customer. But how many firms  have customer-training programs? #thoughtLeadership","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369621277314527232","username":"noahedwardhall"},{"date":1376865373000,"afinn":"{\"score\":-2,\"comparative\":-0.16666666666666666,\"tokens\":[\"i\",\"probably\",\"wont\",\"like\",\"school\",\"until\",\"i\",\"get\",\"into\",\"an\",\"mba\",\"program\"],\"words\":[\"like\"],\"negative\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"i probably wont like school until I get into an mba program","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369226255842807808","username":"noahedwardhall"},{"date":1376861878000,"afinn":"{\"score\":1,\"comparative\":0.058823529411764705,\"tokens\":[\"very\",\"time\",\"my\",\"kindle\",\"resets\",\"my\",\"bookmarks\",\"in\",\"my\",\"ebooks\",\"i\",\"want\",\"poke\",\"holes\",\"in\",\"bezos\",\"parachute\"],\"words\":[\"want\"],\"positive\":[\"want\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Very time my kindle resets my bookmarks in my ebooks I want poke holes in bezos parachute","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/369211594644783105","username":"noahedwardhall"},{"date":1376581279000,"afinn":"{\"score\":3,\"comparative\":0.2727272727272727,\"tokens\":[\"the\",\"best\",\"advice\",\"i've\",\"ever\",\"received\",\"'go\",\"figure\",\"it\",\"out\",\"yourself'\"],\"words\":[\"best\"],\"positive\":[\"best\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"The best advice I've ever received: 'Go figure it out yourself'","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/368034679330332674","username":"noahedwardhall"},{"date":1376507234000,"afinn":"{\"score\":3,\"comparative\":0.3,\"tokens\":[\"ms\",\"believes\",\"product\",\"imitation\",\"is\",\"as\",\"profitable\",\"as\",\"product\",\"innovation\"],\"words\":[\"innovation\",\"profitable\"],\"positive\":[\"innovation\",\"profitable\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Ms believes product imitation is as profitable as product innovation","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/367724110685540352","username":"noahedwardhall"},{"date":1376506338000,"afinn":"{\"score\":-2,\"comparative\":-0.4,\"tokens\":[\"marketing\",\"is\",\"businesses\",\"war\",\"plan\"],\"words\":[\"war\"],\"negative\":[\"war\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Marketing is businesses war plan","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/367720353079898114","username":"noahedwardhall"},{"date":1376488721000,"afinn":"{\"score\":2,\"comparative\":0.4,\"tokens\":[\"docnormalize\",\"is\",\"like\",\"html\",\"minification\"],\"words\":[\"like\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Doc.normalize is like html minification","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/367646461409755136","username":"noahedwardhall"},{"date":1376458634000,"afinn":"{\"score\":5,\"comparative\":0.5,\"tokens\":[\"i've\",\"been\",\"reading\",\"eloquent\",\"js\",\"really\",\"nice\",\"an\",\"\",\"entertaining\"],\"words\":[\"entertaining\",\"\",\"nice\"],\"positive\":[\"entertaining\",\"nice\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I've been reading eloquent js. Really nice an  entertaining","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/367520268077383682","username":"noahedwardhall"},{"date":1376420848000,"afinn":"{\"score\":1,\"comparative\":0.047619047619047616,\"tokens\":[\"i'm\",\"sure\",\"it\",\"can\",\"be\",\"done\",\"easily\",\"on\",\"a\",\"financial\",\"calc\",\"but\",\"it's\",\"still\",\"intense\",\"relative\",\"\",\"to\",\"other\",\"mktg\",\"formulas\"],\"words\":[\"\",\"intense\"],\"positive\":[\"intense\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I'm sure it can be done easily on a financial calc, but it's still intense relative  to other mktg formulas","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/367361780630040576","username":"noahedwardhall"},{"date":1376420803000,"afinn":"{\"score\":1,\"comparative\":0.16666666666666666,\"tokens\":[\"interbrands\",\"brand\",\"value\",\"calculation\",\"is\",\"intense\"],\"words\":[\"intense\"],\"positive\":[\"intense\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"InterBrands brand value calculation is intense","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/367361592268038144","username":"noahedwardhall"},{"date":1376372893000,"afinn":"{\"score\":1,\"comparative\":0.09090909090909091,\"tokens\":[\"i\",\"want\",\"to\",\"be\",\"somebody\",\"you\",\"can\",\"look\",\"up\",\"to\",\"boyzinthehood\"],\"words\":[\"want\"],\"positive\":[\"want\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":1,"tweet":"I want to be somebody you can look up to #boyzInTheHood","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/367160643876438018","username":"noahedwardhall"},{"date":1376332779000,"afinn":"{\"score\":2,\"comparative\":0.18181818181818182,\"tokens\":[\"time-management\",\"is\",\"the\",\"first\",\"door\",\"to\",\"success\",\"the\",\"second\",\"is\",\"brandy\"],\"words\":[\"success\"],\"positive\":[\"success\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Time-management is the first door to success; the second is brandy.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/366992393645457409","username":"noahedwardhall"},{"date":1376331948000,"afinn":"{\"score\":2,\"comparative\":0.2857142857142857,\"tokens\":[\"my\",\"knee\",\"caps\",\"feel\",\"like\",\"jello\",\"pudding\"],\"words\":[\"like\"],\"positive\":[\"like\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"My knee caps feel like jello pudding","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/366988906480148480","username":"noahedwardhall"},{"date":1376281632000,"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"i\",\"had\",\"a\",\"good\",\"idea\",\"for\",\"a\",\"website\",\"but\",\"httptcohmrq2ivfq0\",\"was\",\"taken\"],\"words\":[\"good\"],\"positive\":[\"good\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"I had a good idea for a website, but http://t.co/hMRq2ivFQ0 was taken.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/366777867155156993","username":"noahedwardhall"},{"date":1376108184000,"afinn":"{\"score\":-4,\"comparative\":-0.23529411764705882,\"tokens\":[\"too\",\"add\",\"bbq\",\"err\",\"salt\",\"to\",\"my\",\"wounds\",\"i\",\"even\",\"tried\",\"blah\",\"11\",\"but\",\"blah\",\"equaled\",\"1\"],\"words\":[\"blah\",\"blah\"],\"negative\":[\"blah\",\"blah\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"too add bbq, err salt to my wounds, I even tried blah *=1.1 but blah equaled 1%,","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/366050372722237441","username":"noahedwardhall"},{"date":1376108116000,"afinn":"{\"score\":-6,\"comparative\":-0.24,\"tokens\":[\"wtf\",\"been\",\"a\",\"long\",\"day\",\"took\",\"me\",\"at\",\"least\",\"30\",\"minutes\",\"to\",\"realize\",\"blah\",\"\",\"1\",\"is\",\"concatting\",\"a\",\"string\",\"amp\",\"not\",\"adding\",\"a\",\"percentage\"],\"words\":[\"\",\"blah\",\"wtf\"],\"negative\":[\"blah\",\"wtf\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"wtf! been a long day. took me at least 30 minutes to realize blah += \"1%\" is concatting a string &amp; not adding a percentage.","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/366050088923041792","username":"noahedwardhall"},{"date":1376075169000,"afinn":"{\"score\":-2,\"comparative\":-0.09523809523809523,\"tokens\":[\"im\",\"sure\",\"addeventlistener\",\"has\",\"its\",\"merits\",\"but\",\"for\",\"the\",\"last\",\"hour\",\"its\",\"been\",\"a\",\"major\",\"head\",\"ache\",\"switched\",\"to\",\"onclick\",\"instead\"],\"words\":[\"ache\"],\"negative\":[\"ache\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"im sure addEventListener has its merits, but for the last hour its been a major head ache. switched to onclick instead","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/365911896961982464","username":"noahedwardhall"},{"date":1376073329000,"afinn":"{\"score\":-2,\"comparative\":-0.125,\"tokens\":[\"finally\",\"caught\",\"the\",\"error\",\"dynamically\",\"attaching\",\"events\",\"may\",\"cause\",\"the\",\"event\",\"to\",\"be\",\"attached\",\"multiple\",\"times\"],\"words\":[\"error\"],\"negative\":[\"error\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"finally caught the error, dynamically attaching events may cause the event to be attached multiple times","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/365904182013726721","username":"noahedwardhall"},{"date":1376060064000,"afinn":"{\"score\":-1,\"comparative\":-0.07142857142857142,\"tokens\":[\"if\",\"your\",\"not\",\"reaching\",\"for\",\"a\",\"reference\",\"book\",\"your\",\"not\",\"learn\",\"ing\",\"anything\",\"new\"],\"words\":[\"reaching\"],\"negative\":[\"reaching\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"If your not reaching for a reference book, your not learn ing anything new","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/365848544072048640","username":"noahedwardhall"},{"date":1376059102000,"afinn":"{\"score\":2,\"comparative\":0.4,\"tokens\":[\"gotta\",\"add\",\"legacy\",\"browser\",\"support\"],\"words\":[\"support\"],\"positive\":[\"support\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"Gotta add legacy browser support","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/365844508224655363","username":"noahedwardhall"},{"date":1376019379000,"afinn":"{\"score\":-3,\"comparative\":-0.3333333333333333,\"tokens\":[\"they\",\"stopped\",\"selling\",\"maria's\",\"crackers\",\"at\",\"walgreens\",\"total\",\"disappointment\"],\"words\":[\"disappointment\",\"stopped\"],\"negative\":[\"disappointment\",\"stopped\"]}","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","favorite_count":0,"tweet":"They stopped selling Maria's crackers at Walgreens. total disappointment","retweet_count":0,"url":"https://twitter.com/noahedwardhall/status/365677896154624001","username":"noahedwardhall"},{"afinn":"{\"score\":5,\"comparative\":0.38461538461538464,\"tokens\":[\"to\",\"be\",\"the\",\"best\",\"you\",\"have\",\"to\",\"do\",\"more\",\"than\",\"success\",\"requires\",\"neh\"],\"words\":[\"success\",\"best\"],\"positive\":[\"success\",\"best\"]}","date":1376013231000,"favorite_count":0,"retweet_count":0,"tweet":"To be the best, you have to do more than success requires #neh","url":"https://twitter.com/noahedwardhall/status/365652110873853952","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-1,\"comparative\":-0.1,\"tokens\":[\"preventdefault\",\"seems\",\"to\",\"stop\",\"all\",\"events\",\"in\",\"ie\",\"amp\",\"firefox\"],\"words\":[\"stop\"],\"negative\":[\"stop\"]}","date":1376009452000,"favorite_count":0,"retweet_count":0,"tweet":"preventDefault seems to stop all events in IE &amp; firefox","url":"https://twitter.com/noahedwardhall/status/365636261484040192","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-1,\"comparative\":-0.25,\"tokens\":[\"research\",\"exclusion\",\"tables\",\"bigdata\"],\"words\":[\"exclusion\"],\"negative\":[\"exclusion\"]}","date":1375994895000,"favorite_count":0,"retweet_count":0,"tweet":"#research exclusion tables #bigData","url":"https://twitter.com/noahedwardhall/status/365575205789241344","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":1,\"comparative\":0.07142857142857142,\"tokens\":[\"the\",\"goals\",\"you\",\"believe\",\"you\",\"can\",\"achieve\",\"are\",\"the\",\"only\",\"ones\",\"you'll\",\"reach\",\"for\"],\"words\":[\"reach\"],\"positive\":[\"reach\"]}","date":1375935637000,"favorite_count":0,"retweet_count":0,"tweet":"The goals you believe you can achieve are the only ones you'll reach for","url":"https://twitter.com/noahedwardhall/status/365326659697655808","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":3,\"comparative\":0.1111111111111111,\"tokens\":[\"ive\",\"been\",\"trying\",\"to\",\"think\",\"of\",\"a\",\"domain\",\"to\",\"develop\",\"a\",\"website\",\"for\",\"urban\",\"music\",\"professionals\",\"for\",\"at\",\"least\",\"two\",\"months\",\"all\",\"the\",\"good\",\"ones\",\"are\",\"taken\"],\"words\":[\"good\"],\"positive\":[\"good\"]}","date":1375903285000,"favorite_count":0,"retweet_count":0,"tweet":"ive been trying to think of a domain to develop a website for urban music professionals for at least two months. all the good ones are taken","url":"https://twitter.com/noahedwardhall/status/365190963158712320","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.1111111111111111,\"tokens\":[\"you\",\"can\",\"console\",\"log\",\"for\",\"prop\",\"in\",\"object\",\"to\",\"get\",\"all\",\"the\",\"props\",\"amp\",\"methods\",\"the\",\"browser\",\"supports\"],\"words\":[\"supports\"],\"positive\":[\"supports\"]}","date":1375803514000,"favorite_count":0,"retweet_count":0,"tweet":"you can console log for prop in object to get all the props &amp; methods the browser supports","url":"https://twitter.com/noahedwardhall/status/364772495389237249","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-5,\"comparative\":-0.2,\"tokens\":[\"ive\",\"been\",\"reading\",\"two\",\"chapters\",\"a\",\"day\",\"if\",\"i\",\"can\",\"finish\",\"two\",\"textbooks\",\"before\",\"the\",\"sem\",\"starts\",\"ill\",\"only\",\"have\",\"to\",\"worry\",\"about\",\"4\",\"others\"],\"words\":[\"worry\",\"ill\"],\"negative\":[\"worry\",\"ill\"]}","date":1375747437000,"favorite_count":0,"retweet_count":0,"tweet":"Ive been reading two chapters a day. If I can finish two textbooks before the sem starts ill only have to worry about 4 others","url":"https://twitter.com/noahedwardhall/status/364537291101843456","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":1,\"comparative\":0.2,\"tokens\":[\"i\",\"want\",\"to\",\"go\",\"running\"],\"words\":[\"want\"],\"positive\":[\"want\"]}","date":1375729937000,"favorite_count":0,"retweet_count":0,"tweet":"I want to go running.","url":"https://twitter.com/noahedwardhall/status/364463890827980800","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":1,\"comparative\":0.07142857142857142,\"tokens\":[\"a\",\"smart\",\"business\",\"man\",\"would\",\"invest\",\"in\",\"a\",\"bar\",\"inside\",\"the\",\"civic\",\"center\",\"library\"],\"words\":[\"smart\"],\"positive\":[\"smart\"]}","date":1375725809000,"favorite_count":1,"retweet_count":0,"tweet":"A smart business man would invest in a bar inside the civic center library","url":"https://twitter.com/noahedwardhall/status/364446574165757952","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.14285714285714285,\"tokens\":[\"conditionals\",\"are\",\"based\",\"on\",\"primitive\",\"true\",\"and\",\"false\",\"not\",\"the\",\"boolean\",\"true\",\"and\",\"false\"],\"words\":[\"false\",\"true\",\"false\",\"true\"],\"positive\":[\"true\",\"true\"],\"negative\":[\"false\",\"false\"]}","date":1375679352000,"favorite_count":0,"retweet_count":0,"tweet":"Conditionals are based on primitive true and false. Not the boolean true and false","url":"https://twitter.com/noahedwardhall/status/364251722840944640","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":1,\"comparative\":0.07692307692307693,\"tokens\":[\"all\",\"the\",\"time\",\"taking\",\"mdn\",\"microsoft\",\"dev\",\"and\",\"other\",\"online\",\"sources\",\"for\",\"granted\"],\"words\":[\"granted\"],\"positive\":[\"granted\"]}","date":1375644057000,"favorite_count":0,"retweet_count":0,"tweet":"all the time taking MDN, microsoft dev, and other online sources for granted...","url":"https://twitter.com/noahedwardhall/status/364103681873948672","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":3,\"comparative\":0.25,\"tokens\":[\"buying\",\"books\",\"left\",\"and\",\"right\",\"presuming\",\"the\",\"authors\",\"were\",\"the\",\"leading\",\"authority\"],\"words\":[\"authority\",\"leading\"],\"positive\":[\"authority\",\"leading\"]}","date":1375644023000,"favorite_count":0,"retweet_count":0,"tweet":"buying books left and right, presuming the authors were the leading authority","url":"https://twitter.com/noahedwardhall/status/364103541960343553","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-2,\"comparative\":-0.14285714285714285,\"tokens\":[\"i've\",\"become\",\"conscious\",\"of\",\"a\",\"fundamental\",\"mistake\",\"in\",\"my\",\"acquisition\",\"of\",\"web\",\"dev\",\"knowledge\"],\"words\":[\"mistake\"],\"negative\":[\"mistake\"]}","date":1375643995000,"favorite_count":0,"retweet_count":0,"tweet":"i've become conscious of a fundamental mistake in my acquisition of web dev knowledge","url":"https://twitter.com/noahedwardhall/status/364103422414303232","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":3,\"comparative\":0.17647058823529413,\"tokens\":[\"im\",\"going\",\"to\",\"upload\",\"the\",\"content\",\"pollyfil\",\"html5\",\"and\",\"drink\",\"3\",\"cups\",\"of\",\"the\",\"finest\",\"walgreens\",\"coffee\"],\"words\":[\"finest\"],\"positive\":[\"finest\"]}","date":1375590415000,"favorite_count":0,"retweet_count":0,"tweet":"Im going to upload the content, pollyfil html5, and drink 3 cups of the finest walgreens coffee","url":"https://twitter.com/noahedwardhall/status/363878690704211970","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.5,\"tokens\":[\"ecma\",\"browser\",\"support\",\"httptco6oidpvh3jl\"],\"words\":[\"support\"],\"positive\":[\"support\"]}","date":1375581683000,"favorite_count":0,"retweet_count":0,"tweet":"Ecma browser Support http://t.co/6OidPvh3JL","url":"https://twitter.com/noahedwardhall/status/363842066368839681","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":1,\"comparative\":0.08333333333333333,\"tokens\":[\"if\",\"you\",\"want\",\"some\",\"serious\",\"ecma\",\"i\",\"found\",\"it\",\"for\",\"you\",\"httptco28ywwnqsmq\"],\"words\":[\"want\"],\"positive\":[\"want\"]}","date":1375579555000,"favorite_count":0,"retweet_count":0,"tweet":"If you want some serious ecma. I found it for you http://t.co/28ywwnQsMQ","url":"https://twitter.com/noahedwardhall/status/363833141275791360","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":5,\"comparative\":0.3125,\"tokens\":[\"having\",\"a\",\"robust\",\"understanding\",\"of\",\"web\",\"technologies\",\"allows\",\"for\",\"an\",\"increase\",\"in\",\"effectiveness\",\"in\",\"programming\",\"logic\"],\"words\":[\"effectiveness\",\"increase\",\"robust\"],\"positive\":[\"effectiveness\",\"increase\",\"robust\"]}","date":1375567359000,"favorite_count":0,"retweet_count":0,"tweet":"having a robust understanding of web technologies allows for an increase in effectiveness in programming logic","url":"https://twitter.com/noahedwardhall/status/363781988978659328","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.25,\"tokens\":[\"my\",\"dependence\",\"on\",\"jquery\",\"is\",\"stifling\",\"my\",\"progress\"],\"words\":[\"progress\"],\"positive\":[\"progress\"]}","date":1375561825000,"favorite_count":1,"retweet_count":0,"tweet":"My dependence on jquery is stifling my progress","url":"https://twitter.com/noahedwardhall/status/363758776093904897","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.18181818181818182,\"tokens\":[\"i\",\"hope\",\"they\",\"post\",\"some\",\"videos\",\"of\",\"this\",\"years\",\"ama\",\"conference\"],\"words\":[\"hope\"],\"positive\":[\"hope\"]}","date":1375557612000,"favorite_count":0,"retweet_count":0,"tweet":"I hope they post some videos of this years ama conference","url":"https://twitter.com/noahedwardhall/status/363741105554071552","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":3,\"comparative\":0.6,\"tokens\":[\"mdn\",\"has\",\"the\",\"best\",\"examples\"],\"words\":[\"best\"],\"positive\":[\"best\"]}","date":1375508776000,"favorite_count":0,"retweet_count":0,"tweet":"Mdn has the best examples","url":"https://twitter.com/noahedwardhall/status/363536274960826368","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-1,\"comparative\":-0.041666666666666664,\"tokens\":[\"if\",\"get\",\"a\",\"waiver\",\"to\",\"enter\",\"brand\",\"management\",\"i'll\",\"have\",\"to\",\"drop\",\"services\",\"marketing\",\"or\",\"try\",\"to\",\"get\",\"an\",\"add-code\",\"for\",\"a\",\"different\",\"time\"],\"words\":[\"drop\"],\"negative\":[\"drop\"]}","date":1375492025000,"favorite_count":0,"retweet_count":0,"tweet":"If get a waiver to enter Brand Management, i'll have to drop Services Marketing or try to get an add-code for a different time","url":"https://twitter.com/noahedwardhall/status/363466013548888068","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":4,\"comparative\":0.2,\"tokens\":[\"professor\",\"bhat\",\"said\",\"if\",\"i\",\"can\",\"attain\",\"a\",\"waiver\",\"i\",\"can\",\"enroll\",\"in\",\"one\",\"of\",\"his\",\"mba\",\"marketing\",\"classes\",\"winning\"],\"words\":[\"winning\"],\"positive\":[\"winning\"]}","date":1375488854000,"favorite_count":0,"retweet_count":0,"tweet":"Professor Bhat said if I can attain a waiver I can enroll in one of his MBA marketing classes #winning","url":"https://twitter.com/noahedwardhall/status/363452716086865920","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":5,\"comparative\":0.8333333333333334,\"tokens\":[\"evolution\",\"loves\",\"rewards\",\"the\",\"social\",\"httptco0xenw2hd9e\"],\"words\":[\"rewards\",\"loves\"],\"positive\":[\"rewards\",\"loves\"]}","date":1375480847000,"favorite_count":0,"retweet_count":0,"tweet":"Evolution loves rewards the social http://t.co/0XEnW2hD9e","url":"https://twitter.com/noahedwardhall/status/363419129811697666","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":4,\"comparative\":0.4444444444444444,\"tokens\":[\"talk\",\"about\",\"determination\",\"got\",\"into\",\"all\",\"my\",\"classes\",\"winning\"],\"words\":[\"winning\"],\"positive\":[\"winning\"]}","date":1375455946000,"favorite_count":0,"retweet_count":0,"tweet":"talk about determination, got into all my classes, #winning","url":"https://twitter.com/noahedwardhall/status/363314689758855170","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-2,\"comparative\":-0.25,\"tokens\":[\"my\",\"ecma\",\"was\",\"conflicting\",\"with\",\"my\",\"css\",\"styles\"],\"words\":[\"conflicting\"],\"negative\":[\"conflicting\"]}","date":1375435511000,"favorite_count":0,"retweet_count":0,"tweet":"my ecma was conflicting with my css styles.","url":"https://twitter.com/noahedwardhall/status/363228977428561920","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.15384615384615385,\"tokens\":[\"html4\",\"was\",\"standardized\",\"in\",\"1997\",\"and\",\"yet\",\"is\",\"still\",\"more\",\"reliable\",\"than\",\"html5\"],\"words\":[\"reliable\"],\"positive\":[\"reliable\"]}","date":1375432669000,"favorite_count":0,"retweet_count":0,"tweet":"HTML4 was standardized in 1997, and yet is still more reliable than HTML5.","url":"https://twitter.com/noahedwardhall/status/363217056302252032","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-3,\"comparative\":-0.23076923076923078,\"tokens\":[\"even\",\"enterprise\",\"products\",\"are\",\"losing\",\"their\",\"most\",\"valuable\",\"distinction\",\"the\",\"perception\",\"of\",\"superiority\"],\"words\":[\"losing\"],\"negative\":[\"losing\"]}","date":1375431766000,"favorite_count":0,"retweet_count":0,"tweet":"Even enterprise products are losing their most valuable distinction: the perception of superiority","url":"https://twitter.com/noahedwardhall/status/363213268426293249","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.13333333333333333,\"tokens\":[\"the\",\"former\",\"will\",\"forever\",\"be\",\"b2b\",\"due\",\"to\",\"the\",\"increasing\",\"effectiveness\",\"of\",\"open\",\"source\",\"software\"],\"words\":[\"effectiveness\"],\"positive\":[\"effectiveness\"]}","date":1375431543000,"favorite_count":0,"retweet_count":0,"tweet":"The former will forever be b2b due to the increasing effectiveness of open source software","url":"https://twitter.com/noahedwardhall/status/363212332949704705","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.125,\"tokens\":[\"mootools\",\"is\",\"positioning\",\"itself\",\"as\",\"the\",\"sophisticated\",\"library\",\"\",\"jquery\",\"aspires\",\"to\",\"be\",\"the\",\"peoples\",\"choice\"],\"words\":[\"\",\"sophisticated\"],\"positive\":[\"sophisticated\"]}","date":1375429841000,"favorite_count":0,"retweet_count":0,"tweet":"MooTools is positioning itself as the sophisticated library.  jQuery aspires to be the peoples choice.","url":"https://twitter.com/noahedwardhall/status/363205198337933313","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.08695652173913043,\"tokens\":[\"technologists\",\"are\",\"the\",\"only\",\"ones\",\"who\",\"can\",\"save\",\"the\",\"music\",\"industry\",\"i\",\"think\",\"we\",\"should\",\"all\",\"do\",\"our\",\"part\",\"to\",\"further\",\"that\",\"goal\"],\"words\":[\"save\"],\"positive\":[\"save\"]}","date":1375424866000,"favorite_count":0,"retweet_count":0,"tweet":"Technologists are the only ones who can save the music industry. I think we should all do our part to further that goal","url":"https://twitter.com/noahedwardhall/status/363184327770636288","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":3,\"comparative\":0.15789473684210525,\"tokens\":[\"the\",\"bands\",\"that\",\"gig\",\"in\",\"san\",\"francisco\",\"are\",\"the\",\"best\",\"market\",\"street\",\"is\",\"the\",\"place\",\"to\",\"be\",\"right\",\"now\"],\"words\":[\"best\"],\"positive\":[\"best\"]}","date":1375424259000,"favorite_count":0,"retweet_count":0,"tweet":"The bands that gig in san francisco are the best. Market street. Is the place to be right now","url":"https://twitter.com/noahedwardhall/status/363181781773590528","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":4,\"comparative\":0.5,\"tokens\":[\"halliburton\",\"is\",\"winning\",\"right\",\"now\",\"in\",\"the\",\"past\"],\"words\":[\"winning\"],\"positive\":[\"winning\"]}","date":1375309709000,"favorite_count":0,"retweet_count":0,"tweet":"#halliburton is #winning right now, in the past,","url":"https://twitter.com/noahedwardhall/status/362701325722583041","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-2,\"comparative\":-0.18181818181818182,\"tokens\":[\"ouch\",\"media\",\"and\",\"users\",\"are\",\"chipping\",\"away\",\"at\",\"steve's\",\"microsoft\",\"tenure\"],\"words\":[\"ouch\"],\"negative\":[\"ouch\"]}","date":1375246075000,"favorite_count":0,"retweet_count":0,"tweet":"Ouch. Media and users are chipping away at Steve's #Microsoft tenure","url":"https://twitter.com/noahedwardhall/status/362434426715652098","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-5,\"comparative\":-0.4166666666666667,\"tokens\":[\"if\",\"i\",\"click\",\"the\",\"slideshow\",\"controls\",\"too\",\"fast\",\"they\",\"stop\",\"working\",\"wtf\"],\"words\":[\"wtf\",\"stop\"],\"negative\":[\"wtf\",\"stop\"]}","date":1375241780000,"favorite_count":0,"retweet_count":0,"tweet":"if I click the slideshow controls too fast, they stop working, wtf?","url":"https://twitter.com/noahedwardhall/status/362416411827642369","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":1,\"comparative\":0.058823529411764705,\"tokens\":[\"the\",\"significance\",\"of\",\"'jquery\",\"objects\",\"are\",\"not\",\"live'\",\"did\",\"not\",\"set\",\"in\",\"for\",\"at\",\"least\",\"3\",\"hours\"],\"words\":[\"significance\"],\"positive\":[\"significance\"]}","date":1375238737000,"favorite_count":0,"retweet_count":0,"tweet":"the significance of 'jQuery objects are not live' did not set in for at least 3 hours....","url":"https://twitter.com/noahedwardhall/status/362403646262083585","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-2,\"comparative\":-0.18181818181818182,\"tokens\":[\"dreamweaver\",\"is\",\"a\",\"crux\",\"i\",\"refuse\",\"to\",\"get\",\"addicted\",\"to\",\"sublimetextbitches\"],\"words\":[\"refuse\"],\"negative\":[\"refuse\"]}","date":1375205771000,"favorite_count":0,"retweet_count":0,"tweet":"dreamweaver is a crux I refuse to get addicted to. #sublimeTextBitches","url":"https://twitter.com/noahedwardhall/status/362265378702893059","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":3,\"comparative\":0.75,\"tokens\":[\"my\",\"celebration\",\"was\",\"premature\"],\"words\":[\"celebration\"],\"positive\":[\"celebration\"]}","date":1375202223000,"favorite_count":0,"retweet_count":0,"tweet":"My celebration was premature","url":"https://twitter.com/noahedwardhall/status/362250495517143040","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.15384615384615385,\"tokens\":[\"small\",\"step\",\"for\",\"mankind\",\"huge\",\"boost\",\"to\",\"my\",\"ego\",\"just\",\"finished\",\"my\",\"slideshow\"],\"words\":[\"boost\",\"huge\"],\"positive\":[\"boost\",\"huge\"]}","date":1375196883000,"favorite_count":0,"retweet_count":0,"tweet":"small step for mankind; huge boost to my ego. just finished my slideshow.","url":"https://twitter.com/noahedwardhall/status/362228099745722368","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":3,\"comparative\":0.3333333333333333,\"tokens\":[\"milk\",\"does\",\"the\",\"body\",\"good\",\"i'm\",\"getting\",\"thirsty\",\"httptcoxuyufbt8lg\"],\"words\":[\"good\"],\"positive\":[\"good\"]}","date":1375193229000,"favorite_count":0,"retweet_count":0,"tweet":"Milk does the body good. I'm getting thirsty... http://t.co/XUyuFbt8lG","url":"https://twitter.com/noahedwardhall/status/362212775323373569","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":3,\"comparative\":0.16666666666666666,\"tokens\":[\"staying\",\"focused\",\"with\",\"a\",\"pretty\",\"girl\",\"laying\",\"next\",\"to\",\"you\",\"is\",\"the\",\"hardest\",\"thing\",\"i've\",\"learned\",\"to\",\"do\"],\"words\":[\"pretty\",\"focused\"],\"positive\":[\"pretty\",\"focused\"]}","date":1375103676000,"favorite_count":0,"retweet_count":0,"tweet":"Staying focused with a pretty girl laying next to you is the hardest thing I've learned to do","url":"https://twitter.com/noahedwardhall/status/361837160065794052","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-1,\"comparative\":-0.05555555555555555,\"tokens\":[\"i\",\"had\",\"no\",\"idea\",\"what\",\"this\",\"was\",\"a\",\"few\",\"weeks\",\"ago\",\"led\",\"to\",\"an\",\"embarrasing\",\"situation\",\"research\",\"httptcolqwzqcygwj\"],\"words\":[\"no\"],\"negative\":[\"no\"]}","date":1375035561000,"favorite_count":0,"retweet_count":0,"tweet":"I had no idea what this was a few weeks ago, led to an embarrasing situation #research http://t.co/lqWzqcyGWJ","url":"https://twitter.com/noahedwardhall/status/361551465325662208","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.125,\"tokens\":[\"very\",\"good\",\"heartland\",\"very\",\"biased\",\"article\",\"still\",\"it\",\"convince\",\"\",\"me\",\"to\",\"try\",\"out\",\"mootools\",\"httptcoc7lhvoagaz\"],\"words\":[\"\",\"convince\",\"biased\",\"good\"],\"positive\":[\"convince\",\"good\"],\"negative\":[\"biased\"]}","date":1375025618000,"favorite_count":0,"retweet_count":0,"tweet":"Very good, heartland very biased article. Still, it convince  me to try out mootools http://t.co/c7LhvOAGaz","url":"https://twitter.com/noahedwardhall/status/361509761583292416","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.18181818181818182,\"tokens\":[\"on\",\"my\",\"7th\",\"hour\",\"of\",\"jquery\",\"i\",\"feel\",\"like\",\"the\",\"jnegro\"],\"words\":[\"like\"],\"positive\":[\"like\"]}","date":1374976584000,"favorite_count":0,"retweet_count":0,"tweet":"on my 7th hour of jQuery, I feel like the jNegro","url":"https://twitter.com/noahedwardhall/status/361304097867051008","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":5,\"comparative\":0.45454545454545453,\"tokens\":[\"my\",\"favorite\",\"love\",\"song\",\"goes\",\"out\",\"to\",\"a\",\"special\",\"someone\",\"httptcox4rkycpozr\"],\"words\":[\"love\",\"favorite\"],\"positive\":[\"love\",\"favorite\"]}","date":1374976272000,"favorite_count":0,"retweet_count":0,"tweet":"my #favorite love song. goes out to a special someone http://t.co/X4RkycPOZr","url":"https://twitter.com/noahedwardhall/status/361302790296969217","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-3,\"comparative\":-0.16666666666666666,\"tokens\":[\"i\",\"might\",\"be\",\"slightly\",\"compulsive\",\"concerning\",\"my\",\"education\",\"but\",\"a\",\"little\",\"bit\",\"of\",\"anything\",\"is\",\"never\",\"100\",\"bad\"],\"words\":[\"bad\"],\"negative\":[\"bad\"]}","date":1374947243000,"favorite_count":0,"retweet_count":0,"tweet":"i might be slightly compulsive concerning my education, but a little bit of anything is never 100% bad.","url":"https://twitter.com/noahedwardhall/status/361181031732215808","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-1,\"comparative\":-0.04,\"tokens\":[\"it\",\"doesnt\",\"matter\",\"how\",\"much\",\"notes\",\"i\",\"have\",\"if\",\"i\",\"dont\",\"use\",\"the\",\"skill\",\"on\",\"a\",\"regular\",\"basis\",\"\",\"i\",\"will\",\"need\",\"to\",\"re-learn\",\"it\"],\"words\":[\"\",\"matter\"],\"negative\":[\"matter\"]}","date":1374937350000,"favorite_count":0,"retweet_count":0,"tweet":"it doesnt matter how much notes I have; if i dont use the skill on a regular basis,  I will need to re-learn it","url":"https://twitter.com/noahedwardhall/status/361139539961581569","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":1,\"comparative\":0.058823529411764705,\"tokens\":[\"that\",\"extreme\",\"feeling\",\"you\",\"get\",\"when\",\"you're\",\"staring\",\"at\",\"the\",\"code\",\"and\",\"its\",\"staring\",\"back\",\"at\",\"you\"],\"words\":[\"feeling\"],\"positive\":[\"feeling\"]}","date":1374889004000,"favorite_count":0,"retweet_count":0,"tweet":"that extreme feeling you get when you're staring at the code, and its staring back at you.","url":"https://twitter.com/noahedwardhall/status/360936762752778241","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-3,\"comparative\":-0.23076923076923078,\"tokens\":[\"it\",\"isn't\",\"a\",\"surprise\",\"that\",\"the\",\"plague\",\"would\",\"be\",\"found\",\"in\",\"la\",\"httptco1bf8mq9rex\"],\"words\":[\"plague\"],\"negative\":[\"plague\"]}","date":1374851310000,"favorite_count":0,"retweet_count":0,"tweet":"It isn't a surprise that the Plague would be found in LA http://t.co/1Bf8Mq9rEX","url":"https://twitter.com/noahedwardhall/status/360778661877645315","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"copywriting\",\"puts\",\"a\",\"smile\",\"on\",\"my\",\"face\",\"every\",\"time\"],\"words\":[\"smile\"],\"positive\":[\"smile\"]}","date":1374847317000,"favorite_count":0,"retweet_count":0,"tweet":"copywriting: puts a smile on my face every time","url":"https://twitter.com/noahedwardhall/status/360761912805433344","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.2222222222222222,\"tokens\":[\"especialists\",\"do\",\"you\",\"need\",\"help\",\"with\",\"that\",\"neh\",\"slogans\"],\"words\":[\"help\"],\"positive\":[\"help\"]}","date":1374808134000,"favorite_count":0,"retweet_count":0,"tweet":"eSpecialists: Do you need help with that? #neh #slogans","url":"https://twitter.com/noahedwardhall/status/360597568364883968","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":3,\"comparative\":0.14285714285714285,\"tokens\":[\"research\",\"are\",\"there\",\"companies\",\"out\",\"there\",\"that\",\"do\",\"not\",\"represent\",\"competition\",\"but\",\"who\",\"reach\",\"your\",\"potential\",\"customers\",\"in\",\"an\",\"effective\",\"way\"],\"words\":[\"effective\",\"reach\"],\"positive\":[\"effective\",\"reach\"]}","date":1374790079000,"favorite_count":0,"retweet_count":0,"tweet":"#research Are there companies out there that do not represent competition but who reach your potential customers in an effective way?","url":"https://twitter.com/noahedwardhall/status/360521839358906368","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.2857142857142857,\"tokens\":[\"the\",\"honest\",\"and\",\"open\",\"leader\",\"neh\",\"slogans\"],\"words\":[\"honest\"],\"positive\":[\"honest\"]}","date":1374783413000,"favorite_count":0,"retweet_count":0,"tweet":"The honest, and open leader #neh #slogans","url":"https://twitter.com/noahedwardhall/status/360493880900202496","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-1,\"comparative\":-0.0625,\"tokens\":[\"take\",\"a\",\"look\",\"at\",\"what\",\"we\",\"offer\",\"\",\"only\",\"pay\",\"for\",\"what\",\"you\",\"need\",\"neh\",\"slogans\"],\"words\":[\"pay\",\"\"],\"negative\":[\"pay\"]}","date":1374770611000,"favorite_count":0,"retweet_count":0,"tweet":"Take a look at what we offer — only pay for what you need #neh #slogans","url":"https://twitter.com/noahedwardhall/status/360440186028556291","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-4,\"comparative\":-0.4444444444444444,\"tokens\":[\"microsoft\",\"data-mining\",\"add-ins\",\"only\",\"available\",\"for\",\"32bit\",\"systems\",\"wtf\"],\"words\":[\"wtf\"],\"negative\":[\"wtf\"]}","date":1374762225000,"favorite_count":0,"retweet_count":0,"tweet":"microsoft data-mining add-ins only available for 32bit systems. #wtf","url":"https://twitter.com/noahedwardhall/status/360405011932524544","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":2,\"comparative\":0.2857142857142857,\"tokens\":[\"success\",\"is\",\"a\",\"two-way\",\"street\",\"slogans\",\"neh\"],\"words\":[\"success\"],\"positive\":[\"success\"]}","date":1374762176000,"favorite_count":0,"retweet_count":0,"tweet":"success is a two-way street #slogans #neh","url":"https://twitter.com/noahedwardhall/status/360404808143876097","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-1,\"comparative\":-0.0625,\"tokens\":[\"the\",\"shooting\",\"today\",\"in\",\"the\",\"view\",\"happened\",\"about\",\"a\",\"block\",\"amp\",\"a\",\"half\",\"down\",\"the\",\"street\"],\"words\":[\"block\"],\"negative\":[\"block\"]}","date":1374726102000,"favorite_count":0,"retweet_count":0,"tweet":"the shooting today in the #view happened about a block &amp; a half down the street","url":"https://twitter.com/noahedwardhall/status/360253500858445825","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":6,\"comparative\":0.46153846153846156,\"tokens\":[\"i\",\"love\",\"action\",\"figures\",\"almost\",\"as\",\"much\",\"as\",\"i\",\"love\",\"my\",\"son\",\"httptcofslha0qp7c\"],\"words\":[\"love\",\"love\"],\"positive\":[\"love\",\"love\"]}","date":1374725226000,"favorite_count":0,"retweet_count":0,"tweet":"I love action figures... almost as much as I love my son: http://t.co/fsLHA0qp7c","url":"https://twitter.com/noahedwardhall/status/360249825297571841","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"},{"afinn":"{\"score\":-1,\"comparative\":-0.08333333333333333,\"tokens\":[\"sold\",\"100k\",\"unitsfor\",\"a\",\"product\",\"that\",\"no\",\"one\",\"knew\",\"they\",\"ever\",\"needed\"],\"words\":[\"no\"],\"negative\":[\"no\"]}","date":1374724346000,"favorite_count":0,"retweet_count":0,"tweet":"[sold 100k units]...\"for a product that no one knew they ever needed.","url":"https://twitter.com/noahedwardhall/status/360246136725979136","userImageUrl":"https://pbs.twimg.com/profile_images/542197638074880000/Qn2DuKEg_normal.jpeg","username":"noahedwardhall"}]
+},{"../dist/index.js":6,"./fakedata/payingcustomers.json":36,"moment":69,"react":244}],36:[function(require,module,exports){
+module.exports=[{
+  "totalPayingCustomers": 18902,
+  "type": "paying",
+  "date": "2016/01/28"
+}, {
+  "totalPayingCustomers": 11670,
+  "type": "paying",
+  "date": "2016/02/24"
+}, {
+  "totalPayingCustomers": 52383,
+  "type": "paying",
+  "date": "2016/03/16"
+}, {
+  "totalPayingCustomers": 64626,
+  "type": "paying",
+  "date": "2016/04/13"
+}, {
+  "totalPayingCustomers": 31241,
+  "type": "paying",
+  "date": "2016/05/11"
+}, {
+  "totalPayingCustomers": 36795,
+  "type": "paying",
+  "date": "2016/06/29"
+}, {
+  "totalPayingCustomers": 39544,
+  "type": "paying",
+  "date": "2016/07/04"
+}, {
+  "totalPayingCustomers": 52873,
+  "type": "paying",
+  "date": "2016/08/27"
+}, {
+  "totalPayingCustomers": 66310,
+  "type": "paying",
+  "date": "2016/09/31"
+}, {
+  "totalPayingCustomers": 20408,
+  "type": "paying",
+  "date": "2016/10/18"
+}, {
+  "totalPayingCustomers": 72197,
+  "type": "paying",
+  "date": "2016/11/21"
+}, {
+  "totalPayingCustomers": 24523,
+  "type": "paying",
+  "date": "2016/12/09"
+}];
 
 },{}],37:[function(require,module,exports){
 
 },{}],38:[function(require,module,exports){
+(function (process){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+var _assign = require('object-assign');
+
+var emptyObject = require('fbjs/lib/emptyObject');
+var _invariant = require('fbjs/lib/invariant');
+
+if (process.env.NODE_ENV !== 'production') {
+  var warning = require('fbjs/lib/warning');
+}
+
+var MIXINS_KEY = 'mixins';
+
+// Helper function to allow the creation of anonymous functions which do not
+// have .name set to the name of the variable being assigned to.
+function identity(fn) {
+  return fn;
+}
+
+var ReactPropTypeLocationNames;
+if (process.env.NODE_ENV !== 'production') {
+  ReactPropTypeLocationNames = {
+    prop: 'prop',
+    context: 'context',
+    childContext: 'child context'
+  };
+} else {
+  ReactPropTypeLocationNames = {};
+}
+
+function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
+  /**
+   * Policies that describe methods in `ReactClassInterface`.
+   */
+
+  var injectedMixins = [];
+
+  /**
+   * Composite components are higher-level components that compose other composite
+   * or host components.
+   *
+   * To create a new type of `ReactClass`, pass a specification of
+   * your new class to `React.createClass`. The only requirement of your class
+   * specification is that you implement a `render` method.
+   *
+   *   var MyComponent = React.createClass({
+   *     render: function() {
+   *       return <div>Hello World</div>;
+   *     }
+   *   });
+   *
+   * The class specification supports a specific protocol of methods that have
+   * special meaning (e.g. `render`). See `ReactClassInterface` for
+   * more the comprehensive protocol. Any other properties and methods in the
+   * class specification will be available on the prototype.
+   *
+   * @interface ReactClassInterface
+   * @internal
+   */
+  var ReactClassInterface = {
+    /**
+     * An array of Mixin objects to include when defining your component.
+     *
+     * @type {array}
+     * @optional
+     */
+    mixins: 'DEFINE_MANY',
+
+    /**
+     * An object containing properties and methods that should be defined on
+     * the component's constructor instead of its prototype (static methods).
+     *
+     * @type {object}
+     * @optional
+     */
+    statics: 'DEFINE_MANY',
+
+    /**
+     * Definition of prop types for this component.
+     *
+     * @type {object}
+     * @optional
+     */
+    propTypes: 'DEFINE_MANY',
+
+    /**
+     * Definition of context types for this component.
+     *
+     * @type {object}
+     * @optional
+     */
+    contextTypes: 'DEFINE_MANY',
+
+    /**
+     * Definition of context types this component sets for its children.
+     *
+     * @type {object}
+     * @optional
+     */
+    childContextTypes: 'DEFINE_MANY',
+
+    // ==== Definition methods ====
+
+    /**
+     * Invoked when the component is mounted. Values in the mapping will be set on
+     * `this.props` if that prop is not specified (i.e. using an `in` check).
+     *
+     * This method is invoked before `getInitialState` and therefore cannot rely
+     * on `this.state` or use `this.setState`.
+     *
+     * @return {object}
+     * @optional
+     */
+    getDefaultProps: 'DEFINE_MANY_MERGED',
+
+    /**
+     * Invoked once before the component is mounted. The return value will be used
+     * as the initial value of `this.state`.
+     *
+     *   getInitialState: function() {
+     *     return {
+     *       isOn: false,
+     *       fooBaz: new BazFoo()
+     *     }
+     *   }
+     *
+     * @return {object}
+     * @optional
+     */
+    getInitialState: 'DEFINE_MANY_MERGED',
+
+    /**
+     * @return {object}
+     * @optional
+     */
+    getChildContext: 'DEFINE_MANY_MERGED',
+
+    /**
+     * Uses props from `this.props` and state from `this.state` to render the
+     * structure of the component.
+     *
+     * No guarantees are made about when or how often this method is invoked, so
+     * it must not have side effects.
+     *
+     *   render: function() {
+     *     var name = this.props.name;
+     *     return <div>Hello, {name}!</div>;
+     *   }
+     *
+     * @return {ReactComponent}
+     * @required
+     */
+    render: 'DEFINE_ONCE',
+
+    // ==== Delegate methods ====
+
+    /**
+     * Invoked when the component is initially created and about to be mounted.
+     * This may have side effects, but any external subscriptions or data created
+     * by this method must be cleaned up in `componentWillUnmount`.
+     *
+     * @optional
+     */
+    componentWillMount: 'DEFINE_MANY',
+
+    /**
+     * Invoked when the component has been mounted and has a DOM representation.
+     * However, there is no guarantee that the DOM node is in the document.
+     *
+     * Use this as an opportunity to operate on the DOM when the component has
+     * been mounted (initialized and rendered) for the first time.
+     *
+     * @param {DOMElement} rootNode DOM element representing the component.
+     * @optional
+     */
+    componentDidMount: 'DEFINE_MANY',
+
+    /**
+     * Invoked before the component receives new props.
+     *
+     * Use this as an opportunity to react to a prop transition by updating the
+     * state using `this.setState`. Current props are accessed via `this.props`.
+     *
+     *   componentWillReceiveProps: function(nextProps, nextContext) {
+     *     this.setState({
+     *       likesIncreasing: nextProps.likeCount > this.props.likeCount
+     *     });
+     *   }
+     *
+     * NOTE: There is no equivalent `componentWillReceiveState`. An incoming prop
+     * transition may cause a state change, but the opposite is not true. If you
+     * need it, you are probably looking for `componentWillUpdate`.
+     *
+     * @param {object} nextProps
+     * @optional
+     */
+    componentWillReceiveProps: 'DEFINE_MANY',
+
+    /**
+     * Invoked while deciding if the component should be updated as a result of
+     * receiving new props, state and/or context.
+     *
+     * Use this as an opportunity to `return false` when you're certain that the
+     * transition to the new props/state/context will not require a component
+     * update.
+     *
+     *   shouldComponentUpdate: function(nextProps, nextState, nextContext) {
+     *     return !equal(nextProps, this.props) ||
+     *       !equal(nextState, this.state) ||
+     *       !equal(nextContext, this.context);
+     *   }
+     *
+     * @param {object} nextProps
+     * @param {?object} nextState
+     * @param {?object} nextContext
+     * @return {boolean} True if the component should update.
+     * @optional
+     */
+    shouldComponentUpdate: 'DEFINE_ONCE',
+
+    /**
+     * Invoked when the component is about to update due to a transition from
+     * `this.props`, `this.state` and `this.context` to `nextProps`, `nextState`
+     * and `nextContext`.
+     *
+     * Use this as an opportunity to perform preparation before an update occurs.
+     *
+     * NOTE: You **cannot** use `this.setState()` in this method.
+     *
+     * @param {object} nextProps
+     * @param {?object} nextState
+     * @param {?object} nextContext
+     * @param {ReactReconcileTransaction} transaction
+     * @optional
+     */
+    componentWillUpdate: 'DEFINE_MANY',
+
+    /**
+     * Invoked when the component's DOM representation has been updated.
+     *
+     * Use this as an opportunity to operate on the DOM when the component has
+     * been updated.
+     *
+     * @param {object} prevProps
+     * @param {?object} prevState
+     * @param {?object} prevContext
+     * @param {DOMElement} rootNode DOM element representing the component.
+     * @optional
+     */
+    componentDidUpdate: 'DEFINE_MANY',
+
+    /**
+     * Invoked when the component is about to be removed from its parent and have
+     * its DOM representation destroyed.
+     *
+     * Use this as an opportunity to deallocate any external resources.
+     *
+     * NOTE: There is no `componentDidUnmount` since your component will have been
+     * destroyed by that point.
+     *
+     * @optional
+     */
+    componentWillUnmount: 'DEFINE_MANY',
+
+    // ==== Advanced methods ====
+
+    /**
+     * Updates the component's currently mounted DOM representation.
+     *
+     * By default, this implements React's rendering and reconciliation algorithm.
+     * Sophisticated clients may wish to override this.
+     *
+     * @param {ReactReconcileTransaction} transaction
+     * @internal
+     * @overridable
+     */
+    updateComponent: 'OVERRIDE_BASE'
+  };
+
+  /**
+   * Mapping from class specification keys to special processing functions.
+   *
+   * Although these are declared like instance properties in the specification
+   * when defining classes using `React.createClass`, they are actually static
+   * and are accessible on the constructor instead of the prototype. Despite
+   * being static, they must be defined outside of the "statics" key under
+   * which all other static methods are defined.
+   */
+  var RESERVED_SPEC_KEYS = {
+    displayName: function(Constructor, displayName) {
+      Constructor.displayName = displayName;
+    },
+    mixins: function(Constructor, mixins) {
+      if (mixins) {
+        for (var i = 0; i < mixins.length; i++) {
+          mixSpecIntoComponent(Constructor, mixins[i]);
+        }
+      }
+    },
+    childContextTypes: function(Constructor, childContextTypes) {
+      if (process.env.NODE_ENV !== 'production') {
+        validateTypeDef(Constructor, childContextTypes, 'childContext');
+      }
+      Constructor.childContextTypes = _assign(
+        {},
+        Constructor.childContextTypes,
+        childContextTypes
+      );
+    },
+    contextTypes: function(Constructor, contextTypes) {
+      if (process.env.NODE_ENV !== 'production') {
+        validateTypeDef(Constructor, contextTypes, 'context');
+      }
+      Constructor.contextTypes = _assign(
+        {},
+        Constructor.contextTypes,
+        contextTypes
+      );
+    },
+    /**
+     * Special case getDefaultProps which should move into statics but requires
+     * automatic merging.
+     */
+    getDefaultProps: function(Constructor, getDefaultProps) {
+      if (Constructor.getDefaultProps) {
+        Constructor.getDefaultProps = createMergedResultFunction(
+          Constructor.getDefaultProps,
+          getDefaultProps
+        );
+      } else {
+        Constructor.getDefaultProps = getDefaultProps;
+      }
+    },
+    propTypes: function(Constructor, propTypes) {
+      if (process.env.NODE_ENV !== 'production') {
+        validateTypeDef(Constructor, propTypes, 'prop');
+      }
+      Constructor.propTypes = _assign({}, Constructor.propTypes, propTypes);
+    },
+    statics: function(Constructor, statics) {
+      mixStaticSpecIntoComponent(Constructor, statics);
+    },
+    autobind: function() {}
+  };
+
+  function validateTypeDef(Constructor, typeDef, location) {
+    for (var propName in typeDef) {
+      if (typeDef.hasOwnProperty(propName)) {
+        // use a warning instead of an _invariant so components
+        // don't show up in prod but only in __DEV__
+        if (process.env.NODE_ENV !== 'production') {
+          warning(
+            typeof typeDef[propName] === 'function',
+            '%s: %s type `%s` is invalid; it must be a function, usually from ' +
+              'React.PropTypes.',
+            Constructor.displayName || 'ReactClass',
+            ReactPropTypeLocationNames[location],
+            propName
+          );
+        }
+      }
+    }
+  }
+
+  function validateMethodOverride(isAlreadyDefined, name) {
+    var specPolicy = ReactClassInterface.hasOwnProperty(name)
+      ? ReactClassInterface[name]
+      : null;
+
+    // Disallow overriding of base class methods unless explicitly allowed.
+    if (ReactClassMixin.hasOwnProperty(name)) {
+      _invariant(
+        specPolicy === 'OVERRIDE_BASE',
+        'ReactClassInterface: You are attempting to override ' +
+          '`%s` from your class specification. Ensure that your method names ' +
+          'do not overlap with React methods.',
+        name
+      );
+    }
+
+    // Disallow defining methods more than once unless explicitly allowed.
+    if (isAlreadyDefined) {
+      _invariant(
+        specPolicy === 'DEFINE_MANY' || specPolicy === 'DEFINE_MANY_MERGED',
+        'ReactClassInterface: You are attempting to define ' +
+          '`%s` on your component more than once. This conflict may be due ' +
+          'to a mixin.',
+        name
+      );
+    }
+  }
+
+  /**
+   * Mixin helper which handles policy validation and reserved
+   * specification keys when building React classes.
+   */
+  function mixSpecIntoComponent(Constructor, spec) {
+    if (!spec) {
+      if (process.env.NODE_ENV !== 'production') {
+        var typeofSpec = typeof spec;
+        var isMixinValid = typeofSpec === 'object' && spec !== null;
+
+        if (process.env.NODE_ENV !== 'production') {
+          warning(
+            isMixinValid,
+            "%s: You're attempting to include a mixin that is either null " +
+              'or not an object. Check the mixins included by the component, ' +
+              'as well as any mixins they include themselves. ' +
+              'Expected object but got %s.',
+            Constructor.displayName || 'ReactClass',
+            spec === null ? null : typeofSpec
+          );
+        }
+      }
+
+      return;
+    }
+
+    _invariant(
+      typeof spec !== 'function',
+      "ReactClass: You're attempting to " +
+        'use a component class or function as a mixin. Instead, just use a ' +
+        'regular object.'
+    );
+    _invariant(
+      !isValidElement(spec),
+      "ReactClass: You're attempting to " +
+        'use a component as a mixin. Instead, just use a regular object.'
+    );
+
+    var proto = Constructor.prototype;
+    var autoBindPairs = proto.__reactAutoBindPairs;
+
+    // By handling mixins before any other properties, we ensure the same
+    // chaining order is applied to methods with DEFINE_MANY policy, whether
+    // mixins are listed before or after these methods in the spec.
+    if (spec.hasOwnProperty(MIXINS_KEY)) {
+      RESERVED_SPEC_KEYS.mixins(Constructor, spec.mixins);
+    }
+
+    for (var name in spec) {
+      if (!spec.hasOwnProperty(name)) {
+        continue;
+      }
+
+      if (name === MIXINS_KEY) {
+        // We have already handled mixins in a special case above.
+        continue;
+      }
+
+      var property = spec[name];
+      var isAlreadyDefined = proto.hasOwnProperty(name);
+      validateMethodOverride(isAlreadyDefined, name);
+
+      if (RESERVED_SPEC_KEYS.hasOwnProperty(name)) {
+        RESERVED_SPEC_KEYS[name](Constructor, property);
+      } else {
+        // Setup methods on prototype:
+        // The following member methods should not be automatically bound:
+        // 1. Expected ReactClass methods (in the "interface").
+        // 2. Overridden methods (that were mixed in).
+        var isReactClassMethod = ReactClassInterface.hasOwnProperty(name);
+        var isFunction = typeof property === 'function';
+        var shouldAutoBind =
+          isFunction &&
+          !isReactClassMethod &&
+          !isAlreadyDefined &&
+          spec.autobind !== false;
+
+        if (shouldAutoBind) {
+          autoBindPairs.push(name, property);
+          proto[name] = property;
+        } else {
+          if (isAlreadyDefined) {
+            var specPolicy = ReactClassInterface[name];
+
+            // These cases should already be caught by validateMethodOverride.
+            _invariant(
+              isReactClassMethod &&
+                (specPolicy === 'DEFINE_MANY_MERGED' ||
+                  specPolicy === 'DEFINE_MANY'),
+              'ReactClass: Unexpected spec policy %s for key %s ' +
+                'when mixing in component specs.',
+              specPolicy,
+              name
+            );
+
+            // For methods which are defined more than once, call the existing
+            // methods before calling the new property, merging if appropriate.
+            if (specPolicy === 'DEFINE_MANY_MERGED') {
+              proto[name] = createMergedResultFunction(proto[name], property);
+            } else if (specPolicy === 'DEFINE_MANY') {
+              proto[name] = createChainedFunction(proto[name], property);
+            }
+          } else {
+            proto[name] = property;
+            if (process.env.NODE_ENV !== 'production') {
+              // Add verbose displayName to the function, which helps when looking
+              // at profiling tools.
+              if (typeof property === 'function' && spec.displayName) {
+                proto[name].displayName = spec.displayName + '_' + name;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  function mixStaticSpecIntoComponent(Constructor, statics) {
+    if (!statics) {
+      return;
+    }
+    for (var name in statics) {
+      var property = statics[name];
+      if (!statics.hasOwnProperty(name)) {
+        continue;
+      }
+
+      var isReserved = name in RESERVED_SPEC_KEYS;
+      _invariant(
+        !isReserved,
+        'ReactClass: You are attempting to define a reserved ' +
+          'property, `%s`, that shouldn\'t be on the "statics" key. Define it ' +
+          'as an instance property instead; it will still be accessible on the ' +
+          'constructor.',
+        name
+      );
+
+      var isInherited = name in Constructor;
+      _invariant(
+        !isInherited,
+        'ReactClass: You are attempting to define ' +
+          '`%s` on your component more than once. This conflict may be ' +
+          'due to a mixin.',
+        name
+      );
+      Constructor[name] = property;
+    }
+  }
+
+  /**
+   * Merge two objects, but throw if both contain the same key.
+   *
+   * @param {object} one The first object, which is mutated.
+   * @param {object} two The second object
+   * @return {object} one after it has been mutated to contain everything in two.
+   */
+  function mergeIntoWithNoDuplicateKeys(one, two) {
+    _invariant(
+      one && two && typeof one === 'object' && typeof two === 'object',
+      'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.'
+    );
+
+    for (var key in two) {
+      if (two.hasOwnProperty(key)) {
+        _invariant(
+          one[key] === undefined,
+          'mergeIntoWithNoDuplicateKeys(): ' +
+            'Tried to merge two objects with the same key: `%s`. This conflict ' +
+            'may be due to a mixin; in particular, this may be caused by two ' +
+            'getInitialState() or getDefaultProps() methods returning objects ' +
+            'with clashing keys.',
+          key
+        );
+        one[key] = two[key];
+      }
+    }
+    return one;
+  }
+
+  /**
+   * Creates a function that invokes two functions and merges their return values.
+   *
+   * @param {function} one Function to invoke first.
+   * @param {function} two Function to invoke second.
+   * @return {function} Function that invokes the two argument functions.
+   * @private
+   */
+  function createMergedResultFunction(one, two) {
+    return function mergedResult() {
+      var a = one.apply(this, arguments);
+      var b = two.apply(this, arguments);
+      if (a == null) {
+        return b;
+      } else if (b == null) {
+        return a;
+      }
+      var c = {};
+      mergeIntoWithNoDuplicateKeys(c, a);
+      mergeIntoWithNoDuplicateKeys(c, b);
+      return c;
+    };
+  }
+
+  /**
+   * Creates a function that invokes two functions and ignores their return vales.
+   *
+   * @param {function} one Function to invoke first.
+   * @param {function} two Function to invoke second.
+   * @return {function} Function that invokes the two argument functions.
+   * @private
+   */
+  function createChainedFunction(one, two) {
+    return function chainedFunction() {
+      one.apply(this, arguments);
+      two.apply(this, arguments);
+    };
+  }
+
+  /**
+   * Binds a method to the component.
+   *
+   * @param {object} component Component whose method is going to be bound.
+   * @param {function} method Method to be bound.
+   * @return {function} The bound method.
+   */
+  function bindAutoBindMethod(component, method) {
+    var boundMethod = method.bind(component);
+    if (process.env.NODE_ENV !== 'production') {
+      boundMethod.__reactBoundContext = component;
+      boundMethod.__reactBoundMethod = method;
+      boundMethod.__reactBoundArguments = null;
+      var componentName = component.constructor.displayName;
+      var _bind = boundMethod.bind;
+      boundMethod.bind = function(newThis) {
+        for (
+          var _len = arguments.length,
+            args = Array(_len > 1 ? _len - 1 : 0),
+            _key = 1;
+          _key < _len;
+          _key++
+        ) {
+          args[_key - 1] = arguments[_key];
+        }
+
+        // User is trying to bind() an autobound method; we effectively will
+        // ignore the value of "this" that the user is trying to use, so
+        // let's warn.
+        if (newThis !== component && newThis !== null) {
+          if (process.env.NODE_ENV !== 'production') {
+            warning(
+              false,
+              'bind(): React component methods may only be bound to the ' +
+                'component instance. See %s',
+              componentName
+            );
+          }
+        } else if (!args.length) {
+          if (process.env.NODE_ENV !== 'production') {
+            warning(
+              false,
+              'bind(): You are binding a component method to the component. ' +
+                'React does this for you automatically in a high-performance ' +
+                'way, so you can safely remove this call. See %s',
+              componentName
+            );
+          }
+          return boundMethod;
+        }
+        var reboundMethod = _bind.apply(boundMethod, arguments);
+        reboundMethod.__reactBoundContext = component;
+        reboundMethod.__reactBoundMethod = method;
+        reboundMethod.__reactBoundArguments = args;
+        return reboundMethod;
+      };
+    }
+    return boundMethod;
+  }
+
+  /**
+   * Binds all auto-bound methods in a component.
+   *
+   * @param {object} component Component whose method is going to be bound.
+   */
+  function bindAutoBindMethods(component) {
+    var pairs = component.__reactAutoBindPairs;
+    for (var i = 0; i < pairs.length; i += 2) {
+      var autoBindKey = pairs[i];
+      var method = pairs[i + 1];
+      component[autoBindKey] = bindAutoBindMethod(component, method);
+    }
+  }
+
+  var IsMountedPreMixin = {
+    componentDidMount: function() {
+      this.__isMounted = true;
+    }
+  };
+
+  var IsMountedPostMixin = {
+    componentWillUnmount: function() {
+      this.__isMounted = false;
+    }
+  };
+
+  /**
+   * Add more to the ReactClass base class. These are all legacy features and
+   * therefore not already part of the modern ReactComponent.
+   */
+  var ReactClassMixin = {
+    /**
+     * TODO: This will be deprecated because state should always keep a consistent
+     * type signature and the only use case for this, is to avoid that.
+     */
+    replaceState: function(newState, callback) {
+      this.updater.enqueueReplaceState(this, newState, callback);
+    },
+
+    /**
+     * Checks whether or not this composite component is mounted.
+     * @return {boolean} True if mounted, false otherwise.
+     * @protected
+     * @final
+     */
+    isMounted: function() {
+      if (process.env.NODE_ENV !== 'production') {
+        warning(
+          this.__didWarnIsMounted,
+          '%s: isMounted is deprecated. Instead, make sure to clean up ' +
+            'subscriptions and pending requests in componentWillUnmount to ' +
+            'prevent memory leaks.',
+          (this.constructor && this.constructor.displayName) ||
+            this.name ||
+            'Component'
+        );
+        this.__didWarnIsMounted = true;
+      }
+      return !!this.__isMounted;
+    }
+  };
+
+  var ReactClassComponent = function() {};
+  _assign(
+    ReactClassComponent.prototype,
+    ReactComponent.prototype,
+    ReactClassMixin
+  );
+
+  /**
+   * Creates a composite component class given a class specification.
+   * See https://facebook.github.io/react/docs/top-level-api.html#react.createclass
+   *
+   * @param {object} spec Class specification (which must define `render`).
+   * @return {function} Component constructor function.
+   * @public
+   */
+  function createClass(spec) {
+    // To keep our warnings more understandable, we'll use a little hack here to
+    // ensure that Constructor.name !== 'Constructor'. This makes sure we don't
+    // unnecessarily identify a class without displayName as 'Constructor'.
+    var Constructor = identity(function(props, context, updater) {
+      // This constructor gets overridden by mocks. The argument is used
+      // by mocks to assert on what gets mounted.
+
+      if (process.env.NODE_ENV !== 'production') {
+        warning(
+          this instanceof Constructor,
+          'Something is calling a React component directly. Use a factory or ' +
+            'JSX instead. See: https://fb.me/react-legacyfactory'
+        );
+      }
+
+      // Wire up auto-binding
+      if (this.__reactAutoBindPairs.length) {
+        bindAutoBindMethods(this);
+      }
+
+      this.props = props;
+      this.context = context;
+      this.refs = emptyObject;
+      this.updater = updater || ReactNoopUpdateQueue;
+
+      this.state = null;
+
+      // ReactClasses doesn't have constructors. Instead, they use the
+      // getInitialState and componentWillMount methods for initialization.
+
+      var initialState = this.getInitialState ? this.getInitialState() : null;
+      if (process.env.NODE_ENV !== 'production') {
+        // We allow auto-mocks to proceed as if they're returning null.
+        if (
+          initialState === undefined &&
+          this.getInitialState._isMockFunction
+        ) {
+          // This is probably bad practice. Consider warning here and
+          // deprecating this convenience.
+          initialState = null;
+        }
+      }
+      _invariant(
+        typeof initialState === 'object' && !Array.isArray(initialState),
+        '%s.getInitialState(): must return an object or null',
+        Constructor.displayName || 'ReactCompositeComponent'
+      );
+
+      this.state = initialState;
+    });
+    Constructor.prototype = new ReactClassComponent();
+    Constructor.prototype.constructor = Constructor;
+    Constructor.prototype.__reactAutoBindPairs = [];
+
+    injectedMixins.forEach(mixSpecIntoComponent.bind(null, Constructor));
+
+    mixSpecIntoComponent(Constructor, IsMountedPreMixin);
+    mixSpecIntoComponent(Constructor, spec);
+    mixSpecIntoComponent(Constructor, IsMountedPostMixin);
+
+    // Initialize the defaultProps property after all mixins have been merged.
+    if (Constructor.getDefaultProps) {
+      Constructor.defaultProps = Constructor.getDefaultProps();
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      // This is a tag to indicate that the use of these method names is ok,
+      // since it's used with createClass. If it's not, then it's likely a
+      // mistake so we'll warn you to use the static property, property
+      // initializer or constructor respectively.
+      if (Constructor.getDefaultProps) {
+        Constructor.getDefaultProps.isReactClassApproved = {};
+      }
+      if (Constructor.prototype.getInitialState) {
+        Constructor.prototype.getInitialState.isReactClassApproved = {};
+      }
+    }
+
+    _invariant(
+      Constructor.prototype.render,
+      'createClass(...): Class specification must implement a `render` method.'
+    );
+
+    if (process.env.NODE_ENV !== 'production') {
+      warning(
+        !Constructor.prototype.componentShouldUpdate,
+        '%s has a method called ' +
+          'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' +
+          'The name is phrased as a question because the function is ' +
+          'expected to return a value.',
+        spec.displayName || 'A component'
+      );
+      warning(
+        !Constructor.prototype.componentWillRecieveProps,
+        '%s has a method called ' +
+          'componentWillRecieveProps(). Did you mean componentWillReceiveProps()?',
+        spec.displayName || 'A component'
+      );
+    }
+
+    // Reduce time spent doing lookups by setting these on the prototype.
+    for (var methodName in ReactClassInterface) {
+      if (!Constructor.prototype[methodName]) {
+        Constructor.prototype[methodName] = null;
+      }
+    }
+
+    return Constructor;
+  }
+
+  return createClass;
+}
+
+module.exports = factory;
+
+}).call(this,require('_process'))
+},{"_process":82,"fbjs/lib/emptyObject":52,"fbjs/lib/invariant":59,"fbjs/lib/warning":66,"object-assign":81}],39:[function(require,module,exports){
 // https://d3js.org/d3-color/ Version 1.0.3. Copyright 2017 Mike Bostock.
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -946,8 +1887,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],39:[function(require,module,exports){
-// https://d3js.org/d3-interpolate/ Version 1.1.4. Copyright 2017 Mike Bostock.
+},{}],40:[function(require,module,exports){
+// https://d3js.org/d3-interpolate/ Version 1.1.5. Copyright 2017 Mike Bostock.
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-color')) :
 	typeof define === 'function' && define.amd ? define(['exports', 'd3-color'], factory) :
@@ -1193,7 +2134,7 @@ var value = function(a, b) {
       : b instanceof d3Color.color ? rgb$1
       : b instanceof Date ? date
       : Array.isArray(b) ? array
-      : isNaN(b) ? object
+      : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object
       : number)(a, b);
 };
 
@@ -1493,7 +2434,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{"d3-color":38}],40:[function(require,module,exports){
+},{"d3-color":39}],41:[function(require,module,exports){
 // https://d3js.org/d3-scale-chromatic/ Version 1.1.1. Copyright 2017 Mike Bostock.
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-interpolate')) :
@@ -1936,15 +2877,15 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{"d3-interpolate":39}],41:[function(require,module,exports){
-// https://d3js.org Version 4.7.3. Copyright 2017 Mike Bostock.
+},{"d3-interpolate":40}],42:[function(require,module,exports){
+// https://d3js.org Version 4.10.0. Copyright 2017 Mike Bostock.
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
 	(factory((global.d3 = global.d3 || {})));
 }(this, (function (exports) { 'use strict';
 
-var version = "4.7.3";
+var version = "4.10.0";
 
 var ascending = function(a, b) {
   return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
@@ -1997,11 +2938,24 @@ function pair(a, b) {
   return [a, b];
 }
 
-var cross = function(a, b, f) {
-  var na = a.length, nb = b.length, c = new Array(na * nb), ia, ib, ic, va;
-  if (f == null) f = pair;
-  for (ia = ic = 0; ia < na; ++ia) for (va = a[ia], ib = 0; ib < nb; ++ib, ++ic) c[ic] = f(va, b[ib]);
-  return c;
+var cross = function(values0, values1, reduce) {
+  var n0 = values0.length,
+      n1 = values1.length,
+      values = new Array(n0 * n1),
+      i0,
+      i1,
+      i,
+      value0;
+
+  if (reduce == null) reduce = pair;
+
+  for (i0 = i = 0; i0 < n0; ++i0) {
+    for (value0 = values0[i0], i1 = 0; i1 < n1; ++i1, ++i) {
+      values[i] = reduce(value0, values1[i1]);
+    }
+  }
+
+  return values;
 };
 
 var descending = function(a, b) {
@@ -2012,36 +2966,36 @@ var number = function(x) {
   return x === null ? NaN : +x;
 };
 
-var variance = function(array, f) {
-  var n = array.length,
+var variance = function(values, valueof) {
+  var n = values.length,
       m = 0,
-      a,
-      d,
-      s = 0,
       i = -1,
-      j = 0;
+      mean = 0,
+      value,
+      delta,
+      sum = 0;
 
-  if (f == null) {
+  if (valueof == null) {
     while (++i < n) {
-      if (!isNaN(a = number(array[i]))) {
-        d = a - m;
-        m += d / ++j;
-        s += d * (a - m);
+      if (!isNaN(value = number(values[i]))) {
+        delta = value - mean;
+        mean += delta / ++m;
+        sum += delta * (value - mean);
       }
     }
   }
 
   else {
     while (++i < n) {
-      if (!isNaN(a = number(f(array[i], i, array)))) {
-        d = a - m;
-        m += d / ++j;
-        s += d * (a - m);
+      if (!isNaN(value = number(valueof(values[i], i, values)))) {
+        delta = value - mean;
+        mean += delta / ++m;
+        sum += delta * (value - mean);
       }
     }
   }
 
-  if (j > 1) return s / (j - 1);
+  if (m > 1) return sum / (m - 1);
 };
 
 var deviation = function(array, f) {
@@ -2049,30 +3003,42 @@ var deviation = function(array, f) {
   return v ? Math.sqrt(v) : v;
 };
 
-var extent = function(array, f) {
-  var i = -1,
-      n = array.length,
-      a,
-      b,
-      c;
+var extent = function(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      min,
+      max;
 
-  if (f == null) {
-    while (++i < n) if ((b = array[i]) != null && b >= b) { a = c = b; break; }
-    while (++i < n) if ((b = array[i]) != null) {
-      if (a > b) a = b;
-      if (c < b) c = b;
+  if (valueof == null) {
+    while (++i < n) { // Find the first comparable value.
+      if ((value = values[i]) != null && value >= value) {
+        min = max = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = values[i]) != null) {
+            if (min > value) min = value;
+            if (max < value) max = value;
+          }
+        }
+      }
     }
   }
 
   else {
-    while (++i < n) if ((b = f(array[i], i, array)) != null && b >= b) { a = c = b; break; }
-    while (++i < n) if ((b = f(array[i], i, array)) != null) {
-      if (a > b) a = b;
-      if (c < b) c = b;
+    while (++i < n) { // Find the first comparable value.
+      if ((value = valueof(values[i], i, values)) != null && value >= value) {
+        min = max = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = valueof(values[i], i, values)) != null) {
+            if (min > value) min = value;
+            if (max < value) max = value;
+          }
+        }
+      }
     }
   }
 
-  return [a, c];
+  return [min, max];
 };
 
 var array = Array.prototype;
@@ -2109,13 +3075,41 @@ var e5 = Math.sqrt(10);
 var e2 = Math.sqrt(2);
 
 var ticks = function(start, stop, count) {
-  var step = tickStep(start, stop, count);
-  return sequence(
-    Math.ceil(start / step) * step,
-    Math.floor(stop / step) * step + step / 2, // inclusive
-    step
-  );
+  var reverse = stop < start,
+      i = -1,
+      n,
+      ticks,
+      step;
+
+  if (reverse) n = start, start = stop, stop = n;
+
+  if ((step = tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
+
+  if (step > 0) {
+    start = Math.ceil(start / step);
+    stop = Math.floor(stop / step);
+    ticks = new Array(n = Math.ceil(stop - start + 1));
+    while (++i < n) ticks[i] = (start + i) * step;
+  } else {
+    start = Math.floor(start * step);
+    stop = Math.ceil(stop * step);
+    ticks = new Array(n = Math.ceil(start - stop + 1));
+    while (++i < n) ticks[i] = (start - i) / step;
+  }
+
+  if (reverse) ticks.reverse();
+
+  return ticks;
 };
+
+function tickIncrement(start, stop, count) {
+  var step = (stop - start) / Math.max(0, count),
+      power = Math.floor(Math.log(step) / Math.LN10),
+      error = step / Math.pow(10, power);
+  return power >= 0
+      ? (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1) * Math.pow(10, power)
+      : -Math.pow(10, -power) / (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1);
+}
 
 function tickStep(start, stop, count) {
   var step0 = Math.abs(stop - start) / Math.max(0, count),
@@ -2152,12 +3146,15 @@ var histogram = function() {
         tz = threshold(values, x0, x1);
 
     // Convert number of thresholds into uniform thresholds.
-    if (!Array.isArray(tz)) tz = ticks(x0, x1, tz);
+    if (!Array.isArray(tz)) {
+      tz = tickStep(x0, x1, tz);
+      tz = sequence(Math.ceil(x0 / tz) * tz, Math.floor(x1 / tz) * tz, tz); // exclusive
+    }
 
     // Remove any thresholds outside the domain.
     var m = tz.length;
     while (tz[0] <= x0) tz.shift(), --m;
-    while (tz[m - 1] >= x1) tz.pop(), --m;
+    while (tz[m - 1] > x1) tz.pop(), --m;
 
     var bins = new Array(m + 1),
         bin;
@@ -2195,17 +3192,17 @@ var histogram = function() {
   return histogram;
 };
 
-var threshold = function(array, p, f) {
-  if (f == null) f = number;
-  if (!(n = array.length)) return;
-  if ((p = +p) <= 0 || n < 2) return +f(array[0], 0, array);
-  if (p >= 1) return +f(array[n - 1], n - 1, array);
+var threshold = function(values, p, valueof) {
+  if (valueof == null) valueof = number;
+  if (!(n = values.length)) return;
+  if ((p = +p) <= 0 || n < 2) return +valueof(values[0], 0, values);
+  if (p >= 1) return +valueof(values[n - 1], n - 1, values);
   var n,
-      h = (n - 1) * p,
-      i = Math.floor(h),
-      a = +f(array[i], i, array),
-      b = +f(array[i + 1], i + 1, array);
-  return a + (b - a) * (h - i);
+      i = (n - 1) * p,
+      i0 = Math.floor(i),
+      value0 = +valueof(values[i0], i0, values),
+      value1 = +valueof(values[i0 + 1], i0 + 1, values);
+  return value0 + (value1 - value0) * (i - i0);
 };
 
 var freedmanDiaconis = function(values, min, max) {
@@ -2217,55 +3214,85 @@ var scott = function(values, min, max) {
   return Math.ceil((max - min) / (3.5 * deviation(values) * Math.pow(values.length, -1 / 3)));
 };
 
-var max = function(array, f) {
-  var i = -1,
-      n = array.length,
-      a,
-      b;
-
-  if (f == null) {
-    while (++i < n) if ((b = array[i]) != null && b >= b) { a = b; break; }
-    while (++i < n) if ((b = array[i]) != null && b > a) a = b;
-  }
-
-  else {
-    while (++i < n) if ((b = f(array[i], i, array)) != null && b >= b) { a = b; break; }
-    while (++i < n) if ((b = f(array[i], i, array)) != null && b > a) a = b;
-  }
-
-  return a;
-};
-
-var mean = function(array, f) {
-  var s = 0,
-      n = array.length,
-      a,
+var max = function(values, valueof) {
+  var n = values.length,
       i = -1,
-      j = n;
+      value,
+      max;
 
-  if (f == null) {
-    while (++i < n) if (!isNaN(a = number(array[i]))) s += a; else --j;
+  if (valueof == null) {
+    while (++i < n) { // Find the first comparable value.
+      if ((value = values[i]) != null && value >= value) {
+        max = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = values[i]) != null && value > max) {
+            max = value;
+          }
+        }
+      }
+    }
   }
 
   else {
-    while (++i < n) if (!isNaN(a = number(f(array[i], i, array)))) s += a; else --j;
+    while (++i < n) { // Find the first comparable value.
+      if ((value = valueof(values[i], i, values)) != null && value >= value) {
+        max = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = valueof(values[i], i, values)) != null && value > max) {
+            max = value;
+          }
+        }
+      }
+    }
   }
 
-  if (j) return s / j;
+  return max;
 };
 
-var median = function(array, f) {
-  var numbers = [],
-      n = array.length,
-      a,
-      i = -1;
+var mean = function(values, valueof) {
+  var n = values.length,
+      m = n,
+      i = -1,
+      value,
+      sum = 0;
 
-  if (f == null) {
-    while (++i < n) if (!isNaN(a = number(array[i]))) numbers.push(a);
+  if (valueof == null) {
+    while (++i < n) {
+      if (!isNaN(value = number(values[i]))) sum += value;
+      else --m;
+    }
   }
 
   else {
-    while (++i < n) if (!isNaN(a = number(f(array[i], i, array)))) numbers.push(a);
+    while (++i < n) {
+      if (!isNaN(value = number(valueof(values[i], i, values)))) sum += value;
+      else --m;
+    }
+  }
+
+  if (m) return sum / m;
+};
+
+var median = function(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      numbers = [];
+
+  if (valueof == null) {
+    while (++i < n) {
+      if (!isNaN(value = number(values[i]))) {
+        numbers.push(value);
+      }
+    }
+  }
+
+  else {
+    while (++i < n) {
+      if (!isNaN(value = number(valueof(values[i], i, values)))) {
+        numbers.push(value);
+      }
+    }
   }
 
   return threshold(numbers.sort(ascending), 0.5);
@@ -2293,23 +3320,39 @@ var merge = function(arrays) {
   return merged;
 };
 
-var min = function(array, f) {
-  var i = -1,
-      n = array.length,
-      a,
-      b;
+var min = function(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      min;
 
-  if (f == null) {
-    while (++i < n) if ((b = array[i]) != null && b >= b) { a = b; break; }
-    while (++i < n) if ((b = array[i]) != null && a > b) a = b;
+  if (valueof == null) {
+    while (++i < n) { // Find the first comparable value.
+      if ((value = values[i]) != null && value >= value) {
+        min = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = values[i]) != null && min > value) {
+            min = value;
+          }
+        }
+      }
+    }
   }
 
   else {
-    while (++i < n) if ((b = f(array[i], i, array)) != null && b >= b) { a = b; break; }
-    while (++i < n) if ((b = f(array[i], i, array)) != null && a > b) a = b;
+    while (++i < n) { // Find the first comparable value.
+      if ((value = valueof(values[i], i, values)) != null && value >= value) {
+        min = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = valueof(values[i], i, values)) != null && min > value) {
+            min = value;
+          }
+        }
+      }
+    }
   }
 
-  return a;
+  return min;
 };
 
 var permute = function(array, indexes) {
@@ -2318,17 +3361,21 @@ var permute = function(array, indexes) {
   return permutes;
 };
 
-var scan = function(array, compare) {
-  if (!(n = array.length)) return;
-  var i = 0,
-      n,
+var scan = function(values, compare) {
+  if (!(n = values.length)) return;
+  var n,
+      i = 0,
       j = 0,
       xi,
-      xj = array[j];
+      xj = values[j];
 
-  if (!compare) compare = ascending;
+  if (compare == null) compare = ascending;
 
-  while (++i < n) if (compare(xi = array[i], xj) < 0 || compare(xj, xj) !== 0) xj = xi, j = i;
+  while (++i < n) {
+    if (compare(xi = values[i], xj) < 0 || compare(xj, xj) !== 0) {
+      xj = xi, j = i;
+    }
+  }
 
   if (compare(xj, xj) === 0) return j;
 };
@@ -2348,21 +3395,25 @@ var shuffle = function(array, i0, i1) {
   return array;
 };
 
-var sum = function(array, f) {
-  var s = 0,
-      n = array.length,
-      a,
-      i = -1;
+var sum = function(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      sum = 0;
 
-  if (f == null) {
-    while (++i < n) if (a = +array[i]) s += a; // Note: zero and null are equivalent.
+  if (valueof == null) {
+    while (++i < n) {
+      if (value = +values[i]) sum += value; // Note: zero and null are equivalent.
+    }
   }
 
   else {
-    while (++i < n) if (a = +f(array[i], i, array)) s += a;
+    while (++i < n) {
+      if (value = +valueof(values[i], i, values)) sum += value;
+    }
   }
 
-  return s;
+  return sum;
 };
 
 var transpose = function(matrix) {
@@ -2396,18 +3447,24 @@ var left = 4;
 var epsilon = 1e-6;
 
 function translateX(x) {
-  return "translate(" + x + ",0)";
+  return "translate(" + (x + 0.5) + ",0)";
 }
 
 function translateY(y) {
-  return "translate(0," + y + ")";
+  return "translate(0," + (y + 0.5) + ")";
+}
+
+function number$1(scale) {
+  return function(d) {
+    return +scale(d);
+  };
 }
 
 function center(scale) {
-  var offset = scale.bandwidth() / 2;
+  var offset = Math.max(0, scale.bandwidth() - 1) / 2; // Adjust for 0.5px offset.
   if (scale.round()) offset = Math.round(offset);
   return function(d) {
-    return scale(d) + offset;
+    return +scale(d) + offset;
   };
 }
 
@@ -2423,7 +3480,7 @@ function axis(orient, scale) {
       tickSizeOuter = 6,
       tickPadding = 3,
       k = orient === top || orient === left ? -1 : 1,
-      x, y = orient === left || orient === right ? (x = "x", "y") : (x = "y", "x"),
+      x = orient === left || orient === right ? "x" : "y",
       transform = orient === top || orient === bottom ? translateX : translateY;
 
   function axis(context) {
@@ -2431,9 +3488,9 @@ function axis(orient, scale) {
         format = tickFormat == null ? (scale.tickFormat ? scale.tickFormat.apply(scale, tickArguments) : identity$1) : tickFormat,
         spacing = Math.max(tickSizeInner, 0) + tickPadding,
         range = scale.range(),
-        range0 = range[0] + 0.5,
-        range1 = range[range.length - 1] + 0.5,
-        position = (scale.bandwidth ? center : identity$1)(scale.copy()),
+        range0 = +range[0] + 0.5,
+        range1 = +range[range.length - 1] + 0.5,
+        position = (scale.bandwidth ? center : number$1)(scale.copy()),
         selection = context.selection ? context.selection() : context,
         path = selection.selectAll(".domain").data([null]),
         tick = selection.selectAll(".tick").data(values, scale).order(),
@@ -2450,14 +3507,11 @@ function axis(orient, scale) {
 
     line = line.merge(tickEnter.append("line")
         .attr("stroke", "#000")
-        .attr(x + "2", k * tickSizeInner)
-        .attr(y + "1", 0.5)
-        .attr(y + "2", 0.5));
+        .attr(x + "2", k * tickSizeInner));
 
     text = text.merge(tickEnter.append("text")
         .attr("fill", "#000")
         .attr(x, k * spacing)
-        .attr(y, 0.5)
         .attr("dy", orient === top ? "0em" : orient === bottom ? "0.71em" : "0.32em"));
 
     if (context !== selection) {
@@ -3076,9 +4130,9 @@ var selection_exit = function() {
   return new Selection(this._exit || this._groups.map(sparse), this._parents);
 };
 
-var selection_merge = function(selection) {
+var selection_merge = function(selection$$1) {
 
-  for (var groups0 = this._groups, groups1 = selection._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
+  for (var groups0 = this._groups, groups1 = selection$$1._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
     for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) {
       if (node = group0[i] || group1[i]) {
         merge[i] = node;
@@ -3232,7 +4286,7 @@ var selection_attr = function(name, value) {
       : (fullname.local ? attrConstantNS : attrConstant)))(fullname, value));
 };
 
-var window = function(node) {
+var defaultView = function(node) {
   return (node.ownerDocument && node.ownerDocument.defaultView) // node is a Node
       || (node.document && node) // node is a Window
       || node.defaultView; // node is a Document
@@ -3259,16 +4313,18 @@ function styleFunction(name, value, priority) {
 }
 
 var selection_style = function(name, value, priority) {
-  var node;
   return arguments.length > 1
       ? this.each((value == null
             ? styleRemove : typeof value === "function"
             ? styleFunction
             : styleConstant)(name, value, priority == null ? "" : priority))
-      : window(node = this.node())
-          .getComputedStyle(node, null)
-          .getPropertyValue(name);
+      : styleValue(this.node(), name);
 };
+
+function styleValue(node, name) {
+  return node.style.getPropertyValue(name)
+      || defaultView(node).getComputedStyle(node, null).getPropertyValue(name);
+}
 
 function propertyRemove(name) {
   return function() {
@@ -3478,13 +4534,13 @@ var selection_datum = function(value) {
 };
 
 function dispatchEvent(node, type, params) {
-  var window$$1 = window(node),
-      event = window$$1.CustomEvent;
+  var window = defaultView(node),
+      event = window.CustomEvent;
 
-  if (event) {
+  if (typeof event === "function") {
     event = new event(type, params);
   } else {
-    event = window$$1.document.createEvent("Event");
+    event = window.document.createEvent("Event");
     if (params) event.initEvent(type, params.bubbles, params.cancelable), event.detail = params.detail;
     else event.initEvent(type, false, false);
   }
@@ -3660,6 +4716,10 @@ function defaultSubject(d) {
   return d == null ? {x: exports.event.x, y: exports.event.y} : d;
 }
 
+function touchable() {
+  return "ontouchstart" in this;
+}
+
 var drag = function() {
   var filter = defaultFilter$1,
       container = defaultContainer,
@@ -3667,15 +4727,20 @@ var drag = function() {
       gestures = {},
       listeners = dispatch("start", "drag", "end"),
       active = 0,
+      mousedownx,
+      mousedowny,
       mousemoving,
-      touchending;
+      touchending,
+      clickDistance2 = 0;
 
-  function drag(selection$$1) {
-    selection$$1
+  function drag(selection) {
+    selection
         .on("mousedown.drag", mousedowned)
+      .filter(touchable)
         .on("touchstart.drag", touchstarted)
         .on("touchmove.drag", touchmoved)
         .on("touchend.drag touchcancel.drag", touchended)
+        .style("touch-action", "none")
         .style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
   }
 
@@ -3687,12 +4752,17 @@ var drag = function() {
     dragDisable(exports.event.view);
     nopropagation();
     mousemoving = false;
+    mousedownx = exports.event.clientX;
+    mousedowny = exports.event.clientY;
     gesture("start");
   }
 
   function mousemoved() {
     noevent();
-    mousemoving = true;
+    if (!mousemoving) {
+      var dx = exports.event.clientX - mousedownx, dy = exports.event.clientY - mousedowny;
+      mousemoving = dx * dx + dy * dy > clickDistance2;
+    }
     gestures.mouse("drag");
   }
 
@@ -3780,6 +4850,10 @@ var drag = function() {
   drag.on = function() {
     var value = listeners.on.apply(listeners, arguments);
     return value === listeners ? drag : value;
+  };
+
+  drag.clickDistance = function(_) {
+    return arguments.length ? (clickDistance2 = (_ = +_) * _, drag) : Math.sqrt(clickDistance2);
   };
 
   return drag;
@@ -4357,7 +5431,7 @@ function nogamma(a, b) {
   return d ? linear(a, d) : constant$3(isNaN(a) ? b : a);
 }
 
-var interpolateRgb = ((function rgbGamma(y) {
+var interpolateRgb = (function rgbGamma(y) {
   var color$$1 = gamma(y);
 
   function rgb$$1(start, end) {
@@ -4377,7 +5451,7 @@ var interpolateRgb = ((function rgbGamma(y) {
   rgb$$1.gamma = rgbGamma;
 
   return rgb$$1;
-}))(1);
+})(1);
 
 function rgbSpline(spline) {
   return function(colors) {
@@ -4530,7 +5604,7 @@ var interpolateValue = function(a, b) {
       : b instanceof color ? interpolateRgb
       : b instanceof Date ? date
       : Array.isArray(b) ? array$1
-      : isNaN(b) ? object
+      : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? object
       : reinterpolate)(a, b);
 };
 
@@ -4812,7 +5886,7 @@ var clockLast = 0;
 var clockNow = 0;
 var clockSkew = 0;
 var clock = typeof performance === "object" && performance.now ? performance : Date;
-var setFrame = typeof requestAnimationFrame === "function" ? requestAnimationFrame : function(f) { setTimeout(f, 17); };
+var setFrame = typeof window === "object" && window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : function(f) { setTimeout(f, 17); };
 
 function now() {
   return clockNow || (setFrame(clearNow), clockNow = clock.now() + clockSkew);
@@ -5090,7 +6164,7 @@ function create(node, id, self) {
 
 var interrupt = function(node, name) {
   var schedules = node.__transition,
-      schedule,
+      schedule$$1,
       active,
       empty = true,
       i;
@@ -5100,11 +6174,11 @@ var interrupt = function(node, name) {
   name = name == null ? null : name + "";
 
   for (i in schedules) {
-    if ((schedule = schedules[i]).name !== name) { empty = false; continue; }
-    active = schedule.state > STARTING && schedule.state < ENDING;
-    schedule.state = ENDED;
-    schedule.timer.stop();
-    if (active) schedule.on.call("interrupt", node, node.__data__, schedule.index, schedule.group);
+    if ((schedule$$1 = schedules[i]).name !== name) { empty = false; continue; }
+    active = schedule$$1.state > STARTING && schedule$$1.state < ENDING;
+    schedule$$1.state = ENDED;
+    schedule$$1.timer.stop();
+    if (active) schedule$$1.on.call("interrupt", node, node.__data__, schedule$$1.index, schedule$$1.group);
     delete schedules[i];
   }
 
@@ -5120,8 +6194,8 @@ var selection_interrupt = function(name) {
 function tweenRemove(id, name) {
   var tween0, tween1;
   return function() {
-    var schedule = set$1(this, id),
-        tween = schedule.tween;
+    var schedule$$1 = set$1(this, id),
+        tween = schedule$$1.tween;
 
     // If this node shared tween with the previous node,
     // just assign the updated shared tween and we’re done!
@@ -5137,7 +6211,7 @@ function tweenRemove(id, name) {
       }
     }
 
-    schedule.tween = tween1;
+    schedule$$1.tween = tween1;
   };
 }
 
@@ -5145,8 +6219,8 @@ function tweenFunction(id, name, value) {
   var tween0, tween1;
   if (typeof value !== "function") throw new Error;
   return function() {
-    var schedule = set$1(this, id),
-        tween = schedule.tween;
+    var schedule$$1 = set$1(this, id),
+        tween = schedule$$1.tween;
 
     // If this node shared tween with the previous node,
     // just assign the updated shared tween and we’re done!
@@ -5162,7 +6236,7 @@ function tweenFunction(id, name, value) {
       if (i === n) tween1.push(t);
     }
 
-    schedule.tween = tween1;
+    schedule$$1.tween = tween1;
   };
 }
 
@@ -5188,8 +6262,8 @@ function tweenValue(transition, name, value) {
   var id = transition._id;
 
   transition.each(function() {
-    var schedule = set$1(this, id);
-    (schedule.value || (schedule.value = {}))[name] = value.apply(this, arguments);
+    var schedule$$1 = set$1(this, id);
+    (schedule$$1.value || (schedule$$1.value = {}))[name] = value.apply(this, arguments);
   });
 
   return function(node) {
@@ -5197,7 +6271,7 @@ function tweenValue(transition, name, value) {
   };
 }
 
-var interpolate$$1 = function(a, b) {
+var interpolate = function(a, b) {
   var c;
   return (typeof b === "number" ? reinterpolate
       : b instanceof color ? interpolateRgb
@@ -5268,7 +6342,7 @@ function attrFunctionNS$1(fullname, interpolate$$1, value) {
 }
 
 var transition_attr = function(name, value) {
-  var fullname = namespace(name), i = fullname === "transform" ? interpolateTransformSvg : interpolate$$1;
+  var fullname = namespace(name), i = fullname === "transform" ? interpolateTransformSvg : interpolate;
   return this.attrTween(name, typeof value === "function"
       ? (fullname.local ? attrFunctionNS$1 : attrFunction$1)(fullname, i, tweenValue(this, "attr." + name, value))
       : value == null ? (fullname.local ? attrRemoveNS$1 : attrRemove$1)(fullname)
@@ -5379,10 +6453,10 @@ var transition_filter = function(match) {
   return new Transition(subgroups, this._parents, this._name, this._id);
 };
 
-var transition_merge = function(transition) {
-  if (transition._id !== this._id) throw new Error;
+var transition_merge = function(transition$$1) {
+  if (transition$$1._id !== this._id) throw new Error;
 
-  for (var groups0 = this._groups, groups1 = transition._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
+  for (var groups0 = this._groups, groups1 = transition$$1._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
     for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge = merges[j] = new Array(n), node, i = 0; i < n; ++i) {
       if (node = group0[i] || group1[i]) {
         merge[i] = node;
@@ -5408,15 +6482,15 @@ function start(name) {
 function onFunction(id, name, listener) {
   var on0, on1, sit = start(name) ? init : set$1;
   return function() {
-    var schedule = sit(this, id),
-        on = schedule.on;
+    var schedule$$1 = sit(this, id),
+        on = schedule$$1.on;
 
     // If this node shared a dispatch with the previous node,
     // just assign the updated shared dispatch and we’re done!
     // Otherwise, copy-on-write.
     if (on !== on0) (on1 = (on0 = on).copy()).on(name, listener);
 
-    schedule.on = on1;
+    schedule$$1.on = on1;
   };
 }
 
@@ -5488,17 +6562,16 @@ var transition_selection = function() {
   return new Selection$1(this._groups, this._parents);
 };
 
-function styleRemove$1(name, interpolate$$2) {
+function styleRemove$1(name, interpolate$$1) {
   var value00,
       value10,
       interpolate0;
   return function() {
-    var style = window(this).getComputedStyle(this, null),
-        value0 = style.getPropertyValue(name),
-        value1 = (this.style.removeProperty(name), style.getPropertyValue(name));
+    var value0 = styleValue(this, name),
+        value1 = (this.style.removeProperty(name), styleValue(this, name));
     return value0 === value1 ? null
         : value0 === value00 && value1 === value10 ? interpolate0
-        : interpolate0 = interpolate$$2(value00 = value0, value10 = value1);
+        : interpolate0 = interpolate$$1(value00 = value0, value10 = value1);
   };
 }
 
@@ -5508,34 +6581,33 @@ function styleRemoveEnd(name) {
   };
 }
 
-function styleConstant$1(name, interpolate$$2, value1) {
+function styleConstant$1(name, interpolate$$1, value1) {
   var value00,
       interpolate0;
   return function() {
-    var value0 = window(this).getComputedStyle(this, null).getPropertyValue(name);
+    var value0 = styleValue(this, name);
     return value0 === value1 ? null
         : value0 === value00 ? interpolate0
-        : interpolate0 = interpolate$$2(value00 = value0, value1);
+        : interpolate0 = interpolate$$1(value00 = value0, value1);
   };
 }
 
-function styleFunction$1(name, interpolate$$2, value) {
+function styleFunction$1(name, interpolate$$1, value) {
   var value00,
       value10,
       interpolate0;
   return function() {
-    var style = window(this).getComputedStyle(this, null),
-        value0 = style.getPropertyValue(name),
+    var value0 = styleValue(this, name),
         value1 = value(this);
-    if (value1 == null) value1 = (this.style.removeProperty(name), style.getPropertyValue(name));
+    if (value1 == null) value1 = (this.style.removeProperty(name), styleValue(this, name));
     return value0 === value1 ? null
         : value0 === value00 && value1 === value10 ? interpolate0
-        : interpolate0 = interpolate$$2(value00 = value0, value10 = value1);
+        : interpolate0 = interpolate$$1(value00 = value0, value10 = value1);
   };
 }
 
 var transition_style = function(name, value, priority) {
-  var i = (name += "") === "transform" ? interpolateTransformCss : interpolate$$1;
+  var i = (name += "") === "transform" ? interpolateTransformCss : interpolate;
   return value == null ? this
           .styleTween(name, styleRemove$1(name, i))
           .on("end.style." + name, styleRemoveEnd(name))
@@ -5906,13 +6978,13 @@ var root$1 = [null];
 
 var active = function(node, name) {
   var schedules = node.__transition,
-      schedule,
+      schedule$$1,
       i;
 
   if (schedules) {
     name = name == null ? null : name + "";
     for (i in schedules) {
-      if ((schedule = schedules[i]).state > SCHEDULED && schedule.name === name) {
+      if ((schedule$$1 = schedules[i]).state > SCHEDULED && schedule$$1.name === name) {
         return new Transition([[node]], root$1, name, +i);
       }
     }
@@ -6121,7 +7193,7 @@ function brush$1(dim) {
         .on("mousedown.brush touchstart.brush", started);
   }
 
-  brush.move = function(group, selection$$1) {
+  brush.move = function(group, selection) {
     if (group.selection) {
       group
           .on("start.brush", function() { emitter(this, arguments).beforestart().start(); })
@@ -6131,7 +7203,7 @@ function brush$1(dim) {
                 state = that.__brush,
                 emit = emitter(that, arguments),
                 selection0 = state.selection,
-                selection1 = dim.input(typeof selection$$1 === "function" ? selection$$1.apply(this, arguments) : selection$$1, state.extent),
+                selection1 = dim.input(typeof selection === "function" ? selection.apply(this, arguments) : selection, state.extent),
                 i = interpolateValue(selection0, selection1);
 
             function tween(t) {
@@ -6148,7 +7220,7 @@ function brush$1(dim) {
             var that = this,
                 args = arguments,
                 state = that.__brush,
-                selection1 = dim.input(typeof selection$$1 === "function" ? selection$$1.apply(that, args) : selection$$1, state.extent),
+                selection1 = dim.input(typeof selection === "function" ? selection.apply(that, args) : selection, state.extent),
                 emit = emitter(that, args).beforestart();
 
             interrupt(that);
@@ -6161,22 +7233,22 @@ function brush$1(dim) {
 
   function redraw() {
     var group = select(this),
-        selection$$1 = local$$1(this).selection;
+        selection = local$$1(this).selection;
 
-    if (selection$$1) {
+    if (selection) {
       group.selectAll(".selection")
           .style("display", null)
-          .attr("x", selection$$1[0][0])
-          .attr("y", selection$$1[0][1])
-          .attr("width", selection$$1[1][0] - selection$$1[0][0])
-          .attr("height", selection$$1[1][1] - selection$$1[0][1]);
+          .attr("x", selection[0][0])
+          .attr("y", selection[0][1])
+          .attr("width", selection[1][0] - selection[0][0])
+          .attr("height", selection[1][1] - selection[0][1]);
 
       group.selectAll(".handle")
           .style("display", null)
-          .attr("x", function(d) { return d.type[d.type.length - 1] === "e" ? selection$$1[1][0] - handleSize / 2 : selection$$1[0][0] - handleSize / 2; })
-          .attr("y", function(d) { return d.type[0] === "s" ? selection$$1[1][1] - handleSize / 2 : selection$$1[0][1] - handleSize / 2; })
-          .attr("width", function(d) { return d.type === "n" || d.type === "s" ? selection$$1[1][0] - selection$$1[0][0] + handleSize : handleSize; })
-          .attr("height", function(d) { return d.type === "e" || d.type === "w" ? selection$$1[1][1] - selection$$1[0][1] + handleSize : handleSize; });
+          .attr("x", function(d) { return d.type[d.type.length - 1] === "e" ? selection[1][0] - handleSize / 2 : selection[0][0] - handleSize / 2; })
+          .attr("y", function(d) { return d.type[0] === "s" ? selection[1][1] - handleSize / 2 : selection[0][1] - handleSize / 2; })
+          .attr("width", function(d) { return d.type === "n" || d.type === "s" ? selection[1][0] - selection[0][0] + handleSize : handleSize; })
+          .attr("height", function(d) { return d.type === "e" || d.type === "w" ? selection[1][1] - selection[0][1] + handleSize : handleSize; });
     }
 
     else {
@@ -6234,7 +7306,7 @@ function brush$1(dim) {
         signY = dim === X ? null : signsY[type],
         state = local$$1(that),
         extent = state.extent,
-        selection$$1 = state.selection,
+        selection = state.selection,
         W = extent[0][0], w0, w1,
         N = extent[0][1], n0, n1,
         E = extent[1][0], e0, e1,
@@ -6250,15 +7322,15 @@ function brush$1(dim) {
         emit = emitter(that, arguments).beforestart();
 
     if (type === "overlay") {
-      state.selection = selection$$1 = [
+      state.selection = selection = [
         [w0 = dim === Y ? W : point0[0], n0 = dim === X ? N : point0[1]],
         [e0 = dim === Y ? E : w0, s0 = dim === X ? S : n0]
       ];
     } else {
-      w0 = selection$$1[0][0];
-      n0 = selection$$1[0][1];
-      e0 = selection$$1[1][0];
-      s0 = selection$$1[1][1];
+      w0 = selection[0][0];
+      n0 = selection[0][1];
+      e0 = selection[1][0];
+      s0 = selection[1][1];
     }
 
     w1 = w0;
@@ -6344,14 +7416,14 @@ function brush$1(dim) {
         if (type in flipY) overlay.attr("cursor", cursors[type = flipY[type]]);
       }
 
-      if (state.selection) selection$$1 = state.selection; // May be set by brush.move!
-      if (lockX) w1 = selection$$1[0][0], e1 = selection$$1[1][0];
-      if (lockY) n1 = selection$$1[0][1], s1 = selection$$1[1][1];
+      if (state.selection) selection = state.selection; // May be set by brush.move!
+      if (lockX) w1 = selection[0][0], e1 = selection[1][0];
+      if (lockY) n1 = selection[0][1], s1 = selection[1][1];
 
-      if (selection$$1[0][0] !== w1
-          || selection$$1[0][1] !== n1
-          || selection$$1[1][0] !== e1
-          || selection$$1[1][1] !== s1) {
+      if (selection[0][0] !== w1
+          || selection[0][1] !== n1
+          || selection[1][0] !== e1
+          || selection[1][1] !== s1) {
         state.selection = [[w1, n1], [e1, s1]];
         redraw.call(that);
         emit.brush();
@@ -6371,8 +7443,8 @@ function brush$1(dim) {
       }
       group.attr("pointer-events", "all");
       overlay.attr("cursor", cursors.overlay);
-      if (state.selection) selection$$1 = state.selection; // May be set by brush.move (on start)!
-      if (empty(selection$$1)) state.selection = null, redraw.call(that);
+      if (state.selection) selection = state.selection; // May be set by brush.move (on start)!
+      if (empty(selection)) state.selection = null, redraw.call(that);
       emit.end();
     }
 
@@ -6901,10 +7973,10 @@ var nest = function() {
       nest;
 
   function apply(array, depth, createResult, setResult) {
-    if (depth >= keys.length) return rollup != null
-        ? rollup(array) : (sortValues != null
-        ? array.sort(sortValues)
-        : array);
+    if (depth >= keys.length) {
+      if (sortValues != null) array.sort(sortValues);
+      return rollup != null ? rollup(array) : array;
+    }
 
     var i = -1,
         n = array.length,
@@ -8009,17 +9081,17 @@ var manyBody = function() {
   }
 
   function accumulate(quad) {
-    var strength = 0, q, c, x$$1, y$$1, i;
+    var strength = 0, q, c, x, y, i;
 
     // For internal nodes, accumulate forces from child quadrants.
     if (quad.length) {
-      for (x$$1 = y$$1 = i = 0; i < 4; ++i) {
+      for (x = y = i = 0; i < 4; ++i) {
         if ((q = quad[i]) && (c = q.value)) {
-          strength += c, x$$1 += c * q.x, y$$1 += c * q.y;
+          strength += c, x += c * q.x, y += c * q.y;
         }
       }
-      quad.x = x$$1 / strength;
-      quad.y = y$$1 / strength;
+      quad.x = x / strength;
+      quad.y = y / strength;
     }
 
     // For leaf nodes, accumulate forces from coincident quadrants.
@@ -8037,20 +9109,20 @@ var manyBody = function() {
   function apply(quad, x1, _, x2) {
     if (!quad.value) return true;
 
-    var x$$1 = quad.x - node.x,
-        y$$1 = quad.y - node.y,
+    var x = quad.x - node.x,
+        y = quad.y - node.y,
         w = x2 - x1,
-        l = x$$1 * x$$1 + y$$1 * y$$1;
+        l = x * x + y * y;
 
     // Apply the Barnes-Hut approximation if possible.
     // Limit forces for very close nodes; randomize direction if coincident.
     if (w * w / theta2 < l) {
       if (l < distanceMax2) {
-        if (x$$1 === 0) x$$1 = jiggle(), l += x$$1 * x$$1;
-        if (y$$1 === 0) y$$1 = jiggle(), l += y$$1 * y$$1;
+        if (x === 0) x = jiggle(), l += x * x;
+        if (y === 0) y = jiggle(), l += y * y;
         if (l < distanceMin2) l = Math.sqrt(distanceMin2 * l);
-        node.vx += x$$1 * quad.value * alpha / l;
-        node.vy += y$$1 * quad.value * alpha / l;
+        node.vx += x * quad.value * alpha / l;
+        node.vy += y * quad.value * alpha / l;
       }
       return true;
     }
@@ -8060,15 +9132,15 @@ var manyBody = function() {
 
     // Limit forces for very close nodes; randomize direction if coincident.
     if (quad.data !== node || quad.next) {
-      if (x$$1 === 0) x$$1 = jiggle(), l += x$$1 * x$$1;
-      if (y$$1 === 0) y$$1 = jiggle(), l += y$$1 * y$$1;
+      if (x === 0) x = jiggle(), l += x * x;
+      if (y === 0) y = jiggle(), l += y * y;
       if (l < distanceMin2) l = Math.sqrt(distanceMin2 * l);
     }
 
     do if (quad.data !== node) {
       w = strengths[quad.data.index] * alpha / l;
-      node.vx += x$$1 * w;
-      node.vy += y$$1 * w;
+      node.vx += x * w;
+      node.vy += y * w;
     } while (quad = quad.next);
   }
 
@@ -8344,7 +9416,8 @@ var formatLocale = function(locale) {
   var group = locale.grouping && locale.thousands ? formatGroup(locale.grouping, locale.thousands) : identity$3,
       currency = locale.currency,
       decimal = locale.decimal,
-      numerals = locale.numerals ? formatNumerals(locale.numerals) : identity$3;
+      numerals = locale.numerals ? formatNumerals(locale.numerals) : identity$3,
+      percent = locale.percent || "%";
 
   function newFormat(specifier) {
     specifier = formatSpecifier(specifier);
@@ -8362,7 +9435,7 @@ var formatLocale = function(locale) {
     // Compute the prefix and suffix.
     // For SI-prefix, the suffix is lazily computed.
     var prefix = symbol === "$" ? currency[0] : symbol === "#" && /[boxX]/.test(type) ? "0" + type.toLowerCase() : "",
-        suffix = symbol === "$" ? currency[1] : /[%p]/.test(type) ? "%" : "";
+        suffix = symbol === "$" ? currency[1] : /[%p]/.test(type) ? percent : "";
 
     // What format function should we use?
     // Is this an integer type?
@@ -10194,9 +11267,11 @@ function PathString() {
 }
 
 PathString.prototype = {
+  _radius: 4.5,
   _circle: circle$1(4.5),
   pointRadius: function(_) {
-    return this._circle = circle$1(_), this;
+    if ((_ = +_) !== this._radius) this._radius = _, this._circle = null;
+    return this;
   },
   polygonStart: function() {
     this._line = 0;
@@ -10223,6 +11298,7 @@ PathString.prototype = {
         break;
       }
       default: {
+        if (this._circle == null) this._circle = circle$1(this._radius);
         this._string.push("M", x, ",", y, this._circle);
         break;
       }
@@ -10233,6 +11309,8 @@ PathString.prototype = {
       var result = this._string.join("");
       this._string = [];
       return result;
+    } else {
+      return null;
     }
   }
 };
@@ -10557,7 +11635,7 @@ var clipCircle = function(radius, delta) {
         // TODO ignore if not clipping polygons.
         if (v !== v0) {
           point2 = intersect(point0, point1);
-          if (pointEqual(point0, point2) || pointEqual(point1, point2)) {
+          if (!point2 || pointEqual(point0, point2) || pointEqual(point1, point2)) {
             point1[0] += epsilon$2;
             point1[1] += epsilon$2;
             v = visible(point1[0], point1[1]);
@@ -11299,7 +12377,7 @@ function scaleTranslate(kx, ky, tx, ty) {
 }
 
 var identity$5 = function() {
-  var k = 1, tx = 0, ty = 0, sx = 1, sy = 1, transform = identity$4, // scale, translate and reflect
+  var k = 1, tx = 0, ty = 0, sx = 1, sy = 1, transform$$1 = identity$4, // scale, translate and reflect
       x0 = null, y0, x1, y1, clip = identity$4, // clip extent
       cache,
       cacheStream,
@@ -11312,22 +12390,22 @@ var identity$5 = function() {
 
   return projection = {
     stream: function(stream) {
-      return cache && cacheStream === stream ? cache : cache = transform(clip(cacheStream = stream));
+      return cache && cacheStream === stream ? cache : cache = transform$$1(clip(cacheStream = stream));
     },
     clipExtent: function(_) {
       return arguments.length ? (clip = _ == null ? (x0 = y0 = x1 = y1 = null, identity$4) : clipExtent(x0 = +_[0][0], y0 = +_[0][1], x1 = +_[1][0], y1 = +_[1][1]), reset()) : x0 == null ? null : [[x0, y0], [x1, y1]];
     },
     scale: function(_) {
-      return arguments.length ? (transform = scaleTranslate((k = +_) * sx, k * sy, tx, ty), reset()) : k;
+      return arguments.length ? (transform$$1 = scaleTranslate((k = +_) * sx, k * sy, tx, ty), reset()) : k;
     },
     translate: function(_) {
-      return arguments.length ? (transform = scaleTranslate(k * sx, k * sy, tx = +_[0], ty = +_[1]), reset()) : [tx, ty];
+      return arguments.length ? (transform$$1 = scaleTranslate(k * sx, k * sy, tx = +_[0], ty = +_[1]), reset()) : [tx, ty];
     },
     reflectX: function(_) {
-      return arguments.length ? (transform = scaleTranslate(k * (sx = _ ? -1 : 1), k * sy, tx, ty), reset()) : sx < 0;
+      return arguments.length ? (transform$$1 = scaleTranslate(k * (sx = _ ? -1 : 1), k * sy, tx, ty), reset()) : sx < 0;
     },
     reflectY: function(_) {
-      return arguments.length ? (transform = scaleTranslate(k * sx, k * (sy = _ ? -1 : 1), tx, ty), reset()) : sy < 0;
+      return arguments.length ? (transform$$1 = scaleTranslate(k * sx, k * (sy = _ ? -1 : 1), tx, ty), reset()) : sy < 0;
     },
     fitExtent: function(extent, object) {
       return fitExtent(projection, extent, object);
@@ -11680,83 +12758,92 @@ Node.prototype = hierarchy.prototype = {
   copy: node_copy
 };
 
-function Node$2(value) {
-  this._ = value;
-  this.next = null;
-}
+var slice$3 = Array.prototype.slice;
 
-var shuffle$1 = function(array) {
-  var i,
-      n = (array = array.slice()).length,
-      head = null,
-      node = head;
+function shuffle$1(array) {
+  var m = array.length,
+      t,
+      i;
 
-  while (n) {
-    var next = new Node$2(array[n - 1]);
-    if (node) node = node.next = next;
-    else node = head = next;
-    array[i] = array[--n];
+  while (m) {
+    i = Math.random() * m-- | 0;
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
   }
 
-  return {
-    head: head,
-    tail: node
-  };
-};
+  return array;
+}
 
 var enclose = function(circles) {
-  return encloseN(shuffle$1(circles), []);
+  var i = 0, n = (circles = shuffle$1(slice$3.call(circles))).length, B = [], p, e;
+
+  while (i < n) {
+    p = circles[i];
+    if (e && enclosesWeak(e, p)) ++i;
+    else e = encloseBasis(B = extendBasis(B, p)), i = 0;
+  }
+
+  return e;
 };
 
-function encloses(a, b) {
-  var dx = b.x - a.x,
-      dy = b.y - a.y,
-      dr = a.r - b.r;
-  return dr * dr + 1e-6 > dx * dx + dy * dy;
-}
+function extendBasis(B, p) {
+  var i, j;
 
-// Returns the smallest circle that contains circles L and intersects circles B.
-function encloseN(L, B) {
-  var circle,
-      l0 = null,
-      l1 = L.head,
-      l2,
-      p1;
+  if (enclosesWeakAll(p, B)) return [p];
 
-  switch (B.length) {
-    case 1: circle = enclose1(B[0]); break;
-    case 2: circle = enclose2(B[0], B[1]); break;
-    case 3: circle = enclose3(B[0], B[1], B[2]); break;
-  }
-
-  while (l1) {
-    p1 = l1._, l2 = l1.next;
-    if (!circle || !encloses(circle, p1)) {
-
-      // Temporarily truncate L before l1.
-      if (l0) L.tail = l0, l0.next = null;
-      else L.head = L.tail = null;
-
-      B.push(p1);
-      circle = encloseN(L, B); // Note: reorders L!
-      B.pop();
-
-      // Move l1 to the front of L and reconnect the truncated list L.
-      if (L.head) l1.next = L.head, L.head = l1;
-      else l1.next = null, L.head = L.tail = l1;
-      l0 = L.tail, l0.next = l2;
-
-    } else {
-      l0 = l1;
+  // If we get here then B must have at least one element.
+  for (i = 0; i < B.length; ++i) {
+    if (enclosesNot(p, B[i])
+        && enclosesWeakAll(encloseBasis2(B[i], p), B)) {
+      return [B[i], p];
     }
-    l1 = l2;
   }
 
-  L.tail = l0;
-  return circle;
+  // If we get here then B must have at least two elements.
+  for (i = 0; i < B.length - 1; ++i) {
+    for (j = i + 1; j < B.length; ++j) {
+      if (enclosesNot(encloseBasis2(B[i], B[j]), p)
+          && enclosesNot(encloseBasis2(B[i], p), B[j])
+          && enclosesNot(encloseBasis2(B[j], p), B[i])
+          && enclosesWeakAll(encloseBasis3(B[i], B[j], p), B)) {
+        return [B[i], B[j], p];
+      }
+    }
+  }
+
+  // If we get here then something is very wrong.
+  throw new Error;
 }
 
-function enclose1(a) {
+function enclosesNot(a, b) {
+  var dr = a.r - b.r, dx = b.x - a.x, dy = b.y - a.y;
+  return dr < 0 || dr * dr < dx * dx + dy * dy;
+}
+
+function enclosesWeak(a, b) {
+  var dr = a.r - b.r + 1e-6, dx = b.x - a.x, dy = b.y - a.y;
+  return dr > 0 && dr * dr > dx * dx + dy * dy;
+}
+
+function enclosesWeakAll(a, B) {
+  for (var i = 0; i < B.length; ++i) {
+    if (!enclosesWeak(a, B[i])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function encloseBasis(B) {
+  switch (B.length) {
+    case 1: return encloseBasis1(B[0]);
+    case 2: return encloseBasis2(B[0], B[1]);
+    case 3: return encloseBasis3(B[0], B[1], B[2]);
+  }
+}
+
+function encloseBasis1(a) {
   return {
     x: a.x,
     y: a.y,
@@ -11764,7 +12851,7 @@ function enclose1(a) {
   };
 }
 
-function enclose2(a, b) {
+function encloseBasis2(a, b) {
   var x1 = a.x, y1 = a.y, r1 = a.r,
       x2 = b.x, y2 = b.y, r2 = b.r,
       x21 = x2 - x1, y21 = y2 - y1, r21 = r2 - r1,
@@ -11776,30 +12863,31 @@ function enclose2(a, b) {
   };
 }
 
-function enclose3(a, b, c) {
+function encloseBasis3(a, b, c) {
   var x1 = a.x, y1 = a.y, r1 = a.r,
       x2 = b.x, y2 = b.y, r2 = b.r,
       x3 = c.x, y3 = c.y, r3 = c.r,
-      a2 = 2 * (x1 - x2),
-      b2 = 2 * (y1 - y2),
-      c2 = 2 * (r2 - r1),
-      d2 = x1 * x1 + y1 * y1 - r1 * r1 - x2 * x2 - y2 * y2 + r2 * r2,
-      a3 = 2 * (x1 - x3),
-      b3 = 2 * (y1 - y3),
-      c3 = 2 * (r3 - r1),
-      d3 = x1 * x1 + y1 * y1 - r1 * r1 - x3 * x3 - y3 * y3 + r3 * r3,
+      a2 = x1 - x2,
+      a3 = x1 - x3,
+      b2 = y1 - y2,
+      b3 = y1 - y3,
+      c2 = r2 - r1,
+      c3 = r3 - r1,
+      d1 = x1 * x1 + y1 * y1 - r1 * r1,
+      d2 = d1 - x2 * x2 - y2 * y2 + r2 * r2,
+      d3 = d1 - x3 * x3 - y3 * y3 + r3 * r3,
       ab = a3 * b2 - a2 * b3,
-      xa = (b2 * d3 - b3 * d2) / ab - x1,
+      xa = (b2 * d3 - b3 * d2) / (ab * 2) - x1,
       xb = (b3 * c2 - b2 * c3) / ab,
-      ya = (a3 * d2 - a2 * d3) / ab - y1,
+      ya = (a3 * d2 - a2 * d3) / (ab * 2) - y1,
       yb = (a2 * c3 - a3 * c2) / ab,
       A = xb * xb + yb * yb - 1,
-      B = 2 * (xa * xb + ya * yb + r1),
+      B = 2 * (r1 + xa * xb + ya * yb),
       C = xa * xa + ya * ya - r1 * r1,
-      r = (-B - Math.sqrt(B * B - 4 * A * C)) / (2 * A);
+      r = -(A ? (B + Math.sqrt(B * B - 4 * A * C)) / (2 * A) : C / B);
   return {
-    x: xa + xb * r + x1,
-    y: ya + yb * r + y1,
+    x: x1 + xa + xb * r,
+    y: y1 + ya + yb * r,
     r: r
   };
 }
@@ -11830,12 +12918,12 @@ function intersects(a, b) {
   return dr * dr - 1e-6 > dx * dx + dy * dy;
 }
 
-function distance2(node, x, y) {
+function score(node) {
   var a = node._,
       b = node.next._,
       ab = a.r + b.r,
-      dx = (a.x * b.r + b.x * a.r) / ab - x,
-      dy = (a.y * b.r + b.y * a.r) / ab - y;
+      dx = (a.x * b.r + b.x * a.r) / ab,
+      dy = (a.y * b.r + b.y * a.r) / ab;
   return dx * dx + dy * dy;
 }
 
@@ -11848,7 +12936,7 @@ function Node$1(circle) {
 function packEnclose(circles) {
   if (!(n = circles.length)) return 0;
 
-  var a, b, c, n;
+  var a, b, c, n, aa, ca, i, j, k, sj, sk;
 
   // Place the first circle.
   a = circles[0], a.x = 0, a.y = 0;
@@ -11860,15 +12948,6 @@ function packEnclose(circles) {
 
   // Place the third circle.
   place(b, a, c = circles[2]);
-
-  // Initialize the weighted centroid.
-  var aa = a.r * a.r,
-      ba = b.r * b.r,
-      ca = c.r * c.r,
-      oa = aa + ba + ca,
-      ox = aa * a.x + ba * b.x + ca * c.x,
-      oy = aa * a.y + ba * b.y + ca * c.y,
-      cx, cy, i, j, k, sj, sk;
 
   // Initialize the front-chain using the first three circles a, b and c.
   a = new Node$1(a), b = new Node$1(b), c = new Node$1(c);
@@ -11903,15 +12982,10 @@ function packEnclose(circles) {
     // Success! Insert the new circle c between a and b.
     c.previous = a, c.next = b, a.next = b.previous = b = c;
 
-    // Update the weighted centroid.
-    oa += ca = c._.r * c._.r;
-    ox += ca * c._.x;
-    oy += ca * c._.y;
-
     // Compute the new closest circle pair to the centroid.
-    aa = distance2(a, cx = ox / oa, cy = oy / oa);
+    aa = score(a);
     while ((c = c.next) !== b) {
-      if ((ca = distance2(c, cx, cy)) < aa) {
+      if ((ca = score(c)) < aa) {
         a = c, aa = ca;
       }
     }
@@ -12468,7 +13542,7 @@ function squarifyRatio(ratio, parent, x0, y0, x1, y1) {
   return rows;
 }
 
-var squarify = ((function custom(ratio) {
+var squarify = (function custom(ratio) {
 
   function squarify(parent, x0, y0, x1, y1) {
     squarifyRatio(ratio, parent, x0, y0, x1, y1);
@@ -12479,7 +13553,7 @@ var squarify = ((function custom(ratio) {
   };
 
   return squarify;
-}))(phi);
+})(phi);
 
 var index$3 = function() {
   var tile = squarify,
@@ -12622,7 +13696,7 @@ var sliceDice = function(parent, x0, y0, x1, y1) {
   (parent.depth & 1 ? treemapSlice : treemapDice)(parent, x0, y0, x1, y1);
 };
 
-var resquarify = ((function custom(ratio) {
+var resquarify = (function custom(ratio) {
 
   function resquarify(parent, x0, y0, x1, y1) {
     if ((rows = parent._squarify) && (rows.ratio === ratio)) {
@@ -12653,7 +13727,7 @@ var resquarify = ((function custom(ratio) {
   };
 
   return resquarify;
-}))(phi);
+})(phi);
 
 var area$1 = function(polygon) {
   var i = -1,
@@ -12789,12 +13863,11 @@ var length$2 = function(polygon) {
   return perimeter;
 };
 
-var slice$3 = [].slice;
+var slice$4 = [].slice;
 
 var noabort = {};
 
 function Queue(size) {
-  if (!(size >= 1)) throw new Error;
   this._size = size;
   this._call =
   this._error = null;
@@ -12809,9 +13882,10 @@ function Queue(size) {
 Queue.prototype = queue.prototype = {
   constructor: Queue,
   defer: function(callback) {
-    if (typeof callback !== "function" || this._call) throw new Error;
+    if (typeof callback !== "function") throw new Error("invalid callback");
+    if (this._call) throw new Error("defer after await");
     if (this._error != null) return this;
-    var t = slice$3.call(arguments, 1);
+    var t = slice$4.call(arguments, 1);
     t.push(callback);
     ++this._waiting, this._tasks.push(t);
     poke$1(this);
@@ -12822,13 +13896,15 @@ Queue.prototype = queue.prototype = {
     return this;
   },
   await: function(callback) {
-    if (typeof callback !== "function" || this._call) throw new Error;
+    if (typeof callback !== "function") throw new Error("invalid callback");
+    if (this._call) throw new Error("multiple await");
     this._call = function(error, results) { callback.apply(null, [error].concat(results)); };
     maybeNotify(this);
     return this;
   },
   awaitAll: function(callback) {
-    if (typeof callback !== "function" || this._call) throw new Error;
+    if (typeof callback !== "function") throw new Error("invalid callback");
+    if (this._call) throw new Error("multiple await");
     this._call = callback;
     maybeNotify(this);
     return this;
@@ -12904,66 +13980,108 @@ function maybeNotify(q) {
 }
 
 function queue(concurrency) {
-  return new Queue(arguments.length ? +concurrency : Infinity);
+  if (concurrency == null) concurrency = Infinity;
+  else if (!((concurrency = +concurrency) >= 1)) throw new Error("invalid concurrency");
+  return new Queue(concurrency);
 }
 
-var uniform = function(min, max) {
-  min = min == null ? 0 : +min;
-  max = max == null ? 1 : +max;
-  if (arguments.length === 1) max = min, min = 0;
-  else max -= min;
-  return function() {
-    return Math.random() * max + min;
-  };
+var defaultSource$1 = function() {
+  return Math.random();
 };
 
-var normal = function(mu, sigma) {
-  var x, r;
-  mu = mu == null ? 0 : +mu;
-  sigma = sigma == null ? 1 : +sigma;
-  return function() {
-    var y;
+var uniform = (function sourceRandomUniform(source) {
+  function randomUniform(min, max) {
+    min = min == null ? 0 : +min;
+    max = max == null ? 1 : +max;
+    if (arguments.length === 1) max = min, min = 0;
+    else max -= min;
+    return function() {
+      return source() * max + min;
+    };
+  }
 
-    // If available, use the second previously-generated uniform random.
-    if (x != null) y = x, x = null;
+  randomUniform.source = sourceRandomUniform;
 
-    // Otherwise, generate a new x and y.
-    else do {
-      x = Math.random() * 2 - 1;
-      y = Math.random() * 2 - 1;
-      r = x * x + y * y;
-    } while (!r || r > 1);
+  return randomUniform;
+})(defaultSource$1);
 
-    return mu + sigma * y * Math.sqrt(-2 * Math.log(r) / r);
-  };
-};
+var normal = (function sourceRandomNormal(source) {
+  function randomNormal(mu, sigma) {
+    var x, r;
+    mu = mu == null ? 0 : +mu;
+    sigma = sigma == null ? 1 : +sigma;
+    return function() {
+      var y;
 
-var logNormal = function() {
-  var randomNormal = normal.apply(this, arguments);
-  return function() {
-    return Math.exp(randomNormal());
-  };
-};
+      // If available, use the second previously-generated uniform random.
+      if (x != null) y = x, x = null;
 
-var irwinHall = function(n) {
-  return function() {
-    for (var sum = 0, i = 0; i < n; ++i) sum += Math.random();
-    return sum;
-  };
-};
+      // Otherwise, generate a new x and y.
+      else do {
+        x = source() * 2 - 1;
+        y = source() * 2 - 1;
+        r = x * x + y * y;
+      } while (!r || r > 1);
 
-var bates = function(n) {
-  var randomIrwinHall = irwinHall(n);
-  return function() {
-    return randomIrwinHall() / n;
-  };
-};
+      return mu + sigma * y * Math.sqrt(-2 * Math.log(r) / r);
+    };
+  }
 
-var exponential$1 = function(lambda) {
-  return function() {
-    return -Math.log(1 - Math.random()) / lambda;
-  };
-};
+  randomNormal.source = sourceRandomNormal;
+
+  return randomNormal;
+})(defaultSource$1);
+
+var logNormal = (function sourceRandomLogNormal(source) {
+  function randomLogNormal() {
+    var randomNormal = normal.source(source).apply(this, arguments);
+    return function() {
+      return Math.exp(randomNormal());
+    };
+  }
+
+  randomLogNormal.source = sourceRandomLogNormal;
+
+  return randomLogNormal;
+})(defaultSource$1);
+
+var irwinHall = (function sourceRandomIrwinHall(source) {
+  function randomIrwinHall(n) {
+    return function() {
+      for (var sum = 0, i = 0; i < n; ++i) sum += source();
+      return sum;
+    };
+  }
+
+  randomIrwinHall.source = sourceRandomIrwinHall;
+
+  return randomIrwinHall;
+})(defaultSource$1);
+
+var bates = (function sourceRandomBates(source) {
+  function randomBates(n) {
+    var randomIrwinHall = irwinHall.source(source)(n);
+    return function() {
+      return randomIrwinHall() / n;
+    };
+  }
+
+  randomBates.source = sourceRandomBates;
+
+  return randomBates;
+})(defaultSource$1);
+
+var exponential$1 = (function sourceRandomExponential(source) {
+  function randomExponential(lambda) {
+    return function() {
+      return -Math.log(1 - source()) / lambda;
+    };
+  }
+
+  randomExponential.source = sourceRandomExponential;
+
+  return randomExponential;
+})(defaultSource$1);
 
 var request = function(url, callback) {
   var request,
@@ -13166,7 +14284,7 @@ var tsv$1 = dsv$1("text/tab-separated-values", tsvParse);
 var array$2 = Array.prototype;
 
 var map$3 = array$2.map;
-var slice$4 = array$2.slice;
+var slice$5 = array$2.slice;
 
 var implicit = {name: "implicit"};
 
@@ -13175,7 +14293,7 @@ function ordinal(range) {
       domain = [],
       unknown = implicit;
 
-  range = range == null ? [] : slice$4.call(range);
+  range = range == null ? [] : slice$5.call(range);
 
   function scale(d) {
     var key = d + "", i = index.get(key);
@@ -13195,7 +14313,7 @@ function ordinal(range) {
   };
 
   scale.range = function(_) {
-    return arguments.length ? (range = slice$4.call(_), scale) : range.slice();
+    return arguments.length ? (range = slice$5.call(_), scale) : range.slice();
   };
 
   scale.unknown = function(_) {
@@ -13216,7 +14334,7 @@ function band() {
   var scale = ordinal().unknown(undefined),
       domain = scale.domain,
       ordinalRange = scale.range,
-      range$$1 = [0, 1],
+      range = [0, 1],
       step,
       bandwidth,
       round = false,
@@ -13228,9 +14346,9 @@ function band() {
 
   function rescale() {
     var n = domain().length,
-        reverse = range$$1[1] < range$$1[0],
-        start = range$$1[reverse - 0],
-        stop = range$$1[1 - reverse];
+        reverse = range[1] < range[0],
+        start = range[reverse - 0],
+        stop = range[1 - reverse];
     step = (stop - start) / Math.max(1, n - paddingInner + paddingOuter * 2);
     if (round) step = Math.floor(step);
     start += (stop - start - step * (n - paddingInner)) * align;
@@ -13245,11 +14363,11 @@ function band() {
   };
 
   scale.range = function(_) {
-    return arguments.length ? (range$$1 = [+_[0], +_[1]], rescale()) : range$$1.slice();
+    return arguments.length ? (range = [+_[0], +_[1]], rescale()) : range.slice();
   };
 
   scale.rangeRound = function(_) {
-    return range$$1 = [+_[0], +_[1]], round = true, rescale();
+    return range = [+_[0], +_[1]], round = true, rescale();
   };
 
   scale.bandwidth = function() {
@@ -13283,7 +14401,7 @@ function band() {
   scale.copy = function() {
     return band()
         .domain(domain())
-        .range(range$$1)
+        .range(range)
         .round(round)
         .paddingInner(paddingInner)
         .paddingOuter(paddingOuter)
@@ -13317,7 +14435,7 @@ var constant$9 = function(x) {
   };
 };
 
-var number$1 = function(x) {
+var number$2 = function(x) {
   return +x;
 };
 
@@ -13336,22 +14454,22 @@ function deinterpolateClamp(deinterpolate) {
   };
 }
 
-function reinterpolateClamp(reinterpolate) {
+function reinterpolateClamp(reinterpolate$$1) {
   return function(a, b) {
-    var r = reinterpolate(a = +a, b = +b);
+    var r = reinterpolate$$1(a = +a, b = +b);
     return function(t) { return t <= 0 ? a : t >= 1 ? b : r(t); };
   };
 }
 
-function bimap(domain, range$$1, deinterpolate, reinterpolate) {
-  var d0 = domain[0], d1 = domain[1], r0 = range$$1[0], r1 = range$$1[1];
-  if (d1 < d0) d0 = deinterpolate(d1, d0), r0 = reinterpolate(r1, r0);
-  else d0 = deinterpolate(d0, d1), r0 = reinterpolate(r0, r1);
+function bimap(domain, range, deinterpolate, reinterpolate$$1) {
+  var d0 = domain[0], d1 = domain[1], r0 = range[0], r1 = range[1];
+  if (d1 < d0) d0 = deinterpolate(d1, d0), r0 = reinterpolate$$1(r1, r0);
+  else d0 = deinterpolate(d0, d1), r0 = reinterpolate$$1(r0, r1);
   return function(x) { return r0(d0(x)); };
 }
 
-function polymap(domain, range$$1, deinterpolate, reinterpolate) {
-  var j = Math.min(domain.length, range$$1.length) - 1,
+function polymap(domain, range, deinterpolate, reinterpolate$$1) {
+  var j = Math.min(domain.length, range.length) - 1,
       d = new Array(j),
       r = new Array(j),
       i = -1;
@@ -13359,12 +14477,12 @@ function polymap(domain, range$$1, deinterpolate, reinterpolate) {
   // Reverse descending domains.
   if (domain[j] < domain[0]) {
     domain = domain.slice().reverse();
-    range$$1 = range$$1.slice().reverse();
+    range = range.slice().reverse();
   }
 
   while (++i < j) {
     d[i] = deinterpolate(domain[i], domain[i + 1]);
-    r[i] = reinterpolate(range$$1[i], range$$1[i + 1]);
+    r[i] = reinterpolate$$1(range[i], range[i + 1]);
   }
 
   return function(x) {
@@ -13383,39 +14501,39 @@ function copy(source, target) {
 
 // deinterpolate(a, b)(x) takes a domain value x in [a,b] and returns the corresponding parameter t in [0,1].
 // reinterpolate(a, b)(t) takes a parameter t in [0,1] and returns the corresponding domain value x in [a,b].
-function continuous(deinterpolate, reinterpolate) {
+function continuous(deinterpolate, reinterpolate$$1) {
   var domain = unit,
-      range$$1 = unit,
-      interpolate$$1 = interpolateValue,
+      range = unit,
+      interpolate = interpolateValue,
       clamp = false,
       piecewise,
       output,
       input;
 
   function rescale() {
-    piecewise = Math.min(domain.length, range$$1.length) > 2 ? polymap : bimap;
+    piecewise = Math.min(domain.length, range.length) > 2 ? polymap : bimap;
     output = input = null;
     return scale;
   }
 
   function scale(x) {
-    return (output || (output = piecewise(domain, range$$1, clamp ? deinterpolateClamp(deinterpolate) : deinterpolate, interpolate$$1)))(+x);
+    return (output || (output = piecewise(domain, range, clamp ? deinterpolateClamp(deinterpolate) : deinterpolate, interpolate)))(+x);
   }
 
   scale.invert = function(y) {
-    return (input || (input = piecewise(range$$1, domain, deinterpolateLinear, clamp ? reinterpolateClamp(reinterpolate) : reinterpolate)))(+y);
+    return (input || (input = piecewise(range, domain, deinterpolateLinear, clamp ? reinterpolateClamp(reinterpolate$$1) : reinterpolate$$1)))(+y);
   };
 
   scale.domain = function(_) {
-    return arguments.length ? (domain = map$3.call(_, number$1), rescale()) : domain.slice();
+    return arguments.length ? (domain = map$3.call(_, number$2), rescale()) : domain.slice();
   };
 
   scale.range = function(_) {
-    return arguments.length ? (range$$1 = slice$4.call(_), rescale()) : range$$1.slice();
+    return arguments.length ? (range = slice$5.call(_), rescale()) : range.slice();
   };
 
   scale.rangeRound = function(_) {
-    return range$$1 = slice$4.call(_), interpolate$$1 = interpolateRound, rescale();
+    return range = slice$5.call(_), interpolate = interpolateRound, rescale();
   };
 
   scale.clamp = function(_) {
@@ -13423,7 +14541,7 @@ function continuous(deinterpolate, reinterpolate) {
   };
 
   scale.interpolate = function(_) {
-    return arguments.length ? (interpolate$$1 = _, rescale()) : interpolate$$1;
+    return arguments.length ? (interpolate = _, rescale()) : interpolate;
   };
 
   return rescale();
@@ -13471,17 +14589,39 @@ function linearish(scale) {
   };
 
   scale.nice = function(count) {
-    var d = domain(),
-        i = d.length - 1,
-        n = count == null ? 10 : count,
-        start = d[0],
-        stop = d[i],
-        step = tickStep(start, stop, n);
+    if (count == null) count = 10;
 
-    if (step) {
-      step = tickStep(Math.floor(start / step) * step, Math.ceil(stop / step) * step, n);
-      d[0] = Math.floor(start / step) * step;
-      d[i] = Math.ceil(stop / step) * step;
+    var d = domain(),
+        i0 = 0,
+        i1 = d.length - 1,
+        start = d[i0],
+        stop = d[i1],
+        step;
+
+    if (stop < start) {
+      step = start, start = stop, stop = step;
+      step = i0, i0 = i1, i1 = step;
+    }
+
+    step = tickIncrement(start, stop, count);
+
+    if (step > 0) {
+      start = Math.floor(start / step) * step;
+      stop = Math.ceil(stop / step) * step;
+      step = tickIncrement(start, stop, count);
+    } else if (step < 0) {
+      start = Math.ceil(start * step) / step;
+      stop = Math.floor(stop * step) / step;
+      step = tickIncrement(start, stop, count);
+    }
+
+    if (step > 0) {
+      d[i0] = Math.floor(start / step) * step;
+      d[i1] = Math.ceil(stop / step) * step;
+      domain(d);
+    } else if (step < 0) {
+      d[i0] = Math.ceil(start * step) / step;
+      d[i1] = Math.floor(stop * step) / step;
       domain(d);
     }
 
@@ -13511,7 +14651,7 @@ function identity$6() {
   scale.invert = scale;
 
   scale.domain = scale.range = function(_) {
-    return arguments.length ? (domain = map$3.call(_, number$1), scale) : domain.slice();
+    return arguments.length ? (domain = map$3.call(_, number$2), scale) : domain.slice();
   };
 
   scale.copy = function() {
@@ -13698,24 +14838,24 @@ function sqrt$1() {
   return pow$1().exponent(0.5);
 }
 
-function quantile$$1() {
+function quantile() {
   var domain = [],
-      range$$1 = [],
+      range = [],
       thresholds = [];
 
   function rescale() {
-    var i = 0, n = Math.max(1, range$$1.length);
+    var i = 0, n = Math.max(1, range.length);
     thresholds = new Array(n - 1);
     while (++i < n) thresholds[i - 1] = threshold(domain, i / n);
     return scale;
   }
 
   function scale(x) {
-    if (!isNaN(x = +x)) return range$$1[bisectRight(thresholds, x)];
+    if (!isNaN(x = +x)) return range[bisectRight(thresholds, x)];
   }
 
   scale.invertExtent = function(y) {
-    var i = range$$1.indexOf(y);
+    var i = range.indexOf(y);
     return i < 0 ? [NaN, NaN] : [
       i > 0 ? thresholds[i - 1] : domain[0],
       i < thresholds.length ? thresholds[i] : domain[domain.length - 1]
@@ -13731,7 +14871,7 @@ function quantile$$1() {
   };
 
   scale.range = function(_) {
-    return arguments.length ? (range$$1 = slice$4.call(_), rescale()) : range$$1.slice();
+    return arguments.length ? (range = slice$5.call(_), rescale()) : range.slice();
   };
 
   scale.quantiles = function() {
@@ -13739,9 +14879,9 @@ function quantile$$1() {
   };
 
   scale.copy = function() {
-    return quantile$$1()
+    return quantile()
         .domain(domain)
-        .range(range$$1);
+        .range(range);
   };
 
   return scale;
@@ -13752,10 +14892,10 @@ function quantize$1() {
       x1 = 1,
       n = 1,
       domain = [0.5],
-      range$$1 = [0, 1];
+      range = [0, 1];
 
   function scale(x) {
-    if (x <= x) return range$$1[bisectRight(domain, x, 0, n)];
+    if (x <= x) return range[bisectRight(domain, x, 0, n)];
   }
 
   function rescale() {
@@ -13770,11 +14910,11 @@ function quantize$1() {
   };
 
   scale.range = function(_) {
-    return arguments.length ? (n = (range$$1 = slice$4.call(_)).length - 1, rescale()) : range$$1.slice();
+    return arguments.length ? (n = (range = slice$5.call(_)).length - 1, rescale()) : range.slice();
   };
 
   scale.invertExtent = function(y) {
-    var i = range$$1.indexOf(y);
+    var i = range.indexOf(y);
     return i < 0 ? [NaN, NaN]
         : i < 1 ? [x0, domain[0]]
         : i >= n ? [domain[n - 1], x1]
@@ -13784,7 +14924,7 @@ function quantize$1() {
   scale.copy = function() {
     return quantize$1()
         .domain([x0, x1])
-        .range(range$$1);
+        .range(range);
   };
 
   return linearish(scale);
@@ -13792,30 +14932,30 @@ function quantize$1() {
 
 function threshold$1() {
   var domain = [0.5],
-      range$$1 = [0, 1],
+      range = [0, 1],
       n = 1;
 
   function scale(x) {
-    if (x <= x) return range$$1[bisectRight(domain, x, 0, n)];
+    if (x <= x) return range[bisectRight(domain, x, 0, n)];
   }
 
   scale.domain = function(_) {
-    return arguments.length ? (domain = slice$4.call(_), n = Math.min(domain.length, range$$1.length - 1), scale) : domain.slice();
+    return arguments.length ? (domain = slice$5.call(_), n = Math.min(domain.length, range.length - 1), scale) : domain.slice();
   };
 
   scale.range = function(_) {
-    return arguments.length ? (range$$1 = slice$4.call(_), n = Math.min(domain.length, range$$1.length - 1), scale) : range$$1.slice();
+    return arguments.length ? (range = slice$5.call(_), n = Math.min(domain.length, range.length - 1), scale) : range.slice();
   };
 
   scale.invertExtent = function(y) {
-    var i = range$$1.indexOf(y);
+    var i = range.indexOf(y);
     return [domain[i - 1], domain[i]];
   };
 
   scale.copy = function() {
     return threshold$1()
         .domain(domain)
-        .range(range$$1);
+        .range(range);
   };
 
   return scale;
@@ -13859,7 +14999,13 @@ function newInterval(floori, offseti, count, field) {
     return newInterval(function(date) {
       if (date >= date) while (floori(date), !test(date)) date.setTime(date - 1);
     }, function(date, step) {
-      if (date >= date) while (--step >= 0) while (offseti(date, 1), !test(date)) {} // eslint-disable-line no-empty
+      if (date >= date) {
+        if (step < 0) while (++step <= 0) {
+          while (offseti(date, -1), !test(date)) {} // eslint-disable-line no-empty
+        } else while (--step >= 0) {
+          while (offseti(date, +1), !test(date)) {} // eslint-disable-line no-empty
+        }
+      }
     });
   };
 
@@ -14712,7 +15858,7 @@ function date$1(t) {
   return new Date(t);
 }
 
-function number$2(t) {
+function number$3(t) {
   return t instanceof Date ? +t : +new Date(+t);
 }
 
@@ -14751,39 +15897,39 @@ function calendar(year$$1, month$$1, week, day$$1, hour$$1, minute$$1, second$$1
     [  year$$1,  1,      durationYear  ]
   ];
 
-  function tickFormat(date) {
-    return (second$$1(date) < date ? formatMillisecond
-        : minute$$1(date) < date ? formatSecond
-        : hour$$1(date) < date ? formatMinute
-        : day$$1(date) < date ? formatHour
-        : month$$1(date) < date ? (week(date) < date ? formatDay : formatWeek)
-        : year$$1(date) < date ? formatMonth
-        : formatYear)(date);
+  function tickFormat(date$$1) {
+    return (second$$1(date$$1) < date$$1 ? formatMillisecond
+        : minute$$1(date$$1) < date$$1 ? formatSecond
+        : hour$$1(date$$1) < date$$1 ? formatMinute
+        : day$$1(date$$1) < date$$1 ? formatHour
+        : month$$1(date$$1) < date$$1 ? (week(date$$1) < date$$1 ? formatDay : formatWeek)
+        : year$$1(date$$1) < date$$1 ? formatMonth
+        : formatYear)(date$$1);
   }
 
-  function tickInterval(interval, start, stop, step) {
-    if (interval == null) interval = 10;
+  function tickInterval(interval$$1, start, stop, step) {
+    if (interval$$1 == null) interval$$1 = 10;
 
     // If a desired tick count is specified, pick a reasonable tick interval
     // based on the extent of the domain and a rough estimate of tick size.
     // Otherwise, assume interval is already a time interval and use it.
-    if (typeof interval === "number") {
-      var target = Math.abs(stop - start) / interval,
+    if (typeof interval$$1 === "number") {
+      var target = Math.abs(stop - start) / interval$$1,
           i = bisector(function(i) { return i[2]; }).right(tickIntervals, target);
       if (i === tickIntervals.length) {
-        step = tickStep(start / durationYear, stop / durationYear, interval);
-        interval = year$$1;
+        step = tickStep(start / durationYear, stop / durationYear, interval$$1);
+        interval$$1 = year$$1;
       } else if (i) {
         i = tickIntervals[target / tickIntervals[i - 1][2] < tickIntervals[i][2] / target ? i - 1 : i];
         step = i[1];
-        interval = i[0];
+        interval$$1 = i[0];
       } else {
-        step = tickStep(start, stop, interval);
-        interval = millisecond$$1;
+        step = tickStep(start, stop, interval$$1);
+        interval$$1 = millisecond$$1;
       }
     }
 
-    return step == null ? interval : interval.every(step);
+    return step == null ? interval$$1 : interval$$1.every(step);
   }
 
   scale.invert = function(y) {
@@ -14791,17 +15937,17 @@ function calendar(year$$1, month$$1, week, day$$1, hour$$1, minute$$1, second$$1
   };
 
   scale.domain = function(_) {
-    return arguments.length ? domain(map$3.call(_, number$2)) : domain().map(date$1);
+    return arguments.length ? domain(map$3.call(_, number$3)) : domain().map(date$1);
   };
 
-  scale.ticks = function(interval, step) {
+  scale.ticks = function(interval$$1, step) {
     var d = domain(),
         t0 = d[0],
         t1 = d[d.length - 1],
         r = t1 < t0,
         t;
     if (r) t = t0, t0 = t1, t1 = t;
-    t = tickInterval(interval, t0, t1, step);
+    t = tickInterval(interval$$1, t0, t1, step);
     t = t ? t.range(t0, t1 + 1) : []; // inclusive stop
     return r ? t.reverse() : t;
   };
@@ -14810,10 +15956,10 @@ function calendar(year$$1, month$$1, week, day$$1, hour$$1, minute$$1, second$$1
     return specifier == null ? tickFormat : format(specifier);
   };
 
-  scale.nice = function(interval, step) {
+  scale.nice = function(interval$$1, step) {
     var d = domain();
-    return (interval = tickInterval(interval, d[0], d[d.length - 1], step))
-        ? domain(nice(d, interval))
+    return (interval$$1 = tickInterval(interval$$1, d[0], d[d.length - 1], step))
+        ? domain(nice(d, interval$$1))
         : scale;
   };
 
@@ -15231,8 +16377,8 @@ function y$3(p) {
 }
 
 var line = function() {
-  var x$$1 = x$3,
-      y$$1 = y$3,
+  var x = x$3,
+      y = y$3,
       defined = constant$10(true),
       context = null,
       curve = curveLinear,
@@ -15252,18 +16398,18 @@ var line = function() {
         if (defined0 = !defined0) output.lineStart();
         else output.lineEnd();
       }
-      if (defined0) output.point(+x$$1(d, i, data), +y$$1(d, i, data));
+      if (defined0) output.point(+x(d, i, data), +y(d, i, data));
     }
 
     if (buffer) return output = null, buffer + "" || null;
   }
 
   line.x = function(_) {
-    return arguments.length ? (x$$1 = typeof _ === "function" ? _ : constant$10(+_), line) : x$$1;
+    return arguments.length ? (x = typeof _ === "function" ? _ : constant$10(+_), line) : x;
   };
 
   line.y = function(_) {
-    return arguments.length ? (y$$1 = typeof _ === "function" ? _ : constant$10(+_), line) : y$$1;
+    return arguments.length ? (y = typeof _ === "function" ? _ : constant$10(+_), line) : y;
   };
 
   line.defined = function(_) {
@@ -15503,7 +16649,7 @@ function curveRadial(curve) {
   return radial;
 }
 
-function radialLine(l) {
+function lineRadial(l) {
   var c = l.curve;
 
   l.angle = l.x, delete l.x;
@@ -15516,11 +16662,11 @@ function radialLine(l) {
   return l;
 }
 
-var radialLine$1 = function() {
-  return radialLine(line().curve(curveRadialLinear));
+var lineRadial$1 = function() {
+  return lineRadial(line().curve(curveRadialLinear));
 };
 
-var radialArea = function() {
+var areaRadial = function() {
   var a = area$2().curve(curveRadialLinear),
       c = a.curve,
       x0 = a.lineX0,
@@ -15534,10 +16680,10 @@ var radialArea = function() {
   a.radius = a.y, delete a.y;
   a.innerRadius = a.y0, delete a.y0;
   a.outerRadius = a.y1, delete a.y1;
-  a.lineStartAngle = function() { return radialLine(x0()); }, delete a.lineX0;
-  a.lineEndAngle = function() { return radialLine(x1()); }, delete a.lineX1;
-  a.lineInnerRadius = function() { return radialLine(y0()); }, delete a.lineY0;
-  a.lineOuterRadius = function() { return radialLine(y1()); }, delete a.lineY1;
+  a.lineStartAngle = function() { return lineRadial(x0()); }, delete a.lineX0;
+  a.lineEndAngle = function() { return lineRadial(x1()); }, delete a.lineX1;
+  a.lineInnerRadius = function() { return lineRadial(y0()); }, delete a.lineY0;
+  a.lineOuterRadius = function() { return lineRadial(y1()); }, delete a.lineY1;
 
   a.curve = function(_) {
     return arguments.length ? c(curveRadial(_)) : c()._curve;
@@ -15545,6 +16691,91 @@ var radialArea = function() {
 
   return a;
 };
+
+var pointRadial = function(x, y) {
+  return [(y = +y) * Math.cos(x -= Math.PI / 2), y * Math.sin(x)];
+};
+
+var slice$6 = Array.prototype.slice;
+
+function linkSource(d) {
+  return d.source;
+}
+
+function linkTarget(d) {
+  return d.target;
+}
+
+function link$2(curve) {
+  var source = linkSource,
+      target = linkTarget,
+      x = x$3,
+      y = y$3,
+      context = null;
+
+  function link() {
+    var buffer, argv = slice$6.call(arguments), s = source.apply(this, argv), t = target.apply(this, argv);
+    if (!context) context = buffer = path();
+    curve(context, +x.apply(this, (argv[0] = s, argv)), +y.apply(this, argv), +x.apply(this, (argv[0] = t, argv)), +y.apply(this, argv));
+    if (buffer) return context = null, buffer + "" || null;
+  }
+
+  link.source = function(_) {
+    return arguments.length ? (source = _, link) : source;
+  };
+
+  link.target = function(_) {
+    return arguments.length ? (target = _, link) : target;
+  };
+
+  link.x = function(_) {
+    return arguments.length ? (x = typeof _ === "function" ? _ : constant$10(+_), link) : x;
+  };
+
+  link.y = function(_) {
+    return arguments.length ? (y = typeof _ === "function" ? _ : constant$10(+_), link) : y;
+  };
+
+  link.context = function(_) {
+    return arguments.length ? ((context = _ == null ? null : _), link) : context;
+  };
+
+  return link;
+}
+
+function curveHorizontal(context, x0, y0, x1, y1) {
+  context.moveTo(x0, y0);
+  context.bezierCurveTo(x0 = (x0 + x1) / 2, y0, x0, y1, x1, y1);
+}
+
+function curveVertical(context, x0, y0, x1, y1) {
+  context.moveTo(x0, y0);
+  context.bezierCurveTo(x0, y0 = (y0 + y1) / 2, x1, y0, x1, y1);
+}
+
+function curveRadial$1(context, x0, y0, x1, y1) {
+  var p0 = pointRadial(x0, y0),
+      p1 = pointRadial(x0, y0 = (y0 + y1) / 2),
+      p2 = pointRadial(x1, y0),
+      p3 = pointRadial(x1, y1);
+  context.moveTo(p0[0], p0[1]);
+  context.bezierCurveTo(p1[0], p1[1], p2[0], p2[1], p3[0], p3[1]);
+}
+
+function linkHorizontal() {
+  return link$2(curveHorizontal);
+}
+
+function linkVertical() {
+  return link$2(curveVertical);
+}
+
+function linkRadial() {
+  var l = link$2(curveRadial$1);
+  l.angle = l.x, delete l.x;
+  l.radius = l.y, delete l.y;
+  return l;
+}
 
 var circle$2 = {
   draw: function(context, size) {
@@ -15879,7 +17110,7 @@ Bundle.prototype = {
   }
 };
 
-var bundle = ((function custom(beta) {
+var bundle = (function custom(beta) {
 
   function bundle(context) {
     return beta === 1 ? new Basis(context) : new Bundle(context, beta);
@@ -15890,7 +17121,7 @@ var bundle = ((function custom(beta) {
   };
 
   return bundle;
-}))(0.85);
+})(0.85);
 
 function point$3(that, x, y) {
   that._context.bezierCurveTo(
@@ -15941,7 +17172,7 @@ Cardinal.prototype = {
   }
 };
 
-var cardinal = ((function custom(tension) {
+var cardinal = (function custom(tension) {
 
   function cardinal(context) {
     return new Cardinal(context, tension);
@@ -15952,7 +17183,7 @@ var cardinal = ((function custom(tension) {
   };
 
   return cardinal;
-}))(0);
+})(0);
 
 function CardinalClosed(context, tension) {
   this._context = context;
@@ -16000,18 +17231,18 @@ CardinalClosed.prototype = {
   }
 };
 
-var cardinalClosed = ((function custom(tension) {
+var cardinalClosed = (function custom(tension) {
 
-  function cardinal(context) {
+  function cardinal$$1(context) {
     return new CardinalClosed(context, tension);
   }
 
-  cardinal.tension = function(tension) {
+  cardinal$$1.tension = function(tension) {
     return custom(+tension);
   };
 
-  return cardinal;
-}))(0);
+  return cardinal$$1;
+})(0);
 
 function CardinalOpen(context, tension) {
   this._context = context;
@@ -16048,18 +17279,18 @@ CardinalOpen.prototype = {
   }
 };
 
-var cardinalOpen = ((function custom(tension) {
+var cardinalOpen = (function custom(tension) {
 
-  function cardinal(context) {
+  function cardinal$$1(context) {
     return new CardinalOpen(context, tension);
   }
 
-  cardinal.tension = function(tension) {
+  cardinal$$1.tension = function(tension) {
     return custom(+tension);
   };
 
-  return cardinal;
-}))(0);
+  return cardinal$$1;
+})(0);
 
 function point$4(that, x, y) {
   var x1 = that._x1,
@@ -16134,7 +17365,7 @@ CatmullRom.prototype = {
   }
 };
 
-var catmullRom = ((function custom(alpha) {
+var catmullRom = (function custom(alpha) {
 
   function catmullRom(context) {
     return alpha ? new CatmullRom(context, alpha) : new Cardinal(context, 0);
@@ -16145,7 +17376,7 @@ var catmullRom = ((function custom(alpha) {
   };
 
   return catmullRom;
-}))(0.5);
+})(0.5);
 
 function CatmullRomClosed(context, alpha) {
   this._context = context;
@@ -16205,18 +17436,18 @@ CatmullRomClosed.prototype = {
   }
 };
 
-var catmullRomClosed = ((function custom(alpha) {
+var catmullRomClosed = (function custom(alpha) {
 
-  function catmullRom(context) {
+  function catmullRom$$1(context) {
     return alpha ? new CatmullRomClosed(context, alpha) : new CardinalClosed(context, 0);
   }
 
-  catmullRom.alpha = function(alpha) {
+  catmullRom$$1.alpha = function(alpha) {
     return custom(+alpha);
   };
 
-  return catmullRom;
-}))(0.5);
+  return catmullRom$$1;
+})(0.5);
 
 function CatmullRomOpen(context, alpha) {
   this._context = context;
@@ -16265,18 +17496,18 @@ CatmullRomOpen.prototype = {
   }
 };
 
-var catmullRomOpen = ((function custom(alpha) {
+var catmullRomOpen = (function custom(alpha) {
 
-  function catmullRom(context) {
+  function catmullRom$$1(context) {
     return alpha ? new CatmullRomOpen(context, alpha) : new CardinalOpen(context, 0);
   }
 
-  catmullRom.alpha = function(alpha) {
+  catmullRom$$1.alpha = function(alpha) {
     return custom(+alpha);
   };
 
-  return catmullRom;
-}))(0.5);
+  return catmullRom$$1;
+})(0.5);
 
 function LinearClosed(context) {
   this._context = context;
@@ -16527,13 +17758,11 @@ function stepAfter(context) {
   return new Step(context, 1);
 }
 
-var slice$5 = Array.prototype.slice;
-
 var none$1 = function(series, order) {
   if (!((n = series.length) > 1)) return;
-  for (var i = 1, s0, s1 = series[order[0]], n, m = s1.length; i < n; ++i) {
+  for (var i = 1, j, s0, s1 = series[order[0]], n, m = s1.length; i < n; ++i) {
     s0 = s1, s1 = series[order[i]];
-    for (var j = 0; j < m; ++j) {
+    for (j = 0; j < m; ++j) {
       s1[j][1] += s1[j][0] = isNaN(s0[j][1]) ? s0[j][0] : s0[j][1];
     }
   }
@@ -16580,7 +17809,7 @@ var stack = function() {
   }
 
   stack.keys = function(_) {
-    return arguments.length ? (keys = typeof _ === "function" ? _ : constant$10(slice$5.call(_)), stack) : keys;
+    return arguments.length ? (keys = typeof _ === "function" ? _ : constant$10(slice$6.call(_)), stack) : keys;
   };
 
   stack.value = function(_) {
@@ -16588,7 +17817,7 @@ var stack = function() {
   };
 
   stack.order = function(_) {
-    return arguments.length ? (order = _ == null ? none$2 : typeof _ === "function" ? _ : constant$10(slice$5.call(_)), stack) : order;
+    return arguments.length ? (order = _ == null ? none$2 : typeof _ === "function" ? _ : constant$10(slice$6.call(_)), stack) : order;
   };
 
   stack.offset = function(_) {
@@ -16605,6 +17834,21 @@ var expand = function(series, order) {
     if (y) for (i = 0; i < n; ++i) series[i][j][1] /= y;
   }
   none$1(series, order);
+};
+
+var diverging = function(series, order) {
+  if (!((n = series.length) > 1)) return;
+  for (var i, j = 0, d, dy, yp, yn, n, m = series[order[0]].length; j < m; ++j) {
+    for (yp = yn = 0, i = 0; i < n; ++i) {
+      if ((dy = (d = series[order[i]][j])[1] - d[0]) >= 0) {
+        d[0] = yp, d[1] = yp += dy;
+      } else if (dy < 0) {
+        d[1] = yn, d[0] = yn += dy;
+      } else {
+        d[0] = yp;
+      }
+    }
+  }
 };
 
 var silhouette = function(series, order) {
@@ -17626,13 +18870,13 @@ Diagram.prototype = {
 };
 
 var voronoi = function() {
-  var x$$1 = x$4,
-      y$$1 = y$4,
+  var x = x$4,
+      y = y$4,
       extent = null;
 
   function voronoi(data) {
     return new Diagram(data.map(function(d, i) {
-      var s = [Math.round(x$$1(d, i, data) / epsilon$4) * epsilon$4, Math.round(y$$1(d, i, data) / epsilon$4) * epsilon$4];
+      var s = [Math.round(x(d, i, data) / epsilon$4) * epsilon$4, Math.round(y(d, i, data) / epsilon$4) * epsilon$4];
       s.index = i;
       s.data = d;
       return s;
@@ -17652,11 +18896,11 @@ var voronoi = function() {
   };
 
   voronoi.x = function(_) {
-    return arguments.length ? (x$$1 = typeof _ === "function" ? _ : constant$11(+_), voronoi) : x$$1;
+    return arguments.length ? (x = typeof _ === "function" ? _ : constant$11(+_), voronoi) : x;
   };
 
   voronoi.y = function(_) {
-    return arguments.length ? (y$$1 = typeof _ === "function" ? _ : constant$11(+_), voronoi) : y$$1;
+    return arguments.length ? (y = typeof _ === "function" ? _ : constant$11(+_), voronoi) : y;
   };
 
   voronoi.extent = function(_) {
@@ -17764,9 +19008,18 @@ function defaultTransform() {
   return this.__zoom || identity$8;
 }
 
+function defaultWheelDelta() {
+  return -exports.event.deltaY * (exports.event.deltaMode ? 120 : 1) / 500;
+}
+
+function touchable$1() {
+  return "ontouchstart" in this;
+}
+
 var zoom = function() {
   var filter = defaultFilter$2,
       extent = defaultExtent$1,
+      wheelDelta = defaultWheelDelta,
       k0 = 0,
       k1 = Infinity,
       x0 = -k1,
@@ -17774,36 +19027,39 @@ var zoom = function() {
       y0 = x0,
       y1 = x1,
       duration = 250,
-      interpolate$$1 = interpolateZoom,
+      interpolate = interpolateZoom,
       gestures = [],
       listeners = dispatch("start", "zoom", "end"),
       touchstarting,
       touchending,
       touchDelay = 500,
-      wheelDelay = 150;
+      wheelDelay = 150,
+      clickDistance2 = 0;
 
   function zoom(selection$$1) {
     selection$$1
+        .property("__zoom", defaultTransform)
         .on("wheel.zoom", wheeled)
         .on("mousedown.zoom", mousedowned)
         .on("dblclick.zoom", dblclicked)
+      .filter(touchable$1)
         .on("touchstart.zoom", touchstarted)
         .on("touchmove.zoom", touchmoved)
         .on("touchend.zoom touchcancel.zoom", touchended)
-        .style("-webkit-tap-highlight-color", "rgba(0,0,0,0)")
-        .property("__zoom", defaultTransform);
+        .style("touch-action", "none")
+        .style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
   }
 
-  zoom.transform = function(collection, transform) {
+  zoom.transform = function(collection, transform$$1) {
     var selection$$1 = collection.selection ? collection.selection() : collection;
     selection$$1.property("__zoom", defaultTransform);
     if (collection !== selection$$1) {
-      schedule(collection, transform);
+      schedule(collection, transform$$1);
     } else {
       selection$$1.interrupt().each(function() {
         gesture(this, arguments)
             .start()
-            .zoom(null, typeof transform === "function" ? transform.apply(this, arguments) : transform)
+            .zoom(null, typeof transform$$1 === "function" ? transform$$1.apply(this, arguments) : transform$$1)
             .end();
       });
     }
@@ -17837,22 +19093,34 @@ var zoom = function() {
     });
   };
 
-  function scale(transform, k) {
+  zoom.translateTo = function(selection$$1, x, y) {
+    zoom.transform(selection$$1, function() {
+      var e = extent.apply(this, arguments),
+          t = this.__zoom,
+          p = centroid(e);
+      return constrain(identity$8.translate(p[0], p[1]).scale(t.k).translate(
+        typeof x === "function" ? -x.apply(this, arguments) : -x,
+        typeof y === "function" ? -y.apply(this, arguments) : -y
+      ), e);
+    });
+  };
+
+  function scale(transform$$1, k) {
     k = Math.max(k0, Math.min(k1, k));
-    return k === transform.k ? transform : new Transform(k, transform.x, transform.y);
+    return k === transform$$1.k ? transform$$1 : new Transform(k, transform$$1.x, transform$$1.y);
   }
 
-  function translate(transform, p0, p1) {
-    var x = p0[0] - p1[0] * transform.k, y = p0[1] - p1[1] * transform.k;
-    return x === transform.x && y === transform.y ? transform : new Transform(transform.k, x, y);
+  function translate(transform$$1, p0, p1) {
+    var x = p0[0] - p1[0] * transform$$1.k, y = p0[1] - p1[1] * transform$$1.k;
+    return x === transform$$1.x && y === transform$$1.y ? transform$$1 : new Transform(transform$$1.k, x, y);
   }
 
-  function constrain(transform, extent) {
-    var dx0 = transform.invertX(extent[0][0]) - x0,
-        dx1 = transform.invertX(extent[1][0]) - x1,
-        dy0 = transform.invertY(extent[0][1]) - y0,
-        dy1 = transform.invertY(extent[1][1]) - y1;
-    return transform.translate(
+  function constrain(transform$$1, extent) {
+    var dx0 = transform$$1.invertX(extent[0][0]) - x0,
+        dx1 = transform$$1.invertX(extent[1][0]) - x1,
+        dy0 = transform$$1.invertY(extent[0][1]) - y0,
+        dy1 = transform$$1.invertY(extent[1][1]) - y1;
+    return transform$$1.translate(
       dx1 > dx0 ? (dx0 + dx1) / 2 : Math.min(0, dx0) || Math.max(0, dx1),
       dy1 > dy0 ? (dy0 + dy1) / 2 : Math.min(0, dy0) || Math.max(0, dy1)
     );
@@ -17862,7 +19130,7 @@ var zoom = function() {
     return [(+extent[0][0] + +extent[1][0]) / 2, (+extent[0][1] + +extent[1][1]) / 2];
   }
 
-  function schedule(transition$$1, transform, center) {
+  function schedule(transition$$1, transform$$1, center) {
     transition$$1
         .on("start.zoom", function() { gesture(this, arguments).start(); })
         .on("interrupt.zoom end.zoom", function() { gesture(this, arguments).end(); })
@@ -17874,8 +19142,8 @@ var zoom = function() {
               p = center || centroid(e),
               w = Math.max(e[1][0] - e[0][0], e[1][1] - e[0][1]),
               a = that.__zoom,
-              b = typeof transform === "function" ? transform.apply(that, args) : transform,
-              i = interpolate$$1(a.invert(p).concat(w / a.k), b.invert(p).concat(w / b.k));
+              b = typeof transform$$1 === "function" ? transform$$1.apply(that, args) : transform$$1,
+              i = interpolate(a.invert(p).concat(w / a.k), b.invert(p).concat(w / b.k));
           return function(t) {
             if (t === 1) t = b; // Avoid rounding error on end.
             else { var l = i(t), k = w / l[2]; t = new Transform(k, p[0] - l[0] * k, p[1] - l[1] * k); }
@@ -17909,11 +19177,11 @@ var zoom = function() {
       }
       return this;
     },
-    zoom: function(key, transform) {
-      if (this.mouse && key !== "mouse") this.mouse[1] = transform.invert(this.mouse[0]);
-      if (this.touch0 && key !== "touch") this.touch0[1] = transform.invert(this.touch0[0]);
-      if (this.touch1 && key !== "touch") this.touch1[1] = transform.invert(this.touch1[0]);
-      this.that.__zoom = transform;
+    zoom: function(key, transform$$1) {
+      if (this.mouse && key !== "mouse") this.mouse[1] = transform$$1.invert(this.mouse[0]);
+      if (this.touch0 && key !== "touch") this.touch0[1] = transform$$1.invert(this.touch0[0]);
+      if (this.touch1 && key !== "touch") this.touch1[1] = transform$$1.invert(this.touch1[0]);
+      this.that.__zoom = transform$$1;
       this.emit("zoom");
       return this;
     },
@@ -17934,7 +19202,7 @@ var zoom = function() {
     if (!filter.apply(this, arguments)) return;
     var g = gesture(this, arguments),
         t = this.__zoom,
-        k = Math.max(k0, Math.min(k1, t.k * Math.pow(2, -exports.event.deltaY * (exports.event.deltaMode ? 120 : 1) / 500))),
+        k = Math.max(k0, Math.min(k1, t.k * Math.pow(2, wheelDelta.apply(this, arguments)))),
         p = mouse(this);
 
     // If the mouse is in the same location as before, reuse it.
@@ -17970,7 +19238,9 @@ var zoom = function() {
     if (touchending || !filter.apply(this, arguments)) return;
     var g = gesture(this, arguments),
         v = select(exports.event.view).on("mousemove.zoom", mousemoved, true).on("mouseup.zoom", mouseupped, true),
-        p = mouse(this);
+        p = mouse(this),
+        x0 = exports.event.clientX,
+        y0 = exports.event.clientY;
 
     dragDisable(exports.event.view);
     nopropagation$2();
@@ -17980,7 +19250,10 @@ var zoom = function() {
 
     function mousemoved() {
       noevent$2();
-      g.moved = true;
+      if (!g.moved) {
+        var dx = exports.event.clientX - x0, dy = exports.event.clientY - y0;
+        g.moved = dx * dx + dy * dy > clickDistance2;
+      }
       g.zoom("mouse", constrain(translate(g.that.__zoom, g.mouse[0] = mouse(g.that), g.mouse[1]), g.extent));
     }
 
@@ -18079,8 +19352,13 @@ var zoom = function() {
       else if (g.touch1 && g.touch1[2] === t.identifier) delete g.touch1;
     }
     if (g.touch1 && !g.touch0) g.touch0 = g.touch1, delete g.touch1;
-    if (!g.touch0) g.end();
+    if (g.touch0) g.touch0[1] = this.__zoom.invert(g.touch0[0]);
+    else g.end();
   }
+
+  zoom.wheelDelta = function(_) {
+    return arguments.length ? (wheelDelta = typeof _ === "function" ? _ : constant$12(+_), zoom) : wheelDelta;
+  };
 
   zoom.filter = function(_) {
     return arguments.length ? (filter = typeof _ === "function" ? _ : constant$12(!!_), zoom) : filter;
@@ -18103,12 +19381,16 @@ var zoom = function() {
   };
 
   zoom.interpolate = function(_) {
-    return arguments.length ? (interpolate$$1 = _, zoom) : interpolate$$1;
+    return arguments.length ? (interpolate = _, zoom) : interpolate;
   };
 
   zoom.on = function() {
     var value = listeners.on.apply(listeners, arguments);
     return value === listeners ? zoom : value;
+  };
+
+  zoom.clickDistance = function(_) {
+    return arguments.length ? (clickDistance2 = (_ = +_) * _, zoom) : Math.sqrt(clickDistance2);
   };
 
   return zoom;
@@ -18141,6 +19423,7 @@ exports.scan = scan;
 exports.shuffle = shuffle;
 exports.sum = sum;
 exports.ticks = ticks;
+exports.tickIncrement = tickIncrement;
 exports.tickStep = tickStep;
 exports.transpose = transpose;
 exports.variance = variance;
@@ -18340,7 +19623,7 @@ exports.scaleOrdinal = ordinal;
 exports.scaleImplicit = implicit;
 exports.scalePow = pow$1;
 exports.scaleSqrt = sqrt$1;
-exports.scaleQuantile = quantile$$1;
+exports.scaleQuantile = quantile;
 exports.scaleQuantize = quantize$1;
 exports.scaleThreshold = threshold$1;
 exports.scaleTime = time;
@@ -18369,16 +19652,23 @@ exports.selectAll = selectAll;
 exports.selection = selection;
 exports.selector = selector;
 exports.selectorAll = selectorAll;
+exports.style = styleValue;
 exports.touch = touch;
 exports.touches = touches;
-exports.window = window;
+exports.window = defaultView;
 exports.customEvent = customEvent;
 exports.arc = arc;
 exports.area = area$2;
 exports.line = line;
 exports.pie = pie;
-exports.radialArea = radialArea;
-exports.radialLine = radialLine$1;
+exports.areaRadial = areaRadial;
+exports.radialArea = areaRadial;
+exports.lineRadial = lineRadial$1;
+exports.radialLine = lineRadial$1;
+exports.pointRadial = pointRadial;
+exports.linkHorizontal = linkHorizontal;
+exports.linkVertical = linkVertical;
+exports.linkRadial = linkRadial;
 exports.symbol = symbol;
 exports.symbols = symbols;
 exports.symbolCircle = circle$2;
@@ -18408,6 +19698,7 @@ exports.curveStepAfter = stepAfter;
 exports.curveStepBefore = stepBefore;
 exports.stack = stack;
 exports.stackOffsetExpand = expand;
+exports.stackOffsetDiverging = diverging;
 exports.stackOffsetNone = none$1;
 exports.stackOffsetSilhouette = silhouette;
 exports.stackOffsetWiggle = wiggle;
@@ -18498,7 +19789,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -18802,7 +20093,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -18888,7 +20179,7 @@ var EventListener = {
 
 module.exports = EventListener;
 }).call(this,require('_process'))
-},{"./emptyFunction":50,"_process":81}],44:[function(require,module,exports){
+},{"./emptyFunction":51,"_process":82}],45:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -18924,7 +20215,7 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 "use strict";
 
 /**
@@ -18956,7 +20247,7 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -18996,7 +20287,7 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-},{"./camelize":45}],47:[function(require,module,exports){
+},{"./camelize":46}],48:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19036,7 +20327,7 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
-},{"./isTextNode":60}],48:[function(require,module,exports){
+},{"./isTextNode":61}],49:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -19165,7 +20456,7 @@ function createArrayFromMixed(obj) {
 
 module.exports = createArrayFromMixed;
 }).call(this,require('_process'))
-},{"./invariant":58,"_process":81}],49:[function(require,module,exports){
+},{"./invariant":59,"_process":82}],50:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -19251,7 +20542,7 @@ function createNodesFromMarkup(markup, handleScript) {
 
 module.exports = createNodesFromMarkup;
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":44,"./createArrayFromMixed":48,"./getMarkupWrap":54,"./invariant":58,"_process":81}],50:[function(require,module,exports){
+},{"./ExecutionEnvironment":45,"./createArrayFromMixed":49,"./getMarkupWrap":55,"./invariant":59,"_process":82}],51:[function(require,module,exports){
 "use strict";
 
 /**
@@ -19290,7 +20581,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -19312,7 +20603,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 }).call(this,require('_process'))
-},{"_process":81}],52:[function(require,module,exports){
+},{"_process":82}],53:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19339,7 +20630,7 @@ function focusNode(node) {
 }
 
 module.exports = focusNode;
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19361,20 +20652,24 @@ module.exports = focusNode;
  *
  * The activeElement will be null only if the document or document body is not
  * yet defined.
+ *
+ * @param {?DOMDocument} doc Defaults to current document.
+ * @return {?DOMElement}
  */
-function getActiveElement() /*?DOMElement*/{
-  if (typeof document === 'undefined') {
+function getActiveElement(doc) /*?DOMElement*/{
+  doc = doc || (typeof document !== 'undefined' ? document : undefined);
+  if (typeof doc === 'undefined') {
     return null;
   }
   try {
-    return document.activeElement || document.body;
+    return doc.activeElement || doc.body;
   } catch (e) {
-    return document.body;
+    return doc.body;
   }
 }
 
 module.exports = getActiveElement;
-},{}],54:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -19471,7 +20766,7 @@ function getMarkupWrap(nodeName) {
 
 module.exports = getMarkupWrap;
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":44,"./invariant":58,"_process":81}],55:[function(require,module,exports){
+},{"./ExecutionEnvironment":45,"./invariant":59,"_process":82}],56:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19497,10 +20792,10 @@ module.exports = getMarkupWrap;
  */
 
 function getUnboundedScrollPosition(scrollable) {
-  if (scrollable === window) {
+  if (scrollable.Window && scrollable instanceof scrollable.Window) {
     return {
-      x: window.pageXOffset || document.documentElement.scrollLeft,
-      y: window.pageYOffset || document.documentElement.scrollTop
+      x: scrollable.pageXOffset || scrollable.document.documentElement.scrollLeft,
+      y: scrollable.pageYOffset || scrollable.document.documentElement.scrollTop
     };
   }
   return {
@@ -19510,7 +20805,7 @@ function getUnboundedScrollPosition(scrollable) {
 }
 
 module.exports = getUnboundedScrollPosition;
-},{}],56:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19543,7 +20838,7 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19582,7 +20877,7 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-},{"./hyphenate":56}],58:[function(require,module,exports){
+},{"./hyphenate":57}],59:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -19640,7 +20935,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 }).call(this,require('_process'))
-},{"_process":81}],59:[function(require,module,exports){
+},{"_process":82}],60:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19659,11 +20954,13 @@ module.exports = invariant;
  * @return {boolean} Whether or not the object is a DOM node.
  */
 function isNode(object) {
-  return !!(object && (typeof Node === 'function' ? object instanceof Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
+  var doc = object ? object.ownerDocument || object : document;
+  var defaultView = doc.defaultView || window;
+  return !!(object && (typeof defaultView.Node === 'function' ? object instanceof defaultView.Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
 }
 
 module.exports = isNode;
-},{}],60:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19688,7 +20985,7 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-},{"./isNode":59}],61:[function(require,module,exports){
+},{"./isNode":60}],62:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19718,7 +21015,7 @@ function memoizeStringOnly(callback) {
 }
 
 module.exports = memoizeStringOnly;
-},{}],62:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19741,7 +21038,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = performance || {};
-},{"./ExecutionEnvironment":44}],63:[function(require,module,exports){
+},{"./ExecutionEnvironment":45}],64:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19775,7 +21072,7 @@ if (performance.now) {
 }
 
 module.exports = performanceNow;
-},{"./performance":62}],64:[function(require,module,exports){
+},{"./performance":63}],65:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -19843,7 +21140,7 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-},{}],65:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -19912,7 +21209,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 }).call(this,require('_process'))
-},{"./emptyFunction":50,"_process":81}],66:[function(require,module,exports){
+},{"./emptyFunction":51,"_process":82}],67:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -37000,7 +38297,7 @@ module.exports = warning;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],67:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 /*! Moment Duration Format v1.3.0
  *  https://github.com/jsmreese/moment-duration-format 
  *  Date: 2014-07-15
@@ -37484,9 +38781,9 @@ module.exports = warning;
 
 })(this);
 
-},{"moment":68}],68:[function(require,module,exports){
+},{"moment":69}],69:[function(require,module,exports){
 //! moment.js
-//! version : 2.17.1
+//! version : 2.18.1
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 //! license : MIT
 //! momentjs.com
@@ -37526,6 +38823,10 @@ function isObjectEmpty(obj) {
         return false;
     }
     return true;
+}
+
+function isUndefined(input) {
+    return input === void 0;
 }
 
 function isNumber(input) {
@@ -37584,7 +38885,9 @@ function defaultParsingFlags() {
         userInvalidated : false,
         iso             : false,
         parsedDateParts : [],
-        meridiem        : null
+        meridiem        : null,
+        rfc2822         : false,
+        weekdayMismatch : false
     };
 }
 
@@ -37660,10 +38963,6 @@ function createInvalid (flags) {
     return m;
 }
 
-function isUndefined(input) {
-    return input === void 0;
-}
-
 // Plugins that add properties should also add the key here (null value),
 // so we can properly clone ourselves.
 var momentProperties = hooks.momentProperties = [];
@@ -37703,7 +39002,7 @@ function copyConfig(to, from) {
     }
 
     if (momentProperties.length > 0) {
-        for (i in momentProperties) {
+        for (i = 0; i < momentProperties.length; i++) {
             prop = momentProperties[i];
             val = from[prop];
             if (!isUndefined(val)) {
@@ -37840,8 +39139,11 @@ function set (config) {
     }
     this._config = config;
     // Lenient ordinal parsing accepts just a number in addition to
-    // number + (possibly) stuff coming from _ordinalParseLenient.
-    this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
+    // number + (possibly) stuff coming from _dayOfMonthOrdinalParse.
+    // TODO: Remove "ordinalParse" fallback in next major release.
+    this._dayOfMonthOrdinalParseLenient = new RegExp(
+        (this._dayOfMonthOrdinalParse.source || this._ordinalParse.source) +
+            '|' + (/\d{1,2}/).source);
 }
 
 function mergeConfigs(parentConfig, childConfig) {
@@ -37939,7 +39241,7 @@ function invalidDate () {
 }
 
 var defaultOrdinal = '%d';
-var defaultOrdinalParse = /\d{1,2}/;
+var defaultDayOfMonthOrdinalParse = /\d{1,2}/;
 
 function ordinal (number) {
     return this._ordinal.replace('%d', number);
@@ -37949,6 +39251,7 @@ var defaultRelativeTime = {
     future : 'in %s',
     past   : '%s ago',
     s  : 'a few seconds',
+    ss : '%d seconds',
     m  : 'a minute',
     mm : '%d minutes',
     h  : 'an hour',
@@ -38131,7 +39434,7 @@ function makeFormatFunction(format) {
     return function (mom) {
         var output = '', i;
         for (i = 0; i < length; i++) {
-            output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
+            output += isFunction(array[i]) ? array[i].call(mom, format) : array[i];
         }
         return output;
     };
@@ -38334,7 +39637,8 @@ var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/;
 var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
 function localeMonths (m, format) {
     if (!m) {
-        return this._months;
+        return isArray(this._months) ? this._months :
+            this._months['standalone'];
     }
     return isArray(this._months) ? this._months[m.month()] :
         this._months[(this._months.isFormat || MONTHS_IN_FORMAT).test(format) ? 'format' : 'standalone'][m.month()];
@@ -38343,7 +39647,8 @@ function localeMonths (m, format) {
 var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
 function localeMonthsShort (m, format) {
     if (!m) {
-        return this._monthsShort;
+        return isArray(this._monthsShort) ? this._monthsShort :
+            this._monthsShort['standalone'];
     }
     return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
         this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
@@ -38610,11 +39915,11 @@ function getIsLeapYear () {
 }
 
 function createDate (y, m, d, h, M, s, ms) {
-    //can't just apply() to create a date:
-    //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
+    // can't just apply() to create a date:
+    // https://stackoverflow.com/q/181348
     var date = new Date(y, m, d, h, M, s, ms);
 
-    //the date constructor remaps years 0-99 to 1900-1999
+    // the date constructor remaps years 0-99 to 1900-1999
     if (y < 100 && y >= 0 && isFinite(date.getFullYear())) {
         date.setFullYear(y);
     }
@@ -38624,7 +39929,7 @@ function createDate (y, m, d, h, M, s, ms) {
 function createUTCDate (y) {
     var date = new Date(Date.UTC.apply(null, arguments));
 
-    //the Date.UTC function remaps years 0-99 to 1900-1999
+    // the Date.UTC function remaps years 0-99 to 1900-1999
     if (y < 100 && y >= 0 && isFinite(date.getUTCFullYear())) {
         date.setUTCFullYear(y);
     }
@@ -38641,7 +39946,7 @@ function firstWeekOffset(year, dow, doy) {
     return -fwdlw + fwd - 1;
 }
 
-//http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
+// https://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
 function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
     var localWeekday = (7 + weekday - dow) % 7,
         weekOffset = firstWeekOffset(year, dow, doy),
@@ -38842,7 +40147,8 @@ function parseIsoWeekday(input, locale) {
 var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
 function localeWeekdays (m, format) {
     if (!m) {
-        return this._weekdays;
+        return isArray(this._weekdays) ? this._weekdays :
+            this._weekdays['standalone'];
     }
     return isArray(this._weekdays) ? this._weekdays[m.day()] :
         this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
@@ -39162,8 +40468,10 @@ addRegexToken('a',  matchMeridiem);
 addRegexToken('A',  matchMeridiem);
 addRegexToken('H',  match1to2);
 addRegexToken('h',  match1to2);
+addRegexToken('k',  match1to2);
 addRegexToken('HH', match1to2, match2);
 addRegexToken('hh', match1to2, match2);
+addRegexToken('kk', match1to2, match2);
 
 addRegexToken('hmm', match3to4);
 addRegexToken('hmmss', match5to6);
@@ -39171,6 +40479,10 @@ addRegexToken('Hmm', match3to4);
 addRegexToken('Hmmss', match5to6);
 
 addParseToken(['H', 'HH'], HOUR);
+addParseToken(['k', 'kk'], function (input, array, config) {
+    var kInput = toInt(input);
+    array[HOUR] = kInput === 24 ? 0 : kInput;
+});
 addParseToken(['a', 'A'], function (input, array, config) {
     config._isPm = config._locale.isPM(input);
     config._meridiem = input;
@@ -39241,7 +40553,7 @@ var baseConfig = {
     longDateFormat: defaultLongDateFormat,
     invalidDate: defaultInvalidDate,
     ordinal: defaultOrdinal,
-    ordinalParse: defaultOrdinalParse,
+    dayOfMonthOrdinalParse: defaultDayOfMonthOrdinalParse,
     relativeTime: defaultRelativeTime,
 
     months: defaultLocaleMonths,
@@ -39552,6 +40864,77 @@ function configFromISO(config) {
     }
 }
 
+// RFC 2822 regex: For details see https://tools.ietf.org/html/rfc2822#section-3.3
+var basicRfcRegex = /^((?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s)?(\d?\d\s(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(?:\d\d)?\d\d\s)(\d\d:\d\d)(\:\d\d)?(\s(?:UT|GMT|[ECMP][SD]T|[A-IK-Za-ik-z]|[+-]\d{4}))$/;
+
+// date and time from ref 2822 format
+function configFromRFC2822(config) {
+    var string, match, dayFormat,
+        dateFormat, timeFormat, tzFormat;
+    var timezones = {
+        ' GMT': ' +0000',
+        ' EDT': ' -0400',
+        ' EST': ' -0500',
+        ' CDT': ' -0500',
+        ' CST': ' -0600',
+        ' MDT': ' -0600',
+        ' MST': ' -0700',
+        ' PDT': ' -0700',
+        ' PST': ' -0800'
+    };
+    var military = 'YXWVUTSRQPONZABCDEFGHIKLM';
+    var timezone, timezoneIndex;
+
+    string = config._i
+        .replace(/\([^\)]*\)|[\n\t]/g, ' ') // Remove comments and folding whitespace
+        .replace(/(\s\s+)/g, ' ') // Replace multiple-spaces with a single space
+        .replace(/^\s|\s$/g, ''); // Remove leading and trailing spaces
+    match = basicRfcRegex.exec(string);
+
+    if (match) {
+        dayFormat = match[1] ? 'ddd' + ((match[1].length === 5) ? ', ' : ' ') : '';
+        dateFormat = 'D MMM ' + ((match[2].length > 10) ? 'YYYY ' : 'YY ');
+        timeFormat = 'HH:mm' + (match[4] ? ':ss' : '');
+
+        // TODO: Replace the vanilla JS Date object with an indepentent day-of-week check.
+        if (match[1]) { // day of week given
+            var momentDate = new Date(match[2]);
+            var momentDay = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][momentDate.getDay()];
+
+            if (match[1].substr(0,3) !== momentDay) {
+                getParsingFlags(config).weekdayMismatch = true;
+                config._isValid = false;
+                return;
+            }
+        }
+
+        switch (match[5].length) {
+            case 2: // military
+                if (timezoneIndex === 0) {
+                    timezone = ' +0000';
+                } else {
+                    timezoneIndex = military.indexOf(match[5][1].toUpperCase()) - 12;
+                    timezone = ((timezoneIndex < 0) ? ' -' : ' +') +
+                        (('' + timezoneIndex).replace(/^-?/, '0')).match(/..$/)[0] + '00';
+                }
+                break;
+            case 4: // Zone
+                timezone = timezones[match[5]];
+                break;
+            default: // UT or +/-9999
+                timezone = timezones[' GMT'];
+        }
+        match[5] = timezone;
+        config._i = match.splice(1).join('');
+        tzFormat = ' ZZ';
+        config._f = dayFormat + dateFormat + timeFormat + tzFormat;
+        configFromStringAndFormat(config);
+        getParsingFlags(config).rfc2822 = true;
+    } else {
+        config._isValid = false;
+    }
+}
+
 // date from iso format or fallback
 function configFromString(config) {
     var matched = aspNetJsonRegex.exec(config._i);
@@ -39564,13 +40947,24 @@ function configFromString(config) {
     configFromISO(config);
     if (config._isValid === false) {
         delete config._isValid;
-        hooks.createFromInputFallback(config);
+    } else {
+        return;
     }
+
+    configFromRFC2822(config);
+    if (config._isValid === false) {
+        delete config._isValid;
+    } else {
+        return;
+    }
+
+    // Final attempt, use Input Fallback
+    hooks.createFromInputFallback(config);
 }
 
 hooks.createFromInputFallback = deprecate(
-    'value provided is not in a recognized ISO format. moment construction falls back to js Date(), ' +
-    'which is not reliable across all browsers and versions. Non ISO date formats are ' +
+    'value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), ' +
+    'which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are ' +
     'discouraged and will be removed in an upcoming major release. Please refer to ' +
     'http://momentjs.com/guides/#/warnings/js-date/ for more info.',
     function (config) {
@@ -39617,10 +41011,10 @@ function configFromArray (config) {
     }
 
     //if the day of the year is set, figure out what it is
-    if (config._dayOfYear) {
+    if (config._dayOfYear != null) {
         yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
 
-        if (config._dayOfYear > daysInYear(yearToUse)) {
+        if (config._dayOfYear > daysInYear(yearToUse) || config._dayOfYear === 0) {
             getParsingFlags(config)._overflowDayOfYear = true;
         }
 
@@ -39724,6 +41118,9 @@ function dayOfYearFromWeekInfo(config) {
 // constant that refers to the ISO standard
 hooks.ISO_8601 = function () {};
 
+// constant that refers to the RFC 2822 form
+hooks.RFC_2822 = function () {};
+
 // date from string and format string
 function configFromStringAndFormat(config) {
     // TODO: Move this to another part of the creation flow to prevent circular deps
@@ -39731,7 +41128,10 @@ function configFromStringAndFormat(config) {
         configFromISO(config);
         return;
     }
-
+    if (config._f === hooks.RFC_2822) {
+        configFromRFC2822(config);
+        return;
+    }
     config._a = [];
     getParsingFlags(config).empty = true;
 
@@ -39923,7 +41323,7 @@ function prepareConfig (config) {
 
 function configFromInput(config) {
     var input = config._i;
-    if (input === undefined) {
+    if (isUndefined(input)) {
         config._d = new Date(hooks.now());
     } else if (isDate(input)) {
         config._d = new Date(input.valueOf());
@@ -39934,7 +41334,7 @@ function configFromInput(config) {
             return parseInt(obj, 10);
         });
         configFromArray(config);
-    } else if (typeof(input) === 'object') {
+    } else if (isObject(input)) {
         configFromObject(config);
     } else if (isNumber(input)) {
         // from milliseconds
@@ -40035,6 +41435,38 @@ var now = function () {
     return Date.now ? Date.now() : +(new Date());
 };
 
+var ordering = ['year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second', 'millisecond'];
+
+function isDurationValid(m) {
+    for (var key in m) {
+        if (!(ordering.indexOf(key) !== -1 && (m[key] == null || !isNaN(m[key])))) {
+            return false;
+        }
+    }
+
+    var unitHasDecimal = false;
+    for (var i = 0; i < ordering.length; ++i) {
+        if (m[ordering[i]]) {
+            if (unitHasDecimal) {
+                return false; // only allow non-integers for smallest unit
+            }
+            if (parseFloat(m[ordering[i]]) !== toInt(m[ordering[i]])) {
+                unitHasDecimal = true;
+            }
+        }
+    }
+
+    return true;
+}
+
+function isValid$1() {
+    return this._isValid;
+}
+
+function createInvalid$1() {
+    return createDuration(NaN);
+}
+
 function Duration (duration) {
     var normalizedInput = normalizeObjectUnits(duration),
         years = normalizedInput.year || 0,
@@ -40046,6 +41478,8 @@ function Duration (duration) {
         minutes = normalizedInput.minute || 0,
         seconds = normalizedInput.second || 0,
         milliseconds = normalizedInput.millisecond || 0;
+
+    this._isValid = isDurationValid(normalizedInput);
 
     // representation for dateAddRemove
     this._milliseconds = +milliseconds +
@@ -40170,7 +41604,7 @@ hooks.updateOffset = function () {};
 // a second time. In case it wants us to change the offset again
 // _changeInProgress == true case, then we have to adjust, because
 // there is no such time in the given timezone.
-function getSetOffset (input, keepLocalTime) {
+function getSetOffset (input, keepLocalTime, keepMinutes) {
     var offset = this._offset || 0,
         localAdjust;
     if (!this.isValid()) {
@@ -40182,7 +41616,7 @@ function getSetOffset (input, keepLocalTime) {
             if (input === null) {
                 return this;
             }
-        } else if (Math.abs(input) < 16) {
+        } else if (Math.abs(input) < 16 && !keepMinutes) {
             input = input * 60;
         }
         if (!this._isUTC && keepLocalTime) {
@@ -40240,7 +41674,7 @@ function setOffsetToLocal (keepLocalTime) {
 
 function setOffsetToParsedOffset () {
     if (this._tzm != null) {
-        this.utcOffset(this._tzm);
+        this.utcOffset(this._tzm, false, true);
     } else if (typeof this._i === 'string') {
         var tZone = offsetFromString(matchOffset, this._i);
         if (tZone != null) {
@@ -40372,6 +41806,7 @@ function createDuration (input, key) {
 }
 
 createDuration.fn = Duration.prototype;
+createDuration.invalid = createInvalid$1;
 
 function parseIso (inp, sign) {
     // We'd normally use ~~inp for this, but unfortunately it also
@@ -40608,18 +42043,19 @@ function toString () {
     return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
 }
 
-function toISOString () {
+function toISOString() {
+    if (!this.isValid()) {
+        return null;
+    }
     var m = this.clone().utc();
-    if (0 < m.year() && m.year() <= 9999) {
-        if (isFunction(Date.prototype.toISOString)) {
-            // native implementation is ~50x faster, use it when we can
-            return this.toDate().toISOString();
-        } else {
-            return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
-        }
-    } else {
+    if (m.year() < 0 || m.year() > 9999) {
         return formatMoment(m, 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
     }
+    if (isFunction(Date.prototype.toISOString)) {
+        // native implementation is ~50x faster, use it when we can
+        return this.toDate().toISOString();
+    }
+    return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
 }
 
 /**
@@ -40639,7 +42075,7 @@ function inspect () {
         zone = 'Z';
     }
     var prefix = '[' + func + '("]';
-    var year = (0 < this.year() && this.year() <= 9999) ? 'YYYY' : 'YYYYYY';
+    var year = (0 <= this.year() && this.year() <= 9999) ? 'YYYY' : 'YYYYYY';
     var datetime = '-MM-DD[T]HH:mm:ss.SSS';
     var suffix = zone + '[")]';
 
@@ -40807,7 +42243,7 @@ function toJSON () {
     return this.isValid() ? this.toISOString() : null;
 }
 
-function isValid$1 () {
+function isValid$2 () {
     return isValid(this);
 }
 
@@ -40967,7 +42403,10 @@ addUnitPriority('date', 9);
 addRegexToken('D',  match1to2);
 addRegexToken('DD', match1to2, match2);
 addRegexToken('Do', function (isStrict, locale) {
-    return isStrict ? locale._ordinalParse : locale._ordinalParseLenient;
+    // TODO: Remove "ordinalParse" fallback in next major release.
+    return isStrict ?
+      (locale._dayOfMonthOrdinalParse || locale._ordinalParse) :
+      locale._dayOfMonthOrdinalParseLenient;
 });
 
 addParseToken(['D', 'DD'], DATE);
@@ -41147,7 +42586,7 @@ proto.isBetween         = isBetween;
 proto.isSame            = isSame;
 proto.isSameOrAfter     = isSameOrAfter;
 proto.isSameOrBefore    = isSameOrBefore;
-proto.isValid           = isValid$1;
+proto.isValid           = isValid$2;
 proto.lang              = lang;
 proto.locale            = locale;
 proto.localeData        = localeData;
@@ -41372,7 +42811,7 @@ function listWeekdaysMin (localeSorted, format, index) {
 }
 
 getSetGlobalLocale('en', {
-    ordinalParse: /\d{1,2}(th|st|nd|rd)/,
+    dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
     ordinal : function (number) {
         var b = number % 10,
             output = (toInt(number % 100 / 10) === 1) ? 'th' :
@@ -41493,6 +42932,9 @@ function monthsToDays (months) {
 }
 
 function as (units) {
+    if (!this.isValid()) {
+        return NaN;
+    }
     var days;
     var months;
     var milliseconds = this._milliseconds;
@@ -41521,6 +42963,9 @@ function as (units) {
 
 // TODO: Use this.as('ms')?
 function valueOf$1 () {
+    if (!this.isValid()) {
+        return NaN;
+    }
     return (
         this._milliseconds +
         this._days * 864e5 +
@@ -41546,12 +42991,12 @@ var asYears        = makeAs('y');
 
 function get$2 (units) {
     units = normalizeUnits(units);
-    return this[units + 's']();
+    return this.isValid() ? this[units + 's']() : NaN;
 }
 
 function makeGetter(name) {
     return function () {
-        return this._data[name];
+        return this.isValid() ? this._data[name] : NaN;
     };
 }
 
@@ -41569,11 +43014,12 @@ function weeks () {
 
 var round = Math.round;
 var thresholds = {
-    s: 45,  // seconds to minute
-    m: 45,  // minutes to hour
-    h: 22,  // hours to day
-    d: 26,  // days to month
-    M: 11   // months to year
+    ss: 44,         // a few seconds to seconds
+    s : 45,         // seconds to minute
+    m : 45,         // minutes to hour
+    h : 22,         // hours to day
+    d : 26,         // days to month
+    M : 11          // months to year
 };
 
 // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
@@ -41590,16 +43036,17 @@ function relativeTime$1 (posNegDuration, withoutSuffix, locale) {
     var months   = round(duration.as('M'));
     var years    = round(duration.as('y'));
 
-    var a = seconds < thresholds.s && ['s', seconds]  ||
-            minutes <= 1           && ['m']           ||
-            minutes < thresholds.m && ['mm', minutes] ||
-            hours   <= 1           && ['h']           ||
-            hours   < thresholds.h && ['hh', hours]   ||
-            days    <= 1           && ['d']           ||
-            days    < thresholds.d && ['dd', days]    ||
-            months  <= 1           && ['M']           ||
-            months  < thresholds.M && ['MM', months]  ||
-            years   <= 1           && ['y']           || ['yy', years];
+    var a = seconds <= thresholds.ss && ['s', seconds]  ||
+            seconds < thresholds.s   && ['ss', seconds] ||
+            minutes <= 1             && ['m']           ||
+            minutes < thresholds.m   && ['mm', minutes] ||
+            hours   <= 1             && ['h']           ||
+            hours   < thresholds.h   && ['hh', hours]   ||
+            days    <= 1             && ['d']           ||
+            days    < thresholds.d   && ['dd', days]    ||
+            months  <= 1             && ['M']           ||
+            months  < thresholds.M   && ['MM', months]  ||
+            years   <= 1             && ['y']           || ['yy', years];
 
     a[2] = withoutSuffix;
     a[3] = +posNegDuration > 0;
@@ -41628,10 +43075,17 @@ function getSetRelativeTimeThreshold (threshold, limit) {
         return thresholds[threshold];
     }
     thresholds[threshold] = limit;
+    if (threshold === 's') {
+        thresholds.ss = limit - 1;
+    }
     return true;
 }
 
 function humanize (withSuffix) {
+    if (!this.isValid()) {
+        return this.localeData().invalidDate();
+    }
+
     var locale = this.localeData();
     var output = relativeTime$1(this, !withSuffix, locale);
 
@@ -41652,6 +43106,10 @@ function toISOString$1() {
     // This is because there is no context-free conversion between hours and days
     // (think of clock changes)
     // and also not between days and months (28-31 days per month)
+    if (!this.isValid()) {
+        return this.localeData().invalidDate();
+    }
+
     var seconds = abs$1(this._milliseconds) / 1000;
     var days         = abs$1(this._days);
     var months       = abs$1(this._months);
@@ -41696,6 +43154,7 @@ function toISOString$1() {
 
 var proto$2 = Duration.prototype;
 
+proto$2.isValid        = isValid$1;
 proto$2.abs            = abs;
 proto$2.add            = add$1;
 proto$2.subtract       = subtract$1;
@@ -41751,7 +43210,7 @@ addParseToken('x', function (input, array, config) {
 // Side effect imports
 
 
-hooks.version = '2.17.1';
+hooks.version = '2.18.1';
 
 setHookCallback(createLocal);
 
@@ -41787,7 +43246,7 @@ return hooks;
 
 })));
 
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 (function (process,global){
 'use strict';
 
@@ -41845,7 +43304,7 @@ function setConstants(_ref) {
   return setAppConsts((0, _seamlessImmutable2.default)(_lodash2.default.merge(appConsts, constants || {})));
 }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":81,"lodash":66,"seamless-immutable":239}],70:[function(require,module,exports){
+},{"_process":82,"lodash":67,"seamless-immutable":245}],71:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -41940,7 +43399,7 @@ function setGlobals(_ref) {
   };
 }
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./constants.js":69,"./lib/dom.js":71,"./lib/errors.js":72,"./lib/integrations.js":73,"./lib/math.js":74,"./lib/serviceworkers.js":75,"./lib/time.js":78,"./lib/utility.js":79,"lodash":66,"seamless-immutable":239}],71:[function(require,module,exports){
+},{"./constants.js":70,"./lib/dom.js":72,"./lib/errors.js":73,"./lib/integrations.js":74,"./lib/math.js":75,"./lib/serviceworkers.js":76,"./lib/time.js":79,"./lib/utility.js":80,"lodash":67,"seamless-immutable":245}],72:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42097,11 +43556,55 @@ var dom = {
     thisEl.className = 'more-info';
 
     return thisEl;
+  },
+  clientHeight: function clientHeight() {
+    return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+  },
+  clientWidth: function clientWidth() {
+    return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  },
+  addListener: function addListener() {
+    var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var listenFor = arguments[1];
+    var callback = arguments[2];
+    var passive = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+    if (typeof window !== 'undefined') {
+      // setup
+      var thisEl = el || window;
+      if (thisEl) {
+        var api = thisEl.addEventListener || thisEl.attachEvent;
+
+        // attach callback
+        if (api) return api(listenFor, callback, passive);
+      }
+    }
+
+    return false;
+  },
+  removeListener: function removeListener() {
+    var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var listenFor = arguments[1];
+    var callback = arguments[2];
+    var passive = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+    if (typeof window !== 'undefined') {
+      // setup
+      var thisEl = el || window;
+      if (thisEl) {
+        var api = thisEl.removeEventListener || thisEl.detachEvent;
+
+        // attach callback
+        if (api) return api(listenFor, callback, passive);
+      }
+    }
+
+    return false;
   }
 };
 
 exports.default = dom;
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42133,7 +43636,7 @@ var errors = {
 };
 
 exports.default = errors;
-},{"./utility.js":79}],73:[function(require,module,exports){
+},{"./utility.js":80}],74:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42161,7 +43664,7 @@ var integrations = {
 };
 
 exports.default = integrations;
-},{"./thirdparty/filtertable.js":76,"./thirdparty/sorttable.js":77,"lodash":66}],74:[function(require,module,exports){
+},{"./thirdparty/filtertable.js":77,"./thirdparty/sorttable.js":78,"lodash":67}],75:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42198,7 +43701,7 @@ var math = {
 };
 
 exports.default = math;
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42219,7 +43722,7 @@ var serviceWorkers = {
 };
 
 exports.default = serviceWorkers;
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42402,7 +43905,7 @@ var filterTable = {
 };
 
 exports.default = filterTable;
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42886,7 +44389,7 @@ function forEach(object, block, context) {
 };
 
 exports.default = sorttable;
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42930,7 +44433,7 @@ var time = {
 };
 
 exports.default = time;
-},{"moment":68,"moment-duration-format":67}],79:[function(require,module,exports){
+},{"moment":69,"moment-duration-format":68}],80:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43042,7 +44545,7 @@ var utility = {
 };
 
 exports.default = utility;
-},{"dns":37}],80:[function(require,module,exports){
+},{"dns":37}],81:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -43134,7 +44637,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -43305,6 +44808,10 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -43316,12 +44823,632 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
+(function (process){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+if (process.env.NODE_ENV !== 'production') {
+  var invariant = require('fbjs/lib/invariant');
+  var warning = require('fbjs/lib/warning');
+  var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
+  var loggedTypeFailures = {};
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if (process.env.NODE_ENV !== 'production') {
+    for (var typeSpecName in typeSpecs) {
+      if (typeSpecs.hasOwnProperty(typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', componentName || 'React class', location, typeSpecName);
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+          error = ex;
+        }
+        warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error);
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          warning(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
+        }
+      }
+    }
+  }
+}
+
+module.exports = checkPropTypes;
+
+}).call(this,require('_process'))
+},{"./lib/ReactPropTypesSecret":86,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66}],84:[function(require,module,exports){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+// React 15.5 references this module, and assumes PropTypes are still callable in production.
+// Therefore we re-export development-only version with all the PropTypes checks here.
+// However if one is migrating to the `prop-types` npm library, they will go through the
+// `index.js` entry point, and it will branch depending on the environment.
+var factory = require('./factoryWithTypeCheckers');
+module.exports = function(isValidElement) {
+  // It is still allowed in 15.5.
+  var throwOnDirectAccess = false;
+  return factory(isValidElement, throwOnDirectAccess);
+};
+
+},{"./factoryWithTypeCheckers":85}],85:[function(require,module,exports){
+(function (process){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+var emptyFunction = require('fbjs/lib/emptyFunction');
+var invariant = require('fbjs/lib/invariant');
+var warning = require('fbjs/lib/warning');
+
+var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
+var checkPropTypes = require('./checkPropTypes');
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (process.env.NODE_ENV !== 'production') {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          invariant(
+            false,
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            warning(
+              false,
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `%s` prop on `%s`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.',
+              propFullName,
+              componentName
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunction.thatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+      return emptyFunction.thatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues);
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (propValue.hasOwnProperty(key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+      process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunction.thatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        warning(
+          false,
+          'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' +
+          'received %s at index %s.',
+          getPostfixForTypeWarning(checker),
+          i
+        );
+        return emptyFunction.thatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+}).call(this,require('_process'))
+},{"./checkPropTypes":83,"./lib/ReactPropTypesSecret":86,"_process":82,"fbjs/lib/emptyFunction":51,"fbjs/lib/invariant":59,"fbjs/lib/warning":66}],86:[function(require,module,exports){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+'use strict';
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+},{}],87:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/ReactDOM');
 
-},{"./lib/ReactDOM":112}],83:[function(require,module,exports){
+},{"./lib/ReactDOM":117}],88:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -43395,7 +45522,7 @@ var ARIADOMPropertyConfig = {
 };
 
 module.exports = ARIADOMPropertyConfig;
-},{}],84:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -43419,7 +45546,7 @@ var AutoFocusUtils = {
 };
 
 module.exports = AutoFocusUtils;
-},{"./ReactDOMComponentTree":115,"fbjs/lib/focusNode":52}],85:[function(require,module,exports){
+},{"./ReactDOMComponentTree":120,"fbjs/lib/focusNode":53}],90:[function(require,module,exports){
 /**
  * Copyright 2013-present Facebook, Inc.
  * All rights reserved.
@@ -43795,7 +45922,6 @@ function extractBeforeInputEvent(topLevelType, targetInst, nativeEvent, nativeEv
  * `composition` event types.
  */
 var BeforeInputEventPlugin = {
-
   eventTypes: eventTypes,
 
   extractEvents: function (topLevelType, targetInst, nativeEvent, nativeEventTarget) {
@@ -43804,7 +45930,7 @@ var BeforeInputEventPlugin = {
 };
 
 module.exports = BeforeInputEventPlugin;
-},{"./EventPropagators":101,"./FallbackCompositionState":102,"./SyntheticCompositionEvent":166,"./SyntheticInputEvent":170,"fbjs/lib/ExecutionEnvironment":44}],86:[function(require,module,exports){
+},{"./EventPropagators":106,"./FallbackCompositionState":107,"./SyntheticCompositionEvent":171,"./SyntheticInputEvent":175,"fbjs/lib/ExecutionEnvironment":45}],91:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -43837,7 +45963,13 @@ var isUnitlessNumber = {
   flexNegative: true,
   flexOrder: true,
   gridRow: true,
+  gridRowEnd: true,
+  gridRowSpan: true,
+  gridRowStart: true,
   gridColumn: true,
+  gridColumnEnd: true,
+  gridColumnSpan: true,
+  gridColumnStart: true,
   fontWeight: true,
   lineClamp: true,
   lineHeight: true,
@@ -43952,7 +46084,7 @@ var CSSProperty = {
 };
 
 module.exports = CSSProperty;
-},{}],87:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -44031,7 +46163,7 @@ if (process.env.NODE_ENV !== 'production') {
     }
 
     warnedStyleValues[value] = true;
-    process.env.NODE_ENV !== 'production' ? warning(false, 'Style property values shouldn\'t contain a semicolon.%s ' + 'Try "%s: %s" instead.', checkRenderMessage(owner), name, value.replace(badStyleValueWithSemicolonPattern, '')) : void 0;
+    process.env.NODE_ENV !== 'production' ? warning(false, "Style property values shouldn't contain a semicolon.%s " + 'Try "%s: %s" instead.', checkRenderMessage(owner), name, value.replace(badStyleValueWithSemicolonPattern, '')) : void 0;
   };
 
   var warnStyleValueIsNaN = function (name, value, owner) {
@@ -44081,7 +46213,6 @@ if (process.env.NODE_ENV !== 'production') {
  * Operations for dealing with CSS properties.
  */
 var CSSPropertyOperations = {
-
   /**
    * Serializes a mapping of style properties for use as inline styles:
    *
@@ -44101,13 +46232,16 @@ var CSSPropertyOperations = {
       if (!styles.hasOwnProperty(styleName)) {
         continue;
       }
+      var isCustomProperty = styleName.indexOf('--') === 0;
       var styleValue = styles[styleName];
       if (process.env.NODE_ENV !== 'production') {
-        warnValidStyle(styleName, styleValue, component);
+        if (!isCustomProperty) {
+          warnValidStyle(styleName, styleValue, component);
+        }
       }
       if (styleValue != null) {
         serialized += processStyleName(styleName) + ':';
-        serialized += dangerousStyleValue(styleName, styleValue, component) + ';';
+        serialized += dangerousStyleValue(styleName, styleValue, component, isCustomProperty) + ';';
       }
     }
     return serialized || null;
@@ -44135,14 +46269,19 @@ var CSSPropertyOperations = {
       if (!styles.hasOwnProperty(styleName)) {
         continue;
       }
+      var isCustomProperty = styleName.indexOf('--') === 0;
       if (process.env.NODE_ENV !== 'production') {
-        warnValidStyle(styleName, styles[styleName], component);
+        if (!isCustomProperty) {
+          warnValidStyle(styleName, styles[styleName], component);
+        }
       }
-      var styleValue = dangerousStyleValue(styleName, styles[styleName], component);
+      var styleValue = dangerousStyleValue(styleName, styles[styleName], component, isCustomProperty);
       if (styleName === 'float' || styleName === 'cssFloat') {
         styleName = styleFloatAccessor;
       }
-      if (styleValue) {
+      if (isCustomProperty) {
+        style.setProperty(styleName, styleValue);
+      } else if (styleValue) {
         style[styleName] = styleValue;
       } else {
         var expansion = hasShorthandPropertyBug && CSSProperty.shorthandPropertyExpansions[styleName];
@@ -44158,12 +46297,11 @@ var CSSPropertyOperations = {
       }
     }
   }
-
 };
 
 module.exports = CSSPropertyOperations;
 }).call(this,require('_process'))
-},{"./CSSProperty":86,"./ReactInstrumentation":144,"./dangerousStyleValue":183,"_process":81,"fbjs/lib/ExecutionEnvironment":44,"fbjs/lib/camelizeStyleName":46,"fbjs/lib/hyphenateStyleName":57,"fbjs/lib/memoizeStringOnly":61,"fbjs/lib/warning":65}],88:[function(require,module,exports){
+},{"./CSSProperty":91,"./ReactInstrumentation":149,"./dangerousStyleValue":188,"_process":82,"fbjs/lib/ExecutionEnvironment":45,"fbjs/lib/camelizeStyleName":47,"fbjs/lib/hyphenateStyleName":58,"fbjs/lib/memoizeStringOnly":62,"fbjs/lib/warning":66}],93:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -44284,7 +46422,7 @@ var CallbackQueue = function () {
 
 module.exports = PooledClass.addPoolingTo(CallbackQueue);
 }).call(this,require('_process'))
-},{"./PooledClass":106,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],89:[function(require,module,exports){
+},{"./PooledClass":111,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],94:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -44304,6 +46442,7 @@ var ReactDOMComponentTree = require('./ReactDOMComponentTree');
 var ReactUpdates = require('./ReactUpdates');
 var SyntheticEvent = require('./SyntheticEvent');
 
+var inputValueTracking = require('./inputValueTracking');
 var getEventTarget = require('./getEventTarget');
 var isEventSupported = require('./isEventSupported');
 var isTextInputElement = require('./isTextInputElement');
@@ -44318,13 +46457,17 @@ var eventTypes = {
   }
 };
 
+function createAndAccumulateChangeEvent(inst, nativeEvent, target) {
+  var event = SyntheticEvent.getPooled(eventTypes.change, inst, nativeEvent, target);
+  event.type = 'change';
+  EventPropagators.accumulateTwoPhaseDispatches(event);
+  return event;
+}
 /**
  * For IE shims
  */
 var activeElement = null;
 var activeElementInst = null;
-var activeElementValue = null;
-var activeElementValueProp = null;
 
 /**
  * SECTION: handle `change` event
@@ -44341,8 +46484,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 function manualDispatchChangeEvent(nativeEvent) {
-  var event = SyntheticEvent.getPooled(eventTypes.change, activeElementInst, nativeEvent, getEventTarget(nativeEvent));
-  EventPropagators.accumulateTwoPhaseDispatches(event);
+  var event = createAndAccumulateChangeEvent(activeElementInst, nativeEvent, getEventTarget(nativeEvent));
 
   // If change and propertychange bubbled, we'd just bind to it like all the
   // other events and have it go through ReactBrowserEventEmitter. Since it
@@ -44378,11 +46520,21 @@ function stopWatchingForChangeEventIE8() {
   activeElementInst = null;
 }
 
+function getInstIfValueChanged(targetInst, nativeEvent) {
+  var updated = inputValueTracking.updateValueIfChanged(targetInst);
+  var simulated = nativeEvent.simulated === true && ChangeEventPlugin._allowSimulatedPassThrough;
+
+  if (updated || simulated) {
+    return targetInst;
+  }
+}
+
 function getTargetInstForChangeEvent(topLevelType, targetInst) {
   if (topLevelType === 'topChange') {
     return targetInst;
   }
 }
+
 function handleEventsForChangeEventIE8(topLevelType, target, targetInst) {
   if (topLevelType === 'topFocus') {
     // stopWatching() should be a noop here but we call it just in case we
@@ -44401,105 +46553,54 @@ var isInputEventSupported = false;
 if (ExecutionEnvironment.canUseDOM) {
   // IE9 claims to support the input event but fails to trigger it when
   // deleting text, so we ignore its input events.
-  // IE10+ fire input events to often, such when a placeholder
-  // changes or when an input with a placeholder is focused.
-  isInputEventSupported = isEventSupported('input') && (!document.documentMode || document.documentMode > 11);
+
+  isInputEventSupported = isEventSupported('input') && (!('documentMode' in document) || document.documentMode > 9);
 }
 
 /**
- * (For IE <=11) Replacement getter/setter for the `value` property that gets
- * set on the active element.
- */
-var newValueProp = {
-  get: function () {
-    return activeElementValueProp.get.call(this);
-  },
-  set: function (val) {
-    // Cast to a string so we can do equality checks.
-    activeElementValue = '' + val;
-    activeElementValueProp.set.call(this, val);
-  }
-};
-
-/**
- * (For IE <=11) Starts tracking propertychange events on the passed-in element
+ * (For IE <=9) Starts tracking propertychange events on the passed-in element
  * and override the value property so that we can distinguish user events from
  * value changes in JS.
  */
 function startWatchingForValueChange(target, targetInst) {
   activeElement = target;
   activeElementInst = targetInst;
-  activeElementValue = target.value;
-  activeElementValueProp = Object.getOwnPropertyDescriptor(target.constructor.prototype, 'value');
-
-  // Not guarded in a canDefineProperty check: IE8 supports defineProperty only
-  // on DOM elements
-  Object.defineProperty(activeElement, 'value', newValueProp);
-  if (activeElement.attachEvent) {
-    activeElement.attachEvent('onpropertychange', handlePropertyChange);
-  } else {
-    activeElement.addEventListener('propertychange', handlePropertyChange, false);
-  }
+  activeElement.attachEvent('onpropertychange', handlePropertyChange);
 }
 
 /**
- * (For IE <=11) Removes the event listeners from the currently-tracked element,
+ * (For IE <=9) Removes the event listeners from the currently-tracked element,
  * if any exists.
  */
 function stopWatchingForValueChange() {
   if (!activeElement) {
     return;
   }
-
-  // delete restores the original property definition
-  delete activeElement.value;
-
-  if (activeElement.detachEvent) {
-    activeElement.detachEvent('onpropertychange', handlePropertyChange);
-  } else {
-    activeElement.removeEventListener('propertychange', handlePropertyChange, false);
-  }
+  activeElement.detachEvent('onpropertychange', handlePropertyChange);
 
   activeElement = null;
   activeElementInst = null;
-  activeElementValue = null;
-  activeElementValueProp = null;
 }
 
 /**
- * (For IE <=11) Handles a propertychange event, sending a `change` event if
+ * (For IE <=9) Handles a propertychange event, sending a `change` event if
  * the value of the active element has changed.
  */
 function handlePropertyChange(nativeEvent) {
   if (nativeEvent.propertyName !== 'value') {
     return;
   }
-  var value = nativeEvent.srcElement.value;
-  if (value === activeElementValue) {
-    return;
-  }
-  activeElementValue = value;
-
-  manualDispatchChangeEvent(nativeEvent);
-}
-
-/**
- * If a `change` event should be fired, returns the target's ID.
- */
-function getTargetInstForInputEvent(topLevelType, targetInst) {
-  if (topLevelType === 'topInput') {
-    // In modern browsers (i.e., not IE8 or IE9), the input event is exactly
-    // what we want so fall through here and trigger an abstract event
-    return targetInst;
+  if (getInstIfValueChanged(activeElementInst, nativeEvent)) {
+    manualDispatchChangeEvent(nativeEvent);
   }
 }
 
-function handleEventsForInputEventIE(topLevelType, target, targetInst) {
+function handleEventsForInputEventPolyfill(topLevelType, target, targetInst) {
   if (topLevelType === 'topFocus') {
     // In IE8, we can capture almost all .value changes by adding a
     // propertychange handler and looking for events with propertyName
     // equal to 'value'
-    // In IE9-11, propertychange fires for most input events but is buggy and
+    // In IE9, propertychange fires for most input events but is buggy and
     // doesn't fire when text is deleted, but conveniently, selectionchange
     // appears to fire in all of the remaining cases so we catch those and
     // forward the event if the value has changed
@@ -44517,7 +46618,7 @@ function handleEventsForInputEventIE(topLevelType, target, targetInst) {
 }
 
 // For IE8 and IE9.
-function getTargetInstForInputEventIE(topLevelType, targetInst) {
+function getTargetInstForInputEventPolyfill(topLevelType, targetInst, nativeEvent) {
   if (topLevelType === 'topSelectionChange' || topLevelType === 'topKeyUp' || topLevelType === 'topKeyDown') {
     // On the selectionchange event, the target is just document which isn't
     // helpful for us so just check activeElement instead.
@@ -44529,10 +46630,7 @@ function getTargetInstForInputEventIE(topLevelType, targetInst) {
     // keystroke if user does a key repeat (it'll be a little delayed: right
     // before the second keystroke). Other input methods (e.g., paste) seem to
     // fire selectionchange normally.
-    if (activeElement && activeElement.value !== activeElementValue) {
-      activeElementValue = activeElement.value;
-      return activeElementInst;
-    }
+    return getInstIfValueChanged(activeElementInst, nativeEvent);
   }
 }
 
@@ -44543,12 +46641,39 @@ function shouldUseClickEvent(elem) {
   // Use the `click` event to detect changes to checkbox and radio inputs.
   // This approach works across all browsers, whereas `change` does not fire
   // until `blur` in IE8.
-  return elem.nodeName && elem.nodeName.toLowerCase() === 'input' && (elem.type === 'checkbox' || elem.type === 'radio');
+  var nodeName = elem.nodeName;
+  return nodeName && nodeName.toLowerCase() === 'input' && (elem.type === 'checkbox' || elem.type === 'radio');
 }
 
-function getTargetInstForClickEvent(topLevelType, targetInst) {
+function getTargetInstForClickEvent(topLevelType, targetInst, nativeEvent) {
   if (topLevelType === 'topClick') {
-    return targetInst;
+    return getInstIfValueChanged(targetInst, nativeEvent);
+  }
+}
+
+function getTargetInstForInputOrChangeEvent(topLevelType, targetInst, nativeEvent) {
+  if (topLevelType === 'topInput' || topLevelType === 'topChange') {
+    return getInstIfValueChanged(targetInst, nativeEvent);
+  }
+}
+
+function handleControlledInputBlur(inst, node) {
+  // TODO: In IE, inst is occasionally null. Why?
+  if (inst == null) {
+    return;
+  }
+
+  // Fiber and ReactDOM keep wrapper state in separate places
+  var state = inst._wrapperState || node._wrapperState;
+
+  if (!state || !state.controlled || node.type !== 'number') {
+    return;
+  }
+
+  // If controlled, assign the value attribute to the current value on blur
+  var value = '' + node.value;
+  if (node.getAttribute('value') !== value) {
+    node.setAttribute('value', value);
   }
 }
 
@@ -44563,8 +46688,10 @@ function getTargetInstForClickEvent(topLevelType, targetInst) {
  * - select
  */
 var ChangeEventPlugin = {
-
   eventTypes: eventTypes,
+
+  _allowSimulatedPassThrough: true,
+  _isInputEventSupported: isInputEventSupported,
 
   extractEvents: function (topLevelType, targetInst, nativeEvent, nativeEventTarget) {
     var targetNode = targetInst ? ReactDOMComponentTree.getNodeFromInstance(targetInst) : window;
@@ -44578,21 +46705,19 @@ var ChangeEventPlugin = {
       }
     } else if (isTextInputElement(targetNode)) {
       if (isInputEventSupported) {
-        getTargetInstFunc = getTargetInstForInputEvent;
+        getTargetInstFunc = getTargetInstForInputOrChangeEvent;
       } else {
-        getTargetInstFunc = getTargetInstForInputEventIE;
-        handleEventFunc = handleEventsForInputEventIE;
+        getTargetInstFunc = getTargetInstForInputEventPolyfill;
+        handleEventFunc = handleEventsForInputEventPolyfill;
       }
     } else if (shouldUseClickEvent(targetNode)) {
       getTargetInstFunc = getTargetInstForClickEvent;
     }
 
     if (getTargetInstFunc) {
-      var inst = getTargetInstFunc(topLevelType, targetInst);
+      var inst = getTargetInstFunc(topLevelType, targetInst, nativeEvent);
       if (inst) {
-        var event = SyntheticEvent.getPooled(eventTypes.change, inst, nativeEvent, nativeEventTarget);
-        event.type = 'change';
-        EventPropagators.accumulateTwoPhaseDispatches(event);
+        var event = createAndAccumulateChangeEvent(inst, nativeEvent, nativeEventTarget);
         return event;
       }
     }
@@ -44600,12 +46725,16 @@ var ChangeEventPlugin = {
     if (handleEventFunc) {
       handleEventFunc(topLevelType, targetNode, targetInst);
     }
-  }
 
+    // When blurring, set the value attribute for number inputs
+    if (topLevelType === 'topBlur') {
+      handleControlledInputBlur(targetInst, targetNode);
+    }
+  }
 };
 
 module.exports = ChangeEventPlugin;
-},{"./EventPluginHub":98,"./EventPropagators":101,"./ReactDOMComponentTree":115,"./ReactUpdates":159,"./SyntheticEvent":168,"./getEventTarget":191,"./isEventSupported":199,"./isTextInputElement":200,"fbjs/lib/ExecutionEnvironment":44}],90:[function(require,module,exports){
+},{"./EventPluginHub":103,"./EventPropagators":106,"./ReactDOMComponentTree":120,"./ReactUpdates":164,"./SyntheticEvent":173,"./getEventTarget":196,"./inputValueTracking":202,"./isEventSupported":204,"./isTextInputElement":205,"fbjs/lib/ExecutionEnvironment":45}],95:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -44754,7 +46883,6 @@ if (process.env.NODE_ENV !== 'production') {
  * Operations for updating with DOM children.
  */
 var DOMChildrenOperations = {
-
   dangerouslyReplaceNodeWithMarkup: dangerouslyReplaceNodeWithMarkup,
 
   replaceDelimitedText: replaceDelimitedText,
@@ -44780,7 +46908,10 @@ var DOMChildrenOperations = {
             ReactInstrumentation.debugTool.onHostOperation({
               instanceID: parentNodeDebugID,
               type: 'insert child',
-              payload: { toIndex: update.toIndex, content: update.content.toString() }
+              payload: {
+                toIndex: update.toIndex,
+                content: update.content.toString()
+              }
             });
           }
           break;
@@ -44827,12 +46958,11 @@ var DOMChildrenOperations = {
       }
     }
   }
-
 };
 
 module.exports = DOMChildrenOperations;
 }).call(this,require('_process'))
-},{"./DOMLazyTree":91,"./Danger":95,"./ReactDOMComponentTree":115,"./ReactInstrumentation":144,"./createMicrosoftUnsafeLocalFunction":182,"./setInnerHTML":204,"./setTextContent":205,"_process":81}],91:[function(require,module,exports){
+},{"./DOMLazyTree":96,"./Danger":100,"./ReactDOMComponentTree":120,"./ReactInstrumentation":149,"./createMicrosoftUnsafeLocalFunction":187,"./setInnerHTML":209,"./setTextContent":210,"_process":82}],96:[function(require,module,exports){
 /**
  * Copyright 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -44950,7 +47080,7 @@ DOMLazyTree.queueHTML = queueHTML;
 DOMLazyTree.queueText = queueText;
 
 module.exports = DOMLazyTree;
-},{"./DOMNamespaces":92,"./createMicrosoftUnsafeLocalFunction":182,"./setInnerHTML":204,"./setTextContent":205}],92:[function(require,module,exports){
+},{"./DOMNamespaces":97,"./createMicrosoftUnsafeLocalFunction":187,"./setInnerHTML":209,"./setTextContent":210}],97:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -44970,7 +47100,7 @@ var DOMNamespaces = {
 };
 
 module.exports = DOMNamespaces;
-},{}],93:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -45110,7 +47240,6 @@ var ATTRIBUTE_NAME_START_CHAR = ':A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\
  * @see http://jsperf.com/key-missing
  */
 var DOMProperty = {
-
   ID_ATTRIBUTE_NAME: 'data-reactid',
   ROOT_ATTRIBUTE_NAME: 'data-reactroot',
 
@@ -45182,7 +47311,7 @@ var DOMProperty = {
 
 module.exports = DOMProperty;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],94:[function(require,module,exports){
+},{"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],99:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -45231,7 +47360,6 @@ function shouldIgnoreValue(propertyInfo, value) {
  * Operations for dealing with DOM properties.
  */
 var DOMPropertyOperations = {
-
   /**
    * Creates markup for the ID property.
    *
@@ -45416,12 +47544,11 @@ var DOMPropertyOperations = {
       });
     }
   }
-
 };
 
 module.exports = DOMPropertyOperations;
 }).call(this,require('_process'))
-},{"./DOMProperty":93,"./ReactDOMComponentTree":115,"./ReactInstrumentation":144,"./quoteAttributeValueForBrowser":201,"_process":81,"fbjs/lib/warning":65}],95:[function(require,module,exports){
+},{"./DOMProperty":98,"./ReactDOMComponentTree":120,"./ReactInstrumentation":149,"./quoteAttributeValueForBrowser":206,"_process":82,"fbjs/lib/warning":66}],100:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -45445,7 +47572,6 @@ var emptyFunction = require('fbjs/lib/emptyFunction');
 var invariant = require('fbjs/lib/invariant');
 
 var Danger = {
-
   /**
    * Replaces a node with a string of markup at its current position within its
    * parent. The markup must render into a single root node.
@@ -45466,12 +47592,11 @@ var Danger = {
       DOMLazyTree.replaceChildWithTree(oldChild, markup);
     }
   }
-
 };
 
 module.exports = Danger;
 }).call(this,require('_process'))
-},{"./DOMLazyTree":91,"./reactProdInvariant":202,"_process":81,"fbjs/lib/ExecutionEnvironment":44,"fbjs/lib/createNodesFromMarkup":49,"fbjs/lib/emptyFunction":50,"fbjs/lib/invariant":58}],96:[function(require,module,exports){
+},{"./DOMLazyTree":96,"./reactProdInvariant":207,"_process":82,"fbjs/lib/ExecutionEnvironment":45,"fbjs/lib/createNodesFromMarkup":50,"fbjs/lib/emptyFunction":51,"fbjs/lib/invariant":59}],101:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -45497,7 +47622,7 @@ module.exports = Danger;
 var DefaultEventPluginOrder = ['ResponderEventPlugin', 'SimpleEventPlugin', 'TapEventPlugin', 'EnterLeaveEventPlugin', 'ChangeEventPlugin', 'SelectEventPlugin', 'BeforeInputEventPlugin'];
 
 module.exports = DefaultEventPluginOrder;
-},{}],97:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -45526,7 +47651,6 @@ var eventTypes = {
 };
 
 var EnterLeaveEventPlugin = {
-
   eventTypes: eventTypes,
 
   /**
@@ -45593,11 +47717,10 @@ var EnterLeaveEventPlugin = {
 
     return [leave, enter];
   }
-
 };
 
 module.exports = EnterLeaveEventPlugin;
-},{"./EventPropagators":101,"./ReactDOMComponentTree":115,"./SyntheticMouseEvent":172}],98:[function(require,module,exports){
+},{"./EventPropagators":106,"./ReactDOMComponentTree":120,"./SyntheticMouseEvent":177}],103:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -45706,12 +47829,10 @@ function shouldPreventMouseEvent(name, type, props) {
  * @public
  */
 var EventPluginHub = {
-
   /**
    * Methods for injecting dependencies.
    */
   injection: {
-
     /**
      * @param {array} InjectedEventPluginOrder
      * @public
@@ -45722,7 +47843,6 @@ var EventPluginHub = {
      * @param {object} injectedNamesToPlugins Map from names to plugin modules.
      */
     injectEventPluginsByName: EventPluginRegistry.injectEventPluginsByName
-
   },
 
   /**
@@ -45872,12 +47992,11 @@ var EventPluginHub = {
   __getListenerBank: function () {
     return listenerBank;
   }
-
 };
 
 module.exports = EventPluginHub;
 }).call(this,require('_process'))
-},{"./EventPluginRegistry":99,"./EventPluginUtils":100,"./ReactErrorUtils":135,"./accumulateInto":179,"./forEachAccumulated":187,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],99:[function(require,module,exports){
+},{"./EventPluginRegistry":104,"./EventPluginUtils":105,"./ReactErrorUtils":140,"./accumulateInto":184,"./forEachAccumulated":192,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],104:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -45989,7 +48108,6 @@ function publishRegistrationName(registrationName, pluginModule, eventName) {
  * @see {EventPluginHub}
  */
 var EventPluginRegistry = {
-
   /**
    * Ordered list of injected plugins.
    */
@@ -46129,12 +48247,11 @@ var EventPluginRegistry = {
       }
     }
   }
-
 };
 
 module.exports = EventPluginRegistry;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],100:[function(require,module,exports){
+},{"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],105:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -46362,7 +48479,7 @@ var EventPluginUtils = {
 
 module.exports = EventPluginUtils;
 }).call(this,require('_process'))
-},{"./ReactErrorUtils":135,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65}],101:[function(require,module,exports){
+},{"./ReactErrorUtils":140,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66}],106:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -46498,7 +48615,7 @@ var EventPropagators = {
 
 module.exports = EventPropagators;
 }).call(this,require('_process'))
-},{"./EventPluginHub":98,"./EventPluginUtils":100,"./accumulateInto":179,"./forEachAccumulated":187,"_process":81,"fbjs/lib/warning":65}],102:[function(require,module,exports){
+},{"./EventPluginHub":103,"./EventPluginUtils":105,"./accumulateInto":184,"./forEachAccumulated":192,"_process":82,"fbjs/lib/warning":66}],107:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -46593,7 +48710,7 @@ _assign(FallbackCompositionState.prototype, {
 PooledClass.addPoolingTo(FallbackCompositionState);
 
 module.exports = FallbackCompositionState;
-},{"./PooledClass":106,"./getTextContentAccessor":196,"object-assign":80}],103:[function(require,module,exports){
+},{"./PooledClass":111,"./getTextContentAccessor":200,"object-assign":81}],108:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -46801,11 +48918,35 @@ var HTMLDOMPropertyConfig = {
     htmlFor: 'for',
     httpEquiv: 'http-equiv'
   },
-  DOMPropertyNames: {}
+  DOMPropertyNames: {},
+  DOMMutationMethods: {
+    value: function (node, value) {
+      if (value == null) {
+        return node.removeAttribute('value');
+      }
+
+      // Number inputs get special treatment due to some edge cases in
+      // Chrome. Let everything else assign the value attribute as normal.
+      // https://github.com/facebook/react/issues/7253#issuecomment-236074326
+      if (node.type !== 'number' || node.hasAttribute('value') === false) {
+        node.setAttribute('value', '' + value);
+      } else if (node.validity && !node.validity.badInput && node.ownerDocument.activeElement !== node) {
+        // Don't assign an attribute if validation reports bad
+        // input. Chrome will clear the value. Additionally, don't
+        // operate on inputs that have focus, otherwise Chrome might
+        // strip off trailing decimal places and cause the user's
+        // cursor position to jump to the beginning of the input.
+        //
+        // In ReactDOMInput, we have an onBlur event that will trigger
+        // this function again when focus is lost.
+        node.setAttribute('value', '' + value);
+      }
+    }
+  }
 };
 
 module.exports = HTMLDOMPropertyConfig;
-},{"./DOMProperty":93}],104:[function(require,module,exports){
+},{"./DOMProperty":98}],109:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -46864,7 +49005,7 @@ var KeyEscapeUtils = {
 };
 
 module.exports = KeyEscapeUtils;
-},{}],105:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -46880,20 +49021,23 @@ module.exports = KeyEscapeUtils;
 
 var _prodInvariant = require('./reactProdInvariant');
 
-var React = require('react/lib/React');
 var ReactPropTypesSecret = require('./ReactPropTypesSecret');
+var propTypesFactory = require('prop-types/factory');
+
+var React = require('react/lib/React');
+var PropTypes = propTypesFactory(React.isValidElement);
 
 var invariant = require('fbjs/lib/invariant');
 var warning = require('fbjs/lib/warning');
 
 var hasReadOnlyValue = {
-  'button': true,
-  'checkbox': true,
-  'image': true,
-  'hidden': true,
-  'radio': true,
-  'reset': true,
-  'submit': true
+  button: true,
+  checkbox: true,
+  image: true,
+  hidden: true,
+  radio: true,
+  reset: true,
+  submit: true
 };
 
 function _assertSingleLink(inputProps) {
@@ -46922,7 +49066,7 @@ var propTypes = {
     }
     return new Error('You provided a `checked` prop to a form field without an ' + '`onChange` handler. This will render a read-only field. If ' + 'the field should be mutable use `defaultChecked`. Otherwise, ' + 'set either `onChange` or `readOnly`.');
   },
-  onChange: React.PropTypes.func
+  onChange: PropTypes.func
 };
 
 var loggedTypeFailures = {};
@@ -47001,7 +49145,7 @@ var LinkedValueUtils = {
 
 module.exports = LinkedValueUtils;
 }).call(this,require('_process'))
-},{"./ReactPropTypesSecret":152,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65,"react/lib/React":216}],106:[function(require,module,exports){
+},{"./ReactPropTypesSecret":157,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66,"prop-types/factory":84,"react/lib/React":221}],111:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -47115,7 +49259,7 @@ var PooledClass = {
 
 module.exports = PooledClass;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],107:[function(require,module,exports){
+},{"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],112:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -47293,7 +49437,6 @@ function getListeningForDocument(mountAt) {
  * @internal
  */
 var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
-
   /**
    * Injectable event backend
    */
@@ -47367,14 +49510,12 @@ var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
             ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent('topWheel', 'DOMMouseScroll', mountAt);
           }
         } else if (dependency === 'topScroll') {
-
           if (isEventSupported('scroll', true)) {
             ReactBrowserEventEmitter.ReactEventListener.trapCapturedEvent('topScroll', 'scroll', mountAt);
           } else {
             ReactBrowserEventEmitter.ReactEventListener.trapBubbledEvent('topScroll', 'scroll', ReactBrowserEventEmitter.ReactEventListener.WINDOW_HANDLE);
           }
         } else if (dependency === 'topFocus' || dependency === 'topBlur') {
-
           if (isEventSupported('focus', true)) {
             ReactBrowserEventEmitter.ReactEventListener.trapCapturedEvent('topFocus', 'focus', mountAt);
             ReactBrowserEventEmitter.ReactEventListener.trapCapturedEvent('topBlur', 'blur', mountAt);
@@ -47439,11 +49580,10 @@ var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
       isMonitoringScrollValue = true;
     }
   }
-
 });
 
 module.exports = ReactBrowserEventEmitter;
-},{"./EventPluginRegistry":99,"./ReactEventEmitterMixin":136,"./ViewportMetrics":178,"./getVendorPrefixedEventName":197,"./isEventSupported":199,"object-assign":80}],108:[function(require,module,exports){
+},{"./EventPluginRegistry":104,"./ReactEventEmitterMixin":141,"./ViewportMetrics":183,"./getVendorPrefixedEventName":201,"./isEventSupported":204,"object-assign":81}],113:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -47506,8 +49646,8 @@ var ReactChildReconciler = {
    * @return {?object} A set of child instances.
    * @internal
    */
-  instantiateChildren: function (nestedChildNodes, transaction, context, selfDebugID // 0 in production and for roots
-  ) {
+  instantiateChildren: function (nestedChildNodes, transaction, context, selfDebugID) // 0 in production and for roots
+  {
     if (nestedChildNodes == null) {
       return null;
     }
@@ -47533,8 +49673,8 @@ var ReactChildReconciler = {
    * @return {?object} A new set of child instances.
    * @internal
    */
-  updateChildren: function (prevChildren, nextChildren, mountImages, removedNodes, transaction, hostParent, hostContainerInfo, context, selfDebugID // 0 in production and for roots
-  ) {
+  updateChildren: function (prevChildren, nextChildren, mountImages, removedNodes, transaction, hostParent, hostContainerInfo, context, selfDebugID) // 0 in production and for roots
+  {
     // We currently don't have a way to track moves here but if we use iterators
     // instead of for..in we can zip the iterators and check if an item has
     // moved.
@@ -47594,12 +49734,11 @@ var ReactChildReconciler = {
       }
     }
   }
-
 };
 
 module.exports = ReactChildReconciler;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":104,"./ReactReconciler":154,"./instantiateReactComponent":198,"./shouldUpdateReactComponent":206,"./traverseAllChildren":207,"_process":81,"fbjs/lib/warning":65,"react/lib/ReactComponentTreeHook":220}],109:[function(require,module,exports){
+},{"./KeyEscapeUtils":109,"./ReactReconciler":159,"./instantiateReactComponent":203,"./shouldUpdateReactComponent":211,"./traverseAllChildren":212,"_process":82,"fbjs/lib/warning":66,"react/lib/ReactComponentTreeHook":224}],114:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -47621,15 +49760,13 @@ var ReactDOMIDOperations = require('./ReactDOMIDOperations');
  * need for this injection.
  */
 var ReactComponentBrowserEnvironment = {
-
   processChildrenUpdates: ReactDOMIDOperations.dangerouslyProcessChildrenUpdates,
 
   replaceNodeWithMarkup: DOMChildrenOperations.dangerouslyReplaceNodeWithMarkup
-
 };
 
 module.exports = ReactComponentBrowserEnvironment;
-},{"./DOMChildrenOperations":90,"./ReactDOMIDOperations":119}],110:[function(require,module,exports){
+},{"./DOMChildrenOperations":95,"./ReactDOMIDOperations":124}],115:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -47651,7 +49788,6 @@ var invariant = require('fbjs/lib/invariant');
 var injected = false;
 
 var ReactComponentEnvironment = {
-
   /**
    * Optionally injectable hook for swapping out mount images in the middle of
    * the tree.
@@ -47672,12 +49808,11 @@ var ReactComponentEnvironment = {
       injected = true;
     }
   }
-
 };
 
 module.exports = ReactComponentEnvironment;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],111:[function(require,module,exports){
+},{"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],116:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -47798,7 +49933,6 @@ var nextMountID = 1;
  * @lends {ReactCompositeComponent.prototype}
  */
 var ReactCompositeComponent = {
-
   /**
    * Base constructor for all composite component.
    *
@@ -47894,7 +50028,7 @@ var ReactCompositeComponent = {
       var propsMutated = inst.props !== publicProps;
       var componentName = Component.displayName || Component.name || 'Component';
 
-      process.env.NODE_ENV !== 'production' ? warning(inst.props === undefined || !propsMutated, '%s(...): When calling super() in `%s`, make sure to pass ' + 'up the same props that your component\'s constructor was passed.', componentName, componentName) : void 0;
+      process.env.NODE_ENV !== 'production' ? warning(inst.props === undefined || !propsMutated, '%s(...): When calling super() in `%s`, make sure to pass ' + "up the same props that your component's constructor was passed.", componentName, componentName) : void 0;
     }
 
     // These should be set up in the constructor, but as a convenience for
@@ -48195,7 +50329,7 @@ var ReactCompositeComponent = {
     if (childContext) {
       !(typeof Component.childContextTypes === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.getChildContext(): childContextTypes must be defined in order to use getChildContext().', this.getName() || 'ReactCompositeComponent') : _prodInvariant('107', this.getName() || 'ReactCompositeComponent') : void 0;
       if (process.env.NODE_ENV !== 'production') {
-        this._checkContextTypes(Component.childContextTypes, childContext, 'childContext');
+        this._checkContextTypes(Component.childContextTypes, childContext, 'child context');
       }
       for (var name in childContext) {
         !(name in Component.childContextTypes) ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.getChildContext(): key "%s" is not defined in childContextTypes.', this.getName() || 'ReactCompositeComponent', name) : _prodInvariant('108', this.getName() || 'ReactCompositeComponent', name) : void 0;
@@ -48576,12 +50710,11 @@ var ReactCompositeComponent = {
 
   // Stub
   _instantiateReactComponent: null
-
 };
 
 module.exports = ReactCompositeComponent;
 }).call(this,require('_process'))
-},{"./ReactComponentEnvironment":110,"./ReactErrorUtils":135,"./ReactInstanceMap":143,"./ReactInstrumentation":144,"./ReactNodeTypes":149,"./ReactReconciler":154,"./checkReactTypeSpec":181,"./reactProdInvariant":202,"./shouldUpdateReactComponent":206,"_process":81,"fbjs/lib/emptyObject":51,"fbjs/lib/invariant":58,"fbjs/lib/shallowEqual":64,"fbjs/lib/warning":65,"object-assign":80,"react/lib/React":216,"react/lib/ReactCurrentOwner":221}],112:[function(require,module,exports){
+},{"./ReactComponentEnvironment":115,"./ReactErrorUtils":140,"./ReactInstanceMap":148,"./ReactInstrumentation":149,"./ReactNodeTypes":154,"./ReactReconciler":159,"./checkReactTypeSpec":186,"./reactProdInvariant":207,"./shouldUpdateReactComponent":211,"_process":82,"fbjs/lib/emptyObject":52,"fbjs/lib/invariant":59,"fbjs/lib/shallowEqual":65,"fbjs/lib/warning":66,"object-assign":81,"react/lib/React":221,"react/lib/ReactCurrentOwner":225}],117:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -48620,6 +50753,7 @@ var ReactDOM = {
   /* eslint-disable camelcase */
   unstable_batchedUpdates: ReactUpdates.batchedUpdates,
   unstable_renderSubtreeIntoContainer: renderSubtreeIntoContainer
+  /* eslint-enable camelcase */
 };
 
 // Inject the runtime into a devtools global hook regardless of browser.
@@ -48648,7 +50782,6 @@ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVT
 if (process.env.NODE_ENV !== 'production') {
   var ExecutionEnvironment = require('fbjs/lib/ExecutionEnvironment');
   if (ExecutionEnvironment.canUseDOM && window.top === window.self) {
-
     // First check if devtools is not installed
     if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined') {
       // If we're in Chrome or Firefox, provide a download link if not installed.
@@ -48660,7 +50793,7 @@ if (process.env.NODE_ENV !== 'production') {
     }
 
     var testFunc = function testFn() {};
-    process.env.NODE_ENV !== 'production' ? warning((testFunc.name || testFunc.toString()).indexOf('testFn') !== -1, 'It looks like you\'re using a minified copy of the development build ' + 'of React. When deploying React apps to production, make sure to use ' + 'the production build which skips development warnings and is faster. ' + 'See https://fb.me/react-minification for more details.') : void 0;
+    process.env.NODE_ENV !== 'production' ? warning((testFunc.name || testFunc.toString()).indexOf('testFn') !== -1, "It looks like you're using a minified copy of the development build " + 'of React. When deploying React apps to production, make sure to use ' + 'the production build which skips development warnings and is faster. ' + 'See https://fb.me/react-minification for more details.') : void 0;
 
     // If we're in IE8, check to see if we are in compatibility mode and provide
     // information on preventing compatibility mode
@@ -48694,7 +50827,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactDOM;
 }).call(this,require('_process'))
-},{"./ReactDOMComponentTree":115,"./ReactDOMInvalidARIAHook":121,"./ReactDOMNullInputValuePropHook":122,"./ReactDOMUnknownPropertyHook":129,"./ReactDefaultInjection":132,"./ReactInstrumentation":144,"./ReactMount":147,"./ReactReconciler":154,"./ReactUpdates":159,"./ReactVersion":160,"./findDOMNode":185,"./getHostComponentFromComposite":192,"./renderSubtreeIntoContainer":203,"_process":81,"fbjs/lib/ExecutionEnvironment":44,"fbjs/lib/warning":65}],113:[function(require,module,exports){
+},{"./ReactDOMComponentTree":120,"./ReactDOMInvalidARIAHook":126,"./ReactDOMNullInputValuePropHook":127,"./ReactDOMUnknownPropertyHook":134,"./ReactDefaultInjection":137,"./ReactInstrumentation":149,"./ReactMount":152,"./ReactReconciler":159,"./ReactUpdates":164,"./ReactVersion":165,"./findDOMNode":190,"./getHostComponentFromComposite":197,"./renderSubtreeIntoContainer":208,"_process":82,"fbjs/lib/ExecutionEnvironment":45,"fbjs/lib/warning":66}],118:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -48737,6 +50870,7 @@ var escapeTextContentForBrowser = require('./escapeTextContentForBrowser');
 var invariant = require('fbjs/lib/invariant');
 var isEventSupported = require('./isEventSupported');
 var shallowEqual = require('fbjs/lib/shallowEqual');
+var inputValueTracking = require('./inputValueTracking');
 var validateDOMNesting = require('./validateDOMNesting');
 var warning = require('fbjs/lib/warning');
 
@@ -48747,7 +50881,7 @@ var listenTo = ReactBrowserEventEmitter.listenTo;
 var registrationNameModules = EventPluginRegistry.registrationNameModules;
 
 // For quickly matching children type, to test if can be treated as content.
-var CONTENT_TYPES = { 'string': true, 'number': true };
+var CONTENT_TYPES = { string: true, number: true };
 
 var STYLE = 'style';
 var HTML = '__html';
@@ -48856,7 +50990,7 @@ function enqueuePutListener(inst, registrationName, listener, transaction) {
   if (process.env.NODE_ENV !== 'production') {
     // IE8 has no API for event capturing and the `onScroll` event doesn't
     // bubble.
-    process.env.NODE_ENV !== 'production' ? warning(registrationName !== 'onScroll' || isEventSupported('scroll', true), 'This browser doesn\'t support the `onScroll` event') : void 0;
+    process.env.NODE_ENV !== 'production' ? warning(registrationName !== 'onScroll' || isEventSupported('scroll', true), "This browser doesn't support the `onScroll` event") : void 0;
   }
   var containerInfo = inst._hostContainerInfo;
   var isDocumentFragment = containerInfo._node && containerInfo._node.nodeType === DOC_FRAGMENT_TYPE;
@@ -48946,6 +51080,10 @@ var mediaEvents = {
   topWaiting: 'waiting'
 };
 
+function trackInputValue() {
+  inputValueTracking.track(this);
+}
+
 function trapBubbledEventsLocal() {
   var inst = this;
   // If a component renders to null or if another component fatals and causes
@@ -48961,7 +51099,6 @@ function trapBubbledEventsLocal() {
       break;
     case 'video':
     case 'audio':
-
       inst._wrapperState.listeners = [];
       // Create listener for each media event
       for (var event in mediaEvents) {
@@ -48995,34 +51132,35 @@ function postUpdateSelectWrapper() {
 // those special-case tags.
 
 var omittedCloseTags = {
-  'area': true,
-  'base': true,
-  'br': true,
-  'col': true,
-  'embed': true,
-  'hr': true,
-  'img': true,
-  'input': true,
-  'keygen': true,
-  'link': true,
-  'meta': true,
-  'param': true,
-  'source': true,
-  'track': true,
-  'wbr': true
+  area: true,
+  base: true,
+  br: true,
+  col: true,
+  embed: true,
+  hr: true,
+  img: true,
+  input: true,
+  keygen: true,
+  link: true,
+  meta: true,
+  param: true,
+  source: true,
+  track: true,
+  wbr: true
+  // NOTE: menuitem's close tag should be omitted, but that causes problems.
 };
 
 var newlineEatingTags = {
-  'listing': true,
-  'pre': true,
-  'textarea': true
+  listing: true,
+  pre: true,
+  textarea: true
 };
 
 // For HTML, certain tags cannot have children. This has the same purpose as
 // `omittedCloseTags` except that `menuitem` should still have its closing tag.
 
 var voidElementTags = _assign({
-  'menuitem': true
+  menuitem: true
 }, omittedCloseTags);
 
 // We accept any tag to be rendered but since this gets injected into arbitrary
@@ -49086,7 +51224,6 @@ function ReactDOMComponent(element) {
 ReactDOMComponent.displayName = 'ReactDOMComponent';
 
 ReactDOMComponent.Mixin = {
-
   /**
    * Generates root tag markup then recurses. This method has side effects and
    * is not idempotent.
@@ -49123,6 +51260,7 @@ ReactDOMComponent.Mixin = {
       case 'input':
         ReactDOMInput.mountWrapper(this, props, hostParent);
         props = ReactDOMInput.getHostProps(this, props);
+        transaction.getReactMountReady().enqueue(trackInputValue, this);
         transaction.getReactMountReady().enqueue(trapBubbledEventsLocal, this);
         break;
       case 'option':
@@ -49137,6 +51275,7 @@ ReactDOMComponent.Mixin = {
       case 'textarea':
         ReactDOMTextarea.mountWrapper(this, props, hostParent);
         props = ReactDOMTextarea.getHostProps(this, props);
+        transaction.getReactMountReady().enqueue(trackInputValue, this);
         transaction.getReactMountReady().enqueue(trapBubbledEventsLocal, this);
         break;
     }
@@ -49662,6 +51801,10 @@ ReactDOMComponent.Mixin = {
           }
         }
         break;
+      case 'input':
+      case 'textarea':
+        inputValueTracking.stopTracking(this);
+        break;
       case 'html':
       case 'head':
       case 'body':
@@ -49690,14 +51833,13 @@ ReactDOMComponent.Mixin = {
   getPublicInstance: function () {
     return getNode(this);
   }
-
 };
 
 _assign(ReactDOMComponent.prototype, ReactDOMComponent.Mixin, ReactMultiChild.Mixin);
 
 module.exports = ReactDOMComponent;
 }).call(this,require('_process'))
-},{"./AutoFocusUtils":84,"./CSSPropertyOperations":87,"./DOMLazyTree":91,"./DOMNamespaces":92,"./DOMProperty":93,"./DOMPropertyOperations":94,"./EventPluginHub":98,"./EventPluginRegistry":99,"./ReactBrowserEventEmitter":107,"./ReactDOMComponentFlags":114,"./ReactDOMComponentTree":115,"./ReactDOMInput":120,"./ReactDOMOption":123,"./ReactDOMSelect":124,"./ReactDOMTextarea":127,"./ReactInstrumentation":144,"./ReactMultiChild":148,"./ReactServerRenderingTransaction":156,"./escapeTextContentForBrowser":184,"./isEventSupported":199,"./reactProdInvariant":202,"./validateDOMNesting":208,"_process":81,"fbjs/lib/emptyFunction":50,"fbjs/lib/invariant":58,"fbjs/lib/shallowEqual":64,"fbjs/lib/warning":65,"object-assign":80}],114:[function(require,module,exports){
+},{"./AutoFocusUtils":89,"./CSSPropertyOperations":92,"./DOMLazyTree":96,"./DOMNamespaces":97,"./DOMProperty":98,"./DOMPropertyOperations":99,"./EventPluginHub":103,"./EventPluginRegistry":104,"./ReactBrowserEventEmitter":112,"./ReactDOMComponentFlags":119,"./ReactDOMComponentTree":120,"./ReactDOMInput":125,"./ReactDOMOption":128,"./ReactDOMSelect":129,"./ReactDOMTextarea":132,"./ReactInstrumentation":149,"./ReactMultiChild":153,"./ReactServerRenderingTransaction":161,"./escapeTextContentForBrowser":189,"./inputValueTracking":202,"./isEventSupported":204,"./reactProdInvariant":207,"./validateDOMNesting":213,"_process":82,"fbjs/lib/emptyFunction":51,"fbjs/lib/invariant":59,"fbjs/lib/shallowEqual":65,"fbjs/lib/warning":66,"object-assign":81}],119:[function(require,module,exports){
 /**
  * Copyright 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -49715,7 +51857,7 @@ var ReactDOMComponentFlags = {
 };
 
 module.exports = ReactDOMComponentFlags;
-},{}],115:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -49912,7 +52054,7 @@ var ReactDOMComponentTree = {
 
 module.exports = ReactDOMComponentTree;
 }).call(this,require('_process'))
-},{"./DOMProperty":93,"./ReactDOMComponentFlags":114,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],116:[function(require,module,exports){
+},{"./DOMProperty":98,"./ReactDOMComponentFlags":119,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],121:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -49947,7 +52089,7 @@ function ReactDOMContainerInfo(topLevelWrapper, node) {
 
 module.exports = ReactDOMContainerInfo;
 }).call(this,require('_process'))
-},{"./validateDOMNesting":208,"_process":81}],117:[function(require,module,exports){
+},{"./validateDOMNesting":213,"_process":82}],122:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -50007,7 +52149,7 @@ _assign(ReactDOMEmptyComponent.prototype, {
 });
 
 module.exports = ReactDOMEmptyComponent;
-},{"./DOMLazyTree":91,"./ReactDOMComponentTree":115,"object-assign":80}],118:[function(require,module,exports){
+},{"./DOMLazyTree":96,"./ReactDOMComponentTree":120,"object-assign":81}],123:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -50026,7 +52168,7 @@ var ReactDOMFeatureFlags = {
 };
 
 module.exports = ReactDOMFeatureFlags;
-},{}],119:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -50046,7 +52188,6 @@ var ReactDOMComponentTree = require('./ReactDOMComponentTree');
  * Operations used to process updates to DOM nodes.
  */
 var ReactDOMIDOperations = {
-
   /**
    * Updates a component's children by processing a series of updates.
    *
@@ -50060,7 +52201,7 @@ var ReactDOMIDOperations = {
 };
 
 module.exports = ReactDOMIDOperations;
-},{"./DOMChildrenOperations":90,"./ReactDOMComponentTree":115}],120:[function(require,module,exports){
+},{"./DOMChildrenOperations":95,"./ReactDOMComponentTree":120}],125:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50176,12 +52317,9 @@ var ReactDOMInput = {
       initialChecked: props.checked != null ? props.checked : props.defaultChecked,
       initialValue: props.value != null ? props.value : defaultValue,
       listeners: null,
-      onChange: _handleChange.bind(inst)
+      onChange: _handleChange.bind(inst),
+      controlled: isControlled(props)
     };
-
-    if (process.env.NODE_ENV !== 'production') {
-      inst._wrapperState.controlled = isControlled(props);
-    }
   },
 
   updateWrapper: function (inst) {
@@ -50210,14 +52348,26 @@ var ReactDOMInput = {
     var node = ReactDOMComponentTree.getNodeFromInstance(inst);
     var value = LinkedValueUtils.getValue(props);
     if (value != null) {
+      if (value === 0 && node.value === '') {
+        node.value = '0';
+        // Note: IE9 reports a number inputs as 'text', so check props instead.
+      } else if (props.type === 'number') {
+        // Simulate `input.valueAsNumber`. IE9 does not support it
+        var valueAsNumber = parseFloat(node.value, 10) || 0;
 
-      // Cast `value` to a string to ensure the value is set correctly. While
-      // browsers typically do this as necessary, jsdom doesn't.
-      var newValue = '' + value;
-
-      // To avoid side effects (such as losing text selection), only set value if changed
-      if (newValue !== node.value) {
-        node.value = newValue;
+        if (
+        // eslint-disable-next-line
+        value != valueAsNumber ||
+        // eslint-disable-next-line
+        value == valueAsNumber && node.value != value) {
+          // Cast `value` to a string to ensure the value is set correctly. While
+          // browsers typically do this as necessary, jsdom doesn't.
+          node.value = '' + value;
+        }
+      } else if (node.value !== '' + value) {
+        // Cast `value` to a string to ensure the value is set correctly. While
+        // browsers typically do this as necessary, jsdom doesn't.
+        node.value = '' + value;
       }
     } else {
       if (props.value == null && props.defaultValue != null) {
@@ -50340,7 +52490,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMInput;
 }).call(this,require('_process'))
-},{"./DOMPropertyOperations":94,"./LinkedValueUtils":105,"./ReactDOMComponentTree":115,"./ReactUpdates":159,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65,"object-assign":80}],121:[function(require,module,exports){
+},{"./DOMPropertyOperations":99,"./LinkedValueUtils":110,"./ReactDOMComponentTree":120,"./ReactUpdates":164,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66,"object-assign":81}],126:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50435,7 +52585,7 @@ var ReactDOMInvalidARIAHook = {
 
 module.exports = ReactDOMInvalidARIAHook;
 }).call(this,require('_process'))
-},{"./DOMProperty":93,"_process":81,"fbjs/lib/warning":65,"react/lib/ReactComponentTreeHook":220}],122:[function(require,module,exports){
+},{"./DOMProperty":98,"_process":82,"fbjs/lib/warning":66,"react/lib/ReactComponentTreeHook":224}],127:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50480,7 +52630,7 @@ var ReactDOMNullInputValuePropHook = {
 
 module.exports = ReactDOMNullInputValuePropHook;
 }).call(this,require('_process'))
-},{"_process":81,"fbjs/lib/warning":65,"react/lib/ReactComponentTreeHook":220}],123:[function(require,module,exports){
+},{"_process":82,"fbjs/lib/warning":66,"react/lib/ReactComponentTreeHook":224}],128:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50600,12 +52750,11 @@ var ReactDOMOption = {
 
     return hostProps;
   }
-
 };
 
 module.exports = ReactDOMOption;
 }).call(this,require('_process'))
-},{"./ReactDOMComponentTree":115,"./ReactDOMSelect":124,"_process":81,"fbjs/lib/warning":65,"object-assign":80,"react/lib/React":216}],124:[function(require,module,exports){
+},{"./ReactDOMComponentTree":120,"./ReactDOMSelect":129,"_process":82,"fbjs/lib/warning":66,"object-assign":81,"react/lib/React":221}],129:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -50807,7 +52956,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMSelect;
 }).call(this,require('_process'))
-},{"./LinkedValueUtils":105,"./ReactDOMComponentTree":115,"./ReactUpdates":159,"_process":81,"fbjs/lib/warning":65,"object-assign":80}],125:[function(require,module,exports){
+},{"./LinkedValueUtils":110,"./ReactDOMComponentTree":120,"./ReactUpdates":164,"_process":82,"fbjs/lib/warning":66,"object-assign":81}],130:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -51019,7 +53168,7 @@ var ReactDOMSelection = {
 };
 
 module.exports = ReactDOMSelection;
-},{"./getNodeForCharacterOffset":195,"./getTextContentAccessor":196,"fbjs/lib/ExecutionEnvironment":44}],126:[function(require,module,exports){
+},{"./getNodeForCharacterOffset":199,"./getTextContentAccessor":200,"fbjs/lib/ExecutionEnvironment":45}],131:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -51075,7 +53224,6 @@ var ReactDOMTextComponent = function (text) {
 };
 
 _assign(ReactDOMTextComponent.prototype, {
-
   /**
    * Creates the markup for this text node. This node is not intended to have
    * any features besides containing text content.
@@ -51180,12 +53328,11 @@ _assign(ReactDOMTextComponent.prototype, {
     this._commentNodes = null;
     ReactDOMComponentTree.uncacheNode(this);
   }
-
 });
 
 module.exports = ReactDOMTextComponent;
 }).call(this,require('_process'))
-},{"./DOMChildrenOperations":90,"./DOMLazyTree":91,"./ReactDOMComponentTree":115,"./escapeTextContentForBrowser":184,"./reactProdInvariant":202,"./validateDOMNesting":208,"_process":81,"fbjs/lib/invariant":58,"object-assign":80}],127:[function(require,module,exports){
+},{"./DOMChildrenOperations":95,"./DOMLazyTree":96,"./ReactDOMComponentTree":120,"./escapeTextContentForBrowser":189,"./reactProdInvariant":207,"./validateDOMNesting":213,"_process":82,"fbjs/lib/invariant":59,"object-assign":81}],132:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -51347,7 +53494,7 @@ function _handleChange(event) {
 
 module.exports = ReactDOMTextarea;
 }).call(this,require('_process'))
-},{"./LinkedValueUtils":105,"./ReactDOMComponentTree":115,"./ReactUpdates":159,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65,"object-assign":80}],128:[function(require,module,exports){
+},{"./LinkedValueUtils":110,"./ReactDOMComponentTree":120,"./ReactUpdates":164,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66,"object-assign":81}],133:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -51485,7 +53632,7 @@ module.exports = {
   traverseEnterLeave: traverseEnterLeave
 };
 }).call(this,require('_process'))
-},{"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],129:[function(require,module,exports){
+},{"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],134:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -51599,7 +53746,7 @@ var ReactDOMUnknownPropertyHook = {
 
 module.exports = ReactDOMUnknownPropertyHook;
 }).call(this,require('_process'))
-},{"./DOMProperty":93,"./EventPluginRegistry":99,"_process":81,"fbjs/lib/warning":65,"react/lib/ReactComponentTreeHook":220}],130:[function(require,module,exports){
+},{"./DOMProperty":98,"./EventPluginRegistry":104,"_process":82,"fbjs/lib/warning":66,"react/lib/ReactComponentTreeHook":224}],135:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -51781,9 +53928,7 @@ function resumeCurrentLifeCycleTimer() {
 }
 
 var lastMarkTimeStamp = 0;
-var canUsePerformanceMeasure =
-// $FlowFixMe https://github.com/facebook/flow/issues/2345
-typeof performance !== 'undefined' && typeof performance.mark === 'function' && typeof performance.clearMarks === 'function' && typeof performance.measure === 'function' && typeof performance.clearMeasures === 'function';
+var canUsePerformanceMeasure = typeof performance !== 'undefined' && typeof performance.mark === 'function' && typeof performance.clearMarks === 'function' && typeof performance.measure === 'function' && typeof performance.clearMeasures === 'function';
 
 function shouldMark(debugID) {
   if (!isProfiling || !canUsePerformanceMeasure) {
@@ -51831,7 +53976,9 @@ function markEnd(debugID, markType) {
   }
 
   performance.clearMarks(markName);
-  performance.clearMeasures(measurementName);
+  if (measurementName) {
+    performance.clearMeasures(measurementName);
+  }
 }
 
 var ReactDebugTool = {
@@ -51962,7 +54109,7 @@ if (/[?&]react_perf\b/.test(url)) {
 
 module.exports = ReactDebugTool;
 }).call(this,require('_process'))
-},{"./ReactHostOperationHistoryHook":140,"./ReactInvalidSetStateWarningHook":145,"_process":81,"fbjs/lib/ExecutionEnvironment":44,"fbjs/lib/performanceNow":63,"fbjs/lib/warning":65,"react/lib/ReactComponentTreeHook":220}],131:[function(require,module,exports){
+},{"./ReactHostOperationHistoryHook":145,"./ReactInvalidSetStateWarningHook":150,"_process":82,"fbjs/lib/ExecutionEnvironment":45,"fbjs/lib/performanceNow":64,"fbjs/lib/warning":66,"react/lib/ReactComponentTreeHook":224}],136:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52030,7 +54177,7 @@ var ReactDefaultBatchingStrategy = {
 };
 
 module.exports = ReactDefaultBatchingStrategy;
-},{"./ReactUpdates":159,"./Transaction":177,"fbjs/lib/emptyFunction":50,"object-assign":80}],132:[function(require,module,exports){
+},{"./ReactUpdates":164,"./Transaction":182,"fbjs/lib/emptyFunction":51,"object-assign":81}],137:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52116,7 +54263,7 @@ function inject() {
 module.exports = {
   inject: inject
 };
-},{"./ARIADOMPropertyConfig":83,"./BeforeInputEventPlugin":85,"./ChangeEventPlugin":89,"./DefaultEventPluginOrder":96,"./EnterLeaveEventPlugin":97,"./HTMLDOMPropertyConfig":103,"./ReactComponentBrowserEnvironment":109,"./ReactDOMComponent":113,"./ReactDOMComponentTree":115,"./ReactDOMEmptyComponent":117,"./ReactDOMTextComponent":126,"./ReactDOMTreeTraversal":128,"./ReactDefaultBatchingStrategy":131,"./ReactEventListener":137,"./ReactInjection":141,"./ReactReconcileTransaction":153,"./SVGDOMPropertyConfig":161,"./SelectEventPlugin":162,"./SimpleEventPlugin":163}],133:[function(require,module,exports){
+},{"./ARIADOMPropertyConfig":88,"./BeforeInputEventPlugin":90,"./ChangeEventPlugin":94,"./DefaultEventPluginOrder":101,"./EnterLeaveEventPlugin":102,"./HTMLDOMPropertyConfig":108,"./ReactComponentBrowserEnvironment":114,"./ReactDOMComponent":118,"./ReactDOMComponentTree":120,"./ReactDOMEmptyComponent":122,"./ReactDOMTextComponent":131,"./ReactDOMTreeTraversal":133,"./ReactDefaultBatchingStrategy":136,"./ReactEventListener":142,"./ReactInjection":146,"./ReactReconcileTransaction":158,"./SVGDOMPropertyConfig":166,"./SelectEventPlugin":167,"./SimpleEventPlugin":168}],138:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -52136,7 +54283,7 @@ module.exports = {
 var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
 
 module.exports = REACT_ELEMENT_TYPE;
-},{}],134:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 /**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -52166,7 +54313,7 @@ var ReactEmptyComponent = {
 ReactEmptyComponent.injection = ReactEmptyComponentInjection;
 
 module.exports = ReactEmptyComponent;
-},{}],135:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -52235,7 +54382,6 @@ if (process.env.NODE_ENV !== 'production') {
       var evtType = 'react-' + name;
       fakeNode.addEventListener(evtType, boundFunc, false);
       var evt = document.createEvent('Event');
-      // $FlowFixMe https://github.com/facebook/flow/issues/2336
       evt.initEvent(evtType, false, false);
       fakeNode.dispatchEvent(evt);
       fakeNode.removeEventListener(evtType, boundFunc, false);
@@ -52245,7 +54391,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactErrorUtils;
 }).call(this,require('_process'))
-},{"_process":81}],136:[function(require,module,exports){
+},{"_process":82}],141:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52266,7 +54412,6 @@ function runEventQueueInBatch(events) {
 }
 
 var ReactEventEmitterMixin = {
-
   /**
    * Streams a fired top-level event to `EventPluginHub` where plugins have the
    * opportunity to create `ReactEvent`s to be dispatched.
@@ -52278,7 +54423,7 @@ var ReactEventEmitterMixin = {
 };
 
 module.exports = ReactEventEmitterMixin;
-},{"./EventPluginHub":98}],137:[function(require,module,exports){
+},{"./EventPluginHub":103}],142:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52433,7 +54578,7 @@ var ReactEventListener = {
 };
 
 module.exports = ReactEventListener;
-},{"./PooledClass":106,"./ReactDOMComponentTree":115,"./ReactUpdates":159,"./getEventTarget":191,"fbjs/lib/EventListener":43,"fbjs/lib/ExecutionEnvironment":44,"fbjs/lib/getUnboundedScrollPosition":55,"object-assign":80}],138:[function(require,module,exports){
+},{"./PooledClass":111,"./ReactDOMComponentTree":120,"./ReactUpdates":164,"./getEventTarget":196,"fbjs/lib/EventListener":44,"fbjs/lib/ExecutionEnvironment":45,"fbjs/lib/getUnboundedScrollPosition":56,"object-assign":81}],143:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52455,7 +54600,7 @@ var ReactFeatureFlags = {
 };
 
 module.exports = ReactFeatureFlags;
-},{}],139:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -52525,7 +54670,7 @@ var ReactHostComponent = {
 
 module.exports = ReactHostComponent;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],140:[function(require,module,exports){
+},{"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],145:[function(require,module,exports){
 /**
  * Copyright 2016-present, Facebook, Inc.
  * All rights reserved.
@@ -52559,7 +54704,7 @@ var ReactHostOperationHistoryHook = {
 };
 
 module.exports = ReactHostOperationHistoryHook;
-},{}],141:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52593,7 +54738,7 @@ var ReactInjection = {
 };
 
 module.exports = ReactInjection;
-},{"./DOMProperty":93,"./EventPluginHub":98,"./EventPluginUtils":100,"./ReactBrowserEventEmitter":107,"./ReactComponentEnvironment":110,"./ReactEmptyComponent":134,"./ReactHostComponent":139,"./ReactUpdates":159}],142:[function(require,module,exports){
+},{"./DOMProperty":98,"./EventPluginHub":103,"./EventPluginUtils":105,"./ReactBrowserEventEmitter":112,"./ReactComponentEnvironment":115,"./ReactEmptyComponent":139,"./ReactHostComponent":144,"./ReactUpdates":164}],147:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52623,7 +54768,6 @@ function isInDocument(node) {
  * Input selection module for React.
  */
 var ReactInputSelection = {
-
   hasSelectionCapabilities: function (elem) {
     var nodeName = elem && elem.nodeName && elem.nodeName.toLowerCase();
     return nodeName && (nodeName === 'input' && elem.type === 'text' || nodeName === 'textarea' || elem.contentEditable === 'true');
@@ -52717,7 +54861,7 @@ var ReactInputSelection = {
 };
 
 module.exports = ReactInputSelection;
-},{"./ReactDOMSelection":125,"fbjs/lib/containsNode":47,"fbjs/lib/focusNode":52,"fbjs/lib/getActiveElement":53}],143:[function(require,module,exports){
+},{"./ReactDOMSelection":130,"fbjs/lib/containsNode":48,"fbjs/lib/focusNode":53,"fbjs/lib/getActiveElement":54}],148:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52740,7 +54884,6 @@ module.exports = ReactInputSelection;
 // TODO: Replace this with ES6: var ReactInstanceMap = new Map();
 
 var ReactInstanceMap = {
-
   /**
    * This API should be called `delete` but we'd have to make sure to always
    * transform these to strings for IE support. When this transform is fully
@@ -52761,11 +54904,10 @@ var ReactInstanceMap = {
   set: function (key, value) {
     key._reactInternalInstance = value;
   }
-
 };
 
 module.exports = ReactInstanceMap;
-},{}],144:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -52791,7 +54933,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = { debugTool: debugTool };
 }).call(this,require('_process'))
-},{"./ReactDebugTool":130,"_process":81}],145:[function(require,module,exports){
+},{"./ReactDebugTool":135,"_process":82}],150:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -52830,7 +54972,7 @@ var ReactInvalidSetStateWarningHook = {
 
 module.exports = ReactInvalidSetStateWarningHook;
 }).call(this,require('_process'))
-},{"_process":81,"fbjs/lib/warning":65}],146:[function(require,module,exports){
+},{"_process":82,"fbjs/lib/warning":66}],151:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -52880,7 +55022,7 @@ var ReactMarkupChecksum = {
 };
 
 module.exports = ReactMarkupChecksum;
-},{"./adler32":180}],147:[function(require,module,exports){
+},{"./adler32":185}],152:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -53140,7 +55282,6 @@ TopLevelWrapper.isReactTopLevelWrapper = true;
  * Inside of `container`, the first element rendered is the "reactRoot".
  */
 var ReactMount = {
-
   TopLevelWrapper: TopLevelWrapper,
 
   /**
@@ -53229,13 +55370,14 @@ var ReactMount = {
 
   _renderSubtreeIntoContainer: function (parentComponent, nextElement, container, callback) {
     ReactUpdateQueue.validateCallback(callback, 'ReactDOM.render');
-    !React.isValidElement(nextElement) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactDOM.render(): Invalid component element.%s', typeof nextElement === 'string' ? ' Instead of passing a string like \'div\', pass ' + 'React.createElement(\'div\') or <div />.' : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' :
-    // Check if it quacks like an element
-    nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : _prodInvariant('39', typeof nextElement === 'string' ? ' Instead of passing a string like \'div\', pass ' + 'React.createElement(\'div\') or <div />.' : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' : nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : void 0;
+    !React.isValidElement(nextElement) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactDOM.render(): Invalid component element.%s', typeof nextElement === 'string' ? " Instead of passing a string like 'div', pass " + "React.createElement('div') or <div />." : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' : // Check if it quacks like an element
+    nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : _prodInvariant('39', typeof nextElement === 'string' ? " Instead of passing a string like 'div', pass " + "React.createElement('div') or <div />." : typeof nextElement === 'function' ? ' Instead of passing a class like Foo, pass ' + 'React.createElement(Foo) or <Foo />.' : nextElement != null && nextElement.props !== undefined ? ' This may be caused by unintentionally loading two independent ' + 'copies of React.' : '') : void 0;
 
     process.env.NODE_ENV !== 'production' ? warning(!container || !container.tagName || container.tagName.toUpperCase() !== 'BODY', 'render(): Rendering components directly into document.body is ' + 'discouraged, since its children are often manipulated by third-party ' + 'scripts and browser extensions. This may lead to subtle ' + 'reconciliation issues. Try rendering into a container element created ' + 'for your app.') : void 0;
 
-    var nextWrappedElement = React.createElement(TopLevelWrapper, { child: nextElement });
+    var nextWrappedElement = React.createElement(TopLevelWrapper, {
+      child: nextElement
+    });
 
     var nextContext;
     if (parentComponent) {
@@ -53324,7 +55466,7 @@ var ReactMount = {
     !isValidContainer(container) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'unmountComponentAtNode(...): Target container is not a DOM element.') : _prodInvariant('40') : void 0;
 
     if (process.env.NODE_ENV !== 'production') {
-      process.env.NODE_ENV !== 'production' ? warning(!nodeIsRenderedByOtherInstance(container), 'unmountComponentAtNode(): The node you\'re attempting to unmount ' + 'was rendered by another copy of React.') : void 0;
+      process.env.NODE_ENV !== 'production' ? warning(!nodeIsRenderedByOtherInstance(container), "unmountComponentAtNode(): The node you're attempting to unmount " + 'was rendered by another copy of React.') : void 0;
     }
 
     var prevComponent = getTopLevelWrapperInContainer(container);
@@ -53337,7 +55479,7 @@ var ReactMount = {
       var isContainerReactRoot = container.nodeType === 1 && container.hasAttribute(ROOT_ATTR_NAME);
 
       if (process.env.NODE_ENV !== 'production') {
-        process.env.NODE_ENV !== 'production' ? warning(!containerHasNonRootReactChild, 'unmountComponentAtNode(): The node you\'re attempting to unmount ' + 'was rendered by React and is not a top-level container. %s', isContainerReactRoot ? 'You may have accidentally passed in a React root node instead ' + 'of its container.' : 'Instead, have the parent component update its state and ' + 'rerender in order to remove this component.') : void 0;
+        process.env.NODE_ENV !== 'production' ? warning(!containerHasNonRootReactChild, "unmountComponentAtNode(): The node you're attempting to unmount " + 'was rendered by React and is not a top-level container. %s', isContainerReactRoot ? 'You may have accidentally passed in a React root node instead ' + 'of its container.' : 'Instead, have the parent component update its state and ' + 'rerender in order to remove this component.') : void 0;
       }
 
       return false;
@@ -53420,7 +55562,7 @@ var ReactMount = {
 
 module.exports = ReactMount;
 }).call(this,require('_process'))
-},{"./DOMLazyTree":91,"./DOMProperty":93,"./ReactBrowserEventEmitter":107,"./ReactDOMComponentTree":115,"./ReactDOMContainerInfo":116,"./ReactDOMFeatureFlags":118,"./ReactFeatureFlags":138,"./ReactInstanceMap":143,"./ReactInstrumentation":144,"./ReactMarkupChecksum":146,"./ReactReconciler":154,"./ReactUpdateQueue":158,"./ReactUpdates":159,"./instantiateReactComponent":198,"./reactProdInvariant":202,"./setInnerHTML":204,"./shouldUpdateReactComponent":206,"_process":81,"fbjs/lib/emptyObject":51,"fbjs/lib/invariant":58,"fbjs/lib/warning":65,"react/lib/React":216,"react/lib/ReactCurrentOwner":221}],148:[function(require,module,exports){
+},{"./DOMLazyTree":96,"./DOMProperty":98,"./ReactBrowserEventEmitter":112,"./ReactDOMComponentTree":120,"./ReactDOMContainerInfo":121,"./ReactDOMFeatureFlags":123,"./ReactFeatureFlags":143,"./ReactInstanceMap":148,"./ReactInstrumentation":149,"./ReactMarkupChecksum":151,"./ReactReconciler":159,"./ReactUpdateQueue":163,"./ReactUpdates":164,"./instantiateReactComponent":203,"./reactProdInvariant":207,"./setInnerHTML":209,"./shouldUpdateReactComponent":211,"_process":82,"fbjs/lib/emptyObject":52,"fbjs/lib/invariant":59,"fbjs/lib/warning":66,"react/lib/React":221,"react/lib/ReactCurrentOwner":225}],153:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -53592,7 +55734,6 @@ if (process.env.NODE_ENV !== 'production') {
  * @internal
  */
 var ReactMultiChild = {
-
   /**
    * Provides common functionality for components that must reconcile multiple
    * children. This is used by `ReactDOMComponent` to mount, update, and
@@ -53601,7 +55742,6 @@ var ReactMultiChild = {
    * @lends {ReactMultiChild.prototype}
    */
   Mixin: {
-
     _reconcilerInstantiateChildren: function (nestedChildren, transaction, context) {
       if (process.env.NODE_ENV !== 'production') {
         var selfDebugID = getDebugID(this);
@@ -53865,14 +56005,12 @@ var ReactMultiChild = {
       child._mountIndex = null;
       return update;
     }
-
   }
-
 };
 
 module.exports = ReactMultiChild;
 }).call(this,require('_process'))
-},{"./ReactChildReconciler":108,"./ReactComponentEnvironment":110,"./ReactInstanceMap":143,"./ReactInstrumentation":144,"./ReactReconciler":154,"./flattenChildren":186,"./reactProdInvariant":202,"_process":81,"fbjs/lib/emptyFunction":50,"fbjs/lib/invariant":58,"react/lib/ReactCurrentOwner":221}],149:[function(require,module,exports){
+},{"./ReactChildReconciler":113,"./ReactComponentEnvironment":115,"./ReactInstanceMap":148,"./ReactInstrumentation":149,"./ReactReconciler":159,"./flattenChildren":191,"./reactProdInvariant":207,"_process":82,"fbjs/lib/emptyFunction":51,"fbjs/lib/invariant":59,"react/lib/ReactCurrentOwner":225}],154:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -53914,7 +56052,7 @@ var ReactNodeTypes = {
 
 module.exports = ReactNodeTypes;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58,"react/lib/React":216}],150:[function(require,module,exports){
+},{"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59,"react/lib/React":221}],155:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -54005,12 +56143,11 @@ var ReactOwner = {
       owner.detachRef(ref);
     }
   }
-
 };
 
 module.exports = ReactOwner;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],151:[function(require,module,exports){
+},{"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],156:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -54037,7 +56174,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = ReactPropTypeLocationNames;
 }).call(this,require('_process'))
-},{"_process":81}],152:[function(require,module,exports){
+},{"_process":82}],157:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -54054,7 +56191,7 @@ module.exports = ReactPropTypeLocationNames;
 var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
-},{}],153:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -54234,7 +56371,7 @@ PooledClass.addPoolingTo(ReactReconcileTransaction);
 
 module.exports = ReactReconcileTransaction;
 }).call(this,require('_process'))
-},{"./CallbackQueue":88,"./PooledClass":106,"./ReactBrowserEventEmitter":107,"./ReactInputSelection":142,"./ReactInstrumentation":144,"./ReactUpdateQueue":158,"./Transaction":177,"_process":81,"object-assign":80}],154:[function(require,module,exports){
+},{"./CallbackQueue":93,"./PooledClass":111,"./ReactBrowserEventEmitter":112,"./ReactInputSelection":147,"./ReactInstrumentation":149,"./ReactUpdateQueue":163,"./Transaction":182,"_process":82,"object-assign":81}],159:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -54262,7 +56399,6 @@ function attachRefs() {
 }
 
 var ReactReconciler = {
-
   /**
    * Initializes the component, renders markup, and registers event listeners.
    *
@@ -54274,8 +56410,8 @@ var ReactReconciler = {
    * @final
    * @internal
    */
-  mountComponent: function (internalInstance, transaction, hostParent, hostContainerInfo, context, parentDebugID // 0 in production and for roots
-  ) {
+  mountComponent: function (internalInstance, transaction, hostParent, hostContainerInfo, context, parentDebugID) // 0 in production and for roots
+  {
     if (process.env.NODE_ENV !== 'production') {
       if (internalInstance._debugID !== 0) {
         ReactInstrumentation.debugTool.onBeforeMountComponent(internalInstance._debugID, internalInstance._currentElement, parentDebugID);
@@ -54399,12 +56535,11 @@ var ReactReconciler = {
       }
     }
   }
-
 };
 
 module.exports = ReactReconciler;
 }).call(this,require('_process'))
-},{"./ReactInstrumentation":144,"./ReactRef":155,"_process":81,"fbjs/lib/warning":65}],155:[function(require,module,exports){
+},{"./ReactInstrumentation":149,"./ReactRef":160,"_process":82,"fbjs/lib/warning":66}],160:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -54493,7 +56628,7 @@ ReactRef.detachRefs = function (instance, element) {
 };
 
 module.exports = ReactRef;
-},{"./ReactOwner":150}],156:[function(require,module,exports){
+},{"./ReactOwner":155}],161:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -54585,7 +56720,7 @@ PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 
 module.exports = ReactServerRenderingTransaction;
 }).call(this,require('_process'))
-},{"./PooledClass":106,"./ReactInstrumentation":144,"./ReactServerUpdateQueue":157,"./Transaction":177,"_process":81,"object-assign":80}],157:[function(require,module,exports){
+},{"./PooledClass":111,"./ReactInstrumentation":149,"./ReactServerUpdateQueue":162,"./Transaction":182,"_process":82,"object-assign":81}],162:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -54726,7 +56861,7 @@ var ReactServerUpdateQueue = function () {
 
 module.exports = ReactServerUpdateQueue;
 }).call(this,require('_process'))
-},{"./ReactUpdateQueue":158,"_process":81,"fbjs/lib/warning":65}],158:[function(require,module,exports){
+},{"./ReactUpdateQueue":163,"_process":82,"fbjs/lib/warning":66}],163:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -54781,7 +56916,7 @@ function getInternalInstanceReadyForUpdate(publicInstance, callerName) {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    process.env.NODE_ENV !== 'production' ? warning(ReactCurrentOwner.current == null, '%s(...): Cannot update during an existing state transition (such as ' + 'within `render` or another component\'s constructor). Render methods ' + 'should be a pure function of props and state; constructor ' + 'side-effects are an anti-pattern, but can be moved to ' + '`componentWillMount`.', callerName) : void 0;
+    process.env.NODE_ENV !== 'production' ? warning(ReactCurrentOwner.current == null, '%s(...): Cannot update during an existing state transition (such as ' + "within `render` or another component's constructor). Render methods " + 'should be a pure function of props and state; constructor ' + 'side-effects are an anti-pattern, but can be moved to ' + '`componentWillMount`.', callerName) : void 0;
   }
 
   return internalInstance;
@@ -54792,7 +56927,6 @@ function getInternalInstanceReadyForUpdate(publicInstance, callerName) {
  * reconciliation step.
  */
 var ReactUpdateQueue = {
-
   /**
    * Checks whether or not this composite component is mounted.
    * @param {ReactClass} publicInstance The instance we want to test.
@@ -54898,7 +57032,7 @@ var ReactUpdateQueue = {
    * @param {object} completeState Next state.
    * @internal
    */
-  enqueueReplaceState: function (publicInstance, completeState) {
+  enqueueReplaceState: function (publicInstance, completeState, callback) {
     var internalInstance = getInternalInstanceReadyForUpdate(publicInstance, 'replaceState');
 
     if (!internalInstance) {
@@ -54907,6 +57041,16 @@ var ReactUpdateQueue = {
 
     internalInstance._pendingStateQueue = [completeState];
     internalInstance._pendingReplaceState = true;
+
+    // Future-proof 15.5
+    if (callback !== undefined && callback !== null) {
+      ReactUpdateQueue.validateCallback(callback, 'replaceState');
+      if (internalInstance._pendingCallbacks) {
+        internalInstance._pendingCallbacks.push(callback);
+      } else {
+        internalInstance._pendingCallbacks = [callback];
+      }
+    }
 
     enqueueUpdate(internalInstance);
   },
@@ -54949,12 +57093,11 @@ var ReactUpdateQueue = {
   validateCallback: function (callback, callerName) {
     !(!callback || typeof callback === 'function') ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s(...): Expected the last optional `callback` argument to be a function. Instead received: %s.', callerName, formatUnexpectedArgument(callback)) : _prodInvariant('122', callerName, formatUnexpectedArgument(callback)) : void 0;
   }
-
 };
 
 module.exports = ReactUpdateQueue;
 }).call(this,require('_process'))
-},{"./ReactInstanceMap":143,"./ReactInstrumentation":144,"./ReactUpdates":159,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65,"react/lib/ReactCurrentOwner":221}],159:[function(require,module,exports){
+},{"./ReactInstanceMap":148,"./ReactInstrumentation":149,"./ReactUpdates":164,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66,"react/lib/ReactCurrentOwner":225}],164:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -55207,7 +57350,7 @@ var ReactUpdates = {
 
 module.exports = ReactUpdates;
 }).call(this,require('_process'))
-},{"./CallbackQueue":88,"./PooledClass":106,"./ReactFeatureFlags":138,"./ReactReconciler":154,"./Transaction":177,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58,"object-assign":80}],160:[function(require,module,exports){
+},{"./CallbackQueue":93,"./PooledClass":111,"./ReactFeatureFlags":143,"./ReactReconciler":159,"./Transaction":182,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59,"object-assign":81}],165:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -55220,8 +57363,8 @@ module.exports = ReactUpdates;
 
 'use strict';
 
-module.exports = '15.4.2';
-},{}],161:[function(require,module,exports){
+module.exports = '15.6.1';
+},{}],166:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -55523,7 +57666,7 @@ Object.keys(ATTRS).forEach(function (key) {
 });
 
 module.exports = SVGDOMPropertyConfig;
-},{}],162:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -55649,7 +57792,6 @@ function constructSelectEvent(nativeEvent, nativeEventTarget) {
  * - Fires after user input.
  */
 var SelectEventPlugin = {
-
   eventTypes: eventTypes,
 
   extractEvents: function (topLevelType, targetInst, nativeEvent, nativeEventTarget) {
@@ -55673,7 +57815,6 @@ var SelectEventPlugin = {
         activeElementInst = null;
         lastSelection = null;
         break;
-
       // Don't fire the event while the user is dragging. This matches the
       // semantics of the native select event.
       case 'topMouseDown':
@@ -55683,7 +57824,6 @@ var SelectEventPlugin = {
       case 'topMouseUp':
         mouseDown = false;
         return constructSelectEvent(nativeEvent, nativeEventTarget);
-
       // Chrome and IE fire non-standard event when selection is changed (and
       // sometimes when it hasn't). IE's event fires out of order with respect
       // to key and input events on deletion, so we discard it.
@@ -55714,7 +57854,7 @@ var SelectEventPlugin = {
 };
 
 module.exports = SelectEventPlugin;
-},{"./EventPropagators":101,"./ReactDOMComponentTree":115,"./ReactInputSelection":142,"./SyntheticEvent":168,"./isTextInputElement":200,"fbjs/lib/ExecutionEnvironment":44,"fbjs/lib/getActiveElement":53,"fbjs/lib/shallowEqual":64}],163:[function(require,module,exports){
+},{"./EventPropagators":106,"./ReactDOMComponentTree":120,"./ReactInputSelection":147,"./SyntheticEvent":173,"./isTextInputElement":205,"fbjs/lib/ExecutionEnvironment":45,"fbjs/lib/getActiveElement":54,"fbjs/lib/shallowEqual":65}],168:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -55799,7 +57939,6 @@ function isInteractive(tag) {
 }
 
 var SimpleEventPlugin = {
-
   eventTypes: eventTypes,
 
   extractEvents: function (topLevelType, targetInst, nativeEvent, nativeEventTarget) {
@@ -55939,12 +58078,11 @@ var SimpleEventPlugin = {
       delete onClickListeners[key];
     }
   }
-
 };
 
 module.exports = SimpleEventPlugin;
 }).call(this,require('_process'))
-},{"./EventPropagators":101,"./ReactDOMComponentTree":115,"./SyntheticAnimationEvent":164,"./SyntheticClipboardEvent":165,"./SyntheticDragEvent":167,"./SyntheticEvent":168,"./SyntheticFocusEvent":169,"./SyntheticKeyboardEvent":171,"./SyntheticMouseEvent":172,"./SyntheticTouchEvent":173,"./SyntheticTransitionEvent":174,"./SyntheticUIEvent":175,"./SyntheticWheelEvent":176,"./getEventCharCode":188,"./reactProdInvariant":202,"_process":81,"fbjs/lib/EventListener":43,"fbjs/lib/emptyFunction":50,"fbjs/lib/invariant":58}],164:[function(require,module,exports){
+},{"./EventPropagators":106,"./ReactDOMComponentTree":120,"./SyntheticAnimationEvent":169,"./SyntheticClipboardEvent":170,"./SyntheticDragEvent":172,"./SyntheticEvent":173,"./SyntheticFocusEvent":174,"./SyntheticKeyboardEvent":176,"./SyntheticMouseEvent":177,"./SyntheticTouchEvent":178,"./SyntheticTransitionEvent":179,"./SyntheticUIEvent":180,"./SyntheticWheelEvent":181,"./getEventCharCode":193,"./reactProdInvariant":207,"_process":82,"fbjs/lib/EventListener":44,"fbjs/lib/emptyFunction":51,"fbjs/lib/invariant":59}],169:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -55983,7 +58121,7 @@ function SyntheticAnimationEvent(dispatchConfig, dispatchMarker, nativeEvent, na
 SyntheticEvent.augmentClass(SyntheticAnimationEvent, AnimationEventInterface);
 
 module.exports = SyntheticAnimationEvent;
-},{"./SyntheticEvent":168}],165:[function(require,module,exports){
+},{"./SyntheticEvent":173}],170:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56021,7 +58159,7 @@ function SyntheticClipboardEvent(dispatchConfig, dispatchMarker, nativeEvent, na
 SyntheticEvent.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 
 module.exports = SyntheticClipboardEvent;
-},{"./SyntheticEvent":168}],166:[function(require,module,exports){
+},{"./SyntheticEvent":173}],171:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56057,7 +58195,7 @@ function SyntheticCompositionEvent(dispatchConfig, dispatchMarker, nativeEvent, 
 SyntheticEvent.augmentClass(SyntheticCompositionEvent, CompositionEventInterface);
 
 module.exports = SyntheticCompositionEvent;
-},{"./SyntheticEvent":168}],167:[function(require,module,exports){
+},{"./SyntheticEvent":173}],172:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56093,7 +58231,7 @@ function SyntheticDragEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeE
 SyntheticMouseEvent.augmentClass(SyntheticDragEvent, DragEventInterface);
 
 module.exports = SyntheticDragEvent;
-},{"./SyntheticMouseEvent":172}],168:[function(require,module,exports){
+},{"./SyntheticMouseEvent":177}],173:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -56199,7 +58337,6 @@ function SyntheticEvent(dispatchConfig, targetInst, nativeEvent, nativeEventTarg
 }
 
 _assign(SyntheticEvent.prototype, {
-
   preventDefault: function () {
     this.defaultPrevented = true;
     var event = this.nativeEvent;
@@ -56209,8 +58346,8 @@ _assign(SyntheticEvent.prototype, {
 
     if (event.preventDefault) {
       event.preventDefault();
+      // eslint-disable-next-line valid-typeof
     } else if (typeof event.returnValue !== 'unknown') {
-      // eslint-disable-line valid-typeof
       event.returnValue = false;
     }
     this.isDefaultPrevented = emptyFunction.thatReturnsTrue;
@@ -56224,8 +58361,8 @@ _assign(SyntheticEvent.prototype, {
 
     if (event.stopPropagation) {
       event.stopPropagation();
+      // eslint-disable-next-line valid-typeof
     } else if (typeof event.cancelBubble !== 'unknown') {
-      // eslint-disable-line valid-typeof
       // The ChangeEventPlugin registers a "propertychange" event for
       // IE. This event does not support bubbling or cancelling, and
       // any references to cancelBubble throw "Member not found".  A
@@ -56274,7 +58411,6 @@ _assign(SyntheticEvent.prototype, {
       Object.defineProperty(this, 'stopPropagation', getPooledWarningPropertyDefinition('stopPropagation', emptyFunction));
     }
   }
-
 });
 
 SyntheticEvent.Interface = EventInterface;
@@ -56290,7 +58426,7 @@ if (process.env.NODE_ENV !== 'production') {
         return new Proxy(constructor.apply(that, args), {
           set: function (target, prop, value) {
             if (prop !== 'isPersistent' && !target.constructor.Interface.hasOwnProperty(prop) && shouldBeReleasedProperties.indexOf(prop) === -1) {
-              process.env.NODE_ENV !== 'production' ? warning(didWarnForAddedNewProperty || target.isPersistent(), 'This synthetic event is reused for performance reasons. If you\'re ' + 'seeing this, you\'re adding a new property in the synthetic event object. ' + 'The property is never released. See ' + 'https://fb.me/react-event-pooling for more information.') : void 0;
+              process.env.NODE_ENV !== 'production' ? warning(didWarnForAddedNewProperty || target.isPersistent(), "This synthetic event is reused for performance reasons. If you're " + "seeing this, you're adding a new property in the synthetic event object. " + 'The property is never released. See ' + 'https://fb.me/react-event-pooling for more information.') : void 0;
               didWarnForAddedNewProperty = true;
             }
             target[prop] = value;
@@ -56359,11 +58495,11 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
 
   function warn(action, result) {
     var warningCondition = false;
-    process.env.NODE_ENV !== 'production' ? warning(warningCondition, 'This synthetic event is reused for performance reasons. If you\'re seeing this, ' + 'you\'re %s `%s` on a released/nullified synthetic event. %s. ' + 'If you must keep the original synthetic event around, use event.persist(). ' + 'See https://fb.me/react-event-pooling for more information.', action, propName, result) : void 0;
+    process.env.NODE_ENV !== 'production' ? warning(warningCondition, "This synthetic event is reused for performance reasons. If you're seeing this, " + "you're %s `%s` on a released/nullified synthetic event. %s. " + 'If you must keep the original synthetic event around, use event.persist(). ' + 'See https://fb.me/react-event-pooling for more information.', action, propName, result) : void 0;
   }
 }
 }).call(this,require('_process'))
-},{"./PooledClass":106,"_process":81,"fbjs/lib/emptyFunction":50,"fbjs/lib/warning":65,"object-assign":80}],169:[function(require,module,exports){
+},{"./PooledClass":111,"_process":82,"fbjs/lib/emptyFunction":51,"fbjs/lib/warning":66,"object-assign":81}],174:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56399,7 +58535,7 @@ function SyntheticFocusEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 
 module.exports = SyntheticFocusEvent;
-},{"./SyntheticUIEvent":175}],170:[function(require,module,exports){
+},{"./SyntheticUIEvent":180}],175:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56436,7 +58572,7 @@ function SyntheticInputEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticEvent.augmentClass(SyntheticInputEvent, InputEventInterface);
 
 module.exports = SyntheticInputEvent;
-},{"./SyntheticEvent":168}],171:[function(require,module,exports){
+},{"./SyntheticEvent":173}],176:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56520,7 +58656,7 @@ function SyntheticKeyboardEvent(dispatchConfig, dispatchMarker, nativeEvent, nat
 SyntheticUIEvent.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 
 module.exports = SyntheticKeyboardEvent;
-},{"./SyntheticUIEvent":175,"./getEventCharCode":188,"./getEventKey":189,"./getEventModifierState":190}],172:[function(require,module,exports){
+},{"./SyntheticUIEvent":180,"./getEventCharCode":193,"./getEventKey":194,"./getEventModifierState":195}],177:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56592,7 +58728,7 @@ function SyntheticMouseEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 
 module.exports = SyntheticMouseEvent;
-},{"./SyntheticUIEvent":175,"./ViewportMetrics":178,"./getEventModifierState":190}],173:[function(require,module,exports){
+},{"./SyntheticUIEvent":180,"./ViewportMetrics":183,"./getEventModifierState":195}],178:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56637,7 +58773,7 @@ function SyntheticTouchEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 
 module.exports = SyntheticTouchEvent;
-},{"./SyntheticUIEvent":175,"./getEventModifierState":190}],174:[function(require,module,exports){
+},{"./SyntheticUIEvent":180,"./getEventModifierState":195}],179:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56676,7 +58812,7 @@ function SyntheticTransitionEvent(dispatchConfig, dispatchMarker, nativeEvent, n
 SyntheticEvent.augmentClass(SyntheticTransitionEvent, TransitionEventInterface);
 
 module.exports = SyntheticTransitionEvent;
-},{"./SyntheticEvent":168}],175:[function(require,module,exports){
+},{"./SyntheticEvent":173}],180:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56735,7 +58871,7 @@ function SyntheticUIEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEve
 SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 
 module.exports = SyntheticUIEvent;
-},{"./SyntheticEvent":168,"./getEventTarget":191}],176:[function(require,module,exports){
+},{"./SyntheticEvent":173,"./getEventTarget":196}],181:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -56756,15 +58892,12 @@ var SyntheticMouseEvent = require('./SyntheticMouseEvent');
  */
 var WheelEventInterface = {
   deltaX: function (event) {
-    return 'deltaX' in event ? event.deltaX :
-    // Fallback to `wheelDeltaX` for Webkit and normalize (right is positive).
+    return 'deltaX' in event ? event.deltaX : // Fallback to `wheelDeltaX` for Webkit and normalize (right is positive).
     'wheelDeltaX' in event ? -event.wheelDeltaX : 0;
   },
   deltaY: function (event) {
-    return 'deltaY' in event ? event.deltaY :
-    // Fallback to `wheelDeltaY` for Webkit and normalize (down is positive).
-    'wheelDeltaY' in event ? -event.wheelDeltaY :
-    // Fallback to `wheelDelta` for IE<9 and normalize (down is positive).
+    return 'deltaY' in event ? event.deltaY : // Fallback to `wheelDeltaY` for Webkit and normalize (down is positive).
+    'wheelDeltaY' in event ? -event.wheelDeltaY : // Fallback to `wheelDelta` for IE<9 and normalize (down is positive).
     'wheelDelta' in event ? -event.wheelDelta : 0;
   },
   deltaZ: null,
@@ -56789,7 +58922,7 @@ function SyntheticWheelEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticMouseEvent.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 
 module.exports = SyntheticWheelEvent;
-},{"./SyntheticMouseEvent":172}],177:[function(require,module,exports){
+},{"./SyntheticMouseEvent":177}],182:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -56901,6 +59034,8 @@ var TransactionImpl = {
     return !!this._isInTransaction;
   },
 
+  /* eslint-disable space-before-function-paren */
+
   /**
    * Executes the function within a safety window. Use this for the top level
    * methods that result in large amounts of computation/mutations that would
@@ -56919,6 +59054,7 @@ var TransactionImpl = {
    * @return {*} Return value from `method`.
    */
   perform: function (method, scope, a, b, c, d, e, f) {
+    /* eslint-enable space-before-function-paren */
     !!this.isInTransaction() ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Transaction.perform(...): Cannot initialize a transaction when there is already an outstanding transaction.') : _prodInvariant('27') : void 0;
     var errorThrown;
     var ret;
@@ -57016,7 +59152,7 @@ var TransactionImpl = {
 
 module.exports = TransactionImpl;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],178:[function(require,module,exports){
+},{"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],183:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57030,7 +59166,6 @@ module.exports = TransactionImpl;
 'use strict';
 
 var ViewportMetrics = {
-
   currentScrollLeft: 0,
 
   currentScrollTop: 0,
@@ -57039,11 +59174,10 @@ var ViewportMetrics = {
     ViewportMetrics.currentScrollLeft = scrollPosition.x;
     ViewportMetrics.currentScrollTop = scrollPosition.y;
   }
-
 };
 
 module.exports = ViewportMetrics;
-},{}],179:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -57103,7 +59237,7 @@ function accumulateInto(current, next) {
 
 module.exports = accumulateInto;
 }).call(this,require('_process'))
-},{"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58}],180:[function(require,module,exports){
+},{"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59}],185:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57147,7 +59281,7 @@ function adler32(data) {
 }
 
 module.exports = adler32;
-},{}],181:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57236,7 +59370,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
 module.exports = checkReactTypeSpec;
 }).call(this,require('_process'))
-},{"./ReactPropTypeLocationNames":151,"./ReactPropTypesSecret":152,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65,"react/lib/ReactComponentTreeHook":220}],182:[function(require,module,exports){
+},{"./ReactPropTypeLocationNames":156,"./ReactPropTypesSecret":157,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66,"react/lib/ReactComponentTreeHook":224}],187:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57268,7 +59402,7 @@ var createMicrosoftUnsafeLocalFunction = function (func) {
 };
 
 module.exports = createMicrosoftUnsafeLocalFunction;
-},{}],183:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57298,7 +59432,7 @@ var styleWarnings = {};
  * @param {ReactDOMComponent} component
  * @return {string} Normalized style value with dimensions applied.
  */
-function dangerousStyleValue(name, value, component) {
+function dangerousStyleValue(name, value, component, isCustomProperty) {
   // Note that we've removed escapeTextForBrowser() calls here since the
   // whole string will be escaped when the attribute is injected into
   // the markup. If you provide unsafe user data here they can inject
@@ -57315,7 +59449,7 @@ function dangerousStyleValue(name, value, component) {
   }
 
   var isNonNumeric = isNaN(value);
-  if (isNonNumeric || value === 0 || isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name]) {
+  if (isCustomProperty || isNonNumeric || value === 0 || isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name]) {
     return '' + value; // cast to string
   }
 
@@ -57349,7 +59483,7 @@ function dangerousStyleValue(name, value, component) {
 
 module.exports = dangerousStyleValue;
 }).call(this,require('_process'))
-},{"./CSSProperty":86,"_process":81,"fbjs/lib/warning":65}],184:[function(require,module,exports){
+},{"./CSSProperty":91,"_process":82,"fbjs/lib/warning":66}],189:[function(require,module,exports){
 /**
  * Copyright 2016-present, Facebook, Inc.
  * All rights reserved.
@@ -57454,7 +59588,6 @@ function escapeHtml(string) {
 }
 // end code copied and modified from escape-html
 
-
 /**
  * Escapes text to prevent scripting attacks.
  *
@@ -57472,7 +59605,7 @@ function escapeTextContentForBrowser(text) {
 }
 
 module.exports = escapeTextContentForBrowser;
-},{}],185:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57534,7 +59667,7 @@ function findDOMNode(componentOrElement) {
 
 module.exports = findDOMNode;
 }).call(this,require('_process'))
-},{"./ReactDOMComponentTree":115,"./ReactInstanceMap":143,"./getHostComponentFromComposite":192,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65,"react/lib/ReactCurrentOwner":221}],186:[function(require,module,exports){
+},{"./ReactDOMComponentTree":120,"./ReactInstanceMap":148,"./getHostComponentFromComposite":197,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66,"react/lib/ReactCurrentOwner":225}],191:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -57612,7 +59745,7 @@ function flattenChildren(children, selfDebugID) {
 
 module.exports = flattenChildren;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":104,"./traverseAllChildren":207,"_process":81,"fbjs/lib/warning":65,"react/lib/ReactComponentTreeHook":220}],187:[function(require,module,exports){
+},{"./KeyEscapeUtils":109,"./traverseAllChildren":212,"_process":82,"fbjs/lib/warning":66,"react/lib/ReactComponentTreeHook":224}],192:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57643,7 +59776,7 @@ function forEachAccumulated(arr, cb, scope) {
 }
 
 module.exports = forEachAccumulated;
-},{}],188:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57693,7 +59826,7 @@ function getEventCharCode(nativeEvent) {
 }
 
 module.exports = getEventCharCode;
-},{}],189:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57713,18 +59846,18 @@ var getEventCharCode = require('./getEventCharCode');
  * @see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Key_names
  */
 var normalizeKey = {
-  'Esc': 'Escape',
-  'Spacebar': ' ',
-  'Left': 'ArrowLeft',
-  'Up': 'ArrowUp',
-  'Right': 'ArrowRight',
-  'Down': 'ArrowDown',
-  'Del': 'Delete',
-  'Win': 'OS',
-  'Menu': 'ContextMenu',
-  'Apps': 'ContextMenu',
-  'Scroll': 'ScrollLock',
-  'MozPrintableKey': 'Unidentified'
+  Esc: 'Escape',
+  Spacebar: ' ',
+  Left: 'ArrowLeft',
+  Up: 'ArrowUp',
+  Right: 'ArrowRight',
+  Down: 'ArrowDown',
+  Del: 'Delete',
+  Win: 'OS',
+  Menu: 'ContextMenu',
+  Apps: 'ContextMenu',
+  Scroll: 'ScrollLock',
+  MozPrintableKey: 'Unidentified'
 };
 
 /**
@@ -57754,8 +59887,18 @@ var translateToKey = {
   40: 'ArrowDown',
   45: 'Insert',
   46: 'Delete',
-  112: 'F1', 113: 'F2', 114: 'F3', 115: 'F4', 116: 'F5', 117: 'F6',
-  118: 'F7', 119: 'F8', 120: 'F9', 121: 'F10', 122: 'F11', 123: 'F12',
+  112: 'F1',
+  113: 'F2',
+  114: 'F3',
+  115: 'F4',
+  116: 'F5',
+  117: 'F6',
+  118: 'F7',
+  119: 'F8',
+  120: 'F9',
+  121: 'F10',
+  122: 'F11',
+  123: 'F12',
   144: 'NumLock',
   145: 'ScrollLock',
   224: 'Meta'
@@ -57795,7 +59938,7 @@ function getEventKey(nativeEvent) {
 }
 
 module.exports = getEventKey;
-},{"./getEventCharCode":188}],190:[function(require,module,exports){
+},{"./getEventCharCode":193}],195:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57814,10 +59957,10 @@ module.exports = getEventKey;
  */
 
 var modifierKeyToProp = {
-  'Alt': 'altKey',
-  'Control': 'ctrlKey',
-  'Meta': 'metaKey',
-  'Shift': 'shiftKey'
+  Alt: 'altKey',
+  Control: 'ctrlKey',
+  Meta: 'metaKey',
+  Shift: 'shiftKey'
 };
 
 // IE8 does not implement getModifierState so we simply map it to the only
@@ -57838,7 +59981,7 @@ function getEventModifierState(nativeEvent) {
 }
 
 module.exports = getEventModifierState;
-},{}],191:[function(require,module,exports){
+},{}],196:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57873,7 +60016,7 @@ function getEventTarget(nativeEvent) {
 }
 
 module.exports = getEventTarget;
-},{}],192:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57903,7 +60046,7 @@ function getHostComponentFromComposite(inst) {
 }
 
 module.exports = getHostComponentFromComposite;
-},{"./ReactNodeTypes":149}],193:[function(require,module,exports){
+},{"./ReactNodeTypes":154}],198:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -57944,28 +60087,7 @@ function getIteratorFn(maybeIterable) {
 }
 
 module.exports = getIteratorFn;
-},{}],194:[function(require,module,exports){
-/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * 
- */
-
-'use strict';
-
-var nextDebugID = 1;
-
-function getNextDebugID() {
-  return nextDebugID++;
-}
-
-module.exports = getNextDebugID;
-},{}],195:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58039,7 +60161,7 @@ function getNodeForCharacterOffset(root, offset) {
 }
 
 module.exports = getNodeForCharacterOffset;
-},{}],196:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58072,7 +60194,7 @@ function getTextContentAccessor() {
 }
 
 module.exports = getTextContentAccessor;
-},{"fbjs/lib/ExecutionEnvironment":44}],197:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":45}],201:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58173,7 +60295,130 @@ function getVendorPrefixedEventName(eventName) {
 }
 
 module.exports = getVendorPrefixedEventName;
-},{"fbjs/lib/ExecutionEnvironment":44}],198:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":45}],202:[function(require,module,exports){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+var ReactDOMComponentTree = require('./ReactDOMComponentTree');
+
+function isCheckable(elem) {
+  var type = elem.type;
+  var nodeName = elem.nodeName;
+  return nodeName && nodeName.toLowerCase() === 'input' && (type === 'checkbox' || type === 'radio');
+}
+
+function getTracker(inst) {
+  return inst._wrapperState.valueTracker;
+}
+
+function attachTracker(inst, tracker) {
+  inst._wrapperState.valueTracker = tracker;
+}
+
+function detachTracker(inst) {
+  delete inst._wrapperState.valueTracker;
+}
+
+function getValueFromNode(node) {
+  var value;
+  if (node) {
+    value = isCheckable(node) ? '' + node.checked : node.value;
+  }
+  return value;
+}
+
+var inputValueTracking = {
+  // exposed for testing
+  _getTrackerFromNode: function (node) {
+    return getTracker(ReactDOMComponentTree.getInstanceFromNode(node));
+  },
+
+
+  track: function (inst) {
+    if (getTracker(inst)) {
+      return;
+    }
+
+    var node = ReactDOMComponentTree.getNodeFromInstance(inst);
+    var valueField = isCheckable(node) ? 'checked' : 'value';
+    var descriptor = Object.getOwnPropertyDescriptor(node.constructor.prototype, valueField);
+
+    var currentValue = '' + node[valueField];
+
+    // if someone has already defined a value or Safari, then bail
+    // and don't track value will cause over reporting of changes,
+    // but it's better then a hard failure
+    // (needed for certain tests that spyOn input values and Safari)
+    if (node.hasOwnProperty(valueField) || typeof descriptor.get !== 'function' || typeof descriptor.set !== 'function') {
+      return;
+    }
+
+    Object.defineProperty(node, valueField, {
+      enumerable: descriptor.enumerable,
+      configurable: true,
+      get: function () {
+        return descriptor.get.call(this);
+      },
+      set: function (value) {
+        currentValue = '' + value;
+        descriptor.set.call(this, value);
+      }
+    });
+
+    attachTracker(inst, {
+      getValue: function () {
+        return currentValue;
+      },
+      setValue: function (value) {
+        currentValue = '' + value;
+      },
+      stopTracking: function () {
+        detachTracker(inst);
+        delete node[valueField];
+      }
+    });
+  },
+
+  updateValueIfChanged: function (inst) {
+    if (!inst) {
+      return false;
+    }
+    var tracker = getTracker(inst);
+
+    if (!tracker) {
+      inputValueTracking.track(inst);
+      return true;
+    }
+
+    var lastValue = tracker.getValue();
+    var nextValue = getValueFromNode(ReactDOMComponentTree.getNodeFromInstance(inst));
+
+    if (nextValue !== lastValue) {
+      tracker.setValue(nextValue);
+      return true;
+    }
+
+    return false;
+  },
+  stopTracking: function (inst) {
+    var tracker = getTracker(inst);
+    if (tracker) {
+      tracker.stopTracking();
+    }
+  }
+};
+
+module.exports = inputValueTracking;
+},{"./ReactDOMComponentTree":120}],203:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -58194,7 +60439,7 @@ var ReactCompositeComponent = require('./ReactCompositeComponent');
 var ReactEmptyComponent = require('./ReactEmptyComponent');
 var ReactHostComponent = require('./ReactHostComponent');
 
-var getNextDebugID = require('./getNextDebugID');
+var getNextDebugID = require('react/lib/getNextDebugID');
 var invariant = require('fbjs/lib/invariant');
 var warning = require('fbjs/lib/warning');
 
@@ -58202,9 +60447,6 @@ var warning = require('fbjs/lib/warning');
 var ReactCompositeComponentWrapper = function (element) {
   this.construct(element);
 };
-_assign(ReactCompositeComponentWrapper.prototype, ReactCompositeComponent, {
-  _instantiateReactComponent: instantiateReactComponent
-});
 
 function getDeclarationErrorAddendum(owner) {
   if (owner) {
@@ -58247,7 +60489,7 @@ function instantiateReactComponent(node, shouldHaveDebugID) {
       var info = '';
       if (process.env.NODE_ENV !== 'production') {
         if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
-          info += ' You likely forgot to export your component from the file ' + 'it\'s defined in.';
+          info += ' You likely forgot to export your component from the file ' + "it's defined in.";
         }
       }
       info += getDeclarationErrorAddendum(element._owner);
@@ -58301,9 +60543,13 @@ function instantiateReactComponent(node, shouldHaveDebugID) {
   return instance;
 }
 
+_assign(ReactCompositeComponentWrapper.prototype, ReactCompositeComponent, {
+  _instantiateReactComponent: instantiateReactComponent
+});
+
 module.exports = instantiateReactComponent;
 }).call(this,require('_process'))
-},{"./ReactCompositeComponent":111,"./ReactEmptyComponent":134,"./ReactHostComponent":139,"./getNextDebugID":194,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65,"object-assign":80}],199:[function(require,module,exports){
+},{"./ReactCompositeComponent":116,"./ReactEmptyComponent":139,"./ReactHostComponent":144,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66,"object-assign":81,"react/lib/getNextDebugID":239}],204:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58363,7 +60609,7 @@ function isEventSupported(eventNameSuffix, capture) {
 }
 
 module.exports = isEventSupported;
-},{"fbjs/lib/ExecutionEnvironment":44}],200:[function(require,module,exports){
+},{"fbjs/lib/ExecutionEnvironment":45}],205:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58382,21 +60628,21 @@ module.exports = isEventSupported;
  */
 
 var supportedInputTypes = {
-  'color': true,
-  'date': true,
-  'datetime': true,
+  color: true,
+  date: true,
+  datetime: true,
   'datetime-local': true,
-  'email': true,
-  'month': true,
-  'number': true,
-  'password': true,
-  'range': true,
-  'search': true,
-  'tel': true,
-  'text': true,
-  'time': true,
-  'url': true,
-  'week': true
+  email: true,
+  month: true,
+  number: true,
+  password: true,
+  range: true,
+  search: true,
+  tel: true,
+  text: true,
+  time: true,
+  url: true,
+  week: true
 };
 
 function isTextInputElement(elem) {
@@ -58414,7 +60660,7 @@ function isTextInputElement(elem) {
 }
 
 module.exports = isTextInputElement;
-},{}],201:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58440,7 +60686,7 @@ function quoteAttributeValueForBrowser(value) {
 }
 
 module.exports = quoteAttributeValueForBrowser;
-},{"./escapeTextContentForBrowser":184}],202:[function(require,module,exports){
+},{"./escapeTextContentForBrowser":189}],207:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58479,7 +60725,7 @@ function reactProdInvariant(code) {
 }
 
 module.exports = reactProdInvariant;
-},{}],203:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58495,7 +60741,7 @@ module.exports = reactProdInvariant;
 var ReactMount = require('./ReactMount');
 
 module.exports = ReactMount.renderSubtreeIntoContainer;
-},{"./ReactMount":147}],204:[function(require,module,exports){
+},{"./ReactMount":152}],209:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58574,7 +60820,7 @@ if (ExecutionEnvironment.canUseDOM) {
         // in hopes that this is preserved even if "\uFEFF" is transformed to
         // the actual Unicode character (by Babel, for example).
         // https://github.com/mishoo/UglifyJS2/blob/v2.4.20/lib/parse.js#L216
-        node.innerHTML = String.fromCharCode(0xFEFF) + html;
+        node.innerHTML = String.fromCharCode(0xfeff) + html;
 
         // deleteData leaves an empty `TextNode` which offsets the index of all
         // children. Definitely want to avoid this.
@@ -58593,7 +60839,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setInnerHTML;
-},{"./DOMNamespaces":92,"./createMicrosoftUnsafeLocalFunction":182,"fbjs/lib/ExecutionEnvironment":44}],205:[function(require,module,exports){
+},{"./DOMNamespaces":97,"./createMicrosoftUnsafeLocalFunction":187,"fbjs/lib/ExecutionEnvironment":45}],210:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58645,7 +60891,7 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setTextContent;
-},{"./escapeTextContentForBrowser":184,"./setInnerHTML":204,"fbjs/lib/ExecutionEnvironment":44}],206:[function(require,module,exports){
+},{"./escapeTextContentForBrowser":189,"./setInnerHTML":209,"fbjs/lib/ExecutionEnvironment":45}],211:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -58687,7 +60933,7 @@ function shouldUpdateReactComponent(prevElement, nextElement) {
 }
 
 module.exports = shouldUpdateReactComponent;
-},{}],207:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -58822,7 +61068,7 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
       if (process.env.NODE_ENV !== 'production') {
         addendum = ' If you meant to render a collection of children, use an array ' + 'instead or wrap the object using createFragment(object) from the ' + 'React add-ons.';
         if (children._isReactElement) {
-          addendum = ' It looks like you\'re using an element created by a different ' + 'version of React. Make sure to use only one copy of React.';
+          addendum = " It looks like you're using an element created by a different " + 'version of React. Make sure to use only one copy of React.';
         }
         if (ReactCurrentOwner.current) {
           var name = ReactCurrentOwner.current.getName();
@@ -58865,7 +61111,7 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":104,"./ReactElementSymbol":133,"./getIteratorFn":193,"./reactProdInvariant":202,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65,"react/lib/ReactCurrentOwner":221}],208:[function(require,module,exports){
+},{"./KeyEscapeUtils":109,"./ReactElementSymbol":138,"./getIteratorFn":198,"./reactProdInvariant":207,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66,"react/lib/ReactCurrentOwner":225}],213:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -58990,7 +61236,6 @@ if (process.env.NODE_ENV !== 'production') {
       // but
       case 'option':
         return tag === '#text';
-
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intd
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-incaption
       // No special behavior since these rules fall back to "in body" mode for
@@ -58999,25 +61244,20 @@ if (process.env.NODE_ENV !== 'production') {
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intr
       case 'tr':
         return tag === 'th' || tag === 'td' || tag === 'style' || tag === 'script' || tag === 'template';
-
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intbody
       case 'tbody':
       case 'thead':
       case 'tfoot':
         return tag === 'tr' || tag === 'style' || tag === 'script' || tag === 'template';
-
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-incolgroup
       case 'colgroup':
         return tag === 'col' || tag === 'template';
-
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intable
       case 'table':
         return tag === 'caption' || tag === 'colgroup' || tag === 'tbody' || tag === 'tfoot' || tag === 'thead' || tag === 'style' || tag === 'script' || tag === 'template';
-
       // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-inhead
       case 'head':
         return tag === 'base' || tag === 'basefont' || tag === 'bgsound' || tag === 'link' || tag === 'meta' || tag === 'title' || tag === 'noscript' || tag === 'noframes' || tag === 'style' || tag === 'script' || tag === 'template';
-
       // https://html.spec.whatwg.org/multipage/semantics.html#the-html-element
       case 'html':
         return tag === 'head' || tag === 'body';
@@ -59093,16 +61333,11 @@ if (process.env.NODE_ENV !== 'production') {
       case 'section':
       case 'summary':
       case 'ul':
-
       case 'pre':
       case 'listing':
-
       case 'table':
-
       case 'hr':
-
       case 'xmp':
-
       case 'h1':
       case 'h2':
       case 'h3':
@@ -59218,7 +61453,7 @@ if (process.env.NODE_ENV !== 'production') {
           tagDisplayName = 'Text nodes';
         } else {
           tagDisplayName = 'Whitespace text nodes';
-          whitespaceInfo = ' Make sure you don\'t have any extra whitespace between tags on ' + 'each line of your source code.';
+          whitespaceInfo = " Make sure you don't have any extra whitespace between tags on " + 'each line of your source code.';
         }
       } else {
         tagDisplayName = '<' + childTag + '>';
@@ -59249,7 +61484,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = validateDOMNesting;
 }).call(this,require('_process'))
-},{"_process":81,"fbjs/lib/emptyFunction":50,"fbjs/lib/warning":65,"object-assign":80}],209:[function(require,module,exports){
+},{"_process":82,"fbjs/lib/emptyFunction":51,"fbjs/lib/warning":66,"object-assign":81}],214:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -59316,7 +61551,7 @@ var Component = _react2.default.createClass({
 });
 
 exports.default = Component;
-},{"react":238}],210:[function(require,module,exports){
+},{"react":244}],215:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -59489,7 +61724,7 @@ Component = _react2.default.createClass({
 });
 
 exports.default = Component;
-},{"./ActionButton.react":209,"react":238}],211:[function(require,module,exports){
+},{"./ActionButton.react":214,"react":244}],216:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -59532,7 +61767,7 @@ var Component = _react2.default.createClass({
 });
 
 exports.default = Component;
-},{"react":238}],212:[function(require,module,exports){
+},{"react":244}],217:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -59587,7 +61822,7 @@ var Component = _react2.default.createClass({
 });
 
 exports.default = Component;
-},{"react":238,"react-dom":82}],213:[function(require,module,exports){
+},{"react":244,"react-dom":87}],218:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -60025,11 +62260,11 @@ var Component = _react2.default.createClass({
 });
 
 exports.default = Component;
-},{"./Footer.react":210,"./Header.react":211,"./Input.react":212,"events":42,"react":238}],214:[function(require,module,exports){
-arguments[4][104][0].apply(exports,arguments)
-},{"dup":104}],215:[function(require,module,exports){
-arguments[4][106][0].apply(exports,arguments)
-},{"./reactProdInvariant":236,"_process":81,"dup":106,"fbjs/lib/invariant":58}],216:[function(require,module,exports){
+},{"./Footer.react":215,"./Header.react":216,"./Input.react":217,"events":43,"react":244}],219:[function(require,module,exports){
+arguments[4][109][0].apply(exports,arguments)
+},{"dup":109}],220:[function(require,module,exports){
+arguments[4][111][0].apply(exports,arguments)
+},{"./reactProdInvariant":242,"_process":82,"dup":111,"fbjs/lib/invariant":59}],221:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -60045,42 +62280,52 @@ arguments[4][106][0].apply(exports,arguments)
 
 var _assign = require('object-assign');
 
+var ReactBaseClasses = require('./ReactBaseClasses');
 var ReactChildren = require('./ReactChildren');
-var ReactComponent = require('./ReactComponent');
-var ReactPureComponent = require('./ReactPureComponent');
-var ReactClass = require('./ReactClass');
 var ReactDOMFactories = require('./ReactDOMFactories');
 var ReactElement = require('./ReactElement');
 var ReactPropTypes = require('./ReactPropTypes');
 var ReactVersion = require('./ReactVersion');
 
+var createReactClass = require('./createClass');
 var onlyChild = require('./onlyChild');
-var warning = require('fbjs/lib/warning');
 
 var createElement = ReactElement.createElement;
 var createFactory = ReactElement.createFactory;
 var cloneElement = ReactElement.cloneElement;
 
 if (process.env.NODE_ENV !== 'production') {
+  var lowPriorityWarning = require('./lowPriorityWarning');
+  var canDefineProperty = require('./canDefineProperty');
   var ReactElementValidator = require('./ReactElementValidator');
+  var didWarnPropTypesDeprecated = false;
   createElement = ReactElementValidator.createElement;
   createFactory = ReactElementValidator.createFactory;
   cloneElement = ReactElementValidator.cloneElement;
 }
 
 var __spread = _assign;
+var createMixin = function (mixin) {
+  return mixin;
+};
 
 if (process.env.NODE_ENV !== 'production') {
-  var warned = false;
+  var warnedForSpread = false;
+  var warnedForCreateMixin = false;
   __spread = function () {
-    process.env.NODE_ENV !== 'production' ? warning(warned, 'React.__spread is deprecated and should not be used. Use ' + 'Object.assign directly or another helper function with similar ' + 'semantics. You may be seeing this warning due to your compiler. ' + 'See https://fb.me/react-spread-deprecation for more details.') : void 0;
-    warned = true;
+    lowPriorityWarning(warnedForSpread, 'React.__spread is deprecated and should not be used. Use ' + 'Object.assign directly or another helper function with similar ' + 'semantics. You may be seeing this warning due to your compiler. ' + 'See https://fb.me/react-spread-deprecation for more details.');
+    warnedForSpread = true;
     return _assign.apply(null, arguments);
+  };
+
+  createMixin = function (mixin) {
+    lowPriorityWarning(warnedForCreateMixin, 'React.createMixin is deprecated and should not be used. ' + 'In React v16.0, it will be removed. ' + 'You can use this mixin directly instead. ' + 'See https://fb.me/createmixin-was-never-implemented for more info.');
+    warnedForCreateMixin = true;
+    return mixin;
   };
 }
 
 var React = {
-
   // Modern
 
   Children: {
@@ -60091,8 +62336,8 @@ var React = {
     only: onlyChild
   },
 
-  Component: ReactComponent,
-  PureComponent: ReactPureComponent,
+  Component: ReactBaseClasses.Component,
+  PureComponent: ReactBaseClasses.PureComponent,
 
   createElement: createElement,
   cloneElement: cloneElement,
@@ -60101,12 +62346,9 @@ var React = {
   // Classic
 
   PropTypes: ReactPropTypes,
-  createClass: ReactClass.createClass,
+  createClass: createReactClass,
   createFactory: createFactory,
-  createMixin: function (mixin) {
-    // Currently a noop. Will be used to validate and trace mixins.
-    return mixin;
-  },
+  createMixin: createMixin,
 
   // This looks DOM specific but these are actually isomorphic helpers
   // since they are just generating DOM strings.
@@ -60118,9 +62360,190 @@ var React = {
   __spread: __spread
 };
 
+if (process.env.NODE_ENV !== 'production') {
+  var warnedForCreateClass = false;
+  if (canDefineProperty) {
+    Object.defineProperty(React, 'PropTypes', {
+      get: function () {
+        lowPriorityWarning(didWarnPropTypesDeprecated, 'Accessing PropTypes via the main React package is deprecated,' + ' and will be removed in  React v16.0.' + ' Use the latest available v15.* prop-types package from npm instead.' + ' For info on usage, compatibility, migration and more, see ' + 'https://fb.me/prop-types-docs');
+        didWarnPropTypesDeprecated = true;
+        return ReactPropTypes;
+      }
+    });
+
+    Object.defineProperty(React, 'createClass', {
+      get: function () {
+        lowPriorityWarning(warnedForCreateClass, 'Accessing createClass via the main React package is deprecated,' + ' and will be removed in React v16.0.' + " Use a plain JavaScript class instead. If you're not yet " + 'ready to migrate, create-react-class v15.* is available ' + 'on npm as a temporary, drop-in replacement. ' + 'For more info see https://fb.me/react-create-class');
+        warnedForCreateClass = true;
+        return createReactClass;
+      }
+    });
+  }
+
+  // React.DOM factories are deprecated. Wrap these methods so that
+  // invocations of the React.DOM namespace and alert users to switch
+  // to the `react-dom-factories` package.
+  React.DOM = {};
+  var warnedForFactories = false;
+  Object.keys(ReactDOMFactories).forEach(function (factory) {
+    React.DOM[factory] = function () {
+      if (!warnedForFactories) {
+        lowPriorityWarning(false, 'Accessing factories like React.DOM.%s has been deprecated ' + 'and will be removed in v16.0+. Use the ' + 'react-dom-factories package instead. ' + ' Version 1.0 provides a drop-in replacement.' + ' For more info, see https://fb.me/react-dom-factories', factory);
+        warnedForFactories = true;
+      }
+      return ReactDOMFactories[factory].apply(ReactDOMFactories, arguments);
+    };
+  });
+}
+
 module.exports = React;
 }).call(this,require('_process'))
-},{"./ReactChildren":217,"./ReactClass":218,"./ReactComponent":219,"./ReactDOMFactories":222,"./ReactElement":223,"./ReactElementValidator":225,"./ReactPropTypes":228,"./ReactPureComponent":230,"./ReactVersion":231,"./onlyChild":235,"_process":81,"fbjs/lib/warning":65,"object-assign":80}],217:[function(require,module,exports){
+},{"./ReactBaseClasses":222,"./ReactChildren":223,"./ReactDOMFactories":226,"./ReactElement":227,"./ReactElementValidator":229,"./ReactPropTypes":232,"./ReactVersion":234,"./canDefineProperty":235,"./createClass":237,"./lowPriorityWarning":240,"./onlyChild":241,"_process":82,"object-assign":81}],222:[function(require,module,exports){
+(function (process){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+var _prodInvariant = require('./reactProdInvariant'),
+    _assign = require('object-assign');
+
+var ReactNoopUpdateQueue = require('./ReactNoopUpdateQueue');
+
+var canDefineProperty = require('./canDefineProperty');
+var emptyObject = require('fbjs/lib/emptyObject');
+var invariant = require('fbjs/lib/invariant');
+var lowPriorityWarning = require('./lowPriorityWarning');
+
+/**
+ * Base class helpers for the updating state of a component.
+ */
+function ReactComponent(props, context, updater) {
+  this.props = props;
+  this.context = context;
+  this.refs = emptyObject;
+  // We initialize the default updater but the real one gets injected by the
+  // renderer.
+  this.updater = updater || ReactNoopUpdateQueue;
+}
+
+ReactComponent.prototype.isReactComponent = {};
+
+/**
+ * Sets a subset of the state. Always use this to mutate
+ * state. You should treat `this.state` as immutable.
+ *
+ * There is no guarantee that `this.state` will be immediately updated, so
+ * accessing `this.state` after calling this method may return the old value.
+ *
+ * There is no guarantee that calls to `setState` will run synchronously,
+ * as they may eventually be batched together.  You can provide an optional
+ * callback that will be executed when the call to setState is actually
+ * completed.
+ *
+ * When a function is provided to setState, it will be called at some point in
+ * the future (not synchronously). It will be called with the up to date
+ * component arguments (state, props, context). These values can be different
+ * from this.* because your function may be called after receiveProps but before
+ * shouldComponentUpdate, and this new state, props, and context will not yet be
+ * assigned to this.
+ *
+ * @param {object|function} partialState Next partial state or function to
+ *        produce next partial state to be merged with current state.
+ * @param {?function} callback Called after state is updated.
+ * @final
+ * @protected
+ */
+ReactComponent.prototype.setState = function (partialState, callback) {
+  !(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : _prodInvariant('85') : void 0;
+  this.updater.enqueueSetState(this, partialState);
+  if (callback) {
+    this.updater.enqueueCallback(this, callback, 'setState');
+  }
+};
+
+/**
+ * Forces an update. This should only be invoked when it is known with
+ * certainty that we are **not** in a DOM transaction.
+ *
+ * You may want to call this when you know that some deeper aspect of the
+ * component's state has changed but `setState` was not called.
+ *
+ * This will not invoke `shouldComponentUpdate`, but it will invoke
+ * `componentWillUpdate` and `componentDidUpdate`.
+ *
+ * @param {?function} callback Called after update is complete.
+ * @final
+ * @protected
+ */
+ReactComponent.prototype.forceUpdate = function (callback) {
+  this.updater.enqueueForceUpdate(this);
+  if (callback) {
+    this.updater.enqueueCallback(this, callback, 'forceUpdate');
+  }
+};
+
+/**
+ * Deprecated APIs. These APIs used to exist on classic React classes but since
+ * we would like to deprecate them, we're not going to move them over to this
+ * modern base class. Instead, we define a getter that warns if it's accessed.
+ */
+if (process.env.NODE_ENV !== 'production') {
+  var deprecatedAPIs = {
+    isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
+    replaceState: ['replaceState', 'Refactor your code to use setState instead (see ' + 'https://github.com/facebook/react/issues/3236).']
+  };
+  var defineDeprecationWarning = function (methodName, info) {
+    if (canDefineProperty) {
+      Object.defineProperty(ReactComponent.prototype, methodName, {
+        get: function () {
+          lowPriorityWarning(false, '%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]);
+          return undefined;
+        }
+      });
+    }
+  };
+  for (var fnName in deprecatedAPIs) {
+    if (deprecatedAPIs.hasOwnProperty(fnName)) {
+      defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
+    }
+  }
+}
+
+/**
+ * Base class helpers for the updating state of a component.
+ */
+function ReactPureComponent(props, context, updater) {
+  // Duplicated from ReactComponent.
+  this.props = props;
+  this.context = context;
+  this.refs = emptyObject;
+  // We initialize the default updater but the real one gets injected by the
+  // renderer.
+  this.updater = updater || ReactNoopUpdateQueue;
+}
+
+function ComponentDummy() {}
+ComponentDummy.prototype = ReactComponent.prototype;
+ReactPureComponent.prototype = new ComponentDummy();
+ReactPureComponent.prototype.constructor = ReactPureComponent;
+// Avoid an extra prototype jump for these methods.
+_assign(ReactPureComponent.prototype, ReactComponent.prototype);
+ReactPureComponent.prototype.isPureReactComponent = true;
+
+module.exports = {
+  Component: ReactComponent,
+  PureComponent: ReactPureComponent
+};
+}).call(this,require('_process'))
+},{"./ReactNoopUpdateQueue":230,"./canDefineProperty":235,"./lowPriorityWarning":240,"./reactProdInvariant":242,"_process":82,"fbjs/lib/emptyObject":52,"fbjs/lib/invariant":59,"object-assign":81}],223:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -60311,846 +62734,7 @@ var ReactChildren = {
 };
 
 module.exports = ReactChildren;
-},{"./PooledClass":215,"./ReactElement":223,"./traverseAllChildren":237,"fbjs/lib/emptyFunction":50}],218:[function(require,module,exports){
-(function (process){
-/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- */
-
-'use strict';
-
-var _prodInvariant = require('./reactProdInvariant'),
-    _assign = require('object-assign');
-
-var ReactComponent = require('./ReactComponent');
-var ReactElement = require('./ReactElement');
-var ReactPropTypeLocationNames = require('./ReactPropTypeLocationNames');
-var ReactNoopUpdateQueue = require('./ReactNoopUpdateQueue');
-
-var emptyObject = require('fbjs/lib/emptyObject');
-var invariant = require('fbjs/lib/invariant');
-var warning = require('fbjs/lib/warning');
-
-var MIXINS_KEY = 'mixins';
-
-// Helper function to allow the creation of anonymous functions which do not
-// have .name set to the name of the variable being assigned to.
-function identity(fn) {
-  return fn;
-}
-
-/**
- * Policies that describe methods in `ReactClassInterface`.
- */
-
-
-var injectedMixins = [];
-
-/**
- * Composite components are higher-level components that compose other composite
- * or host components.
- *
- * To create a new type of `ReactClass`, pass a specification of
- * your new class to `React.createClass`. The only requirement of your class
- * specification is that you implement a `render` method.
- *
- *   var MyComponent = React.createClass({
- *     render: function() {
- *       return <div>Hello World</div>;
- *     }
- *   });
- *
- * The class specification supports a specific protocol of methods that have
- * special meaning (e.g. `render`). See `ReactClassInterface` for
- * more the comprehensive protocol. Any other properties and methods in the
- * class specification will be available on the prototype.
- *
- * @interface ReactClassInterface
- * @internal
- */
-var ReactClassInterface = {
-
-  /**
-   * An array of Mixin objects to include when defining your component.
-   *
-   * @type {array}
-   * @optional
-   */
-  mixins: 'DEFINE_MANY',
-
-  /**
-   * An object containing properties and methods that should be defined on
-   * the component's constructor instead of its prototype (static methods).
-   *
-   * @type {object}
-   * @optional
-   */
-  statics: 'DEFINE_MANY',
-
-  /**
-   * Definition of prop types for this component.
-   *
-   * @type {object}
-   * @optional
-   */
-  propTypes: 'DEFINE_MANY',
-
-  /**
-   * Definition of context types for this component.
-   *
-   * @type {object}
-   * @optional
-   */
-  contextTypes: 'DEFINE_MANY',
-
-  /**
-   * Definition of context types this component sets for its children.
-   *
-   * @type {object}
-   * @optional
-   */
-  childContextTypes: 'DEFINE_MANY',
-
-  // ==== Definition methods ====
-
-  /**
-   * Invoked when the component is mounted. Values in the mapping will be set on
-   * `this.props` if that prop is not specified (i.e. using an `in` check).
-   *
-   * This method is invoked before `getInitialState` and therefore cannot rely
-   * on `this.state` or use `this.setState`.
-   *
-   * @return {object}
-   * @optional
-   */
-  getDefaultProps: 'DEFINE_MANY_MERGED',
-
-  /**
-   * Invoked once before the component is mounted. The return value will be used
-   * as the initial value of `this.state`.
-   *
-   *   getInitialState: function() {
-   *     return {
-   *       isOn: false,
-   *       fooBaz: new BazFoo()
-   *     }
-   *   }
-   *
-   * @return {object}
-   * @optional
-   */
-  getInitialState: 'DEFINE_MANY_MERGED',
-
-  /**
-   * @return {object}
-   * @optional
-   */
-  getChildContext: 'DEFINE_MANY_MERGED',
-
-  /**
-   * Uses props from `this.props` and state from `this.state` to render the
-   * structure of the component.
-   *
-   * No guarantees are made about when or how often this method is invoked, so
-   * it must not have side effects.
-   *
-   *   render: function() {
-   *     var name = this.props.name;
-   *     return <div>Hello, {name}!</div>;
-   *   }
-   *
-   * @return {ReactComponent}
-   * @nosideeffects
-   * @required
-   */
-  render: 'DEFINE_ONCE',
-
-  // ==== Delegate methods ====
-
-  /**
-   * Invoked when the component is initially created and about to be mounted.
-   * This may have side effects, but any external subscriptions or data created
-   * by this method must be cleaned up in `componentWillUnmount`.
-   *
-   * @optional
-   */
-  componentWillMount: 'DEFINE_MANY',
-
-  /**
-   * Invoked when the component has been mounted and has a DOM representation.
-   * However, there is no guarantee that the DOM node is in the document.
-   *
-   * Use this as an opportunity to operate on the DOM when the component has
-   * been mounted (initialized and rendered) for the first time.
-   *
-   * @param {DOMElement} rootNode DOM element representing the component.
-   * @optional
-   */
-  componentDidMount: 'DEFINE_MANY',
-
-  /**
-   * Invoked before the component receives new props.
-   *
-   * Use this as an opportunity to react to a prop transition by updating the
-   * state using `this.setState`. Current props are accessed via `this.props`.
-   *
-   *   componentWillReceiveProps: function(nextProps, nextContext) {
-   *     this.setState({
-   *       likesIncreasing: nextProps.likeCount > this.props.likeCount
-   *     });
-   *   }
-   *
-   * NOTE: There is no equivalent `componentWillReceiveState`. An incoming prop
-   * transition may cause a state change, but the opposite is not true. If you
-   * need it, you are probably looking for `componentWillUpdate`.
-   *
-   * @param {object} nextProps
-   * @optional
-   */
-  componentWillReceiveProps: 'DEFINE_MANY',
-
-  /**
-   * Invoked while deciding if the component should be updated as a result of
-   * receiving new props, state and/or context.
-   *
-   * Use this as an opportunity to `return false` when you're certain that the
-   * transition to the new props/state/context will not require a component
-   * update.
-   *
-   *   shouldComponentUpdate: function(nextProps, nextState, nextContext) {
-   *     return !equal(nextProps, this.props) ||
-   *       !equal(nextState, this.state) ||
-   *       !equal(nextContext, this.context);
-   *   }
-   *
-   * @param {object} nextProps
-   * @param {?object} nextState
-   * @param {?object} nextContext
-   * @return {boolean} True if the component should update.
-   * @optional
-   */
-  shouldComponentUpdate: 'DEFINE_ONCE',
-
-  /**
-   * Invoked when the component is about to update due to a transition from
-   * `this.props`, `this.state` and `this.context` to `nextProps`, `nextState`
-   * and `nextContext`.
-   *
-   * Use this as an opportunity to perform preparation before an update occurs.
-   *
-   * NOTE: You **cannot** use `this.setState()` in this method.
-   *
-   * @param {object} nextProps
-   * @param {?object} nextState
-   * @param {?object} nextContext
-   * @param {ReactReconcileTransaction} transaction
-   * @optional
-   */
-  componentWillUpdate: 'DEFINE_MANY',
-
-  /**
-   * Invoked when the component's DOM representation has been updated.
-   *
-   * Use this as an opportunity to operate on the DOM when the component has
-   * been updated.
-   *
-   * @param {object} prevProps
-   * @param {?object} prevState
-   * @param {?object} prevContext
-   * @param {DOMElement} rootNode DOM element representing the component.
-   * @optional
-   */
-  componentDidUpdate: 'DEFINE_MANY',
-
-  /**
-   * Invoked when the component is about to be removed from its parent and have
-   * its DOM representation destroyed.
-   *
-   * Use this as an opportunity to deallocate any external resources.
-   *
-   * NOTE: There is no `componentDidUnmount` since your component will have been
-   * destroyed by that point.
-   *
-   * @optional
-   */
-  componentWillUnmount: 'DEFINE_MANY',
-
-  // ==== Advanced methods ====
-
-  /**
-   * Updates the component's currently mounted DOM representation.
-   *
-   * By default, this implements React's rendering and reconciliation algorithm.
-   * Sophisticated clients may wish to override this.
-   *
-   * @param {ReactReconcileTransaction} transaction
-   * @internal
-   * @overridable
-   */
-  updateComponent: 'OVERRIDE_BASE'
-
-};
-
-/**
- * Mapping from class specification keys to special processing functions.
- *
- * Although these are declared like instance properties in the specification
- * when defining classes using `React.createClass`, they are actually static
- * and are accessible on the constructor instead of the prototype. Despite
- * being static, they must be defined outside of the "statics" key under
- * which all other static methods are defined.
- */
-var RESERVED_SPEC_KEYS = {
-  displayName: function (Constructor, displayName) {
-    Constructor.displayName = displayName;
-  },
-  mixins: function (Constructor, mixins) {
-    if (mixins) {
-      for (var i = 0; i < mixins.length; i++) {
-        mixSpecIntoComponent(Constructor, mixins[i]);
-      }
-    }
-  },
-  childContextTypes: function (Constructor, childContextTypes) {
-    if (process.env.NODE_ENV !== 'production') {
-      validateTypeDef(Constructor, childContextTypes, 'childContext');
-    }
-    Constructor.childContextTypes = _assign({}, Constructor.childContextTypes, childContextTypes);
-  },
-  contextTypes: function (Constructor, contextTypes) {
-    if (process.env.NODE_ENV !== 'production') {
-      validateTypeDef(Constructor, contextTypes, 'context');
-    }
-    Constructor.contextTypes = _assign({}, Constructor.contextTypes, contextTypes);
-  },
-  /**
-   * Special case getDefaultProps which should move into statics but requires
-   * automatic merging.
-   */
-  getDefaultProps: function (Constructor, getDefaultProps) {
-    if (Constructor.getDefaultProps) {
-      Constructor.getDefaultProps = createMergedResultFunction(Constructor.getDefaultProps, getDefaultProps);
-    } else {
-      Constructor.getDefaultProps = getDefaultProps;
-    }
-  },
-  propTypes: function (Constructor, propTypes) {
-    if (process.env.NODE_ENV !== 'production') {
-      validateTypeDef(Constructor, propTypes, 'prop');
-    }
-    Constructor.propTypes = _assign({}, Constructor.propTypes, propTypes);
-  },
-  statics: function (Constructor, statics) {
-    mixStaticSpecIntoComponent(Constructor, statics);
-  },
-  autobind: function () {} };
-
-function validateTypeDef(Constructor, typeDef, location) {
-  for (var propName in typeDef) {
-    if (typeDef.hasOwnProperty(propName)) {
-      // use a warning instead of an invariant so components
-      // don't show up in prod but only in __DEV__
-      process.env.NODE_ENV !== 'production' ? warning(typeof typeDef[propName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', Constructor.displayName || 'ReactClass', ReactPropTypeLocationNames[location], propName) : void 0;
-    }
-  }
-}
-
-function validateMethodOverride(isAlreadyDefined, name) {
-  var specPolicy = ReactClassInterface.hasOwnProperty(name) ? ReactClassInterface[name] : null;
-
-  // Disallow overriding of base class methods unless explicitly allowed.
-  if (ReactClassMixin.hasOwnProperty(name)) {
-    !(specPolicy === 'OVERRIDE_BASE') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClassInterface: You are attempting to override `%s` from your class specification. Ensure that your method names do not overlap with React methods.', name) : _prodInvariant('73', name) : void 0;
-  }
-
-  // Disallow defining methods more than once unless explicitly allowed.
-  if (isAlreadyDefined) {
-    !(specPolicy === 'DEFINE_MANY' || specPolicy === 'DEFINE_MANY_MERGED') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClassInterface: You are attempting to define `%s` on your component more than once. This conflict may be due to a mixin.', name) : _prodInvariant('74', name) : void 0;
-  }
-}
-
-/**
- * Mixin helper which handles policy validation and reserved
- * specification keys when building React classes.
- */
-function mixSpecIntoComponent(Constructor, spec) {
-  if (!spec) {
-    if (process.env.NODE_ENV !== 'production') {
-      var typeofSpec = typeof spec;
-      var isMixinValid = typeofSpec === 'object' && spec !== null;
-
-      process.env.NODE_ENV !== 'production' ? warning(isMixinValid, '%s: You\'re attempting to include a mixin that is either null ' + 'or not an object. Check the mixins included by the component, ' + 'as well as any mixins they include themselves. ' + 'Expected object but got %s.', Constructor.displayName || 'ReactClass', spec === null ? null : typeofSpec) : void 0;
-    }
-
-    return;
-  }
-
-  !(typeof spec !== 'function') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: You\'re attempting to use a component class or function as a mixin. Instead, just use a regular object.') : _prodInvariant('75') : void 0;
-  !!ReactElement.isValidElement(spec) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: You\'re attempting to use a component as a mixin. Instead, just use a regular object.') : _prodInvariant('76') : void 0;
-
-  var proto = Constructor.prototype;
-  var autoBindPairs = proto.__reactAutoBindPairs;
-
-  // By handling mixins before any other properties, we ensure the same
-  // chaining order is applied to methods with DEFINE_MANY policy, whether
-  // mixins are listed before or after these methods in the spec.
-  if (spec.hasOwnProperty(MIXINS_KEY)) {
-    RESERVED_SPEC_KEYS.mixins(Constructor, spec.mixins);
-  }
-
-  for (var name in spec) {
-    if (!spec.hasOwnProperty(name)) {
-      continue;
-    }
-
-    if (name === MIXINS_KEY) {
-      // We have already handled mixins in a special case above.
-      continue;
-    }
-
-    var property = spec[name];
-    var isAlreadyDefined = proto.hasOwnProperty(name);
-    validateMethodOverride(isAlreadyDefined, name);
-
-    if (RESERVED_SPEC_KEYS.hasOwnProperty(name)) {
-      RESERVED_SPEC_KEYS[name](Constructor, property);
-    } else {
-      // Setup methods on prototype:
-      // The following member methods should not be automatically bound:
-      // 1. Expected ReactClass methods (in the "interface").
-      // 2. Overridden methods (that were mixed in).
-      var isReactClassMethod = ReactClassInterface.hasOwnProperty(name);
-      var isFunction = typeof property === 'function';
-      var shouldAutoBind = isFunction && !isReactClassMethod && !isAlreadyDefined && spec.autobind !== false;
-
-      if (shouldAutoBind) {
-        autoBindPairs.push(name, property);
-        proto[name] = property;
-      } else {
-        if (isAlreadyDefined) {
-          var specPolicy = ReactClassInterface[name];
-
-          // These cases should already be caught by validateMethodOverride.
-          !(isReactClassMethod && (specPolicy === 'DEFINE_MANY_MERGED' || specPolicy === 'DEFINE_MANY')) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: Unexpected spec policy %s for key %s when mixing in component specs.', specPolicy, name) : _prodInvariant('77', specPolicy, name) : void 0;
-
-          // For methods which are defined more than once, call the existing
-          // methods before calling the new property, merging if appropriate.
-          if (specPolicy === 'DEFINE_MANY_MERGED') {
-            proto[name] = createMergedResultFunction(proto[name], property);
-          } else if (specPolicy === 'DEFINE_MANY') {
-            proto[name] = createChainedFunction(proto[name], property);
-          }
-        } else {
-          proto[name] = property;
-          if (process.env.NODE_ENV !== 'production') {
-            // Add verbose displayName to the function, which helps when looking
-            // at profiling tools.
-            if (typeof property === 'function' && spec.displayName) {
-              proto[name].displayName = spec.displayName + '_' + name;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-function mixStaticSpecIntoComponent(Constructor, statics) {
-  if (!statics) {
-    return;
-  }
-  for (var name in statics) {
-    var property = statics[name];
-    if (!statics.hasOwnProperty(name)) {
-      continue;
-    }
-
-    var isReserved = name in RESERVED_SPEC_KEYS;
-    !!isReserved ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: You are attempting to define a reserved property, `%s`, that shouldn\'t be on the "statics" key. Define it as an instance property instead; it will still be accessible on the constructor.', name) : _prodInvariant('78', name) : void 0;
-
-    var isInherited = name in Constructor;
-    !!isInherited ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: You are attempting to define `%s` on your component more than once. This conflict may be due to a mixin.', name) : _prodInvariant('79', name) : void 0;
-    Constructor[name] = property;
-  }
-}
-
-/**
- * Merge two objects, but throw if both contain the same key.
- *
- * @param {object} one The first object, which is mutated.
- * @param {object} two The second object
- * @return {object} one after it has been mutated to contain everything in two.
- */
-function mergeIntoWithNoDuplicateKeys(one, two) {
-  !(one && two && typeof one === 'object' && typeof two === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.') : _prodInvariant('80') : void 0;
-
-  for (var key in two) {
-    if (two.hasOwnProperty(key)) {
-      !(one[key] === undefined) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): Tried to merge two objects with the same key: `%s`. This conflict may be due to a mixin; in particular, this may be caused by two getInitialState() or getDefaultProps() methods returning objects with clashing keys.', key) : _prodInvariant('81', key) : void 0;
-      one[key] = two[key];
-    }
-  }
-  return one;
-}
-
-/**
- * Creates a function that invokes two functions and merges their return values.
- *
- * @param {function} one Function to invoke first.
- * @param {function} two Function to invoke second.
- * @return {function} Function that invokes the two argument functions.
- * @private
- */
-function createMergedResultFunction(one, two) {
-  return function mergedResult() {
-    var a = one.apply(this, arguments);
-    var b = two.apply(this, arguments);
-    if (a == null) {
-      return b;
-    } else if (b == null) {
-      return a;
-    }
-    var c = {};
-    mergeIntoWithNoDuplicateKeys(c, a);
-    mergeIntoWithNoDuplicateKeys(c, b);
-    return c;
-  };
-}
-
-/**
- * Creates a function that invokes two functions and ignores their return vales.
- *
- * @param {function} one Function to invoke first.
- * @param {function} two Function to invoke second.
- * @return {function} Function that invokes the two argument functions.
- * @private
- */
-function createChainedFunction(one, two) {
-  return function chainedFunction() {
-    one.apply(this, arguments);
-    two.apply(this, arguments);
-  };
-}
-
-/**
- * Binds a method to the component.
- *
- * @param {object} component Component whose method is going to be bound.
- * @param {function} method Method to be bound.
- * @return {function} The bound method.
- */
-function bindAutoBindMethod(component, method) {
-  var boundMethod = method.bind(component);
-  if (process.env.NODE_ENV !== 'production') {
-    boundMethod.__reactBoundContext = component;
-    boundMethod.__reactBoundMethod = method;
-    boundMethod.__reactBoundArguments = null;
-    var componentName = component.constructor.displayName;
-    var _bind = boundMethod.bind;
-    boundMethod.bind = function (newThis) {
-      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        args[_key - 1] = arguments[_key];
-      }
-
-      // User is trying to bind() an autobound method; we effectively will
-      // ignore the value of "this" that the user is trying to use, so
-      // let's warn.
-      if (newThis !== component && newThis !== null) {
-        process.env.NODE_ENV !== 'production' ? warning(false, 'bind(): React component methods may only be bound to the ' + 'component instance. See %s', componentName) : void 0;
-      } else if (!args.length) {
-        process.env.NODE_ENV !== 'production' ? warning(false, 'bind(): You are binding a component method to the component. ' + 'React does this for you automatically in a high-performance ' + 'way, so you can safely remove this call. See %s', componentName) : void 0;
-        return boundMethod;
-      }
-      var reboundMethod = _bind.apply(boundMethod, arguments);
-      reboundMethod.__reactBoundContext = component;
-      reboundMethod.__reactBoundMethod = method;
-      reboundMethod.__reactBoundArguments = args;
-      return reboundMethod;
-    };
-  }
-  return boundMethod;
-}
-
-/**
- * Binds all auto-bound methods in a component.
- *
- * @param {object} component Component whose method is going to be bound.
- */
-function bindAutoBindMethods(component) {
-  var pairs = component.__reactAutoBindPairs;
-  for (var i = 0; i < pairs.length; i += 2) {
-    var autoBindKey = pairs[i];
-    var method = pairs[i + 1];
-    component[autoBindKey] = bindAutoBindMethod(component, method);
-  }
-}
-
-/**
- * Add more to the ReactClass base class. These are all legacy features and
- * therefore not already part of the modern ReactComponent.
- */
-var ReactClassMixin = {
-
-  /**
-   * TODO: This will be deprecated because state should always keep a consistent
-   * type signature and the only use case for this, is to avoid that.
-   */
-  replaceState: function (newState, callback) {
-    this.updater.enqueueReplaceState(this, newState);
-    if (callback) {
-      this.updater.enqueueCallback(this, callback, 'replaceState');
-    }
-  },
-
-  /**
-   * Checks whether or not this composite component is mounted.
-   * @return {boolean} True if mounted, false otherwise.
-   * @protected
-   * @final
-   */
-  isMounted: function () {
-    return this.updater.isMounted(this);
-  }
-};
-
-var ReactClassComponent = function () {};
-_assign(ReactClassComponent.prototype, ReactComponent.prototype, ReactClassMixin);
-
-/**
- * Module for creating composite components.
- *
- * @class ReactClass
- */
-var ReactClass = {
-
-  /**
-   * Creates a composite component class given a class specification.
-   * See https://facebook.github.io/react/docs/top-level-api.html#react.createclass
-   *
-   * @param {object} spec Class specification (which must define `render`).
-   * @return {function} Component constructor function.
-   * @public
-   */
-  createClass: function (spec) {
-    // To keep our warnings more understandable, we'll use a little hack here to
-    // ensure that Constructor.name !== 'Constructor'. This makes sure we don't
-    // unnecessarily identify a class without displayName as 'Constructor'.
-    var Constructor = identity(function (props, context, updater) {
-      // This constructor gets overridden by mocks. The argument is used
-      // by mocks to assert on what gets mounted.
-
-      if (process.env.NODE_ENV !== 'production') {
-        process.env.NODE_ENV !== 'production' ? warning(this instanceof Constructor, 'Something is calling a React component directly. Use a factory or ' + 'JSX instead. See: https://fb.me/react-legacyfactory') : void 0;
-      }
-
-      // Wire up auto-binding
-      if (this.__reactAutoBindPairs.length) {
-        bindAutoBindMethods(this);
-      }
-
-      this.props = props;
-      this.context = context;
-      this.refs = emptyObject;
-      this.updater = updater || ReactNoopUpdateQueue;
-
-      this.state = null;
-
-      // ReactClasses doesn't have constructors. Instead, they use the
-      // getInitialState and componentWillMount methods for initialization.
-
-      var initialState = this.getInitialState ? this.getInitialState() : null;
-      if (process.env.NODE_ENV !== 'production') {
-        // We allow auto-mocks to proceed as if they're returning null.
-        if (initialState === undefined && this.getInitialState._isMockFunction) {
-          // This is probably bad practice. Consider warning here and
-          // deprecating this convenience.
-          initialState = null;
-        }
-      }
-      !(typeof initialState === 'object' && !Array.isArray(initialState)) ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.getInitialState(): must return an object or null', Constructor.displayName || 'ReactCompositeComponent') : _prodInvariant('82', Constructor.displayName || 'ReactCompositeComponent') : void 0;
-
-      this.state = initialState;
-    });
-    Constructor.prototype = new ReactClassComponent();
-    Constructor.prototype.constructor = Constructor;
-    Constructor.prototype.__reactAutoBindPairs = [];
-
-    injectedMixins.forEach(mixSpecIntoComponent.bind(null, Constructor));
-
-    mixSpecIntoComponent(Constructor, spec);
-
-    // Initialize the defaultProps property after all mixins have been merged.
-    if (Constructor.getDefaultProps) {
-      Constructor.defaultProps = Constructor.getDefaultProps();
-    }
-
-    if (process.env.NODE_ENV !== 'production') {
-      // This is a tag to indicate that the use of these method names is ok,
-      // since it's used with createClass. If it's not, then it's likely a
-      // mistake so we'll warn you to use the static property, property
-      // initializer or constructor respectively.
-      if (Constructor.getDefaultProps) {
-        Constructor.getDefaultProps.isReactClassApproved = {};
-      }
-      if (Constructor.prototype.getInitialState) {
-        Constructor.prototype.getInitialState.isReactClassApproved = {};
-      }
-    }
-
-    !Constructor.prototype.render ? process.env.NODE_ENV !== 'production' ? invariant(false, 'createClass(...): Class specification must implement a `render` method.') : _prodInvariant('83') : void 0;
-
-    if (process.env.NODE_ENV !== 'production') {
-      process.env.NODE_ENV !== 'production' ? warning(!Constructor.prototype.componentShouldUpdate, '%s has a method called ' + 'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' + 'The name is phrased as a question because the function is ' + 'expected to return a value.', spec.displayName || 'A component') : void 0;
-      process.env.NODE_ENV !== 'production' ? warning(!Constructor.prototype.componentWillRecieveProps, '%s has a method called ' + 'componentWillRecieveProps(). Did you mean componentWillReceiveProps()?', spec.displayName || 'A component') : void 0;
-    }
-
-    // Reduce time spent doing lookups by setting these on the prototype.
-    for (var methodName in ReactClassInterface) {
-      if (!Constructor.prototype[methodName]) {
-        Constructor.prototype[methodName] = null;
-      }
-    }
-
-    return Constructor;
-  },
-
-  injection: {
-    injectMixin: function (mixin) {
-      injectedMixins.push(mixin);
-    }
-  }
-
-};
-
-module.exports = ReactClass;
-}).call(this,require('_process'))
-},{"./ReactComponent":219,"./ReactElement":223,"./ReactNoopUpdateQueue":226,"./ReactPropTypeLocationNames":227,"./reactProdInvariant":236,"_process":81,"fbjs/lib/emptyObject":51,"fbjs/lib/invariant":58,"fbjs/lib/warning":65,"object-assign":80}],219:[function(require,module,exports){
-(function (process){
-/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- */
-
-'use strict';
-
-var _prodInvariant = require('./reactProdInvariant');
-
-var ReactNoopUpdateQueue = require('./ReactNoopUpdateQueue');
-
-var canDefineProperty = require('./canDefineProperty');
-var emptyObject = require('fbjs/lib/emptyObject');
-var invariant = require('fbjs/lib/invariant');
-var warning = require('fbjs/lib/warning');
-
-/**
- * Base class helpers for the updating state of a component.
- */
-function ReactComponent(props, context, updater) {
-  this.props = props;
-  this.context = context;
-  this.refs = emptyObject;
-  // We initialize the default updater but the real one gets injected by the
-  // renderer.
-  this.updater = updater || ReactNoopUpdateQueue;
-}
-
-ReactComponent.prototype.isReactComponent = {};
-
-/**
- * Sets a subset of the state. Always use this to mutate
- * state. You should treat `this.state` as immutable.
- *
- * There is no guarantee that `this.state` will be immediately updated, so
- * accessing `this.state` after calling this method may return the old value.
- *
- * There is no guarantee that calls to `setState` will run synchronously,
- * as they may eventually be batched together.  You can provide an optional
- * callback that will be executed when the call to setState is actually
- * completed.
- *
- * When a function is provided to setState, it will be called at some point in
- * the future (not synchronously). It will be called with the up to date
- * component arguments (state, props, context). These values can be different
- * from this.* because your function may be called after receiveProps but before
- * shouldComponentUpdate, and this new state, props, and context will not yet be
- * assigned to this.
- *
- * @param {object|function} partialState Next partial state or function to
- *        produce next partial state to be merged with current state.
- * @param {?function} callback Called after state is updated.
- * @final
- * @protected
- */
-ReactComponent.prototype.setState = function (partialState, callback) {
-  !(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : _prodInvariant('85') : void 0;
-  this.updater.enqueueSetState(this, partialState);
-  if (callback) {
-    this.updater.enqueueCallback(this, callback, 'setState');
-  }
-};
-
-/**
- * Forces an update. This should only be invoked when it is known with
- * certainty that we are **not** in a DOM transaction.
- *
- * You may want to call this when you know that some deeper aspect of the
- * component's state has changed but `setState` was not called.
- *
- * This will not invoke `shouldComponentUpdate`, but it will invoke
- * `componentWillUpdate` and `componentDidUpdate`.
- *
- * @param {?function} callback Called after update is complete.
- * @final
- * @protected
- */
-ReactComponent.prototype.forceUpdate = function (callback) {
-  this.updater.enqueueForceUpdate(this);
-  if (callback) {
-    this.updater.enqueueCallback(this, callback, 'forceUpdate');
-  }
-};
-
-/**
- * Deprecated APIs. These APIs used to exist on classic React classes but since
- * we would like to deprecate them, we're not going to move them over to this
- * modern base class. Instead, we define a getter that warns if it's accessed.
- */
-if (process.env.NODE_ENV !== 'production') {
-  var deprecatedAPIs = {
-    isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
-    replaceState: ['replaceState', 'Refactor your code to use setState instead (see ' + 'https://github.com/facebook/react/issues/3236).']
-  };
-  var defineDeprecationWarning = function (methodName, info) {
-    if (canDefineProperty) {
-      Object.defineProperty(ReactComponent.prototype, methodName, {
-        get: function () {
-          process.env.NODE_ENV !== 'production' ? warning(false, '%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]) : void 0;
-          return undefined;
-        }
-      });
-    }
-  };
-  for (var fnName in deprecatedAPIs) {
-    if (deprecatedAPIs.hasOwnProperty(fnName)) {
-      defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
-    }
-  }
-}
-
-module.exports = ReactComponent;
-}).call(this,require('_process'))
-},{"./ReactNoopUpdateQueue":226,"./canDefineProperty":232,"./reactProdInvariant":236,"_process":81,"fbjs/lib/emptyObject":51,"fbjs/lib/invariant":58,"fbjs/lib/warning":65}],220:[function(require,module,exports){
+},{"./PooledClass":220,"./ReactElement":227,"./traverseAllChildren":243,"fbjs/lib/emptyFunction":51}],224:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2016-present, Facebook, Inc.
@@ -61178,11 +62762,11 @@ function isNative(fn) {
   var hasOwnProperty = Object.prototype.hasOwnProperty;
   var reIsNative = RegExp('^' + funcToString
   // Take an example native function source for comparison
-  .call(hasOwnProperty)
+  .call(hasOwnProperty
   // Strip regex characters so we can use it for regex
-  .replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
+  ).replace(/[\\^$.*+?()[\]{}|]/g, '\\$&'
   // Remove hasOwnProperty from the template to make it generic
-  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
+  ).replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
   try {
     var source = funcToString.call(fn);
     return reIsNative.test(source);
@@ -61481,12 +63065,57 @@ var ReactComponentTreeHook = {
 
 
   getRootIDs: getRootIDs,
-  getRegisteredIDs: getItemIDs
+  getRegisteredIDs: getItemIDs,
+
+  pushNonStandardWarningStack: function (isCreatingElement, currentSource) {
+    if (typeof console.reactStack !== 'function') {
+      return;
+    }
+
+    var stack = [];
+    var currentOwner = ReactCurrentOwner.current;
+    var id = currentOwner && currentOwner._debugID;
+
+    try {
+      if (isCreatingElement) {
+        stack.push({
+          name: id ? ReactComponentTreeHook.getDisplayName(id) : null,
+          fileName: currentSource ? currentSource.fileName : null,
+          lineNumber: currentSource ? currentSource.lineNumber : null
+        });
+      }
+
+      while (id) {
+        var element = ReactComponentTreeHook.getElement(id);
+        var parentID = ReactComponentTreeHook.getParentID(id);
+        var ownerID = ReactComponentTreeHook.getOwnerID(id);
+        var ownerName = ownerID ? ReactComponentTreeHook.getDisplayName(ownerID) : null;
+        var source = element && element._source;
+        stack.push({
+          name: ownerName,
+          fileName: source ? source.fileName : null,
+          lineNumber: source ? source.lineNumber : null
+        });
+        id = parentID;
+      }
+    } catch (err) {
+      // Internal state is messed up.
+      // Stop building the stack (it's just a nice to have).
+    }
+
+    console.reactStack(stack);
+  },
+  popNonStandardWarningStack: function () {
+    if (typeof console.reactStackEnd !== 'function') {
+      return;
+    }
+    console.reactStackEnd();
+  }
 };
 
 module.exports = ReactComponentTreeHook;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":221,"./reactProdInvariant":236,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65}],221:[function(require,module,exports){
+},{"./ReactCurrentOwner":225,"./reactProdInvariant":242,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66}],225:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -61507,17 +63136,15 @@ module.exports = ReactComponentTreeHook;
  * currently being constructed.
  */
 var ReactCurrentOwner = {
-
   /**
    * @internal
    * @type {ReactComponent}
    */
   current: null
-
 };
 
 module.exports = ReactCurrentOwner;
-},{}],222:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -61546,7 +63173,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 /**
  * Creates a mapping from supported HTML tags to `ReactDOMComponent` classes.
- * This is also accessible via `React.DOM`.
  *
  * @public
  */
@@ -61689,7 +63315,7 @@ var ReactDOMFactories = {
 
 module.exports = ReactDOMFactories;
 }).call(this,require('_process'))
-},{"./ReactElement":223,"./ReactElementValidator":225,"_process":81}],223:[function(require,module,exports){
+},{"./ReactElement":227,"./ReactElementValidator":229,"_process":82}],227:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -62032,9 +63658,9 @@ ReactElement.isValidElement = function (object) {
 
 module.exports = ReactElement;
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":221,"./ReactElementSymbol":224,"./canDefineProperty":232,"_process":81,"fbjs/lib/warning":65,"object-assign":80}],224:[function(require,module,exports){
-arguments[4][133][0].apply(exports,arguments)
-},{"dup":133}],225:[function(require,module,exports){
+},{"./ReactCurrentOwner":225,"./ReactElementSymbol":228,"./canDefineProperty":235,"_process":82,"fbjs/lib/warning":66,"object-assign":81}],228:[function(require,module,exports){
+arguments[4][138][0].apply(exports,arguments)
+},{"dup":138}],229:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-present, Facebook, Inc.
@@ -62064,6 +63690,7 @@ var checkReactTypeSpec = require('./checkReactTypeSpec');
 var canDefineProperty = require('./canDefineProperty');
 var getIteratorFn = require('./getIteratorFn');
 var warning = require('fbjs/lib/warning');
+var lowPriorityWarning = require('./lowPriorityWarning');
 
 function getDeclarationErrorAddendum() {
   if (ReactCurrentOwner.current) {
@@ -62071,6 +63698,16 @@ function getDeclarationErrorAddendum() {
     if (name) {
       return ' Check the render method of `' + name + '`.';
     }
+  }
+  return '';
+}
+
+function getSourceInfoErrorAddendum(elementProps) {
+  if (elementProps !== null && elementProps !== undefined && elementProps.__source !== undefined) {
+    var source = elementProps.__source;
+    var fileName = source.fileName.replace(/^.*[\\\/]/, '');
+    var lineNumber = source.lineNumber;
+    return ' Check your code at ' + fileName + ':' + lineNumber + '.';
   }
   return '';
 }
@@ -62194,7 +63831,6 @@ function validatePropTypes(element) {
 }
 
 var ReactElementValidator = {
-
   createElement: function (type, props, children) {
     var validType = typeof type === 'string' || typeof type === 'function';
     // We warn in this case but don't throw. We expect the element creation to
@@ -62203,10 +63839,22 @@ var ReactElementValidator = {
       if (typeof type !== 'function' && typeof type !== 'string') {
         var info = '';
         if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
-          info += ' You likely forgot to export your component from the file ' + 'it\'s defined in.';
+          info += ' You likely forgot to export your component from the file ' + "it's defined in.";
         }
-        info += getDeclarationErrorAddendum();
+
+        var sourceInfo = getSourceInfoErrorAddendum(props);
+        if (sourceInfo) {
+          info += sourceInfo;
+        } else {
+          info += getDeclarationErrorAddendum();
+        }
+
+        info += ReactComponentTreeHook.getCurrentStackAddendum();
+
+        var currentSource = props !== null && props !== undefined && props.__source !== undefined ? props.__source : null;
+        ReactComponentTreeHook.pushNonStandardWarningStack(true, currentSource);
         process.env.NODE_ENV !== 'production' ? warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type, info) : void 0;
+        ReactComponentTreeHook.popNonStandardWarningStack();
       }
     }
 
@@ -62244,7 +63892,7 @@ var ReactElementValidator = {
         Object.defineProperty(validatedFactory, 'type', {
           enumerable: false,
           get: function () {
-            process.env.NODE_ENV !== 'production' ? warning(false, 'Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.') : void 0;
+            lowPriorityWarning(false, 'Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.');
             Object.defineProperty(this, 'type', {
               value: type
             });
@@ -62265,12 +63913,11 @@ var ReactElementValidator = {
     validatePropTypes(newElement);
     return newElement;
   }
-
 };
 
 module.exports = ReactElementValidator;
 }).call(this,require('_process'))
-},{"./ReactComponentTreeHook":220,"./ReactCurrentOwner":221,"./ReactElement":223,"./canDefineProperty":232,"./checkReactTypeSpec":233,"./getIteratorFn":234,"_process":81,"fbjs/lib/warning":65}],226:[function(require,module,exports){
+},{"./ReactComponentTreeHook":224,"./ReactCurrentOwner":225,"./ReactElement":227,"./canDefineProperty":235,"./checkReactTypeSpec":236,"./getIteratorFn":238,"./lowPriorityWarning":240,"_process":82,"fbjs/lib/warning":66}],230:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015-present, Facebook, Inc.
@@ -62297,7 +63944,6 @@ function warnNoop(publicInstance, callerName) {
  * This is the abstract API for an update queue.
  */
 var ReactNoopUpdateQueue = {
-
   /**
    * Checks whether or not this composite component is mounted.
    * @param {ReactClass} publicInstance The instance we want to test.
@@ -62368,10 +64014,9 @@ var ReactNoopUpdateQueue = {
 
 module.exports = ReactNoopUpdateQueue;
 }).call(this,require('_process'))
-},{"_process":81,"fbjs/lib/warning":65}],227:[function(require,module,exports){
-arguments[4][151][0].apply(exports,arguments)
-},{"_process":81,"dup":151}],228:[function(require,module,exports){
-(function (process){
+},{"_process":82,"fbjs/lib/warning":66}],231:[function(require,module,exports){
+arguments[4][156][0].apply(exports,arguments)
+},{"_process":82,"dup":156}],232:[function(require,module,exports){
 /**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -62384,475 +64029,17 @@ arguments[4][151][0].apply(exports,arguments)
 
 'use strict';
 
-var ReactElement = require('./ReactElement');
-var ReactPropTypeLocationNames = require('./ReactPropTypeLocationNames');
-var ReactPropTypesSecret = require('./ReactPropTypesSecret');
+var _require = require('./ReactElement'),
+    isValidElement = _require.isValidElement;
 
-var emptyFunction = require('fbjs/lib/emptyFunction');
-var getIteratorFn = require('./getIteratorFn');
-var warning = require('fbjs/lib/warning');
+var factory = require('prop-types/factory');
 
-/**
- * Collection of methods that allow declaration and validation of props that are
- * supplied to React components. Example usage:
- *
- *   var Props = require('ReactPropTypes');
- *   var MyArticle = React.createClass({
- *     propTypes: {
- *       // An optional string prop named "description".
- *       description: Props.string,
- *
- *       // A required enum prop named "category".
- *       category: Props.oneOf(['News','Photos']).isRequired,
- *
- *       // A prop named "dialog" that requires an instance of Dialog.
- *       dialog: Props.instanceOf(Dialog).isRequired
- *     },
- *     render: function() { ... }
- *   });
- *
- * A more formal specification of how these methods are used:
- *
- *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
- *   decl := ReactPropTypes.{type}(.isRequired)?
- *
- * Each and every declaration produces a function with the same signature. This
- * allows the creation of custom validation functions. For example:
- *
- *  var MyLink = React.createClass({
- *    propTypes: {
- *      // An optional string or URI prop named "href".
- *      href: function(props, propName, componentName) {
- *        var propValue = props[propName];
- *        if (propValue != null && typeof propValue !== 'string' &&
- *            !(propValue instanceof URI)) {
- *          return new Error(
- *            'Expected a string or an URI for ' + propName + ' in ' +
- *            componentName
- *          );
- *        }
- *      }
- *    },
- *    render: function() {...}
- *  });
- *
- * @internal
- */
-
-var ANONYMOUS = '<<anonymous>>';
-
-var ReactPropTypes = {
-  array: createPrimitiveTypeChecker('array'),
-  bool: createPrimitiveTypeChecker('boolean'),
-  func: createPrimitiveTypeChecker('function'),
-  number: createPrimitiveTypeChecker('number'),
-  object: createPrimitiveTypeChecker('object'),
-  string: createPrimitiveTypeChecker('string'),
-  symbol: createPrimitiveTypeChecker('symbol'),
-
-  any: createAnyTypeChecker(),
-  arrayOf: createArrayOfTypeChecker,
-  element: createElementTypeChecker(),
-  instanceOf: createInstanceTypeChecker,
-  node: createNodeChecker(),
-  objectOf: createObjectOfTypeChecker,
-  oneOf: createEnumTypeChecker,
-  oneOfType: createUnionTypeChecker,
-  shape: createShapeTypeChecker
-};
-
-/**
- * inlined Object.is polyfill to avoid requiring consumers ship their own
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
- */
-/*eslint-disable no-self-compare*/
-function is(x, y) {
-  // SameValue algorithm
-  if (x === y) {
-    // Steps 1-5, 7-10
-    // Steps 6.b-6.e: +0 != -0
-    return x !== 0 || 1 / x === 1 / y;
-  } else {
-    // Step 6.a: NaN == NaN
-    return x !== x && y !== y;
-  }
-}
-/*eslint-enable no-self-compare*/
-
-/**
- * We use an Error-like object for backward compatibility as people may call
- * PropTypes directly and inspect their output. However we don't use real
- * Errors anymore. We don't inspect their stack anyway, and creating them
- * is prohibitively expensive if they are created too often, such as what
- * happens in oneOfType() for any type before the one that matched.
- */
-function PropTypeError(message) {
-  this.message = message;
-  this.stack = '';
-}
-// Make `instanceof Error` still work for returned errors.
-PropTypeError.prototype = Error.prototype;
-
-function createChainableTypeChecker(validate) {
-  if (process.env.NODE_ENV !== 'production') {
-    var manualPropTypeCallCache = {};
-  }
-  function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
-    componentName = componentName || ANONYMOUS;
-    propFullName = propFullName || propName;
-    if (process.env.NODE_ENV !== 'production') {
-      if (secret !== ReactPropTypesSecret && typeof console !== 'undefined') {
-        var cacheKey = componentName + ':' + propName;
-        if (!manualPropTypeCallCache[cacheKey]) {
-          process.env.NODE_ENV !== 'production' ? warning(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will not work in production with the next major version. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName) : void 0;
-          manualPropTypeCallCache[cacheKey] = true;
-        }
-      }
-    }
-    if (props[propName] == null) {
-      var locationName = ReactPropTypeLocationNames[location];
-      if (isRequired) {
-        if (props[propName] === null) {
-          return new PropTypeError('The ' + locationName + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
-        }
-        return new PropTypeError('The ' + locationName + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
-      }
-      return null;
-    } else {
-      return validate(props, propName, componentName, location, propFullName);
-    }
-  }
-
-  var chainedCheckType = checkType.bind(null, false);
-  chainedCheckType.isRequired = checkType.bind(null, true);
-
-  return chainedCheckType;
-}
-
-function createPrimitiveTypeChecker(expectedType) {
-  function validate(props, propName, componentName, location, propFullName, secret) {
-    var propValue = props[propName];
-    var propType = getPropType(propValue);
-    if (propType !== expectedType) {
-      var locationName = ReactPropTypeLocationNames[location];
-      // `propValue` being instance of, say, date/regexp, pass the 'object'
-      // check, but we can offer a more precise error message here rather than
-      // 'of type `object`'.
-      var preciseType = getPreciseType(propValue);
-
-      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
-    }
-    return null;
-  }
-  return createChainableTypeChecker(validate);
-}
-
-function createAnyTypeChecker() {
-  return createChainableTypeChecker(emptyFunction.thatReturns(null));
-}
-
-function createArrayOfTypeChecker(typeChecker) {
-  function validate(props, propName, componentName, location, propFullName) {
-    if (typeof typeChecker !== 'function') {
-      return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
-    }
-    var propValue = props[propName];
-    if (!Array.isArray(propValue)) {
-      var locationName = ReactPropTypeLocationNames[location];
-      var propType = getPropType(propValue);
-      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
-    }
-    for (var i = 0; i < propValue.length; i++) {
-      var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
-      if (error instanceof Error) {
-        return error;
-      }
-    }
-    return null;
-  }
-  return createChainableTypeChecker(validate);
-}
-
-function createElementTypeChecker() {
-  function validate(props, propName, componentName, location, propFullName) {
-    var propValue = props[propName];
-    if (!ReactElement.isValidElement(propValue)) {
-      var locationName = ReactPropTypeLocationNames[location];
-      var propType = getPropType(propValue);
-      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
-    }
-    return null;
-  }
-  return createChainableTypeChecker(validate);
-}
-
-function createInstanceTypeChecker(expectedClass) {
-  function validate(props, propName, componentName, location, propFullName) {
-    if (!(props[propName] instanceof expectedClass)) {
-      var locationName = ReactPropTypeLocationNames[location];
-      var expectedClassName = expectedClass.name || ANONYMOUS;
-      var actualClassName = getClassName(props[propName]);
-      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
-    }
-    return null;
-  }
-  return createChainableTypeChecker(validate);
-}
-
-function createEnumTypeChecker(expectedValues) {
-  if (!Array.isArray(expectedValues)) {
-    process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
-    return emptyFunction.thatReturnsNull;
-  }
-
-  function validate(props, propName, componentName, location, propFullName) {
-    var propValue = props[propName];
-    for (var i = 0; i < expectedValues.length; i++) {
-      if (is(propValue, expectedValues[i])) {
-        return null;
-      }
-    }
-
-    var locationName = ReactPropTypeLocationNames[location];
-    var valuesString = JSON.stringify(expectedValues);
-    return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
-  }
-  return createChainableTypeChecker(validate);
-}
-
-function createObjectOfTypeChecker(typeChecker) {
-  function validate(props, propName, componentName, location, propFullName) {
-    if (typeof typeChecker !== 'function') {
-      return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
-    }
-    var propValue = props[propName];
-    var propType = getPropType(propValue);
-    if (propType !== 'object') {
-      var locationName = ReactPropTypeLocationNames[location];
-      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
-    }
-    for (var key in propValue) {
-      if (propValue.hasOwnProperty(key)) {
-        var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
-        if (error instanceof Error) {
-          return error;
-        }
-      }
-    }
-    return null;
-  }
-  return createChainableTypeChecker(validate);
-}
-
-function createUnionTypeChecker(arrayOfTypeCheckers) {
-  if (!Array.isArray(arrayOfTypeCheckers)) {
-    process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
-    return emptyFunction.thatReturnsNull;
-  }
-
-  function validate(props, propName, componentName, location, propFullName) {
-    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
-      var checker = arrayOfTypeCheckers[i];
-      if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
-        return null;
-      }
-    }
-
-    var locationName = ReactPropTypeLocationNames[location];
-    return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
-  }
-  return createChainableTypeChecker(validate);
-}
-
-function createNodeChecker() {
-  function validate(props, propName, componentName, location, propFullName) {
-    if (!isNode(props[propName])) {
-      var locationName = ReactPropTypeLocationNames[location];
-      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
-    }
-    return null;
-  }
-  return createChainableTypeChecker(validate);
-}
-
-function createShapeTypeChecker(shapeTypes) {
-  function validate(props, propName, componentName, location, propFullName) {
-    var propValue = props[propName];
-    var propType = getPropType(propValue);
-    if (propType !== 'object') {
-      var locationName = ReactPropTypeLocationNames[location];
-      return new PropTypeError('Invalid ' + locationName + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
-    }
-    for (var key in shapeTypes) {
-      var checker = shapeTypes[key];
-      if (!checker) {
-        continue;
-      }
-      var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
-      if (error) {
-        return error;
-      }
-    }
-    return null;
-  }
-  return createChainableTypeChecker(validate);
-}
-
-function isNode(propValue) {
-  switch (typeof propValue) {
-    case 'number':
-    case 'string':
-    case 'undefined':
-      return true;
-    case 'boolean':
-      return !propValue;
-    case 'object':
-      if (Array.isArray(propValue)) {
-        return propValue.every(isNode);
-      }
-      if (propValue === null || ReactElement.isValidElement(propValue)) {
-        return true;
-      }
-
-      var iteratorFn = getIteratorFn(propValue);
-      if (iteratorFn) {
-        var iterator = iteratorFn.call(propValue);
-        var step;
-        if (iteratorFn !== propValue.entries) {
-          while (!(step = iterator.next()).done) {
-            if (!isNode(step.value)) {
-              return false;
-            }
-          }
-        } else {
-          // Iterator will provide entry [k,v] tuples rather than values.
-          while (!(step = iterator.next()).done) {
-            var entry = step.value;
-            if (entry) {
-              if (!isNode(entry[1])) {
-                return false;
-              }
-            }
-          }
-        }
-      } else {
-        return false;
-      }
-
-      return true;
-    default:
-      return false;
-  }
-}
-
-function isSymbol(propType, propValue) {
-  // Native Symbol.
-  if (propType === 'symbol') {
-    return true;
-  }
-
-  // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
-  if (propValue['@@toStringTag'] === 'Symbol') {
-    return true;
-  }
-
-  // Fallback for non-spec compliant Symbols which are polyfilled.
-  if (typeof Symbol === 'function' && propValue instanceof Symbol) {
-    return true;
-  }
-
-  return false;
-}
-
-// Equivalent of `typeof` but with special handling for array and regexp.
-function getPropType(propValue) {
-  var propType = typeof propValue;
-  if (Array.isArray(propValue)) {
-    return 'array';
-  }
-  if (propValue instanceof RegExp) {
-    // Old webkits (at least until Android 4.0) return 'function' rather than
-    // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
-    // passes PropTypes.object.
-    return 'object';
-  }
-  if (isSymbol(propType, propValue)) {
-    return 'symbol';
-  }
-  return propType;
-}
-
-// This handles more types than `getPropType`. Only used for error messages.
-// See `createPrimitiveTypeChecker`.
-function getPreciseType(propValue) {
-  var propType = getPropType(propValue);
-  if (propType === 'object') {
-    if (propValue instanceof Date) {
-      return 'date';
-    } else if (propValue instanceof RegExp) {
-      return 'regexp';
-    }
-  }
-  return propType;
-}
-
-// Returns class name of the object, if any.
-function getClassName(propValue) {
-  if (!propValue.constructor || !propValue.constructor.name) {
-    return ANONYMOUS;
-  }
-  return propValue.constructor.name;
-}
-
-module.exports = ReactPropTypes;
-}).call(this,require('_process'))
-},{"./ReactElement":223,"./ReactPropTypeLocationNames":227,"./ReactPropTypesSecret":229,"./getIteratorFn":234,"_process":81,"fbjs/lib/emptyFunction":50,"fbjs/lib/warning":65}],229:[function(require,module,exports){
-arguments[4][152][0].apply(exports,arguments)
-},{"dup":152}],230:[function(require,module,exports){
-/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- */
-
-'use strict';
-
-var _assign = require('object-assign');
-
-var ReactComponent = require('./ReactComponent');
-var ReactNoopUpdateQueue = require('./ReactNoopUpdateQueue');
-
-var emptyObject = require('fbjs/lib/emptyObject');
-
-/**
- * Base class helpers for the updating state of a component.
- */
-function ReactPureComponent(props, context, updater) {
-  // Duplicated from ReactComponent.
-  this.props = props;
-  this.context = context;
-  this.refs = emptyObject;
-  // We initialize the default updater but the real one gets injected by the
-  // renderer.
-  this.updater = updater || ReactNoopUpdateQueue;
-}
-
-function ComponentDummy() {}
-ComponentDummy.prototype = ReactComponent.prototype;
-ReactPureComponent.prototype = new ComponentDummy();
-ReactPureComponent.prototype.constructor = ReactPureComponent;
-// Avoid an extra prototype jump for these methods.
-_assign(ReactPureComponent.prototype, ReactComponent.prototype);
-ReactPureComponent.prototype.isPureReactComponent = true;
-
-module.exports = ReactPureComponent;
-},{"./ReactComponent":219,"./ReactNoopUpdateQueue":226,"fbjs/lib/emptyObject":51,"object-assign":80}],231:[function(require,module,exports){
-arguments[4][160][0].apply(exports,arguments)
-},{"dup":160}],232:[function(require,module,exports){
+module.exports = factory(isValidElement);
+},{"./ReactElement":227,"prop-types/factory":84}],233:[function(require,module,exports){
+arguments[4][157][0].apply(exports,arguments)
+},{"dup":157}],234:[function(require,module,exports){
+arguments[4][165][0].apply(exports,arguments)
+},{"dup":165}],235:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -62880,7 +64067,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = canDefineProperty;
 }).call(this,require('_process'))
-},{"_process":81}],233:[function(require,module,exports){
+},{"_process":82}],236:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -62969,9 +64156,120 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
 module.exports = checkReactTypeSpec;
 }).call(this,require('_process'))
-},{"./ReactComponentTreeHook":220,"./ReactPropTypeLocationNames":227,"./ReactPropTypesSecret":229,"./reactProdInvariant":236,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65}],234:[function(require,module,exports){
-arguments[4][193][0].apply(exports,arguments)
-},{"dup":193}],235:[function(require,module,exports){
+},{"./ReactComponentTreeHook":224,"./ReactPropTypeLocationNames":231,"./ReactPropTypesSecret":233,"./reactProdInvariant":242,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66}],237:[function(require,module,exports){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+var _require = require('./ReactBaseClasses'),
+    Component = _require.Component;
+
+var _require2 = require('./ReactElement'),
+    isValidElement = _require2.isValidElement;
+
+var ReactNoopUpdateQueue = require('./ReactNoopUpdateQueue');
+var factory = require('create-react-class/factory');
+
+module.exports = factory(Component, isValidElement, ReactNoopUpdateQueue);
+},{"./ReactBaseClasses":222,"./ReactElement":227,"./ReactNoopUpdateQueue":230,"create-react-class/factory":38}],238:[function(require,module,exports){
+arguments[4][198][0].apply(exports,arguments)
+},{"dup":198}],239:[function(require,module,exports){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+'use strict';
+
+var nextDebugID = 1;
+
+function getNextDebugID() {
+  return nextDebugID++;
+}
+
+module.exports = getNextDebugID;
+},{}],240:[function(require,module,exports){
+(function (process){
+/**
+ * Copyright 2014-2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+/**
+ * Forked from fbjs/warning:
+ * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
+ *
+ * Only change is we use console.warn instead of console.error,
+ * and do nothing when 'console' is not supported.
+ * This really simplifies the code.
+ * ---
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var lowPriorityWarning = function () {};
+
+if (process.env.NODE_ENV !== 'production') {
+  var printWarning = function (format) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    var argIndex = 0;
+    var message = 'Warning: ' + format.replace(/%s/g, function () {
+      return args[argIndex++];
+    });
+    if (typeof console !== 'undefined') {
+      console.warn(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+
+  lowPriorityWarning = function (condition, format) {
+    if (format === undefined) {
+      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+    }
+    if (!condition) {
+      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+        args[_key2 - 2] = arguments[_key2];
+      }
+
+      printWarning.apply(undefined, [format].concat(args));
+    }
+  };
+}
+
+module.exports = lowPriorityWarning;
+}).call(this,require('_process'))
+},{"_process":82}],241:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -63011,9 +64309,9 @@ function onlyChild(children) {
 
 module.exports = onlyChild;
 }).call(this,require('_process'))
-},{"./ReactElement":223,"./reactProdInvariant":236,"_process":81,"fbjs/lib/invariant":58}],236:[function(require,module,exports){
-arguments[4][202][0].apply(exports,arguments)
-},{"dup":202}],237:[function(require,module,exports){
+},{"./ReactElement":227,"./reactProdInvariant":242,"_process":82,"fbjs/lib/invariant":59}],242:[function(require,module,exports){
+arguments[4][207][0].apply(exports,arguments)
+},{"dup":207}],243:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -63148,7 +64446,7 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
       if (process.env.NODE_ENV !== 'production') {
         addendum = ' If you meant to render a collection of children, use an array ' + 'instead or wrap the object using createFragment(object) from the ' + 'React add-ons.';
         if (children._isReactElement) {
-          addendum = ' It looks like you\'re using an element created by a different ' + 'version of React. Make sure to use only one copy of React.';
+          addendum = " It looks like you're using an element created by a different " + 'version of React. Make sure to use only one copy of React.';
         }
         if (ReactCurrentOwner.current) {
           var name = ReactCurrentOwner.current.getName();
@@ -63191,12 +64489,12 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 }).call(this,require('_process'))
-},{"./KeyEscapeUtils":214,"./ReactCurrentOwner":221,"./ReactElementSymbol":224,"./getIteratorFn":234,"./reactProdInvariant":236,"_process":81,"fbjs/lib/invariant":58,"fbjs/lib/warning":65}],238:[function(require,module,exports){
+},{"./KeyEscapeUtils":219,"./ReactCurrentOwner":225,"./ReactElementSymbol":228,"./getIteratorFn":238,"./reactProdInvariant":242,"_process":82,"fbjs/lib/invariant":59,"fbjs/lib/warning":66}],244:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/React');
 
-},{"./lib/React":216}],239:[function(require,module,exports){
+},{"./lib/React":221}],245:[function(require,module,exports){
 (function (process,global){
 (function() {
   "use strict";
@@ -63867,4 +65165,4 @@ module.exports = require('./lib/React');
 })();
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":81}]},{},[34]);
+},{"_process":82}]},{},[34]);
